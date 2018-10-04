@@ -84,7 +84,8 @@ void NewAnalysis::Loop()
    double VertexRangeCheck = 10; // Variable to check if a track is within this range of the vertex in cm
    // --------------------------------
 
-   for (Long64_t jentry=0; jentry<nentries;jentry++) 
+   //for (Long64_t jentry=0; jentry<nentries;jentry++) 
+   for (Long64_t jentry=0; jentry<10000;jentry++) 
       {
       Long64_t ientry = LoadTree(jentry);
       if (ientry < 0) break;
@@ -99,7 +100,7 @@ void NewAnalysis::Loop()
 	 {
          if (!CCCoh(nuPDG_truth[i], ccnc_truth[i], mode_truth[i])) {continue;}
 
-         int nmctrksStartInRange = 0;
+         int nmctrksInRange = 0;
 
          double Vx = sp_charge_corrected_nuvtxx_truth[i];
          double Vy = sp_charge_corrected_nuvtxy_truth[i];
@@ -115,10 +116,17 @@ void NewAnalysis::Loop()
 	    double DeltaStartZ = mctrk_startZ[j] - Vz;
 	    double DeltaStartMagnitude = sqrt(pow(DeltaStartX, 2) + pow(DeltaStartY, 2) + pow(DeltaStartZ, 2));
 
-	    if (DeltaStartMagnitude < VertexRangeCheck) {nmctrksStartInRange++;}
+	    double DeltaEndX = mctrk_endX[j] - Vx;
+	    double DeltaEndY = mctrk_endY[j] - Vy;
+	    double DeltaEndZ = mctrk_endZ[j] - Vz;
+	    double DeltaEndMagnitude = sqrt(pow(DeltaEndX, 2) + pow(DeltaEndY, 2) + pow(DeltaEndZ, 2));
+
+	    if (DeltaStartMagnitude < VertexRangeCheck) {nmctrksInRange++;}
+            if (DeltaStartMagnitude > VertexRangeCheck && DeltaEndMagnitude < VertexRangeCheck) {nmctrksInRange++;}
 	    }
 
-	 std::cout<<"Number of MCTracks that start inside the Vertex Range Check = "<<nmctrksStartInRange<<std::endl;
+	 std::cout<<"Number of MCTracks that are within the Vertex Range Check = "<<nmctrksInRange<<std::endl;
+         if (nmctrksInRange == 0) {std::cout<<"---> Number of MCShowers = "<<no_mcshowers<<std::endl;}
 
 	 if (checkDV == true)
 	    {

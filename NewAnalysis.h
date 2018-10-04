@@ -2,7 +2,7 @@
 // This class has been automatically generated on
 // Tue Oct  2 11:19:04 2018 by ROOT version 6.10/02
 // from TTree anatree/analysis tree
-// found on file: ANATREE_Zack_MCC8_7_File_6.root
+// found on file: ANATREE_Zack_MCC8_7_File_1.root
 //////////////////////////////////////////////////////////
 
 #ifndef NewAnalysis_h
@@ -2281,11 +2281,11 @@ NewAnalysis::NewAnalysis(TTree *tree) : fChain(0)
 // if parameter tree is not specified (or zero), connect the file
 // used to generate this class and read the Tree.
    if (tree == 0) {
-      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("ANATREE_Zack_MCC8_7_File_6.root");
+      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("ANATREE_Zack_MCC8_7_File_1.root");
       if (!f || !f->IsOpen()) {
-         f = new TFile("ANATREE_Zack_MCC8_7_File_6.root");
+         f = new TFile("ANATREE_Zack_MCC8_7_File_1.root");
       }
-      TDirectory * dir = (TDirectory*)f->Get("ANATREE_Zack_MCC8_7_File_6.root:/analysistree");
+      TDirectory * dir = (TDirectory*)f->Get("ANATREE_Zack_MCC8_7_File_1.root:/analysistree");
       dir->GetObject("anatree",tree);
 
    }
