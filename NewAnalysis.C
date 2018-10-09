@@ -19,6 +19,7 @@ TH1D *hNuVtxY_FV = new TH1D("hNuVtxY_FV", "True Space Charge Corrected Neutrino 
 TH1D *hNuVtxZ_FV = new TH1D("hNuVtxZ_FV", "True Space Charge Corrected Neutrino Vertex Z Position that is within the Fiducial Volume", 1021, 9.5, 1030.5);
 
 TH1D *hNuNMCTracksWithinRange = new TH1D("hNuNMCTracksWithinRange", "The Number of MCTracks within Vtx Range Check", 11, -0.5, 10.5);
+TH1D *hNu0TrackLepMom = new TH1D("hNu0TrackLepMom", "The Lepton Momentum for Events with 0 MCTracks", 150, 0, 1500);
 
 // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
@@ -130,7 +131,11 @@ void NewAnalysis::Loop()
          hNuNMCTracksWithinRange->Fill(nmctrksInRange);
 
 	 std::cout<<"Number of MCTracks that are within the Vertex Range Check = "<<nmctrksInRange<<std::endl;
-         if (nmctrksInRange == 0) {std::cout<<"---> Number of MCShowers = "<<no_mcshowers<<std::endl;}
+         if (nmctrksInRange == 0) 
+	    {
+            std::cout<<"---> Number of MCShowers = "<<no_mcshowers<<std::endl;
+	    hNu0TrackLepMom->Fill(lep_mom_truth[i]*1000);
+	    }
 
 	 if (checkDV == true)
 	    {
@@ -166,6 +171,7 @@ void NewAnalysis::Loop()
    hNuVtxZ_FV->Write();
 
    hNuNMCTracksWithinRange->Write();
+   hNu0TrackLepMom->Write();
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 } // End NewAnalysis Loop
