@@ -86,8 +86,8 @@ void NewAnalysis::Loop()
    double VertexRangeCheck = 10; // Variable to check if a track is within this range of the vertex in cm
    // --------------------------------
 
-   for (Long64_t jentry=0; jentry<nentries;jentry++) 
-   //for (Long64_t jentry=0; jentry<10000;jentry++) 
+   //for (Long64_t jentry=0; jentry<nentries;jentry++) 
+   for (Long64_t jentry=0; jentry<10000;jentry++) 
       {
       Long64_t ientry = LoadTree(jentry);
       if (ientry < 0) break;
