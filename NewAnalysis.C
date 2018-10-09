@@ -18,6 +18,8 @@ TH1D *hNuVtxX_FV = new TH1D("hNuVtxX_FV", "True Space Charge Corrected Neutrino 
 TH1D *hNuVtxY_FV = new TH1D("hNuVtxY_FV", "True Space Charge Corrected Neutrino Vertex Y Position that is within the Fiducial Volume", 191, -95.5, 95.5);
 TH1D *hNuVtxZ_FV = new TH1D("hNuVtxZ_FV", "True Space Charge Corrected Neutrino Vertex Z Position that is within the Fiducial Volume", 1021, 9.5, 1030.5);
 
+TH1D *hNuNMCTracksWithinRange = new TH1D("hNuNMCTracksWithinRange", "The Number of MCTracks within Vtx Range Check", 11, -0.5, 10.5);
+
 // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 
@@ -125,6 +127,8 @@ void NewAnalysis::Loop()
             if (DeltaStartMagnitude > VertexRangeCheck && DeltaEndMagnitude < VertexRangeCheck) {nmctrksInRange++;}
 	    }
 
+         hNuNMCTracksWithinRange->Fill(nmctrksInRange);
+
 	 std::cout<<"Number of MCTracks that are within the Vertex Range Check = "<<nmctrksInRange<<std::endl;
          if (nmctrksInRange == 0) {std::cout<<"---> Number of MCShowers = "<<no_mcshowers<<std::endl;}
 
@@ -160,6 +164,8 @@ void NewAnalysis::Loop()
    hNuVtxX_FV->Write();
    hNuVtxY_FV->Write();
    hNuVtxZ_FV->Write();
+
+   hNuNMCTracksWithinRange->Write();
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 } // End NewAnalysis Loop
