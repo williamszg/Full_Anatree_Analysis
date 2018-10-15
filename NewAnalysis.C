@@ -28,6 +28,8 @@ TH1D *hCCResConeAngle = new TH1D("hCCResConeAngle", "The Cone Angle for CC-Res E
 TH1D *hNCResConeAngle = new TH1D("hNCResConeAngle", "The Cone Angle for NC-Res Events with 2 MCTracks", 181, -0.5, 180.5);
 TH1D *hNCDISConeAngle = new TH1D("hNCDISConeAngle", "The Cone Angle for NC-DIS Events with 2 MCTracks", 181, -0.5, 180.5);
 
+TH1D *hCCCohTableInformation = new TH1D("hCCCohTableInformation", "Table Information for CC-COH Events", 7, -0.5, 6.5);
+
 // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 
@@ -181,8 +183,19 @@ void NewAnalysis::Loop()
 	 bool checkDV = Within(false, Vx, Vy, Vz);
 	 bool checkFV = Within(true, Vx, Vy, Vz);
 
+	 bool containMuon = false;
+	 bool containPion = false;
+
 	 TVector3 muon;
+	 TVector3 muonstart;
+	 TVector3 muonend;
 	 TVector3 pion;
+	 TVector3 pionstart;
+	 TVector3 pionend;
+
+	 if (nuPDG_truth[i] == 14 && checkFV) {hCCCohTableInformation->Fill(0);}
+	 if (nuPDG_truth[i] && ccnc_truth[i] == 0 && checkFV) {hCCCohTableInformation->Fill(1);}
+	 if (CCCOH && checkFV) {hCCCohTableInformation->Fill(2);}
 
          for (int j = 0; j < no_mctracks; j++)
 	    {
@@ -197,7 +210,19 @@ void NewAnalysis::Loop()
 	    double DeltaEndMagnitude = sqrt(pow(DeltaEndX, 2) + pow(DeltaEndY, 2) + pow(DeltaEndZ, 2));
 
 	    TVector3 track(mctrk_endX[j] - mctrk_startX[j], mctrk_endY[j] - mctrk_startY[j], mctrk_endZ[j] - mctrk_startZ[j]);
-
+	    
+	    if (mctrk_pdg[j] == 13) 
+	       {
+	       muonstart.SetXYZ(mctrk_startX[j], mctrk_startY[j], mctrk_startZ[j]);
+	       muonend.SetXYZ(mctrk_endX[j], mctrk_endY[j], mctrk_endZ[j]);
+               if (Within(true, muonstart.X(), muonstart.Y(), muonstart.Z()) && Within(true, muonend.X(), muonend.Y(), muonend.Z()) && CCCOH) {containMuon = true;}
+	       }
+	    if (mctrk_pdg[j] == 211) 
+	       {
+	       pionstart.SetXYZ(mctrk_startX[j], mctrk_startY[j], mctrk_startZ[j]);
+	       pionend.SetXYZ(mctrk_endX[j], mctrk_endY[j], mctrk_endZ[j]);
+               if (Within(true, pionstart.X(), pionstart.Y(), pionstart.Z()) && Within(true, pionend.X(), pionend.Y(), pionend.Z()) && CCCOH) {containPion = true;}
+	       }
 	    if (DeltaStartMagnitude < VertexRangeCheck) 
 	       {
 	       nmctrksInRange++;
@@ -214,17 +239,21 @@ void NewAnalysis::Loop()
 
          hNuNMCTracksWithinRange->Fill(nmctrksInRange);
 
+	 if (CCCOH && checkFV && containMuon && containPion) {hCCCohTableInformation->Fill(3);}
+	 if (CCCOH && checkFV && containMuon && !containPion) {hCCCohTableInformation->Fill(4);}
+	 if (CCCOH && checkFV && !containMuon && containPion) {hCCCohTableInformation->Fill(5);}
+	 if (CCCOH && checkFV && !containMuon && !containPion) {hCCCohTableInformation->Fill(6);}
          if (nmctrksInRange == 0 && CCCOH) 
 	    {
             std::cout<<"---> Number of MCShowers = "<<no_mcshowers<<std::endl;
 	    hCCCoh0TrackLepMom->Fill(lep_mom_truth[i]*1000);
 	    }
 
-	 if (nmctrksInRange >= 2 && CCCOH) {hCCCohConeAngle->Fill(ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI);}
-	 if (nmctrksInRange >= 2 && CCQE) {hCCQEConeAngle->Fill(ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI);}
-	 if (nmctrksInRange >= 2 && CCRes) {hCCResConeAngle->Fill(ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI);}
-	 if (nmctrksInRange >= 2 && NCRes) {hNCResConeAngle->Fill(ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI);}
-	 if (nmctrksInRange >= 2 && NCDIS) {hNCDISConeAngle->Fill(ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI);}
+	 if (nmctrksInRange >= 2 && CCCOH && checkFV) {hCCCohConeAngle->Fill(ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI);}
+	 if (nmctrksInRange >= 2 && CCQE && checkFV) {hCCQEConeAngle->Fill(ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI);}
+	 if (nmctrksInRange >= 2 && CCRes && checkFV) {hCCResConeAngle->Fill(ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI);}
+	 if (nmctrksInRange >= 2 && NCRes && checkFV) {hNCResConeAngle->Fill(ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI);}
+	 if (nmctrksInRange >= 2 && NCDIS && checkFV) {hNCDISConeAngle->Fill(ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI);}
 
 	 if (checkDV == true)
 	    {
@@ -267,6 +296,8 @@ void NewAnalysis::Loop()
    hCCResConeAngle->Write();
    hNCResConeAngle->Write();
    hNCDISConeAngle->Write();
+
+   hCCCohTableInformation->Write();
 
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
