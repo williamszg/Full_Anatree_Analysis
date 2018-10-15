@@ -74,6 +74,20 @@ bool CCCoh(int PDG, int ccnc, int mode)
 }
 // -------------------------------
 
+// ---------------------------
+// --- Cone Angle Function ---
+// ---------------------------
+double ConeAngle(double x1, double y1, double z1, double x2, double y2, double z2)
+{
+   TVector3 v1(x1, y1, z1);
+   TVector3 v2(x2, y2, z2);
+   TVector3 z(0, 0, 1);
+   TVector3 v3 = v1 + v2;
+   Double_t coneangle = v3.Angle(z);
+   return coneangle;
+}
+// ---------------------------
+
 
 void NewAnalysis::Loop()
 {
