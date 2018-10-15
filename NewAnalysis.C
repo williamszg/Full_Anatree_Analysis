@@ -5,6 +5,7 @@
 #include <TCanvas.h>
 #include <math.h>
 #include <stdio.h>
+#define PI 3.14159265
 
 // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 // $$$ Declare Histograms Produced Here $$$
@@ -19,7 +20,13 @@ TH1D *hNuVtxY_FV = new TH1D("hNuVtxY_FV", "True Space Charge Corrected Neutrino 
 TH1D *hNuVtxZ_FV = new TH1D("hNuVtxZ_FV", "True Space Charge Corrected Neutrino Vertex Z Position that is within the Fiducial Volume", 1021, 9.5, 1030.5);
 
 TH1D *hNuNMCTracksWithinRange = new TH1D("hNuNMCTracksWithinRange", "The Number of MCTracks within Vtx Range Check", 11, -0.5, 10.5);
-TH1D *hNu0TrackLepMom = new TH1D("hNu0TrackLepMom", "The Lepton Momentum for Events with 0 MCTracks", 150, 0, 1500);
+TH1D *hCCCoh0TrackLepMom = new TH1D("hCCCoh0TrackLepMom", "The Lepton Momentum for CC-COH Events with 0 MCTracks", 150, 0, 1500);
+
+TH1D *hCCCohConeAngle = new TH1D("hCCCohConeAngle", "The Cone Angle for CC-COH Events with 2 MCTracks", 181, -0.5, 180.5);
+TH1D *hCCQEConeAngle = new TH1D("hCCQEConeAngle", "The Cone Angle for CC-QE Events with 2 MCTracks", 181, -0.5, 180.5);
+TH1D *hCCResConeAngle = new TH1D("hCCResConeAngle", "The Cone Angle for CC-Res Events with 2 MCTracks", 181, -0.5, 180.5);
+TH1D *hNCResConeAngle = new TH1D("hNCResConeAngle", "The Cone Angle for NC-Res Events with 2 MCTracks", 181, -0.5, 180.5);
+TH1D *hNCDISConeAngle = new TH1D("hNCDISConeAngle", "The Cone Angle for NC-DIS Events with 2 MCTracks", 181, -0.5, 180.5);
 
 // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
@@ -74,6 +81,50 @@ bool CCCoh(int PDG, int ccnc, int mode)
 }
 // -------------------------------
 
+// -------------------------
+// --- CC-QE Event Check ---
+// -------------------------
+bool CCqe(int PDG, int ccnc, int mode)
+{
+   bool ccqe = false; // returned variable to declare whether or not event was CCQE!
+   if (PDG == 14 && ccnc == 0 && mode == 0) {ccqe = true;}
+   return ccqe;
+}
+// -------------------------
+
+// --------------------------
+// --- CC-Res Event Check ---
+// --------------------------
+bool CCres(int PDG, int ccnc, int mode)
+{
+   bool ccres = false; // returned variable to declare whether or not event was CCRes!
+   if (PDG == 14 && ccnc == 0 && mode == 1) {ccres = true;}
+   return ccres;
+}
+// --------------------------
+
+// --------------------------
+// --- NC-Res Event Check ---
+// --------------------------
+bool NCres(int PDG, int ccnc, int mode)
+{
+   bool ncres = false; // returned variable to declare whether or not event was NCRes!
+   if (PDG == 14 && ccnc == 1 && mode == 1) {ncres = true;}
+   return ncres;
+}
+// --------------------------
+
+// --------------------------
+// --- NC-DIS Event Check ---
+// --------------------------
+bool NCdis(int PDG, int ccnc, int mode)
+{
+   bool ncdis = false; // returned variable to declare whether or not event was NCDIS!
+   if (PDG == 14 && ccnc == 1 && mode == 2) {ncdis = true;}
+   return ncdis;
+}
+// --------------------------
+
 // ---------------------------
 // --- Cone Angle Function ---
 // ---------------------------
@@ -115,7 +166,11 @@ void NewAnalysis::Loop()
       // ========================================
       for (int i = 0; i < mcevts_truth; i++)
 	 {
-         if (!CCCoh(nuPDG_truth[i], ccnc_truth[i], mode_truth[i])) {continue;}
+         bool CCCOH = CCCoh(nuPDG_truth[i], ccnc_truth[i], mode_truth[i]);
+	 bool CCQE = CCqe(nuPDG_truth[i], ccnc_truth[i], mode_truth[i]);
+	 bool CCRes = CCres(nuPDG_truth[i], ccnc_truth[i], mode_truth[i]);
+	 bool NCRes = NCres(nuPDG_truth[i], ccnc_truth[i], mode_truth[i]);
+	 bool NCDIS = NCdis(nuPDG_truth[i], ccnc_truth[i], mode_truth[i]);
 
          int nmctrksInRange = 0;
 
@@ -125,6 +180,9 @@ void NewAnalysis::Loop()
 
 	 bool checkDV = Within(false, Vx, Vy, Vz);
 	 bool checkFV = Within(true, Vx, Vy, Vz);
+
+	 TVector3 muon;
+	 TVector3 pion;
 
          for (int j = 0; j < no_mctracks; j++)
 	    {
@@ -138,18 +196,35 @@ void NewAnalysis::Loop()
 	    double DeltaEndZ = mctrk_endZ[j] - Vz;
 	    double DeltaEndMagnitude = sqrt(pow(DeltaEndX, 2) + pow(DeltaEndY, 2) + pow(DeltaEndZ, 2));
 
-	    if (DeltaStartMagnitude < VertexRangeCheck) {nmctrksInRange++;}
-            if (DeltaStartMagnitude > VertexRangeCheck && DeltaEndMagnitude < VertexRangeCheck) {nmctrksInRange++;}
+	    TVector3 track(mctrk_endX[j] - mctrk_startX[j], mctrk_endY[j] - mctrk_startY[j], mctrk_endZ[j] - mctrk_startZ[j]);
+
+	    if (DeltaStartMagnitude < VertexRangeCheck) 
+	       {
+	       nmctrksInRange++;
+	       if (mctrk_pdg[j] == 13) {muon = track;}
+	       if (mctrk_pdg[j] == 211) {pion = track;}
+	       }
+            if (DeltaStartMagnitude > VertexRangeCheck && DeltaEndMagnitude < VertexRangeCheck) 
+	       {
+	       nmctrksInRange++;
+	       if (mctrk_pdg[j] == 13) {muon = track;}
+	       if (mctrk_pdg[j] == 211) {pion = track;}
+	       }
 	    }
 
          hNuNMCTracksWithinRange->Fill(nmctrksInRange);
 
-	 std::cout<<"Number of MCTracks that are within the Vertex Range Check = "<<nmctrksInRange<<std::endl;
-         if (nmctrksInRange == 0) 
+         if (nmctrksInRange == 0 && CCCOH) 
 	    {
             std::cout<<"---> Number of MCShowers = "<<no_mcshowers<<std::endl;
-	    hNu0TrackLepMom->Fill(lep_mom_truth[i]*1000);
+	    hCCCoh0TrackLepMom->Fill(lep_mom_truth[i]*1000);
 	    }
+
+	 if (nmctrksInRange >= 2 && CCCOH) {hCCCohConeAngle->Fill(ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI);}
+	 if (nmctrksInRange >= 2 && CCQE) {hCCQEConeAngle->Fill(ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI);}
+	 if (nmctrksInRange >= 2 && CCRes) {hCCResConeAngle->Fill(ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI);}
+	 if (nmctrksInRange >= 2 && NCRes) {hNCResConeAngle->Fill(ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI);}
+	 if (nmctrksInRange >= 2 && NCDIS) {hNCDISConeAngle->Fill(ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI);}
 
 	 if (checkDV == true)
 	    {
@@ -185,7 +260,14 @@ void NewAnalysis::Loop()
    hNuVtxZ_FV->Write();
 
    hNuNMCTracksWithinRange->Write();
-   hNu0TrackLepMom->Write();
+   hCCCoh0TrackLepMom->Write();
+
+   hCCCohConeAngle->Write();
+   hCCQEConeAngle->Write();
+   hCCResConeAngle->Write();
+   hNCResConeAngle->Write();
+   hNCDISConeAngle->Write();
+
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 } // End NewAnalysis Loop
