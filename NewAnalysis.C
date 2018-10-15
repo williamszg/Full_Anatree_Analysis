@@ -22,11 +22,12 @@ TH1D *hNuVtxZ_FV = new TH1D("hNuVtxZ_FV", "True Space Charge Corrected Neutrino 
 TH1D *hNuNMCTracksWithinRange = new TH1D("hNuNMCTracksWithinRange", "The Number of MCTracks within Vtx Range Check", 11, -0.5, 10.5);
 TH1D *hCCCoh0TrackLepMom = new TH1D("hCCCoh0TrackLepMom", "The Lepton Momentum for CC-COH Events with 0 MCTracks", 150, 0, 1500);
 
-TH1D *hCCCohConeAngle = new TH1D("hCCCohConeAngle", "The Cone Angle for CC-COH Events with 2 MCTracks", 181, -0.5, 180.5);
-TH1D *hCCQEConeAngle = new TH1D("hCCQEConeAngle", "The Cone Angle for CC-QE Events with 2 MCTracks", 181, -0.5, 180.5);
-TH1D *hCCResConeAngle = new TH1D("hCCResConeAngle", "The Cone Angle for CC-Res Events with 2 MCTracks", 181, -0.5, 180.5);
-TH1D *hNCResConeAngle = new TH1D("hNCResConeAngle", "The Cone Angle for NC-Res Events with 2 MCTracks", 181, -0.5, 180.5);
-TH1D *hNCDISConeAngle = new TH1D("hNCDISConeAngle", "The Cone Angle for NC-DIS Events with 2 MCTracks", 181, -0.5, 180.5);
+TH1D *hCCCohConeAngle = new TH1D("hCCCohConeAngle", "The Cone Angle for CC-COH Events with 2 or More MCTracks", 181, -0.5, 180.5);
+TH1D *hCCQEConeAngle = new TH1D("hCCQEConeAngle", "The Cone Angle for CC-QE Events with 2 or More MCTracks", 181, -0.5, 180.5);
+TH1D *hCCResConeAngle = new TH1D("hCCResConeAngle", "The Cone Angle for CC-Res Events with 2 or More MCTracks", 181, -0.5, 180.5);
+TH1D *hNCResConeAngle = new TH1D("hNCResConeAngle", "The Cone Angle for NC-Res Events with 2 or More MCTracks", 181, -0.5, 180.5);
+TH1D *hNCDISConeAngle = new TH1D("hNCDISConeAngle", "The Cone Angle for NC-DIS Events with 2 or More MCTracks", 181, -0.5, 180.5);
+TH1D *hCosmicConeAngle = new TH1D("hCosmicConeAngle", "The Cone Angle for Events with 2 or More Cosmic MCTracks", 181, -0.5, 180.5);
 
 TH1D *hCCCohTableInformation = new TH1D("hCCCohTableInformation", "Table Information for CC-COH Events", 7, -0.5, 6.5);
 
@@ -210,26 +211,27 @@ void NewAnalysis::Loop()
 	    double DeltaEndMagnitude = sqrt(pow(DeltaEndX, 2) + pow(DeltaEndY, 2) + pow(DeltaEndZ, 2));
 
 	    TVector3 track(mctrk_endX[j] - mctrk_startX[j], mctrk_endY[j] - mctrk_startY[j], mctrk_endZ[j] - mctrk_startZ[j]);
-	    
-	    if (mctrk_pdg[j] == 13) 
+
+	    if (checkFV && mctrk_origin[j] == 2) {hCosmicConeAngle->Fill(ConeAngle(track.X(), track.Y(), track.Z(), 0, 0, 0)*180/PI);}
+	    if (mctrk_pdg[j] == 13 && mctrk_origin[j] == 1) 
 	       {
 	       muonstart.SetXYZ(mctrk_startX[j], mctrk_startY[j], mctrk_startZ[j]);
 	       muonend.SetXYZ(mctrk_endX[j], mctrk_endY[j], mctrk_endZ[j]);
                if (Within(true, muonstart.X(), muonstart.Y(), muonstart.Z()) && Within(true, muonend.X(), muonend.Y(), muonend.Z()) && CCCOH) {containMuon = true;}
 	       }
-	    if (mctrk_pdg[j] == 211) 
+	    if (mctrk_pdg[j] == 211 && mctrk_origin[j] == 1) 
 	       {
 	       pionstart.SetXYZ(mctrk_startX[j], mctrk_startY[j], mctrk_startZ[j]);
 	       pionend.SetXYZ(mctrk_endX[j], mctrk_endY[j], mctrk_endZ[j]);
                if (Within(true, pionstart.X(), pionstart.Y(), pionstart.Z()) && Within(true, pionend.X(), pionend.Y(), pionend.Z()) && CCCOH) {containPion = true;}
 	       }
-	    if (DeltaStartMagnitude < VertexRangeCheck) 
+	    if (DeltaStartMagnitude < VertexRangeCheck && mctrk_origin[j] == 1) 
 	       {
 	       nmctrksInRange++;
 	       if (mctrk_pdg[j] == 13) {muon = track;}
 	       if (mctrk_pdg[j] == 211) {pion = track;}
 	       }
-            if (DeltaStartMagnitude > VertexRangeCheck && DeltaEndMagnitude < VertexRangeCheck) 
+            if (DeltaStartMagnitude > VertexRangeCheck && DeltaEndMagnitude < VertexRangeCheck && mctrk_origin[j] == 1) 
 	       {
 	       nmctrksInRange++;
 	       if (mctrk_pdg[j] == 13) {muon = track;}
@@ -296,6 +298,7 @@ void NewAnalysis::Loop()
    hCCResConeAngle->Write();
    hNCResConeAngle->Write();
    hNCDISConeAngle->Write();
+   hCosmicConeAngle->Write();
 
    hCCCohTableInformation->Write();
 
