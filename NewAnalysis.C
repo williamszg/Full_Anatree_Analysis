@@ -199,6 +199,7 @@ void NewAnalysis::Loop()
          bool hasMuon = false;
 	 bool hasPion = false;
 	 bool hasPion2 = false;
+	 bool hasProton = false;
 
 	 TVector3 muon;
 	 TVector3 muonstart;
@@ -259,6 +260,7 @@ void NewAnalysis::Loop()
 	       }
 	    if (mctrk_pdg[j] == 2212 && mctrk_origin[j] == 1) 
 	       {
+	       hasProton = true;
 	       protonstart.SetXYZ(mctrk_startX[j], mctrk_startY[j], mctrk_startZ[j]);
 	       protonend.SetXYZ(mctrk_endX[j], mctrk_endY[j], mctrk_endZ[j]);
                if (Within(true, protonstart.X(), protonstart.Y(), protonstart.Z()) && Within(true, protonend.X(), protonend.Y(), protonend.Z())) {containProton = true;}
@@ -276,16 +278,16 @@ void NewAnalysis::Loop()
 	       nmctrksInRange++;
 	       if (mctrk_pdg[j] == 13) {muon = track;}
 	       if (mctrk_pdg[j] == 211) {pion = track;}
-	       if (mctrk_pdg[j] == -211) {pion = track;}
+	       if (mctrk_pdg[j] == -211) {pion2 = track;}
 	       if (mctrk_pdg[j] == 2212) {proton = track;}
 	       }
 	    }
 
          hNuNMCTracksWithinRange->Fill(nmctrksInRange);
 
-	 if (CCQE && checkFV && hasMuon && hasPion && nmctrksInRange >= 2) {hCCQETableInformation->Fill(1);}
+	 if (CCQE && checkFV && hasMuon && hasProton && nmctrksInRange >= 2) {hCCQETableInformation->Fill(1);}
 	 if (CCRes && checkFV && hasMuon && hasPion && nmctrksInRange >= 2) {hCCResTableInformation->Fill(1);}
-	 if (CCQE && checkFV && hasMuon && hasPion && containMuon && containPion && nmctrksInRange >= 2) {hCCQETableInformation->Fill(2);}
+	 if (CCQE && checkFV && hasMuon && hasProton && containMuon && containPion && nmctrksInRange >= 2) {hCCQETableInformation->Fill(2);}
 	 if (CCRes && checkFV && hasMuon && hasPion && containMuon && containPion && nmctrksInRange >= 2) {hCCResTableInformation->Fill(2);}
 
          if (NCRes && checkFV && hasPion && hasPion2 && containPion && containPion2) {hNCResTableInformation->Fill(1);}
@@ -305,16 +307,19 @@ void NewAnalysis::Loop()
 	    {
 	    int nshwr = 0;
 	    for (int k = 0; k < no_mcshowers; k++) {if (mcshwr_origin[k] == 1) nshwr++;}
-            std::cout<<"---> Number of MCShowers = "<<nshwr<<std::endl;
+	    std::cout<<"====================================="<<std::endl;
+            std::cout<<" ---> Number of MCShowers = "<<nshwr<<std::endl;
 	    hCCCoh0TrackLepMom->Fill(lep_mom_truth[i]*1000);
 	    hCCCoh0TrackNumMCShwrs->Fill(nshwr);
+	    std::cout<<" Event = "<<event<<std::endl;
+	    std::cout<<" Run = "<<run<<std::endl;
+	    std::cout<<" Subrun = "<<subrun<<std::endl;
+	    std::cout<<"====================================="<<std::endl;
 	    }
 
 	 if (nmctrksInRange >= 2 && CCCOH && checkFV && containMuon && containPion) {hCCCohConeAngle->Fill(ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI);}
-	 if (nmctrksInRange >= 2 && CCQE && checkFV && containMuon && containPion) {hCCQEConeAngle->Fill(ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI);}
 	 if (nmctrksInRange >= 2 && CCQE && checkFV && containMuon && containProton) {hCCQEConeAngle->Fill(ConeAngle(muon.X(), muon.Y(), muon.Z(), proton.X(), proton.Y(), proton.Z())*180/PI);}
 	 if (nmctrksInRange >= 2 && CCRes && checkFV && containMuon && containPion) {hCCResConeAngle->Fill(ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI);}
-	 if (nmctrksInRange >= 2 && CCRes && checkFV && containMuon && containProton) {hCCResConeAngle->Fill(ConeAngle(muon.X(), muon.Y(), muon.Z(), proton.X(), proton.Y(), proton.Z())*180/PI);}
 	 if (nmctrksInRange >= 2 && NCRes && checkFV && containPion && containPion2) {hNCResConeAngle->Fill(ConeAngle(pion2.X(), pion2.Y(), pion2.Z(), pion.X(), pion.Y(), pion.Z())*180/PI);}
 	 if (nmctrksInRange >= 2 && NCDIS && checkFV && containPion && containPion2) {hNCDISConeAngle->Fill(ConeAngle(pion2.X(), pion2.Y(), pion2.Z(), pion.X(), pion.Y(), pion.Z())*180/PI);}
 
