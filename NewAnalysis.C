@@ -30,6 +30,10 @@ TH1D *hNCDISConeAngle = new TH1D("hNCDISConeAngle", "The Cone Angle for NC-DIS E
 TH1D *hCosmicConeAngle = new TH1D("hCosmicConeAngle", "The Cone Angle for Events with 2 or More Cosmic MCTracks", 181, -0.5, 180.5);
 
 TH1D *hCCCohTableInformation = new TH1D("hCCCohTableInformation", "Table Information for CC-COH Events", 7, -0.5, 6.5);
+TH1D *hCCQETableInformation = new TH1D("hCCQETableInformation", "Table Information for CC-QE Events", 3, -0.5, 2.5);
+TH1D *hCCResTableInformation = new TH1D("hCCResTableInformation", "Table Information for CC-Res Events", 3, -0.5, 2.5);
+TH1D *hNCResTableInformation = new TH1D("hNCResTableInformation", "Table Information for NC-Res Events", 5, -0.5, 4.5);
+TH1D *hNCDISTableInformation = new TH1D("hNCDISTableInformation", "Table Information for NC-DIS Events", 5, -0.5, 4.5);
 
 // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
@@ -191,6 +195,10 @@ void NewAnalysis::Loop()
 	 bool containPion2 = false;
 	 bool containProton = false;
 
+         bool hasMuon = false;
+	 bool hasPion = false;
+	 bool hasPion2 = false;
+
 	 TVector3 muon;
 	 TVector3 muonstart;
 	 TVector3 muonend;
@@ -207,6 +215,10 @@ void NewAnalysis::Loop()
 	 if (nuPDG_truth[i] == 14 && checkFV) {hCCCohTableInformation->Fill(0);}
 	 if (nuPDG_truth[i] && ccnc_truth[i] == 0 && checkFV) {hCCCohTableInformation->Fill(1);}
 	 if (CCCOH && checkFV) {hCCCohTableInformation->Fill(2);}
+	 if (CCQE && checkFV) {hCCQETableInformation->Fill(0);}
+	 if (CCRes && checkFV) {hCCResTableInformation->Fill(0);}
+	 if (NCRes && checkFV) {hNCResTableInformation->Fill(0);}
+	 if (NCDIS && checkFV) {hNCDISTableInformation->Fill(0);}
 
          for (int j = 0; j < no_mctracks; j++)
 	    {
@@ -225,18 +237,21 @@ void NewAnalysis::Loop()
 	    if (checkFV && mctrk_origin[j] == 2) {hCosmicConeAngle->Fill(ConeAngle(track.X(), track.Y(), track.Z(), 0, 0, 0)*180/PI);}
 	    if (mctrk_pdg[j] == 13 && mctrk_origin[j] == 1) 
 	       {
+	       hasMuon = true;
 	       muonstart.SetXYZ(mctrk_startX[j], mctrk_startY[j], mctrk_startZ[j]);
 	       muonend.SetXYZ(mctrk_endX[j], mctrk_endY[j], mctrk_endZ[j]);
                if (Within(true, muonstart.X(), muonstart.Y(), muonstart.Z()) && Within(true, muonend.X(), muonend.Y(), muonend.Z())) {containMuon = true;}
 	       }
 	    if (mctrk_pdg[j] == 211 && mctrk_origin[j] == 1) 
 	       {
+	       hasPion = true;
 	       pionstart.SetXYZ(mctrk_startX[j], mctrk_startY[j], mctrk_startZ[j]);
 	       pionend.SetXYZ(mctrk_endX[j], mctrk_endY[j], mctrk_endZ[j]);
                if (Within(true, pionstart.X(), pionstart.Y(), pionstart.Z()) && Within(true, pionend.X(), pionend.Y(), pionend.Z())) {containPion = true;}
 	       }
 	    if (mctrk_pdg[j] == -211 && mctrk_origin[j] == 1) 
 	       {
+	       hasPion2 = true;
 	       pion2start.SetXYZ(mctrk_startX[j], mctrk_startY[j], mctrk_startZ[j]);
 	       pion2end.SetXYZ(mctrk_endX[j], mctrk_endY[j], mctrk_endZ[j]);
                if (Within(true, pion2start.X(), pion2start.Y(), pion2start.Z()) && Within(true, pion2end.X(), pion2end.Y(), pion2end.Z())) {containPion2 = true;}
@@ -266,6 +281,20 @@ void NewAnalysis::Loop()
 	    }
 
          hNuNMCTracksWithinRange->Fill(nmctrksInRange);
+
+	 if (CCQE && checkFV && hasMuon && hasPion && nmctrksInRange >= 2) {hCCQETableInformation->Fill(1);}
+	 if (CCRes && checkFV && hasMuon && hasPion && nmctrksInRange >= 2) {hCCResTableInformation->Fill(1);}
+	 if (CCQE && checkFV && hasMuon && hasPion && containMuon && containPion && nmctrksInRange >= 2) {hCCQETableInformation->Fill(2);}
+	 if (CCRes && checkFV && hasMuon && hasPion && containMuon && containPion && nmctrksInRange >= 2) {hCCResTableInformation->Fill(2);}
+
+         if (NCRes && checkFV && hasPion && hasPion2 && containPion && containPion2) {hNCResTableInformation->Fill(1);}
+         if (NCDIS && checkFV && hasPion && hasPion2 && containPion && containPion2) {hNCDISTableInformation->Fill(1);}
+         if (NCRes && checkFV && hasPion && hasPion2 && containPion && !containPion2) {hNCResTableInformation->Fill(2);}
+         if (NCDIS && checkFV && hasPion && hasPion2 && containPion && !containPion2) {hNCDISTableInformation->Fill(2);}
+         if (NCRes && checkFV && hasPion && hasPion2 && !containPion && containPion2) {hNCResTableInformation->Fill(3);}
+         if (NCDIS && checkFV && hasPion && hasPion2 && !containPion && containPion2) {hNCDISTableInformation->Fill(3);}
+         if (NCRes && checkFV && hasPion && hasPion2 && !containPion && !containPion2) {hNCResTableInformation->Fill(4);}
+         if (NCDIS && checkFV && hasPion && hasPion2 && !containPion && !containPion2) {hNCDISTableInformation->Fill(4);}
 
 	 if (CCCOH && checkFV && containMuon && containPion) {hCCCohTableInformation->Fill(3);}
 	 if (CCCOH && checkFV && containMuon && !containPion) {hCCCohTableInformation->Fill(4);}
@@ -331,6 +360,10 @@ void NewAnalysis::Loop()
    hCosmicConeAngle->Write();
 
    hCCCohTableInformation->Write();
+   hCCQETableInformation->Write();
+   hCCResTableInformation->Write();
+   hNCResTableInformation->Write();
+   hNCDISTableInformation->Write();
 
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
