@@ -155,14 +155,14 @@ void NewAnalysis::Loop()
    double VertexRangeCheck = 10; // Variable to check if a track is within this range of the vertex in cm
    // --------------------------------
 
-   //for (Long64_t jentry=0; jentry<nentries;jentry++) 
-   for (Long64_t jentry=0; jentry<10000;jentry++) 
+   for (Long64_t jentry=0; jentry<nentries;jentry++) 
+   //for (Long64_t jentry=0; jentry<10001;jentry++) 
       {
       Long64_t ientry = LoadTree(jentry);
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
 
-      if (jentry%1000 == 0) {std::cout<<"Event = "<<jentry<<std::endl;}
+      if (jentry%100 == 0) {std::cout<<"Event = "<<jentry<<std::endl;}
 
       // ========================================
       // === Looping Over the Neutrino Events ===
@@ -175,6 +175,8 @@ void NewAnalysis::Loop()
 	 bool NCRes = NCres(nuPDG_truth[i], ccnc_truth[i], mode_truth[i]);
 	 bool NCDIS = NCdis(nuPDG_truth[i], ccnc_truth[i], mode_truth[i]);
 
+	 if (!CCCOH && !CCQE && !CCRes && !NCRes && !NCDIS) {continue;}
+
          int nmctrksInRange = 0;
 
          double Vx = sp_charge_corrected_nuvtxx_truth[i];
@@ -186,6 +188,8 @@ void NewAnalysis::Loop()
 
 	 bool containMuon = false;
 	 bool containPion = false;
+	 bool containPion2 = false;
+	 bool containProton = false;
 
 	 TVector3 muon;
 	 TVector3 muonstart;
@@ -193,6 +197,12 @@ void NewAnalysis::Loop()
 	 TVector3 pion;
 	 TVector3 pionstart;
 	 TVector3 pionend;
+	 TVector3 pion2;
+	 TVector3 pion2start;
+	 TVector3 pion2end;
+	 TVector3 proton;
+	 TVector3 protonstart;
+	 TVector3 protonend;
 
 	 if (nuPDG_truth[i] == 14 && checkFV) {hCCCohTableInformation->Fill(0);}
 	 if (nuPDG_truth[i] && ccnc_truth[i] == 0 && checkFV) {hCCCohTableInformation->Fill(1);}
@@ -217,25 +227,41 @@ void NewAnalysis::Loop()
 	       {
 	       muonstart.SetXYZ(mctrk_startX[j], mctrk_startY[j], mctrk_startZ[j]);
 	       muonend.SetXYZ(mctrk_endX[j], mctrk_endY[j], mctrk_endZ[j]);
-               if (Within(true, muonstart.X(), muonstart.Y(), muonstart.Z()) && Within(true, muonend.X(), muonend.Y(), muonend.Z()) && CCCOH) {containMuon = true;}
+               if (Within(true, muonstart.X(), muonstart.Y(), muonstart.Z()) && Within(true, muonend.X(), muonend.Y(), muonend.Z())) {containMuon = true;}
 	       }
 	    if (mctrk_pdg[j] == 211 && mctrk_origin[j] == 1) 
 	       {
 	       pionstart.SetXYZ(mctrk_startX[j], mctrk_startY[j], mctrk_startZ[j]);
 	       pionend.SetXYZ(mctrk_endX[j], mctrk_endY[j], mctrk_endZ[j]);
-               if (Within(true, pionstart.X(), pionstart.Y(), pionstart.Z()) && Within(true, pionend.X(), pionend.Y(), pionend.Z()) && CCCOH) {containPion = true;}
+               if (Within(true, pionstart.X(), pionstart.Y(), pionstart.Z()) && Within(true, pionend.X(), pionend.Y(), pionend.Z())) {containPion = true;}
+	       }
+	    if (mctrk_pdg[j] == -211 && mctrk_origin[j] == 1) 
+	       {
+	       pion2start.SetXYZ(mctrk_startX[j], mctrk_startY[j], mctrk_startZ[j]);
+	       pion2end.SetXYZ(mctrk_endX[j], mctrk_endY[j], mctrk_endZ[j]);
+               if (Within(true, pion2start.X(), pion2start.Y(), pion2start.Z()) && Within(true, pion2end.X(), pion2end.Y(), pion2end.Z())) {containPion2 = true;}
+	       }
+	    if (mctrk_pdg[j] == 2212 && mctrk_origin[j] == 1) 
+	       {
+	       protonstart.SetXYZ(mctrk_startX[j], mctrk_startY[j], mctrk_startZ[j]);
+	       protonend.SetXYZ(mctrk_endX[j], mctrk_endY[j], mctrk_endZ[j]);
+               if (Within(true, protonstart.X(), protonstart.Y(), protonstart.Z()) && Within(true, protonend.X(), protonend.Y(), protonend.Z())) {containProton = true;}
 	       }
 	    if (DeltaStartMagnitude < VertexRangeCheck && mctrk_origin[j] == 1) 
 	       {
 	       nmctrksInRange++;
 	       if (mctrk_pdg[j] == 13) {muon = track;}
 	       if (mctrk_pdg[j] == 211) {pion = track;}
+	       if (mctrk_pdg[j] == -211) {pion2 = track;}
+	       if (mctrk_pdg[j] == 2212) {proton = track;}
 	       }
             if (DeltaStartMagnitude > VertexRangeCheck && DeltaEndMagnitude < VertexRangeCheck && mctrk_origin[j] == 1) 
 	       {
 	       nmctrksInRange++;
 	       if (mctrk_pdg[j] == 13) {muon = track;}
 	       if (mctrk_pdg[j] == 211) {pion = track;}
+	       if (mctrk_pdg[j] == -211) {pion = track;}
+	       if (mctrk_pdg[j] == 2212) {proton = track;}
 	       }
 	    }
 
@@ -247,15 +273,19 @@ void NewAnalysis::Loop()
 	 if (CCCOH && checkFV && !containMuon && !containPion) {hCCCohTableInformation->Fill(6);}
          if (nmctrksInRange == 0 && CCCOH) 
 	    {
-            std::cout<<"---> Number of MCShowers = "<<no_mcshowers<<std::endl;
+	    int nshwr = 0;
+	    for (int k = 0; k < no_mcshowers; k++) {if (mcshwr_origin[k] == 1) nshwr++;}
+            std::cout<<"---> Number of MCShowers = "<<nshwr<<std::endl;
 	    hCCCoh0TrackLepMom->Fill(lep_mom_truth[i]*1000);
 	    }
 
-	 if (nmctrksInRange >= 2 && CCCOH && checkFV) {hCCCohConeAngle->Fill(ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI);}
-	 if (nmctrksInRange >= 2 && CCQE && checkFV) {hCCQEConeAngle->Fill(ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI);}
-	 if (nmctrksInRange >= 2 && CCRes && checkFV) {hCCResConeAngle->Fill(ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI);}
-	 if (nmctrksInRange >= 2 && NCRes && checkFV) {hNCResConeAngle->Fill(ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI);}
-	 if (nmctrksInRange >= 2 && NCDIS && checkFV) {hNCDISConeAngle->Fill(ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI);}
+	 if (nmctrksInRange >= 2 && CCCOH && checkFV && containMuon && containPion) {hCCCohConeAngle->Fill(ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI);}
+	 if (nmctrksInRange >= 2 && CCQE && checkFV && containMuon && containPion) {hCCQEConeAngle->Fill(ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI);}
+	 if (nmctrksInRange >= 2 && CCQE && checkFV && containMuon && containProton) {hCCQEConeAngle->Fill(ConeAngle(muon.X(), muon.Y(), muon.Z(), proton.X(), proton.Y(), proton.Z())*180/PI);}
+	 if (nmctrksInRange >= 2 && CCRes && checkFV && containMuon && containPion) {hCCResConeAngle->Fill(ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI);}
+	 if (nmctrksInRange >= 2 && CCRes && checkFV && containMuon && containProton) {hCCResConeAngle->Fill(ConeAngle(muon.X(), muon.Y(), muon.Z(), proton.X(), proton.Y(), proton.Z())*180/PI);}
+	 if (nmctrksInRange >= 2 && NCRes && checkFV && containPion && containPion2) {hNCResConeAngle->Fill(ConeAngle(pion2.X(), pion2.Y(), pion2.Z(), pion.X(), pion.Y(), pion.Z())*180/PI);}
+	 if (nmctrksInRange >= 2 && NCDIS && checkFV && containPion && containPion2) {hNCDISConeAngle->Fill(ConeAngle(pion2.X(), pion2.Y(), pion2.Z(), pion.X(), pion.Y(), pion.Z())*180/PI);}
 
 	 if (checkDV == true)
 	    {
