@@ -21,6 +21,7 @@ TH1D *hNuVtxZ_FV = new TH1D("hNuVtxZ_FV", "True Space Charge Corrected Neutrino 
 
 TH1D *hNuNMCTracksWithinRange = new TH1D("hNuNMCTracksWithinRange", "The Number of MCTracks within Vtx Range Check", 11, -0.5, 10.5);
 TH1D *hCCCoh0TrackLepMom = new TH1D("hCCCoh0TrackLepMom", "The Lepton Momentum for CC-COH Events with 0 MCTracks", 150, 0, 1500);
+TH1D *hCCCoh0TrackNumMCShwrs = new TH1D("hCCCoh0TrackNumMCShwrs", "The Number of MCShowers for CC-COH Events with 0 MCTracks", 11, -0.5, 10.5);
 
 TH1D *hCCCohConeAngle = new TH1D("hCCCohConeAngle", "The Cone Angle for CC-COH Events with 2 or More MCTracks", 181, -0.5, 180.5);
 TH1D *hCCQEConeAngle = new TH1D("hCCQEConeAngle", "The Cone Angle for CC-QE Events with 2 or More MCTracks", 181, -0.5, 180.5);
@@ -306,6 +307,7 @@ void NewAnalysis::Loop()
 	    for (int k = 0; k < no_mcshowers; k++) {if (mcshwr_origin[k] == 1) nshwr++;}
             std::cout<<"---> Number of MCShowers = "<<nshwr<<std::endl;
 	    hCCCoh0TrackLepMom->Fill(lep_mom_truth[i]*1000);
+	    hCCCoh0TrackNumMCShwrs->Fill(nshwr);
 	    }
 
 	 if (nmctrksInRange >= 2 && CCCOH && checkFV && containMuon && containPion) {hCCCohConeAngle->Fill(ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI);}
@@ -351,6 +353,7 @@ void NewAnalysis::Loop()
 
    hNuNMCTracksWithinRange->Write();
    hCCCoh0TrackLepMom->Write();
+   hCCCoh0TrackNumMCShwrs->Write();
 
    hCCCohConeAngle->Write();
    hCCQEConeAngle->Write();
