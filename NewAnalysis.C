@@ -30,6 +30,13 @@ TH1D *hNCResConeAngle = new TH1D("hNCResConeAngle", "The Cone Angle for NC-Res E
 TH1D *hNCDISConeAngle = new TH1D("hNCDISConeAngle", "The Cone Angle for NC-DIS Events with 2 or More MCTracks", 181, -0.5, 180.5);
 TH1D *hCosmicConeAngle = new TH1D("hCosmicConeAngle", "The Cone Angle for Events with 2 or More Cosmic MCTracks", 181, -0.5, 180.5);
 
+TH1D *hCCCohDoCA = new TH1D("hCCCohDoCA", "The DoCA for CC-COH Events with 2 or More MCTracks in cm", 200, 0, 50);
+TH1D *hCCQEDoCA = new TH1D("hCCQEDoCA", "The DoCA for CC-QE Events with 2 or More MCTracks in cm", 200, 0, 50);
+TH1D *hCCResDoCA = new TH1D("hCCResDoCA", "The DoCA for CC-Res Events with 2 or More MCTracks in cm", 200, 0, 50);
+TH1D *hNCResDoCA = new TH1D("hNCResDoCA", "The DoCA for NC-Res Events with 2 or More MCTracks in cm", 200, 0, 50);
+TH1D *hNCDISDoCA = new TH1D("hNCDISDoCA", "The DoCA for NC-DIS Events with 2 or More MCTracks in cm", 200, 0, 50);
+TH1D *hCosmicDoCA = new TH1D("hCosmicDoCA", "The DoCA for Events with 2 or More Cosmic MCTracks in cm", 200, 0, 50);
+
 TH1D *hCCCohTableInformation = new TH1D("hCCCohTableInformation", "Table Information for CC-COH Events", 7, -0.5, 6.5);
 TH1D *hCCQETableInformation = new TH1D("hCCQETableInformation", "Table Information for CC-QE Events", 3, -0.5, 2.5);
 TH1D *hCCResTableInformation = new TH1D("hCCResTableInformation", "Table Information for CC-Res Events", 3, -0.5, 2.5);
@@ -147,6 +154,20 @@ double ConeAngle(double x1, double y1, double z1, double x2, double y2, double z
 }
 // ---------------------------
 
+// ------------------------------------
+// --- Distance of Closest Approach ---
+// ------------------------------------
+double DoCA(double x0, double y0, double z0, double x1, double y1, double z1, double x2, double y2, double z2)
+{
+   double d = -999;
+   TVector3 v10(x1 - x0, y1 - y0, z1 - z0);
+   TVector3 v21(x2 - x1, y2 - y1, z2 - z1);
+   TVector3 cross = v10.Cross(v21);
+   d = cross.Mag()/v21.Mag();
+   return d;
+}
+// ------------------------------------
+
 
 void NewAnalysis::Loop()
 {
@@ -160,8 +181,8 @@ void NewAnalysis::Loop()
    double VertexRangeCheck = 10; // Variable to check if a track is within this range of the vertex in cm
    // --------------------------------
 
-   for (Long64_t jentry=0; jentry<nentries;jentry++) 
-   //for (Long64_t jentry=0; jentry<10001;jentry++) 
+   for (Long64_t jentry=0; jentry<nentries; jentry++) 
+   //for (Long64_t jentry=0; jentry<10001; jentry++) 
       {
       Long64_t ientry = LoadTree(jentry);
       if (ientry < 0) break;
@@ -183,6 +204,8 @@ void NewAnalysis::Loop()
 	 if (!CCCOH && !CCQE && !CCRes && !NCRes && !NCDIS) {continue;}
 
          int nmctrksInRange = 0;
+
+         double closer = -99;
 
          double Vx = sp_charge_corrected_nuvtxx_truth[i];
          double Vy = sp_charge_corrected_nuvtxy_truth[i];
@@ -236,7 +259,11 @@ void NewAnalysis::Loop()
 
 	    TVector3 track(mctrk_endX[j] - mctrk_startX[j], mctrk_endY[j] - mctrk_startY[j], mctrk_endZ[j] - mctrk_startZ[j]);
 
-	    if (checkFV && mctrk_origin[j] == 2) {hCosmicConeAngle->Fill(ConeAngle(track.X(), track.Y(), track.Z(), 0, 0, 0)*180/PI);}
+	    if (checkFV && mctrk_origin[j] == 2) 
+	       {
+	       hCosmicConeAngle->Fill(ConeAngle(track.X(), track.Y(), track.Z(), 0, 0, 0)*180/PI);
+	       hCosmicDoCA->Fill(DoCA(Vx, Vy, Vz, mctrk_startX[j], mctrk_startY[j], mctrk_startZ[j], mctrk_endX[j], mctrk_endY[j], mctrk_endZ[j]));
+	       }
 	    if (mctrk_pdg[j] == 13 && mctrk_origin[j] == 1) 
 	       {
 	       hasMuon = true;
@@ -299,7 +326,23 @@ void NewAnalysis::Loop()
          if (NCRes && checkFV && hasPion && hasPion2 && !containPion && !containPion2) {hNCResTableInformation->Fill(4);}
          if (NCDIS && checkFV && hasPion && hasPion2 && !containPion && !containPion2) {hNCDISTableInformation->Fill(4);}
 
-	 if (CCCOH && checkFV && containMuon && containPion) {hCCCohTableInformation->Fill(3);}
+	 if (CCCOH && checkFV && containMuon && containPion) 
+	    {
+	    hCCCohTableInformation->Fill(3);
+	    std::cout<<" "<<std::endl;
+	    std::cout<<"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"<<std::endl;
+	    std::cout<<"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"<<std::endl;
+	    std::cout<<" CC-COH with Contained Muon and Pion"<<std::endl;
+	    std::cout<<" Event = "<<event<<std::endl;
+	    std::cout<<" Run = "<<run<<std::endl;
+	    std::cout<<" Subrun = "<<subrun<<std::endl;
+	    std::cout<<"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"<<std::endl;
+	    std::cout<<"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"<<std::endl;
+	    std::cout<<" "<<std::endl;
+            std::cout<<"DoCA For Pion Track = "<<DoCA(Vx, Vy, Vz, pionstart.X(), pionstart.Y(), pionstart.Z(), pionend.X(), pionend.Y(), pionend.Z())<<std::endl;
+            std::cout<<"DoCA For Muon Track = "<<DoCA(Vx, Vy, Vz, muonstart.X(), muonstart.Y(), muonstart.Z(), muonend.X(), muonend.Y(), muonend.Z())<<std::endl;
+	    std::cout<<" "<<std::endl;
+	    }
 	 if (CCCOH && checkFV && containMuon && !containPion) {hCCCohTableInformation->Fill(4);}
 	 if (CCCOH && checkFV && !containMuon && containPion) {hCCCohTableInformation->Fill(5);}
 	 if (CCCOH && checkFV && !containMuon && !containPion) {hCCCohTableInformation->Fill(6);}
@@ -317,11 +360,51 @@ void NewAnalysis::Loop()
 	    std::cout<<"====================================="<<std::endl;
 	    }
 
-	 if (nmctrksInRange >= 2 && CCCOH && checkFV && containMuon && containPion) {hCCCohConeAngle->Fill(ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI);}
-	 if (nmctrksInRange >= 2 && CCQE && checkFV && containMuon && containProton) {hCCQEConeAngle->Fill(ConeAngle(muon.X(), muon.Y(), muon.Z(), proton.X(), proton.Y(), proton.Z())*180/PI);}
-	 if (nmctrksInRange >= 2 && CCRes && checkFV && containMuon && containPion) {hCCResConeAngle->Fill(ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI);}
-	 if (nmctrksInRange >= 2 && NCRes && checkFV && containPion && containPion2) {hNCResConeAngle->Fill(ConeAngle(pion2.X(), pion2.Y(), pion2.Z(), pion.X(), pion.Y(), pion.Z())*180/PI);}
-	 if (nmctrksInRange >= 2 && NCDIS && checkFV && containPion && containPion2) {hNCDISConeAngle->Fill(ConeAngle(pion2.X(), pion2.Y(), pion2.Z(), pion.X(), pion.Y(), pion.Z())*180/PI);}
+	 if (nmctrksInRange >= 2 && CCCOH && checkFV && containMuon && containPion) 
+	    {
+	    hCCCohConeAngle->Fill(ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI);
+	    double d1 = DoCA(Vx, Vy, Vz, muonstart.X(), muonstart.Y(), muonstart.Z(), muonend.X(), muonend.Y(), muonend.Z());
+	    double d2 = DoCA(Vx, Vy, Vz, pionstart.X(), pionstart.Y(), pionstart.Z(), pionend.X(), pionend.Y(), pionend.Z());
+	    if (d1 <= d2) {closer = d1;}
+	    if (d2 < d1) {closer = d2;}
+	    hCCCohDoCA->Fill(closer);
+	    }
+	 if (nmctrksInRange >= 2 && CCQE && checkFV && containMuon && containProton) 
+	    {
+	    hCCQEConeAngle->Fill(ConeAngle(muon.X(), muon.Y(), muon.Z(), proton.X(), proton.Y(), proton.Z())*180/PI);
+	    double d1 = DoCA(Vx, Vy, Vz, muonstart.X(), muonstart.Y(), muonstart.Z(), muonend.X(), muonend.Y(), muonend.Z());
+	    double d2 = DoCA(Vx, Vy, Vz, protonstart.X(), protonstart.Y(), protonstart.Z(), protonend.X(), protonend.Y(), protonend.Z());
+	    if (d1 <= d2) {closer = d1;}
+	    if (d2 < d1) {closer = d2;}
+	    hCCQEDoCA->Fill(closer);
+	    }
+	 if (nmctrksInRange >= 2 && CCRes && checkFV && containMuon && containPion) 
+	    {
+	    hCCResConeAngle->Fill(ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI);
+	    double d1 = DoCA(Vx, Vy, Vz, muonstart.X(), muonstart.Y(), muonstart.Z(), muonend.X(), muonend.Y(), muonend.Z());
+	    double d2 = DoCA(Vx, Vy, Vz, pionstart.X(), pionstart.Y(), pionstart.Z(), pionend.X(), pionend.Y(), pionend.Z());
+	    if (d1 <= d2) {closer = d1;}
+	    if (d2 < d1) {closer = d2;}
+	    hCCResDoCA->Fill(closer);
+	    }
+	 if (nmctrksInRange >= 2 && NCRes && checkFV && containPion && containPion2) 
+	    {
+	    hNCResConeAngle->Fill(ConeAngle(pion2.X(), pion2.Y(), pion2.Z(), pion.X(), pion.Y(), pion.Z())*180/PI);
+	    double d1 = DoCA(Vx, Vy, Vz, pionstart.X(), pionstart.Y(), pionstart.Z(), pionend.X(), pionend.Y(), pionend.Z());
+	    double d2 = DoCA(Vx, Vy, Vz, pion2start.X(), pion2start.Y(), pion2start.Z(), pion2end.X(), pion2end.Y(), pion2end.Z());
+	    if (d1 <= d2) {closer = d1;}
+	    if (d2 < d1) {closer = d2;}
+	    hNCResDoCA->Fill(closer);
+	    }
+	 if (nmctrksInRange >= 2 && NCDIS && checkFV && containPion && containPion2) 
+	    {
+	    hNCDISConeAngle->Fill(ConeAngle(pion2.X(), pion2.Y(), pion2.Z(), pion.X(), pion.Y(), pion.Z())*180/PI);
+	    double d1 = DoCA(Vx, Vy, Vz, pionstart.X(), pionstart.Y(), pionstart.Z(), pionend.X(), pionend.Y(), pionend.Z());
+	    double d2 = DoCA(Vx, Vy, Vz, pion2start.X(), pion2start.Y(), pion2start.Z(), pion2end.X(), pion2end.Y(), pion2end.Z());
+	    if (d1 <= d2) {closer = d1;}
+	    if (d2 < d1) {closer = d2;}
+	    hNCDISDoCA->Fill(closer);
+	    }
 
 	 if (checkDV == true)
 	    {
@@ -366,6 +449,13 @@ void NewAnalysis::Loop()
    hNCResConeAngle->Write();
    hNCDISConeAngle->Write();
    hCosmicConeAngle->Write();
+
+   hCCCohDoCA->Write();
+   hCCQEDoCA->Write();
+   hCCResDoCA->Write();
+   hNCResDoCA->Write();
+   hNCDISDoCA->Write();
+   hCosmicDoCA->Write();
 
    hCCCohTableInformation->Write();
    hCCQETableInformation->Write();
