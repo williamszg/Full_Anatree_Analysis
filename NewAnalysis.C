@@ -22,6 +22,7 @@ TH1D *hNuVtxZ_FV = new TH1D("hNuVtxZ_FV", "True Space Charge Corrected Neutrino 
 TH1D *hNuNMCTracksWithinRange = new TH1D("hNuNMCTracksWithinRange", "The Number of MCTracks within Vtx Range Check", 11, -0.5, 10.5);
 TH1D *hCCCoh0TrackLepMom = new TH1D("hCCCoh0TrackLepMom", "The Lepton Momentum for CC-COH Events with 0 MCTracks", 150, 0, 1500);
 TH1D *hCCCoh0TrackNumMCShwrs = new TH1D("hCCCoh0TrackNumMCShwrs", "The Number of MCShowers for CC-COH Events with 0 MCTracks", 11, -0.5, 10.5);
+TH2D *hCCCohMuonVsPionTrackLength = new TH2D("hCCCohMuonVsPionTrackLength", "The Track Length of the Muon vs the Track Length of the Pion for Fully Contained CC-COH Events", 301, -0.5, 300.5, 301, -0.5, 300.5);
 
 TH1D *hCCCohConeAngle = new TH1D("hCCCohConeAngle", "The Cone Angle for CC-COH Events with 2 or More MCTracks", 181, -0.5, 180.5);
 TH1D *hCCQEConeAngle = new TH1D("hCCQEConeAngle", "The Cone Angle for CC-QE Events with 2 or More MCTracks", 181, -0.5, 180.5);
@@ -30,12 +31,12 @@ TH1D *hNCResConeAngle = new TH1D("hNCResConeAngle", "The Cone Angle for NC-Res E
 TH1D *hNCDISConeAngle = new TH1D("hNCDISConeAngle", "The Cone Angle for NC-DIS Events with 2 or More MCTracks", 181, -0.5, 180.5);
 TH1D *hCosmicConeAngle = new TH1D("hCosmicConeAngle", "The Cone Angle for Events with 2 or More Cosmic MCTracks", 181, -0.5, 180.5);
 
-TH1D *hCCCohDoCA = new TH1D("hCCCohDoCA", "The DoCA for CC-COH Events with 2 or More MCTracks in cm", 200, 0, 50);
-TH1D *hCCQEDoCA = new TH1D("hCCQEDoCA", "The DoCA for CC-QE Events with 2 or More MCTracks in cm", 200, 0, 50);
-TH1D *hCCResDoCA = new TH1D("hCCResDoCA", "The DoCA for CC-Res Events with 2 or More MCTracks in cm", 200, 0, 50);
-TH1D *hNCResDoCA = new TH1D("hNCResDoCA", "The DoCA for NC-Res Events with 2 or More MCTracks in cm", 200, 0, 50);
-TH1D *hNCDISDoCA = new TH1D("hNCDISDoCA", "The DoCA for NC-DIS Events with 2 or More MCTracks in cm", 200, 0, 50);
-TH1D *hCosmicDoCA = new TH1D("hCosmicDoCA", "The DoCA for Events with 2 or More Cosmic MCTracks in cm", 200, 0, 50);
+TH1D *hCCCohDoCA = new TH1D("hCCCohDoCA", "The DoCA for CC-COH Events with 2 or More MCTracks in cm", 200, 0, 100);
+TH1D *hCCQEDoCA = new TH1D("hCCQEDoCA", "The DoCA for CC-QE Events with 2 or More MCTracks in cm", 200, 0, 100);
+TH1D *hCCResDoCA = new TH1D("hCCResDoCA", "The DoCA for CC-Res Events with 2 or More MCTracks in cm", 200, 0, 100);
+TH1D *hNCResDoCA = new TH1D("hNCResDoCA", "The DoCA for NC-Res Events with 2 or More MCTracks in cm", 200, 0, 100);
+TH1D *hNCDISDoCA = new TH1D("hNCDISDoCA", "The DoCA for NC-DIS Events with 2 or More MCTracks in cm", 200, 0, 100);
+TH1D *hCosmicDoCA = new TH1D("hCosmicDoCA", "The DoCA for Events with 2 or More Cosmic MCTracks in cm", 200, 0, 100);
 
 TH1D *hCCCohTableInformation = new TH1D("hCCCohTableInformation", "Table Information for CC-COH Events", 7, -0.5, 6.5);
 TH1D *hCCQETableInformation = new TH1D("hCCQETableInformation", "Table Information for CC-QE Events", 3, -0.5, 2.5);
@@ -175,20 +176,28 @@ void NewAnalysis::Loop()
    Long64_t nentries = fChain->GetEntriesFast();
    Long64_t nbytes = 0, nb = 0;
 
+   int Nentries = nentries;
+   //int Nentries = 10001;
+
+   double POT = 0;
+
    // --------------------------------
    // --- Variable Used for Checks ---
    // --------------------------------
    double VertexRangeCheck = 10; // Variable to check if a track is within this range of the vertex in cm
    // --------------------------------
 
-   for (Long64_t jentry=0; jentry<nentries; jentry++) 
-   //for (Long64_t jentry=0; jentry<10001; jentry++) 
+   for (Long64_t jentry=0; jentry<Nentries; jentry++) 
       {
       Long64_t ientry = LoadTree(jentry);
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
 
       if (jentry%100 == 0) {std::cout<<"Event = "<<jentry<<std::endl;}
+      if (jentry%100 == 0) {std::cout<<"POT = "<<pot<<std::endl;}
+
+      if (pot != -99999) {POT = POT + pot;}
+      if (jentry == Nentries - 1) {std::cout<<"Total POT for this file = "<<POT<<std::endl;}
 
       // ========================================
       // === Looping Over the Neutrino Events ===
@@ -237,6 +246,9 @@ void NewAnalysis::Loop()
 	 TVector3 protonstart;
 	 TVector3 protonend;
 
+	 double muonlength = -99;
+	 double pionlength = -99;
+
 	 if (nuPDG_truth[i] == 14 && checkFV) {hCCCohTableInformation->Fill(0);}
 	 if (nuPDG_truth[i] && ccnc_truth[i] == 0 && checkFV) {hCCCohTableInformation->Fill(1);}
 	 if (CCCOH && checkFV) {hCCCohTableInformation->Fill(2);}
@@ -267,6 +279,7 @@ void NewAnalysis::Loop()
 	    if (mctrk_pdg[j] == 13 && mctrk_origin[j] == 1) 
 	       {
 	       hasMuon = true;
+	       muonlength = mctrk_len_drifted[j];
 	       muonstart.SetXYZ(mctrk_startX[j], mctrk_startY[j], mctrk_startZ[j]);
 	       muonend.SetXYZ(mctrk_endX[j], mctrk_endY[j], mctrk_endZ[j]);
                if (Within(true, muonstart.X(), muonstart.Y(), muonstart.Z()) && Within(true, muonend.X(), muonend.Y(), muonend.Z())) {containMuon = true;}
@@ -274,6 +287,7 @@ void NewAnalysis::Loop()
 	    if (mctrk_pdg[j] == 211 && mctrk_origin[j] == 1) 
 	       {
 	       hasPion = true;
+	       pionlength = mctrk_len_drifted[j];
 	       pionstart.SetXYZ(mctrk_startX[j], mctrk_startY[j], mctrk_startZ[j]);
 	       pionend.SetXYZ(mctrk_endX[j], mctrk_endY[j], mctrk_endZ[j]);
                if (Within(true, pionstart.X(), pionstart.Y(), pionstart.Z()) && Within(true, pionend.X(), pionend.Y(), pionend.Z())) {containPion = true;}
@@ -329,6 +343,7 @@ void NewAnalysis::Loop()
 	 if (CCCOH && checkFV && containMuon && containPion) 
 	    {
 	    hCCCohTableInformation->Fill(3);
+	    hCCCohMuonVsPionTrackLength->Fill(pionlength, muonlength);
 	    std::cout<<" "<<std::endl;
 	    std::cout<<"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"<<std::endl;
 	    std::cout<<"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"<<std::endl;
@@ -338,10 +353,13 @@ void NewAnalysis::Loop()
 	    std::cout<<" Subrun = "<<subrun<<std::endl;
 	    std::cout<<"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"<<std::endl;
 	    std::cout<<"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"<<std::endl;
-	    std::cout<<" "<<std::endl;
-            std::cout<<"DoCA For Pion Track = "<<DoCA(Vx, Vy, Vz, pionstart.X(), pionstart.Y(), pionstart.Z(), pionend.X(), pionend.Y(), pionend.Z())<<std::endl;
-            std::cout<<"DoCA For Muon Track = "<<DoCA(Vx, Vy, Vz, muonstart.X(), muonstart.Y(), muonstart.Z(), muonend.X(), muonend.Y(), muonend.Z())<<std::endl;
-	    std::cout<<" "<<std::endl;
+	    //std::cout<<" "<<std::endl;
+            //std::cout<<"DoCA For Pion Track = "<<DoCA(Vx, Vy, Vz, pionstart.X(), pionstart.Y(), pionstart.Z(), pionend.X(), pionend.Y(), pionend.Z())<<std::endl;
+            //std::cout<<"DoCA For Muon Track = "<<DoCA(Vx, Vy, Vz, muonstart.X(), muonstart.Y(), muonstart.Z(), muonend.X(), muonend.Y(), muonend.Z())<<std::endl;
+	    //std::cout<<" "<<std::endl;
+	    //std::cout<<"Muon Track Length = "<<muonlength<<std::endl;
+	    //std::cout<<"Pion Track Length = "<<pionlength<<std::endl;
+	    //std::cout<<" "<<std::endl;
 	    }
 	 if (CCCOH && checkFV && containMuon && !containPion) {hCCCohTableInformation->Fill(4);}
 	 if (CCCOH && checkFV && !containMuon && containPion) {hCCCohTableInformation->Fill(5);}
@@ -442,6 +460,7 @@ void NewAnalysis::Loop()
    hNuNMCTracksWithinRange->Write();
    hCCCoh0TrackLepMom->Write();
    hCCCoh0TrackNumMCShwrs->Write();
+   hCCCohMuonVsPionTrackLength->Write();
 
    hCCCohConeAngle->Write();
    hCCQEConeAngle->Write();
