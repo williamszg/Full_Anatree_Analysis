@@ -44,6 +44,13 @@ TH1D *hCCResTableInformation = new TH1D("hCCResTableInformation", "Table Informa
 TH1D *hNCResTableInformation = new TH1D("hNCResTableInformation", "Table Information for NC-Res Events", 5, -0.5, 4.5);
 TH1D *hNCDISTableInformation = new TH1D("hNCDISTableInformation", "Table Information for NC-DIS Events", 5, -0.5, 4.5);
 
+TH1D *hNuStartVertexDistance = new TH1D("hNuStartVertexDistance", "Distance Between Neutrino Vertex and Start of Track for Neutrino Initiated Tracks with NumMCTracks >= 2", 31, -0.5, 30.5);
+TH1D *hNuEndVertexDistance = new TH1D("hNuEndVertexDistance", "Distance Between Neutrino Vertex and End of Track for Neutrino Initiated Tracks with NumMCTracks >= 2", 31, -0.5, 30.5);
+TH1D *hCosmicStartVertexDistance = new TH1D("hCosmicStartVertexDistance", "Distance Between Neutrino Vertex and Start of Track for Cosmics with NumMCTracks >= 2", 101, -0.5, 100.5);
+TH1D *hCosmicEndVertexDistance = new TH1D("hCosmicEndVertexDistance", "Distance Between Neutrino Vertex and End of Track for Cosmics with NumMCTracks >= 2", 101, -0.5, 100.5);
+TH1D *hNuCCCohStartVertexDistance = new TH1D("hNuCCCohStartVertexDistance", "Distance Between Neutrino Vertex and Start of Track for CCCoh Event Initiated Tracks with NumMCTracks >= 2", 31, -0.5, 30.5);
+TH1D *hNuCCCohEndVertexDistance = new TH1D("hNuCCCohEndVertexDistance", "Distance Between Neutrino Vertex and End of Track for CCCoh Event Initiated Tracks with NumMCTracks >= 2", 31, -0.5, 30.5);
+
 // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 
@@ -275,6 +282,23 @@ void NewAnalysis::Loop()
 	       {
 	       hCosmicConeAngle->Fill(ConeAngle(track.X(), track.Y(), track.Z(), 0, 0, 0)*180/PI);
 	       hCosmicDoCA->Fill(DoCA(Vx, Vy, Vz, mctrk_startX[j], mctrk_startY[j], mctrk_startZ[j], mctrk_endX[j], mctrk_endY[j], mctrk_endZ[j]));
+
+	       if (no_mctracks >= 2)
+		  {
+		  hCosmicStartVertexDistance->Fill(DeltaStartMagnitude);
+		  hCosmicEndVertexDistance->Fill(DeltaEndMagnitude);
+	          }
+	       }
+	    if (checkFV && mctrk_origin[j] == 1 && no_mctracks >= 2)
+	       {
+	       hNuStartVertexDistance->Fill(DeltaStartMagnitude);
+	       hNuEndVertexDistance->Fill(DeltaEndMagnitude);
+
+	       if (nuPDG_truth[i] == 14 && CCCOH)
+		  {
+	          hNuCCCohStartVertexDistance->Fill(DeltaStartMagnitude);
+	          hNuCCCohEndVertexDistance->Fill(DeltaEndMagnitude);
+	          }
 	       }
 	    if (mctrk_pdg[j] == 13 && mctrk_origin[j] == 1) 
 	       {
@@ -481,6 +505,13 @@ void NewAnalysis::Loop()
    hCCResTableInformation->Write();
    hNCResTableInformation->Write();
    hNCDISTableInformation->Write();
+
+   hNuStartVertexDistance->Write();
+   hNuEndVertexDistance->Write();
+   hCosmicStartVertexDistance->Write();
+   hCosmicEndVertexDistance->Write();
+   hNuCCCohStartVertexDistance->Write();
+   hNuCCCohEndVertexDistance->Write();
 
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
