@@ -184,7 +184,7 @@ void NewAnalysis::Loop()
    Long64_t nbytes = 0, nb = 0;
 
    int Nentries = nentries;
-   //int Nentries = 10001;
+   //int Nentries = 5300;
 
    double POT = 0;
 
@@ -196,12 +196,15 @@ void NewAnalysis::Loop()
 
    for (Long64_t jentry=0; jentry<Nentries; jentry++) 
       {
+      if (jentry == 5376) continue; // File 4 Bad Events
+      if (jentry == 253 || jentry == 7717 || jentry == 33027 || jentry == 52148 || jentry == 58491 || jentry == 76449 || jentry == 85966) continue; // File 3 Bad Events
+
       Long64_t ientry = LoadTree(jentry);
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
 
-      if (jentry%100 == 0) {std::cout<<"Event = "<<jentry<<std::endl;}
-      if (jentry%100 == 0) {std::cout<<"POT = "<<pot<<std::endl;}
+      //if (jentry%100 == 0) {std::cout<<"Event = "<<jentry<<std::endl;}
+      if (jentry > 0 && jentry < nentries) {std::cout<<"Event = "<<jentry<<std::endl;}
 
       if (pot != -99999) {POT = POT + pot;}
       if (jentry == Nentries - 1) {std::cout<<"Total POT for this file = "<<POT<<std::endl;}
