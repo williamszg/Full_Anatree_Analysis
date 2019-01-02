@@ -281,15 +281,24 @@ void NewAnalysis::Loop()
 
 	    TVector3 track(mctrk_endX[j] - mctrk_startX[j], mctrk_endY[j] - mctrk_startY[j], mctrk_endZ[j] - mctrk_startZ[j]);
 
-	    if (checkFV && mctrk_origin[j] == 2) 
+	    for (int l = j + 1; l < no_mctracks; l++)
 	       {
-	       hCosmicConeAngle->Fill(ConeAngle(track.X(), track.Y(), track.Z(), 0, 0, 0)*180/PI);
-	       hCosmicDoCA->Fill(DoCA(Vx, Vy, Vz, mctrk_startX[j], mctrk_startY[j], mctrk_startZ[j], mctrk_endX[j], mctrk_endY[j], mctrk_endZ[j]));
+               TVector3 track2(mctrk_endX[l] - mctrk_startX[l], mctrk_endY[l] - mctrk_startY[l], mctrk_endZ[l] - mctrk_startZ[l]);
 
-	       if (no_mctracks >= 2)
-		  {
-		  hCosmicStartVertexDistance->Fill(DeltaStartMagnitude);
-		  hCosmicEndVertexDistance->Fill(DeltaEndMagnitude);
+	       if (checkFV && mctrk_origin[j] == 2 && mctrk_origin[l] == 2) 
+	          {
+	          hCosmicConeAngle->Fill(ConeAngle(track.X(), track.Y(), track.Z(), track2.X(), track2.Y(), track2.Z())*180/PI);
+	          double d1 = DoCA(Vx, Vy, Vz, mctrk_startX[j], mctrk_startY[j], mctrk_startZ[j], mctrk_endX[j], mctrk_endY[j], mctrk_endZ[j]);
+	          double d2 = DoCA(Vx, Vy, Vz, mctrk_startX[l], mctrk_startY[l], mctrk_startZ[l], mctrk_endX[l], mctrk_endY[l], mctrk_endZ[l]);
+	          if (d1 <= d2) {closer = d1;}
+	          if (d2 < d1) {closer = d2;}
+	          hCosmicDoCA->Fill(closer);
+
+	          if (no_mctracks >= 2)
+		     {
+		     hCosmicStartVertexDistance->Fill(DeltaStartMagnitude);
+		     hCosmicEndVertexDistance->Fill(DeltaEndMagnitude);
+	             }
 	          }
 	       }
 	    if (checkFV && mctrk_origin[j] == 1 && no_mctracks >= 2)
