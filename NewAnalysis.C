@@ -206,8 +206,8 @@ void NewAnalysis::Loop()
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
 
-      //if (jentry%100 == 0) {std::cout<<"Event = "<<jentry<<std::endl;}
-      if (jentry > 0 && jentry < nentries) {std::cout<<"Event = "<<jentry<<std::endl;}
+      if (jentry%100 == 0) {std::cout<<"Event = "<<jentry<<std::endl;}
+      //if (jentry > 0 && jentry < nentries) {std::cout<<"Event = "<<jentry<<std::endl;}
 
       if (pot != -99999) {POT = POT + pot;}
       if (jentry == Nentries - 1) {std::cout<<"Total POT for this file = "<<POT<<std::endl;}
@@ -322,9 +322,12 @@ void NewAnalysis::Loop()
 	       muonstart.SetXYZ(mctrk_startX[j], mctrk_startY[j], mctrk_startZ[j]);
 	       muonend.SetXYZ(mctrk_endX[j], mctrk_endY[j], mctrk_endZ[j]);
                if (Within(true, muonstart.X(), muonstart.Y(), muonstart.Z()) && Within(true, muonend.X(), muonend.Y(), muonend.Z())) {containMuon = true;}
-	       hNuMCTrackMuonX->Fill(muonstart.X());
-	       hNuMCTrackMuonY->Fill(muonstart.Y());
-	       hNuMCTrackMuonZ->Fill(muonstart.Z());
+               if (Within(true, muonstart.X(), muonstart.Y(), muonstart.Z()))
+                  {
+	          hNuMCTrackMuonX->Fill(muonstart.X());
+	          hNuMCTrackMuonY->Fill(muonstart.Y());
+	          hNuMCTrackMuonZ->Fill(muonstart.Z());
+                  }
 	       }
 	    if (mctrk_pdg[j] == 211 && mctrk_origin[j] == 1) 
 	       {
