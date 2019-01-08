@@ -51,9 +51,9 @@ TH1D *hCosmicEndVertexDistance = new TH1D("hCosmicEndVertexDistance", "Distance 
 TH1D *hNuCCCohStartVertexDistance = new TH1D("hNuCCCohStartVertexDistance", "Distance Between Neutrino Vertex and Start of Track for CCCoh Event Initiated Tracks with NumMCTracks >= 2", 31, -0.5, 30.5);
 TH1D *hNuCCCohEndVertexDistance = new TH1D("hNuCCCohEndVertexDistance", "Distance Between Neutrino Vertex and End of Track for CCCoh Event Initiated Tracks with NumMCTracks >= 2", 31, -0.5, 30.5);
 
-TH1D *hNuMCTrackMuonX = new TH1D("hNuMCTrackMuonX", "Starting X Position of a Muon From a Neutrino Interaction", 101, -0.5, 100.5);
-TH1D *hNuMCTrackMuonY = new TH1D("hNuMCTrackMuonY", "Starting Y Position of a Muon From a Neutrino Interaction", 101, -0.5, 100.5);
-TH1D *hNuMCTrackMuonZ = new TH1D("hNuMCTrackMuonZ", "Starting Z Position of a Muon From a Neutrino Interaction", 101, -0.5, 100.5);
+TH1D *hNuMCTrackMuonX = new TH1D("hNuMCTrackMuonX", "Starting X Position of a Muon From a Neutrino Interaction", 231, 9.5, 240.5);
+TH1D *hNuMCTrackMuonY = new TH1D("hNuMCTrackMuonY", "Starting Y Position of a Muon From a Neutrino Interaction", 191, -95.5, 95.5);
+TH1D *hNuMCTrackMuonZ = new TH1D("hNuMCTrackMuonZ", "Starting Z Position of a Muon From a Neutrino Interaction", 1021, 9.5, 1030.5);
 // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 
