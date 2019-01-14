@@ -2281,11 +2281,11 @@ NewAnalysis::NewAnalysis(TTree *tree) : fChain(0)
 // if parameter tree is not specified (or zero), connect the file
 // used to generate this class and read the Tree.
    if (tree == 0) {
-      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("../ZGRW_ANATREE_0.root");
+      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("../ZGRW_ANATREE_4.root");
       if (!f || !f->IsOpen()) {
-         f = new TFile("../ZGRW_ANATREE_0.root");
+         f = new TFile("../ZGRW_ANATREE_4.root");
       }
-      TDirectory * dir = (TDirectory*)f->Get("../ZGRW_ANATREE_0.root:/analysistree");
+      TDirectory * dir = (TDirectory*)f->Get("../ZGRW_ANATREE_4.root:/analysistree");
       dir->GetObject("anatree",tree);
 
    }
