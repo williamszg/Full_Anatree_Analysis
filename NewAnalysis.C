@@ -44,16 +44,21 @@ TH1D *hCCResTableInformation = new TH1D("hCCResTableInformation", "Table Informa
 TH1D *hNCResTableInformation = new TH1D("hNCResTableInformation", "Table Information for NC-Res Events", 5, -0.5, 4.5);
 TH1D *hNCDISTableInformation = new TH1D("hNCDISTableInformation", "Table Information for NC-DIS Events", 5, -0.5, 4.5);
 
-TH1D *hNuStartVertexDistance = new TH1D("hNuStartVertexDistance", "Distance Between Neutrino Vertex and Start of Track for Neutrino Initiated Tracks with NumMCTracks >= 2", 31, -0.5, 30.5);
-TH1D *hNuEndVertexDistance = new TH1D("hNuEndVertexDistance", "Distance Between Neutrino Vertex and End of Track for Neutrino Initiated Tracks with NumMCTracks >= 2", 31, -0.5, 30.5);
+TH1D *hNuStartVertexDistance = new TH1D("hNuStartVertexDistance", "Distance Between Neutrino Vertex and Start of Track for Neutrino Initiated Tracks with NumMCTracks >= 2", 101, -0.5, 100.5);
+TH1D *hNuEndVertexDistance = new TH1D("hNuEndVertexDistance", "Distance Between Neutrino Vertex and End of Track for Neutrino Initiated Tracks with NumMCTracks >= 2", 101, -0.5, 100.5);
 TH1D *hCosmicStartVertexDistance = new TH1D("hCosmicStartVertexDistance", "Distance Between Neutrino Vertex and Start of Track for Cosmics with NumMCTracks >= 2", 101, -0.5, 100.5);
 TH1D *hCosmicEndVertexDistance = new TH1D("hCosmicEndVertexDistance", "Distance Between Neutrino Vertex and End of Track for Cosmics with NumMCTracks >= 2", 101, -0.5, 100.5);
-TH1D *hNuCCCohStartVertexDistance = new TH1D("hNuCCCohStartVertexDistance", "Distance Between Neutrino Vertex and Start of Track for CCCoh Event Initiated Tracks with NumMCTracks >= 2", 31, -0.5, 30.5);
-TH1D *hNuCCCohEndVertexDistance = new TH1D("hNuCCCohEndVertexDistance", "Distance Between Neutrino Vertex and End of Track for CCCoh Event Initiated Tracks with NumMCTracks >= 2", 31, -0.5, 30.5);
+TH1D *hNuCCCohStartVertexDistance = new TH1D("hNuCCCohStartVertexDistance", "Distance Between Neutrino Vertex and Start of Track for CCCoh Event Initiated Tracks with NumMCTracks >= 2", 101, -0.5, 100.5);
+TH1D *hNuCCCohEndVertexDistance = new TH1D("hNuCCCohEndVertexDistance", "Distance Between Neutrino Vertex and End of Track for CCCoh Event Initiated Tracks with NumMCTracks >= 2", 101, -0.5, 100.5);
 
 TH1D *hNuMCTrackMuonX = new TH1D("hNuMCTrackMuonX", "Starting X Position of a Muon From a Neutrino Interaction", 231, 9.5, 240.5);
 TH1D *hNuMCTrackMuonY = new TH1D("hNuMCTrackMuonY", "Starting Y Position of a Muon From a Neutrino Interaction", 191, -95.5, 95.5);
 TH1D *hNuMCTrackMuonZ = new TH1D("hNuMCTrackMuonZ", "Starting Z Position of a Muon From a Neutrino Interaction", 1021, 9.5, 1030.5);
+
+TH2D *h2DCosmicDistanceVsEnergy = new TH2D("h2DCosmicDistanceVsEnergy", "Cosmic Distance from Neutrino Vertex vs Energy of Track", 101, -0.5, 100.5, 100, 0, 5000);
+TH2D *h2DCCCohDistanceVsEnergy = new TH2D("h2DCCCohDistanceVsEnergy", "CC Coherent Distance from Neutrino Vertex vs Energy of Track", 101, -0.5, 100.5, 100, 0, 5000);
+TH2D *h2DCCOtherDistanceVsEnergy = new TH2D("h2DCCOtherDistanceVsEnergy", "CC Other Distance from Neutrino Vertex vs Energy of Track", 101, -0.5, 100.5, 100, 0, 5000);
+TH2D *h2DNCOtherDistanceVsEnergy = new TH2D("h2DNCOtherDistanceVsEnergy", "NC Other Distance from Neutrino Vertex vs Energy of Track", 101, -0.5, 100.5, 100, 0, 5000);
 // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 
@@ -211,6 +216,11 @@ void NewAnalysis::Loop()
 
       if (pot != -99999) {POT = POT + pot;}
       if (jentry == Nentries - 1) {std::cout<<"Total POT for this file = "<<POT<<std::endl;}
+
+      h2DCosmicDistanceVsEnergy->Fill(50, 75);
+      h2DCCCohDistanceVsEnergy->Fill(50, 75);
+      h2DCCOtherDistanceVsEnergy->Fill(50, 75);
+      h2DNCOtherDistanceVsEnergy->Fill(50, 75);
 
       // ========================================
       // === Looping Over the Neutrino Events ===
@@ -423,7 +433,7 @@ void NewAnalysis::Loop()
 	    std::cout<<"====================================="<<std::endl;
 	    }
 
-	 if (nmctrksInRange >= 2 && CCCOH && checkFV && containMuon && containPion) 
+	 if (nmctrksInRange >= 2 && CCCOH && checkFV )//&& containMuon && containPion) 
 	    {
 	    hCCCohConeAngle->Fill(ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI);
 	    double d1 = DoCA(Vx, Vy, Vz, muonstart.X(), muonstart.Y(), muonstart.Z(), muonend.X(), muonend.Y(), muonend.Z());
@@ -432,7 +442,7 @@ void NewAnalysis::Loop()
 	    if (d2 < d1) {closer = d2;}
 	    hCCCohDoCA->Fill(closer);
 	    }
-	 if (nmctrksInRange >= 2 && CCQE && checkFV && containMuon && containProton) 
+	 if (nmctrksInRange >= 2 && CCQE && checkFV )//&& containMuon && containProton) 
 	    {
 	    hCCQEConeAngle->Fill(ConeAngle(muon.X(), muon.Y(), muon.Z(), proton.X(), proton.Y(), proton.Z())*180/PI);
 	    double d1 = DoCA(Vx, Vy, Vz, muonstart.X(), muonstart.Y(), muonstart.Z(), muonend.X(), muonend.Y(), muonend.Z());
@@ -441,7 +451,7 @@ void NewAnalysis::Loop()
 	    if (d2 < d1) {closer = d2;}
 	    hCCQEDoCA->Fill(closer);
 	    }
-	 if (nmctrksInRange >= 2 && CCRes && checkFV && containMuon && containPion) 
+	 if (nmctrksInRange >= 2 && CCRes && checkFV )//&& containMuon && containPion) 
 	    {
 	    hCCResConeAngle->Fill(ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI);
 	    double d1 = DoCA(Vx, Vy, Vz, muonstart.X(), muonstart.Y(), muonstart.Z(), muonend.X(), muonend.Y(), muonend.Z());
@@ -450,7 +460,7 @@ void NewAnalysis::Loop()
 	    if (d2 < d1) {closer = d2;}
 	    hCCResDoCA->Fill(closer);
 	    }
-	 if (nmctrksInRange >= 2 && NCRes && checkFV && containPion && containPion2) 
+	 if (nmctrksInRange >= 2 && NCRes && checkFV )//&& containPion && containPion2) 
 	    {
 	    hNCResConeAngle->Fill(ConeAngle(pion2.X(), pion2.Y(), pion2.Z(), pion.X(), pion.Y(), pion.Z())*180/PI);
 	    double d1 = DoCA(Vx, Vy, Vz, pionstart.X(), pionstart.Y(), pionstart.Z(), pionend.X(), pionend.Y(), pionend.Z());
@@ -459,7 +469,7 @@ void NewAnalysis::Loop()
 	    if (d2 < d1) {closer = d2;}
 	    hNCResDoCA->Fill(closer);
 	    }
-	 if (nmctrksInRange >= 2 && NCDIS && checkFV && containPion && containPion2) 
+	 if (nmctrksInRange >= 2 && NCDIS && checkFV )//&& containPion && containPion2) 
 	    {
 	    hNCDISConeAngle->Fill(ConeAngle(pion2.X(), pion2.Y(), pion2.Z(), pion.X(), pion.Y(), pion.Z())*180/PI);
 	    double d1 = DoCA(Vx, Vy, Vz, pionstart.X(), pionstart.Y(), pionstart.Z(), pionend.X(), pionend.Y(), pionend.Z());
@@ -537,6 +547,11 @@ void NewAnalysis::Loop()
    hNuMCTrackMuonX->Write();
    hNuMCTrackMuonY->Write();
    hNuMCTrackMuonZ->Write();
+
+   h2DCosmicDistanceVsEnergy->Write();
+   h2DCCCohDistanceVsEnergy->Write();
+   h2DCCOtherDistanceVsEnergy->Write();
+   h2DNCOtherDistanceVsEnergy->Write();
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 } // End NewAnalysis Loop
