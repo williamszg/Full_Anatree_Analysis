@@ -239,9 +239,13 @@ void NewAnalysis::Loop()
 
          double closer = -99;
 
-         double Vx = sp_charge_corrected_nuvtxx_truth[i];
-         double Vy = sp_charge_corrected_nuvtxy_truth[i];
-         double Vz = sp_charge_corrected_nuvtxz_truth[i];
+         //double Vx = sp_charge_corrected_nuvtxx_truth[i];
+         //double Vy = sp_charge_corrected_nuvtxy_truth[i];
+         //double Vz = sp_charge_corrected_nuvtxz_truth[i];
+
+         double Vx = nuvtxx_truth[i];
+         double Vy = nuvtxy_truth[i];
+         double Vz = nuvtxz_truth[i];
 
 	 bool checkDV = Within(false, Vx, Vy, Vz);
 	 bool checkFV = Within(true, Vx, Vy, Vz);
