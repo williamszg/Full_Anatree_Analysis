@@ -55,10 +55,10 @@ TH1D *hNuMCTrackMuonX = new TH1D("hNuMCTrackMuonX", "Starting X Position of a Mu
 TH1D *hNuMCTrackMuonY = new TH1D("hNuMCTrackMuonY", "Starting Y Position of a Muon From a Neutrino Interaction", 191, -95.5, 95.5);
 TH1D *hNuMCTrackMuonZ = new TH1D("hNuMCTrackMuonZ", "Starting Z Position of a Muon From a Neutrino Interaction", 1021, 9.5, 1030.5);
 
-TH2D *h2DCosmicDistanceVsEnergy = new TH2D("h2DCosmicDistanceVsEnergy", "Cosmic Distance from Neutrino Vertex vs Energy of Track", 101, -0.5, 100.5, 100, 0, 5000);
-TH2D *h2DCCCohDistanceVsEnergy = new TH2D("h2DCCCohDistanceVsEnergy", "CC Coherent Distance from Neutrino Vertex vs Energy of Track", 101, -0.5, 100.5, 100, 0, 5000);
-TH2D *h2DCCOtherDistanceVsEnergy = new TH2D("h2DCCOtherDistanceVsEnergy", "CC Other Distance from Neutrino Vertex vs Energy of Track", 101, -0.5, 100.5, 100, 0, 5000);
-TH2D *h2DNCOtherDistanceVsEnergy = new TH2D("h2DNCOtherDistanceVsEnergy", "NC Other Distance from Neutrino Vertex vs Energy of Track", 101, -0.5, 100.5, 100, 0, 5000);
+TH1D *hOpFlashPECCCoh = new TH1D("hOpFlashPECCCoh", "Number of PE in a CCCoh Interaction", 2000, 0, 20000);
+TH1D *hOpFlashPECosmic = new TH1D("hOpFlashPECosmic", "Number of PE in a Cosmic Interaction", 2000, 0, 20000);
+TH1D *hOpFlashPECCOther = new TH1D("hOpFlashPECCOther", "Number of PE in a CCOther Interaction", 2000, 0, 20000);
+TH1D *hOpFlashPENCOther = new TH1D("hOpFlashPENCOther", "Number of PE in a NCOther Interaction", 2000, 0, 20000);
 // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 
@@ -192,7 +192,7 @@ void NewAnalysis::Loop()
    Long64_t nbytes = 0, nb = 0;
 
    int Nentries = nentries;
-   //int Nentries = 5300;
+   //int Nentries = 15000;
 
    double POT = 0;
 
@@ -205,7 +205,7 @@ void NewAnalysis::Loop()
    for (Long64_t jentry=0; jentry<Nentries; jentry++) 
       {
       if (jentry == 5376) continue; // File 4 Bad Events
-      if (jentry == 253 || jentry == 7717 || jentry == 33027 || jentry == 52148 || jentry == 58491 || jentry == 76449 || jentry == 85966) continue; // File 3 Bad Events
+      if (jentry == 253 || jentry == 7717 || jentry == 33027 || jentry == 52148 || jentry == 58491 || jentry == 76449 || jentry == 85966 || jentry == 27220) continue; // File 3 Bad Events
 
       Long64_t ientry = LoadTree(jentry);
       if (ientry < 0) break;
@@ -217,10 +217,10 @@ void NewAnalysis::Loop()
       if (pot != -99999) {POT = POT + pot;}
       if (jentry == Nentries - 1) {std::cout<<"Total POT for this file = "<<POT<<std::endl;}
 
-      h2DCosmicDistanceVsEnergy->Fill(50, 75);
-      h2DCCCohDistanceVsEnergy->Fill(50, 75);
-      h2DCCOtherDistanceVsEnergy->Fill(50, 75);
-      h2DNCOtherDistanceVsEnergy->Fill(50, 75);
+      if (jentry%100 == 0) {std::cout<<"Number of Beam Flashes = "<<nfls_simpleFlashBeam<<std::endl;}
+      if (jentry%100 == 0) {std::cout<<"Number of Cosmic Flashes = "<<nfls_simpleFlashCosmic<<std::endl;}
+
+      for (int n = 0; n < nfls_simpleFlashCosmic; n++) {hOpFlashPECosmic->Fill(flsPe_simpleFlashCosmic[n]);}
 
       // ========================================
       // === Looping Over the Neutrino Events ===
@@ -412,13 +412,6 @@ void NewAnalysis::Loop()
 	    std::cout<<" Subrun = "<<subrun<<std::endl;
 	    std::cout<<"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"<<std::endl;
 	    std::cout<<"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"<<std::endl;
-	    //std::cout<<" "<<std::endl;
-            //std::cout<<"DoCA For Pion Track = "<<DoCA(Vx, Vy, Vz, pionstart.X(), pionstart.Y(), pionstart.Z(), pionend.X(), pionend.Y(), pionend.Z())<<std::endl;
-            //std::cout<<"DoCA For Muon Track = "<<DoCA(Vx, Vy, Vz, muonstart.X(), muonstart.Y(), muonstart.Z(), muonend.X(), muonend.Y(), muonend.Z())<<std::endl;
-	    //std::cout<<" "<<std::endl;
-	    //std::cout<<"Muon Track Length = "<<muonlength<<std::endl;
-	    //std::cout<<"Pion Track Length = "<<pionlength<<std::endl;
-	    //std::cout<<" "<<std::endl;
 	    }
 	 if (CCCOH && checkFV && containMuon && !containPion) {hCCCohTableInformation->Fill(4);}
 	 if (CCCOH && checkFV && !containMuon && containPion) {hCCCohTableInformation->Fill(5);}
@@ -445,6 +438,11 @@ void NewAnalysis::Loop()
 	    if (d1 <= d2) {closer = d1;}
 	    if (d2 < d1) {closer = d2;}
 	    hCCCohDoCA->Fill(closer);
+            for (int n = 0; n < nfls_simpleFlashBeam; n++) 
+               {
+               hOpFlashPECCCoh->Fill(flsPe_simpleFlashBeam[n]);
+               std::cout<<"CCCoh PE number = "<<flsPe_simpleFlashBeam[n]<<std::endl;
+               }
 	    }
 	 if (nmctrksInRange >= 2 && CCQE && checkFV )//&& containMuon && containProton) 
 	    {
@@ -454,6 +452,11 @@ void NewAnalysis::Loop()
 	    if (d1 <= d2) {closer = d1;}
 	    if (d2 < d1) {closer = d2;}
 	    hCCQEDoCA->Fill(closer);
+            for (int n = 0; n < nfls_simpleFlashBeam; n++)
+               {
+               hOpFlashPECCOther->Fill(flsPe_simpleFlashBeam[n]);
+               std::cout<<"CCQE PE number = "<<flsPe_simpleFlashBeam[n]<<std::endl;
+               }
 	    }
 	 if (nmctrksInRange >= 2 && CCRes && checkFV )//&& containMuon && containPion) 
 	    {
@@ -463,6 +466,11 @@ void NewAnalysis::Loop()
 	    if (d1 <= d2) {closer = d1;}
 	    if (d2 < d1) {closer = d2;}
 	    hCCResDoCA->Fill(closer);
+            for (int n = 0; n < nfls_simpleFlashBeam; n++)
+               {
+               hOpFlashPECCOther->Fill(flsPe_simpleFlashBeam[n]);
+               std::cout<<"CCRes PE number = "<<flsPe_simpleFlashBeam[n]<<std::endl;
+               }
 	    }
 	 if (nmctrksInRange >= 2 && NCRes && checkFV )//&& containPion && containPion2) 
 	    {
@@ -472,6 +480,11 @@ void NewAnalysis::Loop()
 	    if (d1 <= d2) {closer = d1;}
 	    if (d2 < d1) {closer = d2;}
 	    hNCResDoCA->Fill(closer);
+            for (int n = 0; n < nfls_simpleFlashBeam; n++)
+               {
+               hOpFlashPENCOther->Fill(flsPe_simpleFlashBeam[n]);
+               std::cout<<"NCRes PE number = "<<flsPe_simpleFlashBeam[n]<<std::endl;
+               }
 	    }
 	 if (nmctrksInRange >= 2 && NCDIS && checkFV )//&& containPion && containPion2) 
 	    {
@@ -481,6 +494,11 @@ void NewAnalysis::Loop()
 	    if (d1 <= d2) {closer = d1;}
 	    if (d2 < d1) {closer = d2;}
 	    hNCDISDoCA->Fill(closer);
+            for (int n = 0; n < nfls_simpleFlashBeam; n++)
+               {
+               hOpFlashPENCOther->Fill(flsPe_simpleFlashBeam[n]);
+               std::cout<<"NCDIS PE number = "<<flsPe_simpleFlashBeam[n]<<std::endl;
+               }
 	    }
 
 	 if (checkDV == true)
@@ -552,10 +570,10 @@ void NewAnalysis::Loop()
    hNuMCTrackMuonY->Write();
    hNuMCTrackMuonZ->Write();
 
-   h2DCosmicDistanceVsEnergy->Write();
-   h2DCCCohDistanceVsEnergy->Write();
-   h2DCCOtherDistanceVsEnergy->Write();
-   h2DNCOtherDistanceVsEnergy->Write();
+   hOpFlashPECCCoh->Write();
+   hOpFlashPECosmic->Write();
+   hOpFlashPECCOther->Write();
+   hOpFlashPENCOther->Write();
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 } // End NewAnalysis Loop
