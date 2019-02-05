@@ -239,16 +239,29 @@ void NewAnalysis::Loop()
 
          double closer = -99;
 
-         //double Vx = sp_charge_corrected_nuvtxx_truth[i];
-         //double Vy = sp_charge_corrected_nuvtxy_truth[i];
-         //double Vz = sp_charge_corrected_nuvtxz_truth[i];
-
          double Vx = nuvtxx_truth[i];
          double Vy = nuvtxy_truth[i];
          double Vz = nuvtxz_truth[i];
 
 	 bool checkDV = Within(false, Vx, Vy, Vz);
 	 bool checkFV = Within(true, Vx, Vy, Vz);
+
+
+         // ----------------------------------------------------------------
+         // --- Looking into G4 Information for Vertex Activity and DoCA ---
+         // ----------------------------------------------------------------
+         for (int npriG4 = 0; npriG4 < no_primaries; npriG4++)
+            {
+            //std::cout<<"Vx = "<<Vx<<" Vy = "<<Vy<<" Vz = "<<Vz<<std::endl;
+            // Loop over the trajectory points
+            for (int npriTrjPts = 0; npriTrjPts < NTrTrajPts[npriG4]; npriTrjPts++)
+               {
+               //Within here is where you need to include the vertex activity information, and change the DoCA here, too.
+               //std::cout<<"X = "<<TrueTraj_X[npriG4][npriTrjPts]<<" Y = "<<TrueTraj_Y[npriG4][npriTrjPts]<<" Z = "<<TrueTraj_Z[npriG4][npriTrjPts]<<std::endl;
+               }
+            }
+         // ----------------------------------------------------------------
+
 
 	 bool containMuon = false;
 	 bool containPion = false;
