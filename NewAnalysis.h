@@ -1484,11 +1484,11 @@ NewAnalysis::NewAnalysis(TTree *tree) : fChain(0)
 // if parameter tree is not specified (or zero), connect the file
 // used to generate this class and read the Tree.
    if (tree == 0) {
-      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("../ana_hist_ALL.root");
+      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("../ana_hist_ALL_CCCoh.root");
       if (!f || !f->IsOpen()) {
-         f = new TFile("../ana_hist_ALL.root");
+         f = new TFile("../ana_hist_ALL_CCCoh.root");
       }
-      TDirectory * dir = (TDirectory*)f->Get("../ana_hist_ALL.root:/analysistree");
+      TDirectory * dir = (TDirectory*)f->Get("../ana_hist_ALL_CCCoh.root:/analysistree");
       dir->GetObject("anatree",tree);
 
    }
