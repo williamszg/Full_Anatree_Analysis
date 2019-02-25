@@ -38,12 +38,15 @@ TH1D *hNCResDoCA = new TH1D("hNCResDoCA", "The DoCA for NC-Res Events with 2 or 
 TH1D *hNCDISDoCA = new TH1D("hNCDISDoCA", "The DoCA for NC-DIS Events with 2 or More MCTracks in cm", 500, 0, 500);
 TH1D *hCosmicDoCA = new TH1D("hCosmicDoCA", "The DoCA for Events with 2 or More Cosmic MCTracks in cm", 500, 0, 500);
 
-TH1D *hCCCohVA = new TH1D("hCCCohVA", "The Vertex Activity for CC-COH Events within 10cm of Vertex in MeV", 500, 0, 50);
-TH1D *hCCQEVA = new TH1D("hCCQEVA", "The Vertex Activity for CC-QE Events within 10cm of Vertex in MeV", 500, 0, 50);
-TH1D *hCCResVA = new TH1D("hCCResVA", "The Vertex Activity for CC-Res Events within 10cm of Vertex in MeV", 500, 0, 50);
-TH1D *hNCResVA = new TH1D("hNCResVA", "The Vertex Activity for NC-Res Events within 10cm of Vertex in MeV", 500, 0, 50);
-TH1D *hNCDISVA = new TH1D("hNCDISVA", "The Vertex Activity for NC-DIS Events within 10cm of Vertex in MeV", 500, 0, 50);
-TH1D *hCosmicVA = new TH1D("hCosmicVA", "The Vertex Activity for Cosmic Events within 10cm of Vertex in MeV", 500, 0, 50);
+TH1D *hCCCohVA = new TH1D("hCCCohVA", "The Vertex Activity for CC-COH Events within 10cm of Vertex in MeV", 100, 0, 500);
+TH1D *hCCQEVA = new TH1D("hCCQEVA", "The Vertex Activity for CC-QE Events within 10cm of Vertex in MeV", 100, 0, 500);
+TH1D *hCCResVA = new TH1D("hCCResVA", "The Vertex Activity for CC-Res Events within 10cm of Vertex in MeV", 100, 0, 500);
+TH1D *hNCResVA = new TH1D("hNCResVA", "The Vertex Activity for NC-Res Events within 10cm of Vertex in MeV", 100, 0, 500);
+TH1D *hNCDISVA = new TH1D("hNCDISVA", "The Vertex Activity for NC-DIS Events within 10cm of Vertex in MeV", 100, 0, 500);
+TH1D *hCosmicVA = new TH1D("hCosmicVA", "The Vertex Activity for Cosmic Events within 10cm of Vertex in MeV", 100, 0, 500);
+
+TH1D *hCCCohMuonVA = new TH1D("hCCCohMuonVA", "The Vertex Activity of Muons in CC-COH Events within 10cm of Vertex in MeV", 100, 0, 500);
+TH1D *hCCCohPionVA = new TH1D("hCCCohPionVA", "The Vertex Activity of Pions in CC-COH Events within 10cm of Vertex in MeV", 100, 0, 500);
 
 TH1D *hCCCohTableInformation = new TH1D("hCCCohTableInformation", "Table Information for CC-COH Events", 7, -0.5, 6.5);
 TH1D *hCCQETableInformation = new TH1D("hCCQETableInformation", "Table Information for CC-QE Events", 3, -0.5, 2.5);
@@ -67,7 +70,12 @@ TH1D *hOpFlashPECosmic = new TH1D("hOpFlashPECosmic", "Number of PE in a Cosmic 
 TH1D *hOpFlashPECCOther = new TH1D("hOpFlashPECCOther", "Number of PE in a CCOther Interaction", 2000, 0, 20000);
 TH1D *hOpFlashPENCOther = new TH1D("hOpFlashPENCOther", "Number of PE in a NCOther Interaction", 2000, 0, 20000);
 
-TH2D *h2DVertexActivity = new TH2D("h2DVertexActivity", "Energy Deposited in Region vs Distance from Vertex", 201, -0.5, 200.5, 76, -0.5, 75.5);
+TH2D *h2DVertexActivity = new TH2D("h2DVertexActivity", "Energy Deposited in Region vs Distance from Vertex", 201, -0.5, 200.5, 500, 0, 500);
+TH2D *h2DMuonVertexActivity = new TH2D("h2DMuonVertexActivity", "Energy Deposited in Region vs Distance from Vertex for Muons", 201, -0.5, 200.5, 500, 0, 500);
+TH2D *h2DPionVertexActivity = new TH2D("h2DPionVertexActivity", "Energy Deposited in Region vs Distance from Vertex for Pions", 201, -0.5, 200.5, 500, 0, 500);
+TH2D *hMuonEnergyVsConeAngle = new TH2D("hMuonEnergyVsConeAngle", "Muon Energy Vs Cone Angle for CCCoh Events", 181, -0.5, 180.5, 250, 0, 1500);
+TH2D *hPionEnergyVsConeAngle = new TH2D("hPionEnergyVsConeAngle", "Pion Energy Vs Cone Angle for CCCoh Events", 181, -0.5, 180.5, 250, 0, 1500);
+TH2D *hQ2VsConeAngle = new TH2D("hQ2VsConeAngle", "Q2 Vs Cone Angle for CCCoh Events", 181, -0.5, 180.5, 250, 0, 1);
 // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 
@@ -225,8 +233,8 @@ void NewAnalysis::Loop()
 
    for (Long64_t jentry=0; jentry<Nentries; jentry++) 
       {
-      if (jentry == 5376) continue; // File 4 Bad Events
-      if (jentry == 253 || jentry == 7717 || jentry == 33027 || jentry == 52148 || jentry == 58491 || jentry == 76449 || jentry == 85966 || jentry == 27220) continue; // File 3 Bad Events
+      //if (jentry == 5376) continue; // File 4 Bad Events
+      //if (jentry == 253 || jentry == 7717 || jentry == 33027 || jentry == 52148 || jentry == 58491 || jentry == 76449 || jentry == 85966 || jentry == 27220) continue; // File 3 Bad Events
 
       Long64_t ientry = LoadTree(jentry);
       if (ientry < 0) break;
@@ -270,6 +278,11 @@ void NewAnalysis::Loop()
 	 bool checkFV = Within(true, Vx, Vy, Vz);
 
          double VAEnergy = 0;
+         double MuonVAEnergy = 0;
+         double PionVAEnergy = 0;
+         double MuonEnergy = 0;
+         double PionEnergy = 0;
+         double Q2 = Q2_truth[i];
 
          // ----------------------------------------------------------------
          // --- Looking into G4 Information for Vertex Activity and DoCA ---
@@ -283,18 +296,31 @@ void NewAnalysis::Loop()
                //Within here is where you need to include the vertex activity information, and change the DoCA here, too.
                //std::cout<<"X = "<<TrueTraj_X[npriG4][npriTrjPts]<<" Y = "<<TrueTraj_Y[npriG4][npriTrjPts]<<" Z = "<<TrueTraj_Z[npriG4][npriTrjPts]<<std::endl;
                double step = Distance(TrueTraj_X[npriG4][0], TrueTraj_Y[npriG4][0], TrueTraj_Z[npriG4][0], TrueTraj_X[npriG4][npriTrjPts+1], TrueTraj_Y[npriG4][npriTrjPts+1], TrueTraj_Z[npriG4][npriTrjPts+1]);
-               double EnergyStep = TrueTraj_E[npriG4][0]-TrueTraj_E[npriG4][npriTrjPts+1];
+               double EnergyStep = TrueTraj_E[npriG4][0] - TrueTraj_E[npriG4][npriTrjPts+1];
                //std::cout<<"Step Distance = "<<step<<std::endl;
                //std::cout<<"Step Energy = "<<EnergyStep*1000<<std::endl; 
-               h2DVertexActivity->Fill(step*100, EnergyStep*1000);
+               h2DVertexActivity->Fill(step, EnergyStep*1000);
 
-               double VAdistance = Distance(Vx, Vy, Vz, TrueTraj_X[npriG4][npriTrjPts+1], TrueTraj_Y[npriG4][npriTrjPts+1], TrueTraj_Z[npriG4][npriTrjPts+1]);
-               if (VAdistance*100 <= VAdistanceCheck)
+               if (pdg[npriG4] == 13) 
                   {
-                  VAEnergy += (TrueTraj_E[npriG4][npriTrjPts]-TrueTraj_E[npriG4][npriTrjPts+1]);
+                  MuonEnergy = TrueTraj_E[npriG4][0]*1000;
+                  h2DMuonVertexActivity->Fill(step, EnergyStep*1000);
+                  }
+               if (pdg[npriG4] == 211) 
+                  {
+                  PionEnergy = TrueTraj_E[npriG4][0]*1000;
+                  h2DPionVertexActivity->Fill(step, EnergyStep*1000);
+                  }
+               double VAdistance = Distance(Vx, Vy, Vz, TrueTraj_X[npriG4][npriTrjPts+1], TrueTraj_Y[npriG4][npriTrjPts+1], TrueTraj_Z[npriG4][npriTrjPts+1]);
+               if (VAdistance <= VAdistanceCheck) 
+                  {
+                  VAEnergy = VAEnergy + TrueTraj_E[npriG4][npriTrjPts] - TrueTraj_E[npriG4][npriTrjPts+1];
+                  if (pdg[npriG4] == 13) {MuonVAEnergy = MuonVAEnergy + TrueTraj_E[npriG4][npriTrjPts] - TrueTraj_E[npriG4][npriTrjPts+1];}
+                  if (pdg[npriG4] == 211) {PionVAEnergy = PionVAEnergy + TrueTraj_E[npriG4][npriTrjPts] - TrueTraj_E[npriG4][npriTrjPts+1];}
                   }
                }
             }
+         std::cout<<"VAEnergy = "<<VAEnergy*1000<<std::endl;
          //hCCCohVA->Fill(VAEnergy*1000);        
          // ----------------------------------------------------------------
 
@@ -482,6 +508,9 @@ void NewAnalysis::Loop()
 	 if (nmctrksInRange >= 2 && CCCOH && checkFV )//&& containMuon && containPion) 
 	    {
 	    hCCCohConeAngle->Fill(ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI);
+            hMuonEnergyVsConeAngle->Fill(ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI, MuonEnergy);
+            hPionEnergyVsConeAngle->Fill(ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI, PionEnergy);
+            hQ2VsConeAngle->Fill(ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI, Q2);
 	    double d1 = DoCA(Vx, Vy, Vz, muonstart.X(), muonstart.Y(), muonstart.Z(), muonend.X(), muonend.Y(), muonend.Z());
 	    double d2 = DoCA(Vx, Vy, Vz, pionstart.X(), pionstart.Y(), pionstart.Z(), pionend.X(), pionend.Y(), pionend.Z());
 	    if (d1 <= d2) {closer = d1;}
@@ -493,6 +522,8 @@ void NewAnalysis::Loop()
                std::cout<<"CCCoh PE number = "<<flsPe_simpleFlashBeam[n]<<std::endl;
                }
             hCCCohVA->Fill(VAEnergy*1000);
+            hCCCohMuonVA->Fill(MuonVAEnergy*1000);
+            hCCCohPionVA->Fill(PionVAEnergy*1000);
 	    }
 	 if (nmctrksInRange >= 2 && CCQE && checkFV )//&& containMuon && containProton) 
 	    {
@@ -614,6 +645,9 @@ void NewAnalysis::Loop()
    hNCDISVA->Write();
    hCosmicVA->Write();
 
+   hCCCohMuonVA->Write();
+   hCCCohPionVA->Write();
+
    hCCCohTableInformation->Write();
    hCCQETableInformation->Write();
    hCCResTableInformation->Write();
@@ -637,6 +671,11 @@ void NewAnalysis::Loop()
    hOpFlashPENCOther->Write();
 
    h2DVertexActivity->Write();
+   h2DMuonVertexActivity->Write();
+   h2DPionVertexActivity->Write();
+   hMuonEnergyVsConeAngle->Write();
+   hPionEnergyVsConeAngle->Write();
+   hQ2VsConeAngle->Write();
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 } // End NewAnalysis Loop
