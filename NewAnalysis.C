@@ -76,6 +76,14 @@ TH2D *h2DPionVertexActivity = new TH2D("h2DPionVertexActivity", "Energy Deposite
 TH2D *hMuonEnergyVsConeAngle = new TH2D("hMuonEnergyVsConeAngle", "Muon Energy Vs Cone Angle for CCCoh Events", 181, -0.5, 180.5, 250, 0, 1500);
 TH2D *hPionEnergyVsConeAngle = new TH2D("hPionEnergyVsConeAngle", "Pion Energy Vs Cone Angle for CCCoh Events", 181, -0.5, 180.5, 250, 0, 1500);
 TH2D *hQ2VsConeAngle = new TH2D("hQ2VsConeAngle", "Q2 Vs Cone Angle for CCCoh Events", 181, -0.5, 180.5, 250, 0, 1);
+
+TH1D *hOpFlashVx = new TH1D("hOpFlashVx", "Distance from the Neutrino Vertex X Position of OpFlash (Vx - OpFlashX)", 401, -200.5, 200.5);
+TH1D *hOpFlashVy = new TH1D("hOpFlashVy", "Distance from the Neutrino Vertex Y Position of OpFlash (Vy - OpFlashY)", 401, -200.5, 200.5);
+TH1D *hOpFlashVz = new TH1D("hOpFlashVz", "Distance from the Neutrino Vertex Z Position of OpFlash (Vz - OpFlashZ)", 401, -200.5, 200.5);
+
+TH1D *hOpFlashX = new TH1D("hOpFlashX", "X Position of OpFlash", 251, -0.5, 250.5);
+TH1D *hOpFlashY = new TH1D("hOpFlashY", "Y Position of OpFlash", 231, -115.5, 115.5);
+TH1D *hOpFlashZ = new TH1D("hOpFlashZ", "Z Position of OpFlash", 1041, -0.5, 1040.5);
 // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 
@@ -283,6 +291,21 @@ void NewAnalysis::Loop()
          double MuonEnergy = 0;
          double PionEnergy = 0;
          double Q2 = Q2_truth[i];
+
+         // --------------------------------
+         // --- Some OpFlash Information ---
+         // --------------------------------
+         for (int n = 0; n < nfls_simpleFlashBeam; n++)
+            {
+            hOpFlashVx->Fill(Vx - flsXcenter_simpleFlashBeam[n]*100);           
+            hOpFlashVy->Fill(Vy - flsYcenter_simpleFlashBeam[n]*100);           
+            hOpFlashVz->Fill(Vz - flsZcenter_simpleFlashBeam[n]*100);
+           
+            hOpFlashX->Fill(flsXcenter_simpleFlashBeam[n]*100);           
+            hOpFlashY->Fill(flsYcenter_simpleFlashBeam[n]*100);           
+            hOpFlashZ->Fill(flsZcenter_simpleFlashBeam[n]*100);
+            }
+         // --------------------------------
 
          // ----------------------------------------------------------------
          // --- Looking into G4 Information for Vertex Activity and DoCA ---
@@ -676,6 +699,14 @@ void NewAnalysis::Loop()
    hMuonEnergyVsConeAngle->Write();
    hPionEnergyVsConeAngle->Write();
    hQ2VsConeAngle->Write();
+
+   hOpFlashVx->Write();
+   hOpFlashVy->Write();
+   hOpFlashVz->Write();
+
+   hOpFlashX->Write();
+   hOpFlashY->Write();
+   hOpFlashZ->Write();
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 } // End NewAnalysis Loop
