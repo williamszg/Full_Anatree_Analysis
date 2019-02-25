@@ -1,0 +1,185 @@
+<?xml version="1.0"?>
+
+<!-- Production Project -->
+
+<!DOCTYPE project [
+<!ENTITY release      "v08_05_00" >
+<!ENTITY file_type    "mc"        >
+<!ENTITY run_type     "physics"   >
+<!ENTITY name         "cccoh_zgrw">
+<!ENTITY version      "cccoh_test" >
+<!ENTITY tag          "datatest">
+<!ENTITY workfiles    "/pnfs/uboone/scratch/users/zwilliam/CCCoh_GridSubmission">
+<!ENTITY path         "/pnfs/uboone/scratch/users/zwilliam/">
+]>
+
+
+<project name="&name;">
+
+  <!-- Project size -->
+  <numevents>-1</numevents>
+
+
+  <!-- Operating System -->
+  <os>SL6</os>
+
+  <!-- Larsoft information -->
+  <larsoft>
+    <tag>&release;</tag>
+    <qual>e17:prof</qual>
+    <local>&workfiles;/localProducts_&release;.tar</local>
+  </larsoft>
+    
+  <!-- Batch resources -->
+  <resource>DEDICATED,OPPORTUNISTIC</resource>  
+  
+  <!-- Project stages -->
+
+  <stage name="genie">
+    <fcl>&workfiles;/prodgenie_bnb_nu_uboone_CCCOH.fcl</fcl>
+    <outdir>&path;&name;/out/</outdir>
+    <logdir>&path;&name;/log/</logdir>
+    <workdir>&path;&name;/work/</workdir>
+    <bookdir>/uboone/data/users/zwilliam/book/&release;/</bookdir>
+    <numjobs>200</numjobs>
+    <memory>2000</memory>
+    <disk>10GB</disk>
+    <schema>root</schema>
+    <datatier>reconstructed</datatier>
+    <defname>&name;_&version;</defname>
+    <jobsub>--expected-lifetime=short</jobsub>
+  </stage>
+
+
+  <stage name="g4">
+    <inputlist>&workfiles;/CCCoh_Files/CCCoh_Genie.list</inputlist>
+    <fcl>wirecell_g4_uboone.fcl</fcl>
+    <outdir>&path;&name;/out/</outdir>
+    <logdir>&path;&name;/log/</logdir>
+    <workdir>&path;&name;/work/</workdir>
+    <bookdir>/uboone/data/users/zwilliam/book/&release;/</bookdir>
+    <numjobs>200</numjobs>
+    <maxfilesperjob>1</maxfilesperjob>
+    <memory>2000</memory>
+    <disk>10GB</disk>
+    <schema>root</schema>
+    <datatier>reconstructed</datatier>
+    <defname>&name;_&version;</defname>
+    <jobsub>--expected-lifetime=short</jobsub>
+  </stage>
+
+
+  <stage name="wirecell">
+    <inputlist>&workfiles;/CCCoh_Files/CCCoh_G4.list</inputlist>
+    <fcl>wirecell_detsim_uboone.fcl</fcl>
+    <outdir>&path;&name;/out/</outdir>
+    <logdir>&path;&name;/log/</logdir>
+    <workdir>&path;&name;/work/</workdir>
+    <bookdir>/uboone/data/users/zwilliam/book/&release;/</bookdir>
+    <numjobs>200</numjobs>
+    <maxfilesperjob>1</maxfilesperjob>
+    <memory>3000</memory>
+    <disk>10GB</disk>
+    <schema>root</schema>
+    <datatier>reconstructed</datatier>
+    <defname>&name;_&version;</defname>
+    <jobsub>--expected-lifetime=long</jobsub>
+  </stage>
+
+
+  <stage name="reco1">
+    <inputlist>&workfiles;/files.list</inputlist>
+    <fcl>reco_uboone_mcc9_8_driver_stage1.fcl</fcl>
+    <outdir>&path;&name;_reco1/out/</outdir>
+    <logdir>&path;&name;_reco1/log/</logdir>
+    <workdir>&path;&name;_reco1/work/</workdir>
+    <bookdir>/uboone/data/users/zwilliam/book/&release;_reco1/</bookdir>
+    <numjobs>200</numjobs>
+    <maxfilesperjob>1</maxfilesperjob>
+    <memory>6000</memory>
+    <disk>25GB</disk>
+    <schema>root</schema>
+    <datatier>reconstructed</datatier>
+    <defname>&name;_&version;</defname>
+    <jobsub>--expected-lifetime=long</jobsub>
+  </stage>
+
+
+  <stage name="celltree">
+    <inputlist>&workfiles;/files.list</inputlist>
+    <fcl>run_celltreeub_mc_prod.fcl</fcl>
+    <outdir>&path;&name;_celltree/out/</outdir>
+    <logdir>&path;&name;_celltree/log/</logdir>
+    <workdir>&path;&name;_celltree/work/</workdir>
+    <bookdir>/uboone/data/users/zwilliam/book/&release;_celltree/</bookdir>
+    <numjobs>200</numjobs>
+    <maxfilesperjob>1</maxfilesperjob>
+    <memory>6000</memory>
+    <disk>25GB</disk>
+    <schema>root</schema>
+    <datatier>reconstructed</datatier>
+    <defname>&name;_&version;</defname>
+    <jobsub>--expected-lifetime=long</jobsub>
+  </stage>
+
+
+  <stage name="larcv">
+    <inputlist>&workfiles;/files.list</inputlist>
+    <fcl>standard_larcv_uboone_mc2d_prod.fcl</fcl>
+    <outdir>&path;&name;_larcv/out/</outdir>
+    <logdir>&path;&name;_larcv/log/</logdir>
+    <workdir>&path;&name;_larcv/work/</workdir>
+    <bookdir>/uboone/data/users/zwilliam/book/&release;_larcv/</bookdir>
+    <numjobs>200</numjobs>
+    <maxfilesperjob>1</maxfilesperjob>
+    <memory>6000</memory>
+    <disk>25GB</disk>
+    <schema>root</schema>
+    <datatier>reconstructed</datatier>
+    <defname>&name;_&version;</defname>
+    <jobsub>--expected-lifetime=long</jobsub>
+  </stage>
+
+
+  <stage name="reco2">
+    <inputlist>&workfiles;/files.list</inputlist>
+    <fcl>reco_uboone_mcc9_8_driver_stage2_reduced.fcl</fcl>
+    <outdir>&path;&name;_reco2/out/</outdir>
+    <logdir>&path;&name;_reco2/log/</logdir>
+    <workdir>&path;&name;_reco2/work/</workdir>
+    <bookdir>/uboone/data/users/zwilliam/book/&release;_reco2/</bookdir>
+    <numjobs>200</numjobs>
+    <maxfilesperjob>1</maxfilesperjob>
+    <memory>9000</memory>
+    <disk>30GB</disk>
+    <schema>root</schema>
+    <datatier>reconstructed</datatier>
+    <defname>&name;_&version;</defname>
+    <jobsub>--expected-lifetime=long</jobsub>
+  </stage>
+
+
+  <stage name="ana">
+    <inputlist>&workfiles;/files.list</inputlist>
+    <fcl>&workfiles;/standard_ana_uboone.fcl</fcl>
+    <outdir>&path;&name;_ana/out/</outdir>
+    <logdir>&path;&name;_ana/log/</logdir>
+    <workdir>&path;&name;_ana/work/</workdir>
+    <bookdir>/uboone/data/users/zwilliam/book/&release;_ana/</bookdir>
+    <numjobs>200</numjobs>
+    <maxfilesperjob>1</maxfilesperjob>
+    <memory>8000</memory>
+    <disk>30GB</disk>
+    <schema>root</schema>
+    <datatier>reconstructed</datatier>
+    <defname>&name;_&version;</defname>
+    <jobsub>--expected-lifetime=long</jobsub>
+  </stage>
+
+  <!-- file type -->
+  <filetype>&file_type;</filetype>
+
+  <!-- run type --> 
+  <runtype>&run_type;</runtype>
+
+</project>
