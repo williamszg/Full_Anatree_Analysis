@@ -34,10 +34,15 @@ TH1D *hCosmicConeAngle = new TH1D("hCosmicConeAngle", "The Cone Angle for Events
 TH1D *hCCCohDoCA = new TH1D("hCCCohDoCA", "The DoCA for CC-COH Events with 2 or More MCTracks in cm", 500, 0, 500);
 TH1D *hCCCohDoCA2 = new TH1D("hCCCohDoCA2", "The DoCA for CC-COH Events with 2 or More MCTracks in cm Using the Second Method", 500, 0, 500);
 TH1D *hCCQEDoCA = new TH1D("hCCQEDoCA", "The DoCA for CC-QE Events with 2 or More MCTracks in cm", 500, 0, 500);
+TH1D *hCCQEDoCA2 = new TH1D("hCCQEDoCA2", "The DoCA for CC-QE Events with 2 or More MCTracks in cm Using the Second Method", 500, 0, 500);
 TH1D *hCCResDoCA = new TH1D("hCCResDoCA", "The DoCA for CC-Res Events with 2 or More MCTracks in cm", 500, 0, 500);
+TH1D *hCCResDoCA2 = new TH1D("hCCResDoCA2", "The DoCA for CC-Res Events with 2 or More MCTracks in cm Using the Second Method", 500, 0, 500);
 TH1D *hNCResDoCA = new TH1D("hNCResDoCA", "The DoCA for NC-Res Events with 2 or More MCTracks in cm", 500, 0, 500);
+TH1D *hNCResDoCA2 = new TH1D("hNCResDoCA2", "The DoCA for NC-Res Events with 2 or More MCTracks in cm Using the Second Method", 500, 0, 500);
 TH1D *hNCDISDoCA = new TH1D("hNCDISDoCA", "The DoCA for NC-DIS Events with 2 or More MCTracks in cm", 500, 0, 500);
+TH1D *hNCDISDoCA2 = new TH1D("hNCDISDoCA2", "The DoCA for NC-DIS Events with 2 or More MCTracks in cm Using the Second Method", 500, 0, 500);
 TH1D *hCosmicDoCA = new TH1D("hCosmicDoCA", "The DoCA for Events with 2 or More Cosmic MCTracks in cm", 500, 0, 500);
+TH1D *hCosmicDoCA2 = new TH1D("hCosmicDoCA2", "The DoCA for Events with 2 or More Cosmic MCTracks in cm Using the Second Method", 500, 0, 500);
 
 TH1D *hCCCohVA = new TH1D("hCCCohVA", "The Vertex Activity for CC-COH Events within 10cm of Vertex in MeV", 100, 0, 500);
 TH1D *hCCQEVA = new TH1D("hCCQEVA", "The Vertex Activity for CC-QE Events within 10cm of Vertex in MeV", 100, 0, 500);
@@ -460,6 +465,7 @@ void NewAnalysis::Loop()
 	          if (d1 <= d2) {closer = d1;}
 	          if (d2 < d1) {closer = d2;}
 	          hCosmicDoCA->Fill(closer);
+	          hCosmicDoCA2->Fill(DoCA2_Event);
 
 	          if (no_mctracks >= 2)
 		     {
@@ -618,6 +624,7 @@ void NewAnalysis::Loop()
 	    if (d1 <= d2) {closer = d1;}
 	    if (d2 < d1) {closer = d2;}
 	    hCCQEDoCA->Fill(closer);
+	    hCCQEDoCA2->Fill(DoCA2_Event);
             for (int n = 0; n < nfls_simpleFlashBeam; n++)
                {
                hOpFlashPECCOther->Fill(flsPe_simpleFlashBeam[n]);
@@ -633,6 +640,7 @@ void NewAnalysis::Loop()
 	    if (d1 <= d2) {closer = d1;}
 	    if (d2 < d1) {closer = d2;}
 	    hCCResDoCA->Fill(closer);
+	    hCCResDoCA2->Fill(DoCA2_Event);
             for (int n = 0; n < nfls_simpleFlashBeam; n++)
                {
                hOpFlashPECCOther->Fill(flsPe_simpleFlashBeam[n]);
@@ -648,6 +656,7 @@ void NewAnalysis::Loop()
 	    if (d1 <= d2) {closer = d1;}
 	    if (d2 < d1) {closer = d2;}
 	    hNCResDoCA->Fill(closer);
+	    hNCResDoCA2->Fill(DoCA2_Event);
             for (int n = 0; n < nfls_simpleFlashBeam; n++)
                {
                hOpFlashPENCOther->Fill(flsPe_simpleFlashBeam[n]);
@@ -663,6 +672,7 @@ void NewAnalysis::Loop()
 	    if (d1 <= d2) {closer = d1;}
 	    if (d2 < d1) {closer = d2;}
 	    hNCDISDoCA->Fill(closer);
+	    hNCDISDoCA2->Fill(DoCA2_Event);
             for (int n = 0; n < nfls_simpleFlashBeam; n++)
                {
                hOpFlashPENCOther->Fill(flsPe_simpleFlashBeam[n]);
@@ -719,10 +729,15 @@ void NewAnalysis::Loop()
    hCCCohDoCA->Write();
    hCCCohDoCA2->Write();
    hCCQEDoCA->Write();
+   hCCQEDoCA2->Write();
    hCCResDoCA->Write();
+   hCCResDoCA2->Write();
    hNCResDoCA->Write();
+   hNCResDoCA2->Write();
    hNCDISDoCA->Write();
+   hNCDISDoCA2->Write();
    hCosmicDoCA->Write();
+   hCosmicDoCA2->Write();
 
    hCCCohVA->Write();
    hCCQEVA->Write();
