@@ -32,6 +32,7 @@ TH1D *hNCDISConeAngle = new TH1D("hNCDISConeAngle", "The Cone Angle for NC-DIS E
 TH1D *hCosmicConeAngle = new TH1D("hCosmicConeAngle", "The Cone Angle for Events with 2 or More Cosmic MCTracks", 181, -0.5, 180.5);
 
 TH1D *hCCCohDoCA = new TH1D("hCCCohDoCA", "The DoCA for CC-COH Events with 2 or More MCTracks in cm", 500, 0, 500);
+TH1D *hCCCohDoCA2 = new TH1D("hCCCohDoCA2", "The DoCA for CC-COH Events with 2 or More MCTracks in cm Using the Second Method", 500, 0, 500);
 TH1D *hCCQEDoCA = new TH1D("hCCQEDoCA", "The DoCA for CC-QE Events with 2 or More MCTracks in cm", 500, 0, 500);
 TH1D *hCCResDoCA = new TH1D("hCCResDoCA", "The DoCA for CC-Res Events with 2 or More MCTracks in cm", 500, 0, 500);
 TH1D *hNCResDoCA = new TH1D("hNCResDoCA", "The DoCA for NC-Res Events with 2 or More MCTracks in cm", 500, 0, 500);
@@ -76,6 +77,18 @@ TH2D *h2DPionVertexActivity = new TH2D("h2DPionVertexActivity", "Energy Deposite
 TH2D *hMuonEnergyVsConeAngle = new TH2D("hMuonEnergyVsConeAngle", "Muon Energy Vs Cone Angle for CCCoh Events", 181, -0.5, 180.5, 250, 0, 1500);
 TH2D *hPionEnergyVsConeAngle = new TH2D("hPionEnergyVsConeAngle", "Pion Energy Vs Cone Angle for CCCoh Events", 181, -0.5, 180.5, 250, 0, 1500);
 TH2D *hQ2VsConeAngle = new TH2D("hQ2VsConeAngle", "Q2 Vs Cone Angle for CCCoh Events", 181, -0.5, 180.5, 250, 0, 1);
+
+TH1D *hMCTruthQ2CCCoh = new TH1D("hMCTruthQ2CCCoh", "The Q2 of CCCoh Events from MCTruth Information", 250, 0, 1);
+
+TH1D *hMCTruthPxMuon = new TH1D("hMCTruthPxMuon", "The Momentum of the Muon in the X Direction for CCCoh", 250, 0, 1000);
+TH1D *hMCTruthPyMuon = new TH1D("hMCTruthPyMuon", "The Momentum of the Muon in the Y Direction for CCCoh", 250, 0, 1000);
+TH1D *hMCTruthPzMuon = new TH1D("hMCTruthPzMuon", "The Momentum of the Muon in the Z Direction for CCCoh", 250, 0, 2500);
+TH1D *hMCTruthEMuon = new TH1D("hMCTruthEMuon", "The Energy of the Muon for CCCoh", 250, 0, 2500);
+
+TH1D *hMCTruthPxPion = new TH1D("hMCTruthPxPion", "The Momentum of the Pion in the X Direction for CCCoh", 250, 0, 1000);
+TH1D *hMCTruthPyPion = new TH1D("hMCTruthPyPion", "The Momentum of the Pion in the Y Direction for CCCoh", 250, 0, 1000);
+TH1D *hMCTruthPzPion = new TH1D("hMCTruthPzPion", "The Momentum of the Pion in the Z Direction for CCCoh", 250, 0, 2500);
+TH1D *hMCTruthEPion = new TH1D("hMCTruthEPion", "The Energy of the Pion for CCCoh", 250, 0, 2500);
 
 TH1D *hOpFlashVx = new TH1D("hOpFlashVx", "Distance from the Neutrino Vertex X Position of OpFlash (Vx - OpFlashX)", 401, -200.5, 200.5);
 TH1D *hOpFlashVy = new TH1D("hOpFlashVy", "Distance from the Neutrino Vertex Y Position of OpFlash (Vy - OpFlashY)", 401, -200.5, 200.5);
@@ -209,6 +222,18 @@ double DoCA(double x0, double y0, double z0, double x1, double y1, double z1, do
 }
 // ------------------------------------
 
+// ---------------------------------------------
+// --- Distance of Closest Approach Method 2 ---
+// ---------------------------------------------
+double DoCA2(double x0, double y0, double z0, double x1, double y1, double z1)
+{
+   double d = -999;
+   TVector3 v(x0-x1, y0-y1, z0-z1);
+   d = v.Mag();
+   return d;
+}
+// ------------------------------------
+
 // -----------------------------------
 // --- Distance Between Two Points ---
 // -----------------------------------
@@ -286,11 +311,18 @@ void NewAnalysis::Loop()
 	 bool checkFV = Within(true, Vx, Vy, Vz);
 
          double VAEnergy = 0;
+	 double MuonPx = 0;
+	 double MuonPy = 0;
+	 double MuonPz = 0;
+	 double PionPx = 0;
+	 double PionPy = 0;
+	 double PionPz = 0;
          double MuonVAEnergy = 0;
          double PionVAEnergy = 0;
          double MuonEnergy = 0;
          double PionEnergy = 0;
          double Q2 = Q2_truth[i];
+	 double DoCA2_Event = 10000;
 
          // --------------------------------
          // --- Some OpFlash Information ---
@@ -326,11 +358,17 @@ void NewAnalysis::Loop()
 
                if (pdg[npriG4] == 13) 
                   {
+	          MuonPx = Px[npriG4]*1000;
+	          MuonPy = Py[npriG4]*1000;
+	          MuonPz = Pz[npriG4]*1000;
                   MuonEnergy = TrueTraj_E[npriG4][0]*1000;
                   h2DMuonVertexActivity->Fill(step, EnergyStep*1000);
                   }
                if (pdg[npriG4] == 211) 
                   {
+	          PionPx = Px[npriG4]*1000;
+	          PionPy = Py[npriG4]*1000;
+	          PionPz = Pz[npriG4]*1000;
                   PionEnergy = TrueTraj_E[npriG4][0]*1000;
                   h2DPionVertexActivity->Fill(step, EnergyStep*1000);
                   }
@@ -341,10 +379,24 @@ void NewAnalysis::Loop()
                   if (pdg[npriG4] == 13) {MuonVAEnergy = MuonVAEnergy + TrueTraj_E[npriG4][npriTrjPts] - TrueTraj_E[npriG4][npriTrjPts+1];}
                   if (pdg[npriG4] == 211) {PionVAEnergy = PionVAEnergy + TrueTraj_E[npriG4][npriTrjPts] - TrueTraj_E[npriG4][npriTrjPts+1];}
                   }
+
+	       // ---------------------------
+	       // --- Doing new DoCA here ---
+	       // ---------------------------
+               if (npriTrjPts>0)
+		  {
+		  for (int j = npriG4+1; j < no_primaries; j++)
+		     {
+                     for (int k = 1; k < NTrTrajPts[j]; k++)
+		        {
+		        double doca_checker = DoCA2(TrueTraj_X[npriG4][npriTrjPts], TrueTraj_Y[npriG4][npriTrjPts], TrueTraj_Z[npriG4][npriTrjPts], TrueTraj_X[j][k], TrueTraj_Y[j][k], TrueTraj_Z[j][k]);
+		        if (doca_checker < DoCA2_Event) {DoCA2_Event = doca_checker;}
+		        }
+	             }
+		  }
                }
             }
          std::cout<<"VAEnergy = "<<VAEnergy*1000<<std::endl;
-         //hCCCohVA->Fill(VAEnergy*1000);        
          // ----------------------------------------------------------------
 
 
@@ -539,6 +591,7 @@ void NewAnalysis::Loop()
 	    if (d1 <= d2) {closer = d1;}
 	    if (d2 < d1) {closer = d2;}
 	    hCCCohDoCA->Fill(closer);
+	    hCCCohDoCA2->Fill(DoCA2_Event);
             for (int n = 0; n < nfls_simpleFlashBeam; n++) 
                {
                hOpFlashPECCCoh->Fill(flsPe_simpleFlashBeam[n]);
@@ -547,6 +600,15 @@ void NewAnalysis::Loop()
             hCCCohVA->Fill(VAEnergy*1000);
             hCCCohMuonVA->Fill(MuonVAEnergy*1000);
             hCCCohPionVA->Fill(PionVAEnergy*1000);
+	    hMCTruthQ2CCCoh->Fill(Q2);
+	    hMCTruthPxMuon->Fill(MuonPx);
+	    hMCTruthPyMuon->Fill(MuonPy);
+	    hMCTruthPzMuon->Fill(MuonPz);
+	    hMCTruthEMuon->Fill(MuonEnergy);
+	    hMCTruthPxPion->Fill(PionPx);
+	    hMCTruthPyPion->Fill(PionPy);
+	    hMCTruthPzPion->Fill(PionPz);
+	    hMCTruthEPion->Fill(PionEnergy);
 	    }
 	 if (nmctrksInRange >= 2 && CCQE && checkFV )//&& containMuon && containProton) 
 	    {
@@ -655,6 +717,7 @@ void NewAnalysis::Loop()
    hCosmicConeAngle->Write();
 
    hCCCohDoCA->Write();
+   hCCCohDoCA2->Write();
    hCCQEDoCA->Write();
    hCCResDoCA->Write();
    hNCResDoCA->Write();
@@ -699,6 +762,18 @@ void NewAnalysis::Loop()
    hMuonEnergyVsConeAngle->Write();
    hPionEnergyVsConeAngle->Write();
    hQ2VsConeAngle->Write();
+
+   hMCTruthQ2CCCoh->Write();
+
+   hMCTruthPxMuon->Write();
+   hMCTruthPyMuon->Write();
+   hMCTruthPzMuon->Write();
+   hMCTruthEMuon->Write();
+
+   hMCTruthPxPion->Write();
+   hMCTruthPyPion->Write();
+   hMCTruthPzPion->Write();
+   hMCTruthEPion->Write();
 
    hOpFlashVx->Write();
    hOpFlashVy->Write();
