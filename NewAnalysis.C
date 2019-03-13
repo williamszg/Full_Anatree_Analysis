@@ -32,17 +32,17 @@ TH1D *hNCDISConeAngle = new TH1D("hNCDISConeAngle", "The Cone Angle for NC-DIS E
 TH1D *hCosmicConeAngle = new TH1D("hCosmicConeAngle", "The Cone Angle for Events with 2 or More Cosmic MCTracks", 181, -0.5, 180.5);
 
 TH1D *hCCCohDoCA = new TH1D("hCCCohDoCA", "The DoCA for CC-COH Events with 2 or More MCTracks in cm", 500, 0, 500);
-TH1D *hCCCohDoCA2 = new TH1D("hCCCohDoCA2", "The DoCA for CC-COH Events with 2 or More MCTracks in cm Using the Second Method", 500, 0, 500);
+TH1D *hCCCohDoCA2 = new TH1D("hCCCohDoCA2", "The DoCA for CC-COH Events with 2 or More MCTracks in cm Using the Second Method", 1000, 0, 100);
 TH1D *hCCQEDoCA = new TH1D("hCCQEDoCA", "The DoCA for CC-QE Events with 2 or More MCTracks in cm", 500, 0, 500);
-TH1D *hCCQEDoCA2 = new TH1D("hCCQEDoCA2", "The DoCA for CC-QE Events with 2 or More MCTracks in cm Using the Second Method", 500, 0, 500);
+TH1D *hCCQEDoCA2 = new TH1D("hCCQEDoCA2", "The DoCA for CC-QE Events with 2 or More MCTracks in cm Using the Second Method", 1000, 0, 100);
 TH1D *hCCResDoCA = new TH1D("hCCResDoCA", "The DoCA for CC-Res Events with 2 or More MCTracks in cm", 500, 0, 500);
-TH1D *hCCResDoCA2 = new TH1D("hCCResDoCA2", "The DoCA for CC-Res Events with 2 or More MCTracks in cm Using the Second Method", 500, 0, 500);
+TH1D *hCCResDoCA2 = new TH1D("hCCResDoCA2", "The DoCA for CC-Res Events with 2 or More MCTracks in cm Using the Second Method", 1000, 0, 100);
 TH1D *hNCResDoCA = new TH1D("hNCResDoCA", "The DoCA for NC-Res Events with 2 or More MCTracks in cm", 500, 0, 500);
-TH1D *hNCResDoCA2 = new TH1D("hNCResDoCA2", "The DoCA for NC-Res Events with 2 or More MCTracks in cm Using the Second Method", 500, 0, 500);
+TH1D *hNCResDoCA2 = new TH1D("hNCResDoCA2", "The DoCA for NC-Res Events with 2 or More MCTracks in cm Using the Second Method", 1000, 0, 100);
 TH1D *hNCDISDoCA = new TH1D("hNCDISDoCA", "The DoCA for NC-DIS Events with 2 or More MCTracks in cm", 500, 0, 500);
-TH1D *hNCDISDoCA2 = new TH1D("hNCDISDoCA2", "The DoCA for NC-DIS Events with 2 or More MCTracks in cm Using the Second Method", 500, 0, 500);
+TH1D *hNCDISDoCA2 = new TH1D("hNCDISDoCA2", "The DoCA for NC-DIS Events with 2 or More MCTracks in cm Using the Second Method", 1000, 0, 100);
 TH1D *hCosmicDoCA = new TH1D("hCosmicDoCA", "The DoCA for Events with 2 or More Cosmic MCTracks in cm", 500, 0, 500);
-TH1D *hCosmicDoCA2 = new TH1D("hCosmicDoCA2", "The DoCA for Events with 2 or More Cosmic MCTracks in cm Using the Second Method", 500, 0, 500);
+TH1D *hCosmicDoCA2 = new TH1D("hCosmicDoCA2", "The DoCA for Events with 2 or More Cosmic MCTracks in cm Using the Second Method", 1000, 0, 100);
 
 TH1D *hCCCohVA = new TH1D("hCCCohVA", "The Vertex Activity for CC-COH Events within 10cm of Vertex in MeV", 100, 0, 500);
 TH1D *hCCQEVA = new TH1D("hCCQEVA", "The Vertex Activity for CC-QE Events within 10cm of Vertex in MeV", 100, 0, 500);
@@ -83,7 +83,8 @@ TH2D *hMuonEnergyVsConeAngle = new TH2D("hMuonEnergyVsConeAngle", "Muon Energy V
 TH2D *hPionEnergyVsConeAngle = new TH2D("hPionEnergyVsConeAngle", "Pion Energy Vs Cone Angle for CCCoh Events", 181, -0.5, 180.5, 250, 0, 1500);
 TH2D *hQ2VsConeAngle = new TH2D("hQ2VsConeAngle", "Q2 Vs Cone Angle for CCCoh Events", 181, -0.5, 180.5, 250, 0, 1);
 
-TH1D *hMCTruthQ2CCCoh = new TH1D("hMCTruthQ2CCCoh", "The Q2 of CCCoh Events from MCTruth Information", 250, 0, 1);
+TH1D *hMCTruthQ2CCCoh = new TH1D("hMCTruthQ2CCCoh", "The Q^{2} of CCCoh Events from MCTruth Information", 250, 0, 1);
+TH1D *hMCTruthTCCCoh = new TH1D("hMCTruthTCCCoh", "The |t| of CCCoh Events from MCTruth Information", 250, 0, 1);
 
 TH1D *hMCTruthPxMuon = new TH1D("hMCTruthPxMuon", "The Momentum of the Muon in the X Direction for CCCoh", 250, 0, 1000);
 TH1D *hMCTruthPyMuon = new TH1D("hMCTruthPyMuon", "The Momentum of the Muon in the Y Direction for CCCoh", 250, 0, 1000);
@@ -324,9 +325,14 @@ void NewAnalysis::Loop()
 	 double PionPz = 0;
          double MuonVAEnergy = 0;
          double PionVAEnergy = 0;
+         double NuEnergy = enu_truth[0]*1000;
+	 double NuPx = NuEnergy*nu_dcosx_truth[0];
+	 double NuPy = NuEnergy*nu_dcosy_truth[0];
+	 double NuPz = NuEnergy*nu_dcosz_truth[0];
          double MuonEnergy = 0;
          double PionEnergy = 0;
          double Q2 = Q2_truth[i];
+	 double t = -999;
 	 double DoCA2_Event = 10000;
 
          // --------------------------------
@@ -360,7 +366,7 @@ void NewAnalysis::Loop()
                //std::cout<<"Step Distance = "<<step<<std::endl;
                //std::cout<<"Step Energy = "<<EnergyStep*1000<<std::endl; 
                h2DVertexActivity->Fill(step, EnergyStep*1000);
-
+              
                if (pdg[npriG4] == 13) 
                   {
 	          MuonPx = Px[npriG4]*1000;
@@ -603,10 +609,12 @@ void NewAnalysis::Loop()
                hOpFlashPECCCoh->Fill(flsPe_simpleFlashBeam[n]);
                std::cout<<"CCCoh PE number = "<<flsPe_simpleFlashBeam[n]<<std::endl;
                }
+	    t = abs(pow(NuEnergy - MuonEnergy - PionEnergy,2) - pow(NuPx - MuonPx - PionPx,2) - pow(NuPy - MuonPy - PionPy,2) - pow(NuPz - MuonPz - PionPz,2))/(1000000);
             hCCCohVA->Fill(VAEnergy*1000);
             hCCCohMuonVA->Fill(MuonVAEnergy*1000);
             hCCCohPionVA->Fill(PionVAEnergy*1000);
 	    hMCTruthQ2CCCoh->Fill(Q2);
+	    hMCTruthTCCCoh->Fill(t);
 	    hMCTruthPxMuon->Fill(MuonPx);
 	    hMCTruthPyMuon->Fill(MuonPy);
 	    hMCTruthPzMuon->Fill(MuonPz);
@@ -779,6 +787,7 @@ void NewAnalysis::Loop()
    hQ2VsConeAngle->Write();
 
    hMCTruthQ2CCCoh->Write();
+   hMCTruthTCCCoh->Write();
 
    hMCTruthPxMuon->Write();
    hMCTruthPyMuon->Write();
