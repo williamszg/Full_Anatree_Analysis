@@ -260,7 +260,7 @@ void NewAnalysis::Loop()
    Long64_t nbytes = 0, nb = 0;
 
    int Nentries = nentries;
-   //int Nentries = 10000;
+   //int Nentries = 15000;
 
    double POT = 0;
 
@@ -443,46 +443,48 @@ void NewAnalysis::Loop()
 	 if (NCRes && checkFV) {hNCResTableInformation->Fill(0);}
 	 if (NCDIS && checkFV) {hNCDISTableInformation->Fill(0);}
 
-         for (int j = 0; j < geant_list_size; j++)
+         std::cout<<"no_mctracks = "<<no_mctracks<<std::endl;
+
+         for (int j = 0; j < no_mctracks; j++)
 	    {
-	    double DeltaStartX = StartPointx_tpcAV[j] - Vx;
-	    double DeltaStartY = StartPointy_tpcAV[j] - Vy;
-	    double DeltaStartZ = StartPointz_tpcAV[j] - Vz;
+	    double DeltaStartX = mctrk_startX[j] - Vx;
+	    double DeltaStartY = mctrk_startY[j] - Vy;
+	    double DeltaStartZ = mctrk_startZ[j] - Vz;
 	    double DeltaStartMagnitude = sqrt(pow(DeltaStartX, 2) + pow(DeltaStartY, 2) + pow(DeltaStartZ, 2));
 
-            //std::cout<<"DeltaStartMagnitude = "<<DeltaStartMagnitude<<std::endl;
-            //std::cout<<"Vx = "<<Vx<<std::endl;
-            //std::cout<<"StartPointx_tpcAV[j] = "<<StartPointx_tpcAV[j]<<std::endl;
+            std::cout<<"DeltaStartMagnitude = "<<DeltaStartMagnitude<<std::endl;
+            std::cout<<"Vx = "<<Vx<<std::endl;
+            std::cout<<"mctrk_startX[j] = "<<mctrk_startX[j]<<std::endl;
 
-	    double DeltaEndX = EndPointx_tpcAV[j] - Vx;
-	    double DeltaEndY = EndPointy_tpcAV[j] - Vy;
-	    double DeltaEndZ = EndPointz_tpcAV[j] - Vz;
+	    double DeltaEndX = mctrk_endX[j] - Vx;
+	    double DeltaEndY = mctrk_endY[j] - Vy;
+	    double DeltaEndZ = mctrk_endZ[j] - Vz;
 	    double DeltaEndMagnitude = sqrt(pow(DeltaEndX, 2) + pow(DeltaEndY, 2) + pow(DeltaEndZ, 2));
 
-	    TVector3 track(EndPointx_tpcAV[j] - StartPointx_tpcAV[j], EndPointy_tpcAV[j] - StartPointy_tpcAV[j], EndPointz_tpcAV[j] - StartPointz_tpcAV[j]);
+	    TVector3 track(mctrk_endX[j] - mctrk_startX[j], mctrk_endY[j] - mctrk_startY[j], mctrk_endZ[j] - mctrk_startZ[j]);
 
-	    for (int l = j + 1; l < geant_list_size; l++)
+	    for (int l = j + 1; l < no_mctracks; l++)
 	       {
-               TVector3 track2(EndPointx_tpcAV[l] - StartPointx_tpcAV[l], EndPointy_tpcAV[l] - StartPointy_tpcAV[l], EndPointz_tpcAV[l] - StartPointz_tpcAV[l]);
+               TVector3 track2(mctrk_endX[l] - mctrk_startX[l], mctrk_endY[l] - mctrk_startY[l], mctrk_endZ[l] - mctrk_startZ[l]);
 
-	       if (checkFV && j >= no_primaries && l >= no_primaries) 
+	       if (checkFV && mctrk_origin[j] == 2 && mctrk_origin[l] == 2) 
 	          {
 	          hCosmicConeAngle->Fill(ConeAngle(track.X(), track.Y(), track.Z(), track2.X(), track2.Y(), track2.Z())*180/PI);
-	          double d1 = DoCA(Vx, Vy, Vz, StartPointx_tpcAV[j], StartPointy_tpcAV[j], StartPointz_tpcAV[j], EndPointx_tpcAV[j], EndPointy_tpcAV[j], EndPointz_tpcAV[j]);
-	          double d2 = DoCA(Vx, Vy, Vz, StartPointx_tpcAV[l], StartPointy_tpcAV[l], StartPointz_tpcAV[l], EndPointx_tpcAV[l], EndPointy_tpcAV[l], EndPointz_tpcAV[l]);
+	          double d1 = DoCA(Vx, Vy, Vz, mctrk_startX[j], mctrk_startY[j], mctrk_startZ[j], mctrk_endX[j], mctrk_endY[j], mctrk_endZ[j]);
+	          double d2 = DoCA(Vx, Vy, Vz, mctrk_startX[l], mctrk_startY[l], mctrk_startZ[l], mctrk_endX[l], mctrk_endY[l], mctrk_endZ[l]);
 	          if (d1 <= d2) {closer = d1;}
 	          if (d2 < d1) {closer = d2;}
 	          hCosmicDoCA->Fill(closer);
 	          hCosmicDoCA2->Fill(DoCA2_Event);
 
-	          if (geant_list_size - no_primaries >= 2)
+	          if (no_mctracks >= 2)
 		     {
 		     hCosmicStartVertexDistance->Fill(DeltaStartMagnitude);
 		     hCosmicEndVertexDistance->Fill(DeltaEndMagnitude);
 	             }
 	          }
 	       }
-	    if (checkFV && j <= no_primaries && no_primaries >= 2)
+	    if (checkFV && mctrk_origin[j] == 1 && no_mctracks >= 2)
 	       {
 	       hNuStartVertexDistance->Fill(DeltaStartMagnitude);
 	       hNuEndVertexDistance->Fill(DeltaEndMagnitude);
@@ -493,12 +495,12 @@ void NewAnalysis::Loop()
 	          hNuCCCohEndVertexDistance->Fill(DeltaEndMagnitude);
 	          }
 	       }
-	    if (pdg[j] == 13 && j <= no_primaries) 
+	    if (mctrk_pdg[j] == 13 && mctrk_origin[j] == 1) 
 	       {
 	       hasMuon = true;
 	       muonlength = mctrk_len_drifted[j];
-	       muonstart.SetXYZ(StartPointx_tpcAV[j], StartPointy_tpcAV[j], StartPointz_tpcAV[j]);
-	       muonend.SetXYZ(EndPointx_tpcAV[j], EndPointy_tpcAV[j], EndPointz_tpcAV[j]);
+	       muonstart.SetXYZ(mctrk_startX[j], mctrk_startY[j], mctrk_startZ[j]);
+	       muonend.SetXYZ(mctrk_endX[j], mctrk_endY[j], mctrk_endZ[j]);
                if (Within(true, muonstart.X(), muonstart.Y(), muonstart.Z()) && Within(true, muonend.X(), muonend.Y(), muonend.Z())) {containMuon = true;}
                if (Within(true, muonstart.X(), muonstart.Y(), muonstart.Z()))
                   {
@@ -507,43 +509,43 @@ void NewAnalysis::Loop()
 	          hNuMCTrackMuonZ->Fill(muonstart.Z());
                   }
 	       }
-	    if (pdg[j] == 211 && j <= no_primaries) 
+	    if (mctrk_pdg[j] == 211 && mctrk_origin[j] == 1) 
 	       {
 	       hasPion = true;
 	       pionlength = mctrk_len_drifted[j];
-	       pionstart.SetXYZ(StartPointx_tpcAV[j], StartPointy_tpcAV[j], StartPointz_tpcAV[j]);
-	       pionend.SetXYZ(EndPointx_tpcAV[j], EndPointy_tpcAV[j], EndPointz_tpcAV[j]);
+	       pionstart.SetXYZ(mctrk_startX[j], mctrk_startY[j], mctrk_startZ[j]);
+	       pionend.SetXYZ(mctrk_endX[j], mctrk_endY[j], mctrk_endZ[j]);
                if (Within(true, pionstart.X(), pionstart.Y(), pionstart.Z()) && Within(true, pionend.X(), pionend.Y(), pionend.Z())) {containPion = true;}
 	       }
-	    if (pdg[j] == -211 && j <= no_primaries) 
+	    if (mctrk_pdg[j] == -211 && mctrk_origin[j] == 1) 
 	       {
 	       hasPion2 = true;
-	       pion2start.SetXYZ(StartPointx_tpcAV[j], StartPointy_tpcAV[j], StartPointz_tpcAV[j]);
-	       pion2end.SetXYZ(EndPointx_tpcAV[j], EndPointy_tpcAV[j], EndPointz_tpcAV[j]);
+	       pion2start.SetXYZ(mctrk_startX[j], mctrk_startY[j], mctrk_startZ[j]);
+	       pion2end.SetXYZ(mctrk_endX[j], mctrk_endY[j], mctrk_endZ[j]);
                if (Within(true, pion2start.X(), pion2start.Y(), pion2start.Z()) && Within(true, pion2end.X(), pion2end.Y(), pion2end.Z())) {containPion2 = true;}
 	       }
-	    if (pdg[j] == 2212 && j <= no_primaries) 
+	    if (mctrk_pdg[j] == 2212 && mctrk_origin[j] == 1) 
 	       {
 	       hasProton = true;
-	       protonstart.SetXYZ(StartPointx_tpcAV[j], StartPointy_tpcAV[j], StartPointz_tpcAV[j]);
-	       protonend.SetXYZ(EndPointx_tpcAV[j], EndPointy_tpcAV[j], EndPointz_tpcAV[j]);
+	       protonstart.SetXYZ(mctrk_startX[j], mctrk_startY[j], mctrk_startZ[j]);
+	       protonend.SetXYZ(mctrk_endX[j], mctrk_endY[j], mctrk_endZ[j]);
                if (Within(true, protonstart.X(), protonstart.Y(), protonstart.Z()) && Within(true, protonend.X(), protonend.Y(), protonend.Z())) {containProton = true;}
 	       }
-	    if (DeltaStartMagnitude < VertexRangeCheck && j <= no_primaries) 
+	    if (DeltaStartMagnitude < VertexRangeCheck && mctrk_origin[j] == 1) 
 	       {
 	       nmctrksInRange++;
-	       if (pdg[j] == 13) {muon = track;}
-	       if (pdg[j] == 211) {pion = track;}
-	       if (pdg[j] == -211) {pion2 = track;}
-	       if (pdg[j] == 2212) {proton = track;}
+	       if (mctrk_pdg[j] == 13) {muon = track;}
+	       if (mctrk_pdg[j] == 211) {pion = track;}
+	       if (mctrk_pdg[j] == -211) {pion2 = track;}
+	       if (mctrk_pdg[j] == 2212) {proton = track;}
 	       }
-            if (DeltaStartMagnitude > VertexRangeCheck && DeltaEndMagnitude < VertexRangeCheck && j <= no_primaries) 
+            if (DeltaStartMagnitude > VertexRangeCheck && DeltaEndMagnitude < VertexRangeCheck && mctrk_origin[j] == 1) 
 	       {
 	       nmctrksInRange++;
-	       if (pdg[j] == 13) {muon = track;}
-	       if (pdg[j] == 211) {pion = track;}
-	       if (pdg[j] == -211) {pion2 = track;}
-	       if (pdg[j] == 2212) {proton = track;}
+	       if (mctrk_pdg[j] == 13) {muon = track;}
+	       if (mctrk_pdg[j] == 211) {pion = track;}
+	       if (mctrk_pdg[j] == -211) {pion2 = track;}
+	       if (mctrk_pdg[j] == 2212) {proton = track;}
 	       }
 	    }
 
