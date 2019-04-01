@@ -272,8 +272,6 @@ void NewAnalysis::Loop()
 
    for (Long64_t jentry=0; jentry<Nentries; jentry++) 
       {
-      //if (jentry == 5376) continue; // File 4 Bad Events
-      //if (jentry == 253 || jentry == 7717 || jentry == 33027 || jentry == 52148 || jentry == 58491 || jentry == 76449 || jentry == 85966 || jentry == 27220) continue; // File 3 Bad Events
 
       Long64_t ientry = LoadTree(jentry);
       if (ientry < 0) break;
