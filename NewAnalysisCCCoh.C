@@ -1,5 +1,5 @@
-#define NewAnalysis_cxx
-#include "NewAnalysis.h"
+#define NewAnalysisCCCoh_cxx
+#include "NewAnalysisCCCoh.h"
 #include <TH2.h>
 #include <TStyle.h>
 #include <TCanvas.h>
@@ -253,7 +253,7 @@ double Distance(double x0, double y0, double z0, double x1, double y1, double z1
 // -----------------------------------
 
 
-void NewAnalysis::Loop()
+void NewAnalysisCCCoh::Loop()
 {
    if (fChain == 0) return;
    Long64_t nentries = fChain->GetEntriesFast();
@@ -443,8 +443,6 @@ void NewAnalysis::Loop()
 	 if (NCRes && checkFV) {hNCResTableInformation->Fill(0);}
 	 if (NCDIS && checkFV) {hNCDISTableInformation->Fill(0);}
 
-         std::cout<<"no_mctracks = "<<no_mctracks<<std::endl;
-
          for (int j = 0; j < no_mctracks; j++)
 	    {
 	    double DeltaStartX = mctrk_startX[j] - Vx;
@@ -452,9 +450,9 @@ void NewAnalysis::Loop()
 	    double DeltaStartZ = mctrk_startZ[j] - Vz;
 	    double DeltaStartMagnitude = sqrt(pow(DeltaStartX, 2) + pow(DeltaStartY, 2) + pow(DeltaStartZ, 2));
 
-            std::cout<<"DeltaStartMagnitude = "<<DeltaStartMagnitude<<std::endl;
-            std::cout<<"Vx = "<<Vx<<std::endl;
-            std::cout<<"mctrk_startX[j] = "<<mctrk_startX[j]<<std::endl;
+            //std::cout<<"DeltaStartMagnitude = "<<DeltaStartMagnitude<<std::endl;
+            //std::cout<<"Vx = "<<Vx<<std::endl;
+            //std::cout<<"mctrk_startX[j] = "<<mctrk_startX[j]<<std::endl;
 
 	    double DeltaEndX = mctrk_endX[j] - Vx;
 	    double DeltaEndY = mctrk_endY[j] - Vy;
@@ -716,7 +714,7 @@ void NewAnalysis::Loop()
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
    // %%% Saving Histograms to a File %%%
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-   TFile *TCCCohInfo = new TFile("Histograms_NewAnalysis.root", "RECREATE");
+   TFile *TCCCohInfo = new TFile("Histograms_NewAnalysis_CCCoh.root", "RECREATE");
 
    hNuVtxX_DV->Write();
    hNuVtxY_DV->Write();
@@ -812,4 +810,4 @@ void NewAnalysis::Loop()
    hOpFlashZ->Write();
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-} // End NewAnalysis Loop
+} // End NewAnalysisCCCoh Loop

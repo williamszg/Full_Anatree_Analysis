@@ -1,20 +1,33 @@
 {
-TFile *f = new TFile("./AllFiles/Histograms_NewAnalysis_All.root");
+TFile *f = new TFile("./Histograms_NewAnalysis_BKGD.root");
+TFile *f2 = new TFile("./Histograms_NewAnalysis_CCCoh.root");
 
 
-TH1D *hCCCohConeAngle = (TH1D*)f->Get("hCCCohConeAngle");
+TH1D *hCCCohConeAngle = (TH1D*)f2->Get("hCCCohConeAngle");
 TH1D *hCCQEConeAngle = (TH1D*)f->Get("hCCQEConeAngle");
 TH1D *hCCResConeAngle = (TH1D*)f->Get("hCCResConeAngle");
 TH1D *hNCResConeAngle = (TH1D*)f->Get("hNCResConeAngle");
 TH1D *hNCDISConeAngle = (TH1D*)f->Get("hNCDISConeAngle");
 TH1D *hCosmicConeAngle = (TH1D*)f->Get("hCosmicConeAngle");
 
-TH1D *hCCCohDoCA = (TH1D*)f->Get("hCCCohDoCA");
-TH1D *hCCQEDoCA = (TH1D*)f->Get("hCCQEDoCA");
-TH1D *hCCResDoCA = (TH1D*)f->Get("hCCResDoCA");
-TH1D *hNCResDoCA = (TH1D*)f->Get("hNCResDoCA");
-TH1D *hNCDISDoCA = (TH1D*)f->Get("hNCDISDoCA");
-TH1D *hCosmicDoCA = (TH1D*)f->Get("hCosmicDoCA");
+TH1D *hCCCohDoCA = (TH1D*)f2->Get("hCCCohDoCA2");
+TH1D *hCCQEDoCA = (TH1D*)f->Get("hCCQEDoCA2");
+TH1D *hCCResDoCA = (TH1D*)f->Get("hCCResDoCA2");
+TH1D *hNCResDoCA = (TH1D*)f->Get("hNCResDoCA2");
+TH1D *hNCDISDoCA = (TH1D*)f->Get("hNCDISDoCA2");
+TH1D *hCosmicDoCA = (TH1D*)f->Get("hCosmicDoCA2");
+
+TH1D *hCCCohVA = (TH1D*)f2->Get("hCCCohVA");
+TH1D *hCCQEVA = (TH1D*)f->Get("hCCQEVA");
+TH1D *hCCResVA = (TH1D*)f->Get("hCCResVA");
+TH1D *hNCResVA = (TH1D*)f->Get("hNCResVA");
+TH1D *hNCDISVA = (TH1D*)f->Get("hNCDISVA");
+TH1D *hCosmicVA = (TH1D*)f->Get("hCosmicVA");
+
+TH1D *hOpFlashPECCCoh = (TH1D*)f2->Get("hOpFlashPECCCoh");
+TH1D *hOpFlashPECosmic = (TH1D*)f->Get("hOpFlashPECosmic");
+TH1D *hOpFlashPECCOther = (TH1D*)f->Get("hOpFlashPECCOther");
+TH1D *hOpFlashPENCOther = (TH1D*)f->Get("hOpFlashPENCOther");
 
 
 hCCCohConeAngle->Sumw2();
@@ -30,6 +43,18 @@ hCCResDoCA->Sumw2();
 hNCResDoCA->Sumw2();
 hNCDISDoCA->Sumw2();
 hCosmicDoCA->Sumw2();
+
+hCCCohVA->Sumw2();
+hCCQEVA->Sumw2();
+hCCResVA->Sumw2();
+hNCResVA->Sumw2();
+hNCDISVA->Sumw2();
+hCosmicVA->Sumw2();
+
+hOpFlashPECCCoh->Sumw2();
+hOpFlashPECosmic->Sumw2();
+hOpFlashPECCOther->Sumw2();
+hOpFlashPENCOther->Sumw2();
 
 
 TCanvas *c0 = new TCanvas("c0", "Cone Angles");
@@ -53,7 +78,7 @@ hCCQEConeAngle->SetLineWidth(2);
 hCCResConeAngle->SetLineColor(kGreen);
 hCCResConeAngle->SetLineWidth(2);
 
-hNCResConeAngle->SetLineColor(kYellow);
+hNCResConeAngle->SetLineColor(kCyan);
 hNCResConeAngle->SetLineWidth(2);
 
 hNCDISConeAngle->SetLineColor(kMagenta);
@@ -115,7 +140,7 @@ hCCQEDoCA->SetLineWidth(2);
 hCCResDoCA->SetLineColor(kGreen);
 hCCResDoCA->SetLineWidth(2);
 
-hNCResDoCA->SetLineColor(kYellow);
+hNCResDoCA->SetLineColor(kCyan);
 hNCResDoCA->SetLineWidth(2);
 
 hNCDISDoCA->SetLineColor(kMagenta);
@@ -135,7 +160,7 @@ hCCQEDoCA->Draw("histosame");
 hCCResDoCA->Draw("histosame");
 hNCResDoCA->Draw("histosame");
 hNCDISDoCA->Draw("histosame");
-hCosmicDoCA->Draw("histosame");
+//hCosmicDoCA->Draw("histosame");
 
 
 // ### Defining the legend for the plot ###
@@ -154,4 +179,116 @@ leg1->AddEntry(hNCResDoCA,"NC-Res");
 leg1->AddEntry(hNCDISDoCA,"NC-DIS");
 leg1->AddEntry(hCosmicDoCA,"Cosmic");
 leg1->Draw();
+
+
+TCanvas *c2 = new TCanvas("c2", "Vertex Activity");
+c2->SetTicks();
+c2->SetFillColor(kWhite);
+
+// Area normalzing the plot 
+hCCCohVA->Scale(1/hCCCohVA->Integral());
+hCCQEVA->Scale(1/hCCQEVA->Integral());
+hCCResVA->Scale(1/hCCResVA->Integral());
+hNCResVA->Scale(1/hNCResVA->Integral());
+hNCDISVA->Scale(1/hNCDISVA->Integral());
+hCosmicVA->Scale(1/hCosmicVA->Integral());
+
+hCCCohVA->SetLineColor(kBlue);
+hCCCohVA->SetLineWidth(2);
+
+hCCQEVA->SetLineColor(kRed);
+hCCQEVA->SetLineWidth(2);
+
+hCCResVA->SetLineColor(kGreen);
+hCCResVA->SetLineWidth(2);
+
+hNCResVA->SetLineColor(kCyan);
+hNCResVA->SetLineWidth(2);
+
+hNCDISVA->SetLineColor(kMagenta);
+hNCDISVA->SetLineWidth(2);
+
+hCosmicVA->SetLineColor(kBlack);
+hCosmicVA->SetLineWidth(2);
+
+hCCCohVA->GetXaxis()->SetTitle("Vertex Activity [MeV]");
+hCCCohVA->GetXaxis()->CenterTitle();
+
+hCCCohVA->GetYaxis()->SetTitle("Normalized Events [Number/Degree]");
+hCCCohVA->GetYaxis()->CenterTitle();
+
+hCCCohVA->Draw("histo");
+hCCQEVA->Draw("histosame");
+hCCResVA->Draw("histosame");
+hNCResVA->Draw("histosame");
+hNCDISVA->Draw("histosame");
+hCosmicVA->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg2 = new TLegend();
+leg2 = new TLegend(0.58,0.65,0.88,0.88);
+leg2->SetTextSize(0.04);
+leg2->SetTextAlign(12);
+leg2->SetFillColor(kWhite);
+leg2->SetLineColor(kWhite);
+leg2->SetShadowColor(kWhite);
+leg2->SetHeader("Channel");
+leg2->AddEntry(hCCCohVA,"CC-COH");
+leg2->AddEntry(hCCQEVA,"CC-QE");
+leg2->AddEntry(hCCResVA,"CC-Res");
+leg2->AddEntry(hNCResVA,"NC-Res");
+leg2->AddEntry(hNCDISVA,"NC-DIS");
+leg2->AddEntry(hCosmicVA,"Cosmic");
+leg2->Draw();
+
+
+TCanvas *c3 = new TCanvas("c3", "OpFlash PE");
+c3->SetTicks();
+c3->SetFillColor(kWhite);
+
+// Area normalzing the plot 
+hOpFlashPECCCoh->Scale(1/hOpFlashPECCCoh->Integral());
+hOpFlashPECosmic->Scale(1/hOpFlashPECosmic->Integral());
+hOpFlashPECCOther->Scale(1/hOpFlashPECCOther->Integral());
+hOpFlashPENCOther->Scale(1/hOpFlashPENCOther->Integral());
+
+hOpFlashPECCCoh->SetLineColor(kBlue);
+hOpFlashPECCCoh->SetLineWidth(2);
+
+hOpFlashPECosmic->SetLineColor(kRed);
+hOpFlashPECosmic->SetLineWidth(2);
+
+hOpFlashPECCOther->SetLineColor(kGreen);
+hOpFlashPECCOther->SetLineWidth(2);
+
+hOpFlashPENCOther->SetLineColor(kCyan);
+hOpFlashPENCOther->SetLineWidth(2);
+
+hOpFlashPECosmic->GetXaxis()->SetTitle("Number of PE [Number]");
+hOpFlashPECosmic->GetXaxis()->CenterTitle();
+
+hOpFlashPECosmic->GetYaxis()->SetTitle("Normalized Events [Number]");
+hOpFlashPECosmic->GetYaxis()->CenterTitle();
+
+hOpFlashPECosmic->Draw("histo");
+hOpFlashPENCOther->Draw("histosame");
+hOpFlashPECCOther->Draw("histosame");
+hOpFlashPECCCoh->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg3 = new TLegend();
+leg3 = new TLegend(0.58,0.65,0.88,0.88);
+leg3->SetTextSize(0.04);
+leg3->SetTextAlign(12);
+leg3->SetFillColor(kWhite);
+leg3->SetLineColor(kWhite);
+leg3->SetShadowColor(kWhite);
+leg3->SetHeader("Channel");
+leg3->AddEntry(hOpFlashPECCCoh,"CC-COH");
+leg3->AddEntry(hOpFlashPECosmic,"Cosmic");
+leg3->AddEntry(hOpFlashPECCOther,"CC-Other");
+leg3->AddEntry(hOpFlashPENCOther,"NC-Other");
+leg3->Draw();
 }

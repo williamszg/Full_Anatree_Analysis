@@ -1,12 +1,12 @@
 //////////////////////////////////////////////////////////
 // This class has been automatically generated on
-// Mon Feb  4 14:38:03 2019 by ROOT version 6.12/06
+// Mon Apr  1 07:59:47 2019 by ROOT version 6.12/06
 // from TTree anatree/analysis tree
-// found on file: ana_hist_ALL.root
+// found on file: ana_hist_ALL_BKGD.root
 //////////////////////////////////////////////////////////
 
-#ifndef NewAnalysisCCCoh_h
-#define NewAnalysisCCCoh_h
+#ifndef NewAnalysisBKGD_h
+#define NewAnalysisBKGD_h
 
 #include <TROOT.h>
 #include <TChain.h>
@@ -18,7 +18,7 @@
 #include "vector"
 #include "vector"
 
-class NewAnalysisCCCoh {
+class NewAnalysisBKGD {
 public :
    TTree          *fChain;   //!pointer to the analyzed TTree or TChain
    Int_t           fCurrent; //!current Tree number in a TChain
@@ -52,24 +52,24 @@ public :
    vector<bool>    *swtrigger_triggered;
    Int_t           no_hits;
    Int_t           no_hits_stored;
-   Short_t         hit_plane[36676];   //[no_hits_stored]
-   Short_t         hit_wire[36676];   //[no_hits_stored]
-   Short_t         hit_channel[36676];   //[no_hits_stored]
-   Float_t         hit_peakT[36676];   //[no_hits_stored]
-   Float_t         hit_charge[36676];   //[no_hits_stored]
-   Float_t         hit_ph[36676];   //[no_hits_stored]
-   Float_t         hit_startT[36676];   //[no_hits_stored]
-   Float_t         hit_endT[36676];   //[no_hits_stored]
-   Float_t         hit_rms[36676];   //[no_hits_stored]
-   Float_t         hit_trueX[36676];   //[no_hits_stored]
-   Float_t         hit_goodnessOfFit[36676];   //[no_hits_stored]
-   Short_t         hit_multiplicity[36676];   //[no_hits_stored]
-   Short_t         hit_trkid[36676];   //[no_hits_stored]
-   Short_t         hit_trkKey[36676];   //[no_hits_stored]
-   Short_t         hit_clusterid[36676];   //[no_hits_stored]
-   Short_t         hit_clusterKey[36676];   //[no_hits_stored]
-   Float_t         hit_nelec[36676];   //[no_hits_stored]
-   Float_t         hit_energy[36676];   //[no_hits_stored]
+   Short_t         hit_plane[40000];   //[no_hits_stored]
+   Short_t         hit_wire[40000];   //[no_hits_stored]
+   Short_t         hit_channel[40000];   //[no_hits_stored]
+   Float_t         hit_peakT[40000];   //[no_hits_stored]
+   Float_t         hit_charge[40000];   //[no_hits_stored]
+   Float_t         hit_ph[40000];   //[no_hits_stored]
+   Float_t         hit_startT[40000];   //[no_hits_stored]
+   Float_t         hit_endT[40000];   //[no_hits_stored]
+   Float_t         hit_rms[40000];   //[no_hits_stored]
+   Float_t         hit_trueX[40000];   //[no_hits_stored]
+   Float_t         hit_goodnessOfFit[40000];   //[no_hits_stored]
+   Short_t         hit_multiplicity[40000];   //[no_hits_stored]
+   Short_t         hit_trkid[40000];   //[no_hits_stored]
+   Short_t         hit_trkKey[40000];   //[no_hits_stored]
+   Short_t         hit_clusterid[40000];   //[no_hits_stored]
+   Short_t         hit_clusterKey[40000];   //[no_hits_stored]
+   Float_t         hit_nelec[40000];   //[no_hits_stored]
+   Float_t         hit_energy[40000];   //[no_hits_stored]
    Short_t         nclusters;
    Short_t         clusterId[1];   //[nclusters]
    Short_t         clusterView[1];   //[nclusters]
@@ -97,283 +97,283 @@ public :
    Char_t          kNNeutrinoVertexAlgos;
    Char_t          kNShowerAlgos;
    Int_t           mcevts_truth;
-   Int_t           nuPDG_truth[1];   //[mcevts_truth]
-   Int_t           ccnc_truth[1];   //[mcevts_truth]
-   Int_t           mode_truth[1];   //[mcevts_truth]
-   Float_t         enu_truth[1];   //[mcevts_truth]
-   Float_t         Q2_truth[1];   //[mcevts_truth]
-   Float_t         W_truth[1];   //[mcevts_truth]
-   Float_t         X_truth[1];   //[mcevts_truth]
-   Float_t         Y_truth[1];   //[mcevts_truth]
-   Int_t           hitnuc_truth[1];   //[mcevts_truth]
-   Float_t         nuvtxx_truth[1];   //[mcevts_truth]
-   Float_t         nuvtxy_truth[1];   //[mcevts_truth]
-   Float_t         nuvtxz_truth[1];   //[mcevts_truth]
-   Float_t         sp_charge_corrected_nuvtxx_truth[1];   //[mcevts_truth]
-   Float_t         sp_charge_corrected_nuvtxy_truth[1];   //[mcevts_truth]
-   Float_t         sp_charge_corrected_nuvtxz_truth[1];   //[mcevts_truth]
-   Float_t         nu_dcosx_truth[1];   //[mcevts_truth]
-   Float_t         nu_dcosy_truth[1];   //[mcevts_truth]
-   Float_t         nu_dcosz_truth[1];   //[mcevts_truth]
-   Float_t         lep_mom_truth[1];   //[mcevts_truth]
-   Float_t         lep_dcosx_truth[1];   //[mcevts_truth]
-   Float_t         lep_dcosy_truth[1];   //[mcevts_truth]
-   Float_t         lep_dcosz_truth[1];   //[mcevts_truth]
-   Float_t         vx_flux[1];   //[mcevts_truth]
-   Float_t         vy_flux[1];   //[mcevts_truth]
-   Float_t         vz_flux[1];   //[mcevts_truth]
-   Float_t         pdpx_flux[1];   //[mcevts_truth]
-   Float_t         pdpy_flux[1];   //[mcevts_truth]
-   Float_t         pdpz_flux[1];   //[mcevts_truth]
-   Float_t         ppdxdz_flux[1];   //[mcevts_truth]
-   Float_t         ppdydz_flux[1];   //[mcevts_truth]
-   Float_t         pppz_flux[1];   //[mcevts_truth]
-   Int_t           ptype_flux[1];   //[mcevts_truth]
-   Float_t         ppvx_flux[1];   //[mcevts_truth]
-   Float_t         ppvy_flux[1];   //[mcevts_truth]
-   Float_t         ppvz_flux[1];   //[mcevts_truth]
-   Float_t         muparpx_flux[1];   //[mcevts_truth]
-   Float_t         muparpy_flux[1];   //[mcevts_truth]
-   Float_t         muparpz_flux[1];   //[mcevts_truth]
-   Float_t         mupare_flux[1];   //[mcevts_truth]
-   Int_t           tgen_flux[1];   //[mcevts_truth]
-   Int_t           tgptype_flux[1];   //[mcevts_truth]
-   Float_t         tgppx_flux[1];   //[mcevts_truth]
-   Float_t         tgppy_flux[1];   //[mcevts_truth]
-   Float_t         tgppz_flux[1];   //[mcevts_truth]
-   Float_t         tprivx_flux[1];   //[mcevts_truth]
-   Float_t         tprivy_flux[1];   //[mcevts_truth]
-   Float_t         tprivz_flux[1];   //[mcevts_truth]
-   Float_t         dk2gen_flux[1];   //[mcevts_truth]
-   Float_t         gen2vtx_flux[1];   //[mcevts_truth]
-   Float_t         tpx_flux[1];   //[mcevts_truth]
-   Float_t         tpy_flux[1];   //[mcevts_truth]
-   Float_t         tpz_flux[1];   //[mcevts_truth]
-   Int_t           tptype_flux[1];   //[mcevts_truth]
+   Int_t           nuPDG_truth[2];   //[mcevts_truth]
+   Int_t           ccnc_truth[2];   //[mcevts_truth]
+   Int_t           mode_truth[2];   //[mcevts_truth]
+   Float_t         enu_truth[2];   //[mcevts_truth]
+   Float_t         Q2_truth[2];   //[mcevts_truth]
+   Float_t         W_truth[2];   //[mcevts_truth]
+   Float_t         X_truth[2];   //[mcevts_truth]
+   Float_t         Y_truth[2];   //[mcevts_truth]
+   Int_t           hitnuc_truth[2];   //[mcevts_truth]
+   Float_t         nuvtxx_truth[2];   //[mcevts_truth]
+   Float_t         nuvtxy_truth[2];   //[mcevts_truth]
+   Float_t         nuvtxz_truth[2];   //[mcevts_truth]
+   Float_t         sp_charge_corrected_nuvtxx_truth[2];   //[mcevts_truth]
+   Float_t         sp_charge_corrected_nuvtxy_truth[2];   //[mcevts_truth]
+   Float_t         sp_charge_corrected_nuvtxz_truth[2];   //[mcevts_truth]
+   Float_t         nu_dcosx_truth[2];   //[mcevts_truth]
+   Float_t         nu_dcosy_truth[2];   //[mcevts_truth]
+   Float_t         nu_dcosz_truth[2];   //[mcevts_truth]
+   Float_t         lep_mom_truth[2];   //[mcevts_truth]
+   Float_t         lep_dcosx_truth[2];   //[mcevts_truth]
+   Float_t         lep_dcosy_truth[2];   //[mcevts_truth]
+   Float_t         lep_dcosz_truth[2];   //[mcevts_truth]
+   Float_t         vx_flux[2];   //[mcevts_truth]
+   Float_t         vy_flux[2];   //[mcevts_truth]
+   Float_t         vz_flux[2];   //[mcevts_truth]
+   Float_t         pdpx_flux[2];   //[mcevts_truth]
+   Float_t         pdpy_flux[2];   //[mcevts_truth]
+   Float_t         pdpz_flux[2];   //[mcevts_truth]
+   Float_t         ppdxdz_flux[2];   //[mcevts_truth]
+   Float_t         ppdydz_flux[2];   //[mcevts_truth]
+   Float_t         pppz_flux[2];   //[mcevts_truth]
+   Int_t           ptype_flux[2];   //[mcevts_truth]
+   Float_t         ppvx_flux[2];   //[mcevts_truth]
+   Float_t         ppvy_flux[2];   //[mcevts_truth]
+   Float_t         ppvz_flux[2];   //[mcevts_truth]
+   Float_t         muparpx_flux[2];   //[mcevts_truth]
+   Float_t         muparpy_flux[2];   //[mcevts_truth]
+   Float_t         muparpz_flux[2];   //[mcevts_truth]
+   Float_t         mupare_flux[2];   //[mcevts_truth]
+   Int_t           tgen_flux[2];   //[mcevts_truth]
+   Int_t           tgptype_flux[2];   //[mcevts_truth]
+   Float_t         tgppx_flux[2];   //[mcevts_truth]
+   Float_t         tgppy_flux[2];   //[mcevts_truth]
+   Float_t         tgppz_flux[2];   //[mcevts_truth]
+   Float_t         tprivx_flux[2];   //[mcevts_truth]
+   Float_t         tprivy_flux[2];   //[mcevts_truth]
+   Float_t         tprivz_flux[2];   //[mcevts_truth]
+   Float_t         dk2gen_flux[2];   //[mcevts_truth]
+   Float_t         gen2vtx_flux[2];   //[mcevts_truth]
+   Float_t         tpx_flux[2];   //[mcevts_truth]
+   Float_t         tpy_flux[2];   //[mcevts_truth]
+   Float_t         tpz_flux[2];   //[mcevts_truth]
+   Int_t           tptype_flux[2];   //[mcevts_truth]
    Int_t           genie_no_primaries;
-   Int_t           genie_primaries_pdg[28];   //[genie_no_primaries]
-   Float_t         genie_Eng[28];   //[genie_no_primaries]
-   Float_t         genie_Px[28];   //[genie_no_primaries]
-   Float_t         genie_Py[28];   //[genie_no_primaries]
-   Float_t         genie_Pz[28];   //[genie_no_primaries]
-   Float_t         genie_P[28];   //[genie_no_primaries]
-   Int_t           genie_status_code[28];   //[genie_no_primaries]
-   Float_t         genie_mass[28];   //[genie_no_primaries]
-   Int_t           genie_trackID[28];   //[genie_no_primaries]
-   Int_t           genie_ND[28];   //[genie_no_primaries]
-   Int_t           genie_mother[28];   //[genie_no_primaries]
+   Int_t           genie_primaries_pdg[69];   //[genie_no_primaries]
+   Float_t         genie_Eng[69];   //[genie_no_primaries]
+   Float_t         genie_Px[69];   //[genie_no_primaries]
+   Float_t         genie_Py[69];   //[genie_no_primaries]
+   Float_t         genie_Pz[69];   //[genie_no_primaries]
+   Float_t         genie_P[69];   //[genie_no_primaries]
+   Int_t           genie_status_code[69];   //[genie_no_primaries]
+   Float_t         genie_mass[69];   //[genie_no_primaries]
+   Int_t           genie_trackID[69];   //[genie_no_primaries]
+   Int_t           genie_ND[69];   //[genie_no_primaries]
+   Int_t           genie_mother[69];   //[genie_no_primaries]
    Int_t           no_primaries;
    Int_t           geant_list_size;
    Int_t           geant_list_size_in_tpcAV;
-   Int_t           pdg[229];   //[geant_list_size]
-   Int_t           status[229];   //[geant_list_size]
-   Float_t         Mass[229];   //[geant_list_size]
-   Float_t         Eng[229];   //[geant_list_size]
-   Float_t         EndE[229];   //[geant_list_size]
-   Float_t         Px[229];   //[geant_list_size]
-   Float_t         Py[229];   //[geant_list_size]
-   Float_t         Pz[229];   //[geant_list_size]
-   Float_t         P[229];   //[geant_list_size]
-   Float_t         StartPointx[229];   //[geant_list_size]
-   Float_t         StartPointy[229];   //[geant_list_size]
-   Float_t         StartPointz[229];   //[geant_list_size]
-   Float_t         sp_charge_corrected_StartPointx[229];   //[geant_list_size]
-   Float_t         sp_charge_corrected_StartPointy[229];   //[geant_list_size]
-   Float_t         sp_charge_corrected_StartPointz[229];   //[geant_list_size]
-   Float_t         StartT[229];   //[geant_list_size]
-   Float_t         EndPointx[229];   //[geant_list_size]
-   Float_t         EndPointy[229];   //[geant_list_size]
-   Float_t         EndPointz[229];   //[geant_list_size]
-   Float_t         sp_charge_corrected_EndPointx[229];   //[geant_list_size]
-   Float_t         sp_charge_corrected_EndPointy[229];   //[geant_list_size]
-   Float_t         sp_charge_corrected_EndPointz[229];   //[geant_list_size]
-   Float_t         EndT[229];   //[geant_list_size]
-   Float_t         theta[229];   //[geant_list_size]
-   Float_t         phi[229];   //[geant_list_size]
-   Float_t         theta_xz[229];   //[geant_list_size]
-   Float_t         theta_yz[229];   //[geant_list_size]
-   Float_t         pathlen[229];   //[geant_list_size]
-   Int_t           inTPCActive[229];   //[geant_list_size]
-   Float_t         StartPointx_tpcAV[229];   //[geant_list_size]
-   Float_t         StartPointy_tpcAV[229];   //[geant_list_size]
-   Float_t         StartPointz_tpcAV[229];   //[geant_list_size]
-   Float_t         sp_charge_corrected_StartPointx_tpcAV[229];   //[geant_list_size]
-   Float_t         sp_charge_corrected_StartPointy_tpcAV[229];   //[geant_list_size]
-   Float_t         sp_charge_corrected_StartPointz_tpcAV[229];   //[geant_list_size]
-   Float_t         StartT_tpcAV[229];   //[geant_list_size]
-   Float_t         StartE_tpcAV[229];   //[geant_list_size]
-   Float_t         StartP_tpcAV[229];   //[geant_list_size]
-   Float_t         StartPx_tpcAV[229];   //[geant_list_size]
-   Float_t         StartPy_tpcAV[229];   //[geant_list_size]
-   Float_t         StartPz_tpcAV[229];   //[geant_list_size]
-   Float_t         EndPointx_tpcAV[229];   //[geant_list_size]
-   Float_t         EndPointy_tpcAV[229];   //[geant_list_size]
-   Float_t         EndPointz_tpcAV[229];   //[geant_list_size]
-   Float_t         sp_charge_corrected_EndPointx_tpcAV[229];   //[geant_list_size]
-   Float_t         sp_charge_corrected_EndPointy_tpcAV[229];   //[geant_list_size]
-   Float_t         sp_charge_corrected_EndPointz_tpcAV[229];   //[geant_list_size]
-   Float_t         EndT_tpcAV[229];   //[geant_list_size]
-   Float_t         EndE_tpcAV[229];   //[geant_list_size]
-   Float_t         EndP_tpcAV[229];   //[geant_list_size]
-   Float_t         EndPx_tpcAV[229];   //[geant_list_size]
-   Float_t         EndPy_tpcAV[229];   //[geant_list_size]
-   Float_t         EndPz_tpcAV[229];   //[geant_list_size]
-   Float_t         pathlen_drifted[229];   //[geant_list_size]
-   Int_t           inTPCDrifted[229];   //[geant_list_size]
-   Float_t         StartPointx_drifted[229];   //[geant_list_size]
-   Float_t         StartPointy_drifted[229];   //[geant_list_size]
-   Float_t         StartPointz_drifted[229];   //[geant_list_size]
-   Float_t         sp_charge_corrected_StartPointx_drifted[229];   //[geant_list_size]
-   Float_t         sp_charge_corrected_StartPointy_drifted[229];   //[geant_list_size]
-   Float_t         sp_charge_corrected_StartPointz_drifted[229];   //[geant_list_size]
-   Float_t         StartT_drifted[229];   //[geant_list_size]
-   Float_t         StartE_drifted[229];   //[geant_list_size]
-   Float_t         StartP_drifted[229];   //[geant_list_size]
-   Float_t         StartPx_drifted[229];   //[geant_list_size]
-   Float_t         StartPy_drifted[229];   //[geant_list_size]
-   Float_t         StartPz_drifted[229];   //[geant_list_size]
-   Float_t         EndPointx_drifted[229];   //[geant_list_size]
-   Float_t         EndPointy_drifted[229];   //[geant_list_size]
-   Float_t         EndPointz_drifted[229];   //[geant_list_size]
-   Float_t         sp_charge_corrected_EndPointx_drifted[229];   //[geant_list_size]
-   Float_t         sp_charge_corrected_EndPointy_drifted[229];   //[geant_list_size]
-   Float_t         sp_charge_corrected_EndPointz_drifted[229];   //[geant_list_size]
-   Float_t         EndT_drifted[229];   //[geant_list_size]
-   Float_t         EndE_drifted[229];   //[geant_list_size]
-   Float_t         EndP_drifted[229];   //[geant_list_size]
-   Float_t         EndPx_drifted[229];   //[geant_list_size]
-   Float_t         EndPy_drifted[229];   //[geant_list_size]
-   Float_t         EndPz_drifted[229];   //[geant_list_size]
-   Int_t           NumberDaughters[229];   //[geant_list_size]
-   Int_t           Mother[229];   //[geant_list_size]
-   Int_t           TrackId[229];   //[geant_list_size]
-   Int_t           MergedId[229];   //[geant_list_size]
-   Int_t           origin[229];   //[geant_list_size]
-   Int_t           MCTruthIndex[229];   //[geant_list_size]
-   Int_t           process_primary[229];   //[geant_list_size]
+   Int_t           pdg[840];   //[geant_list_size]
+   Int_t           status[840];   //[geant_list_size]
+   Float_t         Mass[840];   //[geant_list_size]
+   Float_t         Eng[840];   //[geant_list_size]
+   Float_t         EndE[840];   //[geant_list_size]
+   Float_t         Px[840];   //[geant_list_size]
+   Float_t         Py[840];   //[geant_list_size]
+   Float_t         Pz[840];   //[geant_list_size]
+   Float_t         P[840];   //[geant_list_size]
+   Float_t         StartPointx[840];   //[geant_list_size]
+   Float_t         StartPointy[840];   //[geant_list_size]
+   Float_t         StartPointz[840];   //[geant_list_size]
+   Float_t         sp_charge_corrected_StartPointx[840];   //[geant_list_size]
+   Float_t         sp_charge_corrected_StartPointy[840];   //[geant_list_size]
+   Float_t         sp_charge_corrected_StartPointz[840];   //[geant_list_size]
+   Float_t         StartT[840];   //[geant_list_size]
+   Float_t         EndPointx[840];   //[geant_list_size]
+   Float_t         EndPointy[840];   //[geant_list_size]
+   Float_t         EndPointz[840];   //[geant_list_size]
+   Float_t         sp_charge_corrected_EndPointx[840];   //[geant_list_size]
+   Float_t         sp_charge_corrected_EndPointy[840];   //[geant_list_size]
+   Float_t         sp_charge_corrected_EndPointz[840];   //[geant_list_size]
+   Float_t         EndT[840];   //[geant_list_size]
+   Float_t         theta[840];   //[geant_list_size]
+   Float_t         phi[840];   //[geant_list_size]
+   Float_t         theta_xz[840];   //[geant_list_size]
+   Float_t         theta_yz[840];   //[geant_list_size]
+   Float_t         pathlen[840];   //[geant_list_size]
+   Int_t           inTPCActive[840];   //[geant_list_size]
+   Float_t         StartPointx_tpcAV[840];   //[geant_list_size]
+   Float_t         StartPointy_tpcAV[840];   //[geant_list_size]
+   Float_t         StartPointz_tpcAV[840];   //[geant_list_size]
+   Float_t         sp_charge_corrected_StartPointx_tpcAV[840];   //[geant_list_size]
+   Float_t         sp_charge_corrected_StartPointy_tpcAV[840];   //[geant_list_size]
+   Float_t         sp_charge_corrected_StartPointz_tpcAV[840];   //[geant_list_size]
+   Float_t         StartT_tpcAV[840];   //[geant_list_size]
+   Float_t         StartE_tpcAV[840];   //[geant_list_size]
+   Float_t         StartP_tpcAV[840];   //[geant_list_size]
+   Float_t         StartPx_tpcAV[840];   //[geant_list_size]
+   Float_t         StartPy_tpcAV[840];   //[geant_list_size]
+   Float_t         StartPz_tpcAV[840];   //[geant_list_size]
+   Float_t         EndPointx_tpcAV[840];   //[geant_list_size]
+   Float_t         EndPointy_tpcAV[840];   //[geant_list_size]
+   Float_t         EndPointz_tpcAV[840];   //[geant_list_size]
+   Float_t         sp_charge_corrected_EndPointx_tpcAV[840];   //[geant_list_size]
+   Float_t         sp_charge_corrected_EndPointy_tpcAV[840];   //[geant_list_size]
+   Float_t         sp_charge_corrected_EndPointz_tpcAV[840];   //[geant_list_size]
+   Float_t         EndT_tpcAV[840];   //[geant_list_size]
+   Float_t         EndE_tpcAV[840];   //[geant_list_size]
+   Float_t         EndP_tpcAV[840];   //[geant_list_size]
+   Float_t         EndPx_tpcAV[840];   //[geant_list_size]
+   Float_t         EndPy_tpcAV[840];   //[geant_list_size]
+   Float_t         EndPz_tpcAV[840];   //[geant_list_size]
+   Float_t         pathlen_drifted[840];   //[geant_list_size]
+   Int_t           inTPCDrifted[840];   //[geant_list_size]
+   Float_t         StartPointx_drifted[840];   //[geant_list_size]
+   Float_t         StartPointy_drifted[840];   //[geant_list_size]
+   Float_t         StartPointz_drifted[840];   //[geant_list_size]
+   Float_t         sp_charge_corrected_StartPointx_drifted[840];   //[geant_list_size]
+   Float_t         sp_charge_corrected_StartPointy_drifted[840];   //[geant_list_size]
+   Float_t         sp_charge_corrected_StartPointz_drifted[840];   //[geant_list_size]
+   Float_t         StartT_drifted[840];   //[geant_list_size]
+   Float_t         StartE_drifted[840];   //[geant_list_size]
+   Float_t         StartP_drifted[840];   //[geant_list_size]
+   Float_t         StartPx_drifted[840];   //[geant_list_size]
+   Float_t         StartPy_drifted[840];   //[geant_list_size]
+   Float_t         StartPz_drifted[840];   //[geant_list_size]
+   Float_t         EndPointx_drifted[840];   //[geant_list_size]
+   Float_t         EndPointy_drifted[840];   //[geant_list_size]
+   Float_t         EndPointz_drifted[840];   //[geant_list_size]
+   Float_t         sp_charge_corrected_EndPointx_drifted[840];   //[geant_list_size]
+   Float_t         sp_charge_corrected_EndPointy_drifted[840];   //[geant_list_size]
+   Float_t         sp_charge_corrected_EndPointz_drifted[840];   //[geant_list_size]
+   Float_t         EndT_drifted[840];   //[geant_list_size]
+   Float_t         EndE_drifted[840];   //[geant_list_size]
+   Float_t         EndP_drifted[840];   //[geant_list_size]
+   Float_t         EndPx_drifted[840];   //[geant_list_size]
+   Float_t         EndPy_drifted[840];   //[geant_list_size]
+   Float_t         EndPz_drifted[840];   //[geant_list_size]
+   Int_t           NumberDaughters[840];   //[geant_list_size]
+   Int_t           Mother[840];   //[geant_list_size]
+   Int_t           TrackId[840];   //[geant_list_size]
+   Int_t           MergedId[840];   //[geant_list_size]
+   Int_t           origin[840];   //[geant_list_size]
+   Int_t           MCTruthIndex[840];   //[geant_list_size]
+   Int_t           process_primary[840];   //[geant_list_size]
    vector<string>  *processname;
-   Int_t           NTrTrajPts[18];   //[no_primaries]
-   Double_t        TrueTraj_X[18][5000];   //[no_primaries]
-   Double_t        TrueTraj_Y[18][5000];   //[no_primaries]
-   Double_t        TrueTraj_Z[18][5000];   //[no_primaries]
-   Double_t        TrueTraj_E[18][5000];   //[no_primaries]
+   Int_t           NTrTrajPts[56];   //[no_primaries]
+   Double_t        TrueTraj_X[56][5000];   //[no_primaries]
+   Double_t        TrueTraj_Y[56][5000];   //[no_primaries]
+   Double_t        TrueTraj_Z[56][5000];   //[no_primaries]
+   Double_t        TrueTraj_E[56][5000];   //[no_primaries]
    Int_t           no_mcshowers;
-   Int_t           mcshwr_origin[4];   //[no_mcshowers]
-   Int_t           mcshwr_pdg[4];   //[no_mcshowers]
-   Int_t           mcshwr_TrackId[4];   //[no_mcshowers]
+   Int_t           mcshwr_origin[1];   //[no_mcshowers]
+   Int_t           mcshwr_pdg[1];   //[no_mcshowers]
+   Int_t           mcshwr_TrackId[1];   //[no_mcshowers]
    vector<string>  *mcshwr_Process;
-   Float_t         mcshwr_startX[4];   //[no_mcshowers]
-   Float_t         mcshwr_startY[4];   //[no_mcshowers]
-   Float_t         mcshwr_startZ[4];   //[no_mcshowers]
-   Float_t         mcshwr_endX[4];   //[no_mcshowers]
-   Float_t         mcshwr_endY[4];   //[no_mcshowers]
-   Float_t         mcshwr_endZ[4];   //[no_mcshowers]
-   Float_t         mcshwr_CombEngX[4];   //[no_mcshowers]
-   Float_t         mcshwr_CombEngY[4];   //[no_mcshowers]
-   Float_t         mcshwr_CombEngZ[4];   //[no_mcshowers]
-   Float_t         mcshwr_CombEngPx[4];   //[no_mcshowers]
-   Float_t         mcshwr_CombEngPy[4];   //[no_mcshowers]
-   Float_t         mcshwr_CombEngPz[4];   //[no_mcshowers]
-   Float_t         mcshwr_CombEngE[4];   //[no_mcshowers]
-   Float_t         mcshwr_dEdx[4];   //[no_mcshowers]
-   Float_t         mcshwr_StartDirX[4];   //[no_mcshowers]
-   Float_t         mcshwr_StartDirY[4];   //[no_mcshowers]
-   Float_t         mcshwr_StartDirZ[4];   //[no_mcshowers]
-   Int_t           mcshwr_isEngDeposited[4];   //[no_mcshowers]
-   Int_t           mcshwr_Motherpdg[4];   //[no_mcshowers]
-   Int_t           mcshwr_MotherTrkId[4];   //[no_mcshowers]
+   Float_t         mcshwr_startX[1];   //[no_mcshowers]
+   Float_t         mcshwr_startY[1];   //[no_mcshowers]
+   Float_t         mcshwr_startZ[1];   //[no_mcshowers]
+   Float_t         mcshwr_endX[1];   //[no_mcshowers]
+   Float_t         mcshwr_endY[1];   //[no_mcshowers]
+   Float_t         mcshwr_endZ[1];   //[no_mcshowers]
+   Float_t         mcshwr_CombEngX[1];   //[no_mcshowers]
+   Float_t         mcshwr_CombEngY[1];   //[no_mcshowers]
+   Float_t         mcshwr_CombEngZ[1];   //[no_mcshowers]
+   Float_t         mcshwr_CombEngPx[1];   //[no_mcshowers]
+   Float_t         mcshwr_CombEngPy[1];   //[no_mcshowers]
+   Float_t         mcshwr_CombEngPz[1];   //[no_mcshowers]
+   Float_t         mcshwr_CombEngE[1];   //[no_mcshowers]
+   Float_t         mcshwr_dEdx[1];   //[no_mcshowers]
+   Float_t         mcshwr_StartDirX[1];   //[no_mcshowers]
+   Float_t         mcshwr_StartDirY[1];   //[no_mcshowers]
+   Float_t         mcshwr_StartDirZ[1];   //[no_mcshowers]
+   Int_t           mcshwr_isEngDeposited[1];   //[no_mcshowers]
+   Int_t           mcshwr_Motherpdg[1];   //[no_mcshowers]
+   Int_t           mcshwr_MotherTrkId[1];   //[no_mcshowers]
    vector<string>  *mcshwr_MotherProcess;
-   Float_t         mcshwr_MotherstartX[4];   //[no_mcshowers]
-   Float_t         mcshwr_MotherstartY[4];   //[no_mcshowers]
-   Float_t         mcshwr_MotherstartZ[4];   //[no_mcshowers]
-   Float_t         mcshwr_MotherendX[4];   //[no_mcshowers]
-   Float_t         mcshwr_MotherendY[4];   //[no_mcshowers]
-   Float_t         mcshwr_MotherendZ[4];   //[no_mcshowers]
-   Int_t           mcshwr_Ancestorpdg[4];   //[no_mcshowers]
-   Int_t           mcshwr_AncesotorTrkId[4];   //[no_mcshowers]
+   Float_t         mcshwr_MotherstartX[1];   //[no_mcshowers]
+   Float_t         mcshwr_MotherstartY[1];   //[no_mcshowers]
+   Float_t         mcshwr_MotherstartZ[1];   //[no_mcshowers]
+   Float_t         mcshwr_MotherendX[1];   //[no_mcshowers]
+   Float_t         mcshwr_MotherendY[1];   //[no_mcshowers]
+   Float_t         mcshwr_MotherendZ[1];   //[no_mcshowers]
+   Int_t           mcshwr_Ancestorpdg[1];   //[no_mcshowers]
+   Int_t           mcshwr_AncesotorTrkId[1];   //[no_mcshowers]
    vector<string>  *mcshwr_AncesotorProcess;
-   Float_t         mcshwr_AncestorstartX[4];   //[no_mcshowers]
-   Float_t         mcshwr_AncestorstartY[4];   //[no_mcshowers]
-   Float_t         mcshwr_AncestorstartZ[4];   //[no_mcshowers]
-   Float_t         mcshwr_AncestorendX[4];   //[no_mcshowers]
-   Float_t         mcshwr_AncestorendY[4];   //[no_mcshowers]
-   Float_t         mcshwr_AncestorendZ[4];   //[no_mcshowers]
+   Float_t         mcshwr_AncestorstartX[1];   //[no_mcshowers]
+   Float_t         mcshwr_AncestorstartY[1];   //[no_mcshowers]
+   Float_t         mcshwr_AncestorstartZ[1];   //[no_mcshowers]
+   Float_t         mcshwr_AncestorendX[1];   //[no_mcshowers]
+   Float_t         mcshwr_AncestorendY[1];   //[no_mcshowers]
+   Float_t         mcshwr_AncestorendZ[1];   //[no_mcshowers]
    Int_t           no_mctracks;
-   Int_t           mctrk_origin[50];   //[no_mctracks]
-   Int_t           mctrk_pdg[50];   //[no_mctracks]
-   Int_t           mctrk_TrackId[50];   //[no_mctracks]
+   Int_t           mctrk_origin[1];   //[no_mctracks]
+   Int_t           mctrk_pdg[1];   //[no_mctracks]
+   Int_t           mctrk_TrackId[1];   //[no_mctracks]
    vector<string>  *mctrk_Process;
-   Float_t         mctrk_startX[50];   //[no_mctracks]
-   Float_t         mctrk_startY[50];   //[no_mctracks]
-   Float_t         mctrk_startZ[50];   //[no_mctracks]
-   Float_t         mctrk_endX[50];   //[no_mctracks]
-   Float_t         mctrk_endY[50];   //[no_mctracks]
-   Float_t         mctrk_endZ[50];   //[no_mctracks]
-   Float_t         mctrk_startX_drifted[50];   //[no_mctracks]
-   Float_t         mctrk_startY_drifted[50];   //[no_mctracks]
-   Float_t         mctrk_startZ_drifted[50];   //[no_mctracks]
-   Float_t         mctrk_endX_drifted[50];   //[no_mctracks]
-   Float_t         mctrk_endY_drifted[50];   //[no_mctracks]
-   Float_t         mctrk_endZ_drifted[50];   //[no_mctracks]
-   Float_t         mctrk_len_drifted[50];   //[no_mctracks]
-   Float_t         mctrk_p_drifted[50];   //[no_mctracks]
-   Float_t         mctrk_px_drifted[50];   //[no_mctracks]
-   Float_t         mctrk_py_drifted[50];   //[no_mctracks]
-   Float_t         mctrk_pz_drifted[50];   //[no_mctracks]
-   Int_t           mctrk_Motherpdg[50];   //[no_mctracks]
-   Int_t           mctrk_MotherTrkId[50];   //[no_mctracks]
+   Float_t         mctrk_startX[1];   //[no_mctracks]
+   Float_t         mctrk_startY[1];   //[no_mctracks]
+   Float_t         mctrk_startZ[1];   //[no_mctracks]
+   Float_t         mctrk_endX[1];   //[no_mctracks]
+   Float_t         mctrk_endY[1];   //[no_mctracks]
+   Float_t         mctrk_endZ[1];   //[no_mctracks]
+   Float_t         mctrk_startX_drifted[1];   //[no_mctracks]
+   Float_t         mctrk_startY_drifted[1];   //[no_mctracks]
+   Float_t         mctrk_startZ_drifted[1];   //[no_mctracks]
+   Float_t         mctrk_endX_drifted[1];   //[no_mctracks]
+   Float_t         mctrk_endY_drifted[1];   //[no_mctracks]
+   Float_t         mctrk_endZ_drifted[1];   //[no_mctracks]
+   Float_t         mctrk_len_drifted[1];   //[no_mctracks]
+   Float_t         mctrk_p_drifted[1];   //[no_mctracks]
+   Float_t         mctrk_px_drifted[1];   //[no_mctracks]
+   Float_t         mctrk_py_drifted[1];   //[no_mctracks]
+   Float_t         mctrk_pz_drifted[1];   //[no_mctracks]
+   Int_t           mctrk_Motherpdg[1];   //[no_mctracks]
+   Int_t           mctrk_MotherTrkId[1];   //[no_mctracks]
    vector<string>  *mctrk_MotherProcess;
-   Float_t         mctrk_MotherstartX[50];   //[no_mctracks]
-   Float_t         mctrk_MotherstartY[50];   //[no_mctracks]
-   Float_t         mctrk_MotherstartZ[50];   //[no_mctracks]
-   Float_t         mctrk_MotherendX[50];   //[no_mctracks]
-   Float_t         mctrk_MotherendY[50];   //[no_mctracks]
-   Float_t         mctrk_MotherendZ[50];   //[no_mctracks]
-   Int_t           mctrk_Ancestorpdg[50];   //[no_mctracks]
-   Int_t           mctrk_AncesotorTrkId[50];   //[no_mctracks]
+   Float_t         mctrk_MotherstartX[1];   //[no_mctracks]
+   Float_t         mctrk_MotherstartY[1];   //[no_mctracks]
+   Float_t         mctrk_MotherstartZ[1];   //[no_mctracks]
+   Float_t         mctrk_MotherendX[1];   //[no_mctracks]
+   Float_t         mctrk_MotherendY[1];   //[no_mctracks]
+   Float_t         mctrk_MotherendZ[1];   //[no_mctracks]
+   Int_t           mctrk_Ancestorpdg[1];   //[no_mctracks]
+   Int_t           mctrk_AncesotorTrkId[1];   //[no_mctracks]
    vector<string>  *mctrk_AncesotorProcess;
-   Float_t         mctrk_AncestorstartX[50];   //[no_mctracks]
-   Float_t         mctrk_AncestorstartY[50];   //[no_mctracks]
-   Float_t         mctrk_AncestorstartZ[50];   //[no_mctracks]
-   Float_t         mctrk_AncestorendX[50];   //[no_mctracks]
-   Float_t         mctrk_AncestorendY[50];   //[no_mctracks]
-   Float_t         mctrk_AncestorendZ[50];   //[no_mctracks]
+   Float_t         mctrk_AncestorstartX[1];   //[no_mctracks]
+   Float_t         mctrk_AncestorstartY[1];   //[no_mctracks]
+   Float_t         mctrk_AncestorstartZ[1];   //[no_mctracks]
+   Float_t         mctrk_AncestorendX[1];   //[no_mctracks]
+   Float_t         mctrk_AncestorendY[1];   //[no_mctracks]
+   Float_t         mctrk_AncestorendZ[1];   //[no_mctracks]
    Short_t         nPFParticles;
-   Short_t         pfp_selfID[232];   //[nPFParticles]
-   Short_t         pfp_isPrimary[232];   //[nPFParticles]
-   Short_t         pfp_numDaughters[232];   //[nPFParticles]
-   Short_t         pfp_daughterIDs[232][100];   //[nPFParticles]
-   Short_t         pfp_parentID[232];   //[nPFParticles]
-   Short_t         pfp_vertexID[232];   //[nPFParticles]
-   Short_t         pfp_isShower[232];   //[nPFParticles]
-   Short_t         pfp_isTrack[232];   //[nPFParticles]
-   Short_t         pfp_trackID[232];   //[nPFParticles]
-   Short_t         pfp_showerID[232];   //[nPFParticles]
-   Int_t           pfp_pdgCode[232];   //[nPFParticles]
-   Short_t         pfp_numClusters[232];   //[nPFParticles]
-   Short_t         pfp_clusterIDs[232][100];   //[nPFParticles]
-   Short_t         pfp_isNeutrino[232];   //[nPFParticles]
+   Short_t         pfp_selfID[1];   //[nPFParticles]
+   Short_t         pfp_isPrimary[1];   //[nPFParticles]
+   Short_t         pfp_numDaughters[1];   //[nPFParticles]
+   Short_t         pfp_daughterIDs[1][100];   //[nPFParticles]
+   Short_t         pfp_parentID[1];   //[nPFParticles]
+   Short_t         pfp_vertexID[1];   //[nPFParticles]
+   Short_t         pfp_isShower[1];   //[nPFParticles]
+   Short_t         pfp_isTrack[1];   //[nPFParticles]
+   Short_t         pfp_trackID[1];   //[nPFParticles]
+   Short_t         pfp_showerID[1];   //[nPFParticles]
+   Int_t           pfp_pdgCode[1];   //[nPFParticles]
+   Short_t         pfp_numClusters[1];   //[nPFParticles]
+   Short_t         pfp_clusterIDs[1][100];   //[nPFParticles]
+   Short_t         pfp_isNeutrino[1];   //[nPFParticles]
    Short_t         pfp_numNeutrinos;
    Short_t         pfp_neutrinoIDs[10];
    Short_t         nshowers_pandora;
-   Short_t         showerID_pandora[165];   //[nshowers_pandora]
-   Short_t         shwr_bestplane_pandora[165];   //[nshowers_pandora]
-   Float_t         shwr_length_pandora[165];   //[nshowers_pandora]
-   Float_t         shwr_theta_pandora[165];   //[nshowers_pandora]
-   Float_t         shwr_thetaxz_pandora[165];   //[nshowers_pandora]
-   Float_t         shwr_thetayz_pandora[165];   //[nshowers_pandora]
-   Float_t         shwr_phi_pandora[165];   //[nshowers_pandora]
-   Float_t         shwr_startdcosx_pandora[165];   //[nshowers_pandora]
-   Float_t         shwr_startdcosy_pandora[165];   //[nshowers_pandora]
-   Float_t         shwr_startdcosz_pandora[165];   //[nshowers_pandora]
-   Float_t         shwr_startx_pandora[165];   //[nshowers_pandora]
-   Float_t         shwr_starty_pandora[165];   //[nshowers_pandora]
-   Float_t         shwr_startz_pandora[165];   //[nshowers_pandora]
-   Float_t         shwr_totEng_pandora[165][3];   //[nshowers_pandora]
-   Float_t         shwr_dedx_pandora[165][3];   //[nshowers_pandora]
-   Float_t         shwr_mipEng_pandora[165][3];   //[nshowers_pandora]
-   Short_t         shwr_hasPFParticle_pandora[165];   //[nshowers_pandora]
-   Short_t         shwr_PFParticleID_pandora[165];   //[nshowers_pandora]
+   Short_t         showerID_pandora[281];   //[nshowers_pandora]
+   Short_t         shwr_bestplane_pandora[281];   //[nshowers_pandora]
+   Float_t         shwr_length_pandora[281];   //[nshowers_pandora]
+   Float_t         shwr_theta_pandora[281];   //[nshowers_pandora]
+   Float_t         shwr_thetaxz_pandora[281];   //[nshowers_pandora]
+   Float_t         shwr_thetayz_pandora[281];   //[nshowers_pandora]
+   Float_t         shwr_phi_pandora[281];   //[nshowers_pandora]
+   Float_t         shwr_startdcosx_pandora[281];   //[nshowers_pandora]
+   Float_t         shwr_startdcosy_pandora[281];   //[nshowers_pandora]
+   Float_t         shwr_startdcosz_pandora[281];   //[nshowers_pandora]
+   Float_t         shwr_startx_pandora[281];   //[nshowers_pandora]
+   Float_t         shwr_starty_pandora[281];   //[nshowers_pandora]
+   Float_t         shwr_startz_pandora[281];   //[nshowers_pandora]
+   Float_t         shwr_totEng_pandora[281][3];   //[nshowers_pandora]
+   Float_t         shwr_dedx_pandora[281][3];   //[nshowers_pandora]
+   Float_t         shwr_mipEng_pandora[281][3];   //[nshowers_pandora]
+   Short_t         shwr_hasPFParticle_pandora[281];   //[nshowers_pandora]
+   Short_t         shwr_PFParticleID_pandora[281];   //[nshowers_pandora]
    Short_t         nshowers_trajcluster;
    Short_t         showerID_trajcluster[1];   //[nshowers_trajcluster]
    Short_t         shwr_bestplane_trajcluster[1];   //[nshowers_trajcluster]
@@ -393,319 +393,418 @@ public :
    Float_t         shwr_mipEng_trajcluster[1][3];   //[nshowers_trajcluster]
    Short_t         shwr_hasPFParticle_trajcluster[1];   //[nshowers_trajcluster]
    Short_t         shwr_PFParticleID_trajcluster[1];   //[nshowers_trajcluster]
+   Short_t         nshowers_pandoraShower;
+   Short_t         showerID_pandoraShower[1];   //[nshowers_pandoraShower]
+   Short_t         shwr_bestplane_pandoraShower[1];   //[nshowers_pandoraShower]
+   Float_t         shwr_length_pandoraShower[1];   //[nshowers_pandoraShower]
+   Float_t         shwr_theta_pandoraShower[1];   //[nshowers_pandoraShower]
+   Float_t         shwr_thetaxz_pandoraShower[1];   //[nshowers_pandoraShower]
+   Float_t         shwr_thetayz_pandoraShower[1];   //[nshowers_pandoraShower]
+   Float_t         shwr_phi_pandoraShower[1];   //[nshowers_pandoraShower]
+   Float_t         shwr_startdcosx_pandoraShower[1];   //[nshowers_pandoraShower]
+   Float_t         shwr_startdcosy_pandoraShower[1];   //[nshowers_pandoraShower]
+   Float_t         shwr_startdcosz_pandoraShower[1];   //[nshowers_pandoraShower]
+   Float_t         shwr_startx_pandoraShower[1];   //[nshowers_pandoraShower]
+   Float_t         shwr_starty_pandoraShower[1];   //[nshowers_pandoraShower]
+   Float_t         shwr_startz_pandoraShower[1];   //[nshowers_pandoraShower]
+   Float_t         shwr_totEng_pandoraShower[1][3];   //[nshowers_pandoraShower]
+   Float_t         shwr_dedx_pandoraShower[1][3];   //[nshowers_pandoraShower]
+   Float_t         shwr_mipEng_pandoraShower[1][3];   //[nshowers_pandoraShower]
+   Short_t         shwr_hasPFParticle_pandoraShower[1];   //[nshowers_pandoraShower]
+   Short_t         shwr_PFParticleID_pandoraShower[1];   //[nshowers_pandoraShower]
    Short_t         ntracks_pandora;
-   Short_t         trkId_pandora[65];   //[ntracks_pandora]
-   Short_t         trkncosmictags_tagger_pandora[65];   //[ntracks_pandora]
-   Float_t         trkcosmicscore_tagger_pandora[65];   //[ntracks_pandora]
-   Short_t         trkcosmictype_tagger_pandora[65];   //[ntracks_pandora]
-   Short_t         trkncosmictags_containmenttagger_pandora[65];   //[ntracks_pandora]
-   Float_t         trkcosmicscore_containmenttagger_pandora[65];   //[ntracks_pandora]
-   Short_t         trkcosmictype_containmenttagger_pandora[65];   //[ntracks_pandora]
-   Short_t         trkncosmictags_flashmatch_pandora[65];   //[ntracks_pandora]
-   Float_t         trkcosmicscore_flashmatch_pandora[65];   //[ntracks_pandora]
-   Short_t         trkcosmictype_flashmatch_pandora[65];   //[ntracks_pandora]
-   Float_t         trkke_pandora[65][3];   //[ntracks_pandora]
-   Float_t         trkrange_pandora[65][3];   //[ntracks_pandora]
-   Int_t           trkidtruth_pandora[65][3];   //[ntracks_pandora]
-   Short_t         trkorigin_pandora[65][3];   //[ntracks_pandora]
-   Int_t           trkpdgtruth_pandora[65][3];   //[ntracks_pandora]
-   Float_t         trkefftruth_pandora[65][3];   //[ntracks_pandora]
-   Float_t         trkpurtruth_pandora[65][3];   //[ntracks_pandora]
-   Float_t         trkpitchc_pandora[65][3];   //[ntracks_pandora]
-   Short_t         ntrkhits_pandora[65][3];   //[ntracks_pandora]
-   Float_t         trkdedx_pandora[65][3][2000];   //[ntracks_pandora]
-   Float_t         trkdqdx_pandora[65][3][2000];   //[ntracks_pandora]
-   Float_t         trkresrg_pandora[65][3][2000];   //[ntracks_pandora]
-   Float_t         trkxyz_pandora[65][3][2000][3];   //[ntracks_pandora]
-   Float_t         trkstartx_pandora[65];   //[ntracks_pandora]
-   Float_t         trkstarty_pandora[65];   //[ntracks_pandora]
-   Float_t         trkstartz_pandora[65];   //[ntracks_pandora]
-   Float_t         trkstartd_pandora[65];   //[ntracks_pandora]
-   Float_t         trkendx_pandora[65];   //[ntracks_pandora]
-   Float_t         trkendy_pandora[65];   //[ntracks_pandora]
-   Float_t         trkendz_pandora[65];   //[ntracks_pandora]
-   Float_t         trkendd_pandora[65];   //[ntracks_pandora]
-   Float_t         trkACpierceT0_pandora[65];   //[ntracks_pandora]
-   Float_t         trkflashT0_pandora[65];   //[ntracks_pandora]
-   Float_t         trktrueT0_pandora[65];   //[ntracks_pandora]
-   Int_t           trkg4id_pandora[65];   //[ntracks_pandora]
-   Int_t           trkorig_pandora[65];   //[ntracks_pandora]
-   Float_t         trkpurity_pandora[65];   //[ntracks_pandora]
-   Float_t         trkcompleteness_pandora[65];   //[ntracks_pandora]
-   Float_t         trktheta_pandora[65];   //[ntracks_pandora]
-   Float_t         trkphi_pandora[65];   //[ntracks_pandora]
-   Float_t         trkstartdcosx_pandora[65];   //[ntracks_pandora]
-   Float_t         trkstartdcosy_pandora[65];   //[ntracks_pandora]
-   Float_t         trkstartdcosz_pandora[65];   //[ntracks_pandora]
-   Float_t         trkenddcosx_pandora[65];   //[ntracks_pandora]
-   Float_t         trkenddcosy_pandora[65];   //[ntracks_pandora]
-   Float_t         trkenddcosz_pandora[65];   //[ntracks_pandora]
-   Float_t         trkthetaxz_pandora[65];   //[ntracks_pandora]
-   Float_t         trkthetayz_pandora[65];   //[ntracks_pandora]
-   Float_t         trkmom_pandora[65];   //[ntracks_pandora]
-   Float_t         trkmomrange_pandora[65];   //[ntracks_pandora]
-   Float_t         trkmommschi2_pandora[65];   //[ntracks_pandora]
-   Float_t         trkmommsllhd_pandora[65];   //[ntracks_pandora]
-   Float_t         trkmcsfwdmom_pandora[65];   //[ntracks_pandora]
-   Float_t         trkmcsfwdll_pandora[65];   //[ntracks_pandora]
-   Float_t         trkmcsfwderr_pandora[65];   //[ntracks_pandora]
-   Float_t         trkmcsbwdmom_pandora[65];   //[ntracks_pandora]
-   Float_t         trkmcsbwdll_pandora[65];   //[ntracks_pandora]
-   Float_t         trkmcsbwderr_pandora[65];   //[ntracks_pandora]
-   Float_t         trklen_pandora[65];   //[ntracks_pandora]
-   Short_t         trksvtxid_pandora[65];   //[ntracks_pandora]
-   Short_t         trkevtxid_pandora[65];   //[ntracks_pandora]
-   Int_t           trkntraj_pandora[65];   //[ntracks_pandora]
-   Int_t           trkpidpdg_pandora[65][3];   //[ntracks_pandora]
-   Float_t         trkpidchi_pandora[65][3];   //[ntracks_pandora]
-   Float_t         trkpidchipr_pandora[65][3];   //[ntracks_pandora]
-   Float_t         trkpidchika_pandora[65][3];   //[ntracks_pandora]
-   Float_t         trkpidchipi_pandora[65][3];   //[ntracks_pandora]
-   Float_t         trkpidchimu_pandora[65][3];   //[ntracks_pandora]
-   Float_t         trkpidpida_pandora[65][3];   //[ntracks_pandora]
-   Short_t         trkpidbestplane_pandora[65];   //[ntracks_pandora]
-   Short_t         trkhasPFParticle_pandora[65];   //[ntracks_pandora]
-   Short_t         trkPFParticleID_pandora[65];   //[ntracks_pandora]
+   Short_t         trkId_pandora[208];   //[ntracks_pandora]
+   Short_t         trkncosmictags_tagger_pandora[208];   //[ntracks_pandora]
+   Float_t         trkcosmicscore_tagger_pandora[208];   //[ntracks_pandora]
+   Short_t         trkcosmictype_tagger_pandora[208];   //[ntracks_pandora]
+   Short_t         trkncosmictags_containmenttagger_pandora[208];   //[ntracks_pandora]
+   Float_t         trkcosmicscore_containmenttagger_pandora[208];   //[ntracks_pandora]
+   Short_t         trkcosmictype_containmenttagger_pandora[208];   //[ntracks_pandora]
+   Short_t         trkncosmictags_flashmatch_pandora[208];   //[ntracks_pandora]
+   Float_t         trkcosmicscore_flashmatch_pandora[208];   //[ntracks_pandora]
+   Short_t         trkcosmictype_flashmatch_pandora[208];   //[ntracks_pandora]
+   Float_t         trkke_pandora[208][3];   //[ntracks_pandora]
+   Float_t         trkrange_pandora[208][3];   //[ntracks_pandora]
+   Int_t           trkidtruth_pandora[208][3];   //[ntracks_pandora]
+   Short_t         trkorigin_pandora[208][3];   //[ntracks_pandora]
+   Int_t           trkpdgtruth_pandora[208][3];   //[ntracks_pandora]
+   Float_t         trkefftruth_pandora[208][3];   //[ntracks_pandora]
+   Float_t         trkpurtruth_pandora[208][3];   //[ntracks_pandora]
+   Float_t         trkpitchc_pandora[208][3];   //[ntracks_pandora]
+   Short_t         ntrkhits_pandora[208][3];   //[ntracks_pandora]
+   Float_t         trkdedx_pandora[208][3][2000];   //[ntracks_pandora]
+   Float_t         trkdqdx_pandora[208][3][2000];   //[ntracks_pandora]
+   Float_t         trkresrg_pandora[208][3][2000];   //[ntracks_pandora]
+   Float_t         trkxyz_pandora[208][3][2000][3];   //[ntracks_pandora]
+   Float_t         trkstartx_pandora[208];   //[ntracks_pandora]
+   Float_t         trkstarty_pandora[208];   //[ntracks_pandora]
+   Float_t         trkstartz_pandora[208];   //[ntracks_pandora]
+   Float_t         trkstartd_pandora[208];   //[ntracks_pandora]
+   Float_t         trkendx_pandora[208];   //[ntracks_pandora]
+   Float_t         trkendy_pandora[208];   //[ntracks_pandora]
+   Float_t         trkendz_pandora[208];   //[ntracks_pandora]
+   Float_t         trkendd_pandora[208];   //[ntracks_pandora]
+   Float_t         trkACpierceT0_pandora[208];   //[ntracks_pandora]
+   Float_t         trkflashT0_pandora[208];   //[ntracks_pandora]
+   Float_t         trktrueT0_pandora[208];   //[ntracks_pandora]
+   Int_t           trkg4id_pandora[208];   //[ntracks_pandora]
+   Int_t           trkorig_pandora[208];   //[ntracks_pandora]
+   Float_t         trkpurity_pandora[208];   //[ntracks_pandora]
+   Float_t         trkcompleteness_pandora[208];   //[ntracks_pandora]
+   Float_t         trktheta_pandora[208];   //[ntracks_pandora]
+   Float_t         trkphi_pandora[208];   //[ntracks_pandora]
+   Float_t         trkstartdcosx_pandora[208];   //[ntracks_pandora]
+   Float_t         trkstartdcosy_pandora[208];   //[ntracks_pandora]
+   Float_t         trkstartdcosz_pandora[208];   //[ntracks_pandora]
+   Float_t         trkenddcosx_pandora[208];   //[ntracks_pandora]
+   Float_t         trkenddcosy_pandora[208];   //[ntracks_pandora]
+   Float_t         trkenddcosz_pandora[208];   //[ntracks_pandora]
+   Float_t         trkthetaxz_pandora[208];   //[ntracks_pandora]
+   Float_t         trkthetayz_pandora[208];   //[ntracks_pandora]
+   Float_t         trkmom_pandora[208];   //[ntracks_pandora]
+   Float_t         trkmomrange_pandora[208];   //[ntracks_pandora]
+   Float_t         trkmommschi2_pandora[208];   //[ntracks_pandora]
+   Float_t         trkmommsllhd_pandora[208];   //[ntracks_pandora]
+   Float_t         trkmcsfwdmom_pandora[208];   //[ntracks_pandora]
+   Float_t         trkmcsfwdll_pandora[208];   //[ntracks_pandora]
+   Float_t         trkmcsfwderr_pandora[208];   //[ntracks_pandora]
+   Float_t         trkmcsbwdmom_pandora[208];   //[ntracks_pandora]
+   Float_t         trkmcsbwdll_pandora[208];   //[ntracks_pandora]
+   Float_t         trkmcsbwderr_pandora[208];   //[ntracks_pandora]
+   Float_t         trklen_pandora[208];   //[ntracks_pandora]
+   Short_t         trksvtxid_pandora[208];   //[ntracks_pandora]
+   Short_t         trkevtxid_pandora[208];   //[ntracks_pandora]
+   Int_t           trkntraj_pandora[208];   //[ntracks_pandora]
+   Int_t           trkpidpdg_pandora[208][3];   //[ntracks_pandora]
+   Float_t         trkpidchi_pandora[208][3];   //[ntracks_pandora]
+   Float_t         trkpidchipr_pandora[208][3];   //[ntracks_pandora]
+   Float_t         trkpidchika_pandora[208][3];   //[ntracks_pandora]
+   Float_t         trkpidchipi_pandora[208][3];   //[ntracks_pandora]
+   Float_t         trkpidchimu_pandora[208][3];   //[ntracks_pandora]
+   Float_t         trkpidpida_pandora[208][3];   //[ntracks_pandora]
+   Short_t         trkpidbestplane_pandora[208];   //[ntracks_pandora]
+   Short_t         trkhasPFParticle_pandora[208];   //[ntracks_pandora]
+   Short_t         trkPFParticleID_pandora[208];   //[ntracks_pandora]
    Short_t         ntracks_pandoraKalmanTrack;
-   Short_t         trkId_pandoraKalmanTrack[64];   //[ntracks_pandoraKalmanTrack]
-   Short_t         trkncosmictags_tagger_pandoraKalmanTrack[64];   //[ntracks_pandoraKalmanTrack]
-   Float_t         trkcosmicscore_tagger_pandoraKalmanTrack[64];   //[ntracks_pandoraKalmanTrack]
-   Short_t         trkcosmictype_tagger_pandoraKalmanTrack[64];   //[ntracks_pandoraKalmanTrack]
-   Short_t         trkncosmictags_containmenttagger_pandoraKalmanTrack[64];   //[ntracks_pandoraKalmanTrack]
-   Float_t         trkcosmicscore_containmenttagger_pandoraKalmanTrack[64];   //[ntracks_pandoraKalmanTrack]
-   Short_t         trkcosmictype_containmenttagger_pandoraKalmanTrack[64];   //[ntracks_pandoraKalmanTrack]
-   Short_t         trkncosmictags_flashmatch_pandoraKalmanTrack[64];   //[ntracks_pandoraKalmanTrack]
-   Float_t         trkcosmicscore_flashmatch_pandoraKalmanTrack[64];   //[ntracks_pandoraKalmanTrack]
-   Short_t         trkcosmictype_flashmatch_pandoraKalmanTrack[64];   //[ntracks_pandoraKalmanTrack]
-   Float_t         trkke_pandoraKalmanTrack[64][3];   //[ntracks_pandoraKalmanTrack]
-   Float_t         trkrange_pandoraKalmanTrack[64][3];   //[ntracks_pandoraKalmanTrack]
-   Int_t           trkidtruth_pandoraKalmanTrack[64][3];   //[ntracks_pandoraKalmanTrack]
-   Short_t         trkorigin_pandoraKalmanTrack[64][3];   //[ntracks_pandoraKalmanTrack]
-   Int_t           trkpdgtruth_pandoraKalmanTrack[64][3];   //[ntracks_pandoraKalmanTrack]
-   Float_t         trkefftruth_pandoraKalmanTrack[64][3];   //[ntracks_pandoraKalmanTrack]
-   Float_t         trkpurtruth_pandoraKalmanTrack[64][3];   //[ntracks_pandoraKalmanTrack]
-   Float_t         trkpitchc_pandoraKalmanTrack[64][3];   //[ntracks_pandoraKalmanTrack]
-   Short_t         ntrkhits_pandoraKalmanTrack[64][3];   //[ntracks_pandoraKalmanTrack]
-   Float_t         trkdedx_pandoraKalmanTrack[64][3][2000];   //[ntracks_pandoraKalmanTrack]
-   Float_t         trkdqdx_pandoraKalmanTrack[64][3][2000];   //[ntracks_pandoraKalmanTrack]
-   Float_t         trkresrg_pandoraKalmanTrack[64][3][2000];   //[ntracks_pandoraKalmanTrack]
-   Float_t         trkxyz_pandoraKalmanTrack[64][3][2000][3];   //[ntracks_pandoraKalmanTrack]
-   Float_t         trkstartx_pandoraKalmanTrack[64];   //[ntracks_pandoraKalmanTrack]
-   Float_t         trkstarty_pandoraKalmanTrack[64];   //[ntracks_pandoraKalmanTrack]
-   Float_t         trkstartz_pandoraKalmanTrack[64];   //[ntracks_pandoraKalmanTrack]
-   Float_t         trkstartd_pandoraKalmanTrack[64];   //[ntracks_pandoraKalmanTrack]
-   Float_t         trkendx_pandoraKalmanTrack[64];   //[ntracks_pandoraKalmanTrack]
-   Float_t         trkendy_pandoraKalmanTrack[64];   //[ntracks_pandoraKalmanTrack]
-   Float_t         trkendz_pandoraKalmanTrack[64];   //[ntracks_pandoraKalmanTrack]
-   Float_t         trkendd_pandoraKalmanTrack[64];   //[ntracks_pandoraKalmanTrack]
-   Float_t         trkACpierceT0_pandoraKalmanTrack[64];   //[ntracks_pandoraKalmanTrack]
-   Float_t         trkflashT0_pandoraKalmanTrack[64];   //[ntracks_pandoraKalmanTrack]
-   Float_t         trktrueT0_pandoraKalmanTrack[64];   //[ntracks_pandoraKalmanTrack]
-   Int_t           trkg4id_pandoraKalmanTrack[64];   //[ntracks_pandoraKalmanTrack]
-   Int_t           trkorig_pandoraKalmanTrack[64];   //[ntracks_pandoraKalmanTrack]
-   Float_t         trkpurity_pandoraKalmanTrack[64];   //[ntracks_pandoraKalmanTrack]
-   Float_t         trkcompleteness_pandoraKalmanTrack[64];   //[ntracks_pandoraKalmanTrack]
-   Float_t         trktheta_pandoraKalmanTrack[64];   //[ntracks_pandoraKalmanTrack]
-   Float_t         trkphi_pandoraKalmanTrack[64];   //[ntracks_pandoraKalmanTrack]
-   Float_t         trkstartdcosx_pandoraKalmanTrack[64];   //[ntracks_pandoraKalmanTrack]
-   Float_t         trkstartdcosy_pandoraKalmanTrack[64];   //[ntracks_pandoraKalmanTrack]
-   Float_t         trkstartdcosz_pandoraKalmanTrack[64];   //[ntracks_pandoraKalmanTrack]
-   Float_t         trkenddcosx_pandoraKalmanTrack[64];   //[ntracks_pandoraKalmanTrack]
-   Float_t         trkenddcosy_pandoraKalmanTrack[64];   //[ntracks_pandoraKalmanTrack]
-   Float_t         trkenddcosz_pandoraKalmanTrack[64];   //[ntracks_pandoraKalmanTrack]
-   Float_t         trkthetaxz_pandoraKalmanTrack[64];   //[ntracks_pandoraKalmanTrack]
-   Float_t         trkthetayz_pandoraKalmanTrack[64];   //[ntracks_pandoraKalmanTrack]
-   Float_t         trkmom_pandoraKalmanTrack[64];   //[ntracks_pandoraKalmanTrack]
-   Float_t         trkmomrange_pandoraKalmanTrack[64];   //[ntracks_pandoraKalmanTrack]
-   Float_t         trkmommschi2_pandoraKalmanTrack[64];   //[ntracks_pandoraKalmanTrack]
-   Float_t         trkmommsllhd_pandoraKalmanTrack[64];   //[ntracks_pandoraKalmanTrack]
-   Float_t         trkmcsfwdmom_pandoraKalmanTrack[64];   //[ntracks_pandoraKalmanTrack]
-   Float_t         trkmcsfwdll_pandoraKalmanTrack[64];   //[ntracks_pandoraKalmanTrack]
-   Float_t         trkmcsfwderr_pandoraKalmanTrack[64];   //[ntracks_pandoraKalmanTrack]
-   Float_t         trkmcsbwdmom_pandoraKalmanTrack[64];   //[ntracks_pandoraKalmanTrack]
-   Float_t         trkmcsbwdll_pandoraKalmanTrack[64];   //[ntracks_pandoraKalmanTrack]
-   Float_t         trkmcsbwderr_pandoraKalmanTrack[64];   //[ntracks_pandoraKalmanTrack]
-   Float_t         trklen_pandoraKalmanTrack[64];   //[ntracks_pandoraKalmanTrack]
-   Short_t         trksvtxid_pandoraKalmanTrack[64];   //[ntracks_pandoraKalmanTrack]
-   Short_t         trkevtxid_pandoraKalmanTrack[64];   //[ntracks_pandoraKalmanTrack]
-   Int_t           trkntraj_pandoraKalmanTrack[64];   //[ntracks_pandoraKalmanTrack]
-   Int_t           trkpidpdg_pandoraKalmanTrack[64][3];   //[ntracks_pandoraKalmanTrack]
-   Float_t         trkpidchi_pandoraKalmanTrack[64][3];   //[ntracks_pandoraKalmanTrack]
-   Float_t         trkpidchipr_pandoraKalmanTrack[64][3];   //[ntracks_pandoraKalmanTrack]
-   Float_t         trkpidchika_pandoraKalmanTrack[64][3];   //[ntracks_pandoraKalmanTrack]
-   Float_t         trkpidchipi_pandoraKalmanTrack[64][3];   //[ntracks_pandoraKalmanTrack]
-   Float_t         trkpidchimu_pandoraKalmanTrack[64][3];   //[ntracks_pandoraKalmanTrack]
-   Float_t         trkpidpida_pandoraKalmanTrack[64][3];   //[ntracks_pandoraKalmanTrack]
-   Short_t         trkpidbestplane_pandoraKalmanTrack[64];   //[ntracks_pandoraKalmanTrack]
-   Short_t         trkhasPFParticle_pandoraKalmanTrack[64];   //[ntracks_pandoraKalmanTrack]
-   Short_t         trkPFParticleID_pandoraKalmanTrack[64];   //[ntracks_pandoraKalmanTrack]
+   Short_t         trkId_pandoraKalmanTrack[194];   //[ntracks_pandoraKalmanTrack]
+   Short_t         trkncosmictags_tagger_pandoraKalmanTrack[194];   //[ntracks_pandoraKalmanTrack]
+   Float_t         trkcosmicscore_tagger_pandoraKalmanTrack[194];   //[ntracks_pandoraKalmanTrack]
+   Short_t         trkcosmictype_tagger_pandoraKalmanTrack[194];   //[ntracks_pandoraKalmanTrack]
+   Short_t         trkncosmictags_containmenttagger_pandoraKalmanTrack[194];   //[ntracks_pandoraKalmanTrack]
+   Float_t         trkcosmicscore_containmenttagger_pandoraKalmanTrack[194];   //[ntracks_pandoraKalmanTrack]
+   Short_t         trkcosmictype_containmenttagger_pandoraKalmanTrack[194];   //[ntracks_pandoraKalmanTrack]
+   Short_t         trkncosmictags_flashmatch_pandoraKalmanTrack[194];   //[ntracks_pandoraKalmanTrack]
+   Float_t         trkcosmicscore_flashmatch_pandoraKalmanTrack[194];   //[ntracks_pandoraKalmanTrack]
+   Short_t         trkcosmictype_flashmatch_pandoraKalmanTrack[194];   //[ntracks_pandoraKalmanTrack]
+   Float_t         trkke_pandoraKalmanTrack[194][3];   //[ntracks_pandoraKalmanTrack]
+   Float_t         trkrange_pandoraKalmanTrack[194][3];   //[ntracks_pandoraKalmanTrack]
+   Int_t           trkidtruth_pandoraKalmanTrack[194][3];   //[ntracks_pandoraKalmanTrack]
+   Short_t         trkorigin_pandoraKalmanTrack[194][3];   //[ntracks_pandoraKalmanTrack]
+   Int_t           trkpdgtruth_pandoraKalmanTrack[194][3];   //[ntracks_pandoraKalmanTrack]
+   Float_t         trkefftruth_pandoraKalmanTrack[194][3];   //[ntracks_pandoraKalmanTrack]
+   Float_t         trkpurtruth_pandoraKalmanTrack[194][3];   //[ntracks_pandoraKalmanTrack]
+   Float_t         trkpitchc_pandoraKalmanTrack[194][3];   //[ntracks_pandoraKalmanTrack]
+   Short_t         ntrkhits_pandoraKalmanTrack[194][3];   //[ntracks_pandoraKalmanTrack]
+   Float_t         trkdedx_pandoraKalmanTrack[194][3][2000];   //[ntracks_pandoraKalmanTrack]
+   Float_t         trkdqdx_pandoraKalmanTrack[194][3][2000];   //[ntracks_pandoraKalmanTrack]
+   Float_t         trkresrg_pandoraKalmanTrack[194][3][2000];   //[ntracks_pandoraKalmanTrack]
+   Float_t         trkxyz_pandoraKalmanTrack[194][3][2000][3];   //[ntracks_pandoraKalmanTrack]
+   Float_t         trkstartx_pandoraKalmanTrack[194];   //[ntracks_pandoraKalmanTrack]
+   Float_t         trkstarty_pandoraKalmanTrack[194];   //[ntracks_pandoraKalmanTrack]
+   Float_t         trkstartz_pandoraKalmanTrack[194];   //[ntracks_pandoraKalmanTrack]
+   Float_t         trkstartd_pandoraKalmanTrack[194];   //[ntracks_pandoraKalmanTrack]
+   Float_t         trkendx_pandoraKalmanTrack[194];   //[ntracks_pandoraKalmanTrack]
+   Float_t         trkendy_pandoraKalmanTrack[194];   //[ntracks_pandoraKalmanTrack]
+   Float_t         trkendz_pandoraKalmanTrack[194];   //[ntracks_pandoraKalmanTrack]
+   Float_t         trkendd_pandoraKalmanTrack[194];   //[ntracks_pandoraKalmanTrack]
+   Float_t         trkACpierceT0_pandoraKalmanTrack[194];   //[ntracks_pandoraKalmanTrack]
+   Float_t         trkflashT0_pandoraKalmanTrack[194];   //[ntracks_pandoraKalmanTrack]
+   Float_t         trktrueT0_pandoraKalmanTrack[194];   //[ntracks_pandoraKalmanTrack]
+   Int_t           trkg4id_pandoraKalmanTrack[194];   //[ntracks_pandoraKalmanTrack]
+   Int_t           trkorig_pandoraKalmanTrack[194];   //[ntracks_pandoraKalmanTrack]
+   Float_t         trkpurity_pandoraKalmanTrack[194];   //[ntracks_pandoraKalmanTrack]
+   Float_t         trkcompleteness_pandoraKalmanTrack[194];   //[ntracks_pandoraKalmanTrack]
+   Float_t         trktheta_pandoraKalmanTrack[194];   //[ntracks_pandoraKalmanTrack]
+   Float_t         trkphi_pandoraKalmanTrack[194];   //[ntracks_pandoraKalmanTrack]
+   Float_t         trkstartdcosx_pandoraKalmanTrack[194];   //[ntracks_pandoraKalmanTrack]
+   Float_t         trkstartdcosy_pandoraKalmanTrack[194];   //[ntracks_pandoraKalmanTrack]
+   Float_t         trkstartdcosz_pandoraKalmanTrack[194];   //[ntracks_pandoraKalmanTrack]
+   Float_t         trkenddcosx_pandoraKalmanTrack[194];   //[ntracks_pandoraKalmanTrack]
+   Float_t         trkenddcosy_pandoraKalmanTrack[194];   //[ntracks_pandoraKalmanTrack]
+   Float_t         trkenddcosz_pandoraKalmanTrack[194];   //[ntracks_pandoraKalmanTrack]
+   Float_t         trkthetaxz_pandoraKalmanTrack[194];   //[ntracks_pandoraKalmanTrack]
+   Float_t         trkthetayz_pandoraKalmanTrack[194];   //[ntracks_pandoraKalmanTrack]
+   Float_t         trkmom_pandoraKalmanTrack[194];   //[ntracks_pandoraKalmanTrack]
+   Float_t         trkmomrange_pandoraKalmanTrack[194];   //[ntracks_pandoraKalmanTrack]
+   Float_t         trkmommschi2_pandoraKalmanTrack[194];   //[ntracks_pandoraKalmanTrack]
+   Float_t         trkmommsllhd_pandoraKalmanTrack[194];   //[ntracks_pandoraKalmanTrack]
+   Float_t         trkmcsfwdmom_pandoraKalmanTrack[194];   //[ntracks_pandoraKalmanTrack]
+   Float_t         trkmcsfwdll_pandoraKalmanTrack[194];   //[ntracks_pandoraKalmanTrack]
+   Float_t         trkmcsfwderr_pandoraKalmanTrack[194];   //[ntracks_pandoraKalmanTrack]
+   Float_t         trkmcsbwdmom_pandoraKalmanTrack[194];   //[ntracks_pandoraKalmanTrack]
+   Float_t         trkmcsbwdll_pandoraKalmanTrack[194];   //[ntracks_pandoraKalmanTrack]
+   Float_t         trkmcsbwderr_pandoraKalmanTrack[194];   //[ntracks_pandoraKalmanTrack]
+   Float_t         trklen_pandoraKalmanTrack[194];   //[ntracks_pandoraKalmanTrack]
+   Short_t         trksvtxid_pandoraKalmanTrack[194];   //[ntracks_pandoraKalmanTrack]
+   Short_t         trkevtxid_pandoraKalmanTrack[194];   //[ntracks_pandoraKalmanTrack]
+   Int_t           trkntraj_pandoraKalmanTrack[194];   //[ntracks_pandoraKalmanTrack]
+   Int_t           trkpidpdg_pandoraKalmanTrack[194][3];   //[ntracks_pandoraKalmanTrack]
+   Float_t         trkpidchi_pandoraKalmanTrack[194][3];   //[ntracks_pandoraKalmanTrack]
+   Float_t         trkpidchipr_pandoraKalmanTrack[194][3];   //[ntracks_pandoraKalmanTrack]
+   Float_t         trkpidchika_pandoraKalmanTrack[194][3];   //[ntracks_pandoraKalmanTrack]
+   Float_t         trkpidchipi_pandoraKalmanTrack[194][3];   //[ntracks_pandoraKalmanTrack]
+   Float_t         trkpidchimu_pandoraKalmanTrack[194][3];   //[ntracks_pandoraKalmanTrack]
+   Float_t         trkpidpida_pandoraKalmanTrack[194][3];   //[ntracks_pandoraKalmanTrack]
+   Short_t         trkpidbestplane_pandoraKalmanTrack[194];   //[ntracks_pandoraKalmanTrack]
+   Short_t         trkhasPFParticle_pandoraKalmanTrack[194];   //[ntracks_pandoraKalmanTrack]
+   Short_t         trkPFParticleID_pandoraKalmanTrack[194];   //[ntracks_pandoraKalmanTrack]
    Short_t         ntracks_pmtrack;
-   Short_t         trkId_pmtrack[145];   //[ntracks_pmtrack]
-   Short_t         trkncosmictags_tagger_pmtrack[145];   //[ntracks_pmtrack]
-   Float_t         trkcosmicscore_tagger_pmtrack[145];   //[ntracks_pmtrack]
-   Short_t         trkcosmictype_tagger_pmtrack[145];   //[ntracks_pmtrack]
-   Short_t         trkncosmictags_containmenttagger_pmtrack[145];   //[ntracks_pmtrack]
-   Float_t         trkcosmicscore_containmenttagger_pmtrack[145];   //[ntracks_pmtrack]
-   Short_t         trkcosmictype_containmenttagger_pmtrack[145];   //[ntracks_pmtrack]
-   Short_t         trkncosmictags_flashmatch_pmtrack[145];   //[ntracks_pmtrack]
-   Float_t         trkcosmicscore_flashmatch_pmtrack[145];   //[ntracks_pmtrack]
-   Short_t         trkcosmictype_flashmatch_pmtrack[145];   //[ntracks_pmtrack]
-   Float_t         trkke_pmtrack[145][3];   //[ntracks_pmtrack]
-   Float_t         trkrange_pmtrack[145][3];   //[ntracks_pmtrack]
-   Int_t           trkidtruth_pmtrack[145][3];   //[ntracks_pmtrack]
-   Short_t         trkorigin_pmtrack[145][3];   //[ntracks_pmtrack]
-   Int_t           trkpdgtruth_pmtrack[145][3];   //[ntracks_pmtrack]
-   Float_t         trkefftruth_pmtrack[145][3];   //[ntracks_pmtrack]
-   Float_t         trkpurtruth_pmtrack[145][3];   //[ntracks_pmtrack]
-   Float_t         trkpitchc_pmtrack[145][3];   //[ntracks_pmtrack]
-   Short_t         ntrkhits_pmtrack[145][3];   //[ntracks_pmtrack]
-   Float_t         trkdedx_pmtrack[145][3][2000];   //[ntracks_pmtrack]
-   Float_t         trkdqdx_pmtrack[145][3][2000];   //[ntracks_pmtrack]
-   Float_t         trkresrg_pmtrack[145][3][2000];   //[ntracks_pmtrack]
-   Float_t         trkxyz_pmtrack[145][3][2000][3];   //[ntracks_pmtrack]
-   Float_t         trkstartx_pmtrack[145];   //[ntracks_pmtrack]
-   Float_t         trkstarty_pmtrack[145];   //[ntracks_pmtrack]
-   Float_t         trkstartz_pmtrack[145];   //[ntracks_pmtrack]
-   Float_t         trkstartd_pmtrack[145];   //[ntracks_pmtrack]
-   Float_t         trkendx_pmtrack[145];   //[ntracks_pmtrack]
-   Float_t         trkendy_pmtrack[145];   //[ntracks_pmtrack]
-   Float_t         trkendz_pmtrack[145];   //[ntracks_pmtrack]
-   Float_t         trkendd_pmtrack[145];   //[ntracks_pmtrack]
-   Float_t         trkACpierceT0_pmtrack[145];   //[ntracks_pmtrack]
-   Float_t         trkflashT0_pmtrack[145];   //[ntracks_pmtrack]
-   Float_t         trktrueT0_pmtrack[145];   //[ntracks_pmtrack]
-   Int_t           trkg4id_pmtrack[145];   //[ntracks_pmtrack]
-   Int_t           trkorig_pmtrack[145];   //[ntracks_pmtrack]
-   Float_t         trkpurity_pmtrack[145];   //[ntracks_pmtrack]
-   Float_t         trkcompleteness_pmtrack[145];   //[ntracks_pmtrack]
-   Float_t         trktheta_pmtrack[145];   //[ntracks_pmtrack]
-   Float_t         trkphi_pmtrack[145];   //[ntracks_pmtrack]
-   Float_t         trkstartdcosx_pmtrack[145];   //[ntracks_pmtrack]
-   Float_t         trkstartdcosy_pmtrack[145];   //[ntracks_pmtrack]
-   Float_t         trkstartdcosz_pmtrack[145];   //[ntracks_pmtrack]
-   Float_t         trkenddcosx_pmtrack[145];   //[ntracks_pmtrack]
-   Float_t         trkenddcosy_pmtrack[145];   //[ntracks_pmtrack]
-   Float_t         trkenddcosz_pmtrack[145];   //[ntracks_pmtrack]
-   Float_t         trkthetaxz_pmtrack[145];   //[ntracks_pmtrack]
-   Float_t         trkthetayz_pmtrack[145];   //[ntracks_pmtrack]
-   Float_t         trkmom_pmtrack[145];   //[ntracks_pmtrack]
-   Float_t         trkmomrange_pmtrack[145];   //[ntracks_pmtrack]
-   Float_t         trkmommschi2_pmtrack[145];   //[ntracks_pmtrack]
-   Float_t         trkmommsllhd_pmtrack[145];   //[ntracks_pmtrack]
-   Float_t         trkmcsfwdmom_pmtrack[145];   //[ntracks_pmtrack]
-   Float_t         trkmcsfwdll_pmtrack[145];   //[ntracks_pmtrack]
-   Float_t         trkmcsfwderr_pmtrack[145];   //[ntracks_pmtrack]
-   Float_t         trkmcsbwdmom_pmtrack[145];   //[ntracks_pmtrack]
-   Float_t         trkmcsbwdll_pmtrack[145];   //[ntracks_pmtrack]
-   Float_t         trkmcsbwderr_pmtrack[145];   //[ntracks_pmtrack]
-   Float_t         trklen_pmtrack[145];   //[ntracks_pmtrack]
-   Short_t         trksvtxid_pmtrack[145];   //[ntracks_pmtrack]
-   Short_t         trkevtxid_pmtrack[145];   //[ntracks_pmtrack]
-   Int_t           trkntraj_pmtrack[145];   //[ntracks_pmtrack]
-   Int_t           trkpidpdg_pmtrack[145][3];   //[ntracks_pmtrack]
-   Float_t         trkpidchi_pmtrack[145][3];   //[ntracks_pmtrack]
-   Float_t         trkpidchipr_pmtrack[145][3];   //[ntracks_pmtrack]
-   Float_t         trkpidchika_pmtrack[145][3];   //[ntracks_pmtrack]
-   Float_t         trkpidchipi_pmtrack[145][3];   //[ntracks_pmtrack]
-   Float_t         trkpidchimu_pmtrack[145][3];   //[ntracks_pmtrack]
-   Float_t         trkpidpida_pmtrack[145][3];   //[ntracks_pmtrack]
-   Short_t         trkpidbestplane_pmtrack[145];   //[ntracks_pmtrack]
-   Short_t         trkhasPFParticle_pmtrack[145];   //[ntracks_pmtrack]
-   Short_t         trkPFParticleID_pmtrack[145];   //[ntracks_pmtrack]
+   Short_t         trkId_pmtrack[433];   //[ntracks_pmtrack]
+   Short_t         trkncosmictags_tagger_pmtrack[433];   //[ntracks_pmtrack]
+   Float_t         trkcosmicscore_tagger_pmtrack[433];   //[ntracks_pmtrack]
+   Short_t         trkcosmictype_tagger_pmtrack[433];   //[ntracks_pmtrack]
+   Short_t         trkncosmictags_containmenttagger_pmtrack[433];   //[ntracks_pmtrack]
+   Float_t         trkcosmicscore_containmenttagger_pmtrack[433];   //[ntracks_pmtrack]
+   Short_t         trkcosmictype_containmenttagger_pmtrack[433];   //[ntracks_pmtrack]
+   Short_t         trkncosmictags_flashmatch_pmtrack[433];   //[ntracks_pmtrack]
+   Float_t         trkcosmicscore_flashmatch_pmtrack[433];   //[ntracks_pmtrack]
+   Short_t         trkcosmictype_flashmatch_pmtrack[433];   //[ntracks_pmtrack]
+   Float_t         trkke_pmtrack[433][3];   //[ntracks_pmtrack]
+   Float_t         trkrange_pmtrack[433][3];   //[ntracks_pmtrack]
+   Int_t           trkidtruth_pmtrack[433][3];   //[ntracks_pmtrack]
+   Short_t         trkorigin_pmtrack[433][3];   //[ntracks_pmtrack]
+   Int_t           trkpdgtruth_pmtrack[433][3];   //[ntracks_pmtrack]
+   Float_t         trkefftruth_pmtrack[433][3];   //[ntracks_pmtrack]
+   Float_t         trkpurtruth_pmtrack[433][3];   //[ntracks_pmtrack]
+   Float_t         trkpitchc_pmtrack[433][3];   //[ntracks_pmtrack]
+   Short_t         ntrkhits_pmtrack[433][3];   //[ntracks_pmtrack]
+   Float_t         trkdedx_pmtrack[433][3][2000];   //[ntracks_pmtrack]
+   Float_t         trkdqdx_pmtrack[433][3][2000];   //[ntracks_pmtrack]
+   Float_t         trkresrg_pmtrack[433][3][2000];   //[ntracks_pmtrack]
+   Float_t         trkxyz_pmtrack[433][3][2000][3];   //[ntracks_pmtrack]
+   Float_t         trkstartx_pmtrack[433];   //[ntracks_pmtrack]
+   Float_t         trkstarty_pmtrack[433];   //[ntracks_pmtrack]
+   Float_t         trkstartz_pmtrack[433];   //[ntracks_pmtrack]
+   Float_t         trkstartd_pmtrack[433];   //[ntracks_pmtrack]
+   Float_t         trkendx_pmtrack[433];   //[ntracks_pmtrack]
+   Float_t         trkendy_pmtrack[433];   //[ntracks_pmtrack]
+   Float_t         trkendz_pmtrack[433];   //[ntracks_pmtrack]
+   Float_t         trkendd_pmtrack[433];   //[ntracks_pmtrack]
+   Float_t         trkACpierceT0_pmtrack[433];   //[ntracks_pmtrack]
+   Float_t         trkflashT0_pmtrack[433];   //[ntracks_pmtrack]
+   Float_t         trktrueT0_pmtrack[433];   //[ntracks_pmtrack]
+   Int_t           trkg4id_pmtrack[433];   //[ntracks_pmtrack]
+   Int_t           trkorig_pmtrack[433];   //[ntracks_pmtrack]
+   Float_t         trkpurity_pmtrack[433];   //[ntracks_pmtrack]
+   Float_t         trkcompleteness_pmtrack[433];   //[ntracks_pmtrack]
+   Float_t         trktheta_pmtrack[433];   //[ntracks_pmtrack]
+   Float_t         trkphi_pmtrack[433];   //[ntracks_pmtrack]
+   Float_t         trkstartdcosx_pmtrack[433];   //[ntracks_pmtrack]
+   Float_t         trkstartdcosy_pmtrack[433];   //[ntracks_pmtrack]
+   Float_t         trkstartdcosz_pmtrack[433];   //[ntracks_pmtrack]
+   Float_t         trkenddcosx_pmtrack[433];   //[ntracks_pmtrack]
+   Float_t         trkenddcosy_pmtrack[433];   //[ntracks_pmtrack]
+   Float_t         trkenddcosz_pmtrack[433];   //[ntracks_pmtrack]
+   Float_t         trkthetaxz_pmtrack[433];   //[ntracks_pmtrack]
+   Float_t         trkthetayz_pmtrack[433];   //[ntracks_pmtrack]
+   Float_t         trkmom_pmtrack[433];   //[ntracks_pmtrack]
+   Float_t         trkmomrange_pmtrack[433];   //[ntracks_pmtrack]
+   Float_t         trkmommschi2_pmtrack[433];   //[ntracks_pmtrack]
+   Float_t         trkmommsllhd_pmtrack[433];   //[ntracks_pmtrack]
+   Float_t         trkmcsfwdmom_pmtrack[433];   //[ntracks_pmtrack]
+   Float_t         trkmcsfwdll_pmtrack[433];   //[ntracks_pmtrack]
+   Float_t         trkmcsfwderr_pmtrack[433];   //[ntracks_pmtrack]
+   Float_t         trkmcsbwdmom_pmtrack[433];   //[ntracks_pmtrack]
+   Float_t         trkmcsbwdll_pmtrack[433];   //[ntracks_pmtrack]
+   Float_t         trkmcsbwderr_pmtrack[433];   //[ntracks_pmtrack]
+   Float_t         trklen_pmtrack[433];   //[ntracks_pmtrack]
+   Short_t         trksvtxid_pmtrack[433];   //[ntracks_pmtrack]
+   Short_t         trkevtxid_pmtrack[433];   //[ntracks_pmtrack]
+   Int_t           trkntraj_pmtrack[433];   //[ntracks_pmtrack]
+   Int_t           trkpidpdg_pmtrack[433][3];   //[ntracks_pmtrack]
+   Float_t         trkpidchi_pmtrack[433][3];   //[ntracks_pmtrack]
+   Float_t         trkpidchipr_pmtrack[433][3];   //[ntracks_pmtrack]
+   Float_t         trkpidchika_pmtrack[433][3];   //[ntracks_pmtrack]
+   Float_t         trkpidchipi_pmtrack[433][3];   //[ntracks_pmtrack]
+   Float_t         trkpidchimu_pmtrack[433][3];   //[ntracks_pmtrack]
+   Float_t         trkpidpida_pmtrack[433][3];   //[ntracks_pmtrack]
+   Short_t         trkpidbestplane_pmtrack[433];   //[ntracks_pmtrack]
+   Short_t         trkhasPFParticle_pmtrack[433];   //[ntracks_pmtrack]
+   Short_t         trkPFParticleID_pmtrack[433];   //[ntracks_pmtrack]
    Short_t         ntracks_pandoraKalmanShower;
-   Short_t         trkId_pandoraKalmanShower[137];   //[ntracks_pandoraKalmanShower]
-   Short_t         trkncosmictags_tagger_pandoraKalmanShower[137];   //[ntracks_pandoraKalmanShower]
-   Float_t         trkcosmicscore_tagger_pandoraKalmanShower[137];   //[ntracks_pandoraKalmanShower]
-   Short_t         trkcosmictype_tagger_pandoraKalmanShower[137];   //[ntracks_pandoraKalmanShower]
-   Short_t         trkncosmictags_containmenttagger_pandoraKalmanShower[137];   //[ntracks_pandoraKalmanShower]
-   Float_t         trkcosmicscore_containmenttagger_pandoraKalmanShower[137];   //[ntracks_pandoraKalmanShower]
-   Short_t         trkcosmictype_containmenttagger_pandoraKalmanShower[137];   //[ntracks_pandoraKalmanShower]
-   Short_t         trkncosmictags_flashmatch_pandoraKalmanShower[137];   //[ntracks_pandoraKalmanShower]
-   Float_t         trkcosmicscore_flashmatch_pandoraKalmanShower[137];   //[ntracks_pandoraKalmanShower]
-   Short_t         trkcosmictype_flashmatch_pandoraKalmanShower[137];   //[ntracks_pandoraKalmanShower]
-   Float_t         trkke_pandoraKalmanShower[137][3];   //[ntracks_pandoraKalmanShower]
-   Float_t         trkrange_pandoraKalmanShower[137][3];   //[ntracks_pandoraKalmanShower]
-   Int_t           trkidtruth_pandoraKalmanShower[137][3];   //[ntracks_pandoraKalmanShower]
-   Short_t         trkorigin_pandoraKalmanShower[137][3];   //[ntracks_pandoraKalmanShower]
-   Int_t           trkpdgtruth_pandoraKalmanShower[137][3];   //[ntracks_pandoraKalmanShower]
-   Float_t         trkefftruth_pandoraKalmanShower[137][3];   //[ntracks_pandoraKalmanShower]
-   Float_t         trkpurtruth_pandoraKalmanShower[137][3];   //[ntracks_pandoraKalmanShower]
-   Float_t         trkpitchc_pandoraKalmanShower[137][3];   //[ntracks_pandoraKalmanShower]
-   Short_t         ntrkhits_pandoraKalmanShower[137][3];   //[ntracks_pandoraKalmanShower]
-   Float_t         trkdedx_pandoraKalmanShower[137][3][2000];   //[ntracks_pandoraKalmanShower]
-   Float_t         trkdqdx_pandoraKalmanShower[137][3][2000];   //[ntracks_pandoraKalmanShower]
-   Float_t         trkresrg_pandoraKalmanShower[137][3][2000];   //[ntracks_pandoraKalmanShower]
-   Float_t         trkxyz_pandoraKalmanShower[137][3][2000][3];   //[ntracks_pandoraKalmanShower]
-   Float_t         trkstartx_pandoraKalmanShower[137];   //[ntracks_pandoraKalmanShower]
-   Float_t         trkstarty_pandoraKalmanShower[137];   //[ntracks_pandoraKalmanShower]
-   Float_t         trkstartz_pandoraKalmanShower[137];   //[ntracks_pandoraKalmanShower]
-   Float_t         trkstartd_pandoraKalmanShower[137];   //[ntracks_pandoraKalmanShower]
-   Float_t         trkendx_pandoraKalmanShower[137];   //[ntracks_pandoraKalmanShower]
-   Float_t         trkendy_pandoraKalmanShower[137];   //[ntracks_pandoraKalmanShower]
-   Float_t         trkendz_pandoraKalmanShower[137];   //[ntracks_pandoraKalmanShower]
-   Float_t         trkendd_pandoraKalmanShower[137];   //[ntracks_pandoraKalmanShower]
-   Float_t         trkACpierceT0_pandoraKalmanShower[137];   //[ntracks_pandoraKalmanShower]
-   Float_t         trkflashT0_pandoraKalmanShower[137];   //[ntracks_pandoraKalmanShower]
-   Float_t         trktrueT0_pandoraKalmanShower[137];   //[ntracks_pandoraKalmanShower]
-   Int_t           trkg4id_pandoraKalmanShower[137];   //[ntracks_pandoraKalmanShower]
-   Int_t           trkorig_pandoraKalmanShower[137];   //[ntracks_pandoraKalmanShower]
-   Float_t         trkpurity_pandoraKalmanShower[137];   //[ntracks_pandoraKalmanShower]
-   Float_t         trkcompleteness_pandoraKalmanShower[137];   //[ntracks_pandoraKalmanShower]
-   Float_t         trktheta_pandoraKalmanShower[137];   //[ntracks_pandoraKalmanShower]
-   Float_t         trkphi_pandoraKalmanShower[137];   //[ntracks_pandoraKalmanShower]
-   Float_t         trkstartdcosx_pandoraKalmanShower[137];   //[ntracks_pandoraKalmanShower]
-   Float_t         trkstartdcosy_pandoraKalmanShower[137];   //[ntracks_pandoraKalmanShower]
-   Float_t         trkstartdcosz_pandoraKalmanShower[137];   //[ntracks_pandoraKalmanShower]
-   Float_t         trkenddcosx_pandoraKalmanShower[137];   //[ntracks_pandoraKalmanShower]
-   Float_t         trkenddcosy_pandoraKalmanShower[137];   //[ntracks_pandoraKalmanShower]
-   Float_t         trkenddcosz_pandoraKalmanShower[137];   //[ntracks_pandoraKalmanShower]
-   Float_t         trkthetaxz_pandoraKalmanShower[137];   //[ntracks_pandoraKalmanShower]
-   Float_t         trkthetayz_pandoraKalmanShower[137];   //[ntracks_pandoraKalmanShower]
-   Float_t         trkmom_pandoraKalmanShower[137];   //[ntracks_pandoraKalmanShower]
-   Float_t         trkmomrange_pandoraKalmanShower[137];   //[ntracks_pandoraKalmanShower]
-   Float_t         trkmommschi2_pandoraKalmanShower[137];   //[ntracks_pandoraKalmanShower]
-   Float_t         trkmommsllhd_pandoraKalmanShower[137];   //[ntracks_pandoraKalmanShower]
-   Float_t         trkmcsfwdmom_pandoraKalmanShower[137];   //[ntracks_pandoraKalmanShower]
-   Float_t         trkmcsfwdll_pandoraKalmanShower[137];   //[ntracks_pandoraKalmanShower]
-   Float_t         trkmcsfwderr_pandoraKalmanShower[137];   //[ntracks_pandoraKalmanShower]
-   Float_t         trkmcsbwdmom_pandoraKalmanShower[137];   //[ntracks_pandoraKalmanShower]
-   Float_t         trkmcsbwdll_pandoraKalmanShower[137];   //[ntracks_pandoraKalmanShower]
-   Float_t         trkmcsbwderr_pandoraKalmanShower[137];   //[ntracks_pandoraKalmanShower]
-   Float_t         trklen_pandoraKalmanShower[137];   //[ntracks_pandoraKalmanShower]
-   Short_t         trksvtxid_pandoraKalmanShower[137];   //[ntracks_pandoraKalmanShower]
-   Short_t         trkevtxid_pandoraKalmanShower[137];   //[ntracks_pandoraKalmanShower]
-   Int_t           trkntraj_pandoraKalmanShower[137];   //[ntracks_pandoraKalmanShower]
-   Int_t           trkpidpdg_pandoraKalmanShower[137][3];   //[ntracks_pandoraKalmanShower]
-   Float_t         trkpidchi_pandoraKalmanShower[137][3];   //[ntracks_pandoraKalmanShower]
-   Float_t         trkpidchipr_pandoraKalmanShower[137][3];   //[ntracks_pandoraKalmanShower]
-   Float_t         trkpidchika_pandoraKalmanShower[137][3];   //[ntracks_pandoraKalmanShower]
-   Float_t         trkpidchipi_pandoraKalmanShower[137][3];   //[ntracks_pandoraKalmanShower]
-   Float_t         trkpidchimu_pandoraKalmanShower[137][3];   //[ntracks_pandoraKalmanShower]
-   Float_t         trkpidpida_pandoraKalmanShower[137][3];   //[ntracks_pandoraKalmanShower]
-   Short_t         trkpidbestplane_pandoraKalmanShower[137];   //[ntracks_pandoraKalmanShower]
-   Short_t         trkhasPFParticle_pandoraKalmanShower[137];   //[ntracks_pandoraKalmanShower]
-   Short_t         trkPFParticleID_pandoraKalmanShower[137];   //[ntracks_pandoraKalmanShower]
+   Short_t         trkId_pandoraKalmanShower[173];   //[ntracks_pandoraKalmanShower]
+   Short_t         trkncosmictags_tagger_pandoraKalmanShower[173];   //[ntracks_pandoraKalmanShower]
+   Float_t         trkcosmicscore_tagger_pandoraKalmanShower[173];   //[ntracks_pandoraKalmanShower]
+   Short_t         trkcosmictype_tagger_pandoraKalmanShower[173];   //[ntracks_pandoraKalmanShower]
+   Short_t         trkncosmictags_containmenttagger_pandoraKalmanShower[173];   //[ntracks_pandoraKalmanShower]
+   Float_t         trkcosmicscore_containmenttagger_pandoraKalmanShower[173];   //[ntracks_pandoraKalmanShower]
+   Short_t         trkcosmictype_containmenttagger_pandoraKalmanShower[173];   //[ntracks_pandoraKalmanShower]
+   Short_t         trkncosmictags_flashmatch_pandoraKalmanShower[173];   //[ntracks_pandoraKalmanShower]
+   Float_t         trkcosmicscore_flashmatch_pandoraKalmanShower[173];   //[ntracks_pandoraKalmanShower]
+   Short_t         trkcosmictype_flashmatch_pandoraKalmanShower[173];   //[ntracks_pandoraKalmanShower]
+   Float_t         trkke_pandoraKalmanShower[173][3];   //[ntracks_pandoraKalmanShower]
+   Float_t         trkrange_pandoraKalmanShower[173][3];   //[ntracks_pandoraKalmanShower]
+   Int_t           trkidtruth_pandoraKalmanShower[173][3];   //[ntracks_pandoraKalmanShower]
+   Short_t         trkorigin_pandoraKalmanShower[173][3];   //[ntracks_pandoraKalmanShower]
+   Int_t           trkpdgtruth_pandoraKalmanShower[173][3];   //[ntracks_pandoraKalmanShower]
+   Float_t         trkefftruth_pandoraKalmanShower[173][3];   //[ntracks_pandoraKalmanShower]
+   Float_t         trkpurtruth_pandoraKalmanShower[173][3];   //[ntracks_pandoraKalmanShower]
+   Float_t         trkpitchc_pandoraKalmanShower[173][3];   //[ntracks_pandoraKalmanShower]
+   Short_t         ntrkhits_pandoraKalmanShower[173][3];   //[ntracks_pandoraKalmanShower]
+   Float_t         trkdedx_pandoraKalmanShower[173][3][2000];   //[ntracks_pandoraKalmanShower]
+   Float_t         trkdqdx_pandoraKalmanShower[173][3][2000];   //[ntracks_pandoraKalmanShower]
+   Float_t         trkresrg_pandoraKalmanShower[173][3][2000];   //[ntracks_pandoraKalmanShower]
+   Float_t         trkxyz_pandoraKalmanShower[173][3][2000][3];   //[ntracks_pandoraKalmanShower]
+   Float_t         trkstartx_pandoraKalmanShower[173];   //[ntracks_pandoraKalmanShower]
+   Float_t         trkstarty_pandoraKalmanShower[173];   //[ntracks_pandoraKalmanShower]
+   Float_t         trkstartz_pandoraKalmanShower[173];   //[ntracks_pandoraKalmanShower]
+   Float_t         trkstartd_pandoraKalmanShower[173];   //[ntracks_pandoraKalmanShower]
+   Float_t         trkendx_pandoraKalmanShower[173];   //[ntracks_pandoraKalmanShower]
+   Float_t         trkendy_pandoraKalmanShower[173];   //[ntracks_pandoraKalmanShower]
+   Float_t         trkendz_pandoraKalmanShower[173];   //[ntracks_pandoraKalmanShower]
+   Float_t         trkendd_pandoraKalmanShower[173];   //[ntracks_pandoraKalmanShower]
+   Float_t         trkACpierceT0_pandoraKalmanShower[173];   //[ntracks_pandoraKalmanShower]
+   Float_t         trkflashT0_pandoraKalmanShower[173];   //[ntracks_pandoraKalmanShower]
+   Float_t         trktrueT0_pandoraKalmanShower[173];   //[ntracks_pandoraKalmanShower]
+   Int_t           trkg4id_pandoraKalmanShower[173];   //[ntracks_pandoraKalmanShower]
+   Int_t           trkorig_pandoraKalmanShower[173];   //[ntracks_pandoraKalmanShower]
+   Float_t         trkpurity_pandoraKalmanShower[173];   //[ntracks_pandoraKalmanShower]
+   Float_t         trkcompleteness_pandoraKalmanShower[173];   //[ntracks_pandoraKalmanShower]
+   Float_t         trktheta_pandoraKalmanShower[173];   //[ntracks_pandoraKalmanShower]
+   Float_t         trkphi_pandoraKalmanShower[173];   //[ntracks_pandoraKalmanShower]
+   Float_t         trkstartdcosx_pandoraKalmanShower[173];   //[ntracks_pandoraKalmanShower]
+   Float_t         trkstartdcosy_pandoraKalmanShower[173];   //[ntracks_pandoraKalmanShower]
+   Float_t         trkstartdcosz_pandoraKalmanShower[173];   //[ntracks_pandoraKalmanShower]
+   Float_t         trkenddcosx_pandoraKalmanShower[173];   //[ntracks_pandoraKalmanShower]
+   Float_t         trkenddcosy_pandoraKalmanShower[173];   //[ntracks_pandoraKalmanShower]
+   Float_t         trkenddcosz_pandoraKalmanShower[173];   //[ntracks_pandoraKalmanShower]
+   Float_t         trkthetaxz_pandoraKalmanShower[173];   //[ntracks_pandoraKalmanShower]
+   Float_t         trkthetayz_pandoraKalmanShower[173];   //[ntracks_pandoraKalmanShower]
+   Float_t         trkmom_pandoraKalmanShower[173];   //[ntracks_pandoraKalmanShower]
+   Float_t         trkmomrange_pandoraKalmanShower[173];   //[ntracks_pandoraKalmanShower]
+   Float_t         trkmommschi2_pandoraKalmanShower[173];   //[ntracks_pandoraKalmanShower]
+   Float_t         trkmommsllhd_pandoraKalmanShower[173];   //[ntracks_pandoraKalmanShower]
+   Float_t         trkmcsfwdmom_pandoraKalmanShower[173];   //[ntracks_pandoraKalmanShower]
+   Float_t         trkmcsfwdll_pandoraKalmanShower[173];   //[ntracks_pandoraKalmanShower]
+   Float_t         trkmcsfwderr_pandoraKalmanShower[173];   //[ntracks_pandoraKalmanShower]
+   Float_t         trkmcsbwdmom_pandoraKalmanShower[173];   //[ntracks_pandoraKalmanShower]
+   Float_t         trkmcsbwdll_pandoraKalmanShower[173];   //[ntracks_pandoraKalmanShower]
+   Float_t         trkmcsbwderr_pandoraKalmanShower[173];   //[ntracks_pandoraKalmanShower]
+   Float_t         trklen_pandoraKalmanShower[173];   //[ntracks_pandoraKalmanShower]
+   Short_t         trksvtxid_pandoraKalmanShower[173];   //[ntracks_pandoraKalmanShower]
+   Short_t         trkevtxid_pandoraKalmanShower[173];   //[ntracks_pandoraKalmanShower]
+   Int_t           trkntraj_pandoraKalmanShower[173];   //[ntracks_pandoraKalmanShower]
+   Int_t           trkpidpdg_pandoraKalmanShower[173][3];   //[ntracks_pandoraKalmanShower]
+   Float_t         trkpidchi_pandoraKalmanShower[173][3];   //[ntracks_pandoraKalmanShower]
+   Float_t         trkpidchipr_pandoraKalmanShower[173][3];   //[ntracks_pandoraKalmanShower]
+   Float_t         trkpidchika_pandoraKalmanShower[173][3];   //[ntracks_pandoraKalmanShower]
+   Float_t         trkpidchipi_pandoraKalmanShower[173][3];   //[ntracks_pandoraKalmanShower]
+   Float_t         trkpidchimu_pandoraKalmanShower[173][3];   //[ntracks_pandoraKalmanShower]
+   Float_t         trkpidpida_pandoraKalmanShower[173][3];   //[ntracks_pandoraKalmanShower]
+   Short_t         trkpidbestplane_pandoraKalmanShower[173];   //[ntracks_pandoraKalmanShower]
+   Short_t         trkhasPFParticle_pandoraKalmanShower[173];   //[ntracks_pandoraKalmanShower]
+   Short_t         trkPFParticleID_pandoraKalmanShower[173];   //[ntracks_pandoraKalmanShower]
+   Short_t         ntracks_pandoraTrack;
+   Short_t         trkId_pandoraTrack[1];   //[ntracks_pandoraTrack]
+   Short_t         trkncosmictags_tagger_pandoraTrack[1];   //[ntracks_pandoraTrack]
+   Float_t         trkcosmicscore_tagger_pandoraTrack[1];   //[ntracks_pandoraTrack]
+   Short_t         trkcosmictype_tagger_pandoraTrack[1];   //[ntracks_pandoraTrack]
+   Short_t         trkncosmictags_containmenttagger_pandoraTrack[1];   //[ntracks_pandoraTrack]
+   Float_t         trkcosmicscore_containmenttagger_pandoraTrack[1];   //[ntracks_pandoraTrack]
+   Short_t         trkcosmictype_containmenttagger_pandoraTrack[1];   //[ntracks_pandoraTrack]
+   Short_t         trkncosmictags_flashmatch_pandoraTrack[1];   //[ntracks_pandoraTrack]
+   Float_t         trkcosmicscore_flashmatch_pandoraTrack[1];   //[ntracks_pandoraTrack]
+   Short_t         trkcosmictype_flashmatch_pandoraTrack[1];   //[ntracks_pandoraTrack]
+   Float_t         trkke_pandoraTrack[1][3];   //[ntracks_pandoraTrack]
+   Float_t         trkrange_pandoraTrack[1][3];   //[ntracks_pandoraTrack]
+   Int_t           trkidtruth_pandoraTrack[1][3];   //[ntracks_pandoraTrack]
+   Short_t         trkorigin_pandoraTrack[1][3];   //[ntracks_pandoraTrack]
+   Int_t           trkpdgtruth_pandoraTrack[1][3];   //[ntracks_pandoraTrack]
+   Float_t         trkefftruth_pandoraTrack[1][3];   //[ntracks_pandoraTrack]
+   Float_t         trkpurtruth_pandoraTrack[1][3];   //[ntracks_pandoraTrack]
+   Float_t         trkpitchc_pandoraTrack[1][3];   //[ntracks_pandoraTrack]
+   Short_t         ntrkhits_pandoraTrack[1][3];   //[ntracks_pandoraTrack]
+   Float_t         trkdedx_pandoraTrack[1][3][2000];   //[ntracks_pandoraTrack]
+   Float_t         trkdqdx_pandoraTrack[1][3][2000];   //[ntracks_pandoraTrack]
+   Float_t         trkresrg_pandoraTrack[1][3][2000];   //[ntracks_pandoraTrack]
+   Float_t         trkxyz_pandoraTrack[1][3][2000][3];   //[ntracks_pandoraTrack]
+   Float_t         trkstartx_pandoraTrack[1];   //[ntracks_pandoraTrack]
+   Float_t         trkstarty_pandoraTrack[1];   //[ntracks_pandoraTrack]
+   Float_t         trkstartz_pandoraTrack[1];   //[ntracks_pandoraTrack]
+   Float_t         trkstartd_pandoraTrack[1];   //[ntracks_pandoraTrack]
+   Float_t         trkendx_pandoraTrack[1];   //[ntracks_pandoraTrack]
+   Float_t         trkendy_pandoraTrack[1];   //[ntracks_pandoraTrack]
+   Float_t         trkendz_pandoraTrack[1];   //[ntracks_pandoraTrack]
+   Float_t         trkendd_pandoraTrack[1];   //[ntracks_pandoraTrack]
+   Float_t         trkACpierceT0_pandoraTrack[1];   //[ntracks_pandoraTrack]
+   Float_t         trkflashT0_pandoraTrack[1];   //[ntracks_pandoraTrack]
+   Float_t         trktrueT0_pandoraTrack[1];   //[ntracks_pandoraTrack]
+   Int_t           trkg4id_pandoraTrack[1];   //[ntracks_pandoraTrack]
+   Int_t           trkorig_pandoraTrack[1];   //[ntracks_pandoraTrack]
+   Float_t         trkpurity_pandoraTrack[1];   //[ntracks_pandoraTrack]
+   Float_t         trkcompleteness_pandoraTrack[1];   //[ntracks_pandoraTrack]
+   Float_t         trktheta_pandoraTrack[1];   //[ntracks_pandoraTrack]
+   Float_t         trkphi_pandoraTrack[1];   //[ntracks_pandoraTrack]
+   Float_t         trkstartdcosx_pandoraTrack[1];   //[ntracks_pandoraTrack]
+   Float_t         trkstartdcosy_pandoraTrack[1];   //[ntracks_pandoraTrack]
+   Float_t         trkstartdcosz_pandoraTrack[1];   //[ntracks_pandoraTrack]
+   Float_t         trkenddcosx_pandoraTrack[1];   //[ntracks_pandoraTrack]
+   Float_t         trkenddcosy_pandoraTrack[1];   //[ntracks_pandoraTrack]
+   Float_t         trkenddcosz_pandoraTrack[1];   //[ntracks_pandoraTrack]
+   Float_t         trkthetaxz_pandoraTrack[1];   //[ntracks_pandoraTrack]
+   Float_t         trkthetayz_pandoraTrack[1];   //[ntracks_pandoraTrack]
+   Float_t         trkmom_pandoraTrack[1];   //[ntracks_pandoraTrack]
+   Float_t         trkmomrange_pandoraTrack[1];   //[ntracks_pandoraTrack]
+   Float_t         trkmommschi2_pandoraTrack[1];   //[ntracks_pandoraTrack]
+   Float_t         trkmommsllhd_pandoraTrack[1];   //[ntracks_pandoraTrack]
+   Float_t         trkmcsfwdmom_pandoraTrack[1];   //[ntracks_pandoraTrack]
+   Float_t         trkmcsfwdll_pandoraTrack[1];   //[ntracks_pandoraTrack]
+   Float_t         trkmcsfwderr_pandoraTrack[1];   //[ntracks_pandoraTrack]
+   Float_t         trkmcsbwdmom_pandoraTrack[1];   //[ntracks_pandoraTrack]
+   Float_t         trkmcsbwdll_pandoraTrack[1];   //[ntracks_pandoraTrack]
+   Float_t         trkmcsbwderr_pandoraTrack[1];   //[ntracks_pandoraTrack]
+   Float_t         trklen_pandoraTrack[1];   //[ntracks_pandoraTrack]
+   Short_t         trksvtxid_pandoraTrack[1];   //[ntracks_pandoraTrack]
+   Short_t         trkevtxid_pandoraTrack[1];   //[ntracks_pandoraTrack]
+   Int_t           trkntraj_pandoraTrack[1];   //[ntracks_pandoraTrack]
+   Int_t           trkpidpdg_pandoraTrack[1][3];   //[ntracks_pandoraTrack]
+   Float_t         trkpidchi_pandoraTrack[1][3];   //[ntracks_pandoraTrack]
+   Float_t         trkpidchipr_pandoraTrack[1][3];   //[ntracks_pandoraTrack]
+   Float_t         trkpidchika_pandoraTrack[1][3];   //[ntracks_pandoraTrack]
+   Float_t         trkpidchipi_pandoraTrack[1][3];   //[ntracks_pandoraTrack]
+   Float_t         trkpidchimu_pandoraTrack[1][3];   //[ntracks_pandoraTrack]
+   Float_t         trkpidpida_pandoraTrack[1][3];   //[ntracks_pandoraTrack]
+   Short_t         trkpidbestplane_pandoraTrack[1];   //[ntracks_pandoraTrack]
+   Short_t         trkhasPFParticle_pandoraTrack[1];   //[ntracks_pandoraTrack]
+   Short_t         trkPFParticleID_pandoraTrack[1];   //[ntracks_pandoraTrack]
    Short_t         nvtx_pandora;
-   Short_t         vtxId_pandora[231];   //[nvtx_pandora]
-   Float_t         vtxx_pandora[231];   //[nvtx_pandora]
-   Float_t         vtxy_pandora[231];   //[nvtx_pandora]
-   Float_t         vtxz_pandora[231];   //[nvtx_pandora]
-   Short_t         vtxhasPFParticle_pandora[231];   //[nvtx_pandora]
-   Short_t         vtxPFParticleID_pandora[231];   //[nvtx_pandora]
+   Short_t         vtxId_pandora[479];   //[nvtx_pandora]
+   Float_t         vtxx_pandora[479];   //[nvtx_pandora]
+   Float_t         vtxy_pandora[479];   //[nvtx_pandora]
+   Float_t         vtxz_pandora[479];   //[nvtx_pandora]
+   Short_t         vtxhasPFParticle_pandora[479];   //[nvtx_pandora]
+   Short_t         vtxPFParticleID_pandora[479];   //[nvtx_pandora]
    Short_t         nvtx_pmtrack;
-   Short_t         vtxId_pmtrack[138];   //[nvtx_pmtrack]
-   Float_t         vtxx_pmtrack[138];   //[nvtx_pmtrack]
-   Float_t         vtxy_pmtrack[138];   //[nvtx_pmtrack]
-   Float_t         vtxz_pmtrack[138];   //[nvtx_pmtrack]
-   Short_t         vtxhasPFParticle_pmtrack[138];   //[nvtx_pmtrack]
-   Short_t         vtxPFParticleID_pmtrack[138];   //[nvtx_pmtrack]
+   Short_t         vtxId_pmtrack[412];   //[nvtx_pmtrack]
+   Float_t         vtxx_pmtrack[412];   //[nvtx_pmtrack]
+   Float_t         vtxy_pmtrack[412];   //[nvtx_pmtrack]
+   Float_t         vtxz_pmtrack[412];   //[nvtx_pmtrack]
+   Short_t         vtxhasPFParticle_pmtrack[412];   //[nvtx_pmtrack]
+   Short_t         vtxPFParticleID_pmtrack[412];   //[nvtx_pmtrack]
    Short_t         nvtx_trajcluster;
-   Short_t         vtxId_trajcluster[144];   //[nvtx_trajcluster]
-   Float_t         vtxx_trajcluster[144];   //[nvtx_trajcluster]
-   Float_t         vtxy_trajcluster[144];   //[nvtx_trajcluster]
-   Float_t         vtxz_trajcluster[144];   //[nvtx_trajcluster]
-   Short_t         vtxhasPFParticle_trajcluster[144];   //[nvtx_trajcluster]
-   Short_t         vtxPFParticleID_trajcluster[144];   //[nvtx_trajcluster]
+   Short_t         vtxId_trajcluster[432];   //[nvtx_trajcluster]
+   Float_t         vtxx_trajcluster[432];   //[nvtx_trajcluster]
+   Float_t         vtxy_trajcluster[432];   //[nvtx_trajcluster]
+   Float_t         vtxz_trajcluster[432];   //[nvtx_trajcluster]
+   Short_t         vtxhasPFParticle_trajcluster[432];   //[nvtx_trajcluster]
+   Short_t         vtxPFParticleID_trajcluster[432];   //[nvtx_trajcluster]
+   Short_t         nvtx_pandoraTrack;
+   Short_t         vtxId_pandoraTrack[1];   //[nvtx_pandoraTrack]
+   Float_t         vtxx_pandoraTrack[1];   //[nvtx_pandoraTrack]
+   Float_t         vtxy_pandoraTrack[1];   //[nvtx_pandoraTrack]
+   Float_t         vtxz_pandoraTrack[1];   //[nvtx_pandoraTrack]
+   Short_t         vtxhasPFParticle_pandoraTrack[1];   //[nvtx_pandoraTrack]
+   Short_t         vtxPFParticleID_pandoraTrack[1];   //[nvtx_pandoraTrack]
    Short_t         nnuvtx_pandora;
    Short_t         nuvtxId_pandora[1];   //[nnuvtx_pandora]
    Float_t         nuvtxx_pandora[1];   //[nnuvtx_pandora]
@@ -714,36 +813,44 @@ public :
    Int_t           nuvtxpdg_pandora[1];   //[nnuvtx_pandora]
    Short_t         nuvtxhasPFParticle_pandora[1];   //[nnuvtx_pandora]
    Short_t         nuvtxPFParticleID_pandora[1];   //[nnuvtx_pandora]
+   Short_t         nnuvtx_pandoraTrack;
+   Short_t         nuvtxId_pandoraTrack[1];   //[nnuvtx_pandoraTrack]
+   Float_t         nuvtxx_pandoraTrack[1];   //[nnuvtx_pandoraTrack]
+   Float_t         nuvtxy_pandoraTrack[1];   //[nnuvtx_pandoraTrack]
+   Float_t         nuvtxz_pandoraTrack[1];   //[nnuvtx_pandoraTrack]
+   Int_t           nuvtxpdg_pandoraTrack[1];   //[nnuvtx_pandoraTrack]
+   Short_t         nuvtxhasPFParticle_pandoraTrack[1];   //[nnuvtx_pandoraTrack]
+   Short_t         nuvtxPFParticleID_pandoraTrack[1];   //[nnuvtx_pandoraTrack]
    Short_t         nfls_simpleFlashBeam;
-   Float_t         flsTime_simpleFlashBeam[2];   //[nfls_simpleFlashBeam]
-   Float_t         flsPe_simpleFlashBeam[2];   //[nfls_simpleFlashBeam]
-   Double_t        flsPePerOpDet_simpleFlashBeam[2][32];   //[nfls_simpleFlashBeam]
-   Float_t         flsXcenter_simpleFlashBeam[2];   //[nfls_simpleFlashBeam]
-   Float_t         flsYcenter_simpleFlashBeam[2];   //[nfls_simpleFlashBeam]
-   Float_t         flsZcenter_simpleFlashBeam[2];   //[nfls_simpleFlashBeam]
-   Float_t         flsYwidth_simpleFlashBeam[2];   //[nfls_simpleFlashBeam]
-   Float_t         flsZwidth_simpleFlashBeam[2];   //[nfls_simpleFlashBeam]
-   Float_t         flsTwidth_simpleFlashBeam[2];   //[nfls_simpleFlashBeam]
+   Float_t         flsTime_simpleFlashBeam[3];   //[nfls_simpleFlashBeam]
+   Float_t         flsPe_simpleFlashBeam[3];   //[nfls_simpleFlashBeam]
+   Double_t        flsPePerOpDet_simpleFlashBeam[3][32];   //[nfls_simpleFlashBeam]
+   Float_t         flsXcenter_simpleFlashBeam[3];   //[nfls_simpleFlashBeam]
+   Float_t         flsYcenter_simpleFlashBeam[3];   //[nfls_simpleFlashBeam]
+   Float_t         flsZcenter_simpleFlashBeam[3];   //[nfls_simpleFlashBeam]
+   Float_t         flsYwidth_simpleFlashBeam[3];   //[nfls_simpleFlashBeam]
+   Float_t         flsZwidth_simpleFlashBeam[3];   //[nfls_simpleFlashBeam]
+   Float_t         flsTwidth_simpleFlashBeam[3];   //[nfls_simpleFlashBeam]
    Short_t         nfls_simpleFlashCosmic;
-   Float_t         flsTime_simpleFlashCosmic[38];   //[nfls_simpleFlashCosmic]
-   Float_t         flsPe_simpleFlashCosmic[38];   //[nfls_simpleFlashCosmic]
-   Double_t        flsPePerOpDet_simpleFlashCosmic[38][32];   //[nfls_simpleFlashCosmic]
-   Float_t         flsXcenter_simpleFlashCosmic[38];   //[nfls_simpleFlashCosmic]
-   Float_t         flsYcenter_simpleFlashCosmic[38];   //[nfls_simpleFlashCosmic]
-   Float_t         flsZcenter_simpleFlashCosmic[38];   //[nfls_simpleFlashCosmic]
-   Float_t         flsYwidth_simpleFlashCosmic[38];   //[nfls_simpleFlashCosmic]
-   Float_t         flsZwidth_simpleFlashCosmic[38];   //[nfls_simpleFlashCosmic]
-   Float_t         flsTwidth_simpleFlashCosmic[38];   //[nfls_simpleFlashCosmic]
+   Float_t         flsTime_simpleFlashCosmic[54];   //[nfls_simpleFlashCosmic]
+   Float_t         flsPe_simpleFlashCosmic[54];   //[nfls_simpleFlashCosmic]
+   Double_t        flsPePerOpDet_simpleFlashCosmic[54][32];   //[nfls_simpleFlashCosmic]
+   Float_t         flsXcenter_simpleFlashCosmic[54];   //[nfls_simpleFlashCosmic]
+   Float_t         flsYcenter_simpleFlashCosmic[54];   //[nfls_simpleFlashCosmic]
+   Float_t         flsZcenter_simpleFlashCosmic[54];   //[nfls_simpleFlashCosmic]
+   Float_t         flsYwidth_simpleFlashCosmic[54];   //[nfls_simpleFlashCosmic]
+   Float_t         flsZwidth_simpleFlashCosmic[54];   //[nfls_simpleFlashCosmic]
+   Float_t         flsTwidth_simpleFlashCosmic[54];   //[nfls_simpleFlashCosmic]
    Short_t         nfls_simpleFlashBeamLowPE;
-   Float_t         flsTime_simpleFlashBeamLowPE[2];   //[nfls_simpleFlashBeamLowPE]
-   Float_t         flsPe_simpleFlashBeamLowPE[2];   //[nfls_simpleFlashBeamLowPE]
-   Double_t        flsPePerOpDet_simpleFlashBeamLowPE[2][32];   //[nfls_simpleFlashBeamLowPE]
-   Float_t         flsXcenter_simpleFlashBeamLowPE[2];   //[nfls_simpleFlashBeamLowPE]
-   Float_t         flsYcenter_simpleFlashBeamLowPE[2];   //[nfls_simpleFlashBeamLowPE]
-   Float_t         flsZcenter_simpleFlashBeamLowPE[2];   //[nfls_simpleFlashBeamLowPE]
-   Float_t         flsYwidth_simpleFlashBeamLowPE[2];   //[nfls_simpleFlashBeamLowPE]
-   Float_t         flsZwidth_simpleFlashBeamLowPE[2];   //[nfls_simpleFlashBeamLowPE]
-   Float_t         flsTwidth_simpleFlashBeamLowPE[2];   //[nfls_simpleFlashBeamLowPE]
+   Float_t         flsTime_simpleFlashBeamLowPE[3];   //[nfls_simpleFlashBeamLowPE]
+   Float_t         flsPe_simpleFlashBeamLowPE[3];   //[nfls_simpleFlashBeamLowPE]
+   Double_t        flsPePerOpDet_simpleFlashBeamLowPE[3][32];   //[nfls_simpleFlashBeamLowPE]
+   Float_t         flsXcenter_simpleFlashBeamLowPE[3];   //[nfls_simpleFlashBeamLowPE]
+   Float_t         flsYcenter_simpleFlashBeamLowPE[3];   //[nfls_simpleFlashBeamLowPE]
+   Float_t         flsZcenter_simpleFlashBeamLowPE[3];   //[nfls_simpleFlashBeamLowPE]
+   Float_t         flsYwidth_simpleFlashBeamLowPE[3];   //[nfls_simpleFlashBeamLowPE]
+   Float_t         flsZwidth_simpleFlashBeamLowPE[3];   //[nfls_simpleFlashBeamLowPE]
+   Float_t         flsTwidth_simpleFlashBeamLowPE[3];   //[nfls_simpleFlashBeamLowPE]
 
    // List of branches
    TBranch        *b_run;   //!
@@ -1113,6 +1220,25 @@ public :
    TBranch        *b_shwr_mipEng_trajcluster;   //!
    TBranch        *b_shwr_hasPFParticle_trajcluster;   //!
    TBranch        *b_shwr_PFParticleID_trajcluster;   //!
+   TBranch        *b_nshowers_pandoraShower;   //!
+   TBranch        *b_showerID_pandoraShower;   //!
+   TBranch        *b_shwr_bestplane_pandoraShower;   //!
+   TBranch        *b_shwr_length_pandoraShower;   //!
+   TBranch        *b_shwr_theta_pandoraShower;   //!
+   TBranch        *b_shwr_thetaxz_pandoraShower;   //!
+   TBranch        *b_shwr_thetayz_pandoraShower;   //!
+   TBranch        *b_shwr_phi_pandoraShower;   //!
+   TBranch        *b_shwr_startdcosx_pandoraShower;   //!
+   TBranch        *b_shwr_startdcosy_pandoraShower;   //!
+   TBranch        *b_shwr_startdcosz_pandoraShower;   //!
+   TBranch        *b_shwr_startx_pandoraShower;   //!
+   TBranch        *b_shwr_starty_pandoraShower;   //!
+   TBranch        *b_shwr_startz_pandoraShower;   //!
+   TBranch        *b_shwr_totEng_pandoraShower;   //!
+   TBranch        *b_shwr_dedx_pandoraShower;   //!
+   TBranch        *b_shwr_mipEng_pandoraShower;   //!
+   TBranch        *b_shwr_hasPFParticle_pandoraShower;   //!
+   TBranch        *b_shwr_PFParticleID_pandoraShower;   //!
    TBranch        *b_ntracks_pandora;   //!
    TBranch        *b_trkId_pandora;   //!
    TBranch        *b_trkncosmictags_tagger_pandora;   //!
@@ -1405,6 +1531,79 @@ public :
    TBranch        *b_trkpidbestplane_pandoraKalmanShower;   //!
    TBranch        *b_trkhasPFParticle_pandoraKalmanShower;   //!
    TBranch        *b_trkPFParticleID_pandoraKalmanShower;   //!
+   TBranch        *b_ntracks_pandoraTrack;   //!
+   TBranch        *b_trkId_pandoraTrack;   //!
+   TBranch        *b_trkncosmictags_tagger_pandoraTrack;   //!
+   TBranch        *b_trkcosmicscore_tagger_pandoraTrack;   //!
+   TBranch        *b_trkcosmictype_tagger_pandoraTrack;   //!
+   TBranch        *b_trkncosmictags_containmenttagger_pandoraTrack;   //!
+   TBranch        *b_trkcosmicscore_containmenttagger_pandoraTrack;   //!
+   TBranch        *b_trkcosmictype_containmenttagger_pandoraTrack;   //!
+   TBranch        *b_trkncosmictags_flashmatch_pandoraTrack;   //!
+   TBranch        *b_trkcosmicscore_flashmatch_pandoraTrack;   //!
+   TBranch        *b_trkcosmictype_flashmatch_pandoraTrack;   //!
+   TBranch        *b_trkke_pandoraTrack;   //!
+   TBranch        *b_trkrange_pandoraTrack;   //!
+   TBranch        *b_trkidtruth_pandoraTrack;   //!
+   TBranch        *b_trkorigin_pandoraTrack;   //!
+   TBranch        *b_trkpdgtruth_pandoraTrack;   //!
+   TBranch        *b_trkefftruth_pandoraTrack;   //!
+   TBranch        *b_trkpurtruth_pandoraTrack;   //!
+   TBranch        *b_trkpitchc_pandoraTrack;   //!
+   TBranch        *b_ntrkhits_pandoraTrack;   //!
+   TBranch        *b_trkdedx_pandoraTrack;   //!
+   TBranch        *b_trkdqdx_pandoraTrack;   //!
+   TBranch        *b_trkresrg_pandoraTrack;   //!
+   TBranch        *b_trkxyz_pandoraTrack;   //!
+   TBranch        *b_trkstartx_pandoraTrack;   //!
+   TBranch        *b_trkstarty_pandoraTrack;   //!
+   TBranch        *b_trkstartz_pandoraTrack;   //!
+   TBranch        *b_trkstartd_pandoraTrack;   //!
+   TBranch        *b_trkendx_pandoraTrack;   //!
+   TBranch        *b_trkendy_pandoraTrack;   //!
+   TBranch        *b_trkendz_pandoraTrack;   //!
+   TBranch        *b_trkendd_pandoraTrack;   //!
+   TBranch        *b_trkACpierceT0_pandoraTrack;   //!
+   TBranch        *b_trkflashT0_pandoraTrack;   //!
+   TBranch        *b_trktrueT0_pandoraTrack;   //!
+   TBranch        *b_trkg4id_pandoraTrack;   //!
+   TBranch        *b_trkorig_pandoraTrack;   //!
+   TBranch        *b_trkpurity_pandoraTrack;   //!
+   TBranch        *b_trkcompleteness_pandoraTrack;   //!
+   TBranch        *b_trktheta_pandoraTrack;   //!
+   TBranch        *b_trkphi_pandoraTrack;   //!
+   TBranch        *b_trkstartdcosx_pandoraTrack;   //!
+   TBranch        *b_trkstartdcosy_pandoraTrack;   //!
+   TBranch        *b_trkstartdcosz_pandoraTrack;   //!
+   TBranch        *b_trkenddcosx_pandoraTrack;   //!
+   TBranch        *b_trkenddcosy_pandoraTrack;   //!
+   TBranch        *b_trkenddcosz_pandoraTrack;   //!
+   TBranch        *b_trkthetaxz_pandoraTrack;   //!
+   TBranch        *b_trkthetayz_pandoraTrack;   //!
+   TBranch        *b_trkmom_pandoraTrack;   //!
+   TBranch        *b_trkmomrange_pandoraTrack;   //!
+   TBranch        *b_trkmommschi2_pandoraTrack;   //!
+   TBranch        *b_trkmommsllhd_pandoraTrack;   //!
+   TBranch        *b_trkmcsfwdmom_pandoraTrack;   //!
+   TBranch        *b_trkmcsfwdll_pandoraTrack;   //!
+   TBranch        *b_trkmcsfwderr_pandoraTrack;   //!
+   TBranch        *b_trkmcsbwdmom_pandoraTrack;   //!
+   TBranch        *b_trkmcsbwdll_pandoraTrack;   //!
+   TBranch        *b_trkmcsbwderr_pandoraTrack;   //!
+   TBranch        *b_trklen_pandoraTrack;   //!
+   TBranch        *b_trksvtxid_pandoraTrack;   //!
+   TBranch        *b_trkevtxid_pandoraTrack;   //!
+   TBranch        *b_trkntraj_pandoraTrack;   //!
+   TBranch        *b_trkpidpdg_pandoraTrack;   //!
+   TBranch        *b_trkpidchi_pandoraTrack;   //!
+   TBranch        *b_trkpidchipr_pandoraTrack;   //!
+   TBranch        *b_trkpidchika_pandoraTrack;   //!
+   TBranch        *b_trkpidchipi_pandoraTrack;   //!
+   TBranch        *b_trkpidchimu_pandoraTrack;   //!
+   TBranch        *b_trkpidpida_pandoraTrack;   //!
+   TBranch        *b_trkpidbestplane_pandoraTrack;   //!
+   TBranch        *b_trkhasPFParticle_pandoraTrack;   //!
+   TBranch        *b_trkPFParticleID_pandoraTrack;   //!
    TBranch        *b_nvtx_pandora;   //!
    TBranch        *b_vtxId_pandora;   //!
    TBranch        *b_vtxx_pandora;   //!
@@ -1426,6 +1625,13 @@ public :
    TBranch        *b_vtxz_trajcluster;   //!
    TBranch        *b_vtxhasPFParticle_trajcluster;   //!
    TBranch        *b_vtxPFParticleID_trajcluster;   //!
+   TBranch        *b_nvtx_pandoraTrack;   //!
+   TBranch        *b_vtxId_pandoraTrack;   //!
+   TBranch        *b_vtxx_pandoraTrack;   //!
+   TBranch        *b_vtxy_pandoraTrack;   //!
+   TBranch        *b_vtxz_pandoraTrack;   //!
+   TBranch        *b_vtxhasPFParticle_pandoraTrack;   //!
+   TBranch        *b_vtxPFParticleID_pandoraTrack;   //!
    TBranch        *b_nnuvtx_pandora;   //!
    TBranch        *b_nuvtxId_pandora;   //!
    TBranch        *b_nuvtxx_pandora;   //!
@@ -1434,6 +1640,14 @@ public :
    TBranch        *b_nuvtxpdg_pandora;   //!
    TBranch        *b_nuvtxhasPFParticle_pandora;   //!
    TBranch        *b_nuvtxPFParticleID_pandora;   //!
+   TBranch        *b_nnuvtx_pandoraTrack;   //!
+   TBranch        *b_nuvtxId_pandoraTrack;   //!
+   TBranch        *b_nuvtxx_pandoraTrack;   //!
+   TBranch        *b_nuvtxy_pandoraTrack;   //!
+   TBranch        *b_nuvtxz_pandoraTrack;   //!
+   TBranch        *b_nuvtxpdg_pandoraTrack;   //!
+   TBranch        *b_nuvtxhasPFParticle_pandoraTrack;   //!
+   TBranch        *b_nuvtxPFParticleID_pandoraTrack;   //!
    TBranch        *b_nfls_simpleFlashBeam;   //!
    TBranch        *b_flsTime_simpleFlashBeam;   //!
    TBranch        *b_flsPe_simpleFlashBeam;   //!
@@ -1465,8 +1679,8 @@ public :
    TBranch        *b_flsZwidth_simpleFlashBeamLowPE;   //!
    TBranch        *b_flsTwidth_simpleFlashBeamLowPE;   //!
 
-   NewAnalysisCCCoh(TTree *tree=0);
-   virtual ~NewAnalysisCCCoh();
+   NewAnalysisBKGD(TTree *tree=0);
+   virtual ~NewAnalysisBKGD();
    virtual Int_t    Cut(Long64_t entry);
    virtual Int_t    GetEntry(Long64_t entry);
    virtual Long64_t LoadTree(Long64_t entry);
@@ -1478,36 +1692,36 @@ public :
 
 #endif
 
-#ifdef NewAnalysisCCCoh_cxx
-NewAnalysisCCCoh::NewAnalysisCCCoh(TTree *tree) : fChain(0) 
+#ifdef NewAnalysisBKGD_cxx
+NewAnalysisBKGD::NewAnalysisBKGD(TTree *tree) : fChain(0) 
 {
 // if parameter tree is not specified (or zero), connect the file
 // used to generate this class and read the Tree.
    if (tree == 0) {
-      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("../ana_hist_ALL_CCCoh.root");
+      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("../ana_hist_ALL_BKGD.root");
       if (!f || !f->IsOpen()) {
-         f = new TFile("../ana_hist_ALL_CCCoh.root");
+         f = new TFile("../ana_hist_ALL_BKGD.root");
       }
-      TDirectory * dir = (TDirectory*)f->Get("../ana_hist_ALL_CCCoh.root:/analysistree");
+      TDirectory * dir = (TDirectory*)f->Get("../ana_hist_ALL_BKGD.root:/analysistree");
       dir->GetObject("anatree",tree);
 
    }
    Init(tree);
 }
 
-NewAnalysisCCCoh::~NewAnalysisCCCoh()
+NewAnalysisBKGD::~NewAnalysisBKGD()
 {
    if (!fChain) return;
    delete fChain->GetCurrentFile();
 }
 
-Int_t NewAnalysisCCCoh::GetEntry(Long64_t entry)
+Int_t NewAnalysisBKGD::GetEntry(Long64_t entry)
 {
 // Read contents of entry.
    if (!fChain) return 0;
    return fChain->GetEntry(entry);
 }
-Long64_t NewAnalysisCCCoh::LoadTree(Long64_t entry)
+Long64_t NewAnalysisBKGD::LoadTree(Long64_t entry)
 {
 // Set the environment to read one entry
    if (!fChain) return -5;
@@ -1520,7 +1734,7 @@ Long64_t NewAnalysisCCCoh::LoadTree(Long64_t entry)
    return centry;
 }
 
-void NewAnalysisCCCoh::Init(TTree *tree)
+void NewAnalysisBKGD::Init(TTree *tree)
 {
    // The Init() function is called when the selector needs to initialize
    // a new tree or chain. Typically here the branch addresses and branch
@@ -1781,101 +1995,101 @@ void NewAnalysisCCCoh::Init(TTree *tree)
    fChain->SetBranchAddress("TrueTraj_Z", TrueTraj_Z, &b_TrueTraj_Z);
    fChain->SetBranchAddress("TrueTraj_E", TrueTraj_E, &b_TrueTraj_E);
    fChain->SetBranchAddress("no_mcshowers", &no_mcshowers, &b_no_mcshowers);
-   fChain->SetBranchAddress("mcshwr_origin", mcshwr_origin, &b_mcshwr_origin);
-   fChain->SetBranchAddress("mcshwr_pdg", mcshwr_pdg, &b_mcshwr_pdg);
-   fChain->SetBranchAddress("mcshwr_TrackId", mcshwr_TrackId, &b_mcshwr_TrackId);
+   fChain->SetBranchAddress("mcshwr_origin", &mcshwr_origin, &b_mcshwr_origin);
+   fChain->SetBranchAddress("mcshwr_pdg", &mcshwr_pdg, &b_mcshwr_pdg);
+   fChain->SetBranchAddress("mcshwr_TrackId", &mcshwr_TrackId, &b_mcshwr_TrackId);
    fChain->SetBranchAddress("mcshwr_Process", &mcshwr_Process, &b_mcshwr_Process);
-   fChain->SetBranchAddress("mcshwr_startX", mcshwr_startX, &b_mcshwr_startX);
-   fChain->SetBranchAddress("mcshwr_startY", mcshwr_startY, &b_mcshwr_startY);
-   fChain->SetBranchAddress("mcshwr_startZ", mcshwr_startZ, &b_mcshwr_startZ);
-   fChain->SetBranchAddress("mcshwr_endX", mcshwr_endX, &b_mcshwr_endX);
-   fChain->SetBranchAddress("mcshwr_endY", mcshwr_endY, &b_mcshwr_endY);
-   fChain->SetBranchAddress("mcshwr_endZ", mcshwr_endZ, &b_mcshwr_endZ);
-   fChain->SetBranchAddress("mcshwr_CombEngX", mcshwr_CombEngX, &b_mcshwr_CombEngX);
-   fChain->SetBranchAddress("mcshwr_CombEngY", mcshwr_CombEngY, &b_mcshwr_CombEngY);
-   fChain->SetBranchAddress("mcshwr_CombEngZ", mcshwr_CombEngZ, &b_mcshwr_CombEngZ);
-   fChain->SetBranchAddress("mcshwr_CombEngPx", mcshwr_CombEngPx, &b_mcshwr_CombEngPx);
-   fChain->SetBranchAddress("mcshwr_CombEngPy", mcshwr_CombEngPy, &b_mcshwr_CombEngPy);
-   fChain->SetBranchAddress("mcshwr_CombEngPz", mcshwr_CombEngPz, &b_mcshwr_CombEngPz);
-   fChain->SetBranchAddress("mcshwr_CombEngE", mcshwr_CombEngE, &b_mcshwr_CombEngE);
-   fChain->SetBranchAddress("mcshwr_dEdx", mcshwr_dEdx, &b_mcshwr_dEdx);
-   fChain->SetBranchAddress("mcshwr_StartDirX", mcshwr_StartDirX, &b_mcshwr_StartDirX);
-   fChain->SetBranchAddress("mcshwr_StartDirY", mcshwr_StartDirY, &b_mcshwr_StartDirY);
-   fChain->SetBranchAddress("mcshwr_StartDirZ", mcshwr_StartDirZ, &b_mcshwr_StartDirZ);
-   fChain->SetBranchAddress("mcshwr_isEngDeposited", mcshwr_isEngDeposited, &b_mcshwr_isEngDeposited);
-   fChain->SetBranchAddress("mcshwr_Motherpdg", mcshwr_Motherpdg, &b_mcshwr_Motherpdg);
-   fChain->SetBranchAddress("mcshwr_MotherTrkId", mcshwr_MotherTrkId, &b_mcshwr_MotherTrkId);
+   fChain->SetBranchAddress("mcshwr_startX", &mcshwr_startX, &b_mcshwr_startX);
+   fChain->SetBranchAddress("mcshwr_startY", &mcshwr_startY, &b_mcshwr_startY);
+   fChain->SetBranchAddress("mcshwr_startZ", &mcshwr_startZ, &b_mcshwr_startZ);
+   fChain->SetBranchAddress("mcshwr_endX", &mcshwr_endX, &b_mcshwr_endX);
+   fChain->SetBranchAddress("mcshwr_endY", &mcshwr_endY, &b_mcshwr_endY);
+   fChain->SetBranchAddress("mcshwr_endZ", &mcshwr_endZ, &b_mcshwr_endZ);
+   fChain->SetBranchAddress("mcshwr_CombEngX", &mcshwr_CombEngX, &b_mcshwr_CombEngX);
+   fChain->SetBranchAddress("mcshwr_CombEngY", &mcshwr_CombEngY, &b_mcshwr_CombEngY);
+   fChain->SetBranchAddress("mcshwr_CombEngZ", &mcshwr_CombEngZ, &b_mcshwr_CombEngZ);
+   fChain->SetBranchAddress("mcshwr_CombEngPx", &mcshwr_CombEngPx, &b_mcshwr_CombEngPx);
+   fChain->SetBranchAddress("mcshwr_CombEngPy", &mcshwr_CombEngPy, &b_mcshwr_CombEngPy);
+   fChain->SetBranchAddress("mcshwr_CombEngPz", &mcshwr_CombEngPz, &b_mcshwr_CombEngPz);
+   fChain->SetBranchAddress("mcshwr_CombEngE", &mcshwr_CombEngE, &b_mcshwr_CombEngE);
+   fChain->SetBranchAddress("mcshwr_dEdx", &mcshwr_dEdx, &b_mcshwr_dEdx);
+   fChain->SetBranchAddress("mcshwr_StartDirX", &mcshwr_StartDirX, &b_mcshwr_StartDirX);
+   fChain->SetBranchAddress("mcshwr_StartDirY", &mcshwr_StartDirY, &b_mcshwr_StartDirY);
+   fChain->SetBranchAddress("mcshwr_StartDirZ", &mcshwr_StartDirZ, &b_mcshwr_StartDirZ);
+   fChain->SetBranchAddress("mcshwr_isEngDeposited", &mcshwr_isEngDeposited, &b_mcshwr_isEngDeposited);
+   fChain->SetBranchAddress("mcshwr_Motherpdg", &mcshwr_Motherpdg, &b_mcshwr_Motherpdg);
+   fChain->SetBranchAddress("mcshwr_MotherTrkId", &mcshwr_MotherTrkId, &b_mcshwr_MotherTrkId);
    fChain->SetBranchAddress("mcshwr_MotherProcess", &mcshwr_MotherProcess, &b_mcshwr_MotherProcess);
-   fChain->SetBranchAddress("mcshwr_MotherstartX", mcshwr_MotherstartX, &b_mcshwr_MotherstartX);
-   fChain->SetBranchAddress("mcshwr_MotherstartY", mcshwr_MotherstartY, &b_mcshwr_MotherstartY);
-   fChain->SetBranchAddress("mcshwr_MotherstartZ", mcshwr_MotherstartZ, &b_mcshwr_MotherstartZ);
-   fChain->SetBranchAddress("mcshwr_MotherendX", mcshwr_MotherendX, &b_mcshwr_MotherendX);
-   fChain->SetBranchAddress("mcshwr_MotherendY", mcshwr_MotherendY, &b_mcshwr_MotherendY);
-   fChain->SetBranchAddress("mcshwr_MotherendZ", mcshwr_MotherendZ, &b_mcshwr_MotherendZ);
-   fChain->SetBranchAddress("mcshwr_Ancestorpdg", mcshwr_Ancestorpdg, &b_mcshwr_Ancestorpdg);
-   fChain->SetBranchAddress("mcshwr_AncesotorTrkId", mcshwr_AncesotorTrkId, &b_mcshwr_AncesotorTrkId);
+   fChain->SetBranchAddress("mcshwr_MotherstartX", &mcshwr_MotherstartX, &b_mcshwr_MotherstartX);
+   fChain->SetBranchAddress("mcshwr_MotherstartY", &mcshwr_MotherstartY, &b_mcshwr_MotherstartY);
+   fChain->SetBranchAddress("mcshwr_MotherstartZ", &mcshwr_MotherstartZ, &b_mcshwr_MotherstartZ);
+   fChain->SetBranchAddress("mcshwr_MotherendX", &mcshwr_MotherendX, &b_mcshwr_MotherendX);
+   fChain->SetBranchAddress("mcshwr_MotherendY", &mcshwr_MotherendY, &b_mcshwr_MotherendY);
+   fChain->SetBranchAddress("mcshwr_MotherendZ", &mcshwr_MotherendZ, &b_mcshwr_MotherendZ);
+   fChain->SetBranchAddress("mcshwr_Ancestorpdg", &mcshwr_Ancestorpdg, &b_mcshwr_Ancestorpdg);
+   fChain->SetBranchAddress("mcshwr_AncesotorTrkId", &mcshwr_AncesotorTrkId, &b_mcshwr_AncesotorTrkId);
    fChain->SetBranchAddress("mcshwr_AncesotorProcess", &mcshwr_AncesotorProcess, &b_mcshwr_AncesotorProcess);
-   fChain->SetBranchAddress("mcshwr_AncestorstartX", mcshwr_AncestorstartX, &b_mcshwr_AncestorstartX);
-   fChain->SetBranchAddress("mcshwr_AncestorstartY", mcshwr_AncestorstartY, &b_mcshwr_AncestorstartY);
-   fChain->SetBranchAddress("mcshwr_AncestorstartZ", mcshwr_AncestorstartZ, &b_mcshwr_AncestorstartZ);
-   fChain->SetBranchAddress("mcshwr_AncestorendX", mcshwr_AncestorendX, &b_mcshwr_AncestorendX);
-   fChain->SetBranchAddress("mcshwr_AncestorendY", mcshwr_AncestorendY, &b_mcshwr_AncestorendY);
-   fChain->SetBranchAddress("mcshwr_AncestorendZ", mcshwr_AncestorendZ, &b_mcshwr_AncestorendZ);
+   fChain->SetBranchAddress("mcshwr_AncestorstartX", &mcshwr_AncestorstartX, &b_mcshwr_AncestorstartX);
+   fChain->SetBranchAddress("mcshwr_AncestorstartY", &mcshwr_AncestorstartY, &b_mcshwr_AncestorstartY);
+   fChain->SetBranchAddress("mcshwr_AncestorstartZ", &mcshwr_AncestorstartZ, &b_mcshwr_AncestorstartZ);
+   fChain->SetBranchAddress("mcshwr_AncestorendX", &mcshwr_AncestorendX, &b_mcshwr_AncestorendX);
+   fChain->SetBranchAddress("mcshwr_AncestorendY", &mcshwr_AncestorendY, &b_mcshwr_AncestorendY);
+   fChain->SetBranchAddress("mcshwr_AncestorendZ", &mcshwr_AncestorendZ, &b_mcshwr_AncestorendZ);
    fChain->SetBranchAddress("no_mctracks", &no_mctracks, &b_no_mctracks);
-   fChain->SetBranchAddress("mctrk_origin", mctrk_origin, &b_mctrk_origin);
-   fChain->SetBranchAddress("mctrk_pdg", mctrk_pdg, &b_mctrk_pdg);
-   fChain->SetBranchAddress("mctrk_TrackId", mctrk_TrackId, &b_mctrk_TrackId);
+   fChain->SetBranchAddress("mctrk_origin", &mctrk_origin, &b_mctrk_origin);
+   fChain->SetBranchAddress("mctrk_pdg", &mctrk_pdg, &b_mctrk_pdg);
+   fChain->SetBranchAddress("mctrk_TrackId", &mctrk_TrackId, &b_mctrk_TrackId);
    fChain->SetBranchAddress("mctrk_Process", &mctrk_Process, &b_mctrk_Process);
-   fChain->SetBranchAddress("mctrk_startX", mctrk_startX, &b_mctrk_startX);
-   fChain->SetBranchAddress("mctrk_startY", mctrk_startY, &b_mctrk_startY);
-   fChain->SetBranchAddress("mctrk_startZ", mctrk_startZ, &b_mctrk_startZ);
-   fChain->SetBranchAddress("mctrk_endX", mctrk_endX, &b_mctrk_endX);
-   fChain->SetBranchAddress("mctrk_endY", mctrk_endY, &b_mctrk_endY);
-   fChain->SetBranchAddress("mctrk_endZ", mctrk_endZ, &b_mctrk_endZ);
-   fChain->SetBranchAddress("mctrk_startX_drifted", mctrk_startX_drifted, &b_mctrk_startX_drifted);
-   fChain->SetBranchAddress("mctrk_startY_drifted", mctrk_startY_drifted, &b_mctrk_startY_drifted);
-   fChain->SetBranchAddress("mctrk_startZ_drifted", mctrk_startZ_drifted, &b_mctrk_startZ_drifted);
-   fChain->SetBranchAddress("mctrk_endX_drifted", mctrk_endX_drifted, &b_mctrk_endX_drifted);
-   fChain->SetBranchAddress("mctrk_endY_drifted", mctrk_endY_drifted, &b_mctrk_endY_drifted);
-   fChain->SetBranchAddress("mctrk_endZ_drifted", mctrk_endZ_drifted, &b_mctrk_endZ_drifted);
-   fChain->SetBranchAddress("mctrk_len_drifted", mctrk_len_drifted, &b_mctrk_len_drifted);
-   fChain->SetBranchAddress("mctrk_p_drifted", mctrk_p_drifted, &b_mctrk_p_drifted);
-   fChain->SetBranchAddress("mctrk_px_drifted", mctrk_px_drifted, &b_mctrk_px_drifted);
-   fChain->SetBranchAddress("mctrk_py_drifted", mctrk_py_drifted, &b_mctrk_py_drifted);
-   fChain->SetBranchAddress("mctrk_pz_drifted", mctrk_pz_drifted, &b_mctrk_pz_drifted);
-   fChain->SetBranchAddress("mctrk_Motherpdg", mctrk_Motherpdg, &b_mctrk_Motherpdg);
-   fChain->SetBranchAddress("mctrk_MotherTrkId", mctrk_MotherTrkId, &b_mctrk_MotherTrkId);
+   fChain->SetBranchAddress("mctrk_startX", &mctrk_startX, &b_mctrk_startX);
+   fChain->SetBranchAddress("mctrk_startY", &mctrk_startY, &b_mctrk_startY);
+   fChain->SetBranchAddress("mctrk_startZ", &mctrk_startZ, &b_mctrk_startZ);
+   fChain->SetBranchAddress("mctrk_endX", &mctrk_endX, &b_mctrk_endX);
+   fChain->SetBranchAddress("mctrk_endY", &mctrk_endY, &b_mctrk_endY);
+   fChain->SetBranchAddress("mctrk_endZ", &mctrk_endZ, &b_mctrk_endZ);
+   fChain->SetBranchAddress("mctrk_startX_drifted", &mctrk_startX_drifted, &b_mctrk_startX_drifted);
+   fChain->SetBranchAddress("mctrk_startY_drifted", &mctrk_startY_drifted, &b_mctrk_startY_drifted);
+   fChain->SetBranchAddress("mctrk_startZ_drifted", &mctrk_startZ_drifted, &b_mctrk_startZ_drifted);
+   fChain->SetBranchAddress("mctrk_endX_drifted", &mctrk_endX_drifted, &b_mctrk_endX_drifted);
+   fChain->SetBranchAddress("mctrk_endY_drifted", &mctrk_endY_drifted, &b_mctrk_endY_drifted);
+   fChain->SetBranchAddress("mctrk_endZ_drifted", &mctrk_endZ_drifted, &b_mctrk_endZ_drifted);
+   fChain->SetBranchAddress("mctrk_len_drifted", &mctrk_len_drifted, &b_mctrk_len_drifted);
+   fChain->SetBranchAddress("mctrk_p_drifted", &mctrk_p_drifted, &b_mctrk_p_drifted);
+   fChain->SetBranchAddress("mctrk_px_drifted", &mctrk_px_drifted, &b_mctrk_px_drifted);
+   fChain->SetBranchAddress("mctrk_py_drifted", &mctrk_py_drifted, &b_mctrk_py_drifted);
+   fChain->SetBranchAddress("mctrk_pz_drifted", &mctrk_pz_drifted, &b_mctrk_pz_drifted);
+   fChain->SetBranchAddress("mctrk_Motherpdg", &mctrk_Motherpdg, &b_mctrk_Motherpdg);
+   fChain->SetBranchAddress("mctrk_MotherTrkId", &mctrk_MotherTrkId, &b_mctrk_MotherTrkId);
    fChain->SetBranchAddress("mctrk_MotherProcess", &mctrk_MotherProcess, &b_mctrk_MotherProcess);
-   fChain->SetBranchAddress("mctrk_MotherstartX", mctrk_MotherstartX, &b_mctrk_MotherstartX);
-   fChain->SetBranchAddress("mctrk_MotherstartY", mctrk_MotherstartY, &b_mctrk_MotherstartY);
-   fChain->SetBranchAddress("mctrk_MotherstartZ", mctrk_MotherstartZ, &b_mctrk_MotherstartZ);
-   fChain->SetBranchAddress("mctrk_MotherendX", mctrk_MotherendX, &b_mctrk_MotherendX);
-   fChain->SetBranchAddress("mctrk_MotherendY", mctrk_MotherendY, &b_mctrk_MotherendY);
-   fChain->SetBranchAddress("mctrk_MotherendZ", mctrk_MotherendZ, &b_mctrk_MotherendZ);
-   fChain->SetBranchAddress("mctrk_Ancestorpdg", mctrk_Ancestorpdg, &b_mctrk_Ancestorpdg);
-   fChain->SetBranchAddress("mctrk_AncesotorTrkId", mctrk_AncesotorTrkId, &b_mctrk_AncesotorTrkId);
+   fChain->SetBranchAddress("mctrk_MotherstartX", &mctrk_MotherstartX, &b_mctrk_MotherstartX);
+   fChain->SetBranchAddress("mctrk_MotherstartY", &mctrk_MotherstartY, &b_mctrk_MotherstartY);
+   fChain->SetBranchAddress("mctrk_MotherstartZ", &mctrk_MotherstartZ, &b_mctrk_MotherstartZ);
+   fChain->SetBranchAddress("mctrk_MotherendX", &mctrk_MotherendX, &b_mctrk_MotherendX);
+   fChain->SetBranchAddress("mctrk_MotherendY", &mctrk_MotherendY, &b_mctrk_MotherendY);
+   fChain->SetBranchAddress("mctrk_MotherendZ", &mctrk_MotherendZ, &b_mctrk_MotherendZ);
+   fChain->SetBranchAddress("mctrk_Ancestorpdg", &mctrk_Ancestorpdg, &b_mctrk_Ancestorpdg);
+   fChain->SetBranchAddress("mctrk_AncesotorTrkId", &mctrk_AncesotorTrkId, &b_mctrk_AncesotorTrkId);
    fChain->SetBranchAddress("mctrk_AncesotorProcess", &mctrk_AncesotorProcess, &b_mctrk_AncesotorProcess);
-   fChain->SetBranchAddress("mctrk_AncestorstartX", mctrk_AncestorstartX, &b_mctrk_AncestorstartX);
-   fChain->SetBranchAddress("mctrk_AncestorstartY", mctrk_AncestorstartY, &b_mctrk_AncestorstartY);
-   fChain->SetBranchAddress("mctrk_AncestorstartZ", mctrk_AncestorstartZ, &b_mctrk_AncestorstartZ);
-   fChain->SetBranchAddress("mctrk_AncestorendX", mctrk_AncestorendX, &b_mctrk_AncestorendX);
-   fChain->SetBranchAddress("mctrk_AncestorendY", mctrk_AncestorendY, &b_mctrk_AncestorendY);
-   fChain->SetBranchAddress("mctrk_AncestorendZ", mctrk_AncestorendZ, &b_mctrk_AncestorendZ);
+   fChain->SetBranchAddress("mctrk_AncestorstartX", &mctrk_AncestorstartX, &b_mctrk_AncestorstartX);
+   fChain->SetBranchAddress("mctrk_AncestorstartY", &mctrk_AncestorstartY, &b_mctrk_AncestorstartY);
+   fChain->SetBranchAddress("mctrk_AncestorstartZ", &mctrk_AncestorstartZ, &b_mctrk_AncestorstartZ);
+   fChain->SetBranchAddress("mctrk_AncestorendX", &mctrk_AncestorendX, &b_mctrk_AncestorendX);
+   fChain->SetBranchAddress("mctrk_AncestorendY", &mctrk_AncestorendY, &b_mctrk_AncestorendY);
+   fChain->SetBranchAddress("mctrk_AncestorendZ", &mctrk_AncestorendZ, &b_mctrk_AncestorendZ);
    fChain->SetBranchAddress("nPFParticles", &nPFParticles, &b_nPFParticles);
-   fChain->SetBranchAddress("pfp_selfID", pfp_selfID, &b_pfp_selfID);
-   fChain->SetBranchAddress("pfp_isPrimary", pfp_isPrimary, &b_pfp_isPrimary);
-   fChain->SetBranchAddress("pfp_numDaughters", pfp_numDaughters, &b_pfp_numDaughters);
-   fChain->SetBranchAddress("pfp_daughterIDs", pfp_daughterIDs, &b_pfp_daughterIDs);
-   fChain->SetBranchAddress("pfp_parentID", pfp_parentID, &b_pfp_parentID);
-   fChain->SetBranchAddress("pfp_vertexID", pfp_vertexID, &b_pfp_vertexID);
-   fChain->SetBranchAddress("pfp_isShower", pfp_isShower, &b_pfp_isShower);
-   fChain->SetBranchAddress("pfp_isTrack", pfp_isTrack, &b_pfp_isTrack);
-   fChain->SetBranchAddress("pfp_trackID", pfp_trackID, &b_pfp_trackID);
-   fChain->SetBranchAddress("pfp_showerID", pfp_showerID, &b_pfp_showerID);
-   fChain->SetBranchAddress("pfp_pdgCode", pfp_pdgCode, &b_pfp_pdgCode);
-   fChain->SetBranchAddress("pfp_numClusters", pfp_numClusters, &b_pfp_numClusters);
-   fChain->SetBranchAddress("pfp_clusterIDs", pfp_clusterIDs, &b_pfp_clusterIDs);
-   fChain->SetBranchAddress("pfp_isNeutrino", pfp_isNeutrino, &b_pfp_isNeutrino);
+   fChain->SetBranchAddress("pfp_selfID", &pfp_selfID, &b_pfp_selfID);
+   fChain->SetBranchAddress("pfp_isPrimary", &pfp_isPrimary, &b_pfp_isPrimary);
+   fChain->SetBranchAddress("pfp_numDaughters", &pfp_numDaughters, &b_pfp_numDaughters);
+   fChain->SetBranchAddress("pfp_daughterIDs", &pfp_daughterIDs, &b_pfp_daughterIDs);
+   fChain->SetBranchAddress("pfp_parentID", &pfp_parentID, &b_pfp_parentID);
+   fChain->SetBranchAddress("pfp_vertexID", &pfp_vertexID, &b_pfp_vertexID);
+   fChain->SetBranchAddress("pfp_isShower", &pfp_isShower, &b_pfp_isShower);
+   fChain->SetBranchAddress("pfp_isTrack", &pfp_isTrack, &b_pfp_isTrack);
+   fChain->SetBranchAddress("pfp_trackID", &pfp_trackID, &b_pfp_trackID);
+   fChain->SetBranchAddress("pfp_showerID", &pfp_showerID, &b_pfp_showerID);
+   fChain->SetBranchAddress("pfp_pdgCode", &pfp_pdgCode, &b_pfp_pdgCode);
+   fChain->SetBranchAddress("pfp_numClusters", &pfp_numClusters, &b_pfp_numClusters);
+   fChain->SetBranchAddress("pfp_clusterIDs", &pfp_clusterIDs, &b_pfp_clusterIDs);
+   fChain->SetBranchAddress("pfp_isNeutrino", &pfp_isNeutrino, &b_pfp_isNeutrino);
    fChain->SetBranchAddress("pfp_numNeutrinos", &pfp_numNeutrinos, &b_pfp_numNeutrinos);
    fChain->SetBranchAddress("pfp_neutrinoIDs", pfp_neutrinoIDs, &b_pfp_neutrinoIDs);
    fChain->SetBranchAddress("nshowers_pandora", &nshowers_pandora, &b_nshowers_pandora);
@@ -1916,6 +2130,25 @@ void NewAnalysisCCCoh::Init(TTree *tree)
    fChain->SetBranchAddress("shwr_mipEng_trajcluster", &shwr_mipEng_trajcluster, &b_shwr_mipEng_trajcluster);
    fChain->SetBranchAddress("shwr_hasPFParticle_trajcluster", &shwr_hasPFParticle_trajcluster, &b_shwr_hasPFParticle_trajcluster);
    fChain->SetBranchAddress("shwr_PFParticleID_trajcluster", &shwr_PFParticleID_trajcluster, &b_shwr_PFParticleID_trajcluster);
+   fChain->SetBranchAddress("nshowers_pandoraShower", &nshowers_pandoraShower, &b_nshowers_pandoraShower);
+   fChain->SetBranchAddress("showerID_pandoraShower", showerID_pandoraShower, &b_showerID_pandoraShower);
+   fChain->SetBranchAddress("shwr_bestplane_pandoraShower", shwr_bestplane_pandoraShower, &b_shwr_bestplane_pandoraShower);
+   fChain->SetBranchAddress("shwr_length_pandoraShower", shwr_length_pandoraShower, &b_shwr_length_pandoraShower);
+   fChain->SetBranchAddress("shwr_theta_pandoraShower", shwr_theta_pandoraShower, &b_shwr_theta_pandoraShower);
+   fChain->SetBranchAddress("shwr_thetaxz_pandoraShower", shwr_thetaxz_pandoraShower, &b_shwr_thetaxz_pandoraShower);
+   fChain->SetBranchAddress("shwr_thetayz_pandoraShower", shwr_thetayz_pandoraShower, &b_shwr_thetayz_pandoraShower);
+   fChain->SetBranchAddress("shwr_phi_pandoraShower", shwr_phi_pandoraShower, &b_shwr_phi_pandoraShower);
+   fChain->SetBranchAddress("shwr_startdcosx_pandoraShower", shwr_startdcosx_pandoraShower, &b_shwr_startdcosx_pandoraShower);
+   fChain->SetBranchAddress("shwr_startdcosy_pandoraShower", shwr_startdcosy_pandoraShower, &b_shwr_startdcosy_pandoraShower);
+   fChain->SetBranchAddress("shwr_startdcosz_pandoraShower", shwr_startdcosz_pandoraShower, &b_shwr_startdcosz_pandoraShower);
+   fChain->SetBranchAddress("shwr_startx_pandoraShower", shwr_startx_pandoraShower, &b_shwr_startx_pandoraShower);
+   fChain->SetBranchAddress("shwr_starty_pandoraShower", shwr_starty_pandoraShower, &b_shwr_starty_pandoraShower);
+   fChain->SetBranchAddress("shwr_startz_pandoraShower", shwr_startz_pandoraShower, &b_shwr_startz_pandoraShower);
+   fChain->SetBranchAddress("shwr_totEng_pandoraShower", shwr_totEng_pandoraShower, &b_shwr_totEng_pandoraShower);
+   fChain->SetBranchAddress("shwr_dedx_pandoraShower", shwr_dedx_pandoraShower, &b_shwr_dedx_pandoraShower);
+   fChain->SetBranchAddress("shwr_mipEng_pandoraShower", shwr_mipEng_pandoraShower, &b_shwr_mipEng_pandoraShower);
+   fChain->SetBranchAddress("shwr_hasPFParticle_pandoraShower", shwr_hasPFParticle_pandoraShower, &b_shwr_hasPFParticle_pandoraShower);
+   fChain->SetBranchAddress("shwr_PFParticleID_pandoraShower", shwr_PFParticleID_pandoraShower, &b_shwr_PFParticleID_pandoraShower);
    fChain->SetBranchAddress("ntracks_pandora", &ntracks_pandora, &b_ntracks_pandora);
    fChain->SetBranchAddress("trkId_pandora", trkId_pandora, &b_trkId_pandora);
    fChain->SetBranchAddress("trkncosmictags_tagger_pandora", trkncosmictags_tagger_pandora, &b_trkncosmictags_tagger_pandora);
@@ -2208,6 +2441,79 @@ void NewAnalysisCCCoh::Init(TTree *tree)
    fChain->SetBranchAddress("trkpidbestplane_pandoraKalmanShower", trkpidbestplane_pandoraKalmanShower, &b_trkpidbestplane_pandoraKalmanShower);
    fChain->SetBranchAddress("trkhasPFParticle_pandoraKalmanShower", trkhasPFParticle_pandoraKalmanShower, &b_trkhasPFParticle_pandoraKalmanShower);
    fChain->SetBranchAddress("trkPFParticleID_pandoraKalmanShower", trkPFParticleID_pandoraKalmanShower, &b_trkPFParticleID_pandoraKalmanShower);
+   fChain->SetBranchAddress("ntracks_pandoraTrack", &ntracks_pandoraTrack, &b_ntracks_pandoraTrack);
+   fChain->SetBranchAddress("trkId_pandoraTrack", &trkId_pandoraTrack, &b_trkId_pandoraTrack);
+   fChain->SetBranchAddress("trkncosmictags_tagger_pandoraTrack", &trkncosmictags_tagger_pandoraTrack, &b_trkncosmictags_tagger_pandoraTrack);
+   fChain->SetBranchAddress("trkcosmicscore_tagger_pandoraTrack", &trkcosmicscore_tagger_pandoraTrack, &b_trkcosmicscore_tagger_pandoraTrack);
+   fChain->SetBranchAddress("trkcosmictype_tagger_pandoraTrack", &trkcosmictype_tagger_pandoraTrack, &b_trkcosmictype_tagger_pandoraTrack);
+   fChain->SetBranchAddress("trkncosmictags_containmenttagger_pandoraTrack", &trkncosmictags_containmenttagger_pandoraTrack, &b_trkncosmictags_containmenttagger_pandoraTrack);
+   fChain->SetBranchAddress("trkcosmicscore_containmenttagger_pandoraTrack", &trkcosmicscore_containmenttagger_pandoraTrack, &b_trkcosmicscore_containmenttagger_pandoraTrack);
+   fChain->SetBranchAddress("trkcosmictype_containmenttagger_pandoraTrack", &trkcosmictype_containmenttagger_pandoraTrack, &b_trkcosmictype_containmenttagger_pandoraTrack);
+   fChain->SetBranchAddress("trkncosmictags_flashmatch_pandoraTrack", &trkncosmictags_flashmatch_pandoraTrack, &b_trkncosmictags_flashmatch_pandoraTrack);
+   fChain->SetBranchAddress("trkcosmicscore_flashmatch_pandoraTrack", &trkcosmicscore_flashmatch_pandoraTrack, &b_trkcosmicscore_flashmatch_pandoraTrack);
+   fChain->SetBranchAddress("trkcosmictype_flashmatch_pandoraTrack", &trkcosmictype_flashmatch_pandoraTrack, &b_trkcosmictype_flashmatch_pandoraTrack);
+   fChain->SetBranchAddress("trkke_pandoraTrack", &trkke_pandoraTrack, &b_trkke_pandoraTrack);
+   fChain->SetBranchAddress("trkrange_pandoraTrack", &trkrange_pandoraTrack, &b_trkrange_pandoraTrack);
+   fChain->SetBranchAddress("trkidtruth_pandoraTrack", &trkidtruth_pandoraTrack, &b_trkidtruth_pandoraTrack);
+   fChain->SetBranchAddress("trkorigin_pandoraTrack", &trkorigin_pandoraTrack, &b_trkorigin_pandoraTrack);
+   fChain->SetBranchAddress("trkpdgtruth_pandoraTrack", &trkpdgtruth_pandoraTrack, &b_trkpdgtruth_pandoraTrack);
+   fChain->SetBranchAddress("trkefftruth_pandoraTrack", &trkefftruth_pandoraTrack, &b_trkefftruth_pandoraTrack);
+   fChain->SetBranchAddress("trkpurtruth_pandoraTrack", &trkpurtruth_pandoraTrack, &b_trkpurtruth_pandoraTrack);
+   fChain->SetBranchAddress("trkpitchc_pandoraTrack", &trkpitchc_pandoraTrack, &b_trkpitchc_pandoraTrack);
+   fChain->SetBranchAddress("ntrkhits_pandoraTrack", &ntrkhits_pandoraTrack, &b_ntrkhits_pandoraTrack);
+   fChain->SetBranchAddress("trkdedx_pandoraTrack", &trkdedx_pandoraTrack, &b_trkdedx_pandoraTrack);
+   fChain->SetBranchAddress("trkdqdx_pandoraTrack", &trkdqdx_pandoraTrack, &b_trkdqdx_pandoraTrack);
+   fChain->SetBranchAddress("trkresrg_pandoraTrack", &trkresrg_pandoraTrack, &b_trkresrg_pandoraTrack);
+   fChain->SetBranchAddress("trkxyz_pandoraTrack", &trkxyz_pandoraTrack, &b_trkxyz_pandoraTrack);
+   fChain->SetBranchAddress("trkstartx_pandoraTrack", &trkstartx_pandoraTrack, &b_trkstartx_pandoraTrack);
+   fChain->SetBranchAddress("trkstarty_pandoraTrack", &trkstarty_pandoraTrack, &b_trkstarty_pandoraTrack);
+   fChain->SetBranchAddress("trkstartz_pandoraTrack", &trkstartz_pandoraTrack, &b_trkstartz_pandoraTrack);
+   fChain->SetBranchAddress("trkstartd_pandoraTrack", &trkstartd_pandoraTrack, &b_trkstartd_pandoraTrack);
+   fChain->SetBranchAddress("trkendx_pandoraTrack", &trkendx_pandoraTrack, &b_trkendx_pandoraTrack);
+   fChain->SetBranchAddress("trkendy_pandoraTrack", &trkendy_pandoraTrack, &b_trkendy_pandoraTrack);
+   fChain->SetBranchAddress("trkendz_pandoraTrack", &trkendz_pandoraTrack, &b_trkendz_pandoraTrack);
+   fChain->SetBranchAddress("trkendd_pandoraTrack", &trkendd_pandoraTrack, &b_trkendd_pandoraTrack);
+   fChain->SetBranchAddress("trkACpierceT0_pandoraTrack", &trkACpierceT0_pandoraTrack, &b_trkACpierceT0_pandoraTrack);
+   fChain->SetBranchAddress("trkflashT0_pandoraTrack", &trkflashT0_pandoraTrack, &b_trkflashT0_pandoraTrack);
+   fChain->SetBranchAddress("trktrueT0_pandoraTrack", &trktrueT0_pandoraTrack, &b_trktrueT0_pandoraTrack);
+   fChain->SetBranchAddress("trkg4id_pandoraTrack", &trkg4id_pandoraTrack, &b_trkg4id_pandoraTrack);
+   fChain->SetBranchAddress("trkorig_pandoraTrack", &trkorig_pandoraTrack, &b_trkorig_pandoraTrack);
+   fChain->SetBranchAddress("trkpurity_pandoraTrack", &trkpurity_pandoraTrack, &b_trkpurity_pandoraTrack);
+   fChain->SetBranchAddress("trkcompleteness_pandoraTrack", &trkcompleteness_pandoraTrack, &b_trkcompleteness_pandoraTrack);
+   fChain->SetBranchAddress("trktheta_pandoraTrack", &trktheta_pandoraTrack, &b_trktheta_pandoraTrack);
+   fChain->SetBranchAddress("trkphi_pandoraTrack", &trkphi_pandoraTrack, &b_trkphi_pandoraTrack);
+   fChain->SetBranchAddress("trkstartdcosx_pandoraTrack", &trkstartdcosx_pandoraTrack, &b_trkstartdcosx_pandoraTrack);
+   fChain->SetBranchAddress("trkstartdcosy_pandoraTrack", &trkstartdcosy_pandoraTrack, &b_trkstartdcosy_pandoraTrack);
+   fChain->SetBranchAddress("trkstartdcosz_pandoraTrack", &trkstartdcosz_pandoraTrack, &b_trkstartdcosz_pandoraTrack);
+   fChain->SetBranchAddress("trkenddcosx_pandoraTrack", &trkenddcosx_pandoraTrack, &b_trkenddcosx_pandoraTrack);
+   fChain->SetBranchAddress("trkenddcosy_pandoraTrack", &trkenddcosy_pandoraTrack, &b_trkenddcosy_pandoraTrack);
+   fChain->SetBranchAddress("trkenddcosz_pandoraTrack", &trkenddcosz_pandoraTrack, &b_trkenddcosz_pandoraTrack);
+   fChain->SetBranchAddress("trkthetaxz_pandoraTrack", &trkthetaxz_pandoraTrack, &b_trkthetaxz_pandoraTrack);
+   fChain->SetBranchAddress("trkthetayz_pandoraTrack", &trkthetayz_pandoraTrack, &b_trkthetayz_pandoraTrack);
+   fChain->SetBranchAddress("trkmom_pandoraTrack", &trkmom_pandoraTrack, &b_trkmom_pandoraTrack);
+   fChain->SetBranchAddress("trkmomrange_pandoraTrack", &trkmomrange_pandoraTrack, &b_trkmomrange_pandoraTrack);
+   fChain->SetBranchAddress("trkmommschi2_pandoraTrack", &trkmommschi2_pandoraTrack, &b_trkmommschi2_pandoraTrack);
+   fChain->SetBranchAddress("trkmommsllhd_pandoraTrack", &trkmommsllhd_pandoraTrack, &b_trkmommsllhd_pandoraTrack);
+   fChain->SetBranchAddress("trkmcsfwdmom_pandoraTrack", &trkmcsfwdmom_pandoraTrack, &b_trkmcsfwdmom_pandoraTrack);
+   fChain->SetBranchAddress("trkmcsfwdll_pandoraTrack", &trkmcsfwdll_pandoraTrack, &b_trkmcsfwdll_pandoraTrack);
+   fChain->SetBranchAddress("trkmcsfwderr_pandoraTrack", &trkmcsfwderr_pandoraTrack, &b_trkmcsfwderr_pandoraTrack);
+   fChain->SetBranchAddress("trkmcsbwdmom_pandoraTrack", &trkmcsbwdmom_pandoraTrack, &b_trkmcsbwdmom_pandoraTrack);
+   fChain->SetBranchAddress("trkmcsbwdll_pandoraTrack", &trkmcsbwdll_pandoraTrack, &b_trkmcsbwdll_pandoraTrack);
+   fChain->SetBranchAddress("trkmcsbwderr_pandoraTrack", &trkmcsbwderr_pandoraTrack, &b_trkmcsbwderr_pandoraTrack);
+   fChain->SetBranchAddress("trklen_pandoraTrack", &trklen_pandoraTrack, &b_trklen_pandoraTrack);
+   fChain->SetBranchAddress("trksvtxid_pandoraTrack", &trksvtxid_pandoraTrack, &b_trksvtxid_pandoraTrack);
+   fChain->SetBranchAddress("trkevtxid_pandoraTrack", &trkevtxid_pandoraTrack, &b_trkevtxid_pandoraTrack);
+   fChain->SetBranchAddress("trkntraj_pandoraTrack", &trkntraj_pandoraTrack, &b_trkntraj_pandoraTrack);
+   fChain->SetBranchAddress("trkpidpdg_pandoraTrack", &trkpidpdg_pandoraTrack, &b_trkpidpdg_pandoraTrack);
+   fChain->SetBranchAddress("trkpidchi_pandoraTrack", &trkpidchi_pandoraTrack, &b_trkpidchi_pandoraTrack);
+   fChain->SetBranchAddress("trkpidchipr_pandoraTrack", &trkpidchipr_pandoraTrack, &b_trkpidchipr_pandoraTrack);
+   fChain->SetBranchAddress("trkpidchika_pandoraTrack", &trkpidchika_pandoraTrack, &b_trkpidchika_pandoraTrack);
+   fChain->SetBranchAddress("trkpidchipi_pandoraTrack", &trkpidchipi_pandoraTrack, &b_trkpidchipi_pandoraTrack);
+   fChain->SetBranchAddress("trkpidchimu_pandoraTrack", &trkpidchimu_pandoraTrack, &b_trkpidchimu_pandoraTrack);
+   fChain->SetBranchAddress("trkpidpida_pandoraTrack", &trkpidpida_pandoraTrack, &b_trkpidpida_pandoraTrack);
+   fChain->SetBranchAddress("trkpidbestplane_pandoraTrack", &trkpidbestplane_pandoraTrack, &b_trkpidbestplane_pandoraTrack);
+   fChain->SetBranchAddress("trkhasPFParticle_pandoraTrack", &trkhasPFParticle_pandoraTrack, &b_trkhasPFParticle_pandoraTrack);
+   fChain->SetBranchAddress("trkPFParticleID_pandoraTrack", &trkPFParticleID_pandoraTrack, &b_trkPFParticleID_pandoraTrack);
    fChain->SetBranchAddress("nvtx_pandora", &nvtx_pandora, &b_nvtx_pandora);
    fChain->SetBranchAddress("vtxId_pandora", vtxId_pandora, &b_vtxId_pandora);
    fChain->SetBranchAddress("vtxx_pandora", vtxx_pandora, &b_vtxx_pandora);
@@ -2229,6 +2535,13 @@ void NewAnalysisCCCoh::Init(TTree *tree)
    fChain->SetBranchAddress("vtxz_trajcluster", vtxz_trajcluster, &b_vtxz_trajcluster);
    fChain->SetBranchAddress("vtxhasPFParticle_trajcluster", vtxhasPFParticle_trajcluster, &b_vtxhasPFParticle_trajcluster);
    fChain->SetBranchAddress("vtxPFParticleID_trajcluster", vtxPFParticleID_trajcluster, &b_vtxPFParticleID_trajcluster);
+   fChain->SetBranchAddress("nvtx_pandoraTrack", &nvtx_pandoraTrack, &b_nvtx_pandoraTrack);
+   fChain->SetBranchAddress("vtxId_pandoraTrack", &vtxId_pandoraTrack, &b_vtxId_pandoraTrack);
+   fChain->SetBranchAddress("vtxx_pandoraTrack", &vtxx_pandoraTrack, &b_vtxx_pandoraTrack);
+   fChain->SetBranchAddress("vtxy_pandoraTrack", &vtxy_pandoraTrack, &b_vtxy_pandoraTrack);
+   fChain->SetBranchAddress("vtxz_pandoraTrack", &vtxz_pandoraTrack, &b_vtxz_pandoraTrack);
+   fChain->SetBranchAddress("vtxhasPFParticle_pandoraTrack", &vtxhasPFParticle_pandoraTrack, &b_vtxhasPFParticle_pandoraTrack);
+   fChain->SetBranchAddress("vtxPFParticleID_pandoraTrack", &vtxPFParticleID_pandoraTrack, &b_vtxPFParticleID_pandoraTrack);
    fChain->SetBranchAddress("nnuvtx_pandora", &nnuvtx_pandora, &b_nnuvtx_pandora);
    fChain->SetBranchAddress("nuvtxId_pandora", nuvtxId_pandora, &b_nuvtxId_pandora);
    fChain->SetBranchAddress("nuvtxx_pandora", nuvtxx_pandora, &b_nuvtxx_pandora);
@@ -2237,6 +2550,14 @@ void NewAnalysisCCCoh::Init(TTree *tree)
    fChain->SetBranchAddress("nuvtxpdg_pandora", nuvtxpdg_pandora, &b_nuvtxpdg_pandora);
    fChain->SetBranchAddress("nuvtxhasPFParticle_pandora", nuvtxhasPFParticle_pandora, &b_nuvtxhasPFParticle_pandora);
    fChain->SetBranchAddress("nuvtxPFParticleID_pandora", nuvtxPFParticleID_pandora, &b_nuvtxPFParticleID_pandora);
+   fChain->SetBranchAddress("nnuvtx_pandoraTrack", &nnuvtx_pandoraTrack, &b_nnuvtx_pandoraTrack);
+   fChain->SetBranchAddress("nuvtxId_pandoraTrack", &nuvtxId_pandoraTrack, &b_nuvtxId_pandoraTrack);
+   fChain->SetBranchAddress("nuvtxx_pandoraTrack", &nuvtxx_pandoraTrack, &b_nuvtxx_pandoraTrack);
+   fChain->SetBranchAddress("nuvtxy_pandoraTrack", &nuvtxy_pandoraTrack, &b_nuvtxy_pandoraTrack);
+   fChain->SetBranchAddress("nuvtxz_pandoraTrack", &nuvtxz_pandoraTrack, &b_nuvtxz_pandoraTrack);
+   fChain->SetBranchAddress("nuvtxpdg_pandoraTrack", &nuvtxpdg_pandoraTrack, &b_nuvtxpdg_pandoraTrack);
+   fChain->SetBranchAddress("nuvtxhasPFParticle_pandoraTrack", &nuvtxhasPFParticle_pandoraTrack, &b_nuvtxhasPFParticle_pandoraTrack);
+   fChain->SetBranchAddress("nuvtxPFParticleID_pandoraTrack", &nuvtxPFParticleID_pandoraTrack, &b_nuvtxPFParticleID_pandoraTrack);
    fChain->SetBranchAddress("nfls_simpleFlashBeam", &nfls_simpleFlashBeam, &b_nfls_simpleFlashBeam);
    fChain->SetBranchAddress("flsTime_simpleFlashBeam", flsTime_simpleFlashBeam, &b_flsTime_simpleFlashBeam);
    fChain->SetBranchAddress("flsPe_simpleFlashBeam", flsPe_simpleFlashBeam, &b_flsPe_simpleFlashBeam);
@@ -2270,7 +2591,7 @@ void NewAnalysisCCCoh::Init(TTree *tree)
    Notify();
 }
 
-Bool_t NewAnalysisCCCoh::Notify()
+Bool_t NewAnalysisBKGD::Notify()
 {
    // The Notify() function is called when a new file is opened. This
    // can be either for a new TTree in a TChain or when when a new TTree
@@ -2281,18 +2602,18 @@ Bool_t NewAnalysisCCCoh::Notify()
    return kTRUE;
 }
 
-void NewAnalysisCCCoh::Show(Long64_t entry)
+void NewAnalysisBKGD::Show(Long64_t entry)
 {
 // Print contents of entry.
 // If entry is not specified, print current entry
    if (!fChain) return;
    fChain->Show(entry);
 }
-Int_t NewAnalysisCCCoh::Cut(Long64_t entry)
+Int_t NewAnalysisBKGD::Cut(Long64_t entry)
 {
 // This function may be called from Loop.
 // returns  1 if entry is accepted.
 // returns -1 otherwise.
    return 1;
 }
-#endif // #ifdef NewAnalysisCCCoh_cxx
+#endif // #ifdef NewAnalysisBKGD_cxx
