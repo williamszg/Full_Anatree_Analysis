@@ -288,6 +288,19 @@ void NewAnalysisBKGD::Loop()
 
       for (int n = 0; n < nfls_simpleFlashCosmic; n++) {hOpFlashPECosmic->Fill(flsPe_simpleFlashCosmic[n]);}
 
+      // ====================
+      // === Pandora Loop ===
+      // ====================
+      for (int i = 0; i < ntracks_pandora; i++)
+         {
+         std::cout<<"trkorigin_pandora[i][0], trkorigin_pandora[i][1], trkorigin_pandora[i][2] = "<<trkorigin_pandora[i][0]<<", "<<trkorigin_pandora[i][1]<<", "<<trkorigin_pandora[i][2]<<std::endl;
+         std::cout<<"trkncosmictags_tagger_pandora[i] = "<<trkncosmictags_tagger_pandora[i]<<std::endl;
+         std::cout<<"trkcosmicscore_tagger_pandora[i] = "<<trkcosmicscore_tagger_pandora[i]<<std::endl;
+         std::cout<<"trkcosmictype_tagger_pandora[i] = "<<trkcosmictype_tagger_pandora[i]<<std::endl;
+         } // <--End ntracks_pandora i Loop
+      // ====================
+
+
       // ========================================
       // === Looping Over the Neutrino Events ===
       // ========================================
