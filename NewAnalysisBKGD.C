@@ -29,7 +29,7 @@ TH1D *hCCQEConeAngle = new TH1D("hCCQEConeAngle", "The Cone Angle for CC-QE Even
 TH1D *hCCResConeAngle = new TH1D("hCCResConeAngle", "The Cone Angle for CC-Res Events with 2 or More MCTracks", 181, -0.5, 180.5);
 TH1D *hNCResConeAngle = new TH1D("hNCResConeAngle", "The Cone Angle for NC-Res Events with 2 or More MCTracks", 181, -0.5, 180.5);
 TH1D *hNCDISConeAngle = new TH1D("hNCDISConeAngle", "The Cone Angle for NC-DIS Events with 2 or More MCTracks", 181, -0.5, 180.5);
-TH1D *hCosmicConeAngle = new TH1D("hCosmicConeAngle", "The Cone Angle for Events with 2 or More Cosmic MCTracks", 181, -0.5, 180.5);
+TH1D *hCosmicConeAngle = new TH1D("hCosmicConeAngle", "The Cone Angle for Events with 2 or More Cosmic Tracks", 181, -0.5, 180.5);
 
 TH1D *hCCCohDoCA = new TH1D("hCCCohDoCA", "The DoCA for CC-COH Events with 2 or More MCTracks in cm", 500, 0, 500);
 TH1D *hCCCohDoCA2 = new TH1D("hCCCohDoCA2", "The DoCA for CC-COH Events with 2 or More MCTracks in cm Using the Second Method", 1000, 0, 100);
@@ -41,8 +41,8 @@ TH1D *hNCResDoCA = new TH1D("hNCResDoCA", "The DoCA for NC-Res Events with 2 or 
 TH1D *hNCResDoCA2 = new TH1D("hNCResDoCA2", "The DoCA for NC-Res Events with 2 or More MCTracks in cm Using the Second Method", 1000, 0, 100);
 TH1D *hNCDISDoCA = new TH1D("hNCDISDoCA", "The DoCA for NC-DIS Events with 2 or More MCTracks in cm", 500, 0, 500);
 TH1D *hNCDISDoCA2 = new TH1D("hNCDISDoCA2", "The DoCA for NC-DIS Events with 2 or More MCTracks in cm Using the Second Method", 1000, 0, 100);
-TH1D *hCosmicDoCA = new TH1D("hCosmicDoCA", "The DoCA for Events with 2 or More Cosmic MCTracks in cm", 500, 0, 500);
-TH1D *hCosmicDoCA2 = new TH1D("hCosmicDoCA2", "The DoCA for Events with 2 or More Cosmic MCTracks in cm Using the Second Method", 1000, 0, 100);
+TH1D *hCosmicDoCA = new TH1D("hCosmicDoCA", "The DoCA for Events with 2 or More Cosmic Tracks in cm", 500, 0, 500);
+TH1D *hCosmicDoCA2 = new TH1D("hCosmicDoCA2", "The DoCA for Events with 2 or More Cosmic Tracks in cm Using the Second Method", 1000, 0, 100);
 
 TH1D *hCCCohVA = new TH1D("hCCCohVA", "The Vertex Activity for CC-COH Events within 10cm of Vertex in MeV", 100, 0, 500);
 TH1D *hCCQEVA = new TH1D("hCCQEVA", "The Vertex Activity for CC-QE Events within 10cm of Vertex in MeV", 100, 0, 500);
@@ -262,7 +262,7 @@ void NewAnalysisBKGD::Loop()
    Long64_t nbytes = 0, nb = 0;
 
    //int Nentries = nentries;
-   int Nentries = 100;
+   int Nentries = 200;
 
    double POT = 0;
 
@@ -279,7 +279,7 @@ void NewAnalysisBKGD::Loop()
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
 
-      if (jentry%1 == 0) {std::cout<<"Event = "<<jentry<<std::endl;}
+      if (jentry%10 == 0) {std::cout<<"Event = "<<jentry<<std::endl;}
 
       /*
       if (pot != -99999) {POT = POT + pot;}
@@ -294,7 +294,7 @@ void NewAnalysisBKGD::Loop()
       // ========================================
       // === Looping Over the Neutrino Events ===
       // ========================================
-      for (int i = 0; i < mcevts_truth+1; i++)
+      for (int i = 0; i < mcevts_truth; i++)
 	 {
          bool CCCOH = CCCoh(nuPDG_truth[i], ccnc_truth[i], mode_truth[i]);
 	 bool CCQE = CCqe(nuPDG_truth[i], ccnc_truth[i], mode_truth[i]);
@@ -372,7 +372,16 @@ void NewAnalysisBKGD::Loop()
                // -----------------
                // --- Cosmic VA ---
                // -----------------
-               // Cosmic VA Stuff goes here!
+               for (int x = 0; x < 3; x++)
+                  {
+                  for (int j = 0; j < ntrkhits_pandora[t][x]; j++)
+                     {
+                     if (Distance(Vx,Vy,Vz,trkxyz_pandora[t][x][j][0],trkxyz_pandora[t][x][j][1],trkxyz_pandora[t][x][j][2]) <= VAdistanceCheck)
+                        {
+                        CosmicVAEnergy = CosmicVAEnergy + trkdedx_pandora[t][x][j]*trkpitchc_pandora[t][x];
+                        }
+                     }
+                  }
                // -----------------
 
                for (int m = t+1; m < ntracks_pandora; m++)
@@ -422,6 +431,8 @@ void NewAnalysisBKGD::Loop()
                   }
                }
             } // <--End ntracks_pandora t Loop
+         //std::cout<<"CosmicVAEnergy = "<<CosmicVAEnergy<<std::endl;
+         hCosmicVA->Fill(CosmicVAEnergy);        
          //std::cout<<"nCosmics = "<<nCosmics<<std::endl;
          hnCosmics->Fill(nCosmics);
          // ====================
