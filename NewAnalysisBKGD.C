@@ -262,7 +262,7 @@ void NewAnalysisBKGD::Loop()
    Long64_t nbytes = 0, nb = 0;
 
    //int Nentries = nentries;
-   int Nentries = 1000;
+   int Nentries = 100;
 
    double POT = 0;
 
@@ -279,14 +279,15 @@ void NewAnalysisBKGD::Loop()
       if (ientry < 0) break;
       nb = fChain->GetEntry(jentry);   nbytes += nb;
 
-      if (jentry%100 == 0) {std::cout<<"Event = "<<jentry<<std::endl;}
-      //if (jentry > 0 && jentry < nentries) {std::cout<<"Event = "<<jentry<<std::endl;}
+      if (jentry%1 == 0) {std::cout<<"Event = "<<jentry<<std::endl;}
 
+      /*
       if (pot != -99999) {POT = POT + pot;}
       //if (jentry == Nentries - 1) {std::cout<<"Total POT for this file = "<<POT<<std::endl;}
 
       if (jentry%100 == 0) {std::cout<<"Number of Beam Flashes = "<<nfls_simpleFlashBeam<<std::endl;}
       if (jentry%100 == 0) {std::cout<<"Number of Cosmic Flashes = "<<nfls_simpleFlashCosmic<<std::endl;}
+      */
 
       for (int n = 0; n < nfls_simpleFlashCosmic; n++) {hOpFlashPECosmic->Fill(flsPe_simpleFlashCosmic[n]);}
 
@@ -413,8 +414,7 @@ void NewAnalysisBKGD::Loop()
                            }
                         }
                      // -------------------
- 
-                     std::cout<<"DoCA2_Cosmic = "<<DoCA2_Cosmic<<std::endl;
+                     //std::cout<<"DoCA2_Cosmic = "<<DoCA2_Cosmic<<std::endl;
                      hCosmicDoCA2->Fill(DoCA2_Cosmic);
                      }
                   // -------------------
@@ -422,7 +422,7 @@ void NewAnalysisBKGD::Loop()
                   }
                }
             } // <--End ntracks_pandora t Loop
-         std::cout<<"nCosmics = "<<nCosmics<<std::endl;
+         //std::cout<<"nCosmics = "<<nCosmics<<std::endl;
          hnCosmics->Fill(nCosmics);
          // ====================
 
