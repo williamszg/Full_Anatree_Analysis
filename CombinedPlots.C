@@ -1,33 +1,431 @@
 {
 TFile *f = new TFile("./Histograms_NewAnalysis_BKGD.root");
 TFile *f2 = new TFile("./Histograms_NewAnalysis_CCCoh.root");
-
+TFile *f3 = new TFile("./Histograms_NewAnalysis_BKGD_10000.root");
 
 TH1D *hCCCohConeAngle = (TH1D*)f2->Get("hCCCohConeAngle");
 TH1D *hCCQEConeAngle = (TH1D*)f->Get("hCCQEConeAngle");
 TH1D *hCCResConeAngle = (TH1D*)f->Get("hCCResConeAngle");
 TH1D *hNCResConeAngle = (TH1D*)f->Get("hNCResConeAngle");
 TH1D *hNCDISConeAngle = (TH1D*)f->Get("hNCDISConeAngle");
-TH1D *hCosmicConeAngle = (TH1D*)f->Get("hCosmicConeAngle");
+TH1D *hCosmicConeAngle = (TH1D*)f3->Get("hCosmicConeAngle");
+
+// -----------------------------
+// --- TGraph for Cone Angle ---
+// -----------------------------
+int n = 180;
+double x[180] = {0};
+double CCCohConeAngle[180] = {0};
+double CCQEConeAngle[180] = {0};
+double CCResConeAngle[180] = {0};
+double NCResConeAngle[180] = {0};
+double NCDISConeAngle[180] = {0};
+double CosmicConeAngle[180] = {0};
+
+for (int i = 0; i < n; i++)
+   {
+   x[i] = i*180/n;
+   for (int g = 1; g < i+1; g++)
+      {
+      CCCohConeAngle[i] += hCCCohConeAngle->GetBinContent(g);
+      CCQEConeAngle[i] += hCCQEConeAngle->GetBinContent(g);
+      CCResConeAngle[i] += hCCResConeAngle->GetBinContent(g);
+      NCResConeAngle[i] += hNCResConeAngle->GetBinContent(g);
+      NCDISConeAngle[i] += hNCDISConeAngle->GetBinContent(g);
+      CosmicConeAngle[i] += hCosmicConeAngle->GetBinContent(g);
+      } // End g-Loop
+
+   CCCohConeAngle[i] = CCCohConeAngle[i]*100/hCCCohConeAngle->GetEntries();
+   CCQEConeAngle[i] = CCQEConeAngle[i]*100/hCCQEConeAngle->GetEntries();
+   CCResConeAngle[i] = CCResConeAngle[i]*100/hCCResConeAngle->GetEntries();
+   NCResConeAngle[i] = NCResConeAngle[i]*100/hNCResConeAngle->GetEntries();
+   NCDISConeAngle[i] = NCDISConeAngle[i]*100/hNCDISConeAngle->GetEntries();
+   CosmicConeAngle[i] = CosmicConeAngle[i]*100/hCosmicConeAngle->GetEntries();
+   } // End i-Loop
+
+TGraph* gCCCohConeAngle = new TGraph(n, x, CCCohConeAngle);
+gCCCohConeAngle->SetTitle("gCCCohConeAngle");
+gCCCohConeAngle->SetName("gCCCohConeAngle");
+gCCCohConeAngle->SetFillColor(kWhite);
+gCCCohConeAngle->SetLineColor(kBlue);
+gCCCohConeAngle->SetLineWidth(2);
+TGraph* gCCQEConeAngle = new TGraph(n, x, CCQEConeAngle);
+gCCQEConeAngle->SetTitle("gCCQEConeAngle");
+gCCQEConeAngle->SetName("gCCQEConeAngle");
+gCCQEConeAngle->SetFillColor(kWhite);
+gCCQEConeAngle->SetLineColor(kRed);
+gCCQEConeAngle->SetLineWidth(2);
+TGraph* gCCResConeAngle = new TGraph(n, x, CCResConeAngle);
+gCCResConeAngle->SetTitle("gCCResConeAngle");
+gCCResConeAngle->SetName("gCCResConeAngle");
+gCCResConeAngle->SetFillColor(kWhite);
+gCCResConeAngle->SetLineColor(kGreen);
+gCCResConeAngle->SetLineWidth(2);
+TGraph* gNCResConeAngle = new TGraph(n, x, NCResConeAngle);
+gNCResConeAngle->SetTitle("gNCResConeAngle");
+gNCResConeAngle->SetName("gNCResConeAngle");
+gNCResConeAngle->SetFillColor(kWhite);
+gNCResConeAngle->SetLineColor(kCyan);
+gNCResConeAngle->SetLineWidth(2);
+TGraph* gNCDISConeAngle = new TGraph(n, x, NCDISConeAngle);
+gNCDISConeAngle->SetTitle("gNCDISConeAngle");
+gNCDISConeAngle->SetName("gNCDISConeAngle");
+gNCDISConeAngle->SetFillColor(kWhite);
+gNCDISConeAngle->SetLineColor(kMagenta);
+gNCDISConeAngle->SetLineWidth(2);
+TGraph* gCosmicConeAngle = new TGraph(n, x, CosmicConeAngle);
+gCosmicConeAngle->SetTitle("gCosmicConeAngle");
+gCosmicConeAngle->SetName("gCosmicConeAngle");
+gCosmicConeAngle->SetFillColor(kWhite);
+gCosmicConeAngle->SetLineColor(kBlack);
+gCosmicConeAngle->SetLineWidth(2);
+
+TCanvas *c4 = new TCanvas("c4", "Cone Angle TGraphs");
+c4->SetTicks();
+c4->SetFillColor(kWhite);
+
+gCCCohConeAngle->GetXaxis()->SetTitle("Cone Angle [Degrees]");
+gCCCohConeAngle->GetXaxis()->CenterTitle();
+
+gCCCohConeAngle->GetYaxis()->SetTitle("Percentage Passed [%]");
+gCCCohConeAngle->GetYaxis()->CenterTitle();
+
+gCCCohConeAngle->Draw();
+gCCQEConeAngle->Draw("same");
+gCCResConeAngle->Draw("same");
+gNCResConeAngle->Draw("same");
+gNCDISConeAngle->Draw("same");
+gCosmicConeAngle->Draw("same");
+
+// ### Defining the legend for the plot ###
+TLegend *leg4 = new TLegend();
+leg4 = new TLegend(0.58,0.65,0.88,0.88);
+leg4->SetTextSize(0.04);
+leg4->SetTextAlign(12);
+leg4->SetFillColor(kWhite);
+leg4->SetLineColor(kWhite);
+leg4->SetShadowColor(kWhite);
+leg4->SetHeader("Channel");
+leg4->AddEntry(gCCCohConeAngle,"CC-COH");
+leg4->AddEntry(gCCQEConeAngle,"CC-QE");
+leg4->AddEntry(gCCResConeAngle,"CC-Res");
+leg4->AddEntry(gNCResConeAngle,"NC-Res");
+leg4->AddEntry(gNCDISConeAngle,"NC-DIS");
+leg4->AddEntry(gCosmicConeAngle,"Cosmic");
+leg4->Draw();
+// -----------------------------
 
 TH1D *hCCCohDoCA = (TH1D*)f2->Get("hCCCohDoCA2");
 TH1D *hCCQEDoCA = (TH1D*)f->Get("hCCQEDoCA2");
 TH1D *hCCResDoCA = (TH1D*)f->Get("hCCResDoCA2");
 TH1D *hNCResDoCA = (TH1D*)f->Get("hNCResDoCA2");
 TH1D *hNCDISDoCA = (TH1D*)f->Get("hNCDISDoCA2");
-TH1D *hCosmicDoCA = (TH1D*)f->Get("hCosmicDoCA2");
+TH1D *hCosmicDoCA = (TH1D*)f3->Get("hCosmicDoCA2");
+
+// -----------------------
+// --- TGraph for DoCA ---
+// -----------------------
+int m = 1000;
+double y[1000] = {0};
+double CCCohDoCA[1000] = {0};
+double CCQEDoCA[1000] = {0};
+double CCResDoCA[1000] = {0};
+double NCResDoCA[1000] = {0};
+double NCDISDoCA[1000] = {0};
+double CosmicDoCA[1000] = {0};
+
+for (int i = 0; i < m; i++)
+   {
+   y[i] = i*100/m;
+   for (int g = 1; g < i+1; g++)
+      {
+      CCCohDoCA[i] += hCCCohDoCA->GetBinContent(g);
+      CCQEDoCA[i] += hCCQEDoCA->GetBinContent(g);
+      CCResDoCA[i] += hCCResDoCA->GetBinContent(g);
+      NCResDoCA[i] += hNCResDoCA->GetBinContent(g);
+      NCDISDoCA[i] += hNCDISDoCA->GetBinContent(g);
+      CosmicDoCA[i] += hCosmicDoCA->GetBinContent(g);
+      } // End g-Loop
+
+   CCCohDoCA[i] = CCCohDoCA[i]*100/hCCCohDoCA->GetEntries();
+   CCQEDoCA[i] = CCQEDoCA[i]*100/hCCQEDoCA->GetEntries();
+   CCResDoCA[i] = CCResDoCA[i]*100/hCCResDoCA->GetEntries();
+   NCResDoCA[i] = NCResDoCA[i]*100/hNCResDoCA->GetEntries();
+   NCDISDoCA[i] = NCDISDoCA[i]*100/hNCDISDoCA->GetEntries();
+   CosmicDoCA[i] = CosmicDoCA[i]*100/hCosmicDoCA->GetEntries();
+   } // End i-Loop
+
+TGraph* gCCCohDoCA = new TGraph(m, y, CCCohDoCA);
+gCCCohDoCA->SetTitle("gCCCohDoCA");
+gCCCohDoCA->SetName("gCCCohDoCA");
+gCCCohDoCA->SetFillColor(kWhite);
+gCCCohDoCA->SetLineColor(kBlue);
+gCCCohDoCA->SetLineWidth(2);
+TGraph* gCCQEDoCA = new TGraph(m, y, CCQEDoCA);
+gCCQEDoCA->SetTitle("gCCQEDoCA");
+gCCQEDoCA->SetName("gCCQEDoCA");
+gCCQEDoCA->SetFillColor(kWhite);
+gCCQEDoCA->SetLineColor(kRed);
+gCCQEDoCA->SetLineWidth(2);
+TGraph* gCCResDoCA = new TGraph(m, y, CCResDoCA);
+gCCResDoCA->SetTitle("gCCResDoCA");
+gCCResDoCA->SetName("gCCResDoCA");
+gCCResDoCA->SetFillColor(kWhite);
+gCCResDoCA->SetLineColor(kGreen);
+gCCResDoCA->SetLineWidth(2);
+TGraph* gNCResDoCA = new TGraph(m, y, NCResDoCA);
+gNCResDoCA->SetTitle("gNCResDoCA");
+gNCResDoCA->SetName("gNCResDoCA");
+gNCResDoCA->SetFillColor(kWhite);
+gNCResDoCA->SetLineColor(kCyan);
+gNCResDoCA->SetLineWidth(2);
+TGraph* gNCDISDoCA = new TGraph(m, y, NCDISDoCA);
+gNCDISDoCA->SetTitle("gNCDISDoCA");
+gNCDISDoCA->SetName("gNCDISDoCA");
+gNCDISDoCA->SetFillColor(kWhite);
+gNCDISDoCA->SetLineColor(kMagenta);
+gNCDISDoCA->SetLineWidth(2);
+TGraph* gCosmicDoCA = new TGraph(m, y, CosmicDoCA);
+gCosmicDoCA->SetTitle("gCosmicDoCA");
+gCosmicDoCA->SetName("gCosmicDoCA");
+gCosmicDoCA->SetFillColor(kWhite);
+gCosmicDoCA->SetLineColor(kBlack);
+gCosmicDoCA->SetLineWidth(2);
+
+TCanvas *c5 = new TCanvas("c5", "DoCA TGraphs");
+c5->SetTicks();
+c5->SetFillColor(kWhite);
+
+gCCCohDoCA->GetXaxis()->SetTitle("DoCA [cm]");
+gCCCohDoCA->GetXaxis()->CenterTitle();
+
+gCCCohDoCA->GetYaxis()->SetTitle("Percentage Passed [%]");
+gCCCohDoCA->GetYaxis()->CenterTitle();
+
+gCCCohDoCA->Draw();
+gCCQEDoCA->Draw("same");
+gCCResDoCA->Draw("same");
+gNCResDoCA->Draw("same");
+gNCDISDoCA->Draw("same");
+gCosmicDoCA->Draw("same");
+
+// ### Defining the legend for the plot ###
+TLegend *leg5 = new TLegend();
+leg5 = new TLegend(0.58,0.65,0.88,0.88);
+leg5->SetTextSize(0.04);
+leg5->SetTextAlign(12);
+leg5->SetFillColor(kWhite);
+leg5->SetLineColor(kWhite);
+leg5->SetShadowColor(kWhite);
+leg5->SetHeader("Channel");
+leg5->AddEntry(gCCCohDoCA,"CC-COH");
+leg5->AddEntry(gCCQEDoCA,"CC-QE");
+leg5->AddEntry(gCCResDoCA,"CC-Res");
+leg5->AddEntry(gNCResDoCA,"NC-Res");
+leg5->AddEntry(gNCDISDoCA,"NC-DIS");
+leg5->AddEntry(gCosmicDoCA,"Cosmic");
+leg5->Draw();
+// -----------------------
 
 TH1D *hCCCohVA = (TH1D*)f2->Get("hCCCohVA");
 TH1D *hCCQEVA = (TH1D*)f->Get("hCCQEVA");
 TH1D *hCCResVA = (TH1D*)f->Get("hCCResVA");
 TH1D *hNCResVA = (TH1D*)f->Get("hNCResVA");
 TH1D *hNCDISVA = (TH1D*)f->Get("hNCDISVA");
-TH1D *hCosmicVA = (TH1D*)f->Get("hCosmicVA");
+TH1D *hCosmicVA = (TH1D*)f3->Get("hCosmicVA");
+
+// ---------------------
+// --- TGraph for VA ---
+// ---------------------
+int j = 100;
+double z[100] = {0};
+double CCCohVA[100] = {0};
+double CCQEVA[100] = {0};
+double CCResVA[100] = {0};
+double NCResVA[100] = {0};
+double NCDISVA[100] = {0};
+double CosmicVA[100] = {0};
+
+for (int i = 0; i < j; i++)
+   {
+   z[i] = i*500/j;
+   for (int g = 1; g < i+1; g++)
+      {
+      CCCohVA[i] += hCCCohVA->GetBinContent(g);
+      CCQEVA[i] += hCCQEVA->GetBinContent(g);
+      CCResVA[i] += hCCResVA->GetBinContent(g);
+      NCResVA[i] += hNCResVA->GetBinContent(g);
+      NCDISVA[i] += hNCDISVA->GetBinContent(g);
+      CosmicVA[i] += hCosmicVA->GetBinContent(g);
+      } // End g-Loop
+
+   CCCohVA[i] = CCCohVA[i]*100/hCCCohVA->GetEntries();
+   CCQEVA[i] = CCQEVA[i]*100/hCCQEVA->GetEntries();
+   CCResVA[i] = CCResVA[i]*100/hCCResVA->GetEntries();
+   NCResVA[i] = NCResVA[i]*100/hNCResVA->GetEntries();
+   NCDISVA[i] = NCDISVA[i]*100/hNCDISVA->GetEntries();
+   CosmicVA[i] = CosmicVA[i]*100/hCosmicVA->GetEntries();
+   } // End i-Loop
+
+TGraph* gCCCohVA = new TGraph(j, z, CCCohVA);
+gCCCohVA->SetTitle("gCCCohVA");
+gCCCohVA->SetName("gCCCohVA");
+gCCCohVA->SetFillColor(kWhite);
+gCCCohVA->SetLineColor(kBlue);
+gCCCohVA->SetLineWidth(2);
+TGraph* gCCQEVA = new TGraph(j, z, CCQEVA);
+gCCQEVA->SetTitle("gCCQEVA");
+gCCQEVA->SetName("gCCQEVA");
+gCCQEVA->SetFillColor(kWhite);
+gCCQEVA->SetLineColor(kRed);
+gCCQEVA->SetLineWidth(2);
+TGraph* gCCResVA = new TGraph(j, z, CCResVA);
+gCCResVA->SetTitle("gCCResVA");
+gCCResVA->SetName("gCCResVA");
+gCCResVA->SetFillColor(kWhite);
+gCCResVA->SetLineColor(kGreen);
+gCCResVA->SetLineWidth(2);
+TGraph* gNCResVA = new TGraph(j, z, NCResVA);
+gNCResVA->SetTitle("gNCResVA");
+gNCResVA->SetName("gNCResVA");
+gNCResVA->SetFillColor(kWhite);
+gNCResVA->SetLineColor(kCyan);
+gNCResVA->SetLineWidth(2);
+TGraph* gNCDISVA = new TGraph(j, z, NCDISVA);
+gNCDISVA->SetTitle("gNCDISVA");
+gNCDISVA->SetName("gNCDISVA");
+gNCDISVA->SetFillColor(kWhite);
+gNCDISVA->SetLineColor(kMagenta);
+gNCDISVA->SetLineWidth(2);
+TGraph* gCosmicVA = new TGraph(j, z, CosmicVA);
+gCosmicVA->SetTitle("gCosmicVA");
+gCosmicVA->SetName("gCosmicVA");
+gCosmicVA->SetFillColor(kWhite);
+gCosmicVA->SetLineColor(kBlack);
+gCosmicVA->SetLineWidth(2);
+
+TCanvas *c6 = new TCanvas("c6", "Vertex Activity TGraphs");
+c6->SetTicks();
+c6->SetFillColor(kWhite);
+
+gCCCohVA->GetXaxis()->SetTitle("Vertex Activity within 10cm of Vertex [MeV]");
+gCCCohVA->GetXaxis()->CenterTitle();
+
+gCCCohVA->GetYaxis()->SetTitle("Percentage Passed [%]");
+gCCCohVA->GetYaxis()->CenterTitle();
+
+gCCCohVA->Draw();
+gCCQEVA->Draw("same");
+gCCResVA->Draw("same");
+gNCResVA->Draw("same");
+gNCDISVA->Draw("same");
+gCosmicVA->Draw("same");
+
+// ### Defining the legend for the plot ###
+TLegend *leg6 = new TLegend();
+leg6 = new TLegend(0.58,0.65,0.88,0.88);
+leg6->SetTextSize(0.04);
+leg6->SetTextAlign(12);
+leg6->SetFillColor(kWhite);
+leg6->SetLineColor(kWhite);
+leg6->SetShadowColor(kWhite);
+leg6->SetHeader("Channel");
+leg6->AddEntry(gCCCohVA,"CC-COH");
+leg6->AddEntry(gCCQEVA,"CC-QE");
+leg6->AddEntry(gCCResVA,"CC-Res");
+leg6->AddEntry(gNCResVA,"NC-Res");
+leg6->AddEntry(gNCDISVA,"NC-DIS");
+leg6->AddEntry(gCosmicVA,"Cosmic");
+leg6->Draw();
+// ---------------------
 
 TH1D *hOpFlashPECCCoh = (TH1D*)f2->Get("hOpFlashPECCCoh");
-TH1D *hOpFlashPECosmic = (TH1D*)f->Get("hOpFlashPECosmic");
+TH1D *hOpFlashPECosmic = (TH1D*)f3->Get("hOpFlashPECosmic");
 TH1D *hOpFlashPECCOther = (TH1D*)f->Get("hOpFlashPECCOther");
 TH1D *hOpFlashPENCOther = (TH1D*)f->Get("hOpFlashPENCOther");
+
+// --------------------------
+// --- TGraph for OpFlash ---
+// --------------------------
+int k = 2000;
+double t[2000] = {0};
+double CCCohOp[2000] = {0};
+double CCOtherOp[2000] = {0};
+double NCOtherOp[2000] = {0};
+double CosmicOp[2000] = {0};
+
+for (int i = 0; i < k; i++)
+   {
+   t[i] = i*20000/k;
+   for (int g = 1; g < i+1; g++)
+      {
+      CCCohOp[i] += hOpFlashPECCCoh->GetBinContent(g);
+      CCOtherOp[i] += hOpFlashPECCOther->GetBinContent(g);
+      NCOtherOp[i] += hOpFlashPENCOther->GetBinContent(g);
+      CosmicOp[i] += hOpFlashPECosmic->GetBinContent(g);
+      } // End g-Loop
+
+   CCCohOp[i] = CCCohOp[i]*100/hOpFlashPECCCoh->GetEntries();
+   CCOtherOp[i] = CCOtherOp[i]*100/hOpFlashPECCOther->GetEntries();
+   NCOtherOp[i] = NCOtherOp[i]*100/hOpFlashPENCOther->GetEntries();
+   CosmicOp[i] = CosmicOp[i]*100/hOpFlashPECosmic->GetEntries();
+   } // End i-Loop
+
+TGraph* gCCCohOp = new TGraph(k, t, CCCohOp);
+gCCCohOp->SetTitle("gCCCohOp");
+gCCCohOp->SetName("gCCCohOp");
+gCCCohOp->SetFillColor(kWhite);
+gCCCohOp->SetLineColor(kBlue);
+gCCCohOp->SetLineWidth(2);
+TGraph* gCCOtherOp = new TGraph(k, t, CCOtherOp);
+gCCOtherOp->SetTitle("gCCOtherOp");
+gCCOtherOp->SetName("gCCOtherOp");
+gCCOtherOp->SetFillColor(kWhite);
+gCCOtherOp->SetLineColor(kRed);
+gCCOtherOp->SetLineWidth(2);
+TGraph* gNCOtherOp = new TGraph(k, t, NCOtherOp);
+gNCOtherOp->SetTitle("gNCOtherOp");
+gNCOtherOp->SetName("gNCOtherOp");
+gNCOtherOp->SetFillColor(kWhite);
+gNCOtherOp->SetLineColor(kGreen);
+gNCOtherOp->SetLineWidth(2);
+TGraph* gCosmicOp = new TGraph(k, t, CosmicOp);
+gCosmicOp->SetTitle("gCosmicOp");
+gCosmicOp->SetName("gCosmicOp");
+gCosmicOp->SetFillColor(kWhite);
+gCosmicOp->SetLineColor(kBlack);
+gCosmicOp->SetLineWidth(2);
+
+TCanvas *c7 = new TCanvas("c7", "OpFlash TGraphs");
+c7->SetTicks();
+c7->SetFillColor(kWhite);
+
+gCCCohOp->GetXaxis()->SetTitle("Number of PE [PE]");
+gCCCohOp->GetXaxis()->CenterTitle();
+
+gCCCohOp->GetYaxis()->SetTitle("Percentage Passed [%]");
+gCCCohOp->GetYaxis()->CenterTitle();
+
+gCCCohOp->Draw();
+gCCOtherOp->Draw("same");
+gNCOtherOp->Draw("same");
+gCosmicOp->Draw("same");
+
+// ### Defining the legend for the plot ###
+TLegend *leg7 = new TLegend();
+leg7 = new TLegend(0.58,0.65,0.88,0.88);
+leg7->SetTextSize(0.04);
+leg7->SetTextAlign(12);
+leg7->SetFillColor(kWhite);
+leg7->SetLineColor(kWhite);
+leg7->SetShadowColor(kWhite);
+leg7->SetHeader("Channel");
+leg7->AddEntry(gCCCohOp,"CC-COH");
+leg7->AddEntry(gCCOtherOp,"CC-Other");
+leg7->AddEntry(gNCOtherOp,"NC-Other");
+leg7->AddEntry(gCosmicOp,"Cosmic");
+leg7->Draw();
+// --------------------------
 
 
 hCCCohConeAngle->Sumw2();
@@ -160,7 +558,7 @@ hCCQEDoCA->Draw("histosame");
 hCCResDoCA->Draw("histosame");
 hNCResDoCA->Draw("histosame");
 hNCDISDoCA->Draw("histosame");
-//hCosmicDoCA->Draw("histosame");
+hCosmicDoCA->Draw("histosame");
 
 
 // ### Defining the legend for the plot ###
