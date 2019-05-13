@@ -41,7 +41,6 @@ TH1D *hNCResDoCA = new TH1D("hNCResDoCA", "The DoCA for NC-Res Events with 2 or 
 TH1D *hNCResDoCA2 = new TH1D("hNCResDoCA2", "The DoCA for NC-Res Events with 2 or More MCTracks in cm Using the Second Method", 1000, 0, 100);
 TH1D *hNCDISDoCA = new TH1D("hNCDISDoCA", "The DoCA for NC-DIS Events with 2 or More MCTracks in cm", 500, 0, 500);
 TH1D *hNCDISDoCA2 = new TH1D("hNCDISDoCA2", "The DoCA for NC-DIS Events with 2 or More MCTracks in cm Using the Second Method", 1000, 0, 100);
-TH1D *hCosmicDoCA = new TH1D("hCosmicDoCA", "The DoCA for Events with 2 or More Cosmic Tracks in cm", 500, 0, 500);
 TH1D *hCosmicDoCA2 = new TH1D("hCosmicDoCA2", "The DoCA for Events with 2 or More Cosmic Tracks in cm Using the Second Method", 1000, 0, 100);
 
 TH1D *hCCCohVA = new TH1D("hCCCohVA", "The Vertex Activity for CC-COH Events within 10cm of Vertex in MeV", 100, 0, 500);
@@ -62,8 +61,6 @@ TH1D *hNCDISTableInformation = new TH1D("hNCDISTableInformation", "Table Informa
 
 TH1D *hNuStartVertexDistance = new TH1D("hNuStartVertexDistance", "Distance Between Neutrino Vertex and Start of Track for Neutrino Initiated Tracks with NumMCTracks >= 2", 101, -0.5, 100.5);
 TH1D *hNuEndVertexDistance = new TH1D("hNuEndVertexDistance", "Distance Between Neutrino Vertex and End of Track for Neutrino Initiated Tracks with NumMCTracks >= 2", 101, -0.5, 100.5);
-TH1D *hCosmicStartVertexDistance = new TH1D("hCosmicStartVertexDistance", "Distance Between Neutrino Vertex and Start of Track for Cosmics with NumMCTracks >= 2", 101, -0.5, 100.5);
-TH1D *hCosmicEndVertexDistance = new TH1D("hCosmicEndVertexDistance", "Distance Between Neutrino Vertex and End of Track for Cosmics with NumMCTracks >= 2", 101, -0.5, 100.5);
 TH1D *hNuCCCohStartVertexDistance = new TH1D("hNuCCCohStartVertexDistance", "Distance Between Neutrino Vertex and Start of Track for CCCoh Event Initiated Tracks with NumMCTracks >= 2", 101, -0.5, 100.5);
 TH1D *hNuCCCohEndVertexDistance = new TH1D("hNuCCCohEndVertexDistance", "Distance Between Neutrino Vertex and End of Track for CCCoh Event Initiated Tracks with NumMCTracks >= 2", 101, -0.5, 100.5);
 
@@ -261,8 +258,8 @@ void NewAnalysisBKGD::Loop()
    Long64_t nentries = fChain->GetEntriesFast();
    Long64_t nbytes = 0, nb = 0;
 
-   //int Nentries = nentries;
-   int Nentries = 200;
+   int Nentries = nentries;
+   //int Nentries = 10000;
 
    double POT = 0;
 
@@ -361,10 +358,9 @@ void NewAnalysisBKGD::Loop()
          // ====================
          for (int t = 0; t < ntracks_pandora; t++)
             {
-            if (trkcosmicscore_tagger_pandora[t] == 1) Cosmic = true;
-            else if (trkncosmictags_flashmatch_pandora[t] == 1) Cosmic = true;
+            if (trkg4id_pandora[t] == -1) Cosmic = true;
             else Cosmic = false;
-            
+
             if (Cosmic)
                {
                nCosmics++;
@@ -386,8 +382,7 @@ void NewAnalysisBKGD::Loop()
 
                for (int m = t+1; m < ntracks_pandora; m++)
                   {
-                  if (trkcosmicscore_tagger_pandora[m] == 1) Cosmic2 = true;
-                  else if (trkncosmictags_flashmatch_pandora[m] == 1) Cosmic2 = true;
+                  if (trkg4id_pandora[m] == -1) Cosmic2 = true;
                   else Cosmic2 = false;
                      
                   // -------------------
@@ -540,25 +535,34 @@ void NewAnalysisBKGD::Loop()
 
 	    TVector3 track(EndPointx_tpcAV[j] - StartPointx_tpcAV[j], EndPointy_tpcAV[j] - StartPointy_tpcAV[j], EndPointz_tpcAV[j] - StartPointz_tpcAV[j]);
 
-	    for (int l = j + 1; l < geant_list_size; l++)
-	       {
-               TVector3 track2(EndPointx_tpcAV[l] - StartPointx_tpcAV[l], EndPointy_tpcAV[l] - StartPointy_tpcAV[l], EndPointz_tpcAV[l] - StartPointz_tpcAV[l]);
+            int pandoraTrackID1 = -1;
 
-	       if (checkFV && j >= no_primaries && l >= no_primaries) 
-	          {
-	          double d1 = DoCA(Vx, Vy, Vz, StartPointx_tpcAV[j], StartPointy_tpcAV[j], StartPointz_tpcAV[j], EndPointx_tpcAV[j], EndPointy_tpcAV[j], EndPointz_tpcAV[j]);
-	          double d2 = DoCA(Vx, Vy, Vz, StartPointx_tpcAV[l], StartPointy_tpcAV[l], StartPointz_tpcAV[l], EndPointx_tpcAV[l], EndPointy_tpcAV[l], EndPointz_tpcAV[l]);
-	          if (d1 <= d2) {closer = d1;}
-	          if (d2 < d1) {closer = d2;}
-	          hCosmicDoCA->Fill(closer);
 
-	          if (geant_list_size - no_primaries >= 2)
-		     {
-		     hCosmicStartVertexDistance->Fill(DeltaStartMagnitude);
-		     hCosmicEndVertexDistance->Fill(DeltaEndMagnitude);
-	             }
-	          }
-	       }
+
+            // ------------------------------------------ |
+            // --- Messing Around with Truth Matching --- |
+            // ------------------------------------------ |
+            for (int ipandora = 0; ipandora < ntracks_pandora; ipandora++)
+               {
+               if (TrackId[j] == trkidtruth_pandora[ipandora][0] || TrackId[j] == trkidtruth_pandora[ipandora][1] || TrackId[j] == trkidtruth_pandora[ipandora][2]) pandoraTrackID1 = ipandora;
+               }
+
+            if (pandoraTrackID1 != -1) 
+               {
+               std::cout<<"======================================================================="<<std::endl;
+               std::cout<<"TrackId[j] = "<<TrackId[j]<<std::endl;
+               std::cout<<"pandoraTrackID1 = "<<pandoraTrackID1<<std::endl;
+               std::cout<<"-----------------------------------------------------------------------"<<std::endl;
+               std::cout<<"True PDG = "<<pdg[j]<<std::endl;
+               std::cout<<"Pandora PDG Plane 0 = "<<trkpidpdg_pandora[pandoraTrackID1][0]<<std::endl;
+               std::cout<<"Pandora PDG Plane 1 = "<<trkpidpdg_pandora[pandoraTrackID1][1]<<std::endl;
+               std::cout<<"Pandora PDG Plane 2 = "<<trkpidpdg_pandora[pandoraTrackID1][2]<<std::endl;
+               std::cout<<"======================================================================="<<std::endl;
+               }
+            // ------------------------------------------ |
+
+
+
 	    if (checkFV && j <= no_primaries && no_primaries >= 2)
 	       {
 	       hNuStartVertexDistance->Fill(DeltaStartMagnitude);
@@ -823,7 +827,6 @@ void NewAnalysisBKGD::Loop()
    hNCResDoCA2->Write();
    hNCDISDoCA->Write();
    hNCDISDoCA2->Write();
-   hCosmicDoCA->Write();
    hCosmicDoCA2->Write();
 
    hCCCohVA->Write();
@@ -844,8 +847,6 @@ void NewAnalysisBKGD::Loop()
 
    hNuStartVertexDistance->Write();
    hNuEndVertexDistance->Write();
-   hCosmicStartVertexDistance->Write();
-   hCosmicEndVertexDistance->Write();
    hNuCCCohStartVertexDistance->Write();
    hNuCCCohEndVertexDistance->Write();
 
