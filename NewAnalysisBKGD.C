@@ -521,19 +521,19 @@ void NewAnalysisBKGD::Loop()
 	 if (NCRes && checkFV) {hNCResTableInformation->Fill(0);}
 	 if (NCDIS && checkFV) {hNCDISTableInformation->Fill(0);}
 
-         for (int j = 0; j < geant_list_size; j++)
+         for (int j = 0; j < no_mctracks; j++)
 	    {
-	    double DeltaStartX = StartPointx_tpcAV[j] - Vx;
-	    double DeltaStartY = StartPointy_tpcAV[j] - Vy;
-	    double DeltaStartZ = StartPointz_tpcAV[j] - Vz;
+	    double DeltaStartX = mctrk_startX[j] - Vx;
+	    double DeltaStartY = mctrk_startY[j] - Vy;
+	    double DeltaStartZ = mctrk_startZ[j] - Vz;
 	    double DeltaStartMagnitude = sqrt(pow(DeltaStartX, 2) + pow(DeltaStartY, 2) + pow(DeltaStartZ, 2));
 
-	    double DeltaEndX = EndPointx_tpcAV[j] - Vx;
-	    double DeltaEndY = EndPointy_tpcAV[j] - Vy;
-	    double DeltaEndZ = EndPointz_tpcAV[j] - Vz;
+	    double DeltaEndX = mctrk_endX[j] - Vx;
+	    double DeltaEndY = mctrk_endY[j] - Vy;
+	    double DeltaEndZ = mctrk_endZ[j] - Vz;
 	    double DeltaEndMagnitude = sqrt(pow(DeltaEndX, 2) + pow(DeltaEndY, 2) + pow(DeltaEndZ, 2));
 
-	    TVector3 track(EndPointx_tpcAV[j] - StartPointx_tpcAV[j], EndPointy_tpcAV[j] - StartPointy_tpcAV[j], EndPointz_tpcAV[j] - StartPointz_tpcAV[j]);
+	    TVector3 track(mctrk_endX[j] - mctrk_startX[j], mctrk_endY[j] - mctrk_startY[j], mctrk_endZ[j] - mctrk_startZ[j]);
 
             int pandoraTrackID1 = -1;
 
@@ -544,13 +544,16 @@ void NewAnalysisBKGD::Loop()
             // ------------------------------------------ |
             for (int ipandora = 0; ipandora < ntracks_pandora; ipandora++)
                {
-               if (TrackId[j] == trkidtruth_pandora[ipandora][0] || TrackId[j] == trkidtruth_pandora[ipandora][1] || TrackId[j] == trkidtruth_pandora[ipandora][2]) pandoraTrackID1 = ipandora;
+               if (mctrk_TrackId[j] == trkidtruth_pandora[ipandora][0] || mctrk_TrackId[j] == trkidtruth_pandora[ipandora][1] || mctrk_TrackId[j] == trkidtruth_pandora[ipandora][2]) pandoraTrackID1 = ipandora;
                }
 
             if (pandoraTrackID1 != -1) 
                {
                std::cout<<"======================================================================="<<std::endl;
-               std::cout<<"TrackId[j] = "<<TrackId[j]<<std::endl;
+               std::cout<<"mctrk_TrackId[j] = "<<mctrk_TrackId[j]<<std::endl;
+               std::cout<<"trkidtruth_pandora[pandoraTrackID1][0] = "<<trkidtruth_pandora[pandoraTrackID1][0]<<std::endl;
+               std::cout<<"trkidtruth_pandora[pandoraTrackID1][1] = "<<trkidtruth_pandora[pandoraTrackID1][1]<<std::endl;
+               std::cout<<"trkidtruth_pandora[pandoraTrackID1][2] = "<<trkidtruth_pandora[pandoraTrackID1][2]<<std::endl;
                std::cout<<"pandoraTrackID1 = "<<pandoraTrackID1<<std::endl;
                std::cout<<"-----------------------------------------------------------------------"<<std::endl;
                std::cout<<"True PDG = "<<pdg[j]<<std::endl;
@@ -574,12 +577,12 @@ void NewAnalysisBKGD::Loop()
 	          hNuCCCohEndVertexDistance->Fill(DeltaEndMagnitude);
 	          }
 	       }
-	    if (pdg[j] == 13 && j <= no_primaries) 
+	    if (pdg[mctrk_TrackId[j]] == 13 && j <= no_primaries) 
 	       {
 	       hasMuon = true;
 	       muonlength = mctrk_len_drifted[j];
-	       muonstart.SetXYZ(StartPointx_tpcAV[j], StartPointy_tpcAV[j], StartPointz_tpcAV[j]);
-	       muonend.SetXYZ(EndPointx_tpcAV[j], EndPointy_tpcAV[j], EndPointz_tpcAV[j]);
+	       muonstart.SetXYZ(mctrk_startX[j], mctrk_startY[j], mctrk_startZ[j]);
+	       muonend.SetXYZ(mctrk_endX[j], mctrk_endY[j], mctrk_endZ[j]);
                if (Within(true, muonstart.X(), muonstart.Y(), muonstart.Z()) && Within(true, muonend.X(), muonend.Y(), muonend.Z())) {containMuon = true;}
                if (Within(true, muonstart.X(), muonstart.Y(), muonstart.Z()))
                   {
@@ -588,43 +591,43 @@ void NewAnalysisBKGD::Loop()
 	          hNuMCTrackMuonZ->Fill(muonstart.Z());
                   }
 	       }
-	    if (pdg[j] == 211 && j <= no_primaries) 
+	    if (pdg[mctrk_TrackId[j]] == 211 && j <= no_primaries) 
 	       {
 	       hasPion = true;
 	       pionlength = mctrk_len_drifted[j];
-	       pionstart.SetXYZ(StartPointx_tpcAV[j], StartPointy_tpcAV[j], StartPointz_tpcAV[j]);
-	       pionend.SetXYZ(EndPointx_tpcAV[j], EndPointy_tpcAV[j], EndPointz_tpcAV[j]);
+	       pionstart.SetXYZ(mctrk_startX[j], mctrk_startY[j], mctrk_startZ[j]);
+	       pionend.SetXYZ(mctrk_endX[j], mctrk_endY[j], mctrk_endZ[j]);
                if (Within(true, pionstart.X(), pionstart.Y(), pionstart.Z()) && Within(true, pionend.X(), pionend.Y(), pionend.Z())) {containPion = true;}
 	       }
-	    if (pdg[j] == -211 && j <= no_primaries) 
+	    if (pdg[mctrk_TrackId[j]] == -211 && j <= no_primaries) 
 	       {
 	       hasPion2 = true;
-	       pion2start.SetXYZ(StartPointx_tpcAV[j], StartPointy_tpcAV[j], StartPointz_tpcAV[j]);
-	       pion2end.SetXYZ(EndPointx_tpcAV[j], EndPointy_tpcAV[j], EndPointz_tpcAV[j]);
+	       pion2start.SetXYZ(mctrk_startX[j], mctrk_startY[j], mctrk_startZ[j]);
+	       pion2end.SetXYZ(mctrk_endX[j], mctrk_endY[j], mctrk_endZ[j]);
                if (Within(true, pion2start.X(), pion2start.Y(), pion2start.Z()) && Within(true, pion2end.X(), pion2end.Y(), pion2end.Z())) {containPion2 = true;}
 	       }
-	    if (pdg[j] == 2212 && j <= no_primaries) 
+	    if (pdg[mctrk_TrackId[j]] == 2212 && j <= no_primaries) 
 	       {
 	       hasProton = true;
-	       protonstart.SetXYZ(StartPointx_tpcAV[j], StartPointy_tpcAV[j], StartPointz_tpcAV[j]);
-	       protonend.SetXYZ(EndPointx_tpcAV[j], EndPointy_tpcAV[j], EndPointz_tpcAV[j]);
+	       protonstart.SetXYZ(mctrk_startX[j], mctrk_startY[j], mctrk_startZ[j]);
+	       protonend.SetXYZ(mctrk_endX[j], mctrk_endY[j], mctrk_endZ[j]);
                if (Within(true, protonstart.X(), protonstart.Y(), protonstart.Z()) && Within(true, protonend.X(), protonend.Y(), protonend.Z())) {containProton = true;}
 	       }
 	    if (DeltaStartMagnitude < VertexRangeCheck && j <= no_primaries) 
 	       {
 	       nmctrksInRange++;
-	       if (pdg[j] == 13) {muon = track;}
-	       if (pdg[j] == 211) {pion = track;}
-	       if (pdg[j] == -211) {pion2 = track;}
-	       if (pdg[j] == 2212) {proton = track;}
+	       if (pdg[mctrk_TrackId[j]] == 13) {muon = track;}
+	       if (pdg[mctrk_TrackId[j]] == 211) {pion = track;}
+	       if (pdg[mctrk_TrackId[j]] == -211) {pion2 = track;}
+	       if (pdg[mctrk_TrackId[j]] == 2212) {proton = track;}
 	       }
             if (DeltaStartMagnitude > VertexRangeCheck && DeltaEndMagnitude < VertexRangeCheck && j <= no_primaries) 
 	       {
 	       nmctrksInRange++;
-	       if (pdg[j] == 13) {muon = track;}
-	       if (pdg[j] == 211) {pion = track;}
-	       if (pdg[j] == -211) {pion2 = track;}
-	       if (pdg[j] == 2212) {proton = track;}
+	       if (pdg[mctrk_TrackId[j]] == 13) {muon = track;}
+	       if (pdg[mctrk_TrackId[j]] == 211) {pion = track;}
+	       if (pdg[mctrk_TrackId[j]] == -211) {pion2 = track;}
+	       if (pdg[mctrk_TrackId[j]] == 2212) {proton = track;}
 	       }
 	    }
 

@@ -3,7 +3,7 @@
 <!-- Production Project -->
 
 <!DOCTYPE project [
-<!ENTITY release      "v08_05_00" >
+<!ENTITY release      "v08_00_00_13a" >
 <!ENTITY file_type    "mc"        >
 <!ENTITY run_type     "physics"   >
 <!ENTITY name         "cccoh_zgrw">
@@ -35,33 +35,64 @@
   
   <!-- Project stages -->
 
+  <stage name="full">
+    <inputdef>prod_extunbiased_swizzle_inclusive_v3_goodruns_mcc9_run1_high_lifetime_overlay_nc_delta</inputdef>
+    <fcl>standard_overlay_gen_griddriver.fcl</fcl>
+    <fcl>wirecell_g4_uboone.fcl</fcl>
+    <fcl>wirecell_detsim_overlay_uboone.fcl</fcl>
+    <fcl>standard_overlay_uboone.fcl</fcl>
+    <fcl>reco_uboone_mcc9_8_driver_overlay_stage1a.fcl</fcl>
+    <fcl>reco_uboone_mcc9_8_driver_overlay_stage1b.fcl</fcl>
+    <fcl>standard_larcv_uboone_mctruth_prod.fcl</fcl>
+    <fcl>reco_uboone_mcc9_8_driver_overlay_stage1c.fcl</fcl>
+    <fcl>run_celltreeub_overlay_prod.fcl</fcl>
+    <fcl>standard_larcv_uboone_mc2d_prod.fcl</fcl>
+    <fcl>reco_uboone_mcc9_8_driver_overlay_stage2.fcl</fcl>
+    <outdir>&path;&name;_full/out/</outdir>
+    <logdir>&path;&name;_full/log/</logdir>
+    <workdir>&path;&name;_full/work/</workdir>
+    <bookdir>/uboone/data/users/zwilliam/book/&release;_full/</bookdir>
+    <numjobs>1</numjobs>
+    <maxfilesperjob>1</maxfilesperjob>
+    <memory>6000</memory>
+    <disk>15GB</disk>
+    <schema>root</schema>
+    <datatier>reconstructed</datatier>
+    <defname>&name;_&version;</defname>
+    <jobsub>--expected-lifetime=10h</jobsub>
+  </stage>
+
+
   <stage name="genie">
-    <fcl>&workfiles;/prodgenie_bnb_nu_uboone_CCCOH.fcl</fcl>
+    <!--inputdef>prod_extunbiased_swizzle_inclusive_v3_goodruns_5e19sample_morethan40events</inputdef-->
+    <inputdef>prod_extunbiased_swizzle_inclusive_v3_goodruns_mcc9_run1_high_lifetime_overlay_nc_delta</inputdef>
+    <fcl>standard_overlay_gen_griddriver.fcl</fcl>
     <outdir>&path;&name;/out/</outdir>
     <logdir>&path;&name;/log/</logdir>
     <workdir>&path;&name;/work/</workdir>
     <bookdir>/uboone/data/users/zwilliam/book/&release;/</bookdir>
-    <numjobs>200</numjobs>
+    <numjobs>5</numjobs>
+    <maxfilesperjob>1</maxfilesperjob>
     <memory>2000</memory>
-    <disk>10GB</disk>
+    <disk>5GB</disk>
     <schema>root</schema>
-    <datatier>reconstructed</datatier>
+    <datatier>simulated</datatier>
     <defname>&name;_&version;</defname>
-    <jobsub>--expected-lifetime=short</jobsub>
+    <jobsub>--expected-lifetime=3h</jobsub>
   </stage>
 
 
   <stage name="g4">
-    <inputlist>&workfiles;/CCCoh_Files/CCCoh_Genie.list</inputlist>
+    <inputlist>&workfiles;/files_genie.list</inputlist>
     <fcl>wirecell_g4_uboone.fcl</fcl>
     <outdir>&path;&name;/out/</outdir>
     <logdir>&path;&name;/log/</logdir>
     <workdir>&path;&name;/work/</workdir>
     <bookdir>/uboone/data/users/zwilliam/book/&release;/</bookdir>
-    <numjobs>200</numjobs>
+    <numjobs>1</numjobs>
     <maxfilesperjob>1</maxfilesperjob>
     <memory>2000</memory>
-    <disk>10GB</disk>
+    <disk>1GB</disk>
     <schema>root</schema>
     <datatier>reconstructed</datatier>
     <defname>&name;_&version;</defname>
@@ -69,9 +100,9 @@
   </stage>
 
 
-  <stage name="wirecell">
-    <inputlist>&workfiles;/CCCoh_Files/CCCoh_G4.list</inputlist>
-    <fcl>wirecell_detsim_uboone.fcl</fcl>
+  <stage name="detsim">
+    <inputlist>&workfiles;/files_g4.list</inputlist>
+    <fcl>wirecell_detsim_overlay_uboone.fcl</fcl>
     <outdir>&path;&name;/out/</outdir>
     <logdir>&path;&name;/log/</logdir>
     <workdir>&path;&name;/work/</workdir>
