@@ -15,12 +15,16 @@ TH1D *hCosmicConeAngle = (TH1D*)f3->Get("hCosmicConeAngle");
 // -----------------------------
 int n = 180;
 double x[180] = {0};
+double ConeAngleEff[180] = {0};
+double ConeAnglePurity[180] = {0};
 double CCCohConeAngle[180] = {0};
 double CCQEConeAngle[180] = {0};
 double CCResConeAngle[180] = {0};
 double NCResConeAngle[180] = {0};
 double NCDISConeAngle[180] = {0};
 double CosmicConeAngle[180] = {0};
+
+CosmicConeAngle[0] = 1;
 
 for (int i = 0; i < n; i++)
    {
@@ -35,6 +39,8 @@ for (int i = 0; i < n; i++)
       CosmicConeAngle[i] += hCosmicConeAngle->GetBinContent(g);
       } // End g-Loop
 
+   ConeAngleEff[i] = 100*(CCCohConeAngle[i] + CCQEConeAngle[i] + CCResConeAngle[i] + NCResConeAngle[i] + NCDISConeAngle[i] + CosmicConeAngle[i])/(hCCCohConeAngle->GetEntries() + hCCQEConeAngle->GetEntries() + hCCResConeAngle->GetEntries() + hNCResConeAngle->GetEntries() + hNCDISConeAngle->GetEntries() + hCosmicConeAngle->GetEntries());
+   ConeAnglePurity[i] = 100*CCCohConeAngle[i]/(CCCohConeAngle[i] + CCQEConeAngle[i] + CCResConeAngle[i] + NCResConeAngle[i] + NCDISConeAngle[i] + CosmicConeAngle[i]);
    CCCohConeAngle[i] = CCCohConeAngle[i]*100/hCCCohConeAngle->GetEntries();
    CCQEConeAngle[i] = CCQEConeAngle[i]*100/hCCQEConeAngle->GetEntries();
    CCResConeAngle[i] = CCResConeAngle[i]*100/hCCResConeAngle->GetEntries();
@@ -43,6 +49,18 @@ for (int i = 0; i < n; i++)
    CosmicConeAngle[i] = CosmicConeAngle[i]*100/hCosmicConeAngle->GetEntries();
    } // End i-Loop
 
+TGraph* gConeAngleEff = new TGraph(n, x, ConeAngleEff);
+gConeAngleEff->SetTitle("ConeAngleEff");
+gConeAngleEff->SetName("ConeAngleEff");
+gConeAngleEff->SetFillColor(kWhite);
+gConeAngleEff->SetLineColor(kBlue);
+gConeAngleEff->SetLineWidth(2);
+TGraph* gConeAnglePurity = new TGraph(n, x, ConeAnglePurity);
+gConeAnglePurity->SetTitle("ConeAnglePurity");
+gConeAnglePurity->SetName("ConeAnglePurity");
+gConeAnglePurity->SetFillColor(kWhite);
+gConeAnglePurity->SetLineColor(kRed);
+gConeAnglePurity->SetLineWidth(2);
 TGraph* gCCCohConeAngle = new TGraph(n, x, CCCohConeAngle);
 gCCCohConeAngle->SetTitle("gCCCohConeAngle");
 gCCCohConeAngle->SetName("gCCCohConeAngle");
@@ -127,12 +145,16 @@ TH1D *hCosmicDoCA = (TH1D*)f3->Get("hCosmicDoCA2");
 // -----------------------
 int m = 1000;
 double y[1000] = {0};
+double DoCAEff[1000] = {0};
+double DoCAPurity[1000] = {0};
 double CCCohDoCA[1000] = {0};
 double CCQEDoCA[1000] = {0};
 double CCResDoCA[1000] = {0};
 double NCResDoCA[1000] = {0};
 double NCDISDoCA[1000] = {0};
 double CosmicDoCA[1000] = {0};
+
+CosmicDoCA[0] = 1;
 
 for (int i = 0; i < m; i++)
    {
@@ -147,6 +169,8 @@ for (int i = 0; i < m; i++)
       CosmicDoCA[i] += hCosmicDoCA->GetBinContent(g);
       } // End g-Loop
 
+   DoCAEff[i] = 100*(CCCohDoCA[i] + CCQEDoCA[i] + CCResDoCA[i] + NCResDoCA[i] + NCDISDoCA[i] + CosmicDoCA[i])/(hCCCohDoCA->GetEntries() + hCCQEDoCA->GetEntries() + hCCResDoCA->GetEntries() + hNCResDoCA->GetEntries() + hNCDISDoCA->GetEntries() + hCosmicDoCA->GetEntries());
+   DoCAPurity[i] = 100*CCCohDoCA[i]/(CCCohDoCA[i] + CCQEDoCA[i] + CCResDoCA[i] + NCResDoCA[i] + NCDISDoCA[i] + CosmicDoCA[i]);
    CCCohDoCA[i] = CCCohDoCA[i]*100/hCCCohDoCA->GetEntries();
    CCQEDoCA[i] = CCQEDoCA[i]*100/hCCQEDoCA->GetEntries();
    CCResDoCA[i] = CCResDoCA[i]*100/hCCResDoCA->GetEntries();
@@ -155,6 +179,18 @@ for (int i = 0; i < m; i++)
    CosmicDoCA[i] = CosmicDoCA[i]*100/hCosmicDoCA->GetEntries();
    } // End i-Loop
 
+TGraph* gDoCAEff = new TGraph(m, y, DoCAEff);
+gDoCAEff->SetTitle("gDoCAEff");
+gDoCAEff->SetName("gDoCAEff");
+gDoCAEff->SetFillColor(kWhite);
+gDoCAEff->SetLineColor(kBlue);
+gDoCAEff->SetLineWidth(2);
+TGraph* gDoCAPurity = new TGraph(m, y, DoCAPurity);
+gDoCAPurity->SetTitle("gDoCAPurity");
+gDoCAPurity->SetName("gDoCAPurity");
+gDoCAPurity->SetFillColor(kWhite);
+gDoCAPurity->SetLineColor(kRed);
+gDoCAPurity->SetLineWidth(2);
 TGraph* gCCCohDoCA = new TGraph(m, y, CCCohDoCA);
 gCCCohDoCA->SetTitle("gCCCohDoCA");
 gCCCohDoCA->SetName("gCCCohDoCA");
@@ -239,6 +275,7 @@ TH1D *hCosmicVA = (TH1D*)f3->Get("hCosmicVA");
 // ---------------------
 int j = 100;
 double z[100] = {0};
+double VAPurity[100] = {0};
 double CCCohVA[100] = {0};
 double CCQEVA[100] = {0};
 double CCResVA[100] = {0};
@@ -689,4 +726,34 @@ leg3->AddEntry(hOpFlashPECosmic,"Cosmic");
 leg3->AddEntry(hOpFlashPECCOther,"CC-Other");
 leg3->AddEntry(hOpFlashPENCOther,"NC-Other");
 leg3->Draw();
+
+
+
+TCanvas *c8 = new TCanvas("c8", "Cone Angle Purity and Efficiency");
+c8->SetTicks();
+c8->SetFillColor(kWhite);
+
+gConeAnglePurity->GetXaxis()->SetTitle("Cone Angle [Degrees]");
+gConeAnglePurity->GetXaxis()->CenterTitle();
+
+gConeAnglePurity->GetYaxis()->SetTitle("Purity");
+gConeAnglePurity->GetYaxis()->CenterTitle();
+
+gConeAnglePurity->Draw();
+//gConeAngleEff->Draw("same");
+
+
+
+TCanvas *c9 = new TCanvas("c9", "DoCA Purity and Efficiency");
+c9->SetTicks();
+c9->SetFillColor(kWhite);
+
+gDoCAPurity->GetXaxis()->SetTitle("DoCA [cm]");
+gDoCAPurity->GetXaxis()->CenterTitle();
+
+gDoCAPurity->GetYaxis()->SetTitle("Purity");
+gDoCAPurity->GetYaxis()->CenterTitle();
+
+gDoCAPurity->Draw();
+//gDoCAEff->Draw("same");
 }
