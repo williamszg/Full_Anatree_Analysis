@@ -102,6 +102,13 @@ TH1D *hOpFlashY = new TH1D("hOpFlashY", "Y Position of OpFlash", 231, -115.5, 11
 TH1D *hOpFlashZ = new TH1D("hOpFlashZ", "Z Position of OpFlash", 1041, -0.5, 1040.5);
 
 TH1D *hnCosmics = new TH1D("hnCosmics", "Number of Cosmics in an Event", 101, -0.5, 100.5);
+
+TH1D *hCCCohVA2 = new TH1D("hCCCohVA2", "The Vertex Activity for CC-COH Events within 10cm of Vertex in ADC", 500, 0, 50000);
+TH1D *hCCQEVA2 = new TH1D("hCCQEVA2", "The Vertex Activity for CC-QE Events within 10cm of Vertex in ADC", 500, 0, 50000);
+TH1D *hCCResVA2 = new TH1D("hCCResVA2", "The Vertex Activity for CC-Res Events within 10cm of Vertex in ADC", 500, 0, 50000);
+TH1D *hNCResVA2 = new TH1D("hNCResVA2", "The Vertex Activity for NC-Res Events within 10cm of Vertex in ADC", 500, 0, 50000);
+TH1D *hNCDISVA2 = new TH1D("hNCDISVA2", "The Vertex Activity for NC-DIS Events within 10cm of Vertex in ADC", 500, 0, 50000);
+TH1D *hNotAssociatedHitVA2 = new TH1D("hNotAssociatedHitVA2", "The Vertex Activity for Hits with No Track Association within 10cm of Vertex in ADC", 500, 0, 50000);
 // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 
@@ -258,9 +265,9 @@ void NewAnalysisBKGD::Loop()
    Long64_t nentries = fChain->GetEntriesFast();
    Long64_t nbytes = 0, nb = 0;
 
-   int Nentries = nentries;
-   //int Nentries = 10000;
-
+   //int Nentries = nentries;
+   int Nentries = 20000;
+   std::cout<<"nentries = "<<nentries<<std::endl;
    double POT = 0;
 
    // --------------------------------
@@ -277,14 +284,6 @@ void NewAnalysisBKGD::Loop()
       nb = fChain->GetEntry(jentry);   nbytes += nb;
 
       if (jentry%10 == 0) {std::cout<<"Event = "<<jentry<<std::endl;}
-
-      /*
-      if (pot != -99999) {POT = POT + pot;}
-      //if (jentry == Nentries - 1) {std::cout<<"Total POT for this file = "<<POT<<std::endl;}
-
-      if (jentry%100 == 0) {std::cout<<"Number of Beam Flashes = "<<nfls_simpleFlashBeam<<std::endl;}
-      if (jentry%100 == 0) {std::cout<<"Number of Cosmic Flashes = "<<nfls_simpleFlashCosmic<<std::endl;}
-      */
 
       for (int n = 0; n < nfls_simpleFlashCosmic; n++) {hOpFlashPECosmic->Fill(flsPe_simpleFlashCosmic[n]);}
 
@@ -310,6 +309,10 @@ void NewAnalysisBKGD::Loop()
          double Vx = nuvtxx_truth[i];
          double Vy = nuvtxy_truth[i];
          double Vz = nuvtxz_truth[i];
+
+         double SCVx = sp_charge_corrected_nuvtxx_truth[i]; 
+         double SCVy = sp_charge_corrected_nuvtxy_truth[i];
+         double SCVz = sp_charge_corrected_nuvtxz_truth[i];
 
 	 bool checkDV = Within(false, Vx, Vy, Vz);
 	 bool checkFV = Within(true, Vx, Vy, Vz);
@@ -358,6 +361,7 @@ void NewAnalysisBKGD::Loop()
          // ====================
          for (int t = 0; t < ntracks_pandora; t++)
             {
+            if (checkFV == false) continue;
             if (trkg4id_pandora[t] == -1) Cosmic = true;
             else Cosmic = false;
 
@@ -432,11 +436,72 @@ void NewAnalysisBKGD::Loop()
          hnCosmics->Fill(nCosmics);
          // ====================
 
+
+         // +++++++++++++++++++++++++++++++++++++++
+         // +++ New Vertex Activity Calculation +++
+         // +++++++++++++++++++++++++++++++++++++++
+         double VertexActivityADC = 0;
+         double VertexActivityADC_noTRKID = 0;
+
+         double XRange = 256.;
+         double NumTimeTicks = 9600.;
+
+         double ZConstant = 0.29976852;
+         //double XConstant = 160000.*.0000005;
+         double XConstant = XRange/NumTimeTicks;
+
+         for (int ihit = 0; ihit < no_hits_stored; ihit++)
+            {
+            if (checkFV == false) continue;
+            if (hit_plane[ihit] != 2) continue;
+            
+            //double XHitPos = XRange - XConstant*hit_peakT[ihit];
+            double XHitPos = ((NumTimeTicks-hit_peakT[ihit])*XConstant);
+            double ZHitPos = ZConstant*hit_wire[ihit];
+            double DistanceFromVtx = sqrt(pow(SCVx - XHitPos,2) + pow(SCVz - ZHitPos,2));
+
+            /*std::cout<<"|======================================|"<<std::endl;
+            std::cout<<"  Vertex X =        "<<SCVx<<std::endl;
+            std::cout<<"  Vertex Z =        "<<SCVz<<std::endl;
+            std::cout<<"|--------------------------------------|"<<std::endl;
+            std::cout<<"  XHitPos =         "<<XHitPos<<std::endl;
+            std::cout<<"  ZHitPos =         "<<ZHitPos<<std::endl;
+            std::cout<<"  DistanceFromVtx = "<<DistanceFromVtx<<std::endl;
+            std::cout<<"|======================================|"<<std::endl;
+            std::cout<<"  hit_trkid[ihit] = "<<hit_trkid[ihit]<<std::endl;
+            std::cout<<"  hit_charge[ihit] = "<<hit_charge[ihit]<<std::endl;*/
+            if (DistanceFromVtx > VAdistanceCheck) continue;
+
+            if (hit_trkid[ihit] >= 0) VertexActivityADC = VertexActivityADC + hit_charge[ihit];
+            else VertexActivityADC_noTRKID = VertexActivityADC_noTRKID + hit_charge[ihit];
+
+            /*std::cout<<"|======================================|"<<std::endl;
+            std::cout<<"  Vertex X = "<<Vx<<std::endl;
+            std::cout<<"  Vertex Y = "<<Vy<<std::endl;
+            std::cout<<"  Vertex Z = "<<Vz<<std::endl;
+            std::cout<<"|--------------------------------------|"<<std::endl;
+            std::cout<<"  hit_plane[ihit] = "<<hit_plane[ihit]<<std::endl;
+            std::cout<<"  hit_wire[ihit] = "<<hit_wire[ihit]<<std::endl;
+            std::cout<<"  hit_channel[ihit] = "<<hit_channel[ihit]<<std::endl;
+            std::cout<<"  hit_peakT[ihit] = "<<hit_peakT[ihit]<<std::endl;
+            std::cout<<"  hit_charge[ihit] = "<<hit_charge[ihit]<<std::endl;
+            std::cout<<"|======================================|"<<std::endl;*/
+            } // End the ihit loop 
+
+         std::cout<<"|--------------------------------------------------------|"<<std::endl;
+         std::cout<<"  VertexActivityADC =         "<<VertexActivityADC<<std::endl;
+         std::cout<<"  VertexActivityADC_noTRKID = "<<VertexActivityADC_noTRKID<<std::endl;
+         std::cout<<"|--------------------------------------------------------|"<<std::endl;
+         // +++++++++++++++++++++++++++++++++++++++
+
+
          // ----------------------------------------------------------------
          // --- Looking into G4 Information for Vertex Activity and DoCA ---
          // ----------------------------------------------------------------
          for (int npriG4 = 0; npriG4 < no_primaries; npriG4++)
             {
+            if (checkFV == false) continue;
+             
             // Loop over the trajectory points
             for (int npriTrjPts = 0; npriTrjPts < NTrTrajPts[npriG4] - 1; npriTrjPts++)
                {
@@ -544,9 +609,10 @@ void NewAnalysisBKGD::Loop()
             // ------------------------------------------ |
             for (int ipandora = 0; ipandora < ntracks_pandora; ipandora++)
                {
+               if (checkFV == false) continue;
                if (mctrk_TrackId[j] == trkidtruth_pandora[ipandora][0] || mctrk_TrackId[j] == trkidtruth_pandora[ipandora][1] || mctrk_TrackId[j] == trkidtruth_pandora[ipandora][2]) pandoraTrackID1 = ipandora;
                }
-
+            /*
             if (pandoraTrackID1 != -1) 
                {
                std::cout<<"======================================================================="<<std::endl;
@@ -563,7 +629,7 @@ void NewAnalysisBKGD::Loop()
                std::cout<<"======================================================================="<<std::endl;
                }
             // ------------------------------------------ |
-
+            */
 
 
 	    if (checkFV && j <= no_primaries && no_primaries >= 2)
@@ -697,6 +763,8 @@ void NewAnalysisBKGD::Loop()
                }
 	    t = abs(pow(NuEnergy - MuonEnergy - PionEnergy,2) - pow(NuPx - MuonPx - PionPx,2) - pow(NuPy - MuonPy - PionPy,2) - pow(NuPz - MuonPz - PionPz,2))/(1000000);
             hCCCohVA->Fill(VAEnergy*1000);
+            hCCCohVA2->Fill(VertexActivityADC);
+            hNotAssociatedHitVA2->Fill(VertexActivityADC_noTRKID);
             hCCCohMuonVA->Fill(MuonVAEnergy*1000);
             hCCCohPionVA->Fill(PionVAEnergy*1000);
 	    hMCTruthQ2CCCoh->Fill(Q2);
@@ -725,6 +793,8 @@ void NewAnalysisBKGD::Loop()
                std::cout<<"CCQE PE number = "<<flsPe_simpleFlashBeam[n]<<std::endl;
                }
             hCCQEVA->Fill(VAEnergy*1000);
+            hCCQEVA2->Fill(VertexActivityADC);
+            hNotAssociatedHitVA2->Fill(VertexActivityADC_noTRKID);
 	    }
 	 if (nmctrksInRange >= 2 && CCRes && checkFV )//&& containMuon && containPion) 
 	    {
@@ -741,6 +811,8 @@ void NewAnalysisBKGD::Loop()
                std::cout<<"CCRes PE number = "<<flsPe_simpleFlashBeam[n]<<std::endl;
                }
             hCCResVA->Fill(VAEnergy*1000);
+            hCCResVA2->Fill(VertexActivityADC);
+            hNotAssociatedHitVA2->Fill(VertexActivityADC_noTRKID);
 	    }
 	 if (nmctrksInRange >= 2 && NCRes && checkFV )//&& containPion && containPion2) 
 	    {
@@ -757,6 +829,8 @@ void NewAnalysisBKGD::Loop()
                std::cout<<"NCRes PE number = "<<flsPe_simpleFlashBeam[n]<<std::endl;
                }
             hNCResVA->Fill(VAEnergy*1000);
+            hNCResVA2->Fill(VertexActivityADC);
+            hNotAssociatedHitVA2->Fill(VertexActivityADC_noTRKID);
 	    }
 	 if (nmctrksInRange >= 2 && NCDIS && checkFV )//&& containPion && containPion2) 
 	    {
@@ -773,6 +847,8 @@ void NewAnalysisBKGD::Loop()
                std::cout<<"NCDIS PE number = "<<flsPe_simpleFlashBeam[n]<<std::endl;
                }
             hNCDISVA->Fill(VAEnergy*1000);
+            hNCDISVA2->Fill(VertexActivityADC);
+            hNotAssociatedHitVA2->Fill(VertexActivityADC_noTRKID);
 	    }
 
 	 if (checkDV == true)
@@ -891,6 +967,13 @@ void NewAnalysisBKGD::Loop()
    hOpFlashZ->Write();
 
    hnCosmics->Write();
+
+   hCCCohVA2->Write();
+   hCCQEVA2->Write();
+   hCCResVA2->Write();
+   hNCResVA2->Write();
+   hNCDISVA2->Write();
+   hNotAssociatedHitVA2->Write();
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 } // End NewAnalysisBKGD Loop
