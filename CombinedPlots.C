@@ -1,7 +1,7 @@
 {
 TFile *f = new TFile("./Histograms_NewAnalysis_BKGD.root");
 TFile *f2 = new TFile("./Histograms_NewAnalysis_CCCoh.root");
-TFile *f3 = new TFile("./Histograms_NewAnalysis_BKGD_10000.root");
+TFile *f3 = new TFile("./Histograms_NewAnalysis_BKGD.root");
 
 TH1D *hCCCohConeAngle = (TH1D*)f2->Get("hCCCohConeAngle");
 TH1D *hCCQEConeAngle = (TH1D*)f->Get("hCCQEConeAngle");
@@ -275,6 +275,7 @@ TH1D *hCosmicVA = (TH1D*)f3->Get("hCosmicVA");
 // ---------------------
 int j = 100;
 double z[100] = {0};
+double VAEff[100] = {0};
 double VAPurity[100] = {0};
 double CCCohVA[100] = {0};
 double CCQEVA[100] = {0};
@@ -282,6 +283,8 @@ double CCResVA[100] = {0};
 double NCResVA[100] = {0};
 double NCDISVA[100] = {0};
 double CosmicVA[100] = {0};
+
+CosmicVA[0] = 1;
 
 for (int i = 0; i < j; i++)
    {
@@ -296,6 +299,16 @@ for (int i = 0; i < j; i++)
       CosmicVA[i] += hCosmicVA->GetBinContent(g);
       } // End g-Loop
 
+
+   CCCohVA[i] = hCCCohVA->GetEntries() - CCCohVA[i];
+   CCQEVA[i] = hCCQEVA->GetEntries() - CCQEVA[i];
+   CCResVA[i] = hCCResVA->GetEntries() - CCResVA[i];
+   NCResVA[i] = hNCResVA->GetEntries() - NCResVA[i];
+   NCDISVA[i] = hNCDISVA->GetEntries() - NCDISVA[i];
+   CosmicVA[i] = hCosmicVA->GetEntries() - CosmicVA[i];
+
+   VAEff[i] = 100*(CCCohVA[i] + CCQEVA[i] + CCResVA[i] + NCResVA[i] + NCDISVA[i] + CosmicVA[i])/(hCCCohVA->GetEntries() + hCCQEVA->GetEntries() + hCCResVA->GetEntries() + hNCResVA->GetEntries() + hNCDISVA->GetEntries() + hCosmicVA->GetEntries());
+   VAPurity[i] = 100*CCCohVA[i]/(CCCohVA[i] + CCQEVA[i] + CCResVA[i] + NCResVA[i] + NCDISVA[i] + CosmicVA[i]);
    CCCohVA[i] = CCCohVA[i]*100/hCCCohVA->GetEntries();
    CCQEVA[i] = CCQEVA[i]*100/hCCQEVA->GetEntries();
    CCResVA[i] = CCResVA[i]*100/hCCResVA->GetEntries();
@@ -304,6 +317,18 @@ for (int i = 0; i < j; i++)
    CosmicVA[i] = CosmicVA[i]*100/hCosmicVA->GetEntries();
    } // End i-Loop
 
+TGraph* gVAEff = new TGraph(j, z, VAEff);
+gVAEff->SetTitle("gVAEff");
+gVAEff->SetName("gVAEff");
+gVAEff->SetFillColor(kWhite);
+gVAEff->SetLineColor(kBlue);
+gVAEff->SetLineWidth(2);
+TGraph* gVAPurity = new TGraph(j, z, VAPurity);
+gVAPurity->SetTitle("gVAPurity");
+gVAPurity->SetName("gVAPurity");
+gVAPurity->SetFillColor(kWhite);
+gVAPurity->SetLineColor(kRed);
+gVAPurity->SetLineWidth(2);
 TGraph* gCCCohVA = new TGraph(j, z, CCCohVA);
 gCCCohVA->SetTitle("gCCCohVA");
 gCCCohVA->SetName("gCCCohVA");
@@ -756,4 +781,33 @@ gDoCAPurity->GetYaxis()->CenterTitle();
 
 gDoCAPurity->Draw();
 //gDoCAEff->Draw("same");
+
+
+
+TCanvas *c10 = new TCanvas("c10", "Vertex Activity Purity and Efficiency");
+c10->SetTicks();
+c10->SetFillColor(kWhite);
+
+gVAPurity->GetXaxis()->SetTitle("VA [MeV]");
+gVAPurity->GetXaxis()->CenterTitle();
+
+gVAPurity->GetYaxis()->SetTitle("Purity");
+gVAPurity->GetYaxis()->CenterTitle();
+
+gVAPurity->Draw();
+//gVAEff->Draw("same");
+
+
+
+TCanvas *c11 = new TCanvas("c11", "Cosmic Distance of Closest Approach");
+c11->SetTicks();
+c11->SetFillColor(kWhite);
+
+hCosmicDoCA->GetXaxis()->SetTitle("Distance of Closest Approach [cm]");
+hCosmicDoCA->GetXaxis()->CenterTitle();
+
+hCosmicDoCA->GetYaxis()->SetTitle("Normalized Events");
+hCosmicDoCA->GetYaxis()->CenterTitle();
+
+hCosmicDoCA->Draw("histo");
 }
