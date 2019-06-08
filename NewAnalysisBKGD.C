@@ -185,6 +185,17 @@ bool CCres(int PDG, int ccnc, int mode)
 // --------------------------
 
 // --------------------------
+// --- CC-DIS Event Check ---
+// --------------------------
+bool CCdis(int PDG, int ccnc, int mode)
+{
+   bool ccdis = false; // returned variable to declare whether or not event was CCDIS!
+   if (PDG == 14 && ccnc == 0 && mode == 2) {ccdis = true;}
+   return ccdis;
+}
+// --------------------------
+
+// --------------------------
 // --- NC-Res Event Check ---
 // --------------------------
 bool NCres(int PDG, int ccnc, int mode)
@@ -295,6 +306,7 @@ void NewAnalysisBKGD::Loop()
          bool CCCOH = CCCoh(nuPDG_truth[i], ccnc_truth[i], mode_truth[i]);
 	 bool CCQE = CCqe(nuPDG_truth[i], ccnc_truth[i], mode_truth[i]);
 	 bool CCRes = CCres(nuPDG_truth[i], ccnc_truth[i], mode_truth[i]);
+	 bool CCDIS = CCdis(nuPDG_truth[i], ccnc_truth[i], mode_truth[i]);
 	 bool NCRes = NCres(nuPDG_truth[i], ccnc_truth[i], mode_truth[i]);
 	 bool NCDIS = NCdis(nuPDG_truth[i], ccnc_truth[i], mode_truth[i]);
 
@@ -372,14 +384,11 @@ void NewAnalysisBKGD::Loop()
                // -----------------
                // --- Cosmic VA ---
                // -----------------
-               for (int x = 0; x < 3; x++)
+               for (int j = 0; j < ntrkhits_pandora[t][2]; j++)
                   {
-                  for (int j = 0; j < ntrkhits_pandora[t][x]; j++)
+                  if (Distance(Vx,Vy,Vz,trkxyz_pandora[t][2][j][0],trkxyz_pandora[t][2][j][1],trkxyz_pandora[t][2][j][2]) <= VAdistanceCheck)
                      {
-                     if (Distance(Vx,Vy,Vz,trkxyz_pandora[t][x][j][0],trkxyz_pandora[t][x][j][1],trkxyz_pandora[t][x][j][2]) <= VAdistanceCheck)
-                        {
-                        CosmicVAEnergy = CosmicVAEnergy + trkdedx_pandora[t][x][j]*trkpitchc_pandora[t][x];
-                        }
+                     CosmicVAEnergy = CosmicVAEnergy + trkdedx_pandora[t][2][j]*trkpitchc_pandora[t][2];
                      }
                   }
                // -----------------
@@ -407,7 +416,7 @@ void NewAnalysisBKGD::Loop()
                      // --- The x-Plane ---
                      // -------------------
 
-                     for (int x = 0; x < 3; x++)
+                     /*for (int x = 0; x < 3; x++)
                         {
                         for (int j = 0; j < ntrkhits_pandora[t][x]; j++)
                            {
@@ -420,8 +429,24 @@ void NewAnalysisBKGD::Loop()
                                  }
                               }
                            }
+                        }*/
+
+                     // ---------------------
+
+                     // -----------------------------
+		     // --- Just Collection Plane ---
+                     // -----------------------------
+
+                     for (int j = 0; j < ntrkhits_pandora[t][2]; j++)
+                        {
+                        for (int k = 0; k < ntrkhits_pandora[m][2]; k++)
+                           {
+                           double doca_checker = sqrt(pow(trkxyz_pandora[t][2][j][0]-trkxyz_pandora[m][2][k][0],2) + pow(trkxyz_pandora[t][2][j][1]-trkxyz_pandora[m][2][k][1],2) + pow(trkxyz_pandora[t][2][j][2]-trkxyz_pandora[m][2][k][2],2));
+                           if (doca_checker < DoCA2_Cosmic) DoCA2_Cosmic = doca_checker;
+                           }
                         }
-                     // -------------------
+                     // -----------------------------
+
                      //std::cout<<"DoCA2_Cosmic = "<<DoCA2_Cosmic<<std::endl;
                      hCosmicDoCA2->Fill(DoCA2_Cosmic);
                      }
@@ -607,11 +632,11 @@ void NewAnalysisBKGD::Loop()
             // ------------------------------------------ |
             // --- Messing Around with Truth Matching --- |
             // ------------------------------------------ |
-            for (int ipandora = 0; ipandora < ntracks_pandora; ipandora++)
+            /*for (int ipandora = 0; ipandora < ntracks_pandora; ipandora++)
                {
                if (checkFV == false) continue;
                if (mctrk_TrackId[j] == trkidtruth_pandora[ipandora][0] || mctrk_TrackId[j] == trkidtruth_pandora[ipandora][1] || mctrk_TrackId[j] == trkidtruth_pandora[ipandora][2]) pandoraTrackID1 = ipandora;
-               }
+               } */
             /*
             if (pandoraTrackID1 != -1) 
                {
