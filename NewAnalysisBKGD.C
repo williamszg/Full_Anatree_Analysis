@@ -292,7 +292,7 @@ void NewAnalysisBKGD::Loop()
    Long64_t nbytes = 0, nb = 0;
 
    //int Nentries = nentries;
-   int Nentries = 20000;
+   int Nentries = 1000;
    std::cout<<"nentries = "<<nentries<<std::endl;
    double POT = 0;
 
