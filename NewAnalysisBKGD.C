@@ -291,8 +291,8 @@ void NewAnalysisBKGD::Loop()
    Long64_t nentries = fChain->GetEntriesFast();
    Long64_t nbytes = 0, nb = 0;
 
-   int Nentries = nentries;
-   //int Nentries = 50000;
+   //int Nentries = nentries;
+   int Nentries = 50000;
    std::cout<<"nentries = "<<nentries<<std::endl;
    double POT = 0;
 
@@ -323,7 +323,22 @@ void NewAnalysisBKGD::Loop()
          FlashPECosmic += flsPe_simpleFlashCosmic[n];
          }
       
-      for (int n = 0; n < nfls_simpleFlashBeam; n++) {FlashPEBeam += flsPe_simpleFlashBeam[n];}
+      for (int n = 0; n < nfls_simpleFlashBeam; n++) 
+         {
+         FlashPEBeam += flsPe_simpleFlashBeam[n];
+
+         double Vx = nuvtxx_truth[0];
+         double Vy = nuvtxy_truth[0];
+         double Vz = nuvtxz_truth[0];
+
+         hOpFlashVx->Fill(Vx - flsXcenter_simpleFlashBeam[n]*100);           
+         hOpFlashVy->Fill(Vy - flsYcenter_simpleFlashBeam[n]*100);           
+         hOpFlashVz->Fill(Vz - flsZcenter_simpleFlashBeam[n]*100);
+           
+         hOpFlashX->Fill(flsXcenter_simpleFlashBeam[n]*100);           
+         hOpFlashY->Fill(flsYcenter_simpleFlashBeam[n]*100);           
+         hOpFlashZ->Fill(flsZcenter_simpleFlashBeam[n]*100);
+         }
 
       // ========================================
       // === Looping Over the Neutrino Events ===
@@ -383,7 +398,7 @@ void NewAnalysisBKGD::Loop()
          // --------------------------------
          // --- Some OpFlash Information ---
          // --------------------------------
-         for (int n = 0; n < nfls_simpleFlashBeam; n++)
+         /*for (int n = 0; n < nfls_simpleFlashBeam; n++)
             {
             hOpFlashVx->Fill(Vx - flsXcenter_simpleFlashBeam[n]*100);           
             hOpFlashVy->Fill(Vy - flsYcenter_simpleFlashBeam[n]*100);           
@@ -392,7 +407,7 @@ void NewAnalysisBKGD::Loop()
             hOpFlashX->Fill(flsXcenter_simpleFlashBeam[n]*100);           
             hOpFlashY->Fill(flsYcenter_simpleFlashBeam[n]*100);           
             hOpFlashZ->Fill(flsZcenter_simpleFlashBeam[n]*100);
-            }
+            }*/
          // --------------------------------
 
          // ====================
@@ -981,11 +996,7 @@ void NewAnalysisBKGD::Loop()
 	       if (d2 < d1) {closer = d2;}
 	       hCCCohDoCA->Fill(closer);
 	       hCCCohDoCA2->Fill(DoCA2_Event);
-               for (int n = 0; n < nfls_simpleFlashBeam; n++) 
-                  {
-                  hOpFlashPECCCoh->Fill(flsPe_simpleFlashBeam[n]);
-                  //std::cout<<"CCCoh PE number = "<<flsPe_simpleFlashBeam[n]<<std::endl;
-                  }
+               hOpFlashPECCCoh->Fill(FlashPEBeam);
 	       t = abs(pow(NuEnergy - MuonEnergy - PionEnergy,2) - pow(NuPx - MuonPx - PionPx,2) - pow(NuPy - MuonPy - PionPy,2) - pow(NuPz - MuonPz - PionPz,2))/(1000000);
                hCCCohVA->Fill(VAEnergy*1000);
                hCCCohVA2->Fill(VertexActivityADC);
@@ -1012,11 +1023,7 @@ void NewAnalysisBKGD::Loop()
 	       if (d2 < d1) {closer = d2;}
 	       hCCQEDoCA->Fill(closer);
 	       hCCQEDoCA2->Fill(DoCA2_Event);
-               for (int n = 0; n < nfls_simpleFlashBeam; n++)
-                  {
-                  hOpFlashPECCOther->Fill(flsPe_simpleFlashBeam[n]);
-                  //std::cout<<"CCQE PE number = "<<flsPe_simpleFlashBeam[n]<<std::endl;
-                  }
+               hOpFlashPECCOther->Fill(FlashPEBeam);
                hCCQEVA->Fill(VAEnergy*1000);
                hCCQEVA2->Fill(VertexActivityADC);
                hNotAssociatedHitVA2->Fill(VertexActivityADC_noTRKID);
@@ -1030,11 +1037,7 @@ void NewAnalysisBKGD::Loop()
 	       if (d2 < d1) {closer = d2;}
 	       hCCResDoCA->Fill(closer);
 	       hCCResDoCA2->Fill(DoCA2_Event);
-               for (int n = 0; n < nfls_simpleFlashBeam; n++)
-                  {
-                  hOpFlashPECCOther->Fill(flsPe_simpleFlashBeam[n]);
-                  //std::cout<<"CCRes PE number = "<<flsPe_simpleFlashBeam[n]<<std::endl;
-                  }
+               hOpFlashPECCOther->Fill(FlashPEBeam);
                hCCResVA->Fill(VAEnergy*1000);
                hCCResVA2->Fill(VertexActivityADC);
                hNotAssociatedHitVA2->Fill(VertexActivityADC_noTRKID);
@@ -1048,11 +1051,7 @@ void NewAnalysisBKGD::Loop()
 	       if (d2 < d1) {closer = d2;}
 	       hCCDISDoCA->Fill(closer);
 	       hCCDISDoCA2->Fill(DoCA2_Event);
-               for (int n = 0; n < nfls_simpleFlashBeam; n++)
-                  {
-                  hOpFlashPECCOther->Fill(flsPe_simpleFlashBeam[n]);
-                  //std::cout<<"CCDIS PE number = "<<flsPe_simpleFlashBeam[n]<<std::endl;
-                  }
+               hOpFlashPECCOther->Fill(FlashPEBeam);
                hCCDISVA->Fill(VAEnergy*1000);
                hCCDISVA2->Fill(VertexActivityADC);
                hNotAssociatedHitVA2->Fill(VertexActivityADC_noTRKID);
@@ -1066,11 +1065,7 @@ void NewAnalysisBKGD::Loop()
 	       if (d2 < d1) {closer = d2;}
 	       hNCResDoCA->Fill(closer);
 	       hNCResDoCA2->Fill(DoCA2_Event);
-               for (int n = 0; n < nfls_simpleFlashBeam; n++)
-                  {
-                  hOpFlashPENCOther->Fill(flsPe_simpleFlashBeam[n]);
-                  //std::cout<<"NCRes PE number = "<<flsPe_simpleFlashBeam[n]<<std::endl;
-                  }
+               hOpFlashPENCOther->Fill(FlashPEBeam);
                hNCResVA->Fill(VAEnergy*1000);
                hNCResVA2->Fill(VertexActivityADC);
                hNotAssociatedHitVA2->Fill(VertexActivityADC_noTRKID);
@@ -1084,11 +1079,7 @@ void NewAnalysisBKGD::Loop()
 	       if (d2 < d1) {closer = d2;}
 	       hNCDISDoCA->Fill(closer);
 	       hNCDISDoCA2->Fill(DoCA2_Event);
-               for (int n = 0; n < nfls_simpleFlashBeam; n++)
-                  {
-                  hOpFlashPENCOther->Fill(flsPe_simpleFlashBeam[n]);
-                  //std::cout<<"NCDIS PE number = "<<flsPe_simpleFlashBeam[n]<<std::endl;
-                  }
+               hOpFlashPENCOther->Fill(FlashPEBeam);
                hNCDISVA->Fill(VAEnergy*1000);
                hNCDISVA2->Fill(VertexActivityADC);
                hNotAssociatedHitVA2->Fill(VertexActivityADC_noTRKID);
