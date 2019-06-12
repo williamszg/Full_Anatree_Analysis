@@ -291,8 +291,8 @@ void NewAnalysisBKGD::Loop()
    Long64_t nentries = fChain->GetEntriesFast();
    Long64_t nbytes = 0, nb = 0;
 
-   //int Nentries = nentries;
-   int Nentries = 1000;
+   int Nentries = nentries;
+   //int Nentries = 50000;
    std::cout<<"nentries = "<<nentries<<std::endl;
    double POT = 0;
 
@@ -301,8 +301,8 @@ void NewAnalysisBKGD::Loop()
    // ------------------------------
    double VertexRangeCheck = 5; // Variable to check if a track is within this range of the vertex in cm
    double ConeAngleCut = 40; // in Degrees
-   double DoCACut = 10; // in cm
-   double VACut = 30; // in MeV
+   double DoCACut = 8; // in cm
+   double VACut = 50; // in MeV
    // ------------------------------
 
    for (Long64_t jentry=0; jentry<Nentries; jentry++) 
@@ -630,6 +630,8 @@ void NewAnalysisBKGD::Loop()
 	 double muonlength = -99;
 	 double pionlength = -99;
 
+         double EventsConeAngle = 360;
+
          for (int j = 0; j < no_mctracks; j++)
 	    {
 	    double DeltaStartX = mctrk_startX[j] - Vx;
@@ -675,71 +677,73 @@ void NewAnalysisBKGD::Loop()
             // ------------------------------------------ |
             */
 
+            if (mctrk_origin[j] == 1)
+               {
+	       if (checkFV && no_primaries >= 2)
+	          {
+	          hNuStartVertexDistance->Fill(DeltaStartMagnitude);
+	          hNuEndVertexDistance->Fill(DeltaEndMagnitude);
 
-	    if (checkFV && j <= no_primaries && no_primaries >= 2)
-	       {
-	       hNuStartVertexDistance->Fill(DeltaStartMagnitude);
-	       hNuEndVertexDistance->Fill(DeltaEndMagnitude);
-
-	       if (nuPDG_truth[i] == 14 && CCCOH)
-		  {
-	          hNuCCCohStartVertexDistance->Fill(DeltaStartMagnitude);
-	          hNuCCCohEndVertexDistance->Fill(DeltaEndMagnitude);
+	          if (nuPDG_truth[i] == 14 && CCCOH)
+		     {
+	             hNuCCCohStartVertexDistance->Fill(DeltaStartMagnitude);
+	             hNuCCCohEndVertexDistance->Fill(DeltaEndMagnitude);
+	             }
+	          }
+	       if (mctrk_pdg[j] == 13) 
+	          {
+	          hasMuon = true;
+   	          muonlength = mctrk_len_drifted[j];
+	          muonstart.SetXYZ(mctrk_startX[j], mctrk_startY[j], mctrk_startZ[j]);
+	          muonend.SetXYZ(mctrk_endX[j], mctrk_endY[j], mctrk_endZ[j]);
+                  if (Within(true, muonstart.X(), muonstart.Y(), muonstart.Z()) && Within(true, muonend.X(), muonend.Y(), muonend.Z())) {containMuon = true;}
+                  if (Within(true, muonstart.X(), muonstart.Y(), muonstart.Z()))
+                     {
+	             hNuMCTrackMuonX->Fill(muonstart.X());
+	             hNuMCTrackMuonY->Fill(muonstart.Y());
+	             hNuMCTrackMuonZ->Fill(muonstart.Z());
+                     }
+	          }
+	       if (mctrk_pdg[j] == 211) 
+	          {
+	          hasPion = true;
+	          pionlength = mctrk_len_drifted[j];
+	          pionstart.SetXYZ(mctrk_startX[j], mctrk_startY[j], mctrk_startZ[j]);
+	          pionend.SetXYZ(mctrk_endX[j], mctrk_endY[j], mctrk_endZ[j]);
+                  if (Within(true, pionstart.X(), pionstart.Y(), pionstart.Z()) && Within(true, pionend.X(), pionend.Y(), pionend.Z())) {containPion = true;}
+	          }
+	       if (mctrk_pdg[j] == -211) 
+	          {
+	          hasPion2 = true;
+	          pion2start.SetXYZ(mctrk_startX[j], mctrk_startY[j], mctrk_startZ[j]);
+	          pion2end.SetXYZ(mctrk_endX[j], mctrk_endY[j], mctrk_endZ[j]);
+                  if (Within(true, pion2start.X(), pion2start.Y(), pion2start.Z()) && Within(true, pion2end.X(), pion2end.Y(), pion2end.Z())) {containPion2 = true;}
+	          }
+	       if (mctrk_pdg[j] == 2212) 
+	          {
+	          hasProton = true;
+	          protonstart.SetXYZ(mctrk_startX[j], mctrk_startY[j], mctrk_startZ[j]);
+	          protonend.SetXYZ(mctrk_endX[j], mctrk_endY[j], mctrk_endZ[j]);
+                  if (Within(true, protonstart.X(), protonstart.Y(), protonstart.Z()) && Within(true, protonend.X(), protonend.Y(), protonend.Z())) {containProton = true;}
+	          }
+	       if (DeltaStartMagnitude <= VertexRangeCheck) 
+	          {
+	          nmctrksInRange++;
+	          if (mctrk_pdg[j] == 13) {muon = track;}
+	          if (mctrk_pdg[j] == 211) {pion = track;}
+	          if (mctrk_pdg[j] == -211) {pion2 = track;}
+	          if (mctrk_pdg[j] == 2212) {proton = track;}
+	          }
+               if (DeltaStartMagnitude > VertexRangeCheck && DeltaEndMagnitude <= VertexRangeCheck) 
+	          {
+	          nmctrksInRange++;
+	          if (mctrk_pdg[j] == 13) {muon = track;}
+	          if (mctrk_pdg[j] == 211) {pion = track;}
+	          if (mctrk_pdg[j] == -211) {pion2 = track;}
+	          if (mctrk_pdg[j] == 2212) {proton = track;}
 	          }
 	       }
-	    if (pdg[mctrk_TrackId[j]] == 13 && j <= no_primaries) 
-	       {
-	       hasMuon = true;
-	       muonlength = mctrk_len_drifted[j];
-	       muonstart.SetXYZ(mctrk_startX[j], mctrk_startY[j], mctrk_startZ[j]);
-	       muonend.SetXYZ(mctrk_endX[j], mctrk_endY[j], mctrk_endZ[j]);
-               if (Within(true, muonstart.X(), muonstart.Y(), muonstart.Z()) && Within(true, muonend.X(), muonend.Y(), muonend.Z())) {containMuon = true;}
-               if (Within(true, muonstart.X(), muonstart.Y(), muonstart.Z()))
-                  {
-	          hNuMCTrackMuonX->Fill(muonstart.X());
-	          hNuMCTrackMuonY->Fill(muonstart.Y());
-	          hNuMCTrackMuonZ->Fill(muonstart.Z());
-                  }
-	       }
-	    if (pdg[mctrk_TrackId[j]] == 211 && j <= no_primaries) 
-	       {
-	       hasPion = true;
-	       pionlength = mctrk_len_drifted[j];
-	       pionstart.SetXYZ(mctrk_startX[j], mctrk_startY[j], mctrk_startZ[j]);
-	       pionend.SetXYZ(mctrk_endX[j], mctrk_endY[j], mctrk_endZ[j]);
-               if (Within(true, pionstart.X(), pionstart.Y(), pionstart.Z()) && Within(true, pionend.X(), pionend.Y(), pionend.Z())) {containPion = true;}
-	       }
-	    if (pdg[mctrk_TrackId[j]] == -211 && j <= no_primaries) 
-	       {
-	       hasPion2 = true;
-	       pion2start.SetXYZ(mctrk_startX[j], mctrk_startY[j], mctrk_startZ[j]);
-	       pion2end.SetXYZ(mctrk_endX[j], mctrk_endY[j], mctrk_endZ[j]);
-               if (Within(true, pion2start.X(), pion2start.Y(), pion2start.Z()) && Within(true, pion2end.X(), pion2end.Y(), pion2end.Z())) {containPion2 = true;}
-	       }
-	    if (pdg[mctrk_TrackId[j]] == 2212 && j <= no_primaries) 
-	       {
-	       hasProton = true;
-	       protonstart.SetXYZ(mctrk_startX[j], mctrk_startY[j], mctrk_startZ[j]);
-	       protonend.SetXYZ(mctrk_endX[j], mctrk_endY[j], mctrk_endZ[j]);
-               if (Within(true, protonstart.X(), protonstart.Y(), protonstart.Z()) && Within(true, protonend.X(), protonend.Y(), protonend.Z())) {containProton = true;}
-	       }
-	    if (DeltaStartMagnitude < VertexRangeCheck && j <= no_primaries) 
-	       {
-	       nmctrksInRange++;
-	       if (pdg[mctrk_TrackId[j]] == 13) {muon = track;}
-	       if (pdg[mctrk_TrackId[j]] == 211) {pion = track;}
-	       if (pdg[mctrk_TrackId[j]] == -211) {pion2 = track;}
-	       if (pdg[mctrk_TrackId[j]] == 2212) {proton = track;}
-	       }
-            if (DeltaStartMagnitude > VertexRangeCheck && DeltaEndMagnitude < VertexRangeCheck && j <= no_primaries) 
-	       {
-	       nmctrksInRange++;
-	       if (pdg[mctrk_TrackId[j]] == 13) {muon = track;}
-	       if (pdg[mctrk_TrackId[j]] == 211) {pion = track;}
-	       if (pdg[mctrk_TrackId[j]] == -211) {pion2 = track;}
-	       if (pdg[mctrk_TrackId[j]] == 2212) {proton = track;}
-	       }
-	    }
+            }
 
          hNuNMCTracksWithinRange->Fill(nmctrksInRange);
 
@@ -758,11 +762,13 @@ void NewAnalysisBKGD::Loop()
                   if (no_mctracks >= 2)
                      {
                      hCCCohTableInformation->Fill(3);
-                     if (nmctrksInRange >= 2)
+                     if (nmctrksInRange >= 2 && hasMuon && hasPion)
                         {
                         hCCCohTableInformation->Fill(4);
-                        if (ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI <= ConeAngleCut)
+                        EventsConeAngle = ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI;
+                        if (EventsConeAngle <= ConeAngleCut)
                            {
+                           std::cout<<"CCCoh ConeAngle = "<<EventsConeAngle<<std::endl;
                            hCCCohTableInformation->Fill(5);
                            if (DoCA2_Event <= DoCACut)
                               {
@@ -792,11 +798,13 @@ void NewAnalysisBKGD::Loop()
                   if (no_mctracks >= 2)
                      {
                      hCCQETableInformation->Fill(3);
-                     if (nmctrksInRange >= 2)
+                     if (nmctrksInRange >= 2 && hasMuon && hasProton)
                         {
                         hCCQETableInformation->Fill(4);
-                        if (ConeAngle(muon.X(), muon.Y(), muon.Z(), proton.X(), proton.Y(), proton.Z())*180/PI <= ConeAngleCut)
+                        EventsConeAngle = ConeAngle(muon.X(), muon.Y(), muon.Z(), proton.X(), proton.Y(), proton.Z())*180/PI;
+                        if (EventsConeAngle <= ConeAngleCut)
                            {
+                           std::cout<<"CCQE ConeAngle = "<<EventsConeAngle<<std::endl;
                            hCCQETableInformation->Fill(5);
                            if (DoCA2_Event <= DoCACut)
                               {
@@ -826,11 +834,13 @@ void NewAnalysisBKGD::Loop()
                   if (no_mctracks >= 2)
                      {
                      hCCResTableInformation->Fill(3);
-                     if (nmctrksInRange >= 2)
+                     if (nmctrksInRange >= 2 && hasMuon && hasPion)
                         {
                         hCCResTableInformation->Fill(4);
-                        if (ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI <= ConeAngleCut)
+                        EventsConeAngle = ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI;
+                        if (EventsConeAngle <= ConeAngleCut)
                            {
+                           std::cout<<"CCRes ConeAngle = "<<EventsConeAngle<<std::endl;
                            hCCResTableInformation->Fill(5);
                            if (DoCA2_Event <= DoCACut)
                               {
@@ -860,11 +870,13 @@ void NewAnalysisBKGD::Loop()
                   if (no_mctracks >= 2)
                      {
                      hCCDISTableInformation->Fill(3);
-                     if (nmctrksInRange >= 2)
+                     if (nmctrksInRange >= 2 && hasMuon && hasPion)
                         {
                         hCCDISTableInformation->Fill(4);
-                        if (ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI <= ConeAngleCut)
+                        EventsConeAngle = ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI;
+                        if (EventsConeAngle <= ConeAngleCut)
                            {
+                           std::cout<<"CCDIS ConeAngle = "<<EventsConeAngle<<std::endl;
                            hCCDISTableInformation->Fill(5);
                            if (DoCA2_Event <= DoCACut)
                               {
@@ -894,11 +906,13 @@ void NewAnalysisBKGD::Loop()
                   if (no_mctracks >= 2)
                      {
                      hNCResTableInformation->Fill(3);
-                     if (nmctrksInRange >= 2)
+                     if (nmctrksInRange >= 2 && hasPion && hasPion2)
                         {
                         hNCResTableInformation->Fill(4);
-                        if (ConeAngle(pion2.X(), pion2.Y(), pion2.Z(), pion.X(), pion.Y(), pion.Z())*180/PI <= ConeAngleCut)
+                        EventsConeAngle = ConeAngle(pion2.X(), pion2.Y(), pion2.Z(), pion.X(), pion.Y(), pion.Z())*180/PI;
+                        if (EventsConeAngle <= ConeAngleCut)
                            {
+                           std::cout<<"NCRes ConeAngle = "<<EventsConeAngle<<std::endl;
                            hNCResTableInformation->Fill(5);
                            if (DoCA2_Event <= DoCACut)
                               {
@@ -928,11 +942,13 @@ void NewAnalysisBKGD::Loop()
                   if (no_mctracks >= 2)
                      {
                      hNCDISTableInformation->Fill(3);
-                     if (nmctrksInRange >= 2)
+                     if (nmctrksInRange >= 2 && hasPion && hasPion2)
                         {
                         hNCDISTableInformation->Fill(4);
-                        if (ConeAngle(pion2.X(), pion2.Y(), pion2.Z(), pion.X(), pion.Y(), pion.Z())*180/PI <= ConeAngleCut)
+                        EventsConeAngle = ConeAngle(pion2.X(), pion2.Y(), pion2.Z(), pion.X(), pion.Y(), pion.Z())*180/PI;
+                        if (EventsConeAngle <= ConeAngleCut)
                            {
+                           std::cout<<"NCDIS ConeAngle = "<<EventsConeAngle<<std::endl;
                            hNCDISTableInformation->Fill(5);
                            if (DoCA2_Event <= DoCACut)
                               {
@@ -951,130 +967,133 @@ void NewAnalysisBKGD::Loop()
             } // NCDIS Check
          // =================================
 
-	 if (nmctrksInRange >= 2 && CCCOH && checkFV )//&& containMuon && containPion) 
-	    {
-	    hCCCohConeAngle->Fill(ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI);
-            hMuonEnergyVsConeAngle->Fill(ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI, MuonEnergy);
-            hPionEnergyVsConeAngle->Fill(ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI, PionEnergy);
-            hQ2VsConeAngle->Fill(ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI, Q2);
-	    double d1 = DoCA(Vx, Vy, Vz, muonstart.X(), muonstart.Y(), muonstart.Z(), muonend.X(), muonend.Y(), muonend.Z());
-	    double d2 = DoCA(Vx, Vy, Vz, pionstart.X(), pionstart.Y(), pionstart.Z(), pionend.X(), pionend.Y(), pionend.Z());
-	    if (d1 <= d2) {closer = d1;}
-	    if (d2 < d1) {closer = d2;}
-	    hCCCohDoCA->Fill(closer);
-	    hCCCohDoCA2->Fill(DoCA2_Event);
-            for (int n = 0; n < nfls_simpleFlashBeam; n++) 
-               {
-               hOpFlashPECCCoh->Fill(flsPe_simpleFlashBeam[n]);
-               std::cout<<"CCCoh PE number = "<<flsPe_simpleFlashBeam[n]<<std::endl;
-               }
-	    t = abs(pow(NuEnergy - MuonEnergy - PionEnergy,2) - pow(NuPx - MuonPx - PionPx,2) - pow(NuPy - MuonPy - PionPy,2) - pow(NuPz - MuonPz - PionPz,2))/(1000000);
-            hCCCohVA->Fill(VAEnergy*1000);
-            hCCCohVA2->Fill(VertexActivityADC);
-            hNotAssociatedHitVA2->Fill(VertexActivityADC_noTRKID);
-            hCCCohMuonVA->Fill(MuonVAEnergy*1000);
-            hCCCohPionVA->Fill(PionVAEnergy*1000);
-	    hMCTruthQ2CCCoh->Fill(Q2);
-	    hMCTruthTCCCoh->Fill(t);
-	    hMCTruthPxMuon->Fill(MuonPx);
-	    hMCTruthPyMuon->Fill(MuonPy);
-	    hMCTruthPzMuon->Fill(MuonPz);
-	    hMCTruthEMuon->Fill(MuonEnergy);
-	    hMCTruthPxPion->Fill(PionPx);
-	    hMCTruthPyPion->Fill(PionPy);
-	    hMCTruthPzPion->Fill(PionPz);
-	    hMCTruthEPion->Fill(PionEnergy);
-	    }
-	 if (nmctrksInRange >= 2 && CCQE && checkFV )//&& containMuon && containProton) 
-	    {
-	    hCCQEConeAngle->Fill(ConeAngle(muon.X(), muon.Y(), muon.Z(), proton.X(), proton.Y(), proton.Z())*180/PI);
-	    double d1 = DoCA(Vx, Vy, Vz, muonstart.X(), muonstart.Y(), muonstart.Z(), muonend.X(), muonend.Y(), muonend.Z());
-	    double d2 = DoCA(Vx, Vy, Vz, protonstart.X(), protonstart.Y(), protonstart.Z(), protonend.X(), protonend.Y(), protonend.Z());
-	    if (d1 <= d2) {closer = d1;}
-	    if (d2 < d1) {closer = d2;}
-	    hCCQEDoCA->Fill(closer);
-	    hCCQEDoCA2->Fill(DoCA2_Event);
-            for (int n = 0; n < nfls_simpleFlashBeam; n++)
-               {
-               hOpFlashPECCOther->Fill(flsPe_simpleFlashBeam[n]);
-               std::cout<<"CCQE PE number = "<<flsPe_simpleFlashBeam[n]<<std::endl;
-               }
-            hCCQEVA->Fill(VAEnergy*1000);
-            hCCQEVA2->Fill(VertexActivityADC);
-            hNotAssociatedHitVA2->Fill(VertexActivityADC_noTRKID);
-	    }
-	 if (nmctrksInRange >= 2 && CCRes && checkFV )//&& containMuon && containPion) 
-	    {
-	    hCCResConeAngle->Fill(ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI);
-	    double d1 = DoCA(Vx, Vy, Vz, muonstart.X(), muonstart.Y(), muonstart.Z(), muonend.X(), muonend.Y(), muonend.Z());
-	    double d2 = DoCA(Vx, Vy, Vz, pionstart.X(), pionstart.Y(), pionstart.Z(), pionend.X(), pionend.Y(), pionend.Z());
-	    if (d1 <= d2) {closer = d1;}
-	    if (d2 < d1) {closer = d2;}
-	    hCCResDoCA->Fill(closer);
-	    hCCResDoCA2->Fill(DoCA2_Event);
-            for (int n = 0; n < nfls_simpleFlashBeam; n++)
-               {
-               hOpFlashPECCOther->Fill(flsPe_simpleFlashBeam[n]);
-               std::cout<<"CCRes PE number = "<<flsPe_simpleFlashBeam[n]<<std::endl;
-               }
-            hCCResVA->Fill(VAEnergy*1000);
-            hCCResVA2->Fill(VertexActivityADC);
-            hNotAssociatedHitVA2->Fill(VertexActivityADC_noTRKID);
-	    }
-	 if (nmctrksInRange >= 2 && CCDIS && checkFV )//&& containPion && containPion2) 
-	    {
-	    hCCDISConeAngle->Fill(ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI);
-	    double d1 = DoCA(Vx, Vy, Vz, muonstart.X(), muonstart.Y(), muonstart.Z(), muonend.X(), muonend.Y(), muonend.Z());
-	    double d2 = DoCA(Vx, Vy, Vz, pionstart.X(), pionstart.Y(), pionstart.Z(), pionend.X(), pionend.Y(), pionend.Z());
-	    if (d1 <= d2) {closer = d1;}
-	    if (d2 < d1) {closer = d2;}
-	    hCCDISDoCA->Fill(closer);
-	    hCCDISDoCA2->Fill(DoCA2_Event);
-            for (int n = 0; n < nfls_simpleFlashBeam; n++)
-               {
-               hOpFlashPENCOther->Fill(flsPe_simpleFlashBeam[n]);
-               std::cout<<"NCDIS PE number = "<<flsPe_simpleFlashBeam[n]<<std::endl;
-               }
-            hCCDISVA->Fill(VAEnergy*1000);
-            hCCDISVA2->Fill(VertexActivityADC);
-            hNotAssociatedHitVA2->Fill(VertexActivityADC_noTRKID);
-	    }
-	 if (nmctrksInRange >= 2 && NCRes && checkFV )//&& containPion && containPion2) 
-	    {
-	    hNCResConeAngle->Fill(ConeAngle(pion2.X(), pion2.Y(), pion2.Z(), pion.X(), pion.Y(), pion.Z())*180/PI);
-	    double d1 = DoCA(Vx, Vy, Vz, pionstart.X(), pionstart.Y(), pionstart.Z(), pionend.X(), pionend.Y(), pionend.Z());
-	    double d2 = DoCA(Vx, Vy, Vz, pion2start.X(), pion2start.Y(), pion2start.Z(), pion2end.X(), pion2end.Y(), pion2end.Z());
-	    if (d1 <= d2) {closer = d1;}
-	    if (d2 < d1) {closer = d2;}
-	    hNCResDoCA->Fill(closer);
-	    hNCResDoCA2->Fill(DoCA2_Event);
-            for (int n = 0; n < nfls_simpleFlashBeam; n++)
-               {
-               hOpFlashPENCOther->Fill(flsPe_simpleFlashBeam[n]);
-               std::cout<<"NCRes PE number = "<<flsPe_simpleFlashBeam[n]<<std::endl;
-               }
-            hNCResVA->Fill(VAEnergy*1000);
-            hNCResVA2->Fill(VertexActivityADC);
-            hNotAssociatedHitVA2->Fill(VertexActivityADC_noTRKID);
-	    }
-	 if (nmctrksInRange >= 2 && NCDIS && checkFV )//&& containPion && containPion2) 
-	    {
-	    hNCDISConeAngle->Fill(ConeAngle(pion2.X(), pion2.Y(), pion2.Z(), pion.X(), pion.Y(), pion.Z())*180/PI);
-	    double d1 = DoCA(Vx, Vy, Vz, pionstart.X(), pionstart.Y(), pionstart.Z(), pionend.X(), pionend.Y(), pionend.Z());
-	    double d2 = DoCA(Vx, Vy, Vz, pion2start.X(), pion2start.Y(), pion2start.Z(), pion2end.X(), pion2end.Y(), pion2end.Z());
-	    if (d1 <= d2) {closer = d1;}
-	    if (d2 < d1) {closer = d2;}
-	    hNCDISDoCA->Fill(closer);
-	    hNCDISDoCA2->Fill(DoCA2_Event);
-            for (int n = 0; n < nfls_simpleFlashBeam; n++)
-               {
-               hOpFlashPENCOther->Fill(flsPe_simpleFlashBeam[n]);
-               std::cout<<"NCDIS PE number = "<<flsPe_simpleFlashBeam[n]<<std::endl;
-               }
-            hNCDISVA->Fill(VAEnergy*1000);
-            hNCDISVA2->Fill(VertexActivityADC);
-            hNotAssociatedHitVA2->Fill(VertexActivityADC_noTRKID);
-	    }
+         if (nmctrksInRange >= 2 && checkFV)
+            {
+	    if (CCCOH && hasMuon && hasPion) 
+	       {
+	       hCCCohConeAngle->Fill(EventsConeAngle);
+               hMuonEnergyVsConeAngle->Fill(EventsConeAngle, MuonEnergy);
+               hPionEnergyVsConeAngle->Fill(EventsConeAngle, PionEnergy);
+               hQ2VsConeAngle->Fill(EventsConeAngle, Q2);
+	       double d1 = DoCA(Vx, Vy, Vz, muonstart.X(), muonstart.Y(), muonstart.Z(), muonend.X(), muonend.Y(), muonend.Z());
+	       double d2 = DoCA(Vx, Vy, Vz, pionstart.X(), pionstart.Y(), pionstart.Z(), pionend.X(), pionend.Y(), pionend.Z());
+	       if (d1 <= d2) {closer = d1;}
+	       if (d2 < d1) {closer = d2;}
+	       hCCCohDoCA->Fill(closer);
+	       hCCCohDoCA2->Fill(DoCA2_Event);
+               for (int n = 0; n < nfls_simpleFlashBeam; n++) 
+                  {
+                  hOpFlashPECCCoh->Fill(flsPe_simpleFlashBeam[n]);
+                  //std::cout<<"CCCoh PE number = "<<flsPe_simpleFlashBeam[n]<<std::endl;
+                  }
+	       t = abs(pow(NuEnergy - MuonEnergy - PionEnergy,2) - pow(NuPx - MuonPx - PionPx,2) - pow(NuPy - MuonPy - PionPy,2) - pow(NuPz - MuonPz - PionPz,2))/(1000000);
+               hCCCohVA->Fill(VAEnergy*1000);
+               hCCCohVA2->Fill(VertexActivityADC);
+               hNotAssociatedHitVA2->Fill(VertexActivityADC_noTRKID);
+               hCCCohMuonVA->Fill(MuonVAEnergy*1000);
+               hCCCohPionVA->Fill(PionVAEnergy*1000);
+	       hMCTruthQ2CCCoh->Fill(Q2);
+	       hMCTruthTCCCoh->Fill(t);
+	       hMCTruthPxMuon->Fill(MuonPx);
+	       hMCTruthPyMuon->Fill(MuonPy);
+	       hMCTruthPzMuon->Fill(MuonPz);
+	       hMCTruthEMuon->Fill(MuonEnergy);
+	       hMCTruthPxPion->Fill(PionPx);
+	       hMCTruthPyPion->Fill(PionPy);
+	       hMCTruthPzPion->Fill(PionPz);
+	       hMCTruthEPion->Fill(PionEnergy);
+	       }
+	    if (CCQE && hasMuon && hasProton) 
+	       {
+	       hCCQEConeAngle->Fill(EventsConeAngle);
+	       double d1 = DoCA(Vx, Vy, Vz, muonstart.X(), muonstart.Y(), muonstart.Z(), muonend.X(), muonend.Y(), muonend.Z());
+	       double d2 = DoCA(Vx, Vy, Vz, protonstart.X(), protonstart.Y(), protonstart.Z(), protonend.X(), protonend.Y(), protonend.Z());
+	       if (d1 <= d2) {closer = d1;}
+	       if (d2 < d1) {closer = d2;}
+	       hCCQEDoCA->Fill(closer);
+	       hCCQEDoCA2->Fill(DoCA2_Event);
+               for (int n = 0; n < nfls_simpleFlashBeam; n++)
+                  {
+                  hOpFlashPECCOther->Fill(flsPe_simpleFlashBeam[n]);
+                  //std::cout<<"CCQE PE number = "<<flsPe_simpleFlashBeam[n]<<std::endl;
+                  }
+               hCCQEVA->Fill(VAEnergy*1000);
+               hCCQEVA2->Fill(VertexActivityADC);
+               hNotAssociatedHitVA2->Fill(VertexActivityADC_noTRKID);
+	       }
+ 	    if (CCRes && hasMuon && hasPion) 
+	       {
+	       hCCResConeAngle->Fill(EventsConeAngle);
+	       double d1 = DoCA(Vx, Vy, Vz, muonstart.X(), muonstart.Y(), muonstart.Z(), muonend.X(), muonend.Y(), muonend.Z());
+	       double d2 = DoCA(Vx, Vy, Vz, pionstart.X(), pionstart.Y(), pionstart.Z(), pionend.X(), pionend.Y(), pionend.Z());
+	       if (d1 <= d2) {closer = d1;}
+	       if (d2 < d1) {closer = d2;}
+	       hCCResDoCA->Fill(closer);
+	       hCCResDoCA2->Fill(DoCA2_Event);
+               for (int n = 0; n < nfls_simpleFlashBeam; n++)
+                  {
+                  hOpFlashPECCOther->Fill(flsPe_simpleFlashBeam[n]);
+                  //std::cout<<"CCRes PE number = "<<flsPe_simpleFlashBeam[n]<<std::endl;
+                  }
+               hCCResVA->Fill(VAEnergy*1000);
+               hCCResVA2->Fill(VertexActivityADC);
+               hNotAssociatedHitVA2->Fill(VertexActivityADC_noTRKID);
+	       }
+	    if (CCDIS && hasPion && hasMuon) 
+	       {
+	       hCCDISConeAngle->Fill(EventsConeAngle);
+	       double d1 = DoCA(Vx, Vy, Vz, muonstart.X(), muonstart.Y(), muonstart.Z(), muonend.X(), muonend.Y(), muonend.Z());
+	       double d2 = DoCA(Vx, Vy, Vz, pionstart.X(), pionstart.Y(), pionstart.Z(), pionend.X(), pionend.Y(), pionend.Z());
+	       if (d1 <= d2) {closer = d1;}
+	       if (d2 < d1) {closer = d2;}
+	       hCCDISDoCA->Fill(closer);
+	       hCCDISDoCA2->Fill(DoCA2_Event);
+               for (int n = 0; n < nfls_simpleFlashBeam; n++)
+                  {
+                  hOpFlashPECCOther->Fill(flsPe_simpleFlashBeam[n]);
+                  //std::cout<<"CCDIS PE number = "<<flsPe_simpleFlashBeam[n]<<std::endl;
+                  }
+               hCCDISVA->Fill(VAEnergy*1000);
+               hCCDISVA2->Fill(VertexActivityADC);
+               hNotAssociatedHitVA2->Fill(VertexActivityADC_noTRKID);
+	       }
+ 	    if (NCRes && hasPion && hasPion2) 
+	       {
+	       hNCResConeAngle->Fill(EventsConeAngle);
+	       double d1 = DoCA(Vx, Vy, Vz, pionstart.X(), pionstart.Y(), pionstart.Z(), pionend.X(), pionend.Y(), pionend.Z());
+	       double d2 = DoCA(Vx, Vy, Vz, pion2start.X(), pion2start.Y(), pion2start.Z(), pion2end.X(), pion2end.Y(), pion2end.Z());
+	       if (d1 <= d2) {closer = d1;}
+	       if (d2 < d1) {closer = d2;}
+	       hNCResDoCA->Fill(closer);
+	       hNCResDoCA2->Fill(DoCA2_Event);
+               for (int n = 0; n < nfls_simpleFlashBeam; n++)
+                  {
+                  hOpFlashPENCOther->Fill(flsPe_simpleFlashBeam[n]);
+                  //std::cout<<"NCRes PE number = "<<flsPe_simpleFlashBeam[n]<<std::endl;
+                  }
+               hNCResVA->Fill(VAEnergy*1000);
+               hNCResVA2->Fill(VertexActivityADC);
+               hNotAssociatedHitVA2->Fill(VertexActivityADC_noTRKID);
+	       }
+	    if (NCDIS && hasPion && hasPion2) 
+	       {
+	       hNCDISConeAngle->Fill(EventsConeAngle);
+	       double d1 = DoCA(Vx, Vy, Vz, pionstart.X(), pionstart.Y(), pionstart.Z(), pionend.X(), pionend.Y(), pionend.Z());
+	       double d2 = DoCA(Vx, Vy, Vz, pion2start.X(), pion2start.Y(), pion2start.Z(), pion2end.X(), pion2end.Y(), pion2end.Z());
+	       if (d1 <= d2) {closer = d1;}
+	       if (d2 < d1) {closer = d2;}
+	       hNCDISDoCA->Fill(closer);
+	       hNCDISDoCA2->Fill(DoCA2_Event);
+               for (int n = 0; n < nfls_simpleFlashBeam; n++)
+                  {
+                  hOpFlashPENCOther->Fill(flsPe_simpleFlashBeam[n]);
+                  //std::cout<<"NCDIS PE number = "<<flsPe_simpleFlashBeam[n]<<std::endl;
+                  }
+               hNCDISVA->Fill(VAEnergy*1000);
+               hNCDISVA2->Fill(VertexActivityADC);
+               hNotAssociatedHitVA2->Fill(VertexActivityADC_noTRKID);
+	       }
+            }
 
 	 if (checkDV == true)
 	    {
