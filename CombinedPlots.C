@@ -1,11 +1,12 @@
 {
 TFile *f = new TFile("./Histograms_NewAnalysis_BKGD.root");
-TFile *f2 = new TFile("./Histograms_NewAnalysis_CCCoh.root");
+TFile *f2 = new TFile("./Histograms_NewAnalysis_BKGD.root");
 TFile *f3 = new TFile("./Histograms_NewAnalysis_BKGD.root");
 
 TH1D *hCCCohConeAngle = (TH1D*)f2->Get("hCCCohConeAngle");
 TH1D *hCCQEConeAngle = (TH1D*)f->Get("hCCQEConeAngle");
 TH1D *hCCResConeAngle = (TH1D*)f->Get("hCCResConeAngle");
+TH1D *hCCDISConeAngle = (TH1D*)f->Get("hCCDISConeAngle");
 TH1D *hNCResConeAngle = (TH1D*)f->Get("hNCResConeAngle");
 TH1D *hNCDISConeAngle = (TH1D*)f->Get("hNCDISConeAngle");
 TH1D *hCosmicConeAngle = (TH1D*)f3->Get("hCosmicConeAngle");
@@ -20,6 +21,7 @@ double ConeAnglePurity[180] = {0};
 double CCCohConeAngle[180] = {0};
 double CCQEConeAngle[180] = {0};
 double CCResConeAngle[180] = {0};
+double CCDISConeAngle[180] = {0};
 double NCResConeAngle[180] = {0};
 double NCDISConeAngle[180] = {0};
 double CosmicConeAngle[180] = {0};
@@ -34,6 +36,7 @@ for (int i = 0; i < n; i++)
       CCCohConeAngle[i] += hCCCohConeAngle->GetBinContent(g);
       CCQEConeAngle[i] += hCCQEConeAngle->GetBinContent(g);
       CCResConeAngle[i] += hCCResConeAngle->GetBinContent(g);
+      CCDISConeAngle[i] += hCCDISConeAngle->GetBinContent(g);
       NCResConeAngle[i] += hNCResConeAngle->GetBinContent(g);
       NCDISConeAngle[i] += hNCDISConeAngle->GetBinContent(g);
       CosmicConeAngle[i] += hCosmicConeAngle->GetBinContent(g);
@@ -44,6 +47,7 @@ for (int i = 0; i < n; i++)
    CCCohConeAngle[i] = CCCohConeAngle[i]*100/hCCCohConeAngle->GetEntries();
    CCQEConeAngle[i] = CCQEConeAngle[i]*100/hCCQEConeAngle->GetEntries();
    CCResConeAngle[i] = CCResConeAngle[i]*100/hCCResConeAngle->GetEntries();
+   CCDISConeAngle[i] = CCDISConeAngle[i]*100/hCCDISConeAngle->GetEntries();
    NCResConeAngle[i] = NCResConeAngle[i]*100/hNCResConeAngle->GetEntries();
    NCDISConeAngle[i] = NCDISConeAngle[i]*100/hNCDISConeAngle->GetEntries();
    CosmicConeAngle[i] = CosmicConeAngle[i]*100/hCosmicConeAngle->GetEntries();
@@ -79,6 +83,12 @@ gCCResConeAngle->SetName("gCCResConeAngle");
 gCCResConeAngle->SetFillColor(kWhite);
 gCCResConeAngle->SetLineColor(kGreen);
 gCCResConeAngle->SetLineWidth(2);
+TGraph* gCCDISConeAngle = new TGraph(n, x, CCDISConeAngle);
+gCCDISConeAngle->SetTitle("gCCDISConeAngle");
+gCCDISConeAngle->SetName("gNCDISConeAngle");
+gCCDISConeAngle->SetFillColor(kWhite);
+gCCDISConeAngle->SetLineColor(kOrange);
+gCCDISConeAngle->SetLineWidth(2);
 TGraph* gNCResConeAngle = new TGraph(n, x, NCResConeAngle);
 gNCResConeAngle->SetTitle("gNCResConeAngle");
 gNCResConeAngle->SetName("gNCResConeAngle");
@@ -111,6 +121,7 @@ gCCCohConeAngle->GetYaxis()->CenterTitle();
 gCCCohConeAngle->Draw();
 gCCQEConeAngle->Draw("same");
 gCCResConeAngle->Draw("same");
+gCCDISConeAngle->Draw("same");
 gNCResConeAngle->Draw("same");
 gNCDISConeAngle->Draw("same");
 gCosmicConeAngle->Draw("same");
@@ -127,6 +138,7 @@ leg4->SetHeader("Channel");
 leg4->AddEntry(gCCCohConeAngle,"CC-COH");
 leg4->AddEntry(gCCQEConeAngle,"CC-QE");
 leg4->AddEntry(gCCResConeAngle,"CC-Res");
+leg4->AddEntry(gCCDISConeAngle,"CC-DIS");
 leg4->AddEntry(gNCResConeAngle,"NC-Res");
 leg4->AddEntry(gNCDISConeAngle,"NC-DIS");
 leg4->AddEntry(gCosmicConeAngle,"Cosmic");
@@ -682,7 +694,7 @@ hCCQEVA->Draw("histosame");
 hCCResVA->Draw("histosame");
 hNCResVA->Draw("histosame");
 hNCDISVA->Draw("histosame");
-hCosmicVA->Draw("histosame");
+//hCosmicVA->Draw("histosame");
 
 
 // ### Defining the legend for the plot ###
@@ -699,7 +711,7 @@ leg2->AddEntry(hCCQEVA,"CC-QE");
 leg2->AddEntry(hCCResVA,"CC-Res");
 leg2->AddEntry(hNCResVA,"NC-Res");
 leg2->AddEntry(hNCDISVA,"NC-DIS");
-leg2->AddEntry(hCosmicVA,"Cosmic");
+//leg2->AddEntry(hCosmicVA,"Cosmic");
 leg2->Draw();
 
 
