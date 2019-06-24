@@ -299,8 +299,8 @@ void NewAnalysisBKGD::Loop()
    Long64_t nentries = fChain->GetEntriesFast();
    Long64_t nbytes = 0, nb = 0;
 
-   //int Nentries = nentries;
-   int Nentries = 10000;
+   int Nentries = nentries;
+   //int Nentries = 10000;
    std::cout<<"nentries = "<<nentries<<std::endl;
    double POT = 0;
 
