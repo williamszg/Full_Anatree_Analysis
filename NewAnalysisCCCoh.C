@@ -844,7 +844,7 @@ void NewAnalysisCCCoh::Loop()
                      } // DoCA Less Than or Equal to DoCACut Check
                   } // ConeAngle Less Than or Equal to ConeAngleCut Check
                } // Greater than or equal to 2 Tracks Within 5 cm of Vertex Check
-            if (nmctrksInRange == 2)
+            if ((nmctrksInRange + nCosmicsInRange) == 2 && nmctrksInRange == 2)
                {
                hCosmicTableInformation->Fill(8);
                if (CosmicConeAngle <= ConeAngleCut)
@@ -901,7 +901,7 @@ void NewAnalysisCCCoh::Loop()
                               } // DoCA Less Than or Equal to DoCACut Check
                            } // ConeAngle Less Than or Equal to ConeAngleCut Check
                         } // Greater than or equal to 2 Tracks Within 5 cm of Vertex Check
-                     if (nmctrksInRange == 2 )//&& hasMuon && hasPion)
+                     if ((nmctrksInRange + nCosmicsInRange) == 2 && nmctrksInRange == 2)//&& hasMuon && hasPion)
                         {
                         hCCCohTableInformation->Fill(8);
                         //EventsConeAngle = ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI;
@@ -956,7 +956,7 @@ void NewAnalysisCCCoh::Loop()
                               } // DoCA Less Than or Equal to DoCACut Check
                            } // ConeAngle Less Than or Equal to ConeAngleCut Check
                         } // Greater than or equal to 2 Tracks Within 5 cm of Vertex Check
-                     if (nmctrksInRange == 2 )//&& hasMuon && hasProton)
+                     if ((nmctrksInRange + nCosmicsInRange) == 2 && nmctrksInRange == 2)//&& hasMuon && hasProton)
                         {
                         hCCQETableInformation->Fill(8);
                         //EventsConeAngle = ConeAngle(muon.X(), muon.Y(), muon.Z(), proton.X(), proton.Y(), proton.Z())*180/PI;
@@ -1011,7 +1011,7 @@ void NewAnalysisCCCoh::Loop()
                               } // DoCA Less Than or Equal to DoCACut Check
                            } // ConeAngle Less Than or Equal to ConeAngleCut Check
                         } // Greater than or equal to 2 Tracks Within 5 cm of Vertex Check
-                     if (nmctrksInRange == 2 )//&& hasMuon && hasPion)
+                     if ((nmctrksInRange + nCosmicsInRange) == 2 && nmctrksInRange == 2)//&& hasMuon && hasPion)
                         {
                         hCCResTableInformation->Fill(8);
                         //EventsConeAngle = ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI;
@@ -1066,7 +1066,7 @@ void NewAnalysisCCCoh::Loop()
                               } // DoCA Less Than or Equal to DoCACut Check
                            } // ConeAngle Less Than or Equal to ConeAngleCut Check
                         } // Greater than or equal to 2 Tracks Within 5 cm of Vertex Check
-                     if (nmctrksInRange == 2 )//&& hasMuon && hasPion)
+                     if ((nmctrksInRange + nCosmicsInRange) == 2 && nmctrksInRange == 2)//&& hasMuon && hasPion)
                         {
                         hCCDISTableInformation->Fill(8);
                         //EventsConeAngle = ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI;
@@ -1121,7 +1121,7 @@ void NewAnalysisCCCoh::Loop()
                               } // DoCA Less Than or Equal to DoCACut Check
                            } // ConeAngle Less Than or Equal to ConeAngleCut Check
                         } // Greater than or equal to 2 Tracks Within 5 cm of Vertex Check
-                     if (nmctrksInRange == 2 )//&& hasPion && hasPion2)
+                     if ((nmctrksInRange + nCosmicsInRange) == 2 && nmctrksInRange == 2)//&& hasPion && hasPion2)
                         {
                         hNCResTableInformation->Fill(8);
                         //EventsConeAngle = ConeAngle(pion2.X(), pion2.Y(), pion2.Z(), pion.X(), pion.Y(), pion.Z())*180/PI;
@@ -1176,7 +1176,7 @@ void NewAnalysisCCCoh::Loop()
                               } // DoCA Less Than or Equal to DoCACut Check
                            } // ConeAngle Less Than or Equal to ConeAngleCut Check
                         } // Greater than or equal to 2 Tracks Within 5 cm of Vertex Check
-                     if (nmctrksInRange == 2 )//&& hasPion && hasPion2)
+                     if ((nmctrksInRange + nCosmicsInRange) == 2 && nmctrksInRange == 2)//&& hasPion && hasPion2)
                         {
                         hNCDISTableInformation->Fill(8);
                         //EventsConeAngle = ConeAngle(pion2.X(), pion2.Y(), pion2.Z(), pion.X(), pion.Y(), pion.Z())*180/PI;
