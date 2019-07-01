@@ -31,6 +31,7 @@ TH1D *hCCDISConeAngle = new TH1D("hCCDISConeAngle", "The Cone Angle for CC-DIS E
 TH1D *hNCResConeAngle = new TH1D("hNCResConeAngle", "The Cone Angle for NC-Res Events with 2 or More MCTracks", 181, -0.5, 180.5);
 TH1D *hNCDISConeAngle = new TH1D("hNCDISConeAngle", "The Cone Angle for NC-DIS Events with 2 or More MCTracks", 181, -0.5, 180.5);
 TH1D *hCosmicConeAngle = new TH1D("hCosmicConeAngle", "The Cone Angle for Events with 2 or More Cosmic Tracks", 181, -0.5, 180.5);
+TH1D *hOtherConeAngle = new TH1D("hOtherConeAngle", "The Cone Angle for Other Events with 2 or More MCTracks", 181, -0.5, 180.5);
 
 TH1D *hCCCohDoCA = new TH1D("hCCCohDoCA", "The DoCA for CC-COH Events with 2 or More MCTracks in cm", 500, 0, 500);
 TH1D *hCCCohDoCA2 = new TH1D("hCCCohDoCA2", "The DoCA for CC-COH Events with 2 or More MCTracks in cm Using the Second Method", 1000, 0, 100);
@@ -45,6 +46,7 @@ TH1D *hNCResDoCA2 = new TH1D("hNCResDoCA2", "The DoCA for NC-Res Events with 2 o
 TH1D *hNCDISDoCA = new TH1D("hNCDISDoCA", "The DoCA for NC-DIS Events with 2 or More MCTracks in cm", 500, 0, 500);
 TH1D *hNCDISDoCA2 = new TH1D("hNCDISDoCA2", "The DoCA for NC-DIS Events with 2 or More MCTracks in cm Using the Second Method", 1000, 0, 100);
 TH1D *hCosmicDoCA2 = new TH1D("hCosmicDoCA2", "The DoCA for Events with 2 or More Cosmic Tracks in cm Using the Second Method", 1000, 0, 100);
+TH1D *hOtherDoCA2 = new TH1D("hOtherDoCA2", "The DoCA for Events with 2 or More MCTracks that aren't any of the other categories in cm Using the Second Method", 1000, 0, 100);
 
 TH1D *hCCCohVA = new TH1D("hCCCohVA", "The Vertex Activity for CC-COH Events within 10cm of Vertex in MeV", 100, 0, 500);
 TH1D *hCCQEVA = new TH1D("hCCQEVA", "The Vertex Activity for CC-QE Events within 10cm of Vertex in MeV", 100, 0, 500);
@@ -53,6 +55,7 @@ TH1D *hCCDISVA = new TH1D("hCCDISVA", "The Vertex Activity for CC-DIS Events wit
 TH1D *hNCResVA = new TH1D("hNCResVA", "The Vertex Activity for NC-Res Events within 10cm of Vertex in MeV", 100, 0, 500);
 TH1D *hNCDISVA = new TH1D("hNCDISVA", "The Vertex Activity for NC-DIS Events within 10cm of Vertex in MeV", 100, 0, 500);
 TH1D *hCosmicVA = new TH1D("hCosmicVA", "The Vertex Activity for Cosmic Events within 10cm of Vertex in MeV", 100, 0, 500);
+TH1D *hOtherVA = new TH1D("hOtherVA", "The Vertex Activity for Other Events within 10cm of Vertex in MeV", 100, 0, 500);
 
 TH1D *hCCCohMuonVA = new TH1D("hCCCohMuonVA", "The Vertex Activity of Muons in CC-COH Events within 10cm of Vertex in MeV", 100, 0, 500);
 TH1D *hCCCohPionVA = new TH1D("hCCCohPionVA", "The Vertex Activity of Pions in CC-COH Events within 10cm of Vertex in MeV", 100, 0, 500);
@@ -64,6 +67,7 @@ TH1D *hCCDISTableInformation = new TH1D("hCCDISTableInformation", "Table Informa
 TH1D *hNCResTableInformation = new TH1D("hNCResTableInformation", "Table Information for NC-Res Events", 12, -0.5, 11.5);
 TH1D *hNCDISTableInformation = new TH1D("hNCDISTableInformation", "Table Information for NC-DIS Events", 12, -0.5, 11.5);
 TH1D *hCosmicTableInformation = new TH1D("hCosmicTableInformation", "Table Information for Cosmics", 12, -0.5, 11.5);
+TH1D *hOtherTableInformation = new TH1D("hOtherTableInformation", "Table Information for Other Events", 12, -0.5, 11.5);
 
 TH1D *hNuStartVertexDistance = new TH1D("hNuStartVertexDistance", "Distance Between Neutrino Vertex and Start of Track for Neutrino Initiated Tracks with NumMCTracks >= 2", 101, -0.5, 100.5);
 TH1D *hNuEndVertexDistance = new TH1D("hNuEndVertexDistance", "Distance Between Neutrino Vertex and End of Track for Neutrino Initiated Tracks with NumMCTracks >= 2", 101, -0.5, 100.5);
@@ -77,7 +81,13 @@ TH1D *hNuMCTrackMuonZ = new TH1D("hNuMCTrackMuonZ", "Starting Z Position of a Mu
 TH1D *hOpFlashPECCCoh = new TH1D("hOpFlashPECCCoh", "Number of PE in a CCCoh Interaction", 2000, 0, 20000);
 TH1D *hOpFlashPECosmic = new TH1D("hOpFlashPECosmic", "Number of PE in a Cosmic Interaction", 2000, 0, 20000);
 TH1D *hOpFlashPECCOther = new TH1D("hOpFlashPECCOther", "Number of PE in a CCOther Interaction", 2000, 0, 20000);
+TH1D *hOpFlashPECCQE = new TH1D("hOpFlashPECCQE", "Number of PE in a CC-QE Interaction", 2000, 0, 20000);
+TH1D *hOpFlashPECCRes = new TH1D("hOpFlashPECCRes", "Number of PE in a CC-Res Interaction", 2000, 0, 20000);
+TH1D *hOpFlashPECCDIS = new TH1D("hOpFlashPECCDIS", "Number of PE in a CC-DIS Interaction", 2000, 0, 20000);
 TH1D *hOpFlashPENCOther = new TH1D("hOpFlashPENCOther", "Number of PE in a NCOther Interaction", 2000, 0, 20000);
+TH1D *hOpFlashPENCRes = new TH1D("hOpFlashPENCRes", "Number of PE in a NC-Res Interaction", 2000, 0, 20000);
+TH1D *hOpFlashPENCDIS = new TH1D("hOpFlashPENCDIS", "Number of PE in a NC-DIS Interaction", 2000, 0, 20000);
+TH1D *hOpFlashPEOther = new TH1D("hOpFlashPEOther", "Number of PE in a Other Interaction", 2000, 0, 20000);
 
 TH2D *h2DVertexActivity = new TH2D("h2DVertexActivity", "Energy Deposited in Region vs Distance from Vertex", 201, -0.5, 200.5, 500, 0, 500);
 TH2D *h2DMuonVertexActivity = new TH2D("h2DMuonVertexActivity", "Energy Deposited in Region vs Distance from Vertex for Muons", 201, -0.5, 200.5, 500, 0, 500);
@@ -115,6 +125,7 @@ TH1D *hCCResVA2 = new TH1D("hCCResVA2", "The Vertex Activity for CC-Res Events w
 TH1D *hCCDISVA2 = new TH1D("hCCDISVA2", "The Vertex Activity for CC-DIS Events within 10cm of Vertex in ADC", 500, 0, 50000);
 TH1D *hNCResVA2 = new TH1D("hNCResVA2", "The Vertex Activity for NC-Res Events within 10cm of Vertex in ADC", 500, 0, 50000);
 TH1D *hNCDISVA2 = new TH1D("hNCDISVA2", "The Vertex Activity for NC-DIS Events within 10cm of Vertex in ADC", 500, 0, 50000);
+TH1D *hOtherVA2 = new TH1D("hOtherVA2", "The Vertex Activity for Other Events within 10cm of Vertex in ADC", 500, 0, 50000);
 TH1D *hNotAssociatedHitVA2 = new TH1D("hNotAssociatedHitVA2", "The Vertex Activity for Hits with No Track Association within 10cm of Vertex in ADC", 500, 0, 50000);
 
 TH1D *hOpFlashPECCCoh2 = new TH1D("hOpFlashPECCCoh2", "Number of PE in a CCCoh Interaction for Table Information", 2000, 0, 20000);
@@ -124,6 +135,7 @@ TH1D *hOpFlashPECCDIS2 = new TH1D("hOpFlashPECCDIS2", "Number of PE in a CC-DIS 
 TH1D *hOpFlashPENCRes2 = new TH1D("hOpFlashPENCRes2", "Number of PE in a NC-Res Interaction for Table Information", 2000, 0, 20000);
 TH1D *hOpFlashPENCDIS2 = new TH1D("hOpFlashPENCDIS2", "Number of PE in a NC-DIS Interaction for Table Information", 2000, 0, 20000);
 TH1D *hOpFlashPECosmic2 = new TH1D("hOpFlashPECosmic2", "Number of PE for Cosmics for Table Information", 2000, 0, 20000);
+TH1D *hOpFlashPEOther2 = new TH1D("hOpFlashPEOther2", "Number of PE for Other Events for Table Information", 2000, 0, 20000);
 
 TH1D *hOpFlashPECCCoh3 = new TH1D("hOpFlashPECCCoh3", "Number of PE in a CCCoh Interaction for Table Information", 2000, 0, 20000);
 TH1D *hOpFlashPECCQE3 = new TH1D("hOpFlashPECCQE3", "Number of PE in a CC-QE Interaction for Table Information", 2000, 0, 20000);
@@ -132,6 +144,7 @@ TH1D *hOpFlashPECCDIS3 = new TH1D("hOpFlashPECCDIS3", "Number of PE in a CC-DIS 
 TH1D *hOpFlashPENCRes3 = new TH1D("hOpFlashPENCRes3", "Number of PE in a NC-Res Interaction for Table Information", 2000, 0, 20000);
 TH1D *hOpFlashPENCDIS3 = new TH1D("hOpFlashPENCDIS3", "Number of PE in a NC-DIS Interaction for Table Information", 2000, 0, 20000);
 TH1D *hOpFlashPECosmic3 = new TH1D("hOpFlashPECosmic3", "Number of PE for Cosmics for Table Information", 2000, 0, 20000);
+TH1D *hOpFlashPEOther3 = new TH1D("hOpFlashPEOther3", "Number of PE for Other Events for Table Information", 2000, 0, 20000);
 // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 
@@ -431,13 +444,6 @@ void NewAnalysisBKGD::Loop()
 
             if (Cosmic)
                {
-               hCosmicTableInformation->Fill(0);
-               if (checkDV == true)
-                  {
-                  hCosmicTableInformation->Fill(1);
-                  if (checkFV == true) {hCosmicTableInformation->Fill(2);}
-                  }
-               
                nCosmics++;
                TVector3 CosmicTrackStart(trkstartx_pandora[t] - Vx, trkstarty_pandora[t] - Vy, trkstartz_pandora[t] - Vz);
                TVector3 CosmicTrackEnd(trkendx_pandora[t] - Vx, trkendy_pandora[t] - Vy, trkendz_pandora[t] - Vz);
@@ -823,6 +829,12 @@ void NewAnalysisBKGD::Loop()
          // ========================================
          // === Filling Cosmic Table Information ===
          // ========================================
+         hCosmicTableInformation->Fill(0);
+         if (checkDV == true)
+            {
+            hCosmicTableInformation->Fill(1);
+            if (checkFV == true) {hCosmicTableInformation->Fill(2);}
+            }
          if (nCosmics >= 2 && checkFV)
             {
             hCosmicTableInformation->Fill(3);
@@ -1199,6 +1211,61 @@ void NewAnalysisBKGD::Loop()
                   } // Within Fiducial Volume Check
                } // Within Active Volume Check
             } // NCDIS Check
+
+	 if (!CCCOH && !CCQE && !CCRes && !CCDIS && !NCRes && !NCDIS) 
+            {
+            hOtherTableInformation->Fill(0);
+            if (checkDV == true)
+               {
+               hOtherTableInformation->Fill(1);
+               if (checkFV == true)
+                  {
+                  hOtherTableInformation->Fill(2);
+                  if (no_mctracks >= 2)
+                     {
+                     hOtherTableInformation->Fill(3);
+                     if (nmctrksInRange >= 2 )//&& hasMuon && hasPion)
+                        {
+                        hOtherTableInformation->Fill(4);
+                        //EventsConeAngle = ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI;
+                        if (EventsConeAngle <= ConeAngleCut)
+                           {
+                           std::cout<<"Other ConeAngle = "<<EventsConeAngle<<std::endl;
+                           hOtherTableInformation->Fill(5);
+                           if (DoCA2_Event <= DoCACut)
+                              {
+                              hOtherTableInformation->Fill(6);
+                              if (VAEnergy*1000 <= VACut)
+                                 {
+                                 hOtherTableInformation->Fill(7);
+                                 hOpFlashPEOther2->Fill(FlashPEBeam);
+                                 } // Vertex Activity Less Than or Equal to VACut Check
+                              } // DoCA Less Than or Equal to DoCACut Check
+                           } // ConeAngle Less Than or Equal to ConeAngleCut Check
+                        } // Greater than or equal to 2 Tracks Within 5 cm of Vertex Check
+                     if ((nmctrksInRange + nCosmicsInRange) == 2 && nmctrksInRange == 2)//&& hasMuon && hasPion)
+                        {
+                        hOtherTableInformation->Fill(8);
+                        //EventsConeAngle = ConeAngle(muon.X(), muon.Y(), muon.Z(), pion.X(), pion.Y(), pion.Z())*180/PI;
+                        if (EventsConeAngle <= ConeAngleCut)
+                           {
+                           std::cout<<"Exactly 2 Other ConeAngle = "<<EventsConeAngle<<std::endl;
+                           hOtherTableInformation->Fill(9);
+                           if (DoCA2_Event <= DoCACut)
+                              {
+                              hOtherTableInformation->Fill(10);
+                              if (VAEnergy*1000 <= VACut)
+                                 {
+                                 hOtherTableInformation->Fill(11);
+                                 hOpFlashPEOther3->Fill(FlashPEBeam);
+                                 } // Vertex Activity Less Than or Equal to VACut Check
+                              } // DoCA Less Than or Equal to DoCACut Check
+                           } // ConeAngle Less Than or Equal to ConeAngleCut Check
+                        } // Equal to 2 Tracks Within 5 cm of Vertex Check
+                     } // Greater than or equal to 2 Tracks Check
+                  } // Within Fiducial Volume Check
+               } // Within Active Volume Check
+            } // Other Check
          // =================================
 
          if (nmctrksInRange >= 2 && checkFV)
@@ -1243,6 +1310,7 @@ void NewAnalysisBKGD::Loop()
 	       hCCQEDoCA->Fill(closer);
 	       hCCQEDoCA2->Fill(DoCA2_Event);
                hOpFlashPECCOther->Fill(FlashPEBeam);
+               hOpFlashPECCQE->Fill(FlashPEBeam);
                hCCQEVA->Fill(VAEnergy*1000);
                hCCQEVA2->Fill(VertexActivityADC);
                hNotAssociatedHitVA2->Fill(VertexActivityADC_noTRKID);
@@ -1257,6 +1325,7 @@ void NewAnalysisBKGD::Loop()
 	       hCCResDoCA->Fill(closer);
 	       hCCResDoCA2->Fill(DoCA2_Event);
                hOpFlashPECCOther->Fill(FlashPEBeam);
+               hOpFlashPECCRes->Fill(FlashPEBeam);
                hCCResVA->Fill(VAEnergy*1000);
                hCCResVA2->Fill(VertexActivityADC);
                hNotAssociatedHitVA2->Fill(VertexActivityADC_noTRKID);
@@ -1271,6 +1340,7 @@ void NewAnalysisBKGD::Loop()
 	       hCCDISDoCA->Fill(closer);
 	       hCCDISDoCA2->Fill(DoCA2_Event);
                hOpFlashPECCOther->Fill(FlashPEBeam);
+               hOpFlashPECCDIS->Fill(FlashPEBeam);
                hCCDISVA->Fill(VAEnergy*1000);
                hCCDISVA2->Fill(VertexActivityADC);
                hNotAssociatedHitVA2->Fill(VertexActivityADC_noTRKID);
@@ -1285,6 +1355,7 @@ void NewAnalysisBKGD::Loop()
 	       hNCResDoCA->Fill(closer);
 	       hNCResDoCA2->Fill(DoCA2_Event);
                hOpFlashPENCOther->Fill(FlashPEBeam);
+               hOpFlashPENCRes->Fill(FlashPEBeam);
                hNCResVA->Fill(VAEnergy*1000);
                hNCResVA2->Fill(VertexActivityADC);
                hNotAssociatedHitVA2->Fill(VertexActivityADC_noTRKID);
@@ -1299,8 +1370,18 @@ void NewAnalysisBKGD::Loop()
 	       hNCDISDoCA->Fill(closer);
 	       hNCDISDoCA2->Fill(DoCA2_Event);
                hOpFlashPENCOther->Fill(FlashPEBeam);
+               hOpFlashPENCDIS->Fill(FlashPEBeam);
                hNCDISVA->Fill(VAEnergy*1000);
                hNCDISVA2->Fill(VertexActivityADC);
+               hNotAssociatedHitVA2->Fill(VertexActivityADC_noTRKID);
+	       }
+	    if (!CCCOH && !CCQE && !CCRes && !CCDIS && !NCRes && !NCDIS) 
+	       {
+	       hOtherConeAngle->Fill(EventsConeAngle);
+	       hOtherDoCA2->Fill(DoCA2_Event);
+               hOpFlashPEOther->Fill(FlashPEBeam);
+               hOtherVA->Fill(VAEnergy*1000);
+               hOtherVA2->Fill(VertexActivityADC);
                hNotAssociatedHitVA2->Fill(VertexActivityADC_noTRKID);
 	       }
             }
@@ -1350,6 +1431,7 @@ void NewAnalysisBKGD::Loop()
    hNCResConeAngle->Write();
    hNCDISConeAngle->Write();
    hCosmicConeAngle->Write();
+   hOtherConeAngle->Write();
 
    hCCCohDoCA->Write();
    hCCCohDoCA2->Write();
@@ -1364,6 +1446,7 @@ void NewAnalysisBKGD::Loop()
    hNCDISDoCA->Write();
    hNCDISDoCA2->Write();
    hCosmicDoCA2->Write();
+   hOtherDoCA2->Write();
 
    hCCCohVA->Write();
    hCCQEVA->Write();
@@ -1372,6 +1455,7 @@ void NewAnalysisBKGD::Loop()
    hNCResVA->Write();
    hNCDISVA->Write();
    hCosmicVA->Write();
+   hOtherVA->Write();
 
    hCCCohMuonVA->Write();
    hCCCohPionVA->Write();
@@ -1383,6 +1467,7 @@ void NewAnalysisBKGD::Loop()
    hNCResTableInformation->Write();
    hNCDISTableInformation->Write();
    hCosmicTableInformation->Write();
+   hOtherTableInformation->Write();
 
    hNuStartVertexDistance->Write();
    hNuEndVertexDistance->Write();
@@ -1394,9 +1479,15 @@ void NewAnalysisBKGD::Loop()
    hNuMCTrackMuonZ->Write();
 
    hOpFlashPECCCoh->Write();
+   hOpFlashPECCQE->Write();
+   hOpFlashPECCRes->Write();
+   hOpFlashPECCDIS->Write();
+   hOpFlashPENCRes->Write();
+   hOpFlashPENCDIS->Write();
    hOpFlashPECosmic->Write();
    hOpFlashPECCOther->Write();
    hOpFlashPENCOther->Write();
+   hOpFlashPEOther->Write();
 
    h2DVertexActivity->Write();
    h2DMuonVertexActivity->Write();
@@ -1434,6 +1525,7 @@ void NewAnalysisBKGD::Loop()
    hCCDISVA2->Write();
    hNCResVA2->Write();
    hNCDISVA2->Write();
+   hOtherVA2->Write();
    hNotAssociatedHitVA2->Write();
 
    hOpFlashPECCCoh2->Write();
@@ -1443,6 +1535,7 @@ void NewAnalysisBKGD::Loop()
    hOpFlashPENCRes2->Write();
    hOpFlashPENCDIS2->Write();
    hOpFlashPECosmic2->Write();
+   hOpFlashPEOther2->Write();
 
    hOpFlashPECCCoh3->Write();
    hOpFlashPECCQE3->Write();
@@ -1451,6 +1544,7 @@ void NewAnalysisBKGD::Loop()
    hOpFlashPENCRes3->Write();
    hOpFlashPENCDIS3->Write();
    hOpFlashPECosmic3->Write();
+   hOpFlashPEOther3->Write();
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 } // End NewAnalysisBKGD Loop
