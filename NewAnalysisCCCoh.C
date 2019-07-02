@@ -340,9 +340,10 @@ void NewAnalysisCCCoh::Loop()
 
       for (int n = 0; n < nfls_simpleFlashCosmic; n++) 
          {
-         hOpFlashPECosmic->Fill(flsPe_simpleFlashCosmic[n]);
+         //hOpFlashPECosmic->Fill(flsPe_simpleFlashCosmic[n]);
          FlashPECosmic += flsPe_simpleFlashCosmic[n];
          }
+      hOpFlashPECosmic->Fill(FlashPECosmic);
       
       for (int n = 0; n < nfls_simpleFlashBeam; n++) 
          {
@@ -379,7 +380,7 @@ void NewAnalysisCCCoh::Loop()
 
          double closer = -99;
 
-         double VAdistanceCheck = 10;
+         double VAdistanceCheck = 7.5;
 
          double Vx = nuvtxx_truth[i];
          double Vy = nuvtxy_truth[i];
@@ -481,7 +482,7 @@ void NewAnalysisCCCoh::Loop()
 
                      if (CosmicConeAngleCheck < CosmicConeAngle) {CosmicConeAngle = CosmicConeAngleCheck;}
 
-                     hCosmicConeAngle->Fill(ConeAngle(CosmicTrack.X(), CosmicTrack.Y(), CosmicTrack.Z(), CosmicTrack2.X(), CosmicTrack2.Y(), CosmicTrack2.Z())*180/PI);
+                     //hCosmicConeAngle->Fill(ConeAngle(CosmicTrack.X(), CosmicTrack.Y(), CosmicTrack.Z(), CosmicTrack2.X(), CosmicTrack2.Y(), CosmicTrack2.Z())*180/PI);
                      // ------------------------
 
                      // -------------------
@@ -520,7 +521,7 @@ void NewAnalysisCCCoh::Loop()
                      // -----------------------------
 
                      //std::cout<<"DoCA2_Cosmic = "<<DoCA2_Cosmic<<std::endl;
-                     hCosmicDoCA2->Fill(DoCA2_Cosmic);
+                     //hCosmicDoCA2->Fill(DoCA2_Cosmic);
                      }
                   // -------------------
 
@@ -529,7 +530,7 @@ void NewAnalysisCCCoh::Loop()
             } // <--End ntracks_pandora t Loop
             
          //std::cout<<"CosmicVAEnergy = "<<CosmicVAEnergy<<std::endl;
-         hCosmicVA->Fill(CosmicVAEnergy);        
+         //hCosmicVA->Fill(CosmicVAEnergy);        
          //std::cout<<"nCosmics = "<<nCosmics<<std::endl;
          hnCosmics->Fill(nCosmics);
          // ====================
@@ -840,6 +841,9 @@ void NewAnalysisCCCoh::Loop()
             hCosmicTableInformation->Fill(3);
             if (nmctrksInRange >= 2)
                {
+               hCosmicConeAngle->Fill(CosmicConeAngle);
+               hCosmicDoCA2->Fill(DoCA2_Cosmic);
+               hCosmicVA->Fill(CosmicVAEnergy);
                hCosmicTableInformation->Fill(4);
                if (CosmicConeAngle <= ConeAngleCut)
                   {
