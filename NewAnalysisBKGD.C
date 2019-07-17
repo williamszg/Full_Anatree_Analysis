@@ -145,6 +145,93 @@ TH1D *hOpFlashPENCRes3 = new TH1D("hOpFlashPENCRes3", "Number of PE in a NC-Res 
 TH1D *hOpFlashPENCDIS3 = new TH1D("hOpFlashPENCDIS3", "Number of PE in a NC-DIS Interaction for Table Information", 2000, 0, 20000);
 TH1D *hOpFlashPECosmic3 = new TH1D("hOpFlashPECosmic3", "Number of PE for Cosmics for Table Information", 2000, 0, 20000);
 TH1D *hOpFlashPEOther3 = new TH1D("hOpFlashPEOther3", "Number of PE for Other Events for Table Information", 2000, 0, 20000);
+
+
+
+TH1D *hCCCohConeAngle1 = new TH1D("hCCCohConeAngle1", "The Cone Angle for CC-COH Events with 2 or More MCTracks After Cone Angle Cut", 181, -0.5, 180.5);
+TH1D *hCCQEConeAngle1 = new TH1D("hCCQEConeAngle1", "The Cone Angle for CC-QE Events with 2 or More MCTracks After Cone Angle Cut", 181, -0.5, 180.5);
+TH1D *hCCResConeAngle1 = new TH1D("hCCResConeAngle1", "The Cone Angle for CC-Res Events with 2 or More MCTracks After Cone Angle Cut", 181, -0.5, 180.5);
+TH1D *hCCDISConeAngle1 = new TH1D("hCCDISConeAngle1", "The Cone Angle for CC-DIS Events with 2 or More MCTracks After Cone Angle Cut", 181, -0.5, 180.5);
+TH1D *hNCResConeAngle1 = new TH1D("hNCResConeAngle1", "The Cone Angle for NC-Res Events with 2 or More MCTracks After Cone Angle Cut", 181, -0.5, 180.5);
+TH1D *hNCDISConeAngle1 = new TH1D("hNCDISConeAngle1", "The Cone Angle for NC-DIS Events with 2 or More MCTracks After Cone Angle Cut", 181, -0.5, 180.5);
+TH1D *hCosmicConeAngle1 = new TH1D("hCosmicConeAngle1", "The Cone Angle for Events with 2 or More Cosmic Tracks After Cone Angle Cut", 181, -0.5, 180.5);
+TH1D *hOtherConeAngle1 = new TH1D("hOtherConeAngle1", "The Cone Angle for Other Events with 2 or More MCTracks After Cone Angle Cut", 181, -0.5, 180.5);
+
+TH1D *hCCCohConeAngle2 = new TH1D("hCCCohConeAngle2", "The Cone Angle for CC-COH Events with 2 or More MCTracks After DoCA Cut", 181, -0.5, 180.5);
+TH1D *hCCQEConeAngle2 = new TH1D("hCCQEConeAngle2", "The Cone Angle for CC-QE Events with 2 or More MCTracks After DoCA Cut", 181, -0.5, 180.5);
+TH1D *hCCResConeAngle2 = new TH1D("hCCResConeAngle2", "The Cone Angle for CC-Res Events with 2 or More MCTracks After DoCA Cut", 181, -0.5, 180.5);
+TH1D *hCCDISConeAngle2 = new TH1D("hCCDISConeAngle2", "The Cone Angle for CC-DIS Events with 2 or More MCTracks After DoCA Cut", 181, -0.5, 180.5);
+TH1D *hNCResConeAngle2 = new TH1D("hNCResConeAngle2", "The Cone Angle for NC-Res Events with 2 or More MCTracks After DoCA Cut", 181, -0.5, 180.5);
+TH1D *hNCDISConeAngle2 = new TH1D("hNCDISConeAngle2", "The Cone Angle for NC-DIS Events with 2 or More MCTracks After DoCA Cut", 181, -0.5, 180.5);
+TH1D *hCosmicConeAngle2 = new TH1D("hCosmicConeAngle2", "The Cone Angle for Events with 2 or More Cosmic Tracks After DoCA Cut", 181, -0.5, 180.5);
+TH1D *hOtherConeAngle2 = new TH1D("hOtherConeAngle2", "The Cone Angle for Other Events with 2 or More MCTracks After DoCA Cut", 181, -0.5, 180.5);
+
+TH1D *hCCCohConeAngle3 = new TH1D("hCCCohConeAngle3", "The Cone Angle for CC-COH Events with 2 or More MCTracks After Vertex Activity Cut", 181, -0.5, 180.5);
+TH1D *hCCQEConeAngle3 = new TH1D("hCCQEConeAngle3", "The Cone Angle for CC-QE Events with 2 or More MCTracks After Vertex Activity Cut", 181, -0.5, 180.5);
+TH1D *hCCResConeAngle3 = new TH1D("hCCResConeAngle3", "The Cone Angle for CC-Res Events with 2 or More MCTracks After Vertex Activity Cut", 181, -0.5, 180.5);
+TH1D *hCCDISConeAngle3 = new TH1D("hCCDISConeAngle3", "The Cone Angle for CC-DIS Events with 2 or More MCTracks After Vertex Activity Cut", 181, -0.5, 180.5);
+TH1D *hNCResConeAngle3 = new TH1D("hNCResConeAngle3", "The Cone Angle for NC-Res Events with 2 or More MCTracks After Vertex Activity Cut", 181, -0.5, 180.5);
+TH1D *hNCDISConeAngle3 = new TH1D("hNCDISConeAngle3", "The Cone Angle for NC-DIS Events with 2 or More MCTracks After Vertex Activity Cut", 181, -0.5, 180.5);
+TH1D *hCosmicConeAngle3 = new TH1D("hCosmicConeAngle3", "The Cone Angle for Events with 2 or More Cosmic Tracks After Vertex Activity Cut", 181, -0.5, 180.5);
+TH1D *hOtherConeAngle3 = new TH1D("hOtherConeAngle3", "The Cone Angle for Other Events with 2 or More MCTracks After Vertex Activity Cut", 181, -0.5, 180.5);
+
+
+
+TH1D *hCCCohDoCA21 = new TH1D("hCCCohDoCA21", "The DoCA for CC-COH Events with 2 or More MCTracks in cm Using the Second Method After Cone Angle Cut", 1000, 0, 100);
+TH1D *hCCQEDoCA21 = new TH1D("hCCQEDoCA21", "The DoCA for CC-QE Events with 2 or More MCTracks in cm Using the Second Method After Cone Angle Cut", 1000, 0, 100);
+TH1D *hCCResDoCA21 = new TH1D("hCCResDoCA21", "The DoCA for CC-Res Events with 2 or More MCTracks in cm Using the Second Method After Cone Angle Cut", 1000, 0, 100);
+TH1D *hCCDISDoCA21 = new TH1D("hCCDISDoCA21", "The DoCA for CC-DIS Events with 2 or More MCTracks in cm Using the Second Method After Cone Angle Cut", 1000, 0, 100);
+TH1D *hNCResDoCA21 = new TH1D("hNCResDoCA21", "The DoCA for NC-Res Events with 2 or More MCTracks in cm Using the Second Method After Cone Angle Cut", 1000, 0, 100);
+TH1D *hNCDISDoCA21 = new TH1D("hNCDISDoCA21", "The DoCA for NC-DIS Events with 2 or More MCTracks in cm Using the Second Method After Cone Angle Cut", 1000, 0, 100);
+TH1D *hCosmicDoCA21 = new TH1D("hCosmicDoCA21", "The DoCA for Events with 2 or More Cosmic Tracks in cm Using the Second Method After Cone Angle Cut", 1000, 0, 100);
+TH1D *hOtherDoCA21 = new TH1D("hOtherDoCA21", "The DoCA for Events with 2 or More MCTracks that aren't any of the other categories in cm Using the Second Method After Cone Angle Cut", 1000, 0, 100);
+
+TH1D *hCCCohDoCA22 = new TH1D("hCCCohDoCA22", "The DoCA for CC-COH Events with 2 or More MCTracks in cm Using the Second Method After DoCA Cut", 1000, 0, 100);
+TH1D *hCCQEDoCA22 = new TH1D("hCCQEDoCA22", "The DoCA for CC-QE Events with 2 or More MCTracks in cm Using the Second Method After DoCA Cut", 1000, 0, 100);
+TH1D *hCCResDoCA22 = new TH1D("hCCResDoCA22", "The DoCA for CC-Res Events with 2 or More MCTracks in cm Using the Second Method After DoCA Cut", 1000, 0, 100);
+TH1D *hCCDISDoCA22 = new TH1D("hCCDISDoCA22", "The DoCA for CC-DIS Events with 2 or More MCTracks in cm Using the Second Method After DoCA Cut", 1000, 0, 100);
+TH1D *hNCResDoCA22 = new TH1D("hNCResDoCA22", "The DoCA for NC-Res Events with 2 or More MCTracks in cm Using the Second Method After DoCA Cut", 1000, 0, 100);
+TH1D *hNCDISDoCA22 = new TH1D("hNCDISDoCA22", "The DoCA for NC-DIS Events with 2 or More MCTracks in cm Using the Second Method After DoCA Cut", 1000, 0, 100);
+TH1D *hCosmicDoCA22 = new TH1D("hCosmicDoCA22", "The DoCA for Events with 2 or More Cosmic Tracks in cm Using the Second Method After DoCA Cut", 1000, 0, 100);
+TH1D *hOtherDoCA22 = new TH1D("hOtherDoCA22", "The DoCA for Events with 2 or More MCTracks that aren't any of the other categories in cm Using the Second Method After DoCA Cut", 1000, 0, 100);
+
+TH1D *hCCCohDoCA23 = new TH1D("hCCCohDoCA23", "The DoCA for CC-COH Events with 2 or More MCTracks in cm Using the Second Method After Vertex Activity Cut", 1000, 0, 100);
+TH1D *hCCQEDoCA23 = new TH1D("hCCQEDoCA23", "The DoCA for CC-QE Events with 2 or More MCTracks in cm Using the Second Method After Vertex Activity Cut", 1000, 0, 100);
+TH1D *hCCResDoCA23 = new TH1D("hCCResDoCA23", "The DoCA for CC-Res Events with 2 or More MCTracks in cm Using the Second Method After Vertex Activity Cut", 1000, 0, 100);
+TH1D *hCCDISDoCA23 = new TH1D("hCCDISDoCA23", "The DoCA for CC-DIS Events with 2 or More MCTracks in cm Using the Second Method After Vertex Activity Cut", 1000, 0, 100);
+TH1D *hNCResDoCA23 = new TH1D("hNCResDoCA23", "The DoCA for NC-Res Events with 2 or More MCTracks in cm Using the Second Method After Vertex Activity Cut", 1000, 0, 100);
+TH1D *hNCDISDoCA23 = new TH1D("hNCDISDoCA23", "The DoCA for NC-DIS Events with 2 or More MCTracks in cm Using the Second Method After Vertex Activity Cut", 1000, 0, 100);
+TH1D *hCosmicDoCA23 = new TH1D("hCosmicDoCA23", "The DoCA for Events with 2 or More Cosmic Tracks in cm Using the Second Method After Vertex Activity Cut", 1000, 0, 100);
+TH1D *hOtherDoCA23 = new TH1D("hOtherDoCA23", "The DoCA for Events with 2 or More MCTracks that aren't any of the other categories in cm Using the Second Method After Vertex Activity Cut", 1000, 0, 100);
+
+
+
+TH1D *hCCCohVA1 = new TH1D("hCCCohVA1", "The Vertex Activity for CC-COH Events within 10cm of Vertex in MeV After Cone Angle Cut", 100, 0, 500);
+TH1D *hCCQEVA1 = new TH1D("hCCQEVA1", "The Vertex Activity for CC-QE Events within 10cm of Vertex in MeV After Cone Angle Cut", 100, 0, 500);
+TH1D *hCCResVA1 = new TH1D("hCCResVA1", "The Vertex Activity for CC-Res Events within 10cm of Vertex in MeV After Cone Angle Cut", 100, 0, 500);
+TH1D *hCCDISVA1 = new TH1D("hCCDISVA1", "The Vertex Activity for CC-DIS Events within 10cm of Vertex in MeV After Cone Angle Cut", 100, 0, 500);
+TH1D *hNCResVA1 = new TH1D("hNCResVA1", "The Vertex Activity for NC-Res Events within 10cm of Vertex in MeV After Cone Angle Cut", 100, 0, 500);
+TH1D *hNCDISVA1 = new TH1D("hNCDISVA1", "The Vertex Activity for NC-DIS Events within 10cm of Vertex in MeV After Cone Angle Cut", 100, 0, 500);
+TH1D *hCosmicVA1 = new TH1D("hCosmicVA1", "The Vertex Activity for Cosmic Events within 10cm of Vertex in MeV After Cone Angle Cut", 100, 0, 500);
+TH1D *hOtherVA1 = new TH1D("hOtherVA1", "The Vertex Activity for Other Events within 10cm of Vertex in MeV After Cone Angle Cut", 100, 0, 500);
+
+TH1D *hCCCohVA22 = new TH1D("hCCCohVA22", "The Vertex Activity for CC-COH Events within 10cm of Vertex in MeV After DoCA Cut", 100, 0, 500);
+TH1D *hCCQEVA22 = new TH1D("hCCQEVA22", "The Vertex Activity for CC-QE Events within 10cm of Vertex in MeV After DoCA Cut", 100, 0, 500);
+TH1D *hCCResVA22 = new TH1D("hCCResVA22", "The Vertex Activity for CC-Res Events within 10cm of Vertex in MeV After DoCA Cut", 100, 0, 500);
+TH1D *hCCDISVA22 = new TH1D("hCCDISVA22", "The Vertex Activity for CC-DIS Events within 10cm of Vertex in MeV After DoCA Cut", 100, 0, 500);
+TH1D *hNCResVA22 = new TH1D("hNCResVA22", "The Vertex Activity for NC-Res Events within 10cm of Vertex in MeV After DoCA Cut", 100, 0, 500);
+TH1D *hNCDISVA22 = new TH1D("hNCDISVA22", "The Vertex Activity for NC-DIS Events within 10cm of Vertex in MeV After DoCA Cut", 100, 0, 500);
+TH1D *hCosmicVA22 = new TH1D("hCosmicVA22", "The Vertex Activity for Cosmic Events within 10cm of Vertex in MeV After DoCA Cut", 100, 0, 500);
+TH1D *hOtherVA22 = new TH1D("hOtherVA22", "The Vertex Activity for Other Events within 10cm of Vertex in MeV After DoCA Cut", 100, 0, 500);
+
+TH1D *hCCCohVA3 = new TH1D("hCCCohVA3", "The Vertex Activity for CC-COH Events within 10cm of Vertex in MeV After Vertex Activity Cut", 100, 0, 500);
+TH1D *hCCQEVA3 = new TH1D("hCCQEVA3", "The Vertex Activity for CC-QE Events within 10cm of Vertex in MeV After Vertex Activity Cut", 100, 0, 500);
+TH1D *hCCResVA3 = new TH1D("hCCResVA3", "The Vertex Activity for CC-Res Events within 10cm of Vertex in MeV After Vertex Activity Cut", 100, 0, 500);
+TH1D *hCCDISVA3 = new TH1D("hCCDISVA3", "The Vertex Activity for CC-DIS Events within 10cm of Vertex in MeV After Vertex Activity Cut", 100, 0, 500);
+TH1D *hNCResVA3 = new TH1D("hNCResVA3", "The Vertex Activity for NC-Res Events within 10cm of Vertex in MeV After Vertex Activity Cut", 100, 0, 500);
+TH1D *hNCDISVA3 = new TH1D("hNCDISVA3", "The Vertex Activity for NC-DIS Events within 10cm of Vertex in MeV After Vertex Activity Cut", 100, 0, 500);
+TH1D *hCosmicVA3 = new TH1D("hCosmicVA3", "The Vertex Activity for Cosmic Events within 10cm of Vertex in MeV After Vertex Activity Cut", 100, 0, 500);
+TH1D *hOtherVA3 = new TH1D("hOtherVA3", "The Vertex Activity for Other Events within 10cm of Vertex in MeV After Vertex Activity Cut", 100, 0, 500);
 // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 
@@ -380,7 +467,7 @@ void NewAnalysisBKGD::Loop()
 
          double closer = -99;
 
-         double VAdistanceCheck = 7.5;
+         double VAdistanceCheck = 17.5;
 
          double Vx = nuvtxx_truth[i];
          double Vy = nuvtxy_truth[i];
@@ -847,6 +934,24 @@ void NewAnalysisBKGD::Loop()
                hCosmicTableInformation->Fill(4);
                if (CosmicConeAngle <= ConeAngleCut)
                   {
+                  hCosmicConeAngle1->Fill(CosmicConeAngle);
+                  hCosmicDoCA21->Fill(DoCA2_Cosmic);
+                  hCosmicVA1->Fill(CosmicVAEnergy);
+                  }
+               if (DoCA2_Cosmic <= DoCACut)
+                  {
+                  hCosmicConeAngle2->Fill(CosmicConeAngle);
+                  hCosmicDoCA22->Fill(DoCA2_Cosmic);
+                  hCosmicVA22->Fill(CosmicVAEnergy);
+                  }
+               if (CosmicVAEnergy <= VACut)
+                  {
+                  hCosmicConeAngle3->Fill(CosmicConeAngle);
+                  hCosmicDoCA23->Fill(DoCA2_Cosmic);
+                  hCosmicVA3->Fill(CosmicVAEnergy);
+                  }
+               if (CosmicConeAngle <= ConeAngleCut)
+                  {
                   std::cout<<"Cosmic ConeAngle = "<<CosmicConeAngle<<std::endl;
                   hCosmicTableInformation->Fill(5);
                   if (DoCA2_Cosmic <= DoCACut)
@@ -1303,6 +1408,24 @@ void NewAnalysisBKGD::Loop()
 	       hMCTruthPyPion->Fill(PionPy);
 	       hMCTruthPzPion->Fill(PionPz);
 	       hMCTruthEPion->Fill(PionEnergy);
+               if (EventsConeAngle <= ConeAngleCut)
+                  {
+                  hCCCohConeAngle1->Fill(EventsConeAngle);
+                  hCCCohDoCA21->Fill(DoCA2_Event);
+                  hCCCohVA1->Fill(VAEnergy*1000);
+                  }
+               if (DoCA2_Event <= DoCACut)
+                  {
+                  hCCCohConeAngle2->Fill(EventsConeAngle);
+                  hCCCohDoCA22->Fill(DoCA2_Event);
+                  hCCCohVA22->Fill(VAEnergy*1000);
+                  }
+               if (VAEnergy*1000 <= VACut)
+                  {
+                  hCCCohConeAngle3->Fill(EventsConeAngle);
+                  hCCCohDoCA23->Fill(DoCA2_Event);
+                  hCCCohVA3->Fill(VAEnergy*1000);
+                  }
 	       }
 	    if (CCQE )//&& hasMuon && hasProton) 
 	       {
@@ -1318,6 +1441,24 @@ void NewAnalysisBKGD::Loop()
                hCCQEVA->Fill(VAEnergy*1000);
                hCCQEVA2->Fill(VertexActivityADC);
                hNotAssociatedHitVA2->Fill(VertexActivityADC_noTRKID);
+               if (EventsConeAngle <= ConeAngleCut)
+                  {
+                  hCCQEConeAngle1->Fill(EventsConeAngle);
+                  hCCQEDoCA21->Fill(DoCA2_Event);
+                  hCCQEVA1->Fill(VAEnergy*1000);
+                  }
+               if (DoCA2_Event <= DoCACut)
+                  {
+                  hCCQEConeAngle2->Fill(EventsConeAngle);
+                  hCCQEDoCA22->Fill(DoCA2_Event);
+                  hCCQEVA22->Fill(VAEnergy*1000);
+                  }
+               if (VAEnergy*1000 <= VACut)
+                  {
+                  hCCQEConeAngle3->Fill(EventsConeAngle);
+                  hCCQEDoCA23->Fill(DoCA2_Event);
+                  hCCQEVA3->Fill(VAEnergy*1000);
+                  }
 	       }
  	    if (CCRes )//&& hasMuon && hasPion) 
 	       {
@@ -1333,6 +1474,24 @@ void NewAnalysisBKGD::Loop()
                hCCResVA->Fill(VAEnergy*1000);
                hCCResVA2->Fill(VertexActivityADC);
                hNotAssociatedHitVA2->Fill(VertexActivityADC_noTRKID);
+               if (EventsConeAngle <= ConeAngleCut)
+                  {
+                  hCCResConeAngle1->Fill(EventsConeAngle);
+                  hCCResDoCA21->Fill(DoCA2_Event);
+                  hCCResVA1->Fill(VAEnergy*1000);
+                  }
+               if (DoCA2_Event <= DoCACut)
+                  {
+                  hCCResConeAngle2->Fill(EventsConeAngle);
+                  hCCResDoCA22->Fill(DoCA2_Event);
+                  hCCResVA22->Fill(VAEnergy*1000);
+                  }
+               if (VAEnergy*1000 <= VACut)
+                  {
+                  hCCResConeAngle3->Fill(EventsConeAngle);
+                  hCCResDoCA23->Fill(DoCA2_Event);
+                  hCCResVA3->Fill(VAEnergy*1000);
+                  }
 	       }
 	    if (CCDIS )//&& hasPion && hasMuon) 
 	       {
@@ -1348,6 +1507,24 @@ void NewAnalysisBKGD::Loop()
                hCCDISVA->Fill(VAEnergy*1000);
                hCCDISVA2->Fill(VertexActivityADC);
                hNotAssociatedHitVA2->Fill(VertexActivityADC_noTRKID);
+               if (EventsConeAngle <= ConeAngleCut)
+                  {
+                  hCCDISConeAngle1->Fill(EventsConeAngle);
+                  hCCDISDoCA21->Fill(DoCA2_Event);
+                  hCCDISVA1->Fill(VAEnergy*1000);
+                  }
+               if (DoCA2_Event <= DoCACut)
+                  {
+                  hCCDISConeAngle2->Fill(EventsConeAngle);
+                  hCCDISDoCA22->Fill(DoCA2_Event);
+                  hCCDISVA22->Fill(VAEnergy*1000);
+                  }
+               if (VAEnergy*1000 <= VACut)
+                  {
+                  hCCDISConeAngle3->Fill(EventsConeAngle);
+                  hCCDISDoCA23->Fill(DoCA2_Event);
+                  hCCDISVA3->Fill(VAEnergy*1000);
+                  }
 	       }
  	    if (NCRes )//&& hasPion && hasPion2) 
 	       {
@@ -1363,6 +1540,24 @@ void NewAnalysisBKGD::Loop()
                hNCResVA->Fill(VAEnergy*1000);
                hNCResVA2->Fill(VertexActivityADC);
                hNotAssociatedHitVA2->Fill(VertexActivityADC_noTRKID);
+               if (EventsConeAngle <= ConeAngleCut)
+                  {
+                  hNCResConeAngle1->Fill(EventsConeAngle);
+                  hNCResDoCA21->Fill(DoCA2_Event);
+                  hNCResVA1->Fill(VAEnergy*1000);
+                  }
+               if (DoCA2_Event <= DoCACut)
+                  {
+                  hNCResConeAngle2->Fill(EventsConeAngle);
+                  hNCResDoCA22->Fill(DoCA2_Event);
+                  hNCResVA22->Fill(VAEnergy*1000);
+                  }
+               if (VAEnergy*1000 <= VACut)
+                  {
+                  hNCResConeAngle3->Fill(EventsConeAngle);
+                  hNCResDoCA23->Fill(DoCA2_Event);
+                  hNCResVA3->Fill(VAEnergy*1000);
+                  }
 	       }
 	    if (NCDIS )//&& hasPion && hasPion2) 
 	       {
@@ -1378,6 +1573,24 @@ void NewAnalysisBKGD::Loop()
                hNCDISVA->Fill(VAEnergy*1000);
                hNCDISVA2->Fill(VertexActivityADC);
                hNotAssociatedHitVA2->Fill(VertexActivityADC_noTRKID);
+               if (EventsConeAngle <= ConeAngleCut)
+                  {
+                  hNCDISConeAngle1->Fill(EventsConeAngle);
+                  hNCDISDoCA21->Fill(DoCA2_Event);
+                  hNCDISVA1->Fill(VAEnergy*1000);
+                  }
+               if (DoCA2_Event <= DoCACut)
+                  {
+                  hNCDISConeAngle2->Fill(EventsConeAngle);
+                  hNCDISDoCA22->Fill(DoCA2_Event);
+                  hNCDISVA22->Fill(VAEnergy*1000);
+                  }
+               if (VAEnergy*1000 <= VACut)
+                  {
+                  hNCDISConeAngle3->Fill(EventsConeAngle);
+                  hNCDISDoCA23->Fill(DoCA2_Event);
+                  hNCDISVA3->Fill(VAEnergy*1000);
+                  }
 	       }
 	    if (!CCCOH && !CCQE && !CCRes && !CCDIS && !NCRes && !NCDIS) 
 	       {
@@ -1387,6 +1600,24 @@ void NewAnalysisBKGD::Loop()
                hOtherVA->Fill(VAEnergy*1000);
                hOtherVA2->Fill(VertexActivityADC);
                hNotAssociatedHitVA2->Fill(VertexActivityADC_noTRKID);
+               if (EventsConeAngle <= ConeAngleCut)
+                  {
+                  hOtherConeAngle1->Fill(EventsConeAngle);
+                  hOtherDoCA21->Fill(DoCA2_Event);
+                  hOtherVA1->Fill(VAEnergy*1000);
+                  }
+               if (DoCA2_Event <= DoCACut)
+                  {
+                  hOtherConeAngle2->Fill(EventsConeAngle);
+                  hOtherDoCA22->Fill(DoCA2_Event);
+                  hOtherVA22->Fill(VAEnergy*1000);
+                  }
+               if (VAEnergy*1000 <= VACut)
+                  {
+                  hOtherConeAngle3->Fill(EventsConeAngle);
+                  hOtherDoCA23->Fill(DoCA2_Event);
+                  hOtherVA3->Fill(VAEnergy*1000);
+                  }
 	       }
             }
 
@@ -1549,6 +1780,93 @@ void NewAnalysisBKGD::Loop()
    hOpFlashPENCDIS3->Write();
    hOpFlashPECosmic3->Write();
    hOpFlashPEOther3->Write();
+
+
+
+   hCCCohConeAngle1->Write();
+   hCCQEConeAngle1->Write();
+   hCCResConeAngle1->Write();
+   hCCDISConeAngle1->Write();
+   hNCResConeAngle1->Write();
+   hNCDISConeAngle1->Write();
+   hCosmicConeAngle1->Write();
+   hOtherConeAngle1->Write();
+
+   hCCCohConeAngle2->Write();
+   hCCQEConeAngle2->Write();
+   hCCResConeAngle2->Write();
+   hCCDISConeAngle2->Write();
+   hNCResConeAngle2->Write();
+   hNCDISConeAngle2->Write();
+   hCosmicConeAngle2->Write();
+   hOtherConeAngle2->Write();
+
+   hCCCohConeAngle3->Write();
+   hCCQEConeAngle3->Write();
+   hCCResConeAngle3->Write();
+   hCCDISConeAngle3->Write();
+   hNCResConeAngle3->Write();
+   hNCDISConeAngle3->Write();
+   hCosmicConeAngle3->Write();
+   hOtherConeAngle3->Write();
+
+
+
+   hCCCohDoCA21->Write();
+   hCCQEDoCA21->Write();
+   hCCResDoCA21->Write();
+   hCCDISDoCA21->Write();
+   hNCResDoCA21->Write();
+   hNCDISDoCA21->Write();
+   hCosmicDoCA21->Write();
+   hOtherDoCA21->Write();
+
+   hCCCohDoCA22->Write();
+   hCCQEDoCA22->Write();
+   hCCResDoCA22->Write();
+   hCCDISDoCA22->Write();
+   hNCResDoCA22->Write();
+   hNCDISDoCA22->Write();
+   hCosmicDoCA22->Write();
+   hOtherDoCA22->Write();
+
+   hCCCohDoCA23->Write();
+   hCCQEDoCA23->Write();
+   hCCResDoCA23->Write();
+   hCCDISDoCA23->Write();
+   hNCResDoCA23->Write();
+   hNCDISDoCA23->Write();
+   hCosmicDoCA23->Write();
+   hOtherDoCA23->Write();
+
+
+
+   hCCCohVA1->Write();
+   hCCQEVA1->Write();
+   hCCResVA1->Write();
+   hCCDISVA1->Write();
+   hNCResVA1->Write();
+   hNCDISVA1->Write();
+   hCosmicVA1->Write();
+   hOtherVA1->Write();
+
+   hCCCohVA22->Write();
+   hCCQEVA22->Write();
+   hCCResVA22->Write();
+   hCCDISVA22->Write();
+   hNCResVA22->Write();
+   hNCDISVA22->Write();
+   hCosmicVA22->Write();
+   hOtherVA22->Write();
+
+   hCCCohVA3->Write();
+   hCCQEVA3->Write();
+   hCCResVA3->Write();
+   hCCDISVA3->Write();
+   hNCResVA3->Write();
+   hNCDISVA3->Write();
+   hCosmicVA3->Write();
+   hOtherVA3->Write();
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 } // End NewAnalysisBKGD Loop
