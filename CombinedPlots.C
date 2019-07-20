@@ -1,7 +1,166 @@
 {
-TFile *f = new TFile("./Histograms_NewAnalysis_BKGD_Vertex_7_5_cm.root"); //<--File for Backgrounds
-TFile *f2 = new TFile("./Histograms_NewAnalysis_CCCoh_Vertex_7_5_cm.root"); //<--File for CCCoh
-TFile *f3 = new TFile("./Histograms_NewAnalysis_BKGD_Vertex_7_5_cm.root"); //<--File for Cosmics
+TFile *f = new TFile("./Histograms_NewAnalysis_BKGD_Bestest.root"); //<--File for Backgrounds
+TFile *f2 = new TFile("./Histograms_NewAnalysis_CCCoh_Bestest.root"); //<--File for CCCoh
+TFile *f3 = new TFile("./Histograms_NewAnalysis_BKGD_Bestest.root"); //<--File for Cosmics
+
+
+
+TFile *b1 = new TFile("./Histograms_NewAnalysis_BKGD_Vertex_5_0_cm.root");
+TFile *cc1 = new TFile("./Histograms_NewAnalysis_CCCoh_Vertex_5_0_cm.root");
+
+TFile *b2 = new TFile("./Histograms_NewAnalysis_BKGD_Vertex_7_5_cm.root");
+TFile *cc2 = new TFile("./Histograms_NewAnalysis_CCCoh_Vertex_7_5_cm.root");
+
+TFile *b3 = new TFile("./Histograms_NewAnalysis_BKGD_Bestest.root");
+TFile *cc3 = new TFile("./Histograms_NewAnalysis_CCCoh_Bestest.root");
+
+TFile *b4 = new TFile("./Histograms_NewAnalysis_BKGD_Vertex_12_5_cm.root");
+TFile *cc4 = new TFile("./Histograms_NewAnalysis_CCCoh_Vertex_12_5_cm.root");
+
+TFile *b5 = new TFile("./Histograms_NewAnalysis_BKGD_Vertex_15_0_cm.root");
+TFile *cc5 = new TFile("./Histograms_NewAnalysis_CCCoh_Vertex_15_0_cm.root");
+
+TFile *b6 = new TFile("./Histograms_NewAnalysis_BKGD_Vertex_17_5_cm.root");
+TFile *cc6 = new TFile("./Histograms_NewAnalysis_CCCoh_Vertex_17_5_cm.root");
+
+TFile *b7 = new TFile("./Histograms_NewAnalysis_BKGD_Vertex_17_5_cm.root");
+TFile *cc7 = new TFile("./Histograms_NewAnalysis_CCCoh_Vertex_17_5_cm.root");
+
+
+
+TH1D *hCCCohVA1 = (TH1D*)cc1->Get("hCCCohVA");
+TH1D *hCCQEVA1 = (TH1D*)b1->Get("hCCQEVA");
+TH1D *hCCResVA1 = (TH1D*)b1->Get("hCCResVA");
+TH1D *hCCDISVA1 = (TH1D*)b1->Get("hCCDISVA");
+TH1D *hNCResVA1 = (TH1D*)b1->Get("hNCResVA");
+TH1D *hNCDISVA1 = (TH1D*)b1->Get("hNCDISVA");
+TH1D *hCosmicVA1 = (TH1D*)b1->Get("hCosmicVA");
+TH1D *hOtherVA1 = (TH1D*)b1->Get("hOtherVA");
+
+hCCCohVA1->Sumw2();
+hCCQEVA1->Sumw2();
+hCCResVA1->Sumw2();
+hCCDISVA1->Sumw2();
+hNCResVA1->Sumw2();
+hNCDISVA1->Sumw2();
+hCosmicVA1->Sumw2();
+hOtherVA1->Sumw2();
+
+
+TH1D *hCCCohVA2 = (TH1D*)cc2->Get("hCCCohVA");
+TH1D *hCCQEVA2 = (TH1D*)b2->Get("hCCQEVA");
+TH1D *hCCResVA2 = (TH1D*)b2->Get("hCCResVA");
+TH1D *hCCDISVA2 = (TH1D*)b2->Get("hCCDISVA");
+TH1D *hNCResVA2 = (TH1D*)b2->Get("hNCResVA");
+TH1D *hNCDISVA2 = (TH1D*)b2->Get("hNCDISVA");
+TH1D *hCosmicVA2 = (TH1D*)b2->Get("hCosmicVA");
+TH1D *hOtherVA2 = (TH1D*)b2->Get("hOtherVA");
+
+hCCCohVA2->Sumw2();
+hCCQEVA2->Sumw2();
+hCCResVA2->Sumw2();
+hCCDISVA2->Sumw2();
+hNCResVA2->Sumw2();
+hNCDISVA2->Sumw2();
+hCosmicVA2->Sumw2();
+hOtherVA2->Sumw2();
+
+
+TH1D *hCCCohVA3 = (TH1D*)cc3->Get("hCCCohVA");
+TH1D *hCCQEVA3 = (TH1D*)b3->Get("hCCQEVA");
+TH1D *hCCResVA3 = (TH1D*)b3->Get("hCCResVA");
+TH1D *hCCDISVA3 = (TH1D*)b3->Get("hCCDISVA");
+TH1D *hNCResVA3 = (TH1D*)b3->Get("hNCResVA");
+TH1D *hNCDISVA3 = (TH1D*)b3->Get("hNCDISVA");
+TH1D *hCosmicVA3 = (TH1D*)b3->Get("hCosmicVA");
+TH1D *hOtherVA3 = (TH1D*)b3->Get("hOtherVA");
+
+hCCCohVA3->Sumw2();
+hCCQEVA3->Sumw2();
+hCCResVA3->Sumw2();
+hCCDISVA3->Sumw2();
+hNCResVA3->Sumw2();
+hNCDISVA3->Sumw2();
+hCosmicVA3->Sumw2();
+hOtherVA3->Sumw2();
+
+
+TH1D *hCCCohVA4 = (TH1D*)cc4->Get("hCCCohVA");
+TH1D *hCCQEVA4 = (TH1D*)b4->Get("hCCQEVA");
+TH1D *hCCResVA4 = (TH1D*)b4->Get("hCCResVA");
+TH1D *hCCDISVA4 = (TH1D*)b4->Get("hCCDISVA");
+TH1D *hNCResVA4 = (TH1D*)b4->Get("hNCResVA");
+TH1D *hNCDISVA4 = (TH1D*)b4->Get("hNCDISVA");
+TH1D *hCosmicVA4 = (TH1D*)b4->Get("hCosmicVA");
+TH1D *hOtherVA4 = (TH1D*)b4->Get("hOtherVA");
+
+hCCCohVA4->Sumw2();
+hCCQEVA4->Sumw2();
+hCCResVA4->Sumw2();
+hCCDISVA4->Sumw2();
+hNCResVA4->Sumw2();
+hNCDISVA4->Sumw2();
+hCosmicVA4->Sumw2();
+hOtherVA4->Sumw2();
+
+
+TH1D *hCCCohVA5 = (TH1D*)cc5->Get("hCCCohVA");
+TH1D *hCCQEVA5 = (TH1D*)b5->Get("hCCQEVA");
+TH1D *hCCResVA5 = (TH1D*)b5->Get("hCCResVA");
+TH1D *hCCDISVA5 = (TH1D*)b5->Get("hCCDISVA");
+TH1D *hNCResVA5 = (TH1D*)b5->Get("hNCResVA");
+TH1D *hNCDISVA5 = (TH1D*)b5->Get("hNCDISVA");
+TH1D *hCosmicVA5 = (TH1D*)b5->Get("hCosmicVA");
+TH1D *hOtherVA5 = (TH1D*)b5->Get("hOtherVA");
+
+hCCCohVA5->Sumw2();
+hCCQEVA5->Sumw2();
+hCCResVA5->Sumw2();
+hCCDISVA5->Sumw2();
+hNCResVA5->Sumw2();
+hNCDISVA5->Sumw2();
+hCosmicVA5->Sumw2();
+hOtherVA5->Sumw2();
+
+
+TH1D *hCCCohVA6 = (TH1D*)cc6->Get("hCCCohVA");
+TH1D *hCCQEVA6 = (TH1D*)b6->Get("hCCQEVA");
+TH1D *hCCResVA6 = (TH1D*)b6->Get("hCCResVA");
+TH1D *hCCDISVA6 = (TH1D*)b6->Get("hCCDISVA");
+TH1D *hNCResVA6 = (TH1D*)b6->Get("hNCResVA");
+TH1D *hNCDISVA6 = (TH1D*)b6->Get("hNCDISVA");
+TH1D *hCosmicVA6 = (TH1D*)b6->Get("hCosmicVA");
+TH1D *hOtherVA6 = (TH1D*)b6->Get("hOtherVA");
+
+hCCCohVA6->Sumw2();
+hCCQEVA6->Sumw2();
+hCCResVA6->Sumw2();
+hCCDISVA6->Sumw2();
+hNCResVA6->Sumw2();
+hNCDISVA6->Sumw2();
+hCosmicVA6->Sumw2();
+hOtherVA6->Sumw2();
+
+
+TH1D *hCCCohVA7 = (TH1D*)cc7->Get("hCCCohVA");
+TH1D *hCCQEVA7 = (TH1D*)b7->Get("hCCQEVA");
+TH1D *hCCResVA7 = (TH1D*)b7->Get("hCCResVA");
+TH1D *hCCDISVA7 = (TH1D*)b7->Get("hCCDISVA");
+TH1D *hNCResVA7 = (TH1D*)b7->Get("hNCResVA");
+TH1D *hNCDISVA7 = (TH1D*)b7->Get("hNCDISVA");
+TH1D *hCosmicVA7 = (TH1D*)b7->Get("hCosmicVA");
+TH1D *hOtherVA7 = (TH1D*)b7->Get("hOtherVA");
+
+hCCCohVA7->Sumw2();
+hCCQEVA7->Sumw2();
+hCCResVA7->Sumw2();
+hCCDISVA7->Sumw2();
+hNCResVA7->Sumw2();
+hNCDISVA7->Sumw2();
+hCosmicVA7->Sumw2();
+hOtherVA7->Sumw2();
+
+
 
 TH1D *hCCCohConeAngle = (TH1D*)f2->Get("hCCCohConeAngle");
 TH1D *hCCQEConeAngle = (TH1D*)f->Get("hCCQEConeAngle");
@@ -50,10 +209,10 @@ for (int i = 0; i < n; i++)
 
    CCCohConeAngleRejection[i] = hCCCohConeAngle->GetEntries() - CCCohConeAngle[i];
 
-   //ConeAngleEff[i] = 100*(CCCohConeAngle[i] + CCQEConeAngle[i] + CCResConeAngle[i] + CCDISConeAngle[i] + NCResConeAngle[i] + NCDISConeAngle[i] + OtherConeAngle[i])/(hCCCohConeAngle->GetEntries() + hCCQEConeAngle->GetEntries() + hCCResConeAngle->GetEntries() + hCCDISConeAngle->GetEntries() + hNCResConeAngle->GetEntries() + hNCDISConeAngle->GetEntries() + hOtherConeAngle->GetEntries());
-   //ConeAnglePurity[i] = 100*CCCohConeAngle[i]/(CCCohConeAngle[i] + CCQEConeAngle[i] + CCResConeAngle[i] + CCDISConeAngle[i] + NCResConeAngle[i] + NCDISConeAngle[i] + OtherConeAngle[i]);
-   ConeAngleEff[i] = 100*(CCCohConeAngle[i] + CCQEConeAngle[i] + CCResConeAngle[i] + CCDISConeAngle[i] + NCResConeAngle[i] + NCDISConeAngle[i] + CosmicConeAngle[i] + OtherConeAngle[i])/(hCCCohConeAngle->GetEntries() + hCCQEConeAngle->GetEntries() + hCCResConeAngle->GetEntries() + hCCDISConeAngle->GetEntries() + hNCResConeAngle->GetEntries() + hNCDISConeAngle->GetEntries() + hCosmicConeAngle->GetEntries() + hOtherConeAngle->GetEntries());
-   ConeAnglePurity[i] = 100*CCCohConeAngle[i]/(CCCohConeAngle[i] + CCQEConeAngle[i] + CCResConeAngle[i] + CCDISConeAngle[i] + NCResConeAngle[i] + NCDISConeAngle[i] + CosmicConeAngle[i] + OtherConeAngle[i]);
+   ConeAngleEff[i] = 100*(CCCohConeAngle[i] + CCQEConeAngle[i] + CCResConeAngle[i] + CCDISConeAngle[i] + NCResConeAngle[i] + NCDISConeAngle[i] + OtherConeAngle[i])/(hCCCohConeAngle->GetEntries() + hCCQEConeAngle->GetEntries() + hCCResConeAngle->GetEntries() + hCCDISConeAngle->GetEntries() + hNCResConeAngle->GetEntries() + hNCDISConeAngle->GetEntries() + hOtherConeAngle->GetEntries());
+   ConeAnglePurity[i] = 100*CCCohConeAngle[i]/(CCCohConeAngle[i] + CCQEConeAngle[i] + CCResConeAngle[i] + CCDISConeAngle[i] + NCResConeAngle[i] + NCDISConeAngle[i] + OtherConeAngle[i]);
+   //ConeAngleEff[i] = 100*(CCCohConeAngle[i] + CCQEConeAngle[i] + CCResConeAngle[i] + CCDISConeAngle[i] + NCResConeAngle[i] + NCDISConeAngle[i] + CosmicConeAngle[i] + OtherConeAngle[i])/(hCCCohConeAngle->GetEntries() + hCCQEConeAngle->GetEntries() + hCCResConeAngle->GetEntries() + hCCDISConeAngle->GetEntries() + hNCResConeAngle->GetEntries() + hNCDISConeAngle->GetEntries() + hCosmicConeAngle->GetEntries() + hOtherConeAngle->GetEntries());
+   //ConeAnglePurity[i] = 100*CCCohConeAngle[i]/(CCCohConeAngle[i] + CCQEConeAngle[i] + CCResConeAngle[i] + CCDISConeAngle[i] + NCResConeAngle[i] + NCDISConeAngle[i] + CosmicConeAngle[i] + OtherConeAngle[i]);
 
    if (i == 0) {CCQEConeAngle[i] = CCQEConeAngle[i] - 1;}
 
@@ -215,10 +374,10 @@ for (int i = 0; i < m; i++)
 
    CCCohDoCARejection[i] = hCCCohDoCA->GetEntries() - CCCohDoCA[i];
 
-   //DoCAEff[i] = 100*(CCCohDoCA[i] + CCQEDoCA[i] + CCResDoCA[i] + CCDISDoCA[i] + NCResDoCA[i] + NCDISDoCA[i] + OtherDoCA[i])/(hCCCohDoCA->GetEntries() + hCCQEDoCA->GetEntries() + hCCResDoCA->GetEntries() + hCCDISDoCA->GetEntries() + hNCResDoCA->GetEntries() + hNCDISDoCA->GetEntries() + hOtherDoCA->GetEntries());
-   //DoCAPurity[i] = 100*CCCohDoCA[i]/(CCCohDoCA[i] + CCQEDoCA[i] + CCResDoCA[i] + CCDISDoCA[i] + NCResDoCA[i] + NCDISDoCA[i] + OtherDoCA[i]);
-   DoCAEff[i] = 100*(CCCohDoCA[i] + CCQEDoCA[i] + CCResDoCA[i] + CCDISDoCA[i] + NCResDoCA[i] + NCDISDoCA[i] + CosmicDoCA[i] + OtherDoCA[i])/(hCCCohDoCA->GetEntries() + hCCQEDoCA->GetEntries() + hCCResDoCA->GetEntries() + hCCDISDoCA->GetEntries() + hNCResDoCA->GetEntries() + hNCDISDoCA->GetEntries() + hCosmicDoCA->GetEntries() + hOtherDoCA->GetEntries());
-   DoCAPurity[i] = 100*CCCohDoCA[i]/(CCCohDoCA[i] + CCQEDoCA[i] + CCResDoCA[i] + CCDISDoCA[i] + NCResDoCA[i] + NCDISDoCA[i] + CosmicDoCA[i] + OtherDoCA[i]);
+   DoCAEff[i] = 100*(CCCohDoCA[i] + CCQEDoCA[i] + CCResDoCA[i] + CCDISDoCA[i] + NCResDoCA[i] + NCDISDoCA[i] + OtherDoCA[i])/(hCCCohDoCA->GetEntries() + hCCQEDoCA->GetEntries() + hCCResDoCA->GetEntries() + hCCDISDoCA->GetEntries() + hNCResDoCA->GetEntries() + hNCDISDoCA->GetEntries() + hOtherDoCA->GetEntries());
+   DoCAPurity[i] = 100*CCCohDoCA[i]/(CCCohDoCA[i] + CCQEDoCA[i] + CCResDoCA[i] + CCDISDoCA[i] + NCResDoCA[i] + NCDISDoCA[i] + OtherDoCA[i]);
+   //DoCAEff[i] = 100*(CCCohDoCA[i] + CCQEDoCA[i] + CCResDoCA[i] + CCDISDoCA[i] + NCResDoCA[i] + NCDISDoCA[i] + CosmicDoCA[i] + OtherDoCA[i])/(hCCCohDoCA->GetEntries() + hCCQEDoCA->GetEntries() + hCCResDoCA->GetEntries() + hCCDISDoCA->GetEntries() + hNCResDoCA->GetEntries() + hNCDISDoCA->GetEntries() + hCosmicDoCA->GetEntries() + hOtherDoCA->GetEntries());
+   //DoCAPurity[i] = 100*CCCohDoCA[i]/(CCCohDoCA[i] + CCQEDoCA[i] + CCResDoCA[i] + CCDISDoCA[i] + NCResDoCA[i] + NCDISDoCA[i] + CosmicDoCA[i] + OtherDoCA[i]);
 
    if (i == 0) {CCQEDoCA[i] = CCQEDoCA[i] - 1;}
 
@@ -380,10 +539,10 @@ for (int i = 0; i < j; i++)
 
    CCCohVARejection[i] = hCCCohVA->GetEntries() - CCCohVA[i];
 
-   //VAEff[i] = 100*(CCCohVA[i] + CCQEVA[i] + CCResVA[i] + CCDISVA[i] + NCResVA[i] + NCDISVA[i] + OtherVA[i])/(hCCCohVA->GetEntries() + hCCQEVA->GetEntries() + hCCResVA->GetEntries() + hCCDISVA->GetEntries() + hNCResVA->GetEntries() + hNCDISVA->GetEntries() + hOtherVA->GetEntries());
-   //VAPurity[i] = 100*CCCohVA[i]/(CCCohVA[i] + CCQEVA[i] + CCResVA[i] + CCDISVA[i] + NCResVA[i] + NCDISVA[i] + OtherVA[i]);
-   VAEff[i] = 100*(CCCohVA[i] + CCQEVA[i] + CCResVA[i] + CCDISVA[i] + NCResVA[i] + NCDISVA[i] + CosmicVA[i] + OtherVA[i])/(hCCCohVA->GetEntries() + hCCQEVA->GetEntries() + hCCResVA->GetEntries() + hCCDISVA->GetEntries() + hNCResVA->GetEntries() + hNCDISVA->GetEntries() + hCosmicVA->GetEntries() + hOtherVA->GetEntries());
-   VAPurity[i] = 100*CCCohVA[i]/(CCCohVA[i] + CCQEVA[i] + CCResVA[i] + CCDISVA[i] + NCResVA[i] + NCDISVA[i] + CosmicVA[i] + OtherVA[i]);
+   VAEff[i] = 100*(CCCohVA[i] + CCQEVA[i] + CCResVA[i] + CCDISVA[i] + NCResVA[i] + NCDISVA[i] + OtherVA[i])/(hCCCohVA->GetEntries() + hCCQEVA->GetEntries() + hCCResVA->GetEntries() + hCCDISVA->GetEntries() + hNCResVA->GetEntries() + hNCDISVA->GetEntries() + hOtherVA->GetEntries());
+   VAPurity[i] = 100*CCCohVA[i]/(CCCohVA[i] + CCQEVA[i] + CCResVA[i] + CCDISVA[i] + NCResVA[i] + NCDISVA[i] + OtherVA[i]);
+   //VAEff[i] = 100*(CCCohVA[i] + CCQEVA[i] + CCResVA[i] + CCDISVA[i] + NCResVA[i] + NCDISVA[i] + CosmicVA[i] + OtherVA[i])/(hCCCohVA->GetEntries() + hCCQEVA->GetEntries() + hCCResVA->GetEntries() + hCCDISVA->GetEntries() + hNCResVA->GetEntries() + hNCDISVA->GetEntries() + hCosmicVA->GetEntries() + hOtherVA->GetEntries());
+   //VAPurity[i] = 100*CCCohVA[i]/(CCCohVA[i] + CCQEVA[i] + CCResVA[i] + CCDISVA[i] + NCResVA[i] + NCDISVA[i] + CosmicVA[i] + OtherVA[i]);
 
    if (i == 0) {CCQEVA[i] = CCQEVA[i] - 1;}
 
@@ -538,10 +697,10 @@ for (int i = 0; i < k; i++)
       CosmicOp[i] += hCosmicOp->GetBinContent(g);
       } // End g-Loop
 
-   //OpEff[i] = 100*(CCCohOp[i] + CCQEOp[i] + CCResOp[i] + CCDISOp[i] + NCResOp[i] + NCDISOp[i] + OtherOp[i])/(hCCCohOp->GetEntries() + hCCQEOp->GetEntries() + hCCResOp->GetEntries() + hCCDISOp->GetEntries() + hNCResOp->GetEntries() + hNCDISOp->GetEntries() + hOtherOp->GetEntries());
-   //OpPurity[i] = 100*CCCohOp[i]/(CCCohOp[i] + CCQEOp[i] + CCResOp[i] + CCDISOp[i] + NCResOp[i] + NCDISOp[i] + OtherOp[i]);
-   OpEff[i] = 100*(CCCohOp[i] + CCQEOp[i] + CCResOp[i] + CCDISOp[i] + NCResOp[i] + NCDISOp[i] + CosmicOp[i] + OtherOp[i])/(hCCCohOp->GetEntries() + hCCQEOp->GetEntries() + hCCResOp->GetEntries() + hCCDISOp->GetEntries() + hNCResOp->GetEntries() + hNCDISOp->GetEntries() + hCosmicOp->GetEntries() + hOtherOp->GetEntries());
-   OpPurity[i] = 100*CCCohOp[i]/(CCCohOp[i] + CCQEOp[i] + CCResOp[i] + CCDISOp[i] + NCResOp[i] + NCDISOp[i] + CosmicOp[i] + OtherOp[i]);
+   OpEff[i] = 100*(CCCohOp[i] + CCQEOp[i] + CCResOp[i] + CCDISOp[i] + NCResOp[i] + NCDISOp[i] + OtherOp[i])/(hCCCohOp->GetEntries() + hCCQEOp->GetEntries() + hCCResOp->GetEntries() + hCCDISOp->GetEntries() + hNCResOp->GetEntries() + hNCDISOp->GetEntries() + hOtherOp->GetEntries());
+   OpPurity[i] = 100*CCCohOp[i]/(CCCohOp[i] + CCQEOp[i] + CCResOp[i] + CCDISOp[i] + NCResOp[i] + NCDISOp[i] + OtherOp[i]);
+   //OpEff[i] = 100*(CCCohOp[i] + CCQEOp[i] + CCResOp[i] + CCDISOp[i] + NCResOp[i] + NCDISOp[i] + CosmicOp[i] + OtherOp[i])/(hCCCohOp->GetEntries() + hCCQEOp->GetEntries() + hCCResOp->GetEntries() + hCCDISOp->GetEntries() + hNCResOp->GetEntries() + hNCDISOp->GetEntries() + hCosmicOp->GetEntries() + hOtherOp->GetEntries());
+   //OpPurity[i] = 100*CCCohOp[i]/(CCCohOp[i] + CCQEOp[i] + CCResOp[i] + CCDISOp[i] + NCResOp[i] + NCDISOp[i] + CosmicOp[i] + OtherOp[i]);
 
    CCCohOp[i] = CCCohOp[i]*100/hCCCohOp->GetEntries();
    CCQEOp[i] = 100 - CCQEOp[i]*100/hCCQEOp->GetEntries();
@@ -1128,4 +1287,157 @@ gVAPurity->GetYaxis()->SetTitle("Purity");
 gVAPurity->GetYaxis()->CenterTitle();
 
 gVAPurity->Draw();
+
+
+
+
+
+
+TCanvas *c15 = new TCanvas("c15", "Vertex Activity");
+c15->SetTicks();
+c15->SetFillColor(kWhite);
+
+// Area normalzing the plot 
+hCCCohVA1->Scale(1/hCCCohVA1->Integral());
+hCCQEVA1->Scale(1/hCCQEVA1->Integral());
+hCCResVA1->Scale(1/hCCResVA1->Integral());
+hCCDISVA1->Scale(1/hCCDISVA1->Integral());
+hNCResVA1->Scale(1/hNCResVA1->Integral());
+hNCDISVA1->Scale(1/hNCDISVA1->Integral());
+hCosmicVA1->Scale(1/hCosmicVA1->Integral());
+hOtherVA1->Scale(1/hOtherVA1->Integral());
+
+hCCCohVA1->SetLineColor(kBlue);
+hCCCohVA1->SetLineWidth(2);
+
+hCCQEVA1->SetLineColor(kRed);
+hCCQEVA1->SetLineWidth(2);
+
+hCCResVA1->SetLineColor(kGreen);
+hCCResVA1->SetLineWidth(2);
+
+hCCDISVA1->SetLineColor(kOrange);
+hCCDISVA1->SetLineWidth(2);
+
+hNCResVA1->SetLineColor(kCyan);
+hNCResVA1->SetLineWidth(2);
+
+hNCDISVA1->SetLineColor(kMagenta);
+hNCDISVA1->SetLineWidth(2);
+
+hCosmicVA1->SetLineColor(kBlack);
+hCosmicVA1->SetLineWidth(2);
+
+hOtherVA1->SetLineColor(14);
+hOtherVA1->SetLineWidth(2);
+
+hCCCohVA1->GetXaxis()->SetTitle("Vertex Activity [MeV]");
+hCCCohVA1->GetXaxis()->CenterTitle();
+
+hCCCohVA1->GetYaxis()->SetTitle("Normalized Events [Number/Degree]");
+hCCCohVA1->GetYaxis()->CenterTitle();
+
+hCCCohVA1->Draw("histo");
+hCCQEVA1->Draw("histosame");
+hCCResVA1->Draw("histosame");
+hCCDISVA1->Draw("histosame");
+hNCResVA1->Draw("histosame");
+hNCDISVA1->Draw("histosame");
+hCosmicVA1->Draw("histosame");
+hOtherVA1->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg15 = new TLegend();
+leg15 = new TLegend(0.58,0.65,0.88,0.88);
+leg15->SetTextSize(0.04);
+leg15->SetTextAlign(12);
+leg15->SetFillColor(kWhite);
+leg15->SetLineColor(kWhite);
+leg15->SetShadowColor(kWhite);
+leg15->SetHeader("Channel");
+leg15->AddEntry(hCCCohVA1,"CC-COH");
+leg15->AddEntry(hCCQEVA1,"CC-QE");
+leg15->AddEntry(hCCResVA1,"CC-Res");
+leg15->AddEntry(hCCDISVA1,"CC-DIS");
+leg15->AddEntry(hNCResVA1,"NC-Res");
+leg15->AddEntry(hNCDISVA1,"NC-DIS");
+leg15->AddEntry(hOtherVA1,"Other");
+leg15->AddEntry(hCosmicVA1,"Cosmic");
+leg15->Draw();
+
+
+
+TCanvas *c16 = new TCanvas("c16", "Vertex Activity");
+c16->SetTicks();
+c16->SetFillColor(kWhite);
+
+// Area normalzing the plot 
+hCCCohVA7->Scale(1/hCCCohVA7->Integral());
+hCCQEVA7->Scale(1/hCCQEVA7->Integral());
+hCCResVA7->Scale(1/hCCResVA7->Integral());
+hCCDISVA7->Scale(1/hCCDISVA7->Integral());
+hNCResVA7->Scale(1/hNCResVA7->Integral());
+hNCDISVA7->Scale(1/hNCDISVA7->Integral());
+hCosmicVA7->Scale(1/hCosmicVA7->Integral());
+hOtherVA7->Scale(1/hOtherVA7->Integral());
+
+hCCCohVA7->SetLineColor(kBlue);
+hCCCohVA7->SetLineWidth(2);
+
+hCCQEVA7->SetLineColor(kRed);
+hCCQEVA7->SetLineWidth(2);
+
+hCCResVA7->SetLineColor(kGreen);
+hCCResVA7->SetLineWidth(2);
+
+hCCDISVA7->SetLineColor(kOrange);
+hCCDISVA7->SetLineWidth(2);
+
+hNCResVA7->SetLineColor(kCyan);
+hNCResVA7->SetLineWidth(2);
+
+hNCDISVA7->SetLineColor(kMagenta);
+hNCDISVA7->SetLineWidth(2);
+
+hCosmicVA7->SetLineColor(kBlack);
+hCosmicVA7->SetLineWidth(2);
+
+hOtherVA7->SetLineColor(14);
+hOtherVA7->SetLineWidth(2);
+
+hCCCohVA7->GetXaxis()->SetTitle("Vertex Activity [MeV]");
+hCCCohVA7->GetXaxis()->CenterTitle();
+
+hCCCohVA7->GetYaxis()->SetTitle("Normalized Events [Number/Degree]");
+hCCCohVA7->GetYaxis()->CenterTitle();
+
+hCCCohVA7->Draw("histo");
+hCCQEVA7->Draw("histosame");
+hCCResVA7->Draw("histosame");
+hCCDISVA7->Draw("histosame");
+hNCResVA7->Draw("histosame");
+hNCDISVA7->Draw("histosame");
+hCosmicVA7->Draw("histosame");
+hOtherVA7->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg16 = new TLegend();
+leg16 = new TLegend(0.58,0.65,0.88,0.88);
+leg16->SetTextSize(0.04);
+leg16->SetTextAlign(12);
+leg16->SetFillColor(kWhite);
+leg16->SetLineColor(kWhite);
+leg16->SetShadowColor(kWhite);
+leg16->SetHeader("Channel");
+leg16->AddEntry(hCCCohVA7,"CC-COH");
+leg16->AddEntry(hCCQEVA7,"CC-QE");
+leg16->AddEntry(hCCResVA7,"CC-Res");
+leg16->AddEntry(hCCDISVA7,"CC-DIS");
+leg16->AddEntry(hNCResVA7,"NC-Res");
+leg16->AddEntry(hNCDISVA7,"NC-DIS");
+leg16->AddEntry(hOtherVA7,"Other");
+leg16->AddEntry(hCosmicVA7,"Cosmic");
+leg16->Draw();
 }
