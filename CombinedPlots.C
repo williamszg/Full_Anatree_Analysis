@@ -11,8 +11,8 @@ TFile *cc1 = new TFile("./Histograms_NewAnalysis_CCCoh_Vertex_5_0_cm.root");
 TFile *b2 = new TFile("./Histograms_NewAnalysis_BKGD_Vertex_7_5_cm.root");
 TFile *cc2 = new TFile("./Histograms_NewAnalysis_CCCoh_Vertex_7_5_cm.root");
 
-TFile *b3 = new TFile("./Histograms_NewAnalysis_BKGD_Bestest.root");
-TFile *cc3 = new TFile("./Histograms_NewAnalysis_CCCoh_Bestest.root");
+TFile *b3 = new TFile("./Histograms_NewAnalysis_BKGD_Vertex_10_0_cm.root");
+TFile *cc3 = new TFile("./Histograms_NewAnalysis_CCCoh_Vertex_10_0_cm.root");
 
 TFile *b4 = new TFile("./Histograms_NewAnalysis_BKGD_Vertex_12_5_cm.root");
 TFile *cc4 = new TFile("./Histograms_NewAnalysis_CCCoh_Vertex_12_5_cm.root");
@@ -23,8 +23,14 @@ TFile *cc5 = new TFile("./Histograms_NewAnalysis_CCCoh_Vertex_15_0_cm.root");
 TFile *b6 = new TFile("./Histograms_NewAnalysis_BKGD_Vertex_17_5_cm.root");
 TFile *cc6 = new TFile("./Histograms_NewAnalysis_CCCoh_Vertex_17_5_cm.root");
 
-TFile *b7 = new TFile("./Histograms_NewAnalysis_BKGD_Vertex_17_5_cm.root");
-TFile *cc7 = new TFile("./Histograms_NewAnalysis_CCCoh_Vertex_17_5_cm.root");
+TFile *b7 = new TFile("./Histograms_NewAnalysis_BKGD_Vertex_20_0_cm.root");
+TFile *cc7 = new TFile("./Histograms_NewAnalysis_CCCoh_Vertex_20_0_cm.root");
+
+TFile *b8 = new TFile("./Histograms_NewAnalysis_BKGD_Vertex_22_5_cm.root");
+TFile *cc8 = new TFile("./Histograms_NewAnalysis_CCCoh_Vertex_22_5_cm.root");
+
+TFile *b9 = new TFile("./Histograms_NewAnalysis_BKGD_Vertex_25_0_cm.root");
+TFile *cc9 = new TFile("./Histograms_NewAnalysis_CCCoh_Vertex_25_0_cm.root");
 
 
 
@@ -161,6 +167,65 @@ hCosmicVA7->Sumw2();
 hOtherVA7->Sumw2();
 
 
+TH1D *hCCCohVA8 = (TH1D*)cc8->Get("hCCCohVA");
+TH1D *hCCQEVA8 = (TH1D*)b8->Get("hCCQEVA");
+TH1D *hCCResVA8 = (TH1D*)b8->Get("hCCResVA");
+TH1D *hCCDISVA8 = (TH1D*)b8->Get("hCCDISVA");
+TH1D *hNCResVA8 = (TH1D*)b8->Get("hNCResVA");
+TH1D *hNCDISVA8 = (TH1D*)b8->Get("hNCDISVA");
+TH1D *hCosmicVA8 = (TH1D*)b8->Get("hCosmicVA");
+TH1D *hOtherVA8 = (TH1D*)b8->Get("hOtherVA");
+
+hCCCohVA8->Sumw2();
+hCCQEVA8->Sumw2();
+hCCResVA8->Sumw2();
+hCCDISVA8->Sumw2();
+hNCResVA8->Sumw2();
+hNCDISVA8->Sumw2();
+hCosmicVA8->Sumw2();
+hOtherVA8->Sumw2();
+
+
+TH1D *hCCCohVA9 = (TH1D*)cc9->Get("hCCCohVA");
+TH1D *hCCQEVA9 = (TH1D*)b9->Get("hCCQEVA");
+TH1D *hCCResVA9 = (TH1D*)b9->Get("hCCResVA");
+TH1D *hCCDISVA9 = (TH1D*)b9->Get("hCCDISVA");
+TH1D *hNCResVA9 = (TH1D*)b9->Get("hNCResVA");
+TH1D *hNCDISVA9 = (TH1D*)b9->Get("hNCDISVA");
+TH1D *hCosmicVA9 = (TH1D*)b9->Get("hCosmicVA");
+TH1D *hOtherVA9 = (TH1D*)b9->Get("hOtherVA");
+
+hCCCohVA9->Sumw2();
+hCCQEVA9->Sumw2();
+hCCResVA9->Sumw2();
+hCCDISVA9->Sumw2();
+hNCResVA9->Sumw2();
+hNCDISVA9->Sumw2();
+hCosmicVA9->Sumw2();
+hOtherVA9->Sumw2();
+
+
+TH1D *hCCCohVA10 = (TH1D*)cc1->Get("hCCCohVA");
+TH1D *hCCCohVA11 = (TH1D*)cc2->Get("hCCCohVA");
+TH1D *hCCCohVA12 = (TH1D*)cc3->Get("hCCCohVA");
+TH1D *hCCCohVA13 = (TH1D*)cc4->Get("hCCCohVA");
+TH1D *hCCCohVA14 = (TH1D*)cc5->Get("hCCCohVA");
+TH1D *hCCCohVA15 = (TH1D*)cc6->Get("hCCCohVA");
+TH1D *hCCCohVA16 = (TH1D*)cc7->Get("hCCCohVA");
+TH1D *hCCCohVA17 = (TH1D*)cc8->Get("hCCCohVA");
+TH1D *hCCCohVA18 = (TH1D*)cc9->Get("hCCCohVA");
+
+/*hCCCohVA10->Sumw2();
+hCCCohVA11->Sumw2();
+hCCCohVA12->Sumw2();
+hCCCohVA13->Sumw2();
+hCCCohVA14->Sumw2();
+hCCCohVA15->Sumw2();
+hCCCohVA16->Sumw2();
+hCCCohVA17->Sumw2();
+hCCCohVA18->Sumw2();*/
+
+
 
 TH1D *hCCCohConeAngle = (TH1D*)f2->Get("hCCCohConeAngle");
 TH1D *hCCQEConeAngle = (TH1D*)f->Get("hCCQEConeAngle");
@@ -168,7 +233,7 @@ TH1D *hCCResConeAngle = (TH1D*)f->Get("hCCResConeAngle");
 TH1D *hCCDISConeAngle = (TH1D*)f->Get("hCCDISConeAngle");
 TH1D *hNCResConeAngle = (TH1D*)f->Get("hNCResConeAngle");
 TH1D *hNCDISConeAngle = (TH1D*)f->Get("hNCDISConeAngle");
-TH1D *hCosmicConeAngle = (TH1D*)f3->Get("hCosmicConeAngle");
+TH1D *hCosmicConeAngle = (TH1D*)f->Get("hCosmicConeAngle");
 TH1D *hOtherConeAngle = (TH1D*)f->Get("hOtherConeAngle");
 
 // -----------------------------
@@ -309,7 +374,7 @@ gOtherConeAngle->Draw("same");
 
 // ### Defining the legend for the plot ###
 TLegend *leg4 = new TLegend();
-leg4 = new TLegend(0.58,0.65,0.88,0.88);
+leg4 = new TLegend(0.58,0.65,1.00,1.00);
 leg4->SetTextSize(0.04);
 leg4->SetTextAlign(12);
 leg4->SetFillColor(kWhite);
@@ -333,7 +398,7 @@ TH1D *hCCResDoCA = (TH1D*)f->Get("hCCResDoCA2");
 TH1D *hCCDISDoCA = (TH1D*)f->Get("hCCDISDoCA2");
 TH1D *hNCResDoCA = (TH1D*)f->Get("hNCResDoCA2");
 TH1D *hNCDISDoCA = (TH1D*)f->Get("hNCDISDoCA2");
-TH1D *hCosmicDoCA = (TH1D*)f3->Get("hCosmicDoCA2");
+TH1D *hCosmicDoCA = (TH1D*)f->Get("hCosmicDoCA2");
 TH1D *hOtherDoCA = (TH1D*)f->Get("hOtherDoCA2");
 
 // -----------------------
@@ -457,37 +522,37 @@ TCanvas *c5 = new TCanvas("c5", "DoCA TGraphs");
 c5->SetTicks();
 c5->SetFillColor(kWhite);
 
-gCCCohDoCA->GetXaxis()->SetTitle("DoCA [cm]");
-gCCCohDoCA->GetXaxis()->CenterTitle();
+gCosmicDoCA->GetXaxis()->SetTitle("DoCA [cm]");
+gCosmicDoCA->GetXaxis()->CenterTitle();
 
-gCCCohDoCA->GetYaxis()->SetTitle("Rejection (Background) Passed (Signal) [%]");
-gCCCohDoCA->GetYaxis()->CenterTitle();
+gCosmicDoCA->GetYaxis()->SetTitle("Rejection (Background) Passed (Signal) [%]");
+gCosmicDoCA->GetYaxis()->CenterTitle();
 
-gCCCohDoCA->Draw();
-gCCQEDoCA->Draw("same");
-gCCResDoCA->Draw("same");
-gCCDISDoCA->Draw("same");
-gNCResDoCA->Draw("same");
-gNCDISDoCA->Draw("same");
-gCosmicDoCA->Draw("same");
-gOtherDoCA->Draw("same");
+//gCCCohDoCA->Draw();
+//gCCQEDoCA->Draw("same");
+//gCCResDoCA->Draw("same");
+//gCCDISDoCA->Draw("same");
+//gNCResDoCA->Draw("same");
+//gNCDISDoCA->Draw("same");
+gCosmicDoCA->Draw();
+//gOtherDoCA->Draw("same");
 
 // ### Defining the legend for the plot ###
 TLegend *leg5 = new TLegend();
-leg5 = new TLegend(0.58,0.65,0.88,0.88);
+leg5 = new TLegend(0.58,0.65,1.00,1.00);
 leg5->SetTextSize(0.04);
 leg5->SetTextAlign(12);
 leg5->SetFillColor(kWhite);
 leg5->SetLineColor(kWhite);
 leg5->SetShadowColor(kWhite);
 leg5->SetHeader("Channel");
-leg5->AddEntry(gCCCohDoCA,"CC-COH");
-leg5->AddEntry(gCCQEDoCA,"CC-QE");
-leg5->AddEntry(gCCResDoCA,"CC-Res");
-leg5->AddEntry(gCCDISDoCA,"CC-DIS");
-leg5->AddEntry(gNCResDoCA,"NC-Res");
-leg5->AddEntry(gNCDISDoCA,"NC-DIS");
-leg5->AddEntry(gOtherDoCA,"Other");
+//leg5->AddEntry(gCCCohDoCA,"CC-COH");
+//leg5->AddEntry(gCCQEDoCA,"CC-QE");
+//leg5->AddEntry(gCCResDoCA,"CC-Res");
+//leg5->AddEntry(gCCDISDoCA,"CC-DIS");
+//leg5->AddEntry(gNCResDoCA,"NC-Res");
+//leg5->AddEntry(gNCDISDoCA,"NC-DIS");
+//leg5->AddEntry(gOtherDoCA,"Other");
 leg5->AddEntry(gCosmicDoCA,"Cosmic");
 leg5->Draw();
 // -----------------------
@@ -498,7 +563,7 @@ TH1D *hCCResVA = (TH1D*)f->Get("hCCResVA");
 TH1D *hCCDISVA = (TH1D*)f->Get("hCCDISVA");
 TH1D *hNCResVA = (TH1D*)f->Get("hNCResVA");
 TH1D *hNCDISVA = (TH1D*)f->Get("hNCDISVA");
-TH1D *hCosmicVA = (TH1D*)f3->Get("hCosmicVA");
+TH1D *hCosmicVA = (TH1D*)f->Get("hCosmicVA");
 TH1D *hOtherVA = (TH1D*)f->Get("hOtherVA");
 
 // ---------------------
@@ -639,7 +704,7 @@ gOtherVA->Draw("same");
 
 // ### Defining the legend for the plot ###
 TLegend *leg6 = new TLegend();
-leg6 = new TLegend(0.58,0.65,0.88,0.88);
+leg6 = new TLegend(0.58,0.65,1.00,1.00);
 leg6->SetTextSize(0.04);
 leg6->SetTextAlign(12);
 leg6->SetFillColor(kWhite);
@@ -794,7 +859,7 @@ gCosmicOp->Draw("same");
 
 // ### Defining the legend for the plot ###
 TLegend *leg7 = new TLegend();
-leg7 = new TLegend(0.58,0.65,0.88,0.88);
+leg7 = new TLegend(0.58,0.65,1.00,1.00);
 leg7->SetTextSize(0.04);
 leg7->SetTextAlign(12);
 leg7->SetFillColor(kWhite);
@@ -906,7 +971,7 @@ hOtherConeAngle->Draw("histosame");
 
 // ### Defining the legend for the plot ###
 TLegend *leg0 = new TLegend();
-leg0 = new TLegend(0.58,0.65,0.88,0.88);
+leg0 = new TLegend(0.58,0.65,1.00,1.00);
 leg0->SetTextSize(0.04);
 leg0->SetTextAlign(12);
 leg0->SetFillColor(kWhite);
@@ -980,7 +1045,7 @@ hOtherDoCA->Draw("histosame");
 
 // ### Defining the legend for the plot ###
 TLegend *leg1 = new TLegend();
-leg1 = new TLegend(0.58,0.65,0.88,0.88);
+leg1 = new TLegend(0.58,0.65,1.00,1.00);
 leg1->SetTextSize(0.04);
 leg1->SetTextAlign(12);
 leg1->SetFillColor(kWhite);
@@ -1054,7 +1119,7 @@ hOtherVA->Draw("histosame");
 
 // ### Defining the legend for the plot ###
 TLegend *leg2 = new TLegend();
-leg2 = new TLegend(0.58,0.65,0.88,0.88);
+leg2 = new TLegend(0.58,0.65,1.00,1.00);
 leg2->SetTextSize(0.04);
 leg2->SetTextAlign(12);
 leg2->SetFillColor(kWhite);
@@ -1128,7 +1193,7 @@ hCCCohOp->Draw("histosame");
 
 // ### Defining the legend for the plot ###
 TLegend *leg3 = new TLegend();
-leg3 = new TLegend(0.58,0.65,0.88,0.88);
+leg3 = new TLegend(0.58,0.65,1.00,1.00);
 leg3->SetTextSize(0.04);
 leg3->SetTextAlign(12);
 leg3->SetFillColor(kWhite);
@@ -1163,7 +1228,7 @@ gConeAnglePurity->Draw("same");
 
 // ### Defining the legend for the plot ###
 TLegend *leg8 = new TLegend();
-leg8 = new TLegend(0.58,0.65,0.88,0.88);
+leg8 = new TLegend(0.58,0.65,1.00,1.00);
 leg8->SetTextSize(0.04);
 leg8->SetTextAlign(12);
 leg8->SetFillColor(kWhite);
@@ -1192,7 +1257,7 @@ gDoCAPurity->Draw("same");
 
 // ### Defining the legend for the plot ###
 TLegend *leg9 = new TLegend();
-leg9 = new TLegend(0.58,0.65,0.88,0.88);
+leg9 = new TLegend(0.58,0.65,1.00,1.00);
 leg9->SetTextSize(0.04);
 leg9->SetTextAlign(12);
 leg9->SetFillColor(kWhite);
@@ -1221,7 +1286,7 @@ gVAPurity->Draw("same");
 
 // ### Defining the legend for the plot ###
 TLegend *leg10 = new TLegend();
-leg10 = new TLegend(0.58,0.65,0.88,0.88);
+leg10 = new TLegend(0.58,0.65,1.00,1.00);
 leg10->SetTextSize(0.04);
 leg10->SetTextAlign(12);
 leg10->SetFillColor(kWhite);
@@ -1331,6 +1396,8 @@ hCosmicVA1->SetLineWidth(2);
 hOtherVA1->SetLineColor(14);
 hOtherVA1->SetLineWidth(2);
 
+hCCCohVA1->SetTitle("Vertex Activity for R = 5.0 cm");
+
 hCCCohVA1->GetXaxis()->SetTitle("Vertex Activity [MeV]");
 hCCCohVA1->GetXaxis()->CenterTitle();
 
@@ -1349,7 +1416,7 @@ hOtherVA1->Draw("histosame");
 
 // ### Defining the legend for the plot ###
 TLegend *leg15 = new TLegend();
-leg15 = new TLegend(0.58,0.65,0.88,0.88);
+leg15 = new TLegend(0.58,0.65,1.00,1.00);
 leg15->SetTextSize(0.04);
 leg15->SetTextAlign(12);
 leg15->SetFillColor(kWhite);
@@ -1371,6 +1438,391 @@ leg15->Draw();
 TCanvas *c16 = new TCanvas("c16", "Vertex Activity");
 c16->SetTicks();
 c16->SetFillColor(kWhite);
+
+// Area normalzing the plot 
+hCCCohVA2->Scale(1/hCCCohVA2->Integral());
+hCCQEVA2->Scale(1/hCCQEVA2->Integral());
+hCCResVA2->Scale(1/hCCResVA2->Integral());
+hCCDISVA2->Scale(1/hCCDISVA2->Integral());
+hNCResVA2->Scale(1/hNCResVA2->Integral());
+hNCDISVA2->Scale(1/hNCDISVA2->Integral());
+hCosmicVA2->Scale(1/hCosmicVA2->Integral());
+hOtherVA2->Scale(1/hOtherVA2->Integral());
+
+hCCCohVA2->SetLineColor(kBlue);
+hCCCohVA2->SetLineWidth(2);
+
+hCCQEVA2->SetLineColor(kRed);
+hCCQEVA2->SetLineWidth(2);
+
+hCCResVA2->SetLineColor(kGreen);
+hCCResVA2->SetLineWidth(2);
+
+hCCDISVA2->SetLineColor(kOrange);
+hCCDISVA2->SetLineWidth(2);
+
+hNCResVA2->SetLineColor(kCyan);
+hNCResVA2->SetLineWidth(2);
+
+hNCDISVA2->SetLineColor(kMagenta);
+hNCDISVA2->SetLineWidth(2);
+
+hCosmicVA2->SetLineColor(kBlack);
+hCosmicVA2->SetLineWidth(2);
+
+hOtherVA2->SetLineColor(14);
+hOtherVA2->SetLineWidth(2);
+
+hCCCohVA2->SetTitle("Vertex Activity for R = 7.5 cm");
+
+hCCCohVA2->GetXaxis()->SetTitle("Vertex Activity [MeV]");
+hCCCohVA2->GetXaxis()->CenterTitle();
+
+hCCCohVA2->GetYaxis()->SetTitle("Normalized Events [Number/Degree]");
+hCCCohVA2->GetYaxis()->CenterTitle();
+
+hCCCohVA2->Draw("histo");
+hCCQEVA2->Draw("histosame");
+hCCResVA2->Draw("histosame");
+hCCDISVA2->Draw("histosame");
+hNCResVA2->Draw("histosame");
+hNCDISVA2->Draw("histosame");
+hCosmicVA2->Draw("histosame");
+hOtherVA2->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg16 = new TLegend();
+leg16 = new TLegend(0.58,0.65,1.00,1.00);
+leg16->SetTextSize(0.04);
+leg16->SetTextAlign(12);
+leg16->SetFillColor(kWhite);
+leg16->SetLineColor(kWhite);
+leg16->SetShadowColor(kWhite);
+leg16->SetHeader("Channel");
+leg16->AddEntry(hCCCohVA2,"CC-COH");
+leg16->AddEntry(hCCQEVA2,"CC-QE");
+leg16->AddEntry(hCCResVA2,"CC-Res");
+leg16->AddEntry(hCCDISVA2,"CC-DIS");
+leg16->AddEntry(hNCResVA2,"NC-Res");
+leg16->AddEntry(hNCDISVA2,"NC-DIS");
+leg16->AddEntry(hOtherVA2,"Other");
+leg16->AddEntry(hCosmicVA2,"Cosmic");
+leg16->Draw();
+
+
+
+TCanvas *c17 = new TCanvas("c17", "Vertex Activity");
+c17->SetTicks();
+c17->SetFillColor(kWhite);
+
+// Area normalzing the plot 
+hCCCohVA3->Scale(1/hCCCohVA3->Integral());
+hCCQEVA3->Scale(1/hCCQEVA3->Integral());
+hCCResVA3->Scale(1/hCCResVA3->Integral());
+hCCDISVA3->Scale(1/hCCDISVA3->Integral());
+hNCResVA3->Scale(1/hNCResVA3->Integral());
+hNCDISVA3->Scale(1/hNCDISVA3->Integral());
+hCosmicVA3->Scale(1/hCosmicVA3->Integral());
+hOtherVA3->Scale(1/hOtherVA3->Integral());
+
+hCCCohVA3->SetLineColor(kBlue);
+hCCCohVA3->SetLineWidth(2);
+
+hCCQEVA3->SetLineColor(kRed);
+hCCQEVA3->SetLineWidth(2);
+
+hCCResVA3->SetLineColor(kGreen);
+hCCResVA3->SetLineWidth(2);
+
+hCCDISVA3->SetLineColor(kOrange);
+hCCDISVA3->SetLineWidth(2);
+
+hNCResVA3->SetLineColor(kCyan);
+hNCResVA3->SetLineWidth(2);
+
+hNCDISVA3->SetLineColor(kMagenta);
+hNCDISVA3->SetLineWidth(2);
+
+hCosmicVA3->SetLineColor(kBlack);
+hCosmicVA3->SetLineWidth(2);
+
+hOtherVA3->SetLineColor(14);
+hOtherVA3->SetLineWidth(2);
+
+hCCCohVA3->SetTitle("Vertex Activity for R = 10.0 cm");
+
+hCCCohVA3->GetXaxis()->SetTitle("Vertex Activity [MeV]");
+hCCCohVA3->GetXaxis()->CenterTitle();
+
+hCCCohVA3->GetYaxis()->SetTitle("Normalized Events [Number/Degree]");
+hCCCohVA3->GetYaxis()->CenterTitle();
+
+hCCCohVA3->Draw("histo");
+hCCQEVA3->Draw("histosame");
+hCCResVA3->Draw("histosame");
+hCCDISVA3->Draw("histosame");
+hNCResVA3->Draw("histosame");
+hNCDISVA3->Draw("histosame");
+hCosmicVA3->Draw("histosame");
+hOtherVA3->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg17 = new TLegend();
+leg17 = new TLegend(0.58,0.65,1.00,1.00);
+leg17->SetTextSize(0.04);
+leg17->SetTextAlign(12);
+leg17->SetFillColor(kWhite);
+leg17->SetLineColor(kWhite);
+leg17->SetShadowColor(kWhite);
+leg17->SetHeader("Channel");
+leg17->AddEntry(hCCCohVA3,"CC-COH");
+leg17->AddEntry(hCCQEVA3,"CC-QE");
+leg17->AddEntry(hCCResVA3,"CC-Res");
+leg17->AddEntry(hCCDISVA3,"CC-DIS");
+leg17->AddEntry(hNCResVA3,"NC-Res");
+leg17->AddEntry(hNCDISVA3,"NC-DIS");
+leg17->AddEntry(hOtherVA3,"Other");
+leg17->AddEntry(hCosmicVA3,"Cosmic");
+leg17->Draw();
+
+
+
+TCanvas *c18 = new TCanvas("c18", "Vertex Activity");
+c18->SetTicks();
+c18->SetFillColor(kWhite);
+
+// Area normalzing the plot 
+hCCCohVA4->Scale(1/hCCCohVA4->Integral());
+hCCQEVA4->Scale(1/hCCQEVA4->Integral());
+hCCResVA4->Scale(1/hCCResVA4->Integral());
+hCCDISVA4->Scale(1/hCCDISVA4->Integral());
+hNCResVA4->Scale(1/hNCResVA4->Integral());
+hNCDISVA4->Scale(1/hNCDISVA4->Integral());
+hCosmicVA4->Scale(1/hCosmicVA4->Integral());
+hOtherVA4->Scale(1/hOtherVA4->Integral());
+
+hCCCohVA4->SetLineColor(kBlue);
+hCCCohVA4->SetLineWidth(2);
+
+hCCQEVA4->SetLineColor(kRed);
+hCCQEVA4->SetLineWidth(2);
+
+hCCResVA4->SetLineColor(kGreen);
+hCCResVA4->SetLineWidth(2);
+
+hCCDISVA4->SetLineColor(kOrange);
+hCCDISVA4->SetLineWidth(2);
+
+hNCResVA4->SetLineColor(kCyan);
+hNCResVA4->SetLineWidth(2);
+
+hNCDISVA4->SetLineColor(kMagenta);
+hNCDISVA4->SetLineWidth(2);
+
+hCosmicVA4->SetLineColor(kBlack);
+hCosmicVA4->SetLineWidth(2);
+
+hOtherVA4->SetLineColor(14);
+hOtherVA4->SetLineWidth(2);
+
+hCCCohVA4->SetTitle("Vertex Activity for R = 12.5 cm");
+
+hCCCohVA4->GetXaxis()->SetTitle("Vertex Activity [MeV]");
+hCCCohVA4->GetXaxis()->CenterTitle();
+
+hCCCohVA4->GetYaxis()->SetTitle("Normalized Events [Number/Degree]");
+hCCCohVA4->GetYaxis()->CenterTitle();
+
+hCCCohVA4->Draw("histo");
+hCCQEVA4->Draw("histosame");
+hCCResVA4->Draw("histosame");
+hCCDISVA4->Draw("histosame");
+hNCResVA4->Draw("histosame");
+hNCDISVA4->Draw("histosame");
+hCosmicVA4->Draw("histosame");
+hOtherVA4->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg18 = new TLegend();
+leg18 = new TLegend(0.58,0.65,1.00,1.00);
+leg18->SetTextSize(0.04);
+leg18->SetTextAlign(12);
+leg18->SetFillColor(kWhite);
+leg18->SetLineColor(kWhite);
+leg18->SetShadowColor(kWhite);
+leg18->SetHeader("Channel");
+leg18->AddEntry(hCCCohVA4,"CC-COH");
+leg18->AddEntry(hCCQEVA4,"CC-QE");
+leg18->AddEntry(hCCResVA4,"CC-Res");
+leg18->AddEntry(hCCDISVA4,"CC-DIS");
+leg18->AddEntry(hNCResVA4,"NC-Res");
+leg18->AddEntry(hNCDISVA4,"NC-DIS");
+leg18->AddEntry(hOtherVA4,"Other");
+leg18->AddEntry(hCosmicVA4,"Cosmic");
+leg18->Draw();
+
+
+
+TCanvas *c19 = new TCanvas("c19", "Vertex Activity");
+c19->SetTicks();
+c19->SetFillColor(kWhite);
+
+// Area normalzing the plot 
+hCCCohVA5->Scale(1/hCCCohVA5->Integral());
+hCCQEVA5->Scale(1/hCCQEVA5->Integral());
+hCCResVA5->Scale(1/hCCResVA5->Integral());
+hCCDISVA5->Scale(1/hCCDISVA5->Integral());
+hNCResVA5->Scale(1/hNCResVA5->Integral());
+hNCDISVA5->Scale(1/hNCDISVA5->Integral());
+hCosmicVA5->Scale(1/hCosmicVA5->Integral());
+hOtherVA5->Scale(1/hOtherVA5->Integral());
+
+hCCCohVA5->SetLineColor(kBlue);
+hCCCohVA5->SetLineWidth(2);
+
+hCCQEVA5->SetLineColor(kRed);
+hCCQEVA5->SetLineWidth(2);
+
+hCCResVA5->SetLineColor(kGreen);
+hCCResVA5->SetLineWidth(2);
+
+hCCDISVA5->SetLineColor(kOrange);
+hCCDISVA5->SetLineWidth(2);
+
+hNCResVA5->SetLineColor(kCyan);
+hNCResVA5->SetLineWidth(2);
+
+hNCDISVA5->SetLineColor(kMagenta);
+hNCDISVA5->SetLineWidth(2);
+
+hCosmicVA5->SetLineColor(kBlack);
+hCosmicVA5->SetLineWidth(2);
+
+hOtherVA5->SetLineColor(14);
+hOtherVA5->SetLineWidth(2);
+
+hCCCohVA5->SetTitle("Vertex Activity for R = 15.0 cm");
+
+hCCCohVA5->GetXaxis()->SetTitle("Vertex Activity [MeV]");
+hCCCohVA5->GetXaxis()->CenterTitle();
+
+hCCCohVA5->GetYaxis()->SetTitle("Normalized Events [Number/Degree]");
+hCCCohVA5->GetYaxis()->CenterTitle();
+
+hCCCohVA5->Draw("histo");
+hCCQEVA5->Draw("histosame");
+hCCResVA5->Draw("histosame");
+hCCDISVA5->Draw("histosame");
+hNCResVA5->Draw("histosame");
+hNCDISVA5->Draw("histosame");
+hCosmicVA5->Draw("histosame");
+hOtherVA5->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg19 = new TLegend();
+leg19 = new TLegend(0.58,0.65,1.00,1.00);
+leg19->SetTextSize(0.04);
+leg19->SetTextAlign(12);
+leg19->SetFillColor(kWhite);
+leg19->SetLineColor(kWhite);
+leg19->SetShadowColor(kWhite);
+leg19->SetHeader("Channel");
+leg19->AddEntry(hCCCohVA5,"CC-COH");
+leg19->AddEntry(hCCQEVA5,"CC-QE");
+leg19->AddEntry(hCCResVA5,"CC-Res");
+leg19->AddEntry(hCCDISVA5,"CC-DIS");
+leg19->AddEntry(hNCResVA5,"NC-Res");
+leg19->AddEntry(hNCDISVA5,"NC-DIS");
+leg19->AddEntry(hOtherVA5,"Other");
+leg19->AddEntry(hCosmicVA5,"Cosmic");
+leg19->Draw();
+
+
+
+TCanvas *c20 = new TCanvas("c20", "Vertex Activity");
+c20->SetTicks();
+c20->SetFillColor(kWhite);
+
+// Area normalzing the plot 
+hCCCohVA6->Scale(1/hCCCohVA6->Integral());
+hCCQEVA6->Scale(1/hCCQEVA6->Integral());
+hCCResVA6->Scale(1/hCCResVA6->Integral());
+hCCDISVA6->Scale(1/hCCDISVA6->Integral());
+hNCResVA6->Scale(1/hNCResVA6->Integral());
+hNCDISVA6->Scale(1/hNCDISVA6->Integral());
+hCosmicVA6->Scale(1/hCosmicVA6->Integral());
+hOtherVA6->Scale(1/hOtherVA6->Integral());
+
+hCCCohVA6->SetLineColor(kBlue);
+hCCCohVA6->SetLineWidth(2);
+
+hCCQEVA6->SetLineColor(kRed);
+hCCQEVA6->SetLineWidth(2);
+
+hCCResVA6->SetLineColor(kGreen);
+hCCResVA6->SetLineWidth(2);
+
+hCCDISVA6->SetLineColor(kOrange);
+hCCDISVA6->SetLineWidth(2);
+
+hNCResVA6->SetLineColor(kCyan);
+hNCResVA6->SetLineWidth(2);
+
+hNCDISVA6->SetLineColor(kMagenta);
+hNCDISVA6->SetLineWidth(2);
+
+hCosmicVA6->SetLineColor(kBlack);
+hCosmicVA6->SetLineWidth(2);
+
+hOtherVA6->SetLineColor(14);
+hOtherVA6->SetLineWidth(2);
+
+hCCCohVA6->SetTitle("Vertex Activity for R = 17.5 cm");
+
+hCCCohVA6->GetXaxis()->SetTitle("Vertex Activity [MeV]");
+hCCCohVA6->GetXaxis()->CenterTitle();
+
+hCCCohVA6->GetYaxis()->SetTitle("Normalized Events [Number/Degree]");
+hCCCohVA6->GetYaxis()->CenterTitle();
+
+hCCCohVA6->Draw("histo");
+hCCQEVA6->Draw("histosame");
+hCCResVA6->Draw("histosame");
+hCCDISVA6->Draw("histosame");
+hNCResVA6->Draw("histosame");
+hNCDISVA6->Draw("histosame");
+hCosmicVA6->Draw("histosame");
+hOtherVA6->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg20 = new TLegend();
+leg20 = new TLegend(0.58,0.65,1.00,1.00);
+leg20->SetTextSize(0.04);
+leg20->SetTextAlign(12);
+leg20->SetFillColor(kWhite);
+leg20->SetLineColor(kWhite);
+leg20->SetShadowColor(kWhite);
+leg20->SetHeader("Channel");
+leg20->AddEntry(hCCCohVA6,"CC-COH");
+leg20->AddEntry(hCCQEVA6,"CC-QE");
+leg20->AddEntry(hCCResVA6,"CC-Res");
+leg20->AddEntry(hCCDISVA6,"CC-DIS");
+leg20->AddEntry(hNCResVA6,"NC-Res");
+leg20->AddEntry(hNCDISVA6,"NC-DIS");
+leg20->AddEntry(hOtherVA6,"Other");
+leg20->AddEntry(hCosmicVA6,"Cosmic");
+leg20->Draw();
+
+
+
+TCanvas *c21 = new TCanvas("c21", "Vertex Activity");
+c21->SetTicks();
+c21->SetFillColor(kWhite);
 
 // Area normalzing the plot 
 hCCCohVA7->Scale(1/hCCCohVA7->Integral());
@@ -1406,6 +1858,8 @@ hCosmicVA7->SetLineWidth(2);
 hOtherVA7->SetLineColor(14);
 hOtherVA7->SetLineWidth(2);
 
+hCCCohVA7->SetTitle("Vertex Activity for R = 20.0 cm");
+
 hCCCohVA7->GetXaxis()->SetTitle("Vertex Activity [MeV]");
 hCCCohVA7->GetXaxis()->CenterTitle();
 
@@ -1423,21 +1877,245 @@ hOtherVA7->Draw("histosame");
 
 
 // ### Defining the legend for the plot ###
-TLegend *leg16 = new TLegend();
-leg16 = new TLegend(0.58,0.65,0.88,0.88);
-leg16->SetTextSize(0.04);
-leg16->SetTextAlign(12);
-leg16->SetFillColor(kWhite);
-leg16->SetLineColor(kWhite);
-leg16->SetShadowColor(kWhite);
-leg16->SetHeader("Channel");
-leg16->AddEntry(hCCCohVA7,"CC-COH");
-leg16->AddEntry(hCCQEVA7,"CC-QE");
-leg16->AddEntry(hCCResVA7,"CC-Res");
-leg16->AddEntry(hCCDISVA7,"CC-DIS");
-leg16->AddEntry(hNCResVA7,"NC-Res");
-leg16->AddEntry(hNCDISVA7,"NC-DIS");
-leg16->AddEntry(hOtherVA7,"Other");
-leg16->AddEntry(hCosmicVA7,"Cosmic");
-leg16->Draw();
+TLegend *leg21 = new TLegend();
+leg21 = new TLegend(0.58,0.65,1.00,1.00);
+leg21->SetTextSize(0.04);
+leg21->SetTextAlign(12);
+leg21->SetFillColor(kWhite);
+leg21->SetLineColor(kWhite);
+leg21->SetShadowColor(kWhite);
+leg21->SetHeader("Channel");
+leg21->AddEntry(hCCCohVA7,"CC-COH");
+leg21->AddEntry(hCCQEVA7,"CC-QE");
+leg21->AddEntry(hCCResVA7,"CC-Res");
+leg21->AddEntry(hCCDISVA7,"CC-DIS");
+leg21->AddEntry(hNCResVA7,"NC-Res");
+leg21->AddEntry(hNCDISVA7,"NC-DIS");
+leg21->AddEntry(hOtherVA7,"Other");
+leg21->AddEntry(hCosmicVA7,"Cosmic");
+leg21->Draw();
+
+
+
+TCanvas *c22 = new TCanvas("c22", "Vertex Activity");
+c22->SetTicks();
+c22->SetFillColor(kWhite);
+
+// Area normalzing the plot 
+hCCCohVA8->Scale(1/hCCCohVA8->Integral());
+hCCQEVA8->Scale(1/hCCQEVA8->Integral());
+hCCResVA8->Scale(1/hCCResVA8->Integral());
+hCCDISVA8->Scale(1/hCCDISVA8->Integral());
+hNCResVA8->Scale(1/hNCResVA8->Integral());
+hNCDISVA8->Scale(1/hNCDISVA8->Integral());
+hCosmicVA8->Scale(1/hCosmicVA8->Integral());
+hOtherVA8->Scale(1/hOtherVA8->Integral());
+
+hCCCohVA8->SetLineColor(kBlue);
+hCCCohVA8->SetLineWidth(2);
+
+hCCQEVA8->SetLineColor(kRed);
+hCCQEVA8->SetLineWidth(2);
+
+hCCResVA8->SetLineColor(kGreen);
+hCCResVA8->SetLineWidth(2);
+
+hCCDISVA8->SetLineColor(kOrange);
+hCCDISVA8->SetLineWidth(2);
+
+hNCResVA8->SetLineColor(kCyan);
+hNCResVA8->SetLineWidth(2);
+
+hNCDISVA8->SetLineColor(kMagenta);
+hNCDISVA8->SetLineWidth(2);
+
+hCosmicVA8->SetLineColor(kBlack);
+hCosmicVA8->SetLineWidth(2);
+
+hOtherVA8->SetLineColor(14);
+hOtherVA8->SetLineWidth(2);
+
+hCCCohVA8->SetTitle("Vertex Activity for R = 22.5 cm");
+
+hCCCohVA8->GetXaxis()->SetTitle("Vertex Activity [MeV]");
+hCCCohVA8->GetXaxis()->CenterTitle();
+
+hCCCohVA8->GetYaxis()->SetTitle("Normalized Events [Number/Degree]");
+hCCCohVA8->GetYaxis()->CenterTitle();
+
+hCCCohVA8->Draw("histo");
+hCCQEVA8->Draw("histosame");
+hCCResVA8->Draw("histosame");
+hCCDISVA8->Draw("histosame");
+hNCResVA8->Draw("histosame");
+hNCDISVA8->Draw("histosame");
+hCosmicVA8->Draw("histosame");
+hOtherVA8->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg22 = new TLegend();
+leg22 = new TLegend(0.58,0.65,1.00,1.00);
+leg22->SetTextSize(0.04);
+leg22->SetTextAlign(12);
+leg22->SetFillColor(kWhite);
+leg22->SetLineColor(kWhite);
+leg22->SetShadowColor(kWhite);
+leg22->SetHeader("Channel");
+leg22->AddEntry(hCCCohVA8,"CC-COH");
+leg22->AddEntry(hCCQEVA8,"CC-QE");
+leg22->AddEntry(hCCResVA8,"CC-Res");
+leg22->AddEntry(hCCDISVA8,"CC-DIS");
+leg22->AddEntry(hNCResVA8,"NC-Res");
+leg22->AddEntry(hNCDISVA8,"NC-DIS");
+leg22->AddEntry(hOtherVA8,"Other");
+leg22->AddEntry(hCosmicVA8,"Cosmic");
+leg22->Draw();
+
+
+
+TCanvas *c23 = new TCanvas("c23", "Vertex Activity");
+c23->SetTicks();
+c23->SetFillColor(kWhite);
+
+// Area normalzing the plot 
+hCCCohVA9->Scale(1/hCCCohVA9->Integral());
+hCCQEVA9->Scale(1/hCCQEVA9->Integral());
+hCCResVA9->Scale(1/hCCResVA9->Integral());
+hCCDISVA9->Scale(1/hCCDISVA9->Integral());
+hNCResVA9->Scale(1/hNCResVA9->Integral());
+hNCDISVA9->Scale(1/hNCDISVA9->Integral());
+hCosmicVA9->Scale(1/hCosmicVA9->Integral());
+hOtherVA9->Scale(1/hOtherVA9->Integral());
+
+hCCCohVA9->SetLineColor(kBlue);
+hCCCohVA9->SetLineWidth(2);
+
+hCCQEVA9->SetLineColor(kRed);
+hCCQEVA9->SetLineWidth(2);
+
+hCCResVA9->SetLineColor(kGreen);
+hCCResVA9->SetLineWidth(2);
+
+hCCDISVA9->SetLineColor(kOrange);
+hCCDISVA9->SetLineWidth(2);
+
+hNCResVA9->SetLineColor(kCyan);
+hNCResVA9->SetLineWidth(2);
+
+hNCDISVA9->SetLineColor(kMagenta);
+hNCDISVA9->SetLineWidth(2);
+
+hCosmicVA9->SetLineColor(kBlack);
+hCosmicVA9->SetLineWidth(2);
+
+hOtherVA9->SetLineColor(14);
+hOtherVA9->SetLineWidth(2);
+
+hCCCohVA9->SetTitle("Vertex Activity for R = 25.0 cm");
+
+hCCCohVA9->GetXaxis()->SetTitle("Vertex Activity [MeV]");
+hCCCohVA9->GetXaxis()->CenterTitle();
+
+hCCCohVA9->GetYaxis()->SetTitle("Normalized Events [Number/Degree]");
+hCCCohVA9->GetYaxis()->CenterTitle();
+
+hCCCohVA9->Draw("histo");
+hCCQEVA9->Draw("histosame");
+hCCResVA9->Draw("histosame");
+hCCDISVA9->Draw("histosame");
+hNCResVA9->Draw("histosame");
+hNCDISVA9->Draw("histosame");
+hCosmicVA9->Draw("histosame");
+hOtherVA9->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg23 = new TLegend();
+leg23 = new TLegend(0.58,0.65,1.00,1.00);
+leg23->SetTextSize(0.04);
+leg23->SetTextAlign(12);
+leg23->SetFillColor(kWhite);
+leg23->SetLineColor(kWhite);
+leg23->SetShadowColor(kWhite);
+leg23->SetHeader("Channel");
+leg23->AddEntry(hCCCohVA9,"CC-COH");
+leg23->AddEntry(hCCQEVA9,"CC-QE");
+leg23->AddEntry(hCCResVA9,"CC-Res");
+leg23->AddEntry(hCCDISVA9,"CC-DIS");
+leg23->AddEntry(hNCResVA9,"NC-Res");
+leg23->AddEntry(hNCDISVA9,"NC-DIS");
+leg23->AddEntry(hOtherVA9,"Other");
+leg23->AddEntry(hCosmicVA9,"Cosmic");
+leg23->Draw();
+
+
+/*
+TCanvas *c24 = new TCanvas("c24", "Vertex Activity");
+c24->SetTicks();
+c24->SetFillColor(kWhite);
+
+hCCCohVA10->SetLineColor(kBlue);
+hCCCohVA10->SetLineWidth(2);
+
+hCCCohVA11->SetLineColor(kRed);
+hCCCohVA11->SetLineWidth(2);
+
+hCCCohVA12->SetLineColor(kGreen);
+hCCCohVA12->SetLineWidth(2);
+
+hCCCohVA13->SetLineColor(kOrange);
+hCCCohVA13->SetLineWidth(2);
+
+hCCCohVA14->SetLineColor(kCyan);
+hCCCohVA14->SetLineWidth(2);
+
+hCCCohVA15->SetLineColor(kMagenta);
+hCCCohVA15->SetLineWidth(2);
+
+hCCCohVA16->SetLineColor(kBlack);
+hCCCohVA16->SetLineWidth(2);
+
+hCCCohVA17->SetLineColor(14);
+hCCCohVA17->SetLineWidth(2);
+
+hCCCohVA18->SetLineColor(kYellow);
+hCCCohVA18->SetLineWidth(2);
+
+hCCCohVA10->GetXaxis()->SetTitle("Vertex Activity [MeV]");
+hCCCohVA10->GetXaxis()->CenterTitle();
+
+hCCCohVA10->GetYaxis()->SetTitle("Normalized Events [Number/Degree]");
+hCCCohVA10->GetYaxis()->CenterTitle();
+
+hCCCohVA10->Draw("histo");
+hCCCohVA11->Draw("histosame");
+hCCCohVA12->Draw("histosame");
+hCCCohVA13->Draw("histosame");
+hCCCohVA14->Draw("histosame");
+hCCCohVA15->Draw("histosame");
+hCCCohVA16->Draw("histosame");
+hCCCohVA17->Draw("histosame");
+hCCCohVA18->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg24 = new TLegend();
+leg24 = new TLegend(0.58,0.65,1.00,1.00);
+leg24->SetTextSize(0.04);
+leg24->SetTextAlign(12);
+leg24->SetFillColor(kWhite);
+leg24->SetLineColor(kWhite);
+leg24->SetShadowColor(kWhite);
+leg24->SetHeader("Channel");
+leg24->AddEntry(hCCCohVA10,"R =  5.0 cm");
+leg24->AddEntry(hCCCohVA11,"R =  7.5 cm");
+leg24->AddEntry(hCCCohVA12,"R = 10.0 cm");
+leg24->AddEntry(hCCCohVA13,"R = 12.5 cm");
+leg24->AddEntry(hCCCohVA14,"R = 15.0 cm");
+leg24->AddEntry(hCCCohVA15,"R = 17.5 cm");
+leg24->AddEntry(hCCCohVA16,"R = 20.0 cm");
+leg24->AddEntry(hCCCohVA17,"R = 22.5 cm");
+leg24->AddEntry(hCCCohVA18,"R = 25.0 cm");
+leg24->Draw();*/
 }
