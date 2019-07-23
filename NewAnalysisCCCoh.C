@@ -24,6 +24,8 @@ TH1D *hCCCoh0TrackLepMom = new TH1D("hCCCoh0TrackLepMom", "The Lepton Momentum f
 TH1D *hCCCoh0TrackNumMCShwrs = new TH1D("hCCCoh0TrackNumMCShwrs", "The Number of MCShowers for CC-COH Events with 0 MCTracks", 11, -0.5, 10.5);
 TH2D *hCCCohMuonVsPionTrackLength = new TH2D("hCCCohMuonVsPionTrackLength", "The Track Length of the Muon vs the Track Length of the Pion for Fully Contained CC-COH Events", 200, 0, 1000, 200, 0, 1000);
 
+TH1D *hOpeningAngle = new TH1D("hOpeningAngle", "The Angle Between the Muon and the Pion for CC-COH Events with 2 or More MCTracks", 181, -0.5, 180.5);
+
 TH1D *hCCCohConeAngle = new TH1D("hCCCohConeAngle", "The Cone Angle for CC-COH Events with 2 or More MCTracks", 181, -0.5, 180.5);
 TH1D *hCCQEConeAngle = new TH1D("hCCQEConeAngle", "The Cone Angle for CC-QE Events with 2 or More MCTracks", 181, -0.5, 180.5);
 TH1D *hCCResConeAngle = new TH1D("hCCResConeAngle", "The Cone Angle for CC-Res Events with 2 or More MCTracks", 181, -0.5, 180.5);
@@ -95,6 +97,8 @@ TH2D *h2DPionVertexActivity = new TH2D("h2DPionVertexActivity", "Energy Deposite
 TH2D *hMuonEnergyVsConeAngle = new TH2D("hMuonEnergyVsConeAngle", "Muon Energy Vs Cone Angle for CCCoh Events", 181, -0.5, 180.5, 250, 0, 1500);
 TH2D *hPionEnergyVsConeAngle = new TH2D("hPionEnergyVsConeAngle", "Pion Energy Vs Cone Angle for CCCoh Events", 181, -0.5, 180.5, 250, 0, 1500);
 TH2D *hQ2VsConeAngle = new TH2D("hQ2VsConeAngle", "Q2 Vs Cone Angle for CCCoh Events", 181, -0.5, 180.5, 250, 0, 1);
+TH2D *hTVsConeAngle = new TH2D("hTVsConeAngle", "|t| Vs Cone Angle for CCCoh Events", 181, -0.5, 180.5, 250, 0, 1);
+TH2D *hTVsVA = new TH2D("hTVsVA", "|t| Vs Vertex Activity for CCCoh Events", 100, 0, 500, 250, 0, 1);
 
 TH1D *hMCTruthQ2CCCoh = new TH1D("hMCTruthQ2CCCoh", "The Q^{2} of CCCoh Events from MCTruth Information", 250, 0, 1);
 TH1D *hMCTruthTCCCoh = new TH1D("hMCTruthTCCCoh", "The |t| of CCCoh Events from MCTruth Information", 250, 0, 1);
@@ -118,6 +122,7 @@ TH1D *hOpFlashY = new TH1D("hOpFlashY", "Y Position of OpFlash", 231, -115.5, 11
 TH1D *hOpFlashZ = new TH1D("hOpFlashZ", "Z Position of OpFlash", 1041, -0.5, 1040.5);
 
 TH1D *hnCosmics = new TH1D("hnCosmics", "Number of Cosmics in an Event", 101, -0.5, 100.5);
+TH1D *hAngleBetweenCosmics = new TH1D("hAngleBetweenCosmics", "The Angle Between Cosmic Tracks", 181, -0.5, 180.5);
 
 TH1D *hCCCohVA2 = new TH1D("hCCCohVA2", "The Vertex Activity for CC-COH Events within 10cm of Vertex in ADC", 500, 0, 50000);
 TH1D *hCCQEVA2 = new TH1D("hCCQEVA2", "The Vertex Activity for CC-QE Events within 10cm of Vertex in ADC", 500, 0, 50000);
@@ -467,7 +472,7 @@ void NewAnalysisCCCoh::Loop()
 
          double closer = -99;
 
-         double VAdistanceCheck = 17.5;
+         double VAdistanceCheck = 10;
 
          double Vx = nuvtxx_truth[i];
          double Vy = nuvtxy_truth[i];
@@ -505,6 +510,7 @@ void NewAnalysisCCCoh::Loop()
          double Q2 = Q2_truth[i];
 	 double t = -999;
 	 double DoCA2_Event = 10000;
+         Double_t OpeningAngle = 720;
 
          // --------------------------------
          // --- Some OpFlash Information ---
@@ -537,6 +543,8 @@ void NewAnalysisCCCoh::Loop()
                TVector3 CosmicTrackEnd(trkendx_pandora[t] - Vx, trkendy_pandora[t] - Vy, trkendz_pandora[t] - Vz);
                if (CosmicTrackStart.Mag() < VertexRangeCheck || CosmicTrackEnd.Mag() < VertexRangeCheck) {nCosmicsInRange++;}   
 
+               Double_t AngleBetweenCosmics = 720;
+
                // -----------------
                // --- Cosmic VA ---
                // -----------------
@@ -564,6 +572,23 @@ void NewAnalysisCCCoh::Loop()
                      // ------------------------
                      TVector3 CosmicTrack(trkendx_pandora[t]-trkstartx_pandora[t], trkendy_pandora[t]-trkstarty_pandora[t], trkendz_pandora[t]-trkstartz_pandora[t]);
                      TVector3 CosmicTrack2(trkendx_pandora[m]-trkstartx_pandora[m], trkendy_pandora[m]-trkstarty_pandora[m], trkendz_pandora[m]-trkstartz_pandora[m]);
+
+                     AngleBetweenCosmics = CosmicTrack.Angle(CosmicTrack2)*180/PI;
+
+                     hAngleBetweenCosmics->Fill(AngleBetweenCosmics);
+
+                     TVector3 CosmicEndStartCheck(trkendx_pandora[t]-trkstartx_pandora[m], trkendy_pandora[t]-trkstarty_pandora[m], trkendz_pandora[t]-trkstartz_pandora[m]);
+                     TVector3 CosmicStartEndCheck(trkendx_pandora[m]-trkstartx_pandora[t], trkendy_pandora[m]-trkstarty_pandora[t], trkendz_pandora[m]-trkstartz_pandora[t]);
+
+                     /*if (CosmicEndStartCheck.Mag() <= 10 || CosmicStartEndCheck.Mag() <= 10)
+                        {
+                        std::cout<<"|||---------------------------------------------|||"<<std::endl;
+                        std::cout<<"||| CosmicEndStartCheck Magnitude = "<<CosmicEndStartCheck.Mag()<<std::endl;
+                        std::cout<<"||| CosmicStartEndCheck Magnitude = "<<CosmicStartEndCheck.Mag()<<std::endl;
+                        std::cout<<"||| Angle Between = "<<AngleBetweenCosmics<<std::endl;
+                        std::cout<<"|||---------------------------------------------|||"<<std::endl;
+                        }*/
+
 
                      double CosmicConeAngleCheck = ConeAngle(CosmicTrack.X(), CosmicTrack.Y(), CosmicTrack.Z(), CosmicTrack2.X(), CosmicTrack2.Y(), CosmicTrack2.Z())*180/PI;
 
@@ -1381,6 +1406,12 @@ void NewAnalysisCCCoh::Loop()
             {
 	    if (CCCOH )//&& hasMuon && hasPion) 
 	       {
+               if (hasMuon && hasPion)
+                  {
+                  OpeningAngle = muon.Angle(pion)*180/PI;
+                  hOpeningAngle->Fill(OpeningAngle);
+                  hCCCohMuonVsPionTrackLength->Fill(pionlength, muonlength);
+                  }
 	       hCCCohConeAngle->Fill(EventsConeAngle);
                hMuonEnergyVsConeAngle->Fill(EventsConeAngle, MuonEnergy);
                hPionEnergyVsConeAngle->Fill(EventsConeAngle, PionEnergy);
@@ -1393,6 +1424,8 @@ void NewAnalysisCCCoh::Loop()
 	       hCCCohDoCA2->Fill(DoCA2_Event);
                hOpFlashPECCCoh->Fill(FlashPEBeam);
 	       t = abs(pow(NuEnergy - MuonEnergy - PionEnergy,2) - pow(NuPx - MuonPx - PionPx,2) - pow(NuPy - MuonPy - PionPy,2) - pow(NuPz - MuonPz - PionPz,2))/(1000000);
+               hTVsConeAngle->Fill(EventsConeAngle, t);
+               hTVsVA->Fill(VAEnergy*1000, t);
                hCCCohVA->Fill(VAEnergy*1000);
                hCCCohVA2->Fill(VertexActivityADC);
                hNotAssociatedHitVA2->Fill(VertexActivityADC_noTRKID);
@@ -1659,6 +1692,8 @@ void NewAnalysisCCCoh::Loop()
    hCCCoh0TrackNumMCShwrs->Write();
    hCCCohMuonVsPionTrackLength->Write();
 
+   hOpeningAngle->Write();
+
    hCCCohConeAngle->Write();
    hCCQEConeAngle->Write();
    hCCResConeAngle->Write();
@@ -1730,6 +1765,8 @@ void NewAnalysisCCCoh::Loop()
    hMuonEnergyVsConeAngle->Write();
    hPionEnergyVsConeAngle->Write();
    hQ2VsConeAngle->Write();
+   hTVsConeAngle->Write();
+   hTVsVA->Write();
 
    hMCTruthQ2CCCoh->Write();
    hMCTruthTCCCoh->Write();
@@ -1753,6 +1790,7 @@ void NewAnalysisCCCoh::Loop()
    hOpFlashZ->Write();
 
    hnCosmics->Write();
+   hAngleBetweenCosmics->Write();
 
    hCCCohVA2->Write();
    hCCQEVA2->Write();
