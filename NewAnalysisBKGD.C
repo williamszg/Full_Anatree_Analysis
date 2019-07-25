@@ -237,6 +237,11 @@ TH1D *hNCResVA3 = new TH1D("hNCResVA3", "The Vertex Activity for NC-Res Events w
 TH1D *hNCDISVA3 = new TH1D("hNCDISVA3", "The Vertex Activity for NC-DIS Events within 10cm of Vertex in MeV After Vertex Activity Cut", 100, 0, 500);
 TH1D *hCosmicVA3 = new TH1D("hCosmicVA3", "The Vertex Activity for Cosmic Events within 10cm of Vertex in MeV After Vertex Activity Cut", 100, 0, 500);
 TH1D *hOtherVA3 = new TH1D("hOtherVA3", "The Vertex Activity for Other Events within 10cm of Vertex in MeV After Vertex Activity Cut", 100, 0, 500);
+
+
+
+TH1D *hCosmicShortTrackLength = new TH1D("hCosmicShortTrackLength", "The Shorter Tracks Length for Cosmic DoCA", 2000, 0, 200);
+TH2D *hCosmicTrackLengthVsDoCA = new TH2D("hCosmicTrackLengthVsDoCA", "The Shorter Track Length Vs DoCA for Cosmics", 1000, 0, 100, 2000, 0, 200);
 // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 
@@ -405,7 +410,7 @@ void NewAnalysisBKGD::Loop()
    Long64_t nbytes = 0, nb = 0;
 
    int Nentries = nentries;
-   //int Nentries = 10000;
+   //int Nentries = 20000;
    std::cout<<"nentries = "<<nentries<<std::endl;
    double POT = 0;
 
@@ -466,7 +471,7 @@ void NewAnalysisBKGD::Loop()
 	 bool NCRes = NCres(nuPDG_truth[i], ccnc_truth[i], mode_truth[i]);
 	 bool NCDIS = NCdis(nuPDG_truth[i], ccnc_truth[i], mode_truth[i]);
 
-	 if (!CCCOH && !CCQE && !CCRes && !CCDIS && !NCRes && !NCDIS) {std::cout<<"Other Event Mode = "<<mode_truth[i]<<", CC or NC = "<<ccnc_truth[i]<<", nuPDG = "<<nuPDG_truth[i]<<std::endl;}
+	 //if (!CCCOH && !CCQE && !CCRes && !CCDIS && !NCRes && !NCDIS) {std::cout<<"Other Event Mode = "<<mode_truth[i]<<", CC or NC = "<<ccnc_truth[i]<<", nuPDG = "<<nuPDG_truth[i]<<std::endl;}
 
          int nmctrksInRange = 0;
 
@@ -492,6 +497,7 @@ void NewAnalysisBKGD::Loop()
          double CosmicConeAngle = 720;
          double CosmicVAEnergy = 0;
          double DoCA2_Cosmic = 10000;
+         double TrackLength_Cosmic = -900;
          double VAEnergy = 0;
 	 double MuonPx = 0;
 	 double MuonPy = 0;
@@ -627,7 +633,12 @@ void NewAnalysisBKGD::Loop()
                         for (int k = 0; k < ntrkhits_pandora[m][2]; k++)
                            {
                            double doca_checker = sqrt(pow(trkxyz_pandora[t][2][j][0]-trkxyz_pandora[m][2][k][0],2) + pow(trkxyz_pandora[t][2][j][1]-trkxyz_pandora[m][2][k][1],2) + pow(trkxyz_pandora[t][2][j][2]-trkxyz_pandora[m][2][k][2],2));
-                           if (doca_checker < DoCA2_Cosmic) DoCA2_Cosmic = doca_checker;
+                           if (doca_checker < DoCA2_Cosmic) 
+                              {
+                              DoCA2_Cosmic = doca_checker;
+                              if (trklen_pandora[t] < trklen_pandora[m]) {TrackLength_Cosmic = trklen_pandora[t];}
+                              if (trklen_pandora[m] <= trklen_pandora[t]) {TrackLength_Cosmic = trklen_pandora[m];}
+                              }
                            }
                         }
                      // -----------------------------
@@ -955,6 +966,8 @@ void NewAnalysisBKGD::Loop()
                {
                hCosmicConeAngle->Fill(CosmicConeAngle);
                hCosmicDoCA2->Fill(DoCA2_Cosmic);
+               hCosmicShortTrackLength->Fill(TrackLength_Cosmic);
+               hCosmicTrackLengthVsDoCA->Fill(DoCA2_Cosmic, TrackLength_Cosmic);
                hCosmicVA->Fill(CosmicVAEnergy);
                hCosmicTableInformation->Fill(4);
                if (CosmicConeAngle <= ConeAngleCut)
@@ -1905,6 +1918,11 @@ void NewAnalysisBKGD::Loop()
    hNCDISVA3->Write();
    hCosmicVA3->Write();
    hOtherVA3->Write();
+
+
+
+   hCosmicShortTrackLength->Write();
+   hCosmicTrackLengthVsDoCA->Write();
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 } // End NewAnalysisBKGD Loop
