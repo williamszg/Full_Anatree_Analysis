@@ -466,7 +466,7 @@ void NewAnalysisCCCoh::Loop()
 	 bool NCRes = NCres(nuPDG_truth[i], ccnc_truth[i], mode_truth[i]);
 	 bool NCDIS = NCdis(nuPDG_truth[i], ccnc_truth[i], mode_truth[i]);
 
-	 //if (!CCCOH && !CCQE && !CCRes && !NCRes && !NCDIS) {continue;}
+	 if (!CCCOH && !CCQE && !CCRes && !CCDIS && !NCRes && !NCDIS) {std::cout<<"Other Event Mode = "<<mode_truth[i]<<", CC or NC = "<<ccnc_truth[i]<<", nuPDG = "<<nuPDG_truth[i]<<std::endl;}
 
          int nmctrksInRange = 0;
 
