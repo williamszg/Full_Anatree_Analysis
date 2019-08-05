@@ -80,16 +80,16 @@ TH1D *hNuMCTrackMuonX = new TH1D("hNuMCTrackMuonX", "Starting X Position of a Mu
 TH1D *hNuMCTrackMuonY = new TH1D("hNuMCTrackMuonY", "Starting Y Position of a Muon From a Neutrino Interaction", 191, -95.5, 95.5);
 TH1D *hNuMCTrackMuonZ = new TH1D("hNuMCTrackMuonZ", "Starting Z Position of a Muon From a Neutrino Interaction", 1021, 9.5, 1030.5);
 
-TH1D *hOpFlashPECCCoh = new TH1D("hOpFlashPECCCoh", "Number of PE in a CCCoh Interaction", 2000, 0, 20000);
-TH1D *hOpFlashPECosmic = new TH1D("hOpFlashPECosmic", "Number of PE in a Cosmic Interaction", 2000, 0, 20000);
-TH1D *hOpFlashPECCOther = new TH1D("hOpFlashPECCOther", "Number of PE in a CCOther Interaction", 2000, 0, 20000);
-TH1D *hOpFlashPECCQE = new TH1D("hOpFlashPECCQE", "Number of PE in a CC-QE Interaction", 2000, 0, 20000);
-TH1D *hOpFlashPECCRes = new TH1D("hOpFlashPECCRes", "Number of PE in a CC-Res Interaction", 2000, 0, 20000);
-TH1D *hOpFlashPECCDIS = new TH1D("hOpFlashPECCDIS", "Number of PE in a CC-DIS Interaction", 2000, 0, 20000);
-TH1D *hOpFlashPENCOther = new TH1D("hOpFlashPENCOther", "Number of PE in a NCOther Interaction", 2000, 0, 20000);
-TH1D *hOpFlashPENCRes = new TH1D("hOpFlashPENCRes", "Number of PE in a NC-Res Interaction", 2000, 0, 20000);
-TH1D *hOpFlashPENCDIS = new TH1D("hOpFlashPENCDIS", "Number of PE in a NC-DIS Interaction", 2000, 0, 20000);
-TH1D *hOpFlashPEOther = new TH1D("hOpFlashPEOther", "Number of PE in a Other Interaction", 2000, 0, 20000);
+TH1D *hOpFlashPECCCoh = new TH1D("hOpFlashPECCCoh", "Number of PE in a CCCoh Interaction", 2000, 0, 40000);
+TH1D *hOpFlashPECosmic = new TH1D("hOpFlashPECosmic", "Number of PE in a Cosmic Interaction", 2000, 0, 40000);
+TH1D *hOpFlashPECCOther = new TH1D("hOpFlashPECCOther", "Number of PE in a CCOther Interaction", 2000, 0, 40000);
+TH1D *hOpFlashPECCQE = new TH1D("hOpFlashPECCQE", "Number of PE in a CC-QE Interaction", 2000, 0, 40000);
+TH1D *hOpFlashPECCRes = new TH1D("hOpFlashPECCRes", "Number of PE in a CC-Res Interaction", 2000, 0, 40000);
+TH1D *hOpFlashPECCDIS = new TH1D("hOpFlashPECCDIS", "Number of PE in a CC-DIS Interaction", 2000, 0, 40000);
+TH1D *hOpFlashPENCOther = new TH1D("hOpFlashPENCOther", "Number of PE in a NCOther Interaction", 2000, 0, 40000);
+TH1D *hOpFlashPENCRes = new TH1D("hOpFlashPENCRes", "Number of PE in a NC-Res Interaction", 2000, 0, 40000);
+TH1D *hOpFlashPENCDIS = new TH1D("hOpFlashPENCDIS", "Number of PE in a NC-DIS Interaction", 2000, 0, 40000);
+TH1D *hOpFlashPEOther = new TH1D("hOpFlashPEOther", "Number of PE in a Other Interaction", 2000, 0, 40000);
 
 TH2D *h2DVertexActivity = new TH2D("h2DVertexActivity", "Energy Deposited in Region vs Distance from Vertex", 201, -0.5, 200.5, 500, 0, 500);
 TH2D *h2DMuonVertexActivity = new TH2D("h2DMuonVertexActivity", "Energy Deposited in Region vs Distance from Vertex for Muons", 201, -0.5, 200.5, 500, 0, 500);
@@ -133,23 +133,23 @@ TH1D *hNCDISVA2 = new TH1D("hNCDISVA2", "The Vertex Activity for NC-DIS Events w
 TH1D *hOtherVA2 = new TH1D("hOtherVA2", "The Vertex Activity for Other Events within 10cm of Vertex in ADC", 500, 0, 50000);
 TH1D *hNotAssociatedHitVA2 = new TH1D("hNotAssociatedHitVA2", "The Vertex Activity for Hits with No Track Association within 10cm of Vertex in ADC", 500, 0, 50000);
 
-TH1D *hOpFlashPECCCoh2 = new TH1D("hOpFlashPECCCoh2", "Number of PE in a CCCoh Interaction for Table Information", 2000, 0, 20000);
-TH1D *hOpFlashPECCQE2 = new TH1D("hOpFlashPECCQE2", "Number of PE in a CC-QE Interaction for Table Information", 2000, 0, 20000);
-TH1D *hOpFlashPECCRes2 = new TH1D("hOpFlashPECCRes2", "Number of PE in a CC-Res Interaction for Table Information", 2000, 0, 20000);
-TH1D *hOpFlashPECCDIS2 = new TH1D("hOpFlashPECCDIS2", "Number of PE in a CC-DIS Interaction for Table Information", 2000, 0, 20000);
-TH1D *hOpFlashPENCRes2 = new TH1D("hOpFlashPENCRes2", "Number of PE in a NC-Res Interaction for Table Information", 2000, 0, 20000);
-TH1D *hOpFlashPENCDIS2 = new TH1D("hOpFlashPENCDIS2", "Number of PE in a NC-DIS Interaction for Table Information", 2000, 0, 20000);
-TH1D *hOpFlashPECosmic2 = new TH1D("hOpFlashPECosmic2", "Number of PE for Cosmics for Table Information", 2000, 0, 20000);
-TH1D *hOpFlashPEOther2 = new TH1D("hOpFlashPEOther2", "Number of PE for Other Events for Table Information", 2000, 0, 20000);
+TH1D *hOpFlashPECCCoh2 = new TH1D("hOpFlashPECCCoh2", "Number of PE in a CCCoh Interaction for Table Information", 2000, 0, 40000);
+TH1D *hOpFlashPECCQE2 = new TH1D("hOpFlashPECCQE2", "Number of PE in a CC-QE Interaction for Table Information", 2000, 0, 40000);
+TH1D *hOpFlashPECCRes2 = new TH1D("hOpFlashPECCRes2", "Number of PE in a CC-Res Interaction for Table Information", 2000, 0, 40000);
+TH1D *hOpFlashPECCDIS2 = new TH1D("hOpFlashPECCDIS2", "Number of PE in a CC-DIS Interaction for Table Information", 2000, 0, 40000);
+TH1D *hOpFlashPENCRes2 = new TH1D("hOpFlashPENCRes2", "Number of PE in a NC-Res Interaction for Table Information", 2000, 0, 40000);
+TH1D *hOpFlashPENCDIS2 = new TH1D("hOpFlashPENCDIS2", "Number of PE in a NC-DIS Interaction for Table Information", 2000, 0, 40000);
+TH1D *hOpFlashPECosmic2 = new TH1D("hOpFlashPECosmic2", "Number of PE for Cosmics for Table Information", 2000, 0, 40000);
+TH1D *hOpFlashPEOther2 = new TH1D("hOpFlashPEOther2", "Number of PE for Other Events for Table Information", 2000, 0, 40000);
 
-TH1D *hOpFlashPECCCoh3 = new TH1D("hOpFlashPECCCoh3", "Number of PE in a CCCoh Interaction for Table Information", 2000, 0, 20000);
-TH1D *hOpFlashPECCQE3 = new TH1D("hOpFlashPECCQE3", "Number of PE in a CC-QE Interaction for Table Information", 2000, 0, 20000);
-TH1D *hOpFlashPECCRes3 = new TH1D("hOpFlashPECCRes3", "Number of PE in a CC-Res Interaction for Table Information", 2000, 0, 20000);
-TH1D *hOpFlashPECCDIS3 = new TH1D("hOpFlashPECCDIS3", "Number of PE in a CC-DIS Interaction for Table Information", 2000, 0, 20000);
-TH1D *hOpFlashPENCRes3 = new TH1D("hOpFlashPENCRes3", "Number of PE in a NC-Res Interaction for Table Information", 2000, 0, 20000);
-TH1D *hOpFlashPENCDIS3 = new TH1D("hOpFlashPENCDIS3", "Number of PE in a NC-DIS Interaction for Table Information", 2000, 0, 20000);
-TH1D *hOpFlashPECosmic3 = new TH1D("hOpFlashPECosmic3", "Number of PE for Cosmics for Table Information", 2000, 0, 20000);
-TH1D *hOpFlashPEOther3 = new TH1D("hOpFlashPEOther3", "Number of PE for Other Events for Table Information", 2000, 0, 20000);
+TH1D *hOpFlashPECCCoh3 = new TH1D("hOpFlashPECCCoh3", "Number of PE in a CCCoh Interaction for Table Information", 2000, 0, 40000);
+TH1D *hOpFlashPECCQE3 = new TH1D("hOpFlashPECCQE3", "Number of PE in a CC-QE Interaction for Table Information", 2000, 0, 40000);
+TH1D *hOpFlashPECCRes3 = new TH1D("hOpFlashPECCRes3", "Number of PE in a CC-Res Interaction for Table Information", 2000, 0, 40000);
+TH1D *hOpFlashPECCDIS3 = new TH1D("hOpFlashPECCDIS3", "Number of PE in a CC-DIS Interaction for Table Information", 2000, 0, 40000);
+TH1D *hOpFlashPENCRes3 = new TH1D("hOpFlashPENCRes3", "Number of PE in a NC-Res Interaction for Table Information", 2000, 0, 40000);
+TH1D *hOpFlashPENCDIS3 = new TH1D("hOpFlashPENCDIS3", "Number of PE in a NC-DIS Interaction for Table Information", 2000, 0, 40000);
+TH1D *hOpFlashPECosmic3 = new TH1D("hOpFlashPECosmic3", "Number of PE for Cosmics for Table Information", 2000, 0, 40000);
+TH1D *hOpFlashPEOther3 = new TH1D("hOpFlashPEOther3", "Number of PE for Other Events for Table Information", 2000, 0, 40000);
 
 
 
