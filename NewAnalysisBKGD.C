@@ -242,6 +242,13 @@ TH1D *hOtherVA3 = new TH1D("hOtherVA3", "The Vertex Activity for Other Events wi
 
 TH1D *hCosmicShortTrackLength = new TH1D("hCosmicShortTrackLength", "The Shorter Tracks Length for Cosmic DoCA", 2000, 0, 200);
 TH2D *hCosmicTrackLengthVsDoCA = new TH2D("hCosmicTrackLengthVsDoCA", "The Shorter Track Length Vs DoCA for Cosmics", 1000, 0, 100, 2000, 0, 200);
+
+
+
+TH1D *hCrossSection = new TH1D("hCrossSection", "CC-Coherent Pion Production Cross Section", 1, 0, 1);
+TH1D *hDiffCrossSectionNeutrinoEnergy = new TH1D("hDiffCrossSectionNeutrinoEnergy", "Differential Cross Section with respect to Neutrino Energy", 500, 0, 5000);
+TH1D *hDiffCrossSectionPionEnergy = new TH1D("hDiffCrossSectionPionEnergy", "Differential Cross Section with respect to Pion Energy", 500, 0, 5000);
+TH1D *hDiffCrossSectionMuonEnergy = new TH1D("hDiffCrossSectionMuonEnergy", "Differential Cross Section with respect to Muon Energy", 500, 0, 5000);
 // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 
@@ -1923,6 +1930,13 @@ void NewAnalysisBKGD::Loop()
 
    hCosmicShortTrackLength->Write();
    hCosmicTrackLengthVsDoCA->Write();
+
+
+
+   hCrossSection->Write();
+   hDiffCrossSectionNeutrinoEnergy->Write();
+   hDiffCrossSectionPionEnergy->Write();
+   hDiffCrossSectionMuonEnergy->Write();
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 } // End NewAnalysisBKGD Loop
