@@ -25,6 +25,7 @@ TH1D *hCCCoh0TrackNumMCShwrs = new TH1D("hCCCoh0TrackNumMCShwrs", "The Number of
 TH2D *hCCCohMuonVsPionTrackLength = new TH2D("hCCCohMuonVsPionTrackLength", "The Track Length of the Muon vs the Track Length of the Pion for Fully Contained CC-COH Events", 200, 0, 1000, 200, 0, 1000);
 
 TH1D *hOpeningAngle = new TH1D("hOpeningAngle", "The Angle Between the Muon and the Pion for CC-COH Events with 2 or More MCTracks", 181, -0.5, 180.5);
+TH2D *hOpeningAngleVsConeAngle = new TH2D("hOpeningAngleVsConeAngle", "The Opening Angle Vs the Cone Angle for CC-COH Events", 181, -0.5, 180.5, 181, -0.5, 180.5);
 
 TH1D *hCCCohConeAngle = new TH1D("hCCCohConeAngle", "The Cone Angle for CC-COH Events with 2 or More MCTracks", 181, -0.5, 180.5);
 TH1D *hCCQEConeAngle = new TH1D("hCCQEConeAngle", "The Cone Angle for CC-QE Events with 2 or More MCTracks", 181, -0.5, 180.5);
@@ -97,8 +98,19 @@ TH2D *h2DPionVertexActivity = new TH2D("h2DPionVertexActivity", "Energy Deposite
 TH2D *hMuonEnergyVsConeAngle = new TH2D("hMuonEnergyVsConeAngle", "Muon Energy Vs Cone Angle for CCCoh Events", 181, -0.5, 180.5, 250, 0, 1500);
 TH2D *hPionEnergyVsConeAngle = new TH2D("hPionEnergyVsConeAngle", "Pion Energy Vs Cone Angle for CCCoh Events", 181, -0.5, 180.5, 250, 0, 1500);
 TH2D *hQ2VsConeAngle = new TH2D("hQ2VsConeAngle", "Q2 Vs Cone Angle for CCCoh Events", 181, -0.5, 180.5, 250, 0, 1);
+TH2D *hQ2VsOpeningAngle = new TH2D("hQ2VsOpeningAngle", "Q2 Vs Opening Angle for CCCoh Events", 181, -0.5, 180.5, 250, 0, 1);
 TH2D *hTVsConeAngle = new TH2D("hTVsConeAngle", "|t| Vs Cone Angle for CCCoh Events", 181, -0.5, 180.5, 250, 0, 1);
-TH2D *hTVsVA = new TH2D("hTVsVA", "|t| Vs Vertex Activity for CCCoh Events", 100, 0, 500, 250, 0, 1);
+TH2D *hTVsOpeningAngle = new TH2D("hTVsOpeningAngle", "|t| Vs Opening Angle for CCCoh Events", 181, -0.5, 180.5, 250, 0, 1);
+TH2D *hTVsQ2 = new TH2D("hTVsQ2", "|t| Vs Q2 for CCCoh Events", 250, 0, 1, 250, 0, 1);
+TH2D *hTVsVA = new TH2D("hTVsVA", "|t| Vs 10cm Vertex Activity for CCCoh Events", 100, 0, 500, 250, 0, 1);
+TH2D *hTVsVA5 = new TH2D("hTVsVA5", "|t| Vs 5cm Vertex Activity for CCCoh Events", 100, 0, 500, 250, 0, 1);
+TH2D *hTVsVA7_5 = new TH2D("hTVsVA7_5", "|t| Vs 7.5cm Vertex Activity for CCCoh Events", 100, 0, 500, 250, 0, 1);
+TH2D *hTVsVA12_5 = new TH2D("hTVsVA12_5", "|t| Vs 12.5cm Vertex Activity for CCCoh Events", 100, 0, 500, 250, 0, 1);
+TH2D *hTVsVA15 = new TH2D("hTVsVA15", "|t| Vs 15cm Vertex Activity for CCCoh Events", 100, 0, 500, 250, 0, 1);
+TH2D *hTVsVA17_5 = new TH2D("hTVsVA17_5", "|t| Vs 17.5cm Vertex Activity for CCCoh Events", 100, 0, 500, 250, 0, 1);
+TH2D *hTVsVA20 = new TH2D("hTVsVA20", "|t| Vs 20cm Vertex Activity for CCCoh Events", 100, 0, 500, 250, 0, 1);
+TH2D *hTVsVA22_5 = new TH2D("hTVsVA22_5", "|t| Vs 22.5cm Vertex Activity for CCCoh Events", 100, 0, 500, 250, 0, 1);
+TH2D *hTVsVA25 = new TH2D("hTVsVA25", "|t| Vs 25cm Vertex Activity for CCCoh Events", 100, 0, 500, 250, 0, 1);
 
 TH1D *hMCTruthQ2CCCoh = new TH1D("hMCTruthQ2CCCoh", "The Q^{2} of CCCoh Events from MCTruth Information", 250, 0, 1);
 TH1D *hMCTruthTCCCoh = new TH1D("hMCTruthTCCCoh", "The |t| of CCCoh Events from MCTruth Information", 250, 0, 1);
@@ -242,6 +254,87 @@ TH1D *hOtherVA3 = new TH1D("hOtherVA3", "The Vertex Activity for Other Events wi
 
 TH1D *hCosmicShortTrackLength = new TH1D("hCosmicShortTrackLength", "The Shorter Tracks Length for Cosmic DoCA", 2000, 0, 200);
 TH2D *hCosmicTrackLengthVsDoCA = new TH2D("hCosmicTrackLengthVsDoCA", "The Shorter Track Length Vs DoCA for Cosmics", 1000, 0, 100, 2000, 0, 200);
+
+
+
+TH1D *hCrossSection = new TH1D("hCrossSection", "CC-Coherent Pion Production Cross Section", 1, 0, 1);
+TH1D *hDiffCrossSectionNeutrinoEnergy = new TH1D("hDiffCrossSectionNeutrinoEnergy", "Differential Cross Section with respect to Neutrino Energy", 500, 0, 5000);
+TH1D *hDiffCrossSectionPionEnergy = new TH1D("hDiffCrossSectionPionEnergy", "Differential Cross Section with respect to Pion Energy", 500, 0, 5000);
+TH1D *hDiffCrossSectionMuonEnergy = new TH1D("hDiffCrossSectionMuonEnergy", "Differential Cross Section with respect to Muon Energy", 500, 0, 5000);
+
+
+
+TH1D *hCCCohVA5 = new TH1D("hCCCohVA5", "The Vertex Activity for CC-COH Events within 5cm of Vertex in MeV", 100, 0, 500);
+TH1D *hCCQEVA5 = new TH1D("hCCQEVA5", "The Vertex Activity for CC-QE Events within 5cm of Vertex in MeV", 100, 0, 500);
+TH1D *hCCResVA5 = new TH1D("hCCResVA5", "The Vertex Activity for CC-Res Events within 5cm of Vertex in MeV", 100, 0, 500);
+TH1D *hCCDISVA5 = new TH1D("hCCDISVA5", "The Vertex Activity for CC-DIS Events within 5cm of Vertex in MeV", 100, 0, 500);
+TH1D *hNCResVA5 = new TH1D("hNCResVA5", "The Vertex Activity for NC-Res Events within 5cm of Vertex in MeV", 100, 0, 500);
+TH1D *hNCDISVA5 = new TH1D("hNCDISVA5", "The Vertex Activity for NC-DIS Events within 5cm of Vertex in MeV", 100, 0, 500);
+TH1D *hCosmicVA5 = new TH1D("hCosmicVA5", "The Vertex Activity for Cosmic Events within 5cm of Vertex in MeV", 100, 0, 500);
+TH1D *hOtherVA5 = new TH1D("hOtherVA5", "The Vertex Activity for Other Events within 5cm of Vertex in MeV", 100, 0, 500);
+
+TH1D *hCCCohVA7_5 = new TH1D("hCCCohVA7_5", "The Vertex Activity for CC-COH Events within 7.5cm of Vertex in MeV", 100, 0, 500);
+TH1D *hCCQEVA7_5 = new TH1D("hCCQEVA7_5", "The Vertex Activity for CC-QE Events within 7.5cm of Vertex in MeV", 100, 0, 500);
+TH1D *hCCResVA7_5 = new TH1D("hCCResVA7_5", "The Vertex Activity for CC-Res Events within 7.5cm of Vertex in MeV", 100, 0, 500);
+TH1D *hCCDISVA7_5 = new TH1D("hCCDISVA7_5", "The Vertex Activity for CC-DIS Events within 7.5cm of Vertex in MeV", 100, 0, 500);
+TH1D *hNCResVA7_5 = new TH1D("hNCResVA7_5", "The Vertex Activity for NC-Res Events within 7.5cm of Vertex in MeV", 100, 0, 500);
+TH1D *hNCDISVA7_5 = new TH1D("hNCDISVA7_5", "The Vertex Activity for NC-DIS Events within 7.5cm of Vertex in MeV", 100, 0, 500);
+TH1D *hCosmicVA7_5 = new TH1D("hCosmicVA7_5", "The Vertex Activity for Cosmic Events within 7.5cm of Vertex in MeV", 100, 0, 500);
+TH1D *hOtherVA7_5 = new TH1D("hOtherVA7_5", "The Vertex Activity for Other Events within 7.5cm of Vertex in MeV", 100, 0, 500);
+
+TH1D *hCCCohVA12_5 = new TH1D("hCCCohVA12_5", "The Vertex Activity for CC-COH Events within 12.5cm of Vertex in MeV", 100, 0, 500);
+TH1D *hCCQEVA12_5 = new TH1D("hCCQEVA12_5", "The Vertex Activity for CC-QE Events within 12.5cm of Vertex in MeV", 100, 0, 500);
+TH1D *hCCResVA12_5 = new TH1D("hCCResVA12_5", "The Vertex Activity for CC-Res Events within 12.5cm of Vertex in MeV", 100, 0, 500);
+TH1D *hCCDISVA12_5 = new TH1D("hCCDISVA12_5", "The Vertex Activity for CC-DIS Events within 12.5cm of Vertex in MeV", 100, 0, 500);
+TH1D *hNCResVA12_5 = new TH1D("hNCResVA12_5", "The Vertex Activity for NC-Res Events within 12.5cm of Vertex in MeV", 100, 0, 500);
+TH1D *hNCDISVA12_5 = new TH1D("hNCDISVA12_5", "The Vertex Activity for NC-DIS Events within 12.5cm of Vertex in MeV", 100, 0, 500);
+TH1D *hCosmicVA12_5 = new TH1D("hCosmicVA12_5", "The Vertex Activity for Cosmic Events within 12.5cm of Vertex in MeV", 100, 0, 500);
+TH1D *hOtherVA12_5 = new TH1D("hOtherVA12_5", "The Vertex Activity for Other Events within 12.5cm of Vertex in MeV", 100, 0, 500);
+
+TH1D *hCCCohVA15 = new TH1D("hCCCohVA15", "The Vertex Activity for CC-COH Events within 15cm of Vertex in MeV", 100, 0, 500);
+TH1D *hCCQEVA15 = new TH1D("hCCQEVA15", "The Vertex Activity for CC-QE Events within 15cm of Vertex in MeV", 100, 0, 500);
+TH1D *hCCResVA15 = new TH1D("hCCResVA15", "The Vertex Activity for CC-Res Events within 15cm of Vertex in MeV", 100, 0, 500);
+TH1D *hCCDISVA15 = new TH1D("hCCDISVA15", "The Vertex Activity for CC-DIS Events within 15cm of Vertex in MeV", 100, 0, 500);
+TH1D *hNCResVA15 = new TH1D("hNCResVA15", "The Vertex Activity for NC-Res Events within 15cm of Vertex in MeV", 100, 0, 500);
+TH1D *hNCDISVA15 = new TH1D("hNCDISVA15", "The Vertex Activity for NC-DIS Events within 15cm of Vertex in MeV", 100, 0, 500);
+TH1D *hCosmicVA15 = new TH1D("hCosmicVA15", "The Vertex Activity for Cosmic Events within 15cm of Vertex in MeV", 100, 0, 500);
+TH1D *hOtherVA15 = new TH1D("hOtherVA15", "The Vertex Activity for Other Events within 15cm of Vertex in MeV", 100, 0, 500);
+
+TH1D *hCCCohVA17_5 = new TH1D("hCCCohVA17_5", "The Vertex Activity for CC-COH Events within 17.5cm of Vertex in MeV", 100, 0, 500);
+TH1D *hCCQEVA17_5 = new TH1D("hCCQEVA17_5", "The Vertex Activity for CC-QE Events within 17.5cm of Vertex in MeV", 100, 0, 500);
+TH1D *hCCResVA17_5 = new TH1D("hCCResVA17_5", "The Vertex Activity for CC-Res Events within 17.5cm of Vertex in MeV", 100, 0, 500);
+TH1D *hCCDISVA17_5 = new TH1D("hCCDISVA17_5", "The Vertex Activity for CC-DIS Events within 17.5cm of Vertex in MeV", 100, 0, 500);
+TH1D *hNCResVA17_5 = new TH1D("hNCResVA17_5", "The Vertex Activity for NC-Res Events within 17.5cm of Vertex in MeV", 100, 0, 500);
+TH1D *hNCDISVA17_5 = new TH1D("hNCDISVA17_5", "The Vertex Activity for NC-DIS Events within 17.5cm of Vertex in MeV", 100, 0, 500);
+TH1D *hCosmicVA17_5 = new TH1D("hCosmicVA17_5", "The Vertex Activity for Cosmic Events within 17.5cm of Vertex in MeV", 100, 0, 500);
+TH1D *hOtherVA17_5 = new TH1D("hOtherVA17_5", "The Vertex Activity for Other Events within 17.5cm of Vertex in MeV", 100, 0, 500);
+
+TH1D *hCCCohVA20 = new TH1D("hCCCohVA20", "The Vertex Activity for CC-COH Events within 20cm of Vertex in MeV", 100, 0, 500);
+TH1D *hCCQEVA20 = new TH1D("hCCQEVA20", "The Vertex Activity for CC-QE Events within 20cm of Vertex in MeV", 100, 0, 500);
+TH1D *hCCResVA20 = new TH1D("hCCResVA20", "The Vertex Activity for CC-Res Events within 20cm of Vertex in MeV", 100, 0, 500);
+TH1D *hCCDISVA20 = new TH1D("hCCDISVA20", "The Vertex Activity for CC-DIS Events within 20cm of Vertex in MeV", 100, 0, 500);
+TH1D *hNCResVA20 = new TH1D("hNCResVA20", "The Vertex Activity for NC-Res Events within 20cm of Vertex in MeV", 100, 0, 500);
+TH1D *hNCDISVA20 = new TH1D("hNCDISVA20", "The Vertex Activity for NC-DIS Events within 20cm of Vertex in MeV", 100, 0, 500);
+TH1D *hCosmicVA20 = new TH1D("hCosmicVA20", "The Vertex Activity for Cosmic Events within 20cm of Vertex in MeV", 100, 0, 500);
+TH1D *hOtherVA20 = new TH1D("hOtherVA20", "The Vertex Activity for Other Events within 20cm of Vertex in MeV", 100, 0, 500);
+
+TH1D *hCCCohVA22_5 = new TH1D("hCCCohVA22_5", "The Vertex Activity for CC-COH Events within 22.5cm of Vertex in MeV", 100, 0, 500);
+TH1D *hCCQEVA22_5 = new TH1D("hCCQEVA22_5", "The Vertex Activity for CC-QE Events within 22.5cm of Vertex in MeV", 100, 0, 500);
+TH1D *hCCResVA22_5 = new TH1D("hCCResVA22_5", "The Vertex Activity for CC-Res Events within 22.5cm of Vertex in MeV", 100, 0, 500);
+TH1D *hCCDISVA22_5 = new TH1D("hCCDISVA22_5", "The Vertex Activity for CC-DIS Events within 22.5cm of Vertex in MeV", 100, 0, 500);
+TH1D *hNCResVA22_5 = new TH1D("hNCResVA22_5", "The Vertex Activity for NC-Res Events within 22.5cm of Vertex in MeV", 100, 0, 500);
+TH1D *hNCDISVA22_5 = new TH1D("hNCDISVA22_5", "The Vertex Activity for NC-DIS Events within 22.5cm of Vertex in MeV", 100, 0, 500);
+TH1D *hCosmicVA22_5 = new TH1D("hCosmicVA22_5", "The Vertex Activity for Cosmic Events within 22.5cm of Vertex in MeV", 100, 0, 500);
+TH1D *hOtherVA22_5 = new TH1D("hOtherVA22_5", "The Vertex Activity for Other Events within 22.5cm of Vertex in MeV", 100, 0, 500);
+
+TH1D *hCCCohVA25 = new TH1D("hCCCohVA25", "The Vertex Activity for CC-COH Events within 25cm of Vertex in MeV", 100, 0, 500);
+TH1D *hCCQEVA25 = new TH1D("hCCQEVA25", "The Vertex Activity for CC-QE Events within 25cm of Vertex in MeV", 100, 0, 500);
+TH1D *hCCResVA25 = new TH1D("hCCResVA25", "The Vertex Activity for CC-Res Events within 25cm of Vertex in MeV", 100, 0, 500);
+TH1D *hCCDISVA25 = new TH1D("hCCDISVA25", "The Vertex Activity for CC-DIS Events within 25cm of Vertex in MeV", 100, 0, 500);
+TH1D *hNCResVA25 = new TH1D("hNCResVA25", "The Vertex Activity for NC-Res Events within 25cm of Vertex in MeV", 100, 0, 500);
+TH1D *hNCDISVA25 = new TH1D("hNCDISVA25", "The Vertex Activity for NC-DIS Events within 25cm of Vertex in MeV", 100, 0, 500);
+TH1D *hCosmicVA25 = new TH1D("hCosmicVA25", "The Vertex Activity for Cosmic Events within 25cm of Vertex in MeV", 100, 0, 500);
+TH1D *hOtherVA25 = new TH1D("hOtherVA25", "The Vertex Activity for Other Events within 25cm of Vertex in MeV", 100, 0, 500);
 // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 
@@ -477,7 +570,7 @@ void NewAnalysisCCCoh::Loop()
 
          double closer = -99;
 
-         double VAdistanceCheck = 10;
+         double VAdistanceCheck = 10; // The distance that is used in the Vertex Activity calculation for the radius
 
          double Vx = nuvtxx_truth[i];
          double Vy = nuvtxy_truth[i];
@@ -496,9 +589,25 @@ void NewAnalysisCCCoh::Loop()
          int nCosmicsInRange = 0;
          double CosmicConeAngle = 720;
          double CosmicVAEnergy = 0;
+         double CosmicVAEnergy5cm = 0;
+         double CosmicVAEnergy7_5cm = 0;
+         double CosmicVAEnergy12_5cm = 0;
+         double CosmicVAEnergy15cm = 0;
+         double CosmicVAEnergy17_5cm = 0;
+         double CosmicVAEnergy20cm = 0;
+         double CosmicVAEnergy22_5cm = 0;
+         double CosmicVAEnergy25cm = 0;
          double DoCA2_Cosmic = 10000;
          double TrackLength_Cosmic = -900;
          double VAEnergy = 0;
+         double VAEnergy5cm = 0;
+         double VAEnergy7_5cm = 0;
+         double VAEnergy12_5cm = 0;
+         double VAEnergy15cm = 0;
+         double VAEnergy17_5cm = 0;
+         double VAEnergy20cm = 0;
+         double VAEnergy22_5cm = 0;
+         double VAEnergy25cm = 0;
 	 double MuonPx = 0;
 	 double MuonPy = 0;
 	 double MuonPz = 0;
@@ -559,6 +668,38 @@ void NewAnalysisCCCoh::Loop()
                   if (Distance(Vx,Vy,Vz,trkxyz_pandora[t][2][j][0],trkxyz_pandora[t][2][j][1],trkxyz_pandora[t][2][j][2]) <= VAdistanceCheck)
                      {
                      CosmicVAEnergy = CosmicVAEnergy + trkdedx_pandora[t][2][j]*trkpitchc_pandora[t][2];
+                     }
+                  if (Distance(Vx,Vy,Vz,trkxyz_pandora[t][2][j][0],trkxyz_pandora[t][2][j][1],trkxyz_pandora[t][2][j][2]) <= 5)
+                     {
+                     CosmicVAEnergy5cm = CosmicVAEnergy5cm + trkdedx_pandora[t][2][j]*trkpitchc_pandora[t][2];
+                     }
+                  if (Distance(Vx,Vy,Vz,trkxyz_pandora[t][2][j][0],trkxyz_pandora[t][2][j][1],trkxyz_pandora[t][2][j][2]) <= 7.5)
+                     {
+                     CosmicVAEnergy7_5cm = CosmicVAEnergy7_5cm + trkdedx_pandora[t][2][j]*trkpitchc_pandora[t][2];
+                     }
+                  if (Distance(Vx,Vy,Vz,trkxyz_pandora[t][2][j][0],trkxyz_pandora[t][2][j][1],trkxyz_pandora[t][2][j][2]) <= 12.5)
+                     {
+                     CosmicVAEnergy12_5cm = CosmicVAEnergy12_5cm + trkdedx_pandora[t][2][j]*trkpitchc_pandora[t][2];
+                     }
+                  if (Distance(Vx,Vy,Vz,trkxyz_pandora[t][2][j][0],trkxyz_pandora[t][2][j][1],trkxyz_pandora[t][2][j][2]) <= 15)
+                     {
+                     CosmicVAEnergy15cm = CosmicVAEnergy15cm + trkdedx_pandora[t][2][j]*trkpitchc_pandora[t][2];
+                     }
+                  if (Distance(Vx,Vy,Vz,trkxyz_pandora[t][2][j][0],trkxyz_pandora[t][2][j][1],trkxyz_pandora[t][2][j][2]) <= 17.5)
+                     {
+                     CosmicVAEnergy17_5cm = CosmicVAEnergy17_5cm + trkdedx_pandora[t][2][j]*trkpitchc_pandora[t][2];
+                     }
+                  if (Distance(Vx,Vy,Vz,trkxyz_pandora[t][2][j][0],trkxyz_pandora[t][2][j][1],trkxyz_pandora[t][2][j][2]) <= 20)
+                     {
+                     CosmicVAEnergy20cm = CosmicVAEnergy20cm + trkdedx_pandora[t][2][j]*trkpitchc_pandora[t][2];
+                     }
+                  if (Distance(Vx,Vy,Vz,trkxyz_pandora[t][2][j][0],trkxyz_pandora[t][2][j][1],trkxyz_pandora[t][2][j][2]) <= 22.5)
+                     {
+                     CosmicVAEnergy22_5cm = CosmicVAEnergy22_5cm + trkdedx_pandora[t][2][j]*trkpitchc_pandora[t][2];
+                     }
+                  if (Distance(Vx,Vy,Vz,trkxyz_pandora[t][2][j][0],trkxyz_pandora[t][2][j][1],trkxyz_pandora[t][2][j][2]) <= 25)
+                     {
+                     CosmicVAEnergy25cm = CosmicVAEnergy25cm + trkdedx_pandora[t][2][j]*trkpitchc_pandora[t][2];
                      }
                   }
                // -----------------
@@ -754,6 +895,38 @@ void NewAnalysisCCCoh::Loop()
                   if (pdg[npriG4] == 13) {MuonVAEnergy = MuonVAEnergy + TrueTraj_E[npriG4][npriTrjPts] - TrueTraj_E[npriG4][npriTrjPts+1];}
                   if (pdg[npriG4] == 211) {PionVAEnergy = PionVAEnergy + TrueTraj_E[npriG4][npriTrjPts] - TrueTraj_E[npriG4][npriTrjPts+1];}
                   }
+               if (VAdistance <= 5) 
+                  {
+                  VAEnergy5cm = VAEnergy5cm + TrueTraj_E[npriG4][npriTrjPts] - TrueTraj_E[npriG4][npriTrjPts+1];
+		  }
+               if (VAdistance <= 7.5) 
+                  {
+                  VAEnergy7_5cm = VAEnergy7_5cm + TrueTraj_E[npriG4][npriTrjPts] - TrueTraj_E[npriG4][npriTrjPts+1];
+		  }
+               if (VAdistance <= 12.5) 
+                  {
+                  VAEnergy12_5cm = VAEnergy12_5cm + TrueTraj_E[npriG4][npriTrjPts] - TrueTraj_E[npriG4][npriTrjPts+1];
+		  }
+               if (VAdistance <= 15) 
+                  {
+                  VAEnergy15cm = VAEnergy15cm + TrueTraj_E[npriG4][npriTrjPts] - TrueTraj_E[npriG4][npriTrjPts+1];
+		  }
+               if (VAdistance <= 17.5) 
+                  {
+                  VAEnergy17_5cm = VAEnergy17_5cm + TrueTraj_E[npriG4][npriTrjPts] - TrueTraj_E[npriG4][npriTrjPts+1];
+		  }
+               if (VAdistance <= 20) 
+                  {
+                  VAEnergy20cm = VAEnergy20cm + TrueTraj_E[npriG4][npriTrjPts] - TrueTraj_E[npriG4][npriTrjPts+1];
+		  }
+               if (VAdistance <= 22.5) 
+                  {
+                  VAEnergy22_5cm = VAEnergy22_5cm + TrueTraj_E[npriG4][npriTrjPts] - TrueTraj_E[npriG4][npriTrjPts+1];
+		  }
+               if (VAdistance <= 25) 
+                  {
+                  VAEnergy25cm = VAEnergy25cm + TrueTraj_E[npriG4][npriTrjPts] - TrueTraj_E[npriG4][npriTrjPts+1];
+		  }
 
 	       // ---------------------------
 	       // --- Doing new DoCA here ---
@@ -969,6 +1142,14 @@ void NewAnalysisCCCoh::Loop()
                hCosmicShortTrackLength->Fill(TrackLength_Cosmic);
                hCosmicTrackLengthVsDoCA->Fill(DoCA2_Cosmic, TrackLength_Cosmic);
                hCosmicVA->Fill(CosmicVAEnergy);
+               hCosmicVA5->Fill(CosmicVAEnergy5cm);
+               hCosmicVA7_5->Fill(CosmicVAEnergy7_5cm);
+               hCosmicVA12_5->Fill(CosmicVAEnergy12_5cm);
+               hCosmicVA15->Fill(CosmicVAEnergy15cm);
+               hCosmicVA17_5->Fill(CosmicVAEnergy17_5cm);
+               hCosmicVA20->Fill(CosmicVAEnergy20cm);
+               hCosmicVA22_5->Fill(CosmicVAEnergy22_5cm);
+               hCosmicVA25->Fill(CosmicVAEnergy25cm);
                hCosmicTableInformation->Fill(4);
                if (CosmicConeAngle <= ConeAngleCut)
                   {
@@ -1419,10 +1600,14 @@ void NewAnalysisCCCoh::Loop()
             {
 	    if (CCCOH )//&& hasMuon && hasPion) 
 	       {
+	       t = abs(pow(NuEnergy - MuonEnergy - PionEnergy,2) - pow(NuPx - MuonPx - PionPx,2) - pow(NuPy - MuonPy - PionPy,2) - pow(NuPz - MuonPz - PionPz,2))/(1000000);
                if (hasMuon && hasPion)
                   {
                   OpeningAngle = muon.Angle(pion)*180/PI;
                   hOpeningAngle->Fill(OpeningAngle);
+		  hOpeningAngleVsConeAngle->Fill(EventsConeAngle, OpeningAngle);
+                  hTVsOpeningAngle->Fill(OpeningAngle, t);
+                  hQ2VsOpeningAngle->Fill(OpeningAngle, Q2);
                   hCCCohMuonVsPionTrackLength->Fill(pionlength, muonlength);
                   }
 	       hCCCohConeAngle->Fill(EventsConeAngle);
@@ -1436,10 +1621,27 @@ void NewAnalysisCCCoh::Loop()
 	       hCCCohDoCA->Fill(closer);
 	       hCCCohDoCA2->Fill(DoCA2_Event);
                hOpFlashPECCCoh->Fill(FlashPEBeam);
-	       t = abs(pow(NuEnergy - MuonEnergy - PionEnergy,2) - pow(NuPx - MuonPx - PionPx,2) - pow(NuPy - MuonPy - PionPy,2) - pow(NuPz - MuonPz - PionPz,2))/(1000000);
+	       //t = abs(pow(NuEnergy - MuonEnergy - PionEnergy,2) - pow(NuPx - MuonPx - PionPx,2) - pow(NuPy - MuonPy - PionPy,2) - pow(NuPz - MuonPz - PionPz,2))/(1000000);
                hTVsConeAngle->Fill(EventsConeAngle, t);
+               hTVsQ2->Fill(Q2, t);
                hTVsVA->Fill(VAEnergy*1000, t);
+               hTVsVA5->Fill(VAEnergy5cm*1000, t);
+               hTVsVA7_5->Fill(VAEnergy7_5cm*1000, t);
+               hTVsVA12_5->Fill(VAEnergy12_5cm*1000, t);
+               hTVsVA15->Fill(VAEnergy15cm*1000, t);
+               hTVsVA17_5->Fill(VAEnergy17_5cm*1000, t);
+               hTVsVA20->Fill(VAEnergy20cm*1000, t);
+               hTVsVA22_5->Fill(VAEnergy22_5cm*1000, t);
+               hTVsVA25->Fill(VAEnergy25cm*1000, t);
                hCCCohVA->Fill(VAEnergy*1000);
+               hCCCohVA5->Fill(VAEnergy5cm*1000);
+               hCCCohVA7_5->Fill(VAEnergy7_5cm*1000);
+               hCCCohVA12_5->Fill(VAEnergy12_5cm*1000);
+               hCCCohVA15->Fill(VAEnergy15cm*1000);
+               hCCCohVA17_5->Fill(VAEnergy17_5cm*1000);
+               hCCCohVA20->Fill(VAEnergy20cm*1000);
+               hCCCohVA22_5->Fill(VAEnergy22_5cm*1000);
+               hCCCohVA25->Fill(VAEnergy25cm*1000);
                hCCCohVA2->Fill(VertexActivityADC);
                hNotAssociatedHitVA2->Fill(VertexActivityADC_noTRKID);
                hCCCohMuonVA->Fill(MuonVAEnergy*1000);
@@ -1485,6 +1687,14 @@ void NewAnalysisCCCoh::Loop()
                hOpFlashPECCOther->Fill(FlashPEBeam);
                hOpFlashPECCQE->Fill(FlashPEBeam);
                hCCQEVA->Fill(VAEnergy*1000);
+               hCCQEVA5->Fill(VAEnergy5cm*1000);
+               hCCQEVA7_5->Fill(VAEnergy7_5cm*1000);
+               hCCQEVA12_5->Fill(VAEnergy12_5cm*1000);
+               hCCQEVA15->Fill(VAEnergy15cm*1000);
+               hCCQEVA17_5->Fill(VAEnergy17_5cm*1000);
+               hCCQEVA20->Fill(VAEnergy20cm*1000);
+               hCCQEVA22_5->Fill(VAEnergy22_5cm*1000);
+               hCCQEVA25->Fill(VAEnergy25cm*1000);
                hCCQEVA2->Fill(VertexActivityADC);
                hNotAssociatedHitVA2->Fill(VertexActivityADC_noTRKID);
                if (EventsConeAngle <= ConeAngleCut)
@@ -1518,6 +1728,14 @@ void NewAnalysisCCCoh::Loop()
                hOpFlashPECCOther->Fill(FlashPEBeam);
                hOpFlashPECCRes->Fill(FlashPEBeam);
                hCCResVA->Fill(VAEnergy*1000);
+               hCCResVA5->Fill(VAEnergy5cm*1000);
+               hCCResVA7_5->Fill(VAEnergy7_5cm*1000);
+               hCCResVA12_5->Fill(VAEnergy12_5cm*1000);
+               hCCResVA15->Fill(VAEnergy15cm*1000);
+               hCCResVA17_5->Fill(VAEnergy17_5cm*1000);
+               hCCResVA20->Fill(VAEnergy20cm*1000);
+               hCCResVA22_5->Fill(VAEnergy22_5cm*1000);
+               hCCResVA25->Fill(VAEnergy25cm*1000);
                hCCResVA2->Fill(VertexActivityADC);
                hNotAssociatedHitVA2->Fill(VertexActivityADC_noTRKID);
                if (EventsConeAngle <= ConeAngleCut)
@@ -1551,6 +1769,14 @@ void NewAnalysisCCCoh::Loop()
                hOpFlashPECCOther->Fill(FlashPEBeam);
                hOpFlashPECCDIS->Fill(FlashPEBeam);
                hCCDISVA->Fill(VAEnergy*1000);
+               hCCDISVA5->Fill(VAEnergy5cm*1000);
+               hCCDISVA7_5->Fill(VAEnergy7_5cm*1000);
+               hCCDISVA12_5->Fill(VAEnergy12_5cm*1000);
+               hCCDISVA15->Fill(VAEnergy15cm*1000);
+               hCCDISVA17_5->Fill(VAEnergy17_5cm*1000);
+               hCCDISVA20->Fill(VAEnergy20cm*1000);
+               hCCDISVA22_5->Fill(VAEnergy22_5cm*1000);
+               hCCDISVA25->Fill(VAEnergy25cm*1000);
                hCCDISVA2->Fill(VertexActivityADC);
                hNotAssociatedHitVA2->Fill(VertexActivityADC_noTRKID);
                if (EventsConeAngle <= ConeAngleCut)
@@ -1584,6 +1810,14 @@ void NewAnalysisCCCoh::Loop()
                hOpFlashPENCOther->Fill(FlashPEBeam);
                hOpFlashPENCRes->Fill(FlashPEBeam);
                hNCResVA->Fill(VAEnergy*1000);
+               hNCResVA5->Fill(VAEnergy5cm*1000);
+               hNCResVA7_5->Fill(VAEnergy7_5cm*1000);
+               hNCResVA12_5->Fill(VAEnergy12_5cm*1000);
+               hNCResVA15->Fill(VAEnergy15cm*1000);
+               hNCResVA17_5->Fill(VAEnergy17_5cm*1000);
+               hNCResVA20->Fill(VAEnergy20cm*1000);
+               hNCResVA22_5->Fill(VAEnergy22_5cm*1000);
+               hNCResVA25->Fill(VAEnergy25cm*1000);
                hNCResVA2->Fill(VertexActivityADC);
                hNotAssociatedHitVA2->Fill(VertexActivityADC_noTRKID);
                if (EventsConeAngle <= ConeAngleCut)
@@ -1617,6 +1851,14 @@ void NewAnalysisCCCoh::Loop()
                hOpFlashPENCOther->Fill(FlashPEBeam);
                hOpFlashPENCDIS->Fill(FlashPEBeam);
                hNCDISVA->Fill(VAEnergy*1000);
+               hNCDISVA5->Fill(VAEnergy5cm*1000);
+               hNCDISVA7_5->Fill(VAEnergy7_5cm*1000);
+               hNCDISVA12_5->Fill(VAEnergy12_5cm*1000);
+               hNCDISVA15->Fill(VAEnergy15cm*1000);
+               hNCDISVA17_5->Fill(VAEnergy17_5cm*1000);
+               hNCDISVA20->Fill(VAEnergy20cm*1000);
+               hNCDISVA22_5->Fill(VAEnergy22_5cm*1000);
+               hNCDISVA25->Fill(VAEnergy25cm*1000);
                hNCDISVA2->Fill(VertexActivityADC);
                hNotAssociatedHitVA2->Fill(VertexActivityADC_noTRKID);
                if (EventsConeAngle <= ConeAngleCut)
@@ -1644,6 +1886,14 @@ void NewAnalysisCCCoh::Loop()
 	       hOtherDoCA2->Fill(DoCA2_Event);
                hOpFlashPEOther->Fill(FlashPEBeam);
                hOtherVA->Fill(VAEnergy*1000);
+               hOtherVA5->Fill(VAEnergy5cm*1000);
+               hOtherVA7_5->Fill(VAEnergy7_5cm*1000);
+               hOtherVA12_5->Fill(VAEnergy12_5cm*1000);
+               hOtherVA15->Fill(VAEnergy15cm*1000);
+               hOtherVA17_5->Fill(VAEnergy17_5cm*1000);
+               hOtherVA20->Fill(VAEnergy20cm*1000);
+               hOtherVA22_5->Fill(VAEnergy22_5cm*1000);
+               hOtherVA25->Fill(VAEnergy25cm*1000);
                hOtherVA2->Fill(VertexActivityADC);
                hNotAssociatedHitVA2->Fill(VertexActivityADC_noTRKID);
                if (EventsConeAngle <= ConeAngleCut)
@@ -1706,6 +1956,7 @@ void NewAnalysisCCCoh::Loop()
    hCCCohMuonVsPionTrackLength->Write();
 
    hOpeningAngle->Write();
+   hOpeningAngleVsConeAngle->Write();
 
    hCCCohConeAngle->Write();
    hCCQEConeAngle->Write();
@@ -1778,8 +2029,19 @@ void NewAnalysisCCCoh::Loop()
    hMuonEnergyVsConeAngle->Write();
    hPionEnergyVsConeAngle->Write();
    hQ2VsConeAngle->Write();
+   hQ2VsOpeningAngle->Write();
    hTVsConeAngle->Write();
+   hTVsOpeningAngle->Write();
+   hTVsQ2->Write();
    hTVsVA->Write();
+   hTVsVA5->Write();
+   hTVsVA7_5->Write();
+   hTVsVA12_5->Write();
+   hTVsVA15->Write();
+   hTVsVA17_5->Write();
+   hTVsVA20->Write();
+   hTVsVA22_5->Write();
+   hTVsVA25->Write();
 
    hMCTruthQ2CCCoh->Write();
    hMCTruthTCCCoh->Write();
@@ -1923,6 +2185,87 @@ void NewAnalysisCCCoh::Loop()
 
    hCosmicShortTrackLength->Write();
    hCosmicTrackLengthVsDoCA->Write();
+
+
+
+   hCrossSection->Write();
+   hDiffCrossSectionNeutrinoEnergy->Write();
+   hDiffCrossSectionPionEnergy->Write();
+   hDiffCrossSectionMuonEnergy->Write();
+
+
+
+   hCCCohVA5->Write();
+   hCCQEVA5->Write();
+   hCCResVA5->Write();
+   hCCDISVA5->Write();
+   hNCResVA5->Write();
+   hNCDISVA5->Write();
+   hCosmicVA5->Write();
+   hOtherVA5->Write();
+
+   hCCCohVA7_5->Write();
+   hCCQEVA7_5->Write();
+   hCCResVA7_5->Write();
+   hCCDISVA7_5->Write();
+   hNCResVA7_5->Write();
+   hNCDISVA7_5->Write();
+   hCosmicVA7_5->Write();
+   hOtherVA7_5->Write();
+
+   hCCCohVA12_5->Write();
+   hCCQEVA12_5->Write();
+   hCCResVA12_5->Write();
+   hCCDISVA12_5->Write();
+   hNCResVA12_5->Write();
+   hNCDISVA12_5->Write();
+   hCosmicVA12_5->Write();
+   hOtherVA12_5->Write();
+
+   hCCCohVA15->Write();
+   hCCQEVA15->Write();
+   hCCResVA15->Write();
+   hCCDISVA15->Write();
+   hNCResVA15->Write();
+   hNCDISVA15->Write();
+   hCosmicVA15->Write();
+   hOtherVA15->Write();
+
+   hCCCohVA17_5->Write();
+   hCCQEVA17_5->Write();
+   hCCResVA17_5->Write();
+   hCCDISVA17_5->Write();
+   hNCResVA17_5->Write();
+   hNCDISVA17_5->Write();
+   hCosmicVA17_5->Write();
+   hOtherVA17_5->Write();
+
+   hCCCohVA20->Write();
+   hCCQEVA20->Write();
+   hCCResVA20->Write();
+   hCCDISVA20->Write();
+   hNCResVA20->Write();
+   hNCDISVA20->Write();
+   hCosmicVA20->Write();
+   hOtherVA20->Write();
+
+   hCCCohVA22_5->Write();
+   hCCQEVA22_5->Write();
+   hCCResVA22_5->Write();
+   hCCDISVA22_5->Write();
+   hNCResVA22_5->Write();
+   hNCDISVA22_5->Write();
+   hCosmicVA22_5->Write();
+   hOtherVA22_5->Write();
+
+   hCCCohVA25->Write();
+   hCCQEVA25->Write();
+   hCCResVA25->Write();
+   hCCDISVA25->Write();
+   hNCResVA25->Write();
+   hNCDISVA25->Write();
+   hCosmicVA25->Write();
+   hOtherVA25->Write();
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 } // End NewAnalysisCCCoh Loop

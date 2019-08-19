@@ -32,6 +32,8 @@ TFile *cc8 = new TFile("./Histograms_NewAnalysis_CCCoh_Vertex_22_5_cm.root");
 TFile *b9 = new TFile("./Histograms_NewAnalysis_BKGD_Vertex_25_0_cm.root");
 TFile *cc9 = new TFile("./Histograms_NewAnalysis_CCCoh_Vertex_25_0_cm.root");
 
+THStack *hSConeAngle = new THStack("hSConeAngle","Stacked Cone Angle Histograms");
+THStack *hSVA = new THStack("hSVA","Stacked Vertex Activity Histograms");
 
 
 TH1D *hCCCohVA1 = (TH1D*)cc1->Get("hCCCohVA");
@@ -227,6 +229,7 @@ hCCCohVA18->Sumw2();*/
 
 
 
+TH1D *hCCCohConeAngleBKGD = (TH1D*)f->Get("hCCCohConeAngle");
 TH1D *hCCCohConeAngle = (TH1D*)f2->Get("hCCCohConeAngle");
 TH1D *hCCQEConeAngle = (TH1D*)f->Get("hCCQEConeAngle");
 TH1D *hCCResConeAngle = (TH1D*)f->Get("hCCResConeAngle");
@@ -235,6 +238,15 @@ TH1D *hNCResConeAngle = (TH1D*)f->Get("hNCResConeAngle");
 TH1D *hNCDISConeAngle = (TH1D*)f->Get("hNCDISConeAngle");
 TH1D *hCosmicConeAngle = (TH1D*)f->Get("hCosmicConeAngle");
 TH1D *hOtherConeAngle = (TH1D*)f->Get("hOtherConeAngle");
+
+hSConeAngle->Add(hCCCohConeAngleBKGD);
+hSConeAngle->Add(hCCQEConeAngle);
+hSConeAngle->Add(hCCResConeAngle);
+hSConeAngle->Add(hCCDISConeAngle);
+hSConeAngle->Add(hNCResConeAngle);
+hSConeAngle->Add(hNCDISConeAngle);
+hSConeAngle->Add(hOtherConeAngle);
+//hSConeAngle->Add(hCosmicConeAngle);
 
 // -----------------------------
 // --- TGraph for Cone Angle ---
@@ -398,7 +410,7 @@ TH1D *hCCResDoCA = (TH1D*)f->Get("hCCResDoCA2");
 TH1D *hCCDISDoCA = (TH1D*)f->Get("hCCDISDoCA2");
 TH1D *hNCResDoCA = (TH1D*)f->Get("hNCResDoCA2");
 TH1D *hNCDISDoCA = (TH1D*)f->Get("hNCDISDoCA2");
-TH1D *hCosmicDoCA = (TH1D*)f->Get("hCosmicDoCA2");
+TH1D *hCosmicDoCA = (TH1D*)b3->Get("hCosmicDoCA2");
 TH1D *hOtherDoCA = (TH1D*)f->Get("hOtherDoCA2");
 
 // -----------------------
@@ -557,6 +569,7 @@ leg5->AddEntry(gCosmicDoCA,"Cosmic");
 leg5->Draw();
 // -----------------------
 
+TH1D *hCCCohVABKGD = (TH1D*)f->Get("hCCCohVA");
 TH1D *hCCCohVA = (TH1D*)f2->Get("hCCCohVA");
 TH1D *hCCQEVA = (TH1D*)f->Get("hCCQEVA");
 TH1D *hCCResVA = (TH1D*)f->Get("hCCResVA");
@@ -565,6 +578,15 @@ TH1D *hNCResVA = (TH1D*)f->Get("hNCResVA");
 TH1D *hNCDISVA = (TH1D*)f->Get("hNCDISVA");
 TH1D *hCosmicVA = (TH1D*)f->Get("hCosmicVA");
 TH1D *hOtherVA = (TH1D*)f->Get("hOtherVA");
+
+hSVA->Add(hCCCohVABKGD);
+hSVA->Add(hCCQEVA);
+hSVA->Add(hCCResVA);
+hSVA->Add(hCCDISVA);
+hSVA->Add(hNCResVA);
+hSVA->Add(hNCDISVA);
+hSVA->Add(hOtherVA);
+//hSVA->Add(hCosmicVA);
 
 // ---------------------
 // --- TGraph for VA ---
@@ -2118,4 +2140,20 @@ leg24->AddEntry(hCCCohVA16,"R = 20.0 cm");
 leg24->AddEntry(hCCCohVA17,"R = 22.5 cm");
 leg24->AddEntry(hCCCohVA18,"R = 25.0 cm");
 leg24->Draw();*/
+
+
+
+TCanvas *c25 = new TCanvas("c25", "Stacked Cone Angle");
+c25->SetTicks();
+c25->SetFillColor(kWhite);
+
+hSConeAngle->Draw();
+
+
+
+TCanvas *c26 = new TCanvas("c26", "Stacked Vertex Activity");
+c26->SetTicks();
+c26->SetFillColor(kWhite);
+
+hSVA->Draw();
 }
