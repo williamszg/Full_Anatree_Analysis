@@ -25,7 +25,11 @@ TH1D *hCCCoh0TrackNumMCShwrs = new TH1D("hCCCoh0TrackNumMCShwrs", "The Number of
 TH2D *hCCCohMuonVsPionTrackLength = new TH2D("hCCCohMuonVsPionTrackLength", "The Track Length of the Muon vs the Track Length of the Pion for Fully Contained CC-COH Events", 200, 0, 1000, 200, 0, 1000);
 
 TH1D *hOpeningAngle = new TH1D("hOpeningAngle", "The Angle Between the Muon and the Pion for CC-COH Events with 2 or More MCTracks", 181, -0.5, 180.5);
+TH1D *hCCQEOpeningAngle = new TH1D("hCCQEOpeningAngle", "The Angle Between Two Tracks for CCQE Events with 2 or More MCTracks", 181, -0.5, 180.5);
+TH1D *hCCResOpeningAngle = new TH1D("hCCResOpeningAngle", "The Angle Between Two Tracks for CCRes Events with 2 or More MCTracks", 181, -0.5, 180.5);
 TH2D *hOpeningAngleVsConeAngle = new TH2D("hOpeningAngleVsConeAngle", "The Opening Angle Vs the Cone Angle for CC-COH Events", 181, -0.5, 180.5, 181, -0.5, 180.5);
+TH2D *hCCQEOpeningAngleVsConeAngle = new TH2D("hCCQEOpeningAngleVsConeAngle", "The Opening Angle Vs the Cone Angle for CCQE Events", 181, -0.5, 180.5, 181, -0.5, 180.5);
+TH2D *hCCResOpeningAngleVsConeAngle = new TH2D("hCCResOpeningAngleVsConeAngle", "The Opening Angle Vs the Cone Angle for CCRes Events", 181, -0.5, 180.5, 181, -0.5, 180.5);
 
 TH1D *hCCCohConeAngle = new TH1D("hCCCohConeAngle", "The Cone Angle for CC-COH Events with 2 or More MCTracks", 181, -0.5, 180.5);
 TH1D *hCCQEConeAngle = new TH1D("hCCQEConeAngle", "The Cone Angle for CC-QE Events with 2 or More MCTracks", 181, -0.5, 180.5);
@@ -335,6 +339,22 @@ TH1D *hNCResVA25 = new TH1D("hNCResVA25", "The Vertex Activity for NC-Res Events
 TH1D *hNCDISVA25 = new TH1D("hNCDISVA25", "The Vertex Activity for NC-DIS Events within 25cm of Vertex in MeV", 100, 0, 500);
 TH1D *hCosmicVA25 = new TH1D("hCosmicVA25", "The Vertex Activity for Cosmic Events within 25cm of Vertex in MeV", 100, 0, 500);
 TH1D *hOtherVA25 = new TH1D("hOtherVA25", "The Vertex Activity for Other Events within 25cm of Vertex in MeV", 100, 0, 500);
+
+
+
+// -----------------------------------------
+// --- Pandora Reconstruction First Look ---
+// -----------------------------------------
+TH1D *hPandoraVx = new TH1D("hPandoraVx", "Pandora Vertex X Position for Truth Matched Vertices", 251, -0.5, 250.5);
+TH1D *hPandoraVy = new TH1D("hPandoraVy", "Pandora Vertex Y Position for Truth Matched Vertices", 231, -115.5, 115.5);
+TH1D *hPandoraVz = new TH1D("hPandoraVz", "Pandora Vertex Z Position for Truth Matched Vertices", 1041, -0.5, 1040.5);
+
+TH1D *hPandoraDiffVx = new TH1D("hPandoraDiffVx", "Difference Between Pandora and Truth Vertex X Position for Truth Matched Vertices", 101, -50.5, 50.5);
+TH1D *hPandoraDiffVy = new TH1D("hPandoraDiffVy", "Difference Between Pandora and Truth Vertex Y Position for Truth Matched Vertices", 101, -50.5, 50.5);
+TH1D *hPandoraDiffVz = new TH1D("hPandoraDiffVz", "Difference Between Pandora and Truth Vertex Z Position for Truth Matched Vertices", 101, -50.5, 50.5);
+TH1D *hPandoraDiffTotal = new TH1D("hPandoraDiffTotal", "Difference in Pandora Vertex and Truth Vertex Total Distance", 251, -0.5, 250.5);
+// -----------------------------------------
+
 // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 
@@ -576,6 +596,31 @@ void NewAnalysisBKGD::Loop()
          double Vy = nuvtxy_truth[i];
          double Vz = nuvtxz_truth[i];
 
+	 // -------------------------------------
+         // --- Looking Over Pandora Vertices ---
+	 // -------------------------------------
+	 double PandoraVx = nuvtxx_pandora[i];
+	 double PandoraVy = nuvtxy_pandora[i];
+	 double PandoraVz = nuvtxz_pandora[i];
+
+	 double PandoraDiffVx = Vx - PandoraVx;
+	 double PandoraDiffVy = Vy - PandoraVy;
+	 double PandoraDiffVz = Vz - PandoraVz;
+
+         TVector3 PandoraDiff(PandoraDiffVx, PandoraDiffVy, PandoraDiffVz);
+	 double PandoraDiffTotal = PandoraDiff.Mag();
+
+	 hPandoraVx->Fill(PandoraVx);
+	 hPandoraVy->Fill(PandoraVy);
+	 hPandoraVz->Fill(PandoraVz);
+
+	 hPandoraDiffVx->Fill(PandoraDiffVx);
+	 hPandoraDiffVy->Fill(PandoraDiffVy);
+	 hPandoraDiffVz->Fill(PandoraDiffVz);
+
+	 hPandoraDiffTotal->Fill(PandoraDiffTotal);
+	 // -------------------------------------
+
          double SCVx = sp_charge_corrected_nuvtxx_truth[i]; 
          double SCVy = sp_charge_corrected_nuvtxy_truth[i];
          double SCVz = sp_charge_corrected_nuvtxz_truth[i];
@@ -626,6 +671,8 @@ void NewAnalysisBKGD::Loop()
 	 double t = -999;
 	 double DoCA2_Event = 10000;
          Double_t OpeningAngle = 720;
+	 Double_t CCQEOpeningAngle = 720;
+	 Double_t CCResOpeningAngle = 720;
 
          // --------------------------------
          // --- Some OpFlash Information ---
@@ -1677,6 +1724,12 @@ void NewAnalysisBKGD::Loop()
 	       }
 	    if (CCQE )//&& hasMuon && hasProton) 
 	       {
+	       if (hasMuon && hasProton)
+	          {
+		  CCQEOpeningAngle = muon.Angle(proton)*180/PI;
+		  hCCQEOpeningAngle->Fill(CCQEOpeningAngle);
+		  hCCQEOpeningAngleVsConeAngle->Fill(EventsConeAngle, CCQEOpeningAngle);
+	          }
 	       hCCQEConeAngle->Fill(EventsConeAngle);
 	       double d1 = DoCA(Vx, Vy, Vz, muonstart.X(), muonstart.Y(), muonstart.Z(), muonend.X(), muonend.Y(), muonend.Z());
 	       double d2 = DoCA(Vx, Vy, Vz, protonstart.X(), protonstart.Y(), protonstart.Z(), protonend.X(), protonend.Y(), protonend.Z());
@@ -1718,6 +1771,12 @@ void NewAnalysisBKGD::Loop()
 	       }
  	    if (CCRes )//&& hasMuon && hasPion) 
 	       {
+	       if (hasMuon && hasPion)
+	          {
+		  CCResOpeningAngle = muon.Angle(pion)*180/PI;
+		  hCCResOpeningAngle->Fill(CCResOpeningAngle);
+		  hCCResOpeningAngleVsConeAngle->Fill(EventsConeAngle, CCResOpeningAngle);
+	          }
 	       hCCResConeAngle->Fill(EventsConeAngle);
 	       double d1 = DoCA(Vx, Vy, Vz, muonstart.X(), muonstart.Y(), muonstart.Z(), muonend.X(), muonend.Y(), muonend.Z());
 	       double d2 = DoCA(Vx, Vy, Vz, pionstart.X(), pionstart.Y(), pionstart.Z(), pionend.X(), pionend.Y(), pionend.Z());
@@ -1956,7 +2015,11 @@ void NewAnalysisBKGD::Loop()
    hCCCohMuonVsPionTrackLength->Write();
 
    hOpeningAngle->Write();
+   hCCQEOpeningAngle->Write();
+   hCCResOpeningAngle->Write();
    hOpeningAngleVsConeAngle->Write();
+   hCCQEOpeningAngleVsConeAngle->Write();
+   hCCResOpeningAngleVsConeAngle->Write();
 
    hCCCohConeAngle->Write();
    hCCQEConeAngle->Write();
@@ -2266,6 +2329,15 @@ void NewAnalysisBKGD::Loop()
    hNCDISVA25->Write();
    hCosmicVA25->Write();
    hOtherVA25->Write();
+
+   hPandoraVx->Write();
+   hPandoraVy->Write();
+   hPandoraVz->Write();
+
+   hPandoraDiffVx->Write();
+   hPandoraDiffVy->Write();
+   hPandoraDiffVz->Write();
+   hPandoraDiffTotal->Write();
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 } // End NewAnalysisBKGD Loop

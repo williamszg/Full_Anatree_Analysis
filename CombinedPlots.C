@@ -1,8 +1,8 @@
 {
-TFile *f = new TFile("./Histograms_NewAnalysis_BKGD_Bestest.root"); //<--File for Backgrounds
-TFile *f2 = new TFile("./Histograms_NewAnalysis_CCCoh_Bestest.root"); //<--File for CCCoh
-TFile *f3 = new TFile("./Histograms_NewAnalysis_BKGD_Bestest.root"); //<--File for Cosmics
-
+TFile *f = new TFile("./Histograms_NewAnalysis_BKGD.root"); //<--File for Backgrounds
+TFile *f2 = new TFile("./Histograms_NewAnalysis_CCCoh.root"); //<--File for CCCoh
+TFile *f3 = new TFile("./Histograms_NewAnalysis_BKGD.root"); //<--File for Cosmics
+TFile *f4 = new TFile("./Histograms_NewAnalysis_CCCoh_Bestest.root"); //<--File for VA CCCoh
 
 
 TFile *b1 = new TFile("./Histograms_NewAnalysis_BKGD_Vertex_5_0_cm.root");
@@ -207,17 +207,17 @@ hCosmicVA9->Sumw2();
 hOtherVA9->Sumw2();
 
 
-TH1D *hCCCohVA10 = (TH1D*)cc1->Get("hCCCohVA");
-TH1D *hCCCohVA11 = (TH1D*)cc2->Get("hCCCohVA");
-TH1D *hCCCohVA12 = (TH1D*)cc3->Get("hCCCohVA");
-TH1D *hCCCohVA13 = (TH1D*)cc4->Get("hCCCohVA");
-TH1D *hCCCohVA14 = (TH1D*)cc5->Get("hCCCohVA");
-TH1D *hCCCohVA15 = (TH1D*)cc6->Get("hCCCohVA");
-TH1D *hCCCohVA16 = (TH1D*)cc7->Get("hCCCohVA");
-TH1D *hCCCohVA17 = (TH1D*)cc8->Get("hCCCohVA");
-TH1D *hCCCohVA18 = (TH1D*)cc9->Get("hCCCohVA");
+TH1D *hCCCohVA10 = (TH1D*)f2->Get("hCCCohVA5");
+TH1D *hCCCohVA11 = (TH1D*)f2->Get("hCCCohVA7_5");
+TH1D *hCCCohVA12 = (TH1D*)f4->Get("hCCCohVA");
+TH1D *hCCCohVA13 = (TH1D*)f2->Get("hCCCohVA12_5");
+TH1D *hCCCohVA14 = (TH1D*)f2->Get("hCCCohVA15");
+TH1D *hCCCohVA15 = (TH1D*)f2->Get("hCCCohVA17_5");
+TH1D *hCCCohVA16 = (TH1D*)f2->Get("hCCCohVA20");
+TH1D *hCCCohVA17 = (TH1D*)f2->Get("hCCCohVA22_5");
+TH1D *hCCCohVA18 = (TH1D*)f2->Get("hCCCohVA25");
 
-/*hCCCohVA10->Sumw2();
+hCCCohVA10->Sumw2();
 hCCCohVA11->Sumw2();
 hCCCohVA12->Sumw2();
 hCCCohVA13->Sumw2();
@@ -225,7 +225,7 @@ hCCCohVA14->Sumw2();
 hCCCohVA15->Sumw2();
 hCCCohVA16->Sumw2();
 hCCCohVA17->Sumw2();
-hCCCohVA18->Sumw2();*/
+hCCCohVA18->Sumw2();
 
 
 
@@ -247,6 +247,192 @@ hSConeAngle->Add(hNCResConeAngle);
 hSConeAngle->Add(hNCDISConeAngle);
 hSConeAngle->Add(hOtherConeAngle);
 //hSConeAngle->Add(hCosmicConeAngle);
+
+
+
+// =====================================================
+// === The Histograms in Here Are the N+1 Histograms ===
+// =====================================================
+TH1D *hCCCohConeAngle_1 = (TH1D*)f2->Get("hCCCohConeAngle1");
+TH1D *hCCQEConeAngle_1 = (TH1D*)f->Get("hCCQEConeAngle1");
+TH1D *hCCResConeAngle_1 = (TH1D*)f->Get("hCCResConeAngle1");
+TH1D *hCCDISConeAngle_1 = (TH1D*)f->Get("hCCDISConeAngle1");
+TH1D *hNCResConeAngle_1 = (TH1D*)f->Get("hNCResConeAngle1");
+TH1D *hNCDISConeAngle_1 = (TH1D*)f->Get("hNCDISConeAngle1");
+TH1D *hCosmicConeAngle_1 = (TH1D*)f->Get("hCosmicConeAngle1");
+TH1D *hOtherConeAngle_1 = (TH1D*)f->Get("hOtherConeAngle1");
+
+hCCCohConeAngle_1->Sumw2();
+hCCQEConeAngle_1->Sumw2();
+hCCResConeAngle_1->Sumw2();
+hCCDISConeAngle_1->Sumw2();
+hNCResConeAngle_1->Sumw2();
+hNCDISConeAngle_1->Sumw2();
+hCosmicConeAngle_1->Sumw2();
+hOtherConeAngle_1->Sumw2();
+
+
+
+TH1D *hCCCohConeAngle_2 = (TH1D*)f2->Get("hCCCohConeAngle2");
+TH1D *hCCQEConeAngle_2 = (TH1D*)f->Get("hCCQEConeAngle2");
+TH1D *hCCResConeAngle_2 = (TH1D*)f->Get("hCCResConeAngle2");
+TH1D *hCCDISConeAngle_2 = (TH1D*)f->Get("hCCDISConeAngle2");
+TH1D *hNCResConeAngle_2 = (TH1D*)f->Get("hNCResConeAngle2");
+TH1D *hNCDISConeAngle_2 = (TH1D*)f->Get("hNCDISConeAngle2");
+TH1D *hCosmicConeAngle_2 = (TH1D*)f->Get("hCosmicConeAngle2");
+TH1D *hOtherConeAngle_2 = (TH1D*)f->Get("hOtherConeAngle2");
+
+hCCCohConeAngle_2->Sumw2();
+hCCQEConeAngle_2->Sumw2();
+hCCResConeAngle_2->Sumw2();
+hCCDISConeAngle_2->Sumw2();
+hNCResConeAngle_2->Sumw2();
+hNCDISConeAngle_2->Sumw2();
+hCosmicConeAngle_2->Sumw2();
+hOtherConeAngle_2->Sumw2();
+
+
+
+TH1D *hCCCohConeAngle_3 = (TH1D*)f2->Get("hCCCohConeAngle3");
+TH1D *hCCQEConeAngle_3 = (TH1D*)f->Get("hCCQEConeAngle3");
+TH1D *hCCResConeAngle_3 = (TH1D*)f->Get("hCCResConeAngle3");
+TH1D *hCCDISConeAngle_3 = (TH1D*)f->Get("hCCDISConeAngle3");
+TH1D *hNCResConeAngle_3 = (TH1D*)f->Get("hNCResConeAngle3");
+TH1D *hNCDISConeAngle_3 = (TH1D*)f->Get("hNCDISConeAngle3");
+TH1D *hCosmicConeAngle_3 = (TH1D*)f->Get("hCosmicConeAngle3");
+TH1D *hOtherConeAngle_3 = (TH1D*)f->Get("hOtherConeAngle3");
+
+hCCCohConeAngle_3->Sumw2();
+hCCQEConeAngle_3->Sumw2();
+hCCResConeAngle_3->Sumw2();
+hCCDISConeAngle_3->Sumw2();
+hNCResConeAngle_3->Sumw2();
+hNCDISConeAngle_3->Sumw2();
+hCosmicConeAngle_3->Sumw2();
+hOtherConeAngle_3->Sumw2();
+
+
+
+TH1D *hCCCohDoCA_1 = (TH1D*)f2->Get("hCCCohDoCA21");
+TH1D *hCCQEDoCA_1 = (TH1D*)f->Get("hCCQEDoCA21");
+TH1D *hCCResDoCA_1 = (TH1D*)f->Get("hCCResDoCA21");
+TH1D *hCCDISDoCA_1 = (TH1D*)f->Get("hCCDISDoCA21");
+TH1D *hNCResDoCA_1 = (TH1D*)f->Get("hNCResDoCA21");
+TH1D *hNCDISDoCA_1 = (TH1D*)f->Get("hNCDISDoCA21");
+TH1D *hCosmicDoCA_1 = (TH1D*)f->Get("hCosmicDoCA21");
+TH1D *hOtherDoCA_1 = (TH1D*)f->Get("hOtherDoCA21");
+
+hCCCohDoCA_1->Sumw2();
+hCCQEDoCA_1->Sumw2();
+hCCResDoCA_1->Sumw2();
+hCCDISDoCA_1->Sumw2();
+hNCResDoCA_1->Sumw2();
+hNCDISDoCA_1->Sumw2();
+hCosmicDoCA_1->Sumw2();
+hOtherDoCA_1->Sumw2();
+
+
+
+TH1D *hCCCohDoCA_2 = (TH1D*)f2->Get("hCCCohDoCA22");
+TH1D *hCCQEDoCA_2 = (TH1D*)f->Get("hCCQEDoCA22");
+TH1D *hCCResDoCA_2 = (TH1D*)f->Get("hCCResDoCA22");
+TH1D *hCCDISDoCA_2 = (TH1D*)f->Get("hCCDISDoCA22");
+TH1D *hNCResDoCA_2 = (TH1D*)f->Get("hNCResDoCA22");
+TH1D *hNCDISDoCA_2 = (TH1D*)f->Get("hNCDISDoCA22");
+TH1D *hCosmicDoCA_2 = (TH1D*)f->Get("hCosmicDoCA22");
+TH1D *hOtherDoCA_2 = (TH1D*)f->Get("hOtherDoCA22");
+
+hCCCohDoCA_2->Sumw2();
+hCCQEDoCA_2->Sumw2();
+hCCResDoCA_2->Sumw2();
+hCCDISDoCA_2->Sumw2();
+hNCResDoCA_2->Sumw2();
+hNCDISDoCA_2->Sumw2();
+hCosmicDoCA_2->Sumw2();
+hOtherDoCA_2->Sumw2();
+
+
+
+TH1D *hCCCohDoCA_3 = (TH1D*)f2->Get("hCCCohDoCA23");
+TH1D *hCCQEDoCA_3 = (TH1D*)f->Get("hCCQEDoCA23");
+TH1D *hCCResDoCA_3 = (TH1D*)f->Get("hCCResDoCA23");
+TH1D *hCCDISDoCA_3 = (TH1D*)f->Get("hCCDISDoCA23");
+TH1D *hNCResDoCA_3 = (TH1D*)f->Get("hNCResDoCA23");
+TH1D *hNCDISDoCA_3 = (TH1D*)f->Get("hNCDISDoCA23");
+TH1D *hCosmicDoCA_3 = (TH1D*)f->Get("hCosmicDoCA23");
+TH1D *hOtherDoCA_3 = (TH1D*)f->Get("hOtherDoCA23");
+
+hCCCohDoCA_3->Sumw2();
+hCCQEDoCA_3->Sumw2();
+hCCResDoCA_3->Sumw2();
+hCCDISDoCA_3->Sumw2();
+hNCResDoCA_3->Sumw2();
+hNCDISDoCA_3->Sumw2();
+hCosmicDoCA_3->Sumw2();
+hOtherDoCA_3->Sumw2();
+
+
+
+TH1D *hCCCohVA_1 = (TH1D*)f2->Get("hCCCohVA1");
+TH1D *hCCQEVA_1 = (TH1D*)f->Get("hCCQEVA1");
+TH1D *hCCResVA_1 = (TH1D*)f->Get("hCCResVA1");
+TH1D *hCCDISVA_1 = (TH1D*)f->Get("hCCDISVA1");
+TH1D *hNCResVA_1 = (TH1D*)f->Get("hNCResVA1");
+TH1D *hNCDISVA_1 = (TH1D*)f->Get("hNCDISVA1");
+TH1D *hCosmicVA_1 = (TH1D*)f->Get("hCosmicVA1");
+TH1D *hOtherVA_1 = (TH1D*)f->Get("hOtherVA1");
+
+hCCCohVA_1->Sumw2();
+hCCQEVA_1->Sumw2();
+hCCResVA_1->Sumw2();
+hCCDISVA_1->Sumw2();
+hNCResVA_1->Sumw2();
+hNCDISVA_1->Sumw2();
+hCosmicVA_1->Sumw2();
+hOtherVA_1->Sumw2();
+
+
+
+TH1D *hCCCohVA_2 = (TH1D*)f2->Get("hCCCohVA22");
+TH1D *hCCQEVA_2 = (TH1D*)f->Get("hCCQEVA22");
+TH1D *hCCResVA_2 = (TH1D*)f->Get("hCCResVA22");
+TH1D *hCCDISVA_2 = (TH1D*)f->Get("hCCDISVA22");
+TH1D *hNCResVA_2 = (TH1D*)f->Get("hNCResVA22");
+TH1D *hNCDISVA_2 = (TH1D*)f->Get("hNCDISVA22");
+TH1D *hCosmicVA_2 = (TH1D*)f->Get("hCosmicVA22");
+TH1D *hOtherVA_2 = (TH1D*)f->Get("hOtherVA22");
+
+hCCCohVA_2->Sumw2();
+hCCQEVA_2->Sumw2();
+hCCResVA_2->Sumw2();
+hCCDISVA_2->Sumw2();
+hNCResVA_2->Sumw2();
+hNCDISVA_2->Sumw2();
+hCosmicVA_2->Sumw2();
+hOtherVA_2->Sumw2();
+
+
+
+TH1D *hCCCohVA_3 = (TH1D*)f2->Get("hCCCohVA3");
+TH1D *hCCQEVA_3 = (TH1D*)f->Get("hCCQEVA3");
+TH1D *hCCResVA_3 = (TH1D*)f->Get("hCCResVA3");
+TH1D *hCCDISVA_3 = (TH1D*)f->Get("hCCDISVA3");
+TH1D *hNCResVA_3 = (TH1D*)f->Get("hNCResVA3");
+TH1D *hNCDISVA_3 = (TH1D*)f->Get("hNCDISVA3");
+TH1D *hCosmicVA_3 = (TH1D*)f->Get("hCosmicVA3");
+TH1D *hOtherVA_3 = (TH1D*)f->Get("hOtherVA3");
+
+hCCCohVA_3->Sumw2();
+hCCQEVA_3->Sumw2();
+hCCResVA_3->Sumw2();
+hCCDISVA_3->Sumw2();
+hNCResVA_3->Sumw2();
+hNCDISVA_3->Sumw2();
+hCosmicVA_3->Sumw2();
+hOtherVA_3->Sumw2();
+// =====================================================
+
+
 
 // -----------------------------
 // --- TGraph for Cone Angle ---
@@ -1203,14 +1389,14 @@ hCosmicOp->GetXaxis()->CenterTitle();
 hCosmicOp->GetYaxis()->SetTitle("Normalized Events [Number]");
 hCosmicOp->GetYaxis()->CenterTitle();
 
-hCosmicOp->Draw("histo");
+hCCCohOp->Draw("histo");
 hOtherOp->Draw("histosame");
 hCCQEOp->Draw("histosame");
 hCCResOp->Draw("histosame");
 hCCDISOp->Draw("histosame");
 hNCResOp->Draw("histosame");
 hNCDISOp->Draw("histosame");
-hCCCohOp->Draw("histosame");
+hCosmicOp->Draw("histosame");
 
 
 // ### Defining the legend for the plot ###
@@ -2072,18 +2258,18 @@ leg23->AddEntry(hCosmicVA9,"Cosmic");
 leg23->Draw();
 
 
-/*
+
 TCanvas *c24 = new TCanvas("c24", "Vertex Activity");
 c24->SetTicks();
 c24->SetFillColor(kWhite);
 
-hCCCohVA10->SetLineColor(kBlue);
+hCCCohVA10->SetLineColor(kGreen);
 hCCCohVA10->SetLineWidth(2);
 
 hCCCohVA11->SetLineColor(kRed);
 hCCCohVA11->SetLineWidth(2);
 
-hCCCohVA12->SetLineColor(kGreen);
+hCCCohVA12->SetLineColor(kBlue);
 hCCCohVA12->SetLineWidth(2);
 
 hCCCohVA13->SetLineColor(kOrange);
@@ -2139,7 +2325,7 @@ leg24->AddEntry(hCCCohVA15,"R = 17.5 cm");
 leg24->AddEntry(hCCCohVA16,"R = 20.0 cm");
 leg24->AddEntry(hCCCohVA17,"R = 22.5 cm");
 leg24->AddEntry(hCCCohVA18,"R = 25.0 cm");
-leg24->Draw();*/
+leg24->Draw();
 
 
 
