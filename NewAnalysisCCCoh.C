@@ -609,16 +609,6 @@ void NewAnalysisCCCoh::Loop()
 
          TVector3 PandoraDiff(PandoraDiffVx, PandoraDiffVy, PandoraDiffVz);
 	 double PandoraDiffTotal = PandoraDiff.Mag();
-
-	 hPandoraVx->Fill(PandoraVx);
-	 hPandoraVy->Fill(PandoraVy);
-	 hPandoraVz->Fill(PandoraVz);
-
-	 hPandoraDiffVx->Fill(PandoraDiffVx);
-	 hPandoraDiffVy->Fill(PandoraDiffVy);
-	 hPandoraDiffVz->Fill(PandoraDiffVz);
-
-	 hPandoraDiffTotal->Fill(PandoraDiffTotal);
 	 // -------------------------------------
 
          double SCVx = sp_charge_corrected_nuvtxx_truth[i]; 
@@ -1981,6 +1971,16 @@ void NewAnalysisCCCoh::Loop()
 	    hNuVtxX_DV->Fill(Vx);
 	    hNuVtxY_DV->Fill(Vy);
 	    hNuVtxZ_DV->Fill(Vz);
+
+ 	    hPandoraVx->Fill(PandoraVx);
+	    hPandoraVy->Fill(PandoraVy);
+	    hPandoraVz->Fill(PandoraVz);
+
+	    hPandoraDiffVx->Fill(PandoraDiffVx);
+	    hPandoraDiffVy->Fill(PandoraDiffVy);
+	    hPandoraDiffVz->Fill(PandoraDiffVz);
+
+	    hPandoraDiffTotal->Fill(PandoraDiffTotal);
 	    }
 
 	 if (checkFV == true)
