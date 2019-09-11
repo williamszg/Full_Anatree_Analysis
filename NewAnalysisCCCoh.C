@@ -355,6 +355,20 @@ TH1D *hPandoraDiffVz = new TH1D("hPandoraDiffVz", "Difference Between Pandora an
 TH1D *hPandoraDiffTotal = new TH1D("hPandoraDiffTotal", "Difference in Pandora Vertex and Truth Vertex Total Distance", 251, -0.5, 250.5);
 // -----------------------------------------
 
+
+
+// --------------------------------------------------------------------------------
+// --- T Values for Different Channels with EXACTLY 2 Tracks in Range of Vertex ---
+// --------------------------------------------------------------------------------
+TH1D *hTCCCoh = new TH1D("hTCCCoh", "The |t| of CCCoh Events from MCTruth Information", 250, 0, 1);
+TH1D *hTCCQE = new TH1D("hTCCQE", "The |t| of CCQE Events from MCTruth Information", 250, 0, 1);
+TH1D *hTCCRes = new TH1D("hTCCRes", "The |t| of CCRes Events from MCTruth Information", 250, 0, 1);
+TH1D *hTCCDIS = new TH1D("hTCCDIS", "The |t| of CCDIS Events from MCTruth Information", 250, 0, 1);
+TH1D *hTNCRes = new TH1D("hTNCRes", "The |t| of NCRes Events from MCTruth Information", 250, 0, 1);
+TH1D *hTNCDIS = new TH1D("hTNCDIS", "The |t| of NCDIS Events from MCTruth Information", 250, 0, 1);
+TH1D *hTOther = new TH1D("hTOther", "The |t| of Other Events from MCTruth Information", 250, 0, 1);
+// --------------------------------------------------------------------------------
+
 // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 
@@ -1013,6 +1027,9 @@ void NewAnalysisCCCoh::Loop()
 
          double EventsConeAngle = 720;
 
+	 int TRACK1 = -999;
+	 int TRACK2 = -999;
+
          for (int j = 0; j < no_mctracks; j++)
 	    {
 	    double DeltaStartX = mctrk_startX[j] - Vx;
@@ -1140,6 +1157,8 @@ void NewAnalysisCCCoh::Loop()
 	       if (DeltaStartMagnitude <= VertexRangeCheck) 
 	          {
 	          nmctrksInRange++;
+                  if (TRACK1 == -999 && TRACK2 == -999) {TRACK1 = j;}
+		  if (TRACK1 != -999 && TRACK2 == -999) {TRACK2 = j;}
 	          if (mctrk_pdg[j] == 13) {muon = track;}
 	          if (mctrk_pdg[j] == 211) {pion = track;}
 	          if (mctrk_pdg[j] == -211) {pion2 = track;}
@@ -1148,6 +1167,8 @@ void NewAnalysisCCCoh::Loop()
                if (DeltaStartMagnitude > VertexRangeCheck && DeltaEndMagnitude <= VertexRangeCheck) 
 	          {
 	          nmctrksInRange++;
+                  if (TRACK1 == -999 && TRACK2 == -999) {TRACK1 = j;}
+		  if (TRACK1 != -999 && TRACK2 == -999) {TRACK2 = j;}
 	          if (mctrk_pdg[j] == 13) {muon = track;}
 	          if (mctrk_pdg[j] == 211) {pion = track;}
 	          if (mctrk_pdg[j] == -211) {pion2 = track;}
@@ -1711,6 +1732,19 @@ void NewAnalysisCCCoh::Loop()
                   hCCCohDoCA23->Fill(DoCA2_Event);
                   hCCCohVA3->Fill(VAEnergy*1000);
                   }
+	       if (nmctrksInRange == 2)
+		  {
+	          MuonEnergy = Eng[mctrk_TrackId[TRACK1]];
+		  MuonPx = Px[mctrk_TrackId[TRACK1]];
+		  MuonPy = Py[mctrk_TrackId[TRACK1]];
+		  MuonPz = Pz[mctrk_TrackId[TRACK1]];
+		  PionEnergy = Eng[mctrk_TrackId[TRACK2]];
+		  PionPx = Px[mctrk_TrackId[TRACK2]];
+		  PionPy = Py[mctrk_TrackId[TRACK2]];
+		  PionPz = Pz[mctrk_TrackId[TRACK2]];
+		  t = abs(pow(NuEnergy - MuonEnergy - PionEnergy,2) - pow(NuPx - MuonPx - PionPx,2) - pow(NuPy - MuonPy - PionPy,2) - pow(NuPz - MuonPz - PionPz,2))/(1000000);
+		  hTCCCoh->Fill(t);
+	          }
 	       }
 	    if (CCQE )//&& hasMuon && hasProton) 
 	       {
@@ -1758,6 +1792,19 @@ void NewAnalysisCCCoh::Loop()
                   hCCQEDoCA23->Fill(DoCA2_Event);
                   hCCQEVA3->Fill(VAEnergy*1000);
                   }
+	       if (nmctrksInRange == 2)
+		  {
+	          MuonEnergy = Eng[mctrk_TrackId[TRACK1]];
+		  MuonPx = Px[mctrk_TrackId[TRACK1]];
+		  MuonPy = Py[mctrk_TrackId[TRACK1]];
+		  MuonPz = Pz[mctrk_TrackId[TRACK1]];
+		  PionEnergy = Eng[mctrk_TrackId[TRACK2]];
+		  PionPx = Px[mctrk_TrackId[TRACK2]];
+		  PionPy = Py[mctrk_TrackId[TRACK2]];
+		  PionPz = Pz[mctrk_TrackId[TRACK2]];
+		  t = abs(pow(NuEnergy - MuonEnergy - PionEnergy,2) - pow(NuPx - MuonPx - PionPx,2) - pow(NuPy - MuonPy - PionPy,2) - pow(NuPz - MuonPz - PionPz,2))/(1000000);
+		  hTCCQE->Fill(t);
+	          }
 	       }
  	    if (CCRes )//&& hasMuon && hasPion) 
 	       {
@@ -1805,6 +1852,19 @@ void NewAnalysisCCCoh::Loop()
                   hCCResDoCA23->Fill(DoCA2_Event);
                   hCCResVA3->Fill(VAEnergy*1000);
                   }
+	       if (nmctrksInRange == 2)
+		  {
+	          MuonEnergy = Eng[mctrk_TrackId[TRACK1]];
+		  MuonPx = Px[mctrk_TrackId[TRACK1]];
+		  MuonPy = Py[mctrk_TrackId[TRACK1]];
+		  MuonPz = Pz[mctrk_TrackId[TRACK1]];
+		  PionEnergy = Eng[mctrk_TrackId[TRACK2]];
+		  PionPx = Px[mctrk_TrackId[TRACK2]];
+		  PionPy = Py[mctrk_TrackId[TRACK2]];
+		  PionPz = Pz[mctrk_TrackId[TRACK2]];
+		  t = abs(pow(NuEnergy - MuonEnergy - PionEnergy,2) - pow(NuPx - MuonPx - PionPx,2) - pow(NuPy - MuonPy - PionPy,2) - pow(NuPz - MuonPz - PionPz,2))/(1000000);
+		  hTCCRes->Fill(t);
+	          }
 	       }
 	    if (CCDIS )//&& hasPion && hasMuon) 
 	       {
@@ -1846,6 +1906,19 @@ void NewAnalysisCCCoh::Loop()
                   hCCDISDoCA23->Fill(DoCA2_Event);
                   hCCDISVA3->Fill(VAEnergy*1000);
                   }
+	       if (nmctrksInRange == 2)
+		  {
+	          MuonEnergy = Eng[mctrk_TrackId[TRACK1]];
+		  MuonPx = Px[mctrk_TrackId[TRACK1]];
+		  MuonPy = Py[mctrk_TrackId[TRACK1]];
+		  MuonPz = Pz[mctrk_TrackId[TRACK1]];
+		  PionEnergy = Eng[mctrk_TrackId[TRACK2]];
+		  PionPx = Px[mctrk_TrackId[TRACK2]];
+		  PionPy = Py[mctrk_TrackId[TRACK2]];
+		  PionPz = Pz[mctrk_TrackId[TRACK2]];
+		  t = abs(pow(NuEnergy - MuonEnergy - PionEnergy,2) - pow(NuPx - MuonPx - PionPx,2) - pow(NuPy - MuonPy - PionPy,2) - pow(NuPz - MuonPz - PionPz,2))/(1000000);
+		  hTCCDIS->Fill(t);
+	          }
 	       }
  	    if (NCRes )//&& hasPion && hasPion2) 
 	       {
@@ -1887,6 +1960,19 @@ void NewAnalysisCCCoh::Loop()
                   hNCResDoCA23->Fill(DoCA2_Event);
                   hNCResVA3->Fill(VAEnergy*1000);
                   }
+	       if (nmctrksInRange == 2)
+		  {
+	          MuonEnergy = Eng[mctrk_TrackId[TRACK1]];
+		  MuonPx = Px[mctrk_TrackId[TRACK1]];
+		  MuonPy = Py[mctrk_TrackId[TRACK1]];
+		  MuonPz = Pz[mctrk_TrackId[TRACK1]];
+		  PionEnergy = Eng[mctrk_TrackId[TRACK2]];
+		  PionPx = Px[mctrk_TrackId[TRACK2]];
+		  PionPy = Py[mctrk_TrackId[TRACK2]];
+		  PionPz = Pz[mctrk_TrackId[TRACK2]];
+		  t = abs(pow(NuEnergy - MuonEnergy - PionEnergy,2) - pow(NuPx - MuonPx - PionPx,2) - pow(NuPy - MuonPy - PionPy,2) - pow(NuPz - MuonPz - PionPz,2))/(1000000);
+		  hTNCRes->Fill(t);
+	          }
 	       }
 	    if (NCDIS )//&& hasPion && hasPion2) 
 	       {
@@ -1928,6 +2014,19 @@ void NewAnalysisCCCoh::Loop()
                   hNCDISDoCA23->Fill(DoCA2_Event);
                   hNCDISVA3->Fill(VAEnergy*1000);
                   }
+	       if (nmctrksInRange == 2)
+		  {
+	          MuonEnergy = Eng[mctrk_TrackId[TRACK1]];
+		  MuonPx = Px[mctrk_TrackId[TRACK1]];
+		  MuonPy = Py[mctrk_TrackId[TRACK1]];
+		  MuonPz = Pz[mctrk_TrackId[TRACK1]];
+		  PionEnergy = Eng[mctrk_TrackId[TRACK2]];
+		  PionPx = Px[mctrk_TrackId[TRACK2]];
+		  PionPy = Py[mctrk_TrackId[TRACK2]];
+		  PionPz = Pz[mctrk_TrackId[TRACK2]];
+		  t = abs(pow(NuEnergy - MuonEnergy - PionEnergy,2) - pow(NuPx - MuonPx - PionPx,2) - pow(NuPy - MuonPy - PionPy,2) - pow(NuPz - MuonPz - PionPz,2))/(1000000);
+		  hTNCDIS->Fill(t);
+	          }
 	       }
 	    if (!CCCOH && !CCQE && !CCRes && !CCDIS && !NCRes && !NCDIS) 
 	       {
@@ -1963,6 +2062,19 @@ void NewAnalysisCCCoh::Loop()
                   hOtherDoCA23->Fill(DoCA2_Event);
                   hOtherVA3->Fill(VAEnergy*1000);
                   }
+	       if (nmctrksInRange == 2)
+		  {
+	          MuonEnergy = Eng[mctrk_TrackId[TRACK1]];
+		  MuonPx = Px[mctrk_TrackId[TRACK1]];
+		  MuonPy = Py[mctrk_TrackId[TRACK1]];
+		  MuonPz = Pz[mctrk_TrackId[TRACK1]];
+		  PionEnergy = Eng[mctrk_TrackId[TRACK2]];
+		  PionPx = Px[mctrk_TrackId[TRACK2]];
+		  PionPy = Py[mctrk_TrackId[TRACK2]];
+		  PionPz = Pz[mctrk_TrackId[TRACK2]];
+		  t = abs(pow(NuEnergy - MuonEnergy - PionEnergy,2) - pow(NuPx - MuonPx - PionPx,2) - pow(NuPy - MuonPy - PionPy,2) - pow(NuPz - MuonPz - PionPz,2))/(1000000);
+		  hTOther->Fill(t);
+	          }
 	       }
             }
 
@@ -1972,7 +2084,7 @@ void NewAnalysisCCCoh::Loop()
 	    hNuVtxY_DV->Fill(Vy);
 	    hNuVtxZ_DV->Fill(Vz);
 
- 	    hPandoraVx->Fill(PandoraVx);
+	    hPandoraVx->Fill(PandoraVx);
 	    hPandoraVy->Fill(PandoraVy);
 	    hPandoraVz->Fill(PandoraVz);
 
@@ -2330,6 +2442,8 @@ void NewAnalysisCCCoh::Loop()
    hCosmicVA25->Write();
    hOtherVA25->Write();
 
+
+
    hPandoraVx->Write();
    hPandoraVy->Write();
    hPandoraVz->Write();
@@ -2338,6 +2452,16 @@ void NewAnalysisCCCoh::Loop()
    hPandoraDiffVy->Write();
    hPandoraDiffVz->Write();
    hPandoraDiffTotal->Write();
+
+
+
+   hTCCCoh->Write();
+   hTCCQE->Write();
+   hTCCRes->Write();
+   hTCCDIS->Write();
+   hTNCRes->Write();
+   hTNCDIS->Write();
+   hTOther->Write();
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 } // End NewAnalysisCCCoh Loop
