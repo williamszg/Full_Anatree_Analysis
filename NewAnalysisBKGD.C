@@ -360,14 +360,35 @@ TH1D *hPandoraDiffTotal = new TH1D("hPandoraDiffTotal", "Difference in Pandora V
 // --------------------------------------------------------------------------------
 // --- T Values for Different Channels with EXACTLY 2 Tracks in Range of Vertex ---
 // --------------------------------------------------------------------------------
-TH1D *hTCCCoh = new TH1D("hTCCCoh", "The |t| of CCCoh Events from MCTruth Information", 250, 0, 1);
-TH1D *hTCCQE = new TH1D("hTCCQE", "The |t| of CCQE Events from MCTruth Information", 250, 0, 1);
-TH1D *hTCCRes = new TH1D("hTCCRes", "The |t| of CCRes Events from MCTruth Information", 250, 0, 1);
-TH1D *hTCCDIS = new TH1D("hTCCDIS", "The |t| of CCDIS Events from MCTruth Information", 250, 0, 1);
-TH1D *hTNCRes = new TH1D("hTNCRes", "The |t| of NCRes Events from MCTruth Information", 250, 0, 1);
-TH1D *hTNCDIS = new TH1D("hTNCDIS", "The |t| of NCDIS Events from MCTruth Information", 250, 0, 1);
-TH1D *hTOther = new TH1D("hTOther", "The |t| of Other Events from MCTruth Information", 250, 0, 1);
+TH1D *hTCCCoh = new TH1D("hTCCCoh", "The |t| of CCCoh Events from MCTruth Information", 1000, 0, 1);
+TH1D *hTCCQE = new TH1D("hTCCQE", "The |t| of CCQE Events from MCTruth Information", 1000, 0, 1);
+TH1D *hTCCRes = new TH1D("hTCCRes", "The |t| of CCRes Events from MCTruth Information", 1000, 0, 1);
+TH1D *hTCCDIS = new TH1D("hTCCDIS", "The |t| of CCDIS Events from MCTruth Information", 1000, 0, 1);
+TH1D *hTNCRes = new TH1D("hTNCRes", "The |t| of NCRes Events from MCTruth Information", 1000, 0, 1);
+TH1D *hTNCDIS = new TH1D("hTNCDIS", "The |t| of NCDIS Events from MCTruth Information", 1000, 0, 1);
+TH1D *hTOther = new TH1D("hTOther", "The |t| of Other Events from MCTruth Information", 1000, 0, 1);
 // --------------------------------------------------------------------------------
+
+
+
+// -----------------------------
+// --- Kinematics After Cuts ---
+// -----------------------------
+TH1D *hMCTruthQ2CCCohAfter = new TH1D("hMCTruthQ2CCCohAfter", "The Q^{2} of CCCoh Events from MCTruth Information After Cuts", 250, 0, 1);
+TH1D *hMCTruthTCCCohAfter = new TH1D("hMCTruthTCCCohAfter", "The |t| of CCCoh Events from MCTruth Information After Cuts", 250, 0, 1);
+
+TH1D *hMCTruthPxMuonAfter = new TH1D("hMCTruthPxMuonAfter", "The Momentum of the Muon in the X Direction for CCCoh After Cuts", 250, 0, 1000);
+TH1D *hMCTruthPyMuonAfter = new TH1D("hMCTruthPyMuonAfter", "The Momentum of the Muon in the Y Direction for CCCoh After Cuts", 250, 0, 1000);
+TH1D *hMCTruthPzMuonAfter = new TH1D("hMCTruthPzMuonAfter", "The Momentum of the Muon in the Z Direction for CCCoh After Cuts", 250, 0, 2500);
+TH1D *hMCTruthEMuonAfter = new TH1D("hMCTruthEMuonAfter", "The Energy of the Muon for CCCoh After Cuts", 250, 0, 2500);
+
+TH1D *hMCTruthPxPionAfter = new TH1D("hMCTruthPxPionAfter", "The Momentum of the Pion in the X Direction for CCCoh After Cuts", 250, 0, 1000);
+TH1D *hMCTruthPyPionAfter = new TH1D("hMCTruthPyPionAfter", "The Momentum of the Pion in the Y Direction for CCCoh After Cuts", 250, 0, 1000);
+TH1D *hMCTruthPzPionAfter = new TH1D("hMCTruthPzPionAfter", "The Momentum of the Pion in the Z Direction for CCCoh After Cuts", 250, 0, 2500);
+TH1D *hMCTruthEPionAfter = new TH1D("hMCTruthEPionAfter", "The Energy of the Pion for CCCoh After Cuts", 250, 0, 2500);
+
+TH1D *hMCTruthOpeningAngleAfter = new TH1D("hMCTruthOpeningAngleAfter", "The Angle Between the Muon and the Pion for CC-COH Events with 2 or More MCTracks After Cuts", 181, -0.5, 180.5);
+// -----------------------------
 
 // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
@@ -1667,6 +1688,29 @@ void NewAnalysisBKGD::Loop()
                   hTVsOpeningAngle->Fill(OpeningAngle, t);
                   hQ2VsOpeningAngle->Fill(OpeningAngle, Q2);
                   hCCCohMuonVsPionTrackLength->Fill(pionlength, muonlength);
+
+                  // ----------------------------------------
+                  // --- Kinematic Information After Cuts ---
+                  // ----------------------------------------
+                  if (checkFV == true && no_mctracks >= 2 && nmctrksInRange >= 2 && EventsConeAngle <= ConeAngleCut && DoCA2_Event <= DoCACut && VAEnergy*1000 <= VACut)
+                     {
+	             hMCTruthQ2CCCohAfter->Fill(Q2);
+	             hMCTruthTCCCohAfter->Fill(t);
+
+	             hMCTruthPxMuonAfter->Fill(MuonPx);
+	             hMCTruthPyMuonAfter->Fill(MuonPy);
+	             hMCTruthPzMuonAfter->Fill(MuonPz);
+	             hMCTruthEMuonAfter->Fill(MuonEnergy);
+
+	             hMCTruthPxPionAfter->Fill(PionPx);
+	             hMCTruthPyPionAfter->Fill(PionPy);
+	             hMCTruthPzPionAfter->Fill(PionPz);
+	             hMCTruthEPionAfter->Fill(PionEnergy);
+
+                     hMCTruthOpeningAngleAfter->Fill(OpeningAngle);
+                     }
+                  // ----------------------------------------
+
                   }
 	       hCCCohConeAngle->Fill(EventsConeAngle);
                hMuonEnergyVsConeAngle->Fill(EventsConeAngle, MuonEnergy);
@@ -2462,6 +2506,23 @@ void NewAnalysisBKGD::Loop()
    hTNCRes->Write();
    hTNCDIS->Write();
    hTOther->Write();
+
+
+
+   hMCTruthQ2CCCohAfter->Write();
+   hMCTruthTCCCohAfter->Write();
+
+   hMCTruthPxMuonAfter->Write();
+   hMCTruthPyMuonAfter->Write();
+   hMCTruthPzMuonAfter->Write();
+   hMCTruthEMuonAfter->Write();
+
+   hMCTruthPxPionAfter->Write();
+   hMCTruthPyPionAfter->Write();
+   hMCTruthPzPionAfter->Write();
+   hMCTruthEPionAfter->Write();
+
+   hMCTruthOpeningAngleAfter->Write();
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 } // End NewAnalysisBKGD Loop
