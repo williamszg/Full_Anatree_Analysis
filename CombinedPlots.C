@@ -5,6 +5,10 @@ TFile *f3 = new TFile("./Histograms_NewAnalysis_BKGD.root"); //<--File for Cosmi
 TFile *f4 = new TFile("./Histograms_NewAnalysis_CCCoh_Bestest.root"); //<--File for VA CCCoh
 
 
+TFile *g1 = new TFile("./T_Plots_Again_BKGD.root"); //<--File for |t| of BKGDs Comparison Plots
+TFile *g2 = new TFile("./T_Plots_Again_CCCoh.root"); //<--File for |t| of CCCoh Comparison Plots
+
+
 TFile *b1 = new TFile("./Histograms_NewAnalysis_BKGD_Vertex_5_0_cm.root");
 TFile *cc1 = new TFile("./Histograms_NewAnalysis_CCCoh_Vertex_5_0_cm.root");
 
@@ -477,7 +481,7 @@ for (int i = 0; i < n; i++)
    //ConeAngleEff[i] = 100*(CCCohConeAngle[i] + CCQEConeAngle[i] + CCResConeAngle[i] + CCDISConeAngle[i] + NCResConeAngle[i] + NCDISConeAngle[i] + CosmicConeAngle[i] + OtherConeAngle[i])/(hCCCohConeAngle->GetEntries() + hCCQEConeAngle->GetEntries() + hCCResConeAngle->GetEntries() + hCCDISConeAngle->GetEntries() + hNCResConeAngle->GetEntries() + hNCDISConeAngle->GetEntries() + hCosmicConeAngle->GetEntries() + hOtherConeAngle->GetEntries());
    //ConeAnglePurity[i] = 100*CCCohConeAngle[i]/(CCCohConeAngle[i] + CCQEConeAngle[i] + CCResConeAngle[i] + CCDISConeAngle[i] + NCResConeAngle[i] + NCDISConeAngle[i] + CosmicConeAngle[i] + OtherConeAngle[i]);
 
-   if (i == 0) {CCQEConeAngle[i] = CCQEConeAngle[i] - 1;}
+   //if (i == 0) {CCQEConeAngle[i] = CCQEConeAngle[i] - 1;}
 
    CCCohConeAngle[i] = CCCohConeAngle[i]*100/hCCCohConeAngle->GetEntries();
    CCCohConeAngleRejection[i] = CCCohConeAngleRejection[i]*100/hCCCohConeAngle->GetEntries();
@@ -522,7 +526,7 @@ gCCResConeAngle->SetLineColor(kGreen);
 gCCResConeAngle->SetLineWidth(2);
 TGraph* gCCDISConeAngle = new TGraph(n, x, CCDISConeAngle);
 gCCDISConeAngle->SetTitle("gCCDISConeAngle");
-gCCDISConeAngle->SetName("gNCDISConeAngle");
+gCCDISConeAngle->SetName("gCCDISConeAngle");
 gCCDISConeAngle->SetFillColor(kWhite);
 gCCDISConeAngle->SetLineColor(kOrange);
 gCCDISConeAngle->SetLineWidth(2);
@@ -642,7 +646,7 @@ for (int i = 0; i < m; i++)
    //DoCAEff[i] = 100*(CCCohDoCA[i] + CCQEDoCA[i] + CCResDoCA[i] + CCDISDoCA[i] + NCResDoCA[i] + NCDISDoCA[i] + CosmicDoCA[i] + OtherDoCA[i])/(hCCCohDoCA->GetEntries() + hCCQEDoCA->GetEntries() + hCCResDoCA->GetEntries() + hCCDISDoCA->GetEntries() + hNCResDoCA->GetEntries() + hNCDISDoCA->GetEntries() + hCosmicDoCA->GetEntries() + hOtherDoCA->GetEntries());
    //DoCAPurity[i] = 100*CCCohDoCA[i]/(CCCohDoCA[i] + CCQEDoCA[i] + CCResDoCA[i] + CCDISDoCA[i] + NCResDoCA[i] + NCDISDoCA[i] + CosmicDoCA[i] + OtherDoCA[i]);
 
-   if (i == 0) {CCQEDoCA[i] = CCQEDoCA[i] - 1;}
+   //if (i == 0) {CCQEDoCA[i] = CCQEDoCA[i] - 1;}
 
    CCCohDoCA[i] = CCCohDoCA[i]*100/hCCCohDoCA->GetEntries();
    CCCohDoCARejection[i] = CCCohDoCARejection[i]*100/hCCCohDoCA->GetEntries();
@@ -817,7 +821,7 @@ for (int i = 0; i < j; i++)
    //VAEff[i] = 100*(CCCohVA[i] + CCQEVA[i] + CCResVA[i] + CCDISVA[i] + NCResVA[i] + NCDISVA[i] + CosmicVA[i] + OtherVA[i])/(hCCCohVA->GetEntries() + hCCQEVA->GetEntries() + hCCResVA->GetEntries() + hCCDISVA->GetEntries() + hNCResVA->GetEntries() + hNCDISVA->GetEntries() + hCosmicVA->GetEntries() + hOtherVA->GetEntries());
    //VAPurity[i] = 100*CCCohVA[i]/(CCCohVA[i] + CCQEVA[i] + CCResVA[i] + CCDISVA[i] + NCResVA[i] + NCDISVA[i] + CosmicVA[i] + OtherVA[i]);
 
-   if (i == 0) {CCQEVA[i] = CCQEVA[i] - 1;}
+   //if (i == 0) {CCQEVA[i] = CCQEVA[i] - 1;}
 
    CCCohVA[i] = CCCohVA[i]*100/hCCCohVA->GetEntries();
    CCCohVARejection[i] = CCCohVARejection[i]*100/hCCCohVA->GetEntries();
@@ -1086,6 +1090,169 @@ leg7->Draw();
 // --------------------------
 
 
+
+
+TH1D *hTCCCoh = (TH1D*)g2->Get("hTCCCoh");
+TH1D *hTCCQE = (TH1D*)g1->Get("hTCCQE");
+TH1D *hTCCRes = (TH1D*)g1->Get("hTCCRes");
+TH1D *hTCCDIS = (TH1D*)g1->Get("hTCCDIS");
+TH1D *hTNCRes = (TH1D*)g1->Get("hTNCRes");
+TH1D *hTNCDIS = (TH1D*)g1->Get("hTNCDIS");
+TH1D *hTOther = (TH1D*)g1->Get("hTOther");
+
+// ----------------------------------
+// --- TGraph for |t| Comparisons ---
+// ----------------------------------
+int u = 1000;
+double p[1000] = {0};
+double TEff[1000] = {0};
+double TPurity[1000] = {0};
+double TCCCoh[1000] = {0};
+double TCCCohRejection[1000] = {0};
+double TCCQE[1000] = {0};
+double TCCRes[1000] = {0};
+double TCCDIS[1000] = {0};
+double TNCRes[1000] = {0};
+double TNCDIS[1000] = {0};
+double TOther[1000] = {0};
+
+for (int i = 0; i < u; i++)
+   {
+   p[i] = i/1000.;
+   for (int g = 1; g < i+1; g++)
+      {
+      TCCCoh[i] += hTCCCoh->GetBinContent(g);
+      TCCQE[i] += hTCCQE->GetBinContent(g);
+      TCCRes[i] += hTCCRes->GetBinContent(g);
+      TCCDIS[i] += hTCCDIS->GetBinContent(g);
+      TNCRes[i] += hTNCRes->GetBinContent(g);
+      TNCDIS[i] += hTNCDIS->GetBinContent(g);
+      TOther[i] += hTOther->GetBinContent(g);
+      } // End g-Loop
+
+   TCCCohRejection[i] = hTCCCoh->GetEntries() - TCCCoh[i];
+
+   TEff[i] = 100*(TCCCoh[i] + TCCQE[i] + TCCRes[i] + TCCDIS[i] + TNCRes[i] + TNCDIS[i] + TOther[i])/(hTCCCoh->GetEntries() + hTCCQE->GetEntries() + hTCCRes->GetEntries() + hTCCDIS->GetEntries() + hTNCRes->GetEntries() + hTNCDIS->GetEntries() + hTOther->GetEntries());
+   TPurity[i] = 100*TCCCoh[i]/(TCCCoh[i] + TCCQE[i] + TCCRes[i] + TCCDIS[i] + TNCRes[i] + TNCDIS[i] + TOther[i]);
+
+   if (i == 0) {TPurity[i] = 0.0000000000001;}
+
+   TCCCoh[i] = TCCCoh[i]*100/hTCCCoh->GetEntries();
+   TCCCohRejection[i] = TCCCohRejection[i]*100/hTCCCoh->GetEntries();
+   TCCQE[i] = 100 - TCCQE[i]*100/hTCCQE->GetEntries();
+   TCCRes[i] = 100 - TCCRes[i]*100/hTCCRes->GetEntries();
+   TCCDIS[i] = 100 - TCCDIS[i]*100/hTCCDIS->GetEntries();
+   TNCRes[i] = 100 - TNCRes[i]*100/hTNCRes->GetEntries();
+   TNCDIS[i] = 100 - TNCDIS[i]*100/hTNCDIS->GetEntries();
+   TOther[i] = 100 - TOther[i]*100/hTOther->GetEntries();
+
+   /*if (i%100 == 0)
+      {
+      std::cout<<"For i = "<<i<<", p[i] = "<<p[i]<<std::endl;
+      std::cout<<"For i = "<<i<<", TCCCoh[i] = "<<TCCCoh[i]<<std::endl;
+      std::cout<<"For i = "<<i<<", TCCQE[i] = "<<TCCQE[i]<<std::endl;
+      std::cout<<"For i = "<<i<<", TCCRes[i] = "<<TCCRes[i]<<std::endl;
+      std::cout<<"For i = "<<i<<", TCCDIS[i] = "<<TCCDIS[i]<<std::endl;
+      std::cout<<"For i = "<<i<<", TNCRes[i] = "<<TNCRes[i]<<std::endl;
+      std::cout<<"For i = "<<i<<", TNCDIS[i] = "<<TNCDIS[i]<<std::endl;
+      std::cout<<"For i = "<<i<<", TOther[i] = "<<TOther[i]<<std::endl;
+      }*/
+
+   } // End i-Loop
+
+TGraph* gTEff = new TGraph(u, p, TEff);
+gTEff->SetTitle("TEff");
+gTEff->SetName("TEff");
+gTEff->SetFillColor(kWhite);
+gTEff->SetLineColor(kBlue);
+gTEff->SetLineWidth(2);
+TGraph* gTPurity = new TGraph(u, p, TPurity);
+gTPurity->SetTitle("TPurity");
+gTPurity->SetName("TPurity");
+gTPurity->SetFillColor(kWhite);
+gTPurity->SetLineColor(kRed);
+gTPurity->SetLineWidth(2);
+TGraph* gTCCCoh = new TGraph(u, p, TCCCoh);
+gTCCCoh->SetTitle("gTCCCoh");
+gTCCCoh->SetName("gTCCCoh");
+gTCCCoh->SetFillColor(kWhite);
+gTCCCoh->SetLineColor(kBlue);
+gTCCCoh->SetLineWidth(2);
+TGraph* gTCCQE = new TGraph(u, p, TCCQE);
+gTCCQE->SetTitle("gTCCQE");
+gTCCQE->SetName("gTCCQE");
+gTCCQE->SetFillColor(kWhite);
+gTCCQE->SetLineColor(kRed);
+gTCCQE->SetLineWidth(2);
+TGraph* gTCCRes = new TGraph(u, p, TCCRes);
+gTCCRes->SetTitle("gTCCRes");
+gTCCRes->SetName("gTCCRes");
+gTCCRes->SetFillColor(kWhite);
+gTCCRes->SetLineColor(kGreen);
+gTCCRes->SetLineWidth(2);
+TGraph* gTCCDIS = new TGraph(u, p, TCCDIS);
+gTCCDIS->SetTitle("gTCCDIS");
+gTCCDIS->SetName("gTCCDIS");
+gTCCDIS->SetFillColor(kWhite);
+gTCCDIS->SetLineColor(kOrange);
+gTCCDIS->SetLineWidth(2);
+TGraph* gTNCRes = new TGraph(u, p, TNCRes);
+gTNCRes->SetTitle("gTNCRes");
+gTNCRes->SetName("gTNCRes");
+gTNCRes->SetFillColor(kWhite);
+gTNCRes->SetLineColor(kCyan);
+gTNCRes->SetLineWidth(2);
+TGraph* gTNCDIS = new TGraph(u, p, TNCDIS);
+gTNCDIS->SetTitle("gTNCDIS");
+gTNCDIS->SetName("gTNCDIS");
+gTNCDIS->SetFillColor(kWhite);
+gTNCDIS->SetLineColor(kMagenta);
+gTNCDIS->SetLineWidth(2);
+TGraph* gTOther = new TGraph(u, p, TOther);
+gTOther->SetTitle("gTOther");
+gTOther->SetName("gTOther");
+gTOther->SetFillColor(kWhite);
+gTOther->SetLineColor(14);
+gTOther->SetLineWidth(2);
+
+TCanvas *c27 = new TCanvas("c27", "|t| TGraphs");
+c27->SetTicks();
+c27->SetFillColor(kWhite);
+
+gTCCCoh->GetXaxis()->SetTitle("|t| [GeV^{2}/c^{2}]");
+gTCCCoh->GetXaxis()->CenterTitle();
+
+gTCCCoh->GetYaxis()->SetTitle("Rejection (Background) Passed (Signal) [%]");
+gTCCCoh->GetYaxis()->CenterTitle();
+
+gTCCCoh->Draw();
+gTCCQE->Draw("same");
+gTCCRes->Draw("same");
+gTCCDIS->Draw("same");
+gTNCRes->Draw("same");
+gTNCDIS->Draw("same");
+gTOther->Draw("same");
+
+// ### Defining the legend for the plot ###
+TLegend *leg27 = new TLegend();
+leg27 = new TLegend(0.58,0.65,1.00,1.00);
+leg27->SetTextSize(0.04);
+leg27->SetTextAlign(12);
+leg27->SetFillColor(kWhite);
+leg27->SetLineColor(kWhite);
+leg27->SetShadowColor(kWhite);
+leg27->SetHeader("Channel");
+leg27->AddEntry(gTCCCoh,"CC-COH");
+leg27->AddEntry(gTCCQE,"CC-QE");
+leg27->AddEntry(gTCCRes,"CC-Res");
+leg27->AddEntry(gTCCDIS,"CC-DIS");
+leg27->AddEntry(gTNCRes,"NC-Res");
+leg27->AddEntry(gTNCDIS,"NC-DIS");
+leg27->AddEntry(gTOther,"Other");
+leg27->Draw();
+// ----------------------------------
+
+
 hCCCohConeAngle->Sumw2();
 hCCQEConeAngle->Sumw2();
 hCCResConeAngle->Sumw2();
@@ -1121,6 +1288,14 @@ hCCDISOp->Sumw2();
 hNCResOp->Sumw2();
 hNCDISOp->Sumw2();
 hOtherOp->Sumw2();
+
+hTCCCoh->Sumw2();
+hTCCQE->Sumw2();
+hTCCRes->Sumw2();
+hTCCDIS->Sumw2();
+hTNCRes->Sumw2();
+hTNCDIS->Sumw2();
+hTOther->Sumw2();
 
 
 TCanvas *c0 = new TCanvas("c0", "Cone Angles");
@@ -2342,4 +2517,87 @@ c26->SetTicks();
 c26->SetFillColor(kWhite);
 
 hSVA->Draw();
+
+
+
+TCanvas *c28 = new TCanvas("c28", "|t| For Events With Exactly 2 Tracks");
+c28->SetTicks();
+c28->SetFillColor(kWhite);
+
+// Area normalzing the plot 
+hTCCCoh->Scale(1/hTCCCoh->Integral());
+hTCCQE->Scale(1/hTCCQE->Integral());
+hTCCRes->Scale(1/hTCCRes->Integral());
+hTCCDIS->Scale(1/hTCCDIS->Integral());
+hTNCRes->Scale(1/hTNCRes->Integral());
+hTNCDIS->Scale(1/hTNCDIS->Integral());
+hTOther->Scale(1/hTOther->Integral());
+
+hTCCCoh->SetLineColor(kBlue);
+hTCCCoh->SetLineWidth(2);
+
+hTCCQE->SetLineColor(kRed);
+hTCCQE->SetLineWidth(2);
+
+hTCCRes->SetLineColor(kGreen);
+hTCCRes->SetLineWidth(2);
+
+hTCCDIS->SetLineColor(kOrange);
+hTCCDIS->SetLineWidth(2);
+
+hTNCRes->SetLineColor(kCyan);
+hTNCRes->SetLineWidth(2);
+
+hTNCDIS->SetLineColor(kMagenta);
+hTNCDIS->SetLineWidth(2);
+
+hTOther->SetLineColor(14);
+hTOther->SetLineWidth(2);
+
+hTCCCoh->GetXaxis()->SetTitle("|t| [GeV^{2}/c^{2}]");
+hTCCCoh->GetXaxis()->CenterTitle();
+
+hTCCCoh->GetYaxis()->SetTitle("Normalized Events [Number/0.001(GeV^{2}/c^{2})]");
+hTCCCoh->GetYaxis()->CenterTitle();
+
+hTCCCoh->Draw("histo");
+hTCCQE->Draw("histosame");
+hTCCRes->Draw("histosame");
+hTCCDIS->Draw("histosame");
+hTNCRes->Draw("histosame");
+hTNCDIS->Draw("histosame");
+hTOther->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg28 = new TLegend();
+leg28 = new TLegend(0.58,0.65,1.00,1.00);
+leg28->SetTextSize(0.04);
+leg28->SetTextAlign(12);
+leg28->SetFillColor(kWhite);
+leg28->SetLineColor(kWhite);
+leg28->SetShadowColor(kWhite);
+leg28->SetHeader("Channel");
+leg28->AddEntry(hTCCCoh,"CC-COH");
+leg28->AddEntry(hTCCQE,"CC-QE");
+leg28->AddEntry(hTCCRes,"CC-Res");
+leg28->AddEntry(hTCCDIS,"CC-DIS");
+leg28->AddEntry(hTNCRes,"NC-Res");
+leg28->AddEntry(hTNCDIS,"NC-DIS");
+leg28->AddEntry(hTOther,"Other");
+leg28->Draw();
+
+
+
+TCanvas *c29 = new TCanvas("c29", "T Purity");
+c29->SetTicks();
+c29->SetFillColor(kWhite);
+
+gTPurity->GetXaxis()->SetTitle("|t| [GeV^{2}/c^{2}]");
+gTPurity->GetXaxis()->CenterTitle();
+
+gTPurity->GetYaxis()->SetTitle("Purity");
+gTPurity->GetYaxis()->CenterTitle();
+
+gTPurity->Draw();
 }

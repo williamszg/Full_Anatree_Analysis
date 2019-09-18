@@ -360,13 +360,13 @@ TH1D *hPandoraDiffTotal = new TH1D("hPandoraDiffTotal", "Difference in Pandora V
 // --------------------------------------------------------------------------------
 // --- T Values for Different Channels with EXACTLY 2 Tracks in Range of Vertex ---
 // --------------------------------------------------------------------------------
-TH1D *hTCCCoh = new TH1D("hTCCCoh", "The |t| of CCCoh Events from MCTruth Information", 1000, 0, 1);
-TH1D *hTCCQE = new TH1D("hTCCQE", "The |t| of CCQE Events from MCTruth Information", 1000, 0, 1);
-TH1D *hTCCRes = new TH1D("hTCCRes", "The |t| of CCRes Events from MCTruth Information", 1000, 0, 1);
-TH1D *hTCCDIS = new TH1D("hTCCDIS", "The |t| of CCDIS Events from MCTruth Information", 1000, 0, 1);
-TH1D *hTNCRes = new TH1D("hTNCRes", "The |t| of NCRes Events from MCTruth Information", 1000, 0, 1);
-TH1D *hTNCDIS = new TH1D("hTNCDIS", "The |t| of NCDIS Events from MCTruth Information", 1000, 0, 1);
-TH1D *hTOther = new TH1D("hTOther", "The |t| of Other Events from MCTruth Information", 1000, 0, 1);
+TH1D *hTCCCoh = new TH1D("hTCCCoh", "The |t| of CCCoh Events from MCTruth Information", 5000, 0, 1);
+TH1D *hTCCQE = new TH1D("hTCCQE", "The |t| of CCQE Events from MCTruth Information", 5000, 0, 1);
+TH1D *hTCCRes = new TH1D("hTCCRes", "The |t| of CCRes Events from MCTruth Information", 5000, 0, 1);
+TH1D *hTCCDIS = new TH1D("hTCCDIS", "The |t| of CCDIS Events from MCTruth Information", 5000, 0, 1);
+TH1D *hTNCRes = new TH1D("hTNCRes", "The |t| of NCRes Events from MCTruth Information", 5000, 0, 1);
+TH1D *hTNCDIS = new TH1D("hTNCDIS", "The |t| of NCDIS Events from MCTruth Information", 5000, 0, 1);
+TH1D *hTOther = new TH1D("hTOther", "The |t| of Other Events from MCTruth Information", 5000, 0, 1);
 // --------------------------------------------------------------------------------
 
 
