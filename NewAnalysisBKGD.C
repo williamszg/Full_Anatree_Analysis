@@ -1078,15 +1078,16 @@ void NewAnalysisBKGD::Loop()
                if (mctrk_TrackId[j] == trkId_pandora[ipandora]) pandoraTrackID1 = ipandora;
                } 
             
-            if (pandoraTrackID1 != -1) 
+            /*if (pandoraTrackID1 != -1) 
                {
                std::cout<<"======================================================================="<<std::endl;
                std::cout<<"mctrk_TrackId[j] = "<<mctrk_TrackId[j]<<std::endl;
+               std::cout<<"trkId_pandora[pandoraTrackID1] = "<<trkId_pandora[pandoraTrackID1]<<std::endl;
                std::cout<<"pandoraTrackID1 = "<<pandoraTrackID1<<std::endl;
                std::cout<<"-----------------------------------------------------------------------"<<std::endl;
                std::cout<<"True PDG = "<<pdg[j]<<std::endl;
                std::cout<<"======================================================================="<<std::endl;
-               }
+               }*/
             // ------------------------------------------ |
             
 
