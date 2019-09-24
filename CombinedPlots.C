@@ -5,8 +5,8 @@ TFile *f3 = new TFile("./Histograms_NewAnalysis_BKGD.root"); //<--File for Cosmi
 TFile *f4 = new TFile("./Histograms_NewAnalysis_CCCoh_Bestest.root"); //<--File for VA CCCoh
 
 
-TFile *g1 = new TFile("./T_Plots_Again_BKGD.root"); //<--File for |t| of BKGDs Comparison Plots
-TFile *g2 = new TFile("./T_Plots_Again_CCCoh.root"); //<--File for |t| of CCCoh Comparison Plots
+TFile *g1 = new TFile("./T_Again_BKGD.root"); //<--File for |t| of BKGDs Comparison Plots
+TFile *g2 = new TFile("./T_Again_CCCoh.root"); //<--File for |t| of CCCoh Comparison Plots
 
 
 TFile *b1 = new TFile("./Histograms_NewAnalysis_BKGD_Vertex_5_0_cm.root");
@@ -1103,22 +1103,22 @@ TH1D *hTOther = (TH1D*)g1->Get("hTOther");
 // ----------------------------------
 // --- TGraph for |t| Comparisons ---
 // ----------------------------------
-int u = 1000;
-double p[1000] = {0};
-double TEff[1000] = {0};
-double TPurity[1000] = {0};
-double TCCCoh[1000] = {0};
-double TCCCohRejection[1000] = {0};
-double TCCQE[1000] = {0};
-double TCCRes[1000] = {0};
-double TCCDIS[1000] = {0};
-double TNCRes[1000] = {0};
-double TNCDIS[1000] = {0};
-double TOther[1000] = {0};
+int u = 5000;
+double p[5000] = {0};
+double TEff[5000] = {0};
+double TPurity[5000] = {0};
+double TCCCoh[5000] = {0};
+double TCCCohRejection[5000] = {0};
+double TCCQE[5000] = {0};
+double TCCRes[5000] = {0};
+double TCCDIS[5000] = {0};
+double TNCRes[5000] = {0};
+double TNCDIS[5000] = {0};
+double TOther[5000] = {0};
 
 for (int i = 0; i < u; i++)
    {
-   p[i] = i/1000.;
+   p[i] = i/5000.;
    for (int g = 1; g < i+1; g++)
       {
       TCCCoh[i] += hTCCCoh->GetBinContent(g);

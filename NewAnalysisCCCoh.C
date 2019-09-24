@@ -1072,29 +1072,23 @@ void NewAnalysisCCCoh::Loop()
             // ------------------------------------------ |
             // --- Messing Around with Truth Matching --- |
             // ------------------------------------------ |
-            /*for (int ipandora = 0; ipandora < ntracks_pandora; ipandora++)
+            for (int ipandora = 0; ipandora < ntracks_pandora; ipandora++)
                {
                if (checkFV == false) continue;
-               if (mctrk_TrackId[j] == trkidtruth_pandora[ipandora][0] || mctrk_TrackId[j] == trkidtruth_pandora[ipandora][1] || mctrk_TrackId[j] == trkidtruth_pandora[ipandora][2]) pandoraTrackID1 = ipandora;
-               } */
-            /*
+               if (mctrk_TrackId[j] == trkId_pandora[ipandora]) pandoraTrackID1 = ipandora;
+               } 
+            
             if (pandoraTrackID1 != -1) 
                {
                std::cout<<"======================================================================="<<std::endl;
                std::cout<<"mctrk_TrackId[j] = "<<mctrk_TrackId[j]<<std::endl;
-               std::cout<<"trkidtruth_pandora[pandoraTrackID1][0] = "<<trkidtruth_pandora[pandoraTrackID1][0]<<std::endl;
-               std::cout<<"trkidtruth_pandora[pandoraTrackID1][1] = "<<trkidtruth_pandora[pandoraTrackID1][1]<<std::endl;
-               std::cout<<"trkidtruth_pandora[pandoraTrackID1][2] = "<<trkidtruth_pandora[pandoraTrackID1][2]<<std::endl;
                std::cout<<"pandoraTrackID1 = "<<pandoraTrackID1<<std::endl;
                std::cout<<"-----------------------------------------------------------------------"<<std::endl;
                std::cout<<"True PDG = "<<pdg[j]<<std::endl;
-               std::cout<<"Pandora PDG Plane 0 = "<<trkpidpdg_pandora[pandoraTrackID1][0]<<std::endl;
-               std::cout<<"Pandora PDG Plane 1 = "<<trkpidpdg_pandora[pandoraTrackID1][1]<<std::endl;
-               std::cout<<"Pandora PDG Plane 2 = "<<trkpidpdg_pandora[pandoraTrackID1][2]<<std::endl;
                std::cout<<"======================================================================="<<std::endl;
                }
             // ------------------------------------------ |
-            */
+            
 
 
             if (mctrk_origin[j] == 1)
