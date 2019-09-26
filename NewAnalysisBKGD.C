@@ -390,6 +390,34 @@ TH1D *hMCTruthEPionAfter = new TH1D("hMCTruthEPionAfter", "The Energy of the Pio
 TH1D *hMCTruthOpeningAngleAfter = new TH1D("hMCTruthOpeningAngleAfter", "The Angle Between the Muon and the Pion for CC-COH Events with 2 or More MCTracks After Cuts", 181, -0.5, 180.5);
 // -----------------------------
 
+
+
+// -----------------------------------------------
+// --- Pandora Reconstructed Track Information ---
+// -----------------------------------------------
+TH2D *hNumberOfMCTracksVsNumberOfPandoraTracks = new TH2D("hNumberOfMCTracksVsNumberOfPandoraTracks", "The Number of MCTracks Vs the Number of Pandora Reconstructed Truth Matched Tracks for CC-Coh Events", 11, -0.5, 10.5, 11, -0.5, 10.5);
+
+TH1D *hMuonMuonChi2 = new TH1D("hMuonMuonChi2", "The Muon #Chi^{2} Score for Muon Tracks", 1000, 0, 300);
+TH1D *hPionMuonChi2 = new TH1D("hPionMuonChi2", "The Muon #Chi^{2} Score for Pion Tracks", 1000, 0, 300);
+TH1D *hProtonMuonChi2 = new TH1D("hProtonMuonChi2", "The Muon #Chi^{2} Score for Proton Tracks", 1000, 0, 300);
+TH1D *hOtherMuonChi2 = new TH1D("hOtherMuonChi2", "The Muon #Chi^{2} Score for Other Tracks", 1000, 0, 300);
+
+TH1D *hMuonPionChi2 = new TH1D("hMuonPionChi2", "The Pion #Chi^{2} Score for Muon Tracks", 1000, 0, 300);
+TH1D *hPionPionChi2 = new TH1D("hPionPionChi2", "The Pion #Chi^{2} Score for Pion Tracks", 1000, 0, 300);
+TH1D *hProtonPionChi2 = new TH1D("hProtonPionChi2", "The Pion #Chi^{2} Score for Proton Tracks", 1000, 0, 300);
+TH1D *hOtherPionChi2 = new TH1D("hOtherPionChi2", "The Pion #Chi^{2} Score for Other Tracks", 1000, 0, 300);
+
+TH1D *hMuonProtonChi2 = new TH1D("hMuonProtonChi2", "The Proton #Chi^{2} Score for Muon Tracks", 1000, 0, 300);
+TH1D *hPionProtonChi2 = new TH1D("hPionProtonChi2", "The Proton #Chi^{2} Score for Pion Tracks", 1000, 0, 300);
+TH1D *hProtonProtonChi2 = new TH1D("hProtonProtonChi2", "The Proton #Chi^{2} Score for Proton Tracks", 1000, 0, 300);
+TH1D *hOtherProtonChi2 = new TH1D("hOtherProtonChi2", "The Proton #Chi^{2} Score for Other Tracks", 1000, 0, 300);
+
+TH1D *hMuonPandoraTrackLength = new TH1D("hMuonPandoraTrackLength", "The Track Length of Pandora Muon Truth Matched Tracks", 401, -0.5, 400.5);
+TH1D *hPionPandoraTrackLength = new TH1D("hPionPandoraTrackLength", "The Track Length of Pandora Pion Truth Matched Tracks", 401, -0.5, 400.5);
+TH1D *hProtonPandoraTrackLength = new TH1D("hProtonPandoraTrackLength", "The Track Length of Pandora Proton Truth Matched Tracks", 401, -0.5, 400.5);
+TH1D *hOtherPandoraTrackLength = new TH1D("hOtherPandoraTrackLength", "The Track Length of Pandora Other Truth Matched Tracks", 401, -0.5, 400.5);
+// -----------------------------------------------
+
 // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 
@@ -583,7 +611,7 @@ void NewAnalysisBKGD::Loop()
       double FlashPECosmic = 0;
       double FlashPEBeam = 0;
 
-      for (int n = 0; n < nfls_simpleFlashCosmic; n++) 
+      /*for (int n = 0; n < nfls_simpleFlashCosmic; n++) 
          {
          //hOpFlashPECosmic->Fill(flsPe_simpleFlashCosmic[n]);
          FlashPECosmic += flsPe_simpleFlashCosmic[n];
@@ -605,7 +633,7 @@ void NewAnalysisBKGD::Loop()
          hOpFlashX->Fill(flsXcenter_simpleFlashBeam[n]*100);           
          hOpFlashY->Fill(flsYcenter_simpleFlashBeam[n]*100);           
          hOpFlashZ->Fill(flsZcenter_simpleFlashBeam[n]*100);
-         }
+         }*/
 
       // ========================================
       // === Looping Over the Neutrino Events ===
@@ -717,7 +745,7 @@ void NewAnalysisBKGD::Loop()
          // ====================
          // === Pandora Loop ===
          // ====================
-         for (int t = 0; t < ntracks_pandora; t++)
+         /*for (int t = 0; t < ntracks_pandora; t++)
             {
             //if (checkFV == false) continue;
             if (trkg4id_pandora[t] == -1) Cosmic = true;
@@ -798,7 +826,7 @@ void NewAnalysisBKGD::Loop()
 
                      TVector3 CosmicEndStartCheck(trkendx_pandora[t]-trkstartx_pandora[m], trkendy_pandora[t]-trkstarty_pandora[m], trkendz_pandora[t]-trkstartz_pandora[m]);
                      TVector3 CosmicStartEndCheck(trkendx_pandora[m]-trkstartx_pandora[t], trkendy_pandora[m]-trkstarty_pandora[t], trkendz_pandora[m]-trkstartz_pandora[t]);
-
+*/
                      /*if (CosmicEndStartCheck.Mag() <= 10 || CosmicStartEndCheck.Mag() <= 10)
                         {
                         std::cout<<"|||---------------------------------------------|||"<<std::endl;
@@ -809,10 +837,10 @@ void NewAnalysisBKGD::Loop()
                         }*/
 
 
-                     double CosmicConeAngleCheck = ConeAngle(CosmicTrack.X(), CosmicTrack.Y(), CosmicTrack.Z(), CosmicTrack2.X(), CosmicTrack2.Y(), CosmicTrack2.Z())*180/PI;
+                     /*double CosmicConeAngleCheck = ConeAngle(CosmicTrack.X(), CosmicTrack.Y(), CosmicTrack.Z(), CosmicTrack2.X(), CosmicTrack2.Y(), CosmicTrack2.Z())*180/PI;
 
                      if (CosmicConeAngleCheck < CosmicConeAngle) {CosmicConeAngle = CosmicConeAngleCheck;}
-
+*/
                      //hCosmicConeAngle->Fill(ConeAngle(CosmicTrack.X(), CosmicTrack.Y(), CosmicTrack.Z(), CosmicTrack2.X(), CosmicTrack2.Y(), CosmicTrack2.Z())*180/PI);
                      // ------------------------
 
@@ -841,7 +869,7 @@ void NewAnalysisBKGD::Loop()
 		     // --- Just Collection Plane ---
                      // -----------------------------
 
-                     for (int j = 0; j < ntrkhits_pandora[t][2]; j++)
+                     /*for (int j = 0; j < ntrkhits_pandora[t][2]; j++)
                         {
                         for (int k = 0; k < ntrkhits_pandora[m][2]; k++)
                            {
@@ -868,14 +896,14 @@ void NewAnalysisBKGD::Loop()
          //std::cout<<"CosmicVAEnergy = "<<CosmicVAEnergy<<std::endl;
          //hCosmicVA->Fill(CosmicVAEnergy);
          //std::cout<<"nCosmics = "<<nCosmics<<std::endl;
-         hnCosmics->Fill(nCosmics);
+         hnCosmics->Fill(nCosmics);*/
          // ====================
 
 
          // +++++++++++++++++++++++++++++++++++++++
          // +++ New Vertex Activity Calculation +++
          // +++++++++++++++++++++++++++++++++++++++
-         double VertexActivityADC = 0;
+         /*double VertexActivityADC = 0;
          double VertexActivityADC_noTRKID = 0;
 
          double XRange = 256.;
@@ -895,38 +923,12 @@ void NewAnalysisBKGD::Loop()
             double ZHitPos = ZConstant*hit_wire[ihit];
             double DistanceFromVtx = sqrt(pow(SCVx - XHitPos,2) + pow(SCVz - ZHitPos,2));
 
-            /*std::cout<<"|======================================|"<<std::endl;
-            std::cout<<"  Vertex X =        "<<SCVx<<std::endl;
-            std::cout<<"  Vertex Z =        "<<SCVz<<std::endl;
-            std::cout<<"|--------------------------------------|"<<std::endl;
-            std::cout<<"  XHitPos =         "<<XHitPos<<std::endl;
-            std::cout<<"  ZHitPos =         "<<ZHitPos<<std::endl;
-            std::cout<<"  DistanceFromVtx = "<<DistanceFromVtx<<std::endl;
-            std::cout<<"|======================================|"<<std::endl;
-            std::cout<<"  hit_trkid[ihit] = "<<hit_trkid[ihit]<<std::endl;
-            std::cout<<"  hit_charge[ihit] = "<<hit_charge[ihit]<<std::endl;*/
             if (DistanceFromVtx > VAdistanceCheck) continue;
 
             if (hit_trkid[ihit] >= 0) VertexActivityADC = VertexActivityADC + hit_charge[ihit];
             else VertexActivityADC_noTRKID = VertexActivityADC_noTRKID + hit_charge[ihit];
 
-            /*std::cout<<"|======================================|"<<std::endl;
-            std::cout<<"  Vertex X = "<<Vx<<std::endl;
-            std::cout<<"  Vertex Y = "<<Vy<<std::endl;
-            std::cout<<"  Vertex Z = "<<Vz<<std::endl;
-            std::cout<<"|--------------------------------------|"<<std::endl;
-            std::cout<<"  hit_plane[ihit] = "<<hit_plane[ihit]<<std::endl;
-            std::cout<<"  hit_wire[ihit] = "<<hit_wire[ihit]<<std::endl;
-            std::cout<<"  hit_channel[ihit] = "<<hit_channel[ihit]<<std::endl;
-            std::cout<<"  hit_peakT[ihit] = "<<hit_peakT[ihit]<<std::endl;
-            std::cout<<"  hit_charge[ihit] = "<<hit_charge[ihit]<<std::endl;
-            std::cout<<"|======================================|"<<std::endl;*/
-            } // End the ihit loop 
-
-         /*std::cout<<"|--------------------------------------------------------|"<<std::endl;
-         std::cout<<"  VertexActivityADC =         "<<VertexActivityADC<<std::endl;
-         std::cout<<"  VertexActivityADC_noTRKID = "<<VertexActivityADC_noTRKID<<std::endl;
-         std::cout<<"|--------------------------------------------------------|"<<std::endl;*/
+            } // End the ihit loop */ 
          // +++++++++++++++++++++++++++++++++++++++
 
 
@@ -1051,6 +1053,9 @@ void NewAnalysisBKGD::Loop()
 	 int TRACK1 = -999;
 	 int TRACK2 = -999;
 
+	 int npandoraMatch = 0;
+	 int nprimaries = 0;
+
          for (int j = 0; j < no_mctracks; j++)
 	    {
 	    double DeltaStartX = mctrk_startX[j] - Vx;
@@ -1066,17 +1071,59 @@ void NewAnalysisBKGD::Loop()
 	    TVector3 track(mctrk_endX[j] - mctrk_startX[j], mctrk_endY[j] - mctrk_startY[j], mctrk_endZ[j] - mctrk_startZ[j]);
 
             int pandoraTrackID1 = -1;
+	    bool pandoraMatch = false;
 
 
 
             // ------------------------------------------ |
             // --- Messing Around with Truth Matching --- |
             // ------------------------------------------ |
+	    if (mctrk_origin[j] == 1 && checkFV)
+               {
             for (int ipandora = 0; ipandora < ntracks_pandora; ipandora++)
                {
-               if (checkFV == false) continue;
-               if (mctrk_TrackId[j] == trkId_pandora[ipandora]) pandoraTrackID1 = ipandora;
-               } 
+               if (mctrk_TrackId[j] == trkId_pandora[ipandora]) 
+	          {
+		  pandoraTrackID1 = ipandora;
+		  pandoraMatch = true;
+		  npandoraMatch++;
+                  std::cout<<"The Length of the Truth Matched Pandora Track = "<<trklen_pandora[ipandora]<<std::endl;
+
+                  if (pdg[mctrk_TrackId[j]] == 13)
+	             {
+		     hMuonPandoraTrackLength->Fill(trklen_pandora[ipandora]);
+		     hMuonMuonChi2->Fill(trkpidchimu_pandora[ipandora][2]);
+		     hMuonPionChi2->Fill(trkpidchipi_pandora[ipandora][2]);
+		     hMuonProtonChi2->Fill(trkpidchipr_pandora[ipandora][2]);
+		     }
+
+                  if (pdg[mctrk_TrackId[j]] == 211)
+	             {
+		     hPionPandoraTrackLength->Fill(trklen_pandora[ipandora]);
+		     hPionMuonChi2->Fill(trkpidchimu_pandora[ipandora][2]);
+		     hPionPionChi2->Fill(trkpidchipi_pandora[ipandora][2]);
+		     hPionProtonChi2->Fill(trkpidchipr_pandora[ipandora][2]);
+		     }
+
+                  if (pdg[mctrk_TrackId[j]] == 2212)
+	             {
+		     hProtonPandoraTrackLength->Fill(trklen_pandora[ipandora]);
+		     hProtonMuonChi2->Fill(trkpidchimu_pandora[ipandora][2]);
+		     hProtonPionChi2->Fill(trkpidchipi_pandora[ipandora][2]);
+		     hProtonProtonChi2->Fill(trkpidchipr_pandora[ipandora][2]);
+		     }
+
+                  if (pdg[mctrk_TrackId[j]] != 13 && pdg[mctrk_TrackId[j]] != 211 && pdg[mctrk_TrackId[j]] != 2212)
+	             {
+		     hOtherPandoraTrackLength->Fill(trklen_pandora[ipandora]);
+		     hOtherMuonChi2->Fill(trkpidchimu_pandora[ipandora][2]);
+		     hOtherPionChi2->Fill(trkpidchipi_pandora[ipandora][2]);
+		     hOtherProtonChi2->Fill(trkpidchipr_pandora[ipandora][2]);
+		     }
+
+		  }
+               }
+	       }
             
             /*if (pandoraTrackID1 != -1) 
                {
@@ -1095,6 +1142,8 @@ void NewAnalysisBKGD::Loop()
             if (mctrk_origin[j] == 1)
                {
                
+	       if (checkFV) nprimaries++;
+
                // ----------------------
                // --- New Cone Angle ---
                // ----------------------
@@ -1194,13 +1243,14 @@ void NewAnalysisBKGD::Loop()
             }
 
          hNuNMCTracksWithinRange->Fill(nmctrksInRange);
+	 if (checkFV) hNumberOfMCTracksVsNumberOfPandoraTracks->Fill(npandoraMatch, nprimaries);
 
 
 
          // ========================================
          // === Filling Cosmic Table Information ===
          // ========================================
-         hCosmicTableInformation->Fill(0);
+         /*hCosmicTableInformation->Fill(0);
          if (checkDV == true)
             {
             hCosmicTableInformation->Fill(1);
@@ -1276,7 +1326,7 @@ void NewAnalysisBKGD::Loop()
                      } // DoCA Less Than or Equal to DoCACut Check
                   } // ConeAngle Less Than or Equal to ConeAngleCut Check
                } // Equal to 2 Tracks Within 5 cm of Vertex Check
-            } // Greater than or equal to 2 Tracks Check
+            } // Greater than or equal to 2 Tracks Check */
          // ========================================
 
 
@@ -2518,6 +2568,30 @@ void NewAnalysisBKGD::Loop()
    hMCTruthEPionAfter->Write();
 
    hMCTruthOpeningAngleAfter->Write();
+
+
+
+   hNumberOfMCTracksVsNumberOfPandoraTracks->Write();
+
+   hMuonMuonChi2->Write();
+   hPionMuonChi2->Write();
+   hProtonMuonChi2->Write();
+   hOtherMuonChi2->Write();
+
+   hMuonPionChi2->Write();
+   hPionPionChi2->Write();
+   hProtonPionChi2->Write();
+   hOtherPionChi2->Write();
+
+   hMuonProtonChi2->Write();
+   hPionProtonChi2->Write();
+   hProtonProtonChi2->Write();
+   hOtherProtonChi2->Write();
+
+   hMuonPandoraTrackLength->Write();
+   hPionPandoraTrackLength->Write();
+   hProtonPandoraTrackLength->Write();
+   hOtherPandoraTrackLength->Write();
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 } // End NewAnalysisBKGD Loop
