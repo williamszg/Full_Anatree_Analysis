@@ -1088,7 +1088,7 @@ void NewAnalysisCCCoh::Loop()
 		  pandoraMatch = true;
 		  npandoraMatch++;
 
-                  if (pdg[mctrk_TrackId[j]] == 13)
+                  if (mctrk_pdg[j] == 13)
 	             {
 		     hMuonPandoraTrackLength->Fill(trklen_pandora[ipandora]);
 		     hMuonMuonChi2->Fill(trkpidchimu_pandora[ipandora][2]);
@@ -1096,7 +1096,7 @@ void NewAnalysisCCCoh::Loop()
 		     hMuonProtonChi2->Fill(trkpidchipr_pandora[ipandora][2]);
 		     }
 
-                  if (pdg[mctrk_TrackId[j]] == 211)
+                  if (mctrk_pdg[j] == 211)
 	             {
 		     hPionPandoraTrackLength->Fill(trklen_pandora[ipandora]);
 		     hPionMuonChi2->Fill(trkpidchimu_pandora[ipandora][2]);
@@ -1104,7 +1104,7 @@ void NewAnalysisCCCoh::Loop()
 		     hPionProtonChi2->Fill(trkpidchipr_pandora[ipandora][2]);
 		     }
 
-                  if (pdg[mctrk_TrackId[j]] == 2212)
+                  if (mctrk_pdg[j] == 2212)
 	             {
 		     hProtonPandoraTrackLength->Fill(trklen_pandora[ipandora]);
 		     hProtonMuonChi2->Fill(trkpidchimu_pandora[ipandora][2]);
@@ -1112,7 +1112,7 @@ void NewAnalysisCCCoh::Loop()
 		     hProtonProtonChi2->Fill(trkpidchipr_pandora[ipandora][2]);
 		     }
 
-                  if (pdg[mctrk_TrackId[j]] != 13 && pdg[mctrk_TrackId[j]] != 211 && pdg[mctrk_TrackId[j]] != 2212)
+                  if (mctrk_pdg[j] != 13 && mctrk_pdg[j] != 211 && mctrk_pdg[j] != 2212)
 	             {
 		     hOtherPandoraTrackLength->Fill(trklen_pandora[ipandora]);
 		     hOtherMuonChi2->Fill(trkpidchimu_pandora[ipandora][2]);

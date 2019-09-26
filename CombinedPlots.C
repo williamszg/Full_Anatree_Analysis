@@ -8,6 +8,8 @@ TFile *f4 = new TFile("./Histograms_NewAnalysis_CCCoh_Bestest.root"); //<--File 
 TFile *g1 = new TFile("./T_Again_BKGD.root"); //<--File for |t| of BKGDs Comparison Plots
 TFile *g2 = new TFile("./T_Again_CCCoh.root"); //<--File for |t| of CCCoh Comparison Plots
 
+TFile *g3 = new TFile("./Pandora_Reco_Tracks_BKGD.root"); //<--File for Pandora Reco Tracks BKGD Plots
+TFile *g4 = new TFile("./Pandora_Reco_Tracks_CCCoh.root"); //<--File for Pandora Reco Tracks CCCoh Plots
 
 TFile *b1 = new TFile("./Histograms_NewAnalysis_BKGD_Vertex_5_0_cm.root");
 TFile *cc1 = new TFile("./Histograms_NewAnalysis_CCCoh_Vertex_5_0_cm.root");
@@ -38,6 +40,50 @@ TFile *cc9 = new TFile("./Histograms_NewAnalysis_CCCoh_Vertex_25_0_cm.root");
 
 THStack *hSConeAngle = new THStack("hSConeAngle","Stacked Cone Angle Histograms");
 THStack *hSVA = new THStack("hSVA","Stacked Vertex Activity Histograms");
+
+
+TH1D *hMuonPandoraTrackLength = (TH1D*)g3->Get("hMuonPandoraTrackLength");
+TH1D *hPionPandoraTrackLength = (TH1D*)g3->Get("hPionPandoraTrackLength");
+TH1D *hProtonPandoraTrackLength = (TH1D*)g3->Get("hProtonPandoraTrackLength");
+TH1D *hOtherPandoraTrackLength = (TH1D*)g3->Get("hOtherPandoraTrackLength");
+
+hMuonPandoraTrackLength->Sumw2();
+hPionPandoraTrackLength->Sumw2();
+hProtonPandoraTrackLength->Sumw2();
+hOtherPandoraTrackLength->Sumw2();
+
+
+TH1D *hMuonMuonChi2 = (TH1D*)g3->Get("hMuonMuonChi2");
+TH1D *hPionMuonChi2 = (TH1D*)g3->Get("hPionMuonChi2");
+TH1D *hProtonMuonChi2 = (TH1D*)g3->Get("hProtonMuonChi2");
+TH1D *hOtherMuonChi2 = (TH1D*)g3->Get("hOtherMuonChi2");
+
+hMuonMuonChi2->Sumw2();
+hPionMuonChi2->Sumw2();
+hProtonMuonChi2->Sumw2();
+hOtherMuonChi2->Sumw2();
+
+
+TH1D *hMuonPionChi2 = (TH1D*)g3->Get("hMuonPionChi2");
+TH1D *hPionPionChi2 = (TH1D*)g3->Get("hPionPionChi2");
+TH1D *hProtonPionChi2 = (TH1D*)g3->Get("hProtonPionChi2");
+TH1D *hOtherPionChi2 = (TH1D*)g3->Get("hOtherPionChi2");
+
+hMuonPionChi2->Sumw2();
+hPionPionChi2->Sumw2();
+hProtonPionChi2->Sumw2();
+hOtherPionChi2->Sumw2();
+
+
+TH1D *hMuonProtonChi2 = (TH1D*)g3->Get("hMuonProtonChi2");
+TH1D *hPionProtonChi2 = (TH1D*)g3->Get("hPionProtonChi2");
+TH1D *hProtonProtonChi2 = (TH1D*)g3->Get("hProtonProtonChi2");
+TH1D *hOtherProtonChi2 = (TH1D*)g3->Get("hOtherProtonChi2");
+
+hMuonProtonChi2->Sumw2();
+hPionProtonChi2->Sumw2();
+hProtonProtonChi2->Sumw2();
+hOtherProtonChi2->Sumw2();
 
 
 TH1D *hCCCohVA1 = (TH1D*)cc1->Get("hCCCohVA");
@@ -2600,4 +2646,208 @@ gTPurity->GetYaxis()->SetTitle("Purity");
 gTPurity->GetYaxis()->CenterTitle();
 
 gTPurity->Draw();
+
+
+
+TCanvas *c30 = new TCanvas("c30", "The Track Lengths of Different Particle Species");
+c30->SetTicks();
+c30->SetFillColor(kWhite);
+
+// Area normalzing the plot 
+hMuonPandoraTrackLength->Scale(1/hMuonPandoraTrackLength->Integral());
+hPionPandoraTrackLength->Scale(1/hPionPandoraTrackLength->Integral());
+hProtonPandoraTrackLength->Scale(1/hProtonPandoraTrackLength->Integral());
+hOtherPandoraTrackLength->Scale(1/hOtherPandoraTrackLength->Integral());
+
+hMuonPandoraTrackLength->SetLineColor(kBlue);
+hMuonPandoraTrackLength->SetLineWidth(2);
+
+hPionPandoraTrackLength->SetLineColor(kRed);
+hPionPandoraTrackLength->SetLineWidth(2);
+
+hProtonPandoraTrackLength->SetLineColor(kGreen);
+hProtonPandoraTrackLength->SetLineWidth(2);
+
+hOtherPandoraTrackLength->SetLineColor(kOrange);
+hOtherPandoraTrackLength->SetLineWidth(2);
+
+hMuonPandoraTrackLength->GetXaxis()->SetTitle("Track Length [cm]");
+hMuonPandoraTrackLength->GetXaxis()->CenterTitle();
+
+hMuonPandoraTrackLength->GetYaxis()->SetTitle("Normalized Events");
+hMuonPandoraTrackLength->GetYaxis()->CenterTitle();
+
+hMuonPandoraTrackLength->Draw("histo");
+hPionPandoraTrackLength->Draw("histosame");
+hProtonPandoraTrackLength->Draw("histosame");
+hOtherPandoraTrackLength->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg30 = new TLegend();
+leg30 = new TLegend(0.58,0.65,1.00,1.00);
+leg30->SetTextSize(0.04);
+leg30->SetTextAlign(12);
+leg30->SetFillColor(kWhite);
+leg30->SetLineColor(kWhite);
+leg30->SetShadowColor(kWhite);
+leg30->SetHeader("Particle");
+leg30->AddEntry(hMuonPandoraTrackLength,"#mu");
+leg30->AddEntry(hPionPandoraTrackLength,"#pi");
+leg30->AddEntry(hProtonPandoraTrackLength,"p");
+leg30->AddEntry(hOtherPandoraTrackLength,"other");
+leg30->Draw();
+
+
+
+TCanvas *c31 = new TCanvas("c31", "The Muon Chi2 Values for Different Particle Species");
+c31->SetTicks();
+c31->SetFillColor(kWhite);
+
+// Area normalzing the plot 
+hMuonMuonChi2->Scale(1/hMuonMuonChi2->Integral());
+hPionMuonChi2->Scale(1/hPionMuonChi2->Integral());
+hProtonMuonChi2->Scale(1/hProtonMuonChi2->Integral());
+hOtherMuonChi2->Scale(1/hOtherMuonChi2->Integral());
+
+hMuonMuonChi2->SetLineColor(kBlue);
+hMuonMuonChi2->SetLineWidth(2);
+
+hPionMuonChi2->SetLineColor(kRed);
+hPionMuonChi2->SetLineWidth(2);
+
+hProtonMuonChi2->SetLineColor(kGreen);
+hProtonMuonChi2->SetLineWidth(2);
+
+hOtherMuonChi2->SetLineColor(kOrange);
+hOtherMuonChi2->SetLineWidth(2);
+
+hMuonMuonChi2->GetXaxis()->SetTitle("#mu #chi^{2}");
+hMuonMuonChi2->GetXaxis()->CenterTitle();
+
+hMuonMuonChi2->GetYaxis()->SetTitle("Normalized Events");
+hMuonMuonChi2->GetYaxis()->CenterTitle();
+
+hMuonMuonChi2->Draw("histo");
+hPionMuonChi2->Draw("histosame");
+hProtonMuonChi2->Draw("histosame");
+hOtherMuonChi2->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg31 = new TLegend();
+leg31 = new TLegend(0.58,0.65,1.00,1.00);
+leg31->SetTextSize(0.04);
+leg31->SetTextAlign(12);
+leg31->SetFillColor(kWhite);
+leg31->SetLineColor(kWhite);
+leg31->SetShadowColor(kWhite);
+leg31->SetHeader("Particle");
+leg31->AddEntry(hMuonMuonChi2,"#mu");
+leg31->AddEntry(hPionMuonChi2,"#pi");
+leg31->AddEntry(hProtonMuonChi2,"p");
+leg31->AddEntry(hOtherMuonChi2,"other");
+leg31->Draw();
+
+
+
+TCanvas *c32 = new TCanvas("c32", "The Pion Chi2 Values for Different Particle Species");
+c32->SetTicks();
+c32->SetFillColor(kWhite);
+
+// Area normalzing the plot 
+hMuonPionChi2->Scale(1/hMuonPionChi2->Integral());
+hPionPionChi2->Scale(1/hPionPionChi2->Integral());
+hProtonPionChi2->Scale(1/hProtonPionChi2->Integral());
+hOtherPionChi2->Scale(1/hOtherPionChi2->Integral());
+
+hMuonPionChi2->SetLineColor(kBlue);
+hMuonPionChi2->SetLineWidth(2);
+
+hPionPionChi2->SetLineColor(kRed);
+hPionPionChi2->SetLineWidth(2);
+
+hProtonPionChi2->SetLineColor(kGreen);
+hProtonPionChi2->SetLineWidth(2);
+
+hOtherPionChi2->SetLineColor(kOrange);
+hOtherPionChi2->SetLineWidth(2);
+
+hMuonPionChi2->GetXaxis()->SetTitle("#pi #chi^{2}");
+hMuonPionChi2->GetXaxis()->CenterTitle();
+
+hMuonPionChi2->GetYaxis()->SetTitle("Normalized Events");
+hMuonPionChi2->GetYaxis()->CenterTitle();
+
+hMuonPionChi2->Draw("histo");
+hPionPionChi2->Draw("histosame");
+hProtonPionChi2->Draw("histosame");
+hOtherPionChi2->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg32 = new TLegend();
+leg32 = new TLegend(0.58,0.65,1.00,1.00);
+leg32->SetTextSize(0.04);
+leg32->SetTextAlign(12);
+leg32->SetFillColor(kWhite);
+leg32->SetLineColor(kWhite);
+leg32->SetShadowColor(kWhite);
+leg32->SetHeader("Particle");
+leg32->AddEntry(hMuonPionChi2,"#mu");
+leg32->AddEntry(hPionPionChi2,"#pi");
+leg32->AddEntry(hProtonPionChi2,"p");
+leg32->AddEntry(hOtherPionChi2,"other");
+leg32->Draw();
+
+
+
+TCanvas *c33 = new TCanvas("c33", "The Proton Chi2 Values for Different Particle Species");
+c33->SetTicks();
+c33->SetFillColor(kWhite);
+
+// Area normalzing the plot 
+hMuonProtonChi2->Scale(1/hMuonProtonChi2->Integral());
+hPionProtonChi2->Scale(1/hPionProtonChi2->Integral());
+hProtonProtonChi2->Scale(1/hProtonProtonChi2->Integral());
+hOtherProtonChi2->Scale(1/hOtherProtonChi2->Integral());
+
+hMuonProtonChi2->SetLineColor(kBlue);
+hMuonProtonChi2->SetLineWidth(2);
+
+hPionProtonChi2->SetLineColor(kRed);
+hPionProtonChi2->SetLineWidth(2);
+
+hProtonProtonChi2->SetLineColor(kGreen);
+hProtonProtonChi2->SetLineWidth(2);
+
+hOtherProtonChi2->SetLineColor(kOrange);
+hOtherProtonChi2->SetLineWidth(2);
+
+hMuonProtonChi2->GetXaxis()->SetTitle("p #chi^{2}");
+hMuonProtonChi2->GetXaxis()->CenterTitle();
+
+hMuonProtonChi2->GetYaxis()->SetTitle("Normalized Events");
+hMuonProtonChi2->GetYaxis()->CenterTitle();
+
+hMuonProtonChi2->Draw("histo");
+hPionProtonChi2->Draw("histosame");
+hProtonProtonChi2->Draw("histosame");
+hOtherProtonChi2->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg33 = new TLegend();
+leg33 = new TLegend(0.58,0.65,1.00,1.00);
+leg33->SetTextSize(0.04);
+leg33->SetTextAlign(12);
+leg33->SetFillColor(kWhite);
+leg33->SetLineColor(kWhite);
+leg33->SetShadowColor(kWhite);
+leg33->SetHeader("Particle");
+leg33->AddEntry(hMuonProtonChi2,"#mu");
+leg33->AddEntry(hPionProtonChi2,"#pi");
+leg33->AddEntry(hProtonProtonChi2,"p");
+leg33->AddEntry(hOtherProtonChi2,"other");
+leg33->Draw();
 }
