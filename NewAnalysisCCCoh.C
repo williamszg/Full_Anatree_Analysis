@@ -903,10 +903,10 @@ void NewAnalysisCCCoh::Loop()
          // +++++++++++++++++++++++++++++++++++++++
          // +++ New Vertex Activity Calculation +++
          // +++++++++++++++++++++++++++++++++++++++
-         /*double VertexActivityADC = 0;
+         double VertexActivityADC = 0;
          double VertexActivityADC_noTRKID = 0;
 
-         double XRange = 256.;
+         /*double XRange = 256.;
          double NumTimeTicks = 9600.;
 
          double ZConstant = 0.29976852;
@@ -1087,7 +1087,6 @@ void NewAnalysisCCCoh::Loop()
 		  pandoraTrackID1 = ipandora;
 		  pandoraMatch = true;
 		  npandoraMatch++;
-                  std::cout<<"The Length of the Truth Matched Pandora Track = "<<trklen_pandora[ipandora]<<std::endl;
 
                   if (pdg[mctrk_TrackId[j]] == 13)
 	             {
