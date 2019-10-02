@@ -1078,7 +1078,7 @@ void NewAnalysisCCCoh::Loop()
             // ------------------------------------------ |
             // --- Messing Around with Truth Matching --- |
             // ------------------------------------------ |
-	    if (mctrk_origin[j] == 1 && checkFV)
+	    if (mctrk_origin[j] == 1 && checkFV && mctrk_Motherpdg[j] == 14)
                {
             for (int ipandora = 0; ipandora < ntracks_pandora; ipandora++)
                {
@@ -1138,7 +1138,7 @@ void NewAnalysisCCCoh::Loop()
             
 
 
-            if (mctrk_origin[j] == 1)
+            if (mctrk_origin[j] == 1 && mctrk_Motherpdg[j] == 14)
                {
                
 	       if (checkFV) nprimaries++;
@@ -1148,7 +1148,7 @@ void NewAnalysisCCCoh::Loop()
                // ----------------------
                for (int itrk = j + 1; itrk < no_mctracks; itrk++)
                   {
-                  if (mctrk_origin[itrk] != 1) {continue;}
+                  if (mctrk_origin[itrk] != 1 || mctrk_Motherpdg[j] != 14) {continue;}
 
 	          double DeltaStartX2 = mctrk_startX[itrk] - Vx;
 	          double DeltaStartY2 = mctrk_startY[itrk] - Vy;
