@@ -8,8 +8,8 @@ TFile *f4 = new TFile("./Histograms_NewAnalysis_CCCoh_Bestest.root"); //<--File 
 TFile *g1 = new TFile("./T_Again_BKGD.root"); //<--File for |t| of BKGDs Comparison Plots
 TFile *g2 = new TFile("./T_Again_CCCoh.root"); //<--File for |t| of CCCoh Comparison Plots
 
-TFile *g3 = new TFile("./Pandora_Reco_Tracks_BKGD.root"); //<--File for Pandora Reco Tracks BKGD Plots
-TFile *g4 = new TFile("./Pandora_Reco_Tracks_CCCoh.root"); //<--File for Pandora Reco Tracks CCCoh Plots
+TFile *g3 = new TFile("./Pandora_Reco_Tracks_BKGD_v2.root"); //<--File for Pandora Reco Tracks BKGD Plots
+TFile *g4 = new TFile("./Pandora_Reco_Tracks_CCCoh_v2.root"); //<--File for Pandora Reco Tracks CCCoh Plots
 
 TFile *b1 = new TFile("./Histograms_NewAnalysis_BKGD_Vertex_5_0_cm.root");
 TFile *cc1 = new TFile("./Histograms_NewAnalysis_CCCoh_Vertex_5_0_cm.root");
@@ -2648,7 +2648,7 @@ gTPurity->GetYaxis()->CenterTitle();
 gTPurity->Draw();
 
 
-
+/*
 TCanvas *c30 = new TCanvas("c30", "The Track Lengths of Different Particle Species");
 c30->SetTicks();
 c30->SetFillColor(kWhite);
@@ -2849,5 +2849,5 @@ leg33->AddEntry(hMuonProtonChi2,"#mu");
 leg33->AddEntry(hPionProtonChi2,"#pi");
 leg33->AddEntry(hProtonProtonChi2,"p");
 leg33->AddEntry(hOtherProtonChi2,"other");
-leg33->Draw();
+leg33->Draw();*/
 }

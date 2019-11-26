@@ -1,5 +1,6 @@
 {
-TFile *f = new TFile("Wouter_Daughter_Information.root"); // <-- File for Daughters
+TFile *f = new TFile("Wouter_Daughter_Information.root"); // <-- File for Daughters Tree
+TFile *f2 = new TFile("EventNtuple.root"); // <-- File for Event Tree
 
 
 
@@ -52,10 +53,48 @@ TH2D *hMuonPandoraVsTrueTrackLength = (TH2D*)f->Get("hMuonPandoraVsTrueTrackLeng
 TH2D *hPionPandoraVsTrueTrackLength = (TH2D*)f->Get("hPionPandoraVsTrueTrackLength");
 TH2D *hProtonPandoraVsTrueTrackLength = (TH2D*)f->Get("hProtonPandoraVsTrueTrackLength");
 
+TH1D *hMuonTrackScore = (TH1D*)f->Get("hMuonTrackScore");
+TH1D *hPionTrackScore = (TH1D*)f->Get("hPionTrackScore");
+TH1D *hProtonTrackScore = (TH1D*)f->Get("hProtonTrackScore");
+
+hMuonTrackScore->Sumw2();
+hPionTrackScore->Sumw2();
+hProtonTrackScore->Sumw2();
+
+TH1D *hMuonVtxDistance = (TH1D*)f->Get("hMuonVtxDistance");
+TH1D *hPionVtxDistance = (TH1D*)f->Get("hPionVtxDistance");
+TH1D *hProtonVtxDistance = (TH1D*)f->Get("hProtonVtxDistance");
+
+hMuonVtxDistance->Sumw2();
+hPionVtxDistance->Sumw2();
+hProtonVtxDistance->Sumw2();
+
+TH1D *hMatchedNuEnergy = (TH1D*)f->Get("hMatchedNuEnergy");
+TH1D *hPassedNuEnergy = (TH1D*)f->Get("hPassedNuEnergy");
+
+hMatchedNuEnergy->Sumw2();
+hPassedNuEnergy->Sumw2();
+
+TH1D *hNuVtxDiffX = (TH1D*)f2->Get("hNuVtxDiffX");
+TH1D *hNuVtxDiffY = (TH1D*)f2->Get("hNuVtxDiffY");
+TH1D *hNuVtxDiffZ = (TH1D*)f2->Get("hNuVtxDiffZ");
+
+hNuVtxDiffX->Sumw2();
+hNuVtxDiffY->Sumw2();
+hNuVtxDiffZ->Sumw2();
+
+TH1D *hNuVtxDiffSCEX = (TH1D*)f2->Get("hNuVtxDiffSCEX");
+TH1D *hNuVtxDiffSCEY = (TH1D*)f2->Get("hNuVtxDiffSCEY");
+TH1D *hNuVtxDiffSCEZ = (TH1D*)f2->Get("hNuVtxDiffSCEZ");
+
+hNuVtxDiffSCEX->Sumw2();
+hNuVtxDiffSCEY->Sumw2();
+hNuVtxDiffSCEZ->Sumw2();
 
 
 
-TCanvas *c1 = new TCanvas("c1", "The Muon Chi2 Values for Different Particle Species");
+
+TCanvas *c1 = new TCanvas("c1", "The Muon Chi2 Values for Different Particle Species", 2);
 c1->SetTicks();
 c1->SetFillColor(kWhite);
 
@@ -68,19 +107,23 @@ hMuonMuonChi2->SetFillColor(kBlue);
 hMuonMuonChi2->SetFillStyle(3005);
 hMuonMuonChi2->SetLineColor(kBlue);
 hMuonMuonChi2->SetLineWidth(2);
+hMuonMuonChi2->Rebin(5);
 
 hPionMuonChi2->SetFillColor(kGreen);
 hPionMuonChi2->SetFillStyle(3006);
 hPionMuonChi2->SetLineColor(kGreen);
 hPionMuonChi2->SetLineWidth(2);
+hPionMuonChi2->Rebin(5);
 
 hProtonMuonChi2->SetFillColor(kOrange);
 hProtonMuonChi2->SetFillStyle(3007);
 hProtonMuonChi2->SetLineColor(kOrange);
 hProtonMuonChi2->SetLineWidth(2);
+hProtonMuonChi2->Rebin(5);
 
 hMuonMuonChi2->GetXaxis()->SetTitle("#mu #chi^{2}");
 hMuonMuonChi2->GetXaxis()->CenterTitle();
+hMuonMuonChi2->GetXaxis()->SetRangeUser(0, 100);
 
 hMuonMuonChi2->GetYaxis()->SetTitle("Normalized Events");
 hMuonMuonChi2->GetYaxis()->CenterTitle();
@@ -106,7 +149,7 @@ leg1->Draw();
 
 
 
-TCanvas *c2 = new TCanvas("c2", "The Proton Chi2 Values for Different Particle Species");
+TCanvas *c2 = new TCanvas("c2", "The Proton Chi2 Values for Different Particle Species", 2);
 c2->SetTicks();
 c2->SetFillColor(kWhite);
 
@@ -119,19 +162,23 @@ hMuonProtonChi2->SetFillColor(kBlue);
 hMuonProtonChi2->SetFillStyle(3005);
 hMuonProtonChi2->SetLineColor(kBlue);
 hMuonProtonChi2->SetLineWidth(2);
+hMuonProtonChi2->Rebin(5);
 
 hPionProtonChi2->SetFillColor(kGreen);
 hPionProtonChi2->SetFillStyle(3006);
 hPionProtonChi2->SetLineColor(kGreen);
 hPionProtonChi2->SetLineWidth(2);
+hPionProtonChi2->Rebin(5);
 
 hProtonProtonChi2->SetFillColor(kOrange);
 hProtonProtonChi2->SetFillStyle(3007);
 hProtonProtonChi2->SetLineColor(kOrange);
 hProtonProtonChi2->SetLineWidth(2);
+hProtonProtonChi2->Rebin(5);
 
 hMuonProtonChi2->GetXaxis()->SetTitle("p #chi^{2}");
 hMuonProtonChi2->GetXaxis()->CenterTitle();
+hMuonProtonChi2->GetXaxis()->SetRangeUser(0, 350);
 
 hMuonProtonChi2->GetYaxis()->SetTitle("Normalized Events");
 hMuonProtonChi2->GetYaxis()->CenterTitle();
@@ -157,7 +204,7 @@ leg2->Draw();
 
 
 
-TCanvas *c3 = new TCanvas("c3", "The Pandora Track Lengths of Different Particle Species");
+TCanvas *c3 = new TCanvas("c3", "The Pandora Track Lengths of Different Particle Species", 2);
 c3->SetTicks();
 c3->SetFillColor(kWhite);
 
@@ -183,6 +230,7 @@ hProtonPandoraTrackLength->SetLineWidth(2);
 
 hPionPandoraTrackLength->GetXaxis()->SetTitle("Track Length [cm]");
 hPionPandoraTrackLength->GetXaxis()->CenterTitle();
+hPionPandoraTrackLength->GetXaxis()->SetRangeUser(0, 350);
 
 hPionPandoraTrackLength->GetYaxis()->SetTitle("Normalized Events");
 hPionPandoraTrackLength->GetYaxis()->CenterTitle();
@@ -221,6 +269,7 @@ hMuonTracksMuonChi2VsProtonChi2->GetYaxis()->CenterTitle();
 hMuonTracksMuonChi2VsProtonChi2->RebinX(10);
 hMuonTracksMuonChi2VsProtonChi2->RebinY(5);
 
+hMuonTracksMuonChi2VsProtonChi2->SetAxisRange(0., 350., "X");
 hMuonTracksMuonChi2VsProtonChi2->SetAxisRange(0., 100., "Y");
 
 gStyle->SetPalette(kRainBow);
@@ -242,6 +291,7 @@ hPionTracksMuonChi2VsProtonChi2->GetYaxis()->CenterTitle();
 hPionTracksMuonChi2VsProtonChi2->RebinX(10);
 hPionTracksMuonChi2VsProtonChi2->RebinY(5);
 
+hPionTracksMuonChi2VsProtonChi2->SetAxisRange(0., 350., "X");
 hPionTracksMuonChi2VsProtonChi2->SetAxisRange(0., 100., "Y");
 
 gStyle->SetPalette(kRainBow);
@@ -263,6 +313,7 @@ hProtonTracksMuonChi2VsProtonChi2->GetYaxis()->CenterTitle();
 hProtonTracksMuonChi2VsProtonChi2->RebinX(10);
 hProtonTracksMuonChi2VsProtonChi2->RebinY(5);
 
+hProtonTracksMuonChi2VsProtonChi2->SetAxisRange(0., 350., "X");
 hProtonTracksMuonChi2VsProtonChi2->SetAxisRange(0., 100., "Y");
 
 gStyle->SetPalette(kRainBow);
@@ -271,7 +322,7 @@ hProtonTracksMuonChi2VsProtonChi2->Draw("COLZ");
 
 
 
-TCanvas *c7 = new TCanvas("c7", "The #chi^{2} Ratios of Proton #chi^{2} / Muon #chi^{2}");
+TCanvas *c7 = new TCanvas("c7", "The #chi^{2} Ratios of Proton #chi^{2} / Muon #chi^{2}", 2);
 c7->SetTicks();
 c7->SetFillColor(kWhite);
 
@@ -297,6 +348,7 @@ hProtonRatioChi2->SetLineWidth(2);
 
 hProtonRatioChi2->GetXaxis()->SetTitle("Ratio (p #chi^{2} / #mu #chi^{2})");
 hProtonRatioChi2->GetXaxis()->CenterTitle();
+hProtonRatioChi2->GetXaxis()->SetRangeUser(0, 30);
 
 hProtonRatioChi2->GetYaxis()->SetTitle("Normalized Events");
 hProtonRatioChi2->GetYaxis()->CenterTitle();
@@ -322,7 +374,7 @@ leg7->Draw();
 
 
 
-TCanvas *c8 = new TCanvas("c8", "The True Track Lengths of Different Particle Species");
+TCanvas *c8 = new TCanvas("c8", "The True Track Lengths of Different Particle Species", 2);
 c8->SetTicks();
 c8->SetFillColor(kWhite);
 
@@ -348,6 +400,7 @@ hProtonTrueTrackLength->SetLineWidth(2);
 
 hProtonTrueTrackLength->GetXaxis()->SetTitle("Track Length [cm]");
 hProtonTrueTrackLength->GetXaxis()->CenterTitle();
+hProtonTrueTrackLength->GetXaxis()->SetRangeUser(0, 350);
 
 hProtonTrueTrackLength->GetYaxis()->SetTitle("Normalized Events");
 hProtonTrueTrackLength->GetYaxis()->CenterTitle();
@@ -424,4 +477,237 @@ hProtonPandoraVsTrueTrackLength->GetYaxis()->CenterTitle();
 
 gStyle->SetPalette(kRainBow);
 hProtonPandoraVsTrueTrackLength->Draw("COLZ");
+
+
+
+TCanvas *c12 = new TCanvas("c12", "The Track Scores of Different Particle Species", 2);
+c12->SetTicks();
+c12->SetFillColor(kWhite);
+
+// Area normalzing the plot 
+hMuonTrackScore->Scale(1/hMuonTrackScore->Integral());
+hPionTrackScore->Scale(1/hPionTrackScore->Integral());
+hProtonTrackScore->Scale(1/hProtonTrackScore->Integral());
+
+hMuonTrackScore->SetFillColor(kBlue);
+hMuonTrackScore->SetFillStyle(3005);
+hMuonTrackScore->SetLineColor(kBlue);
+hMuonTrackScore->SetLineWidth(2);
+
+hPionTrackScore->SetFillColor(kGreen);
+hPionTrackScore->SetFillStyle(3006);
+hPionTrackScore->SetLineColor(kGreen);
+hPionTrackScore->SetLineWidth(2);
+
+hProtonTrackScore->SetFillColor(kOrange);
+hProtonTrackScore->SetFillStyle(3007);
+hProtonTrackScore->SetLineColor(kOrange);
+hProtonTrackScore->SetLineWidth(2);
+
+hMuonTrackScore->GetXaxis()->SetTitle("Track Score");
+hMuonTrackScore->GetXaxis()->CenterTitle();
+hMuonTrackScore->GetXaxis()->SetRangeUser(0.6, 1);
+
+hMuonTrackScore->GetYaxis()->SetTitle("Normalized Events");
+hMuonTrackScore->GetYaxis()->CenterTitle();
+
+gPad->SetLogy();
+hMuonTrackScore->Draw("histo");
+hPionTrackScore->Draw("histosame");
+hProtonTrackScore->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg12 = new TLegend();
+leg12 = new TLegend(0.58,0.65,1.00,1.00);
+leg12->SetTextSize(0.04);
+leg12->SetTextAlign(12);
+leg12->SetFillColor(kWhite);
+leg12->SetLineColor(kWhite);
+leg12->SetShadowColor(kWhite);
+leg12->SetHeader("Particle");
+leg12->AddEntry(hMuonTrackScore,"#mu");
+leg12->AddEntry(hPionTrackScore,"#pi");
+leg12->AddEntry(hProtonTrackScore,"p");
+leg12->Draw();
+
+
+
+TCanvas *c13 = new TCanvas("c13", "The Vertex Distance of Different Particle Species", 2);
+c13->SetTicks();
+c13->SetFillColor(kWhite);
+
+// Area normalzing the plot 
+hMuonVtxDistance->Scale(1/hMuonVtxDistance->Integral());
+hPionVtxDistance->Scale(1/hPionVtxDistance->Integral());
+hProtonVtxDistance->Scale(1/hProtonVtxDistance->Integral());
+
+hMuonVtxDistance->SetFillColor(kBlue);
+hMuonVtxDistance->SetFillStyle(3005);
+hMuonVtxDistance->SetLineColor(kBlue);
+hMuonVtxDistance->SetLineWidth(2);
+
+hPionVtxDistance->SetFillColor(kGreen);
+hPionVtxDistance->SetFillStyle(3006);
+hPionVtxDistance->SetLineColor(kGreen);
+hPionVtxDistance->SetLineWidth(2);
+
+hProtonVtxDistance->SetFillColor(kOrange);
+hProtonVtxDistance->SetFillStyle(3007);
+hProtonVtxDistance->SetLineColor(kOrange);
+hProtonVtxDistance->SetLineWidth(2);
+
+hMuonVtxDistance->GetXaxis()->SetTitle("Vertex Distance [cm]");
+hMuonVtxDistance->GetXaxis()->CenterTitle();
+hMuonVtxDistance->GetXaxis()->SetRangeUser(0, 6);
+
+hMuonVtxDistance->GetYaxis()->SetTitle("Normalized Events");
+hMuonVtxDistance->GetYaxis()->CenterTitle();
+
+gPad->SetLogy();
+hMuonVtxDistance->Draw("histo");
+hPionVtxDistance->Draw("histosame");
+hProtonVtxDistance->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg13 = new TLegend();
+leg13 = new TLegend(0.58,0.65,1.00,1.00);
+leg13->SetTextSize(0.04);
+leg13->SetTextAlign(12);
+leg13->SetFillColor(kWhite);
+leg13->SetLineColor(kWhite);
+leg13->SetShadowColor(kWhite);
+leg13->SetHeader("Particle");
+leg13->AddEntry(hMuonVtxDistance,"#mu");
+leg13->AddEntry(hPionVtxDistance,"#pi");
+leg13->AddEntry(hProtonVtxDistance,"p");
+leg13->Draw();
+
+
+
+TCanvas *c14 = new TCanvas("c14", "The Efficiency of the CC-Inclusive Selection for CC-Coh Events");
+c14->SetTicks();
+c14->SetFillColor(kWhite);
+
+hPassedNuEnergy->SetLineColor(kBlue);
+hPassedNuEnergy->SetLineWidth(2);
+
+hPassedNuEnergy->Divide(hMatchedNuEnergy);
+
+hPassedNuEnergy->GetXaxis()->SetTitle("E_{#nu} [GeV]");
+hPassedNuEnergy->GetXaxis()->CenterTitle();
+
+hPassedNuEnergy->GetYaxis()->SetTitle("Passing Efficiency");
+hPassedNuEnergy->GetYaxis()->CenterTitle();
+
+hPassedNuEnergy->Draw("E1");
+
+
+
+TCanvas *c15 = new TCanvas("c15", "The Difference (Reco - Truth) Between Neutrino Vtx X Positions for Truth and Truth with SCE", 2);
+c15->SetTicks();
+c15->SetFillColor(kWhite);
+
+hNuVtxDiffX->SetLineColor(kBlue);
+hNuVtxDiffX->SetLineWidth(2);
+
+hNuVtxDiffSCEX->SetLineColor(kRed);
+hNuVtxDiffSCEX->SetLineWidth(2);
+
+hNuVtxDiffSCEX->GetXaxis()->SetTitle("Difference in X Position (Reco - Truth) [cm]");
+hNuVtxDiffSCEX->GetXaxis()->CenterTitle();
+hNuVtxDiffSCEX->GetXaxis()->SetRangeUser(-20.5,20.5);
+
+hNuVtxDiffSCEX->GetYaxis()->SetTitle("Number of Events");
+hNuVtxDiffSCEX->GetYaxis()->CenterTitle();
+
+hNuVtxDiffSCEX->Draw("histo");
+hNuVtxDiffX->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg15 = new TLegend();
+leg15 = new TLegend(0.58,0.65,1.00,1.00);
+leg15->SetTextSize(0.04);
+leg15->SetTextAlign(12);
+leg15->SetFillColor(kWhite);
+leg15->SetLineColor(kWhite);
+leg15->SetShadowColor(kWhite);
+leg15->SetHeader("SCE or Not");
+leg15->AddEntry(hNuVtxDiffX,"None");
+leg15->AddEntry(hNuVtxDiffSCEX,"With SCE");
+leg15->Draw();
+
+
+
+TCanvas *c16 = new TCanvas("c16", "The Difference (Reco - Truth) Between Neutrino Vtx Y Positions for Truth and Truth with SCE", 2);
+c16->SetTicks();
+c16->SetFillColor(kWhite);
+
+hNuVtxDiffY->SetLineColor(kBlue);
+hNuVtxDiffY->SetLineWidth(2);
+
+hNuVtxDiffSCEY->SetLineColor(kRed);
+hNuVtxDiffSCEY->SetLineWidth(2);
+
+hNuVtxDiffSCEY->GetXaxis()->SetTitle("Difference in Y Position (Reco - Truth) [cm]");
+hNuVtxDiffSCEY->GetXaxis()->CenterTitle();
+hNuVtxDiffSCEY->GetXaxis()->SetRangeUser(-20.5,20.5);
+
+hNuVtxDiffSCEY->GetYaxis()->SetTitle("Number of Events");
+hNuVtxDiffSCEY->GetYaxis()->CenterTitle();
+
+hNuVtxDiffSCEY->Draw("histo");
+hNuVtxDiffY->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg16 = new TLegend();
+leg16 = new TLegend(0.58,0.65,1.00,1.00);
+leg16->SetTextSize(0.04);
+leg16->SetTextAlign(12);
+leg16->SetFillColor(kWhite);
+leg16->SetLineColor(kWhite);
+leg16->SetShadowColor(kWhite);
+leg16->SetHeader("SCE or Not");
+leg16->AddEntry(hNuVtxDiffY,"None");
+leg16->AddEntry(hNuVtxDiffSCEY,"With SCE");
+leg16->Draw();
+
+
+
+TCanvas *c17 = new TCanvas("c17", "The Difference (Reco - Truth) Between Neutrino Vtx Z Positions for Truth and Truth with SCE", 2);
+c17->SetTicks();
+c17->SetFillColor(kWhite);
+
+hNuVtxDiffZ->SetLineColor(kBlue);
+hNuVtxDiffZ->SetLineWidth(2);
+
+hNuVtxDiffSCEZ->SetLineColor(kRed);
+hNuVtxDiffSCEZ->SetLineWidth(2);
+
+hNuVtxDiffSCEZ->GetXaxis()->SetTitle("Difference in Z Position (Reco - Truth) [cm]");
+hNuVtxDiffSCEZ->GetXaxis()->CenterTitle();
+hNuVtxDiffSCEZ->GetXaxis()->SetRangeUser(-20.5,20.5);
+
+hNuVtxDiffSCEZ->GetYaxis()->SetTitle("Number of Events");
+hNuVtxDiffSCEZ->GetYaxis()->CenterTitle();
+
+hNuVtxDiffSCEZ->Draw("histo");
+hNuVtxDiffZ->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg17 = new TLegend();
+leg17 = new TLegend(0.58,0.65,1.00,1.00);
+leg17->SetTextSize(0.04);
+leg17->SetTextAlign(12);
+leg17->SetFillColor(kWhite);
+leg17->SetLineColor(kWhite);
+leg17->SetShadowColor(kWhite);
+leg17->SetHeader("SCE or Not");
+leg17->AddEntry(hNuVtxDiffZ,"None");
+leg17->AddEntry(hNuVtxDiffSCEZ,"With SCE");
+leg17->Draw();
 }
