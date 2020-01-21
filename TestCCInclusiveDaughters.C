@@ -49,6 +49,9 @@ TH1D *hPassedNuEnergy = new TH1D("hPassedNuEnergy", "CC-Coh Neutrino Energy for 
 
 TH1D *hMatchedT = new TH1D("hMatchedT", "CC-Coh |t| for Matched Events", 500, 0, 0.25);
 TH1D *hPassedT = new TH1D("hPassedT", "CC-Coh |t| for Events That Passed Selection", 500, 0, 0.25);
+
+TH1D *hCutByCutMuonCandidate = new TH1D("hCutByCutMuonCandidate", "The Cut by Cut Efficiency of the CC-Inclusive Muon Candidate Selection for CC-Coh Events", 7, -0.5, 6.5);
+TH1D *hNumMuonCandidates = new TH1D("hNumMuonCandidates", "The Number of Tracks that Passed the Muon Candidacy", 15, -0.5, 14.5);
 // -------------------------------
 
 
@@ -92,6 +95,21 @@ void TestCCInclusiveDaughters::Loop()
    double Pions [nevents][9];
    double T [nevents];
    double Neutrinos [nevents][8];
+
+   int EVT = 0;
+   int RUN = 0;
+   int SUB = 0;
+
+   bool cut1 = false;
+   bool cut2 = false;
+   bool cut3 = false;
+   bool cut4 = false;
+   bool cut5 = false;
+   bool cut6 = false;
+   bool cut7 = false;
+   bool PassedEvent = false;
+   int nPassedEvent = 0;
+   int AmountPassed = 0;
 
    Long64_t nentries = fChain->GetEntriesFast();
 
@@ -172,6 +190,77 @@ void TestCCInclusiveDaughters::Loop()
 
       }
       // ------------------------------------------------
+
+
+      if (Matched) {
+
+         if ((EVT != event && RUN != run && SUB != subrun) || (jentry == nentries - 1)) {
+	    if (cut1) {
+               hCutByCutMuonCandidate->Fill(0);
+	       if(cut2) {
+	          hCutByCutMuonCandidate->Fill(1);
+		  if(cut3) {
+	             hCutByCutMuonCandidate->Fill(2);
+		     if(cut4) {
+		        hCutByCutMuonCandidate->Fill(3);
+			if (cut5) {
+		           hCutByCutMuonCandidate->Fill(4);
+			   if (cut6) {
+		              hCutByCutMuonCandidate->Fill(5);
+		           }
+		        }
+		     }
+		  }
+	       }
+	    }
+	    if (PassedEvent) {
+	       nPassedEvent++;
+	       hCutByCutMuonCandidate->Fill(6);
+	       hNumMuonCandidates->Fill(AmountPassed+1);
+	       AmountPassed = 0;
+	    }
+	    if (!PassedEvent && jentry != 0) hNumMuonCandidates->Fill(0);
+            EVT = event;
+	    RUN = run;
+	    SUB = subrun;
+	    cut1 = false;
+	    cut2 = false;
+	    cut3 = false;
+	    cut4 = false;
+	    cut5 = false;
+	    cut6 = false;
+	    cut7 = false;
+	    PassedEvent = false;
+         }
+
+         if (!PassedEvent) {
+            if (track_score > 0.85) {
+	       cut1 = true;
+	       if (vtx_distance < 4) {
+		  cut2 = true;
+	          if (generation == 2) {
+		     cut3 = true;
+	             if (track_length > 20) {
+			cut4 = true;
+		        if (track_chi2_proton > 60) {
+			   cut5 = true;
+		           if (track_chi2_muon < 30) {
+			      cut6 = true;
+		   	      if (track_chi2_proton/track_chi2_muon > 7) {
+				 cut7 = true;
+			      }
+			   }
+		        }
+		     }
+	          }
+	       }
+	    }
+         }
+
+         if (PassedEvent && track_score > 0.85 && vtx_distance < 4 && generation == 2 && track_length > 20 && track_chi2_proton > 60 && track_chi2_muon < 30 && track_chi2_proton/track_chi2_muon > 7) AmountPassed++;
+
+	 if (cut1 && cut2 && cut3 && cut4 && cut5 && cut6 && cut7) PassedEvent = true;
+      }
 
 
       //if (generation == 2 && mc_neutrino == 1 && start_contained && Matched) {
@@ -297,6 +386,9 @@ void TestCCInclusiveDaughters::Loop()
 
    hMatchedT->Write();
    hPassedT->Write();
+
+   hCutByCutMuonCandidate->Write();
+   hNumMuonCandidates->Write();
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 }
