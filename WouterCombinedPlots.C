@@ -91,6 +91,12 @@ hNuVtxDiffSCEX->Sumw2();
 hNuVtxDiffSCEY->Sumw2();
 hNuVtxDiffSCEZ->Sumw2();
 
+TH1D *hCutByCutMuonCandidate = (TH1D*)f->Get("hCutByCutMuonCandidate");
+TH1D *hCutByCutMuonCandidateDivide = (TH1D*)f->Get("hCutByCutMuonCandidateDivide");
+
+hCutByCutMuonCandidate->Sumw2();
+hCutByCutMuonCandidateDivide->Sumw2();
+
 
 
 
@@ -130,7 +136,7 @@ hMuonMuonChi2->GetYaxis()->CenterTitle();
 
 hMuonMuonChi2->Draw("histo");
 hPionMuonChi2->Draw("histosame");
-hProtonMuonChi2->Draw("histosame");
+//hProtonMuonChi2->Draw("histosame");
 
 
 // ### Defining the legend for the plot ###
@@ -144,7 +150,7 @@ leg1->SetShadowColor(kWhite);
 leg1->SetHeader("Particle");
 leg1->AddEntry(hMuonMuonChi2,"#mu");
 leg1->AddEntry(hPionMuonChi2,"#pi");
-leg1->AddEntry(hProtonMuonChi2,"p");
+//leg1->AddEntry(hProtonMuonChi2,"p");
 leg1->Draw();
 
 
@@ -185,7 +191,7 @@ hMuonProtonChi2->GetYaxis()->CenterTitle();
 
 hMuonProtonChi2->Draw("histo");
 hPionProtonChi2->Draw("histosame");
-hProtonProtonChi2->Draw("histosame");
+//hProtonProtonChi2->Draw("histosame");
 
 
 // ### Defining the legend for the plot ###
@@ -199,7 +205,7 @@ leg2->SetShadowColor(kWhite);
 leg2->SetHeader("Particle");
 leg2->AddEntry(hMuonProtonChi2,"#mu");
 leg2->AddEntry(hPionProtonChi2,"#pi");
-leg2->AddEntry(hProtonProtonChi2,"p");
+//leg2->AddEntry(hProtonProtonChi2,"p");
 leg2->Draw();
 
 
@@ -236,7 +242,7 @@ hPionPandoraTrackLength->GetYaxis()->SetTitle("Normalized Events");
 hPionPandoraTrackLength->GetYaxis()->CenterTitle();
 
 hPionPandoraTrackLength->Draw("histo");
-hProtonPandoraTrackLength->Draw("histosame");
+//hProtonPandoraTrackLength->Draw("histosame");
 hMuonPandoraTrackLength->Draw("histosame");
 
 
@@ -251,7 +257,7 @@ leg3->SetShadowColor(kWhite);
 leg3->SetHeader("Particle");
 leg3->AddEntry(hMuonPandoraTrackLength,"#mu");
 leg3->AddEntry(hPionPandoraTrackLength,"#pi");
-leg3->AddEntry(hProtonPandoraTrackLength,"p");
+//leg3->AddEntry(hProtonPandoraTrackLength,"p");
 leg3->Draw();
 
 
@@ -346,15 +352,15 @@ hProtonRatioChi2->SetFillStyle(3007);
 hProtonRatioChi2->SetLineColor(kOrange);
 hProtonRatioChi2->SetLineWidth(2);
 
-hProtonRatioChi2->GetXaxis()->SetTitle("Ratio (p #chi^{2} / #mu #chi^{2})");
-hProtonRatioChi2->GetXaxis()->CenterTitle();
-hProtonRatioChi2->GetXaxis()->SetRangeUser(0, 30);
+hPionRatioChi2->GetXaxis()->SetTitle("Ratio (p #chi^{2} / #mu #chi^{2})");
+hPionRatioChi2->GetXaxis()->CenterTitle();
+hPionRatioChi2->GetXaxis()->SetRangeUser(0, 30);
 
-hProtonRatioChi2->GetYaxis()->SetTitle("Normalized Events");
-hProtonRatioChi2->GetYaxis()->CenterTitle();
+hPionRatioChi2->GetYaxis()->SetTitle("Normalized Events");
+hPionRatioChi2->GetYaxis()->CenterTitle();
 
-hProtonRatioChi2->Draw("histo");
-hPionRatioChi2->Draw("histosame");
+hPionRatioChi2->Draw("histo");
+//hProtonRatioChi2->Draw("histosame");
 hMuonRatioChi2->Draw("histosame");
 
 
@@ -369,7 +375,7 @@ leg7->SetShadowColor(kWhite);
 leg7->SetHeader("Particle");
 leg7->AddEntry(hMuonRatioChi2,"#mu");
 leg7->AddEntry(hPionRatioChi2,"#pi");
-leg7->AddEntry(hProtonRatioChi2,"p");
+//leg7->AddEntry(hProtonRatioChi2,"p");
 leg7->Draw();
 
 
@@ -398,15 +404,15 @@ hProtonTrueTrackLength->SetFillStyle(3007);
 hProtonTrueTrackLength->SetLineColor(kOrange);
 hProtonTrueTrackLength->SetLineWidth(2);
 
-hProtonTrueTrackLength->GetXaxis()->SetTitle("Track Length [cm]");
-hProtonTrueTrackLength->GetXaxis()->CenterTitle();
-hProtonTrueTrackLength->GetXaxis()->SetRangeUser(0, 350);
+hPionTrueTrackLength->GetXaxis()->SetTitle("Track Length [cm]");
+hPionTrueTrackLength->GetXaxis()->CenterTitle();
+hPionTrueTrackLength->GetXaxis()->SetRangeUser(0, 350);
 
-hProtonTrueTrackLength->GetYaxis()->SetTitle("Normalized Events");
-hProtonTrueTrackLength->GetYaxis()->CenterTitle();
+hPionTrueTrackLength->GetYaxis()->SetTitle("Normalized Events");
+hPionTrueTrackLength->GetYaxis()->CenterTitle();
 
-hProtonTrueTrackLength->Draw("histo");
-hPionTrueTrackLength->Draw("histosame");
+hPionTrueTrackLength->Draw("histo");
+//hProtonTrueTrackLength->Draw("histosame");
 hMuonTrueTrackLength->Draw("histosame");
 
 
@@ -421,7 +427,7 @@ leg8->SetShadowColor(kWhite);
 leg8->SetHeader("Particle");
 leg8->AddEntry(hMuonTrueTrackLength,"#mu");
 leg8->AddEntry(hPionTrueTrackLength,"#pi");
-leg8->AddEntry(hProtonTrueTrackLength,"p");
+//leg8->AddEntry(hProtonTrueTrackLength,"p");
 leg8->Draw();
 
 
@@ -514,7 +520,7 @@ hMuonTrackScore->GetYaxis()->CenterTitle();
 gPad->SetLogy();
 hMuonTrackScore->Draw("histo");
 hPionTrackScore->Draw("histosame");
-hProtonTrackScore->Draw("histosame");
+//hProtonTrackScore->Draw("histosame");
 
 
 // ### Defining the legend for the plot ###
@@ -528,7 +534,7 @@ leg12->SetShadowColor(kWhite);
 leg12->SetHeader("Particle");
 leg12->AddEntry(hMuonTrackScore,"#mu");
 leg12->AddEntry(hPionTrackScore,"#pi");
-leg12->AddEntry(hProtonTrackScore,"p");
+//leg12->AddEntry(hProtonTrackScore,"p");
 leg12->Draw();
 
 
@@ -567,7 +573,7 @@ hMuonVtxDistance->GetYaxis()->CenterTitle();
 gPad->SetLogy();
 hMuonVtxDistance->Draw("histo");
 hPionVtxDistance->Draw("histosame");
-hProtonVtxDistance->Draw("histosame");
+//hProtonVtxDistance->Draw("histosame");
 
 
 // ### Defining the legend for the plot ###
@@ -581,7 +587,7 @@ leg13->SetShadowColor(kWhite);
 leg13->SetHeader("Particle");
 leg13->AddEntry(hMuonVtxDistance,"#mu");
 leg13->AddEntry(hPionVtxDistance,"#pi");
-leg13->AddEntry(hProtonVtxDistance,"p");
+//leg13->AddEntry(hProtonVtxDistance,"p");
 leg13->Draw();
 
 
@@ -710,4 +716,26 @@ leg17->SetHeader("SCE or Not");
 leg17->AddEntry(hNuVtxDiffZ,"None");
 leg17->AddEntry(hNuVtxDiffSCEZ,"With SCE");
 leg17->Draw();
+
+
+
+TCanvas *c18 = new TCanvas("c18", "The Efficiency of the CC-Inclusive Muon Candidate Selection for CC-Coh Events");
+c18->SetTicks();
+c18->SetFillColor(kWhite);
+
+hCutByCutMuonCandidate->SetLineColor(kBlue);
+hCutByCutMuonCandidate->SetLineWidth(2);
+
+hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(1, "Num. Matched Events");
+hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(2, "Track Score > 0.85");
+hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(3, "Vertex Distance < 4cm");
+hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(4, "Generation == 2");
+hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(5, "Track Length > 20cm");
+hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(6, "p #chi^{2} > 60");
+hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(7, "#mu #chi^{2} < 30");
+hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(8, "p #chi^{2} / #mu #chi^{2} > 7");
+
+hCutByCutMuonCandidate->Divide(hCutByCutMuonCandidateDivide);
+
+hCutByCutMuonCandidate->Draw("E1");
 }
