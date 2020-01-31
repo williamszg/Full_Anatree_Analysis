@@ -3,7 +3,7 @@
 <!-- Production Project -->
 
 <!DOCTYPE project [
-<!ENTITY release      "v08_00_00_13a" >
+<!ENTITY release      "v08_00_00_26" >
 <!ENTITY file_type    "mc"        >
 <!ENTITY run_type     "physics"   >
 <!ENTITY name         "cccoh_zgrw">
@@ -21,7 +21,7 @@
 
 
   <!-- Operating System -->
-  <os>SL6</os>
+  <os>SL7</os>
 
   <!-- Larsoft information -->
   <larsoft>
@@ -34,177 +34,33 @@
   <resource>DEDICATED,OPPORTUNISTIC</resource>  
   
   <!-- Project stages -->
-
-  <stage name="full">
+  <stage name="cccoh">
     <inputdef>prod_extunbiased_swizzle_inclusive_v3_goodruns_mcc9_run1_high_lifetime_overlay_nc_delta</inputdef>
+    <!--inputdef>zacktest</inputdef-->
     <fcl>standard_overlay_gen_griddriver.fcl</fcl>
     <fcl>wirecell_g4_uboone.fcl</fcl>
     <fcl>wirecell_detsim_overlay_uboone.fcl</fcl>
     <fcl>standard_overlay_uboone.fcl</fcl>
     <fcl>reco_uboone_mcc9_8_driver_overlay_stage1a.fcl</fcl>
     <fcl>reco_uboone_mcc9_8_driver_overlay_stage1b.fcl</fcl>
-    <fcl>standard_larcv_uboone_mctruth_prod.fcl</fcl>
+    <!--fcl>standard_larcv_uboone_mctruth_prod.fcl</fcl-->
     <fcl>reco_uboone_mcc9_8_driver_overlay_stage1c.fcl</fcl>
-    <fcl>run_celltreeub_overlay_prod.fcl</fcl>
-    <fcl>standard_larcv_uboone_mc2d_prod.fcl</fcl>
+    <!--fcl>run_celltreeub_overlay_prod.fcl</fcl-->
+    <!--fcl>standard_larcv_uboone_mc2d_prod.fcl</fcl-->
     <fcl>reco_uboone_mcc9_8_driver_overlay_stage2.fcl</fcl>
+    <!--fcl>nucc_analyser_mc.fcl</fcl-->
     <outdir>&path;&name;_full/out/</outdir>
     <logdir>&path;&name;_full/log/</logdir>
     <workdir>&path;&name;_full/work/</workdir>
     <bookdir>/uboone/data/users/zwilliam/book/&release;_full/</bookdir>
-    <numjobs>1</numjobs>
-    <maxfilesperjob>1</maxfilesperjob>
-    <memory>6000</memory>
-    <disk>15GB</disk>
-    <schema>root</schema>
-    <datatier>reconstructed</datatier>
-    <defname>&name;_&version;</defname>
-    <jobsub>--expected-lifetime=10h</jobsub>
-  </stage>
-
-
-  <stage name="genie">
-    <!--inputdef>prod_extunbiased_swizzle_inclusive_v3_goodruns_5e19sample_morethan40events</inputdef-->
-    <inputdef>prod_extunbiased_swizzle_inclusive_v3_goodruns_mcc9_run1_high_lifetime_overlay_nc_delta</inputdef>
-    <fcl>standard_overlay_gen_griddriver.fcl</fcl>
-    <outdir>&path;&name;/out/</outdir>
-    <logdir>&path;&name;/log/</logdir>
-    <workdir>&path;&name;/work/</workdir>
-    <bookdir>/uboone/data/users/zwilliam/book/&release;/</bookdir>
-    <numjobs>5</numjobs>
-    <maxfilesperjob>1</maxfilesperjob>
-    <memory>2000</memory>
-    <disk>5GB</disk>
-    <schema>root</schema>
-    <datatier>simulated</datatier>
-    <defname>&name;_&version;</defname>
-    <jobsub>--expected-lifetime=3h</jobsub>
-  </stage>
-
-
-  <stage name="g4">
-    <inputlist>&workfiles;/files_genie.list</inputlist>
-    <fcl>wirecell_g4_uboone.fcl</fcl>
-    <outdir>&path;&name;/out/</outdir>
-    <logdir>&path;&name;/log/</logdir>
-    <workdir>&path;&name;/work/</workdir>
-    <bookdir>/uboone/data/users/zwilliam/book/&release;/</bookdir>
-    <numjobs>1</numjobs>
-    <maxfilesperjob>1</maxfilesperjob>
-    <memory>2000</memory>
-    <disk>1GB</disk>
-    <schema>root</schema>
-    <datatier>reconstructed</datatier>
-    <defname>&name;_&version;</defname>
-    <jobsub>--expected-lifetime=short</jobsub>
-  </stage>
-
-
-  <stage name="detsim">
-    <inputlist>&workfiles;/files_g4.list</inputlist>
-    <fcl>wirecell_detsim_overlay_uboone.fcl</fcl>
-    <outdir>&path;&name;/out/</outdir>
-    <logdir>&path;&name;/log/</logdir>
-    <workdir>&path;&name;/work/</workdir>
-    <bookdir>/uboone/data/users/zwilliam/book/&release;/</bookdir>
-    <numjobs>200</numjobs>
-    <maxfilesperjob>1</maxfilesperjob>
-    <memory>3000</memory>
-    <disk>10GB</disk>
-    <schema>root</schema>
-    <datatier>reconstructed</datatier>
-    <defname>&name;_&version;</defname>
-    <jobsub>--expected-lifetime=long</jobsub>
-  </stage>
-
-
-  <stage name="reco1">
-    <inputlist>&workfiles;/files.list</inputlist>
-    <fcl>reco_uboone_mcc9_8_driver_stage1.fcl</fcl>
-    <outdir>&path;&name;_reco1/out/</outdir>
-    <logdir>&path;&name;_reco1/log/</logdir>
-    <workdir>&path;&name;_reco1/work/</workdir>
-    <bookdir>/uboone/data/users/zwilliam/book/&release;_reco1/</bookdir>
-    <numjobs>200</numjobs>
-    <maxfilesperjob>1</maxfilesperjob>
-    <memory>6000</memory>
-    <disk>25GB</disk>
-    <schema>root</schema>
-    <datatier>reconstructed</datatier>
-    <defname>&name;_&version;</defname>
-    <jobsub>--expected-lifetime=long</jobsub>
-  </stage>
-
-
-  <stage name="celltree">
-    <inputlist>&workfiles;/files.list</inputlist>
-    <fcl>run_celltreeub_mc_prod.fcl</fcl>
-    <outdir>&path;&name;_celltree/out/</outdir>
-    <logdir>&path;&name;_celltree/log/</logdir>
-    <workdir>&path;&name;_celltree/work/</workdir>
-    <bookdir>/uboone/data/users/zwilliam/book/&release;_celltree/</bookdir>
-    <numjobs>200</numjobs>
-    <maxfilesperjob>1</maxfilesperjob>
-    <memory>6000</memory>
-    <disk>25GB</disk>
-    <schema>root</schema>
-    <datatier>reconstructed</datatier>
-    <defname>&name;_&version;</defname>
-    <jobsub>--expected-lifetime=long</jobsub>
-  </stage>
-
-
-  <stage name="larcv">
-    <inputlist>&workfiles;/files.list</inputlist>
-    <fcl>standard_larcv_uboone_mc2d_prod.fcl</fcl>
-    <outdir>&path;&name;_larcv/out/</outdir>
-    <logdir>&path;&name;_larcv/log/</logdir>
-    <workdir>&path;&name;_larcv/work/</workdir>
-    <bookdir>/uboone/data/users/zwilliam/book/&release;_larcv/</bookdir>
-    <numjobs>200</numjobs>
-    <maxfilesperjob>1</maxfilesperjob>
-    <memory>6000</memory>
-    <disk>25GB</disk>
-    <schema>root</schema>
-    <datatier>reconstructed</datatier>
-    <defname>&name;_&version;</defname>
-    <jobsub>--expected-lifetime=long</jobsub>
-  </stage>
-
-
-  <stage name="reco2">
-    <inputlist>&workfiles;/files.list</inputlist>
-    <fcl>reco_uboone_mcc9_8_driver_stage2_reduced.fcl</fcl>
-    <outdir>&path;&name;_reco2/out/</outdir>
-    <logdir>&path;&name;_reco2/log/</logdir>
-    <workdir>&path;&name;_reco2/work/</workdir>
-    <bookdir>/uboone/data/users/zwilliam/book/&release;_reco2/</bookdir>
-    <numjobs>200</numjobs>
-    <maxfilesperjob>1</maxfilesperjob>
-    <memory>9000</memory>
-    <disk>30GB</disk>
-    <schema>root</schema>
-    <datatier>reconstructed</datatier>
-    <defname>&name;_&version;</defname>
-    <jobsub>--expected-lifetime=long</jobsub>
-  </stage>
-
-
-  <stage name="ana">
-    <inputlist>&workfiles;/files.list</inputlist>
-    <fcl>&workfiles;/standard_ana_uboone.fcl</fcl>
-    <outdir>&path;&name;_ana/out/</outdir>
-    <logdir>&path;&name;_ana/log/</logdir>
-    <workdir>&path;&name;_ana/work/</workdir>
-    <bookdir>/uboone/data/users/zwilliam/book/&release;_ana/</bookdir>
-    <numjobs>200</numjobs>
-    <maxfilesperjob>1</maxfilesperjob>
+    <numjobs>1262</numjobs>
+    <maxfilesperjob>2</maxfilesperjob>
     <memory>8000</memory>
-    <disk>30GB</disk>
+    <disk>40GB</disk>
     <schema>root</schema>
     <datatier>reconstructed</datatier>
     <defname>&name;_&version;</defname>
-    <jobsub>--expected-lifetime=long</jobsub>
+    <jobsub>--expected-lifetime=48h</jobsub>
   </stage>
 
   <!-- file type -->
