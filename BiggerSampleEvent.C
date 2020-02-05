@@ -15,6 +15,9 @@ TH1D *hNuVtxDiffZ = new TH1D("hNuVtxDiffZ", "Neutrino Vtx Difference in Z Positi
 TH1D *hNuVtxDiffSCEX = new TH1D("hNuVtxDiffSCEX", "Neutrino Vtx Difference in X Position from SCE Truth (Reco - Truth)", 501, -250.5, 250.5);
 TH1D *hNuVtxDiffSCEY = new TH1D("hNuVtxDiffSCEY", "Neutrino Vtx Difference in Y Position from SCE Truth (Reco - Truth)", 461, -230.5, 230.5);
 TH1D *hNuVtxDiffSCEZ = new TH1D("hNuVtxDiffSCEZ", "Neutrino Vtx Difference in Z Position from SCE Truth (Reco - Truth)", 2081, -1040.5, 1040.5);
+TH1D *hTopologicalScore = new TH1D("hTopologicalScore", "Topological Score of Neutrino Events", 25, 0, 1);
+TH1D *hPandoraPDGCode = new TH1D("hPandoraPDGCode", "Pandora PDG Code of the Neutrinos in the Event", 15, -0.5, 14.5);
+TH1D *hNuFlash = new TH1D("hNuFlash", "Flash #chi^{2} Values", 101, -0.5, 100.5);
 
 // ================================================
 // === Within Detector/Fiducial Volume Function ===
@@ -71,8 +74,8 @@ void BiggerSampleEvent::Loop()
    TTree EventNtuple("EventNtuple", "MC Event Ntuple Information");
 
    // Defining the Information for the Ntuple
-   int Event, Run, Subrun, CC_Selected, CCNC, InteractionType;
-   float Nu_Flash_Chi2, Obvious_Cosmic_Chi2, NuEnergy, NuPx, NuPy, NuPz;
+   int Event, Run, Subrun, CC_Selected, CCNC, InteractionType, Pandora_NuPDG, Vtx_Contained, Mc_Vtx_Contained;
+   float Nu_Flash_Chi2, Obvious_Cosmic_Chi2, NuEnergy, NuPx, NuPy, NuPz, NuVx, NuVy, NuVz, Topological_Score;
 
    EventNtuple.Branch("Event", &Event, "Event/I");
    EventNtuple.Branch("Run", &Run, "Run/I");
@@ -84,8 +87,15 @@ void BiggerSampleEvent::Loop()
    EventNtuple.Branch("NuPx", &NuPx, "NuPx/F");
    EventNtuple.Branch("NuPy", &NuPy, "NuPy/F");
    EventNtuple.Branch("NuPz", &NuPz, "NuPz/F");
+   EventNtuple.Branch("NuVx", &NuVx, "NuVx/F");
+   EventNtuple.Branch("NuVy", &NuVy, "NuVy/F");
+   EventNtuple.Branch("NuVz", &NuVz, "NuVz/F");
    EventNtuple.Branch("CCNC", &CCNC, "CCNC/I");
    EventNtuple.Branch("InteractionType", &InteractionType, "InteractionType/I");
+   EventNtuple.Branch("Topological_Score", &Topological_Score, "Topological_Score/F");
+   EventNtuple.Branch("Pandora_NuPDG", &Pandora_NuPDG, "Pandora_NuPDG/I");
+   EventNtuple.Branch("Vtx_Contained", &Vtx_Contained, "Vtx_Contained/I");
+   EventNtuple.Branch("Mc_Vtx_Contained", &Mc_Vtx_Contained, "Mc_Vtx_Contained/I");
 
 
    if (fChain == 0) return;
@@ -110,6 +120,7 @@ void BiggerSampleEvent::Loop()
       bool containedRecoD = Within(0, nu_vx, nu_vy, nu_vz);
       bool containedTruthD = Within(0, mc_nu_vx, mc_nu_vy, mc_nu_vz);
       bool containedTruthSCED = Within(0, mc_nu_vx_sce, mc_nu_vy_sce, mc_nu_vz_sce);
+      bool containedRecoF = Within(1, nu_vx, nu_vy, nu_vz);
 
       Event = event;
       Run = run;
@@ -120,8 +131,21 @@ void BiggerSampleEvent::Loop()
       NuPx = mc_nu_px;
       NuPy = mc_nu_py;
       NuPz = mc_nu_pz;
+      NuVx = nu_vx;
+      NuVy = nu_vy;
+      NuVz = nu_vz;
       CCNC = mc_nu_ccnc;
       InteractionType = mc_nu_interaction_type;
+      Topological_Score = nu_score;
+      Pandora_NuPDG = nu_pdg;
+      Vtx_Contained = 0;
+      Mc_Vtx_Contained = 0;
+
+      hPandoraPDGCode->Fill(nu_pdg);
+      hNuFlash->Fill(nu_flash_chi2);
+
+      if (containedTruthD) Mc_Vtx_Contained = 1;
+      if (containedRecoF) Vtx_Contained = 1;
 
       if (containedRecoD && containedTruthD && containedTruthSCED) {
 	 double DiffVx = nu_vx - mc_nu_vx;
@@ -157,6 +181,8 @@ void BiggerSampleEvent::Loop()
 	 hCCCohOrNot->Fill(1);
 	 hCCCohBeforeNuEnergy->Fill(mc_nu_energy);
 	 if (nu_mu_cc_selected) {
+            //std::cout<<"The topological score is = "<<nu_score<<std::endl;
+	    hTopologicalScore->Fill(nu_score);
             hCCCohOrNot->Fill(2);
 	    hCCCohAfterNuEnergy->Fill(mc_nu_energy);
 	    CountingAfter = CountingAfter + 1;
@@ -186,6 +212,9 @@ void BiggerSampleEvent::Loop()
    hNuVtxDiffSCEX->Write();
    hNuVtxDiffSCEY->Write();
    hNuVtxDiffSCEZ->Write();
+   hTopologicalScore->Write();
+   hPandoraPDGCode->Write();
+   hNuFlash->Write();
    f.Close();
    // -----------------------------
 

@@ -97,6 +97,12 @@ TH1D *hCutByCutMuonCandidateDivide = (TH1D*)f->Get("hCutByCutMuonCandidateDivide
 hCutByCutMuonCandidate->Sumw2();
 hCutByCutMuonCandidateDivide->Sumw2();
 
+TH1D *hFurtherEventSelection = (TH1D*)f->Get("hFurtherEventSelection");
+TH1D *hFurtherEventSelectionDivide = (TH1D*)f->Get("hFurtherEventSelectionDivide");
+
+hFurtherEventSelection->Sumw2();
+hFurtherEventSelectionDivide->Sumw2();
+
 
 
 
@@ -734,8 +740,32 @@ hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(5, "Track Length > 20cm");
 hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(6, "p #chi^{2} > 60");
 hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(7, "#mu #chi^{2} < 30");
 hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(8, "p #chi^{2} / #mu #chi^{2} > 7");
+hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(9, "Pandora PDG == 14");
+hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(10, "Start vertex of all daughters are at least 10cm from borders");
+hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(11, "Neutrino vertex is in the fiducial volume");
+hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(12, "Flash #chi^{2} < 10 OR topological score > 0.25");
+hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(13, "Topological score > 0.06");
 
 hCutByCutMuonCandidate->Divide(hCutByCutMuonCandidateDivide);
 
 hCutByCutMuonCandidate->Draw("E1");
+
+
+
+TCanvas *c19 = new TCanvas("c19", "The Efficiency of the CC-Inclusive Further Event Selection for CC-Coh Events");
+c19->SetTicks();
+c19->SetFillColor(kWhite);
+
+hFurtherEventSelection->SetLineColor(kBlue);
+hFurtherEventSelection->SetLineWidth(2);
+
+hFurtherEventSelection->GetXaxis()->SetBinLabel(1, "Pandora PDG == 14");
+hFurtherEventSelection->GetXaxis()->SetBinLabel(2, "Start vertex of all daughters are at least 10cm from borders");
+hFurtherEventSelection->GetXaxis()->SetBinLabel(3, "Neutrino vertex is in the fiducial volume");
+hFurtherEventSelection->GetXaxis()->SetBinLabel(4, "Flash #chi^{2} < 10 OR topological score > 0.25");
+hFurtherEventSelection->GetXaxis()->SetBinLabel(5, "Topological score > 0.06");
+
+hFurtherEventSelection->Divide(hFurtherEventSelectionDivide);
+
+hFurtherEventSelection->Draw("E1");
 }

@@ -50,8 +50,8 @@ TH1D *hPassedNuEnergy = new TH1D("hPassedNuEnergy", "CC-Coh Neutrino Energy for 
 TH1D *hMatchedT = new TH1D("hMatchedT", "CC-Coh |t| for Matched Events", 500, 0, 0.25);
 TH1D *hPassedT = new TH1D("hPassedT", "CC-Coh |t| for Events That Passed Selection", 500, 0, 0.25);
 
-TH1D *hCutByCutMuonCandidate = new TH1D("hCutByCutMuonCandidate", "The Cut by Cut Efficiency of the CC-Inclusive Muon Candidate Selection for CC-Coh Events", 8, -0.5, 7.5);
-TH1D *hCutByCutMuonCandidateDivide = new TH1D("hCutByCutMuonCandidateDivide", "The Cut by Cut Efficiency of the CC-Inclusive Muon Candidate Selection for CC-Coh Events Denominator", 8, -0.5, 7.5);
+TH1D *hCutByCutMuonCandidate = new TH1D("hCutByCutMuonCandidate", "The Cut by Cut Efficiency of the CC-Inclusive Muon Candidate Selection for CC-Coh Events", 13, -0.5, 12.5);
+TH1D *hCutByCutMuonCandidateDivide = new TH1D("hCutByCutMuonCandidateDivide", "The Cut by Cut Efficiency of the CC-Inclusive Muon Candidate Selection for CC-Coh Events Denominator", 13, -0.5, 12.5);
 TH1D *hNumMuonCandidates = new TH1D("hNumMuonCandidates", "The Number of Tracks that Passed the Muon Candidacy", 31, -0.5, 30.5);
 
 TH1D *hFurtherEventSelection = new TH1D("hFurtherEventSelection", "The Event Selection That Takes Place After Muon Candidacy for CC-Coh", 5, -0.5, 4.5);
@@ -76,8 +76,8 @@ void BiggerSampleDaughters::Loop()
    //TFile *file = TFile::Open("CCInclusive.root");
    TTree *t = (TTree*)file->Get("EventNtuple");
 
-   int Event, Run, Subrun, CC_Selected, CCNC, InteractionType;
-   float Nu_Flash_Chi2, Obvious_Cosmic_Chi2, NuEnergy, NuPx, NuPy, NuPz;
+   int Event, Run, Subrun, CC_Selected, CCNC, InteractionType, Pandora_NuPDG, Vtx_Contained, Mc_Vtx_Contained;
+   float Nu_Flash_Chi2, Obvious_Cosmic_Chi2, NuEnergy, NuPx, NuPy, NuPz, NuVx, NuVy, NuVz, Topological_Score;
    int CountMatching = 0;
 
    t->SetBranchAddress("Event", &Event);
@@ -89,9 +89,16 @@ void BiggerSampleDaughters::Loop()
    t->SetBranchAddress("NuPx", &NuPx);
    t->SetBranchAddress("NuPy", &NuPy);
    t->SetBranchAddress("NuPz", &NuPz);
+   t->SetBranchAddress("NuVx", &NuVx);
+   t->SetBranchAddress("NuVy", &NuVy);
+   t->SetBranchAddress("NuVz", &NuVz);
    t->SetBranchAddress("CC_Selected", &CC_Selected);
    t->SetBranchAddress("CCNC", &CCNC);
    t->SetBranchAddress("InteractionType", &InteractionType);
+   t->SetBranchAddress("Topological_Score", &Topological_Score);
+   t->SetBranchAddress("Pandora_NuPDG", &Pandora_NuPDG);
+   t->SetBranchAddress("Vtx_Contained", &Vtx_Contained);
+   t->SetBranchAddress("Mc_Vtx_Contained", &Mc_Vtx_Contained);
 
    Int_t nevents = t->GetEntries();
    std::cout<<"nevents = "<<nevents<<std::endl;
@@ -101,15 +108,19 @@ void BiggerSampleDaughters::Loop()
    double Pions [nevents][9];
    double T [nevents];
    double Neutrinos [nevents][8];
+   float pandora_vtx [nevents][3];
+   int pandora_pdg = 0;
+   int vtx_contained = 0;
+   int mc_vtx_contained = 0;
 
    int EVT = 0;
    int RUN = 0;
    int SUB = 0;
 
-   bool cut1 = false;
+   bool cut1 = true; // Change back to false eventually!
    bool cut2 = false;
    bool cut3 = false;
-   bool cut4 = false;
+   bool cut4 = true; // Change back to false eventually!
    bool cut5 = false;
    bool cut6 = false;
    bool cut7 = false;
@@ -117,6 +128,12 @@ void BiggerSampleDaughters::Loop()
    int nPassedEvent = 0;
    int AmountPassed = 0;
 
+   bool cut8 = false;
+   bool cut9 = true; // Change back to false eventually!
+   bool cut10 = false;
+   bool cut11 = false;
+   bool cut12 = false;
+   bool PassedAllCuts = false;
 
    // ---------------------------------------------
    // --- The Cut Values Used in Muon Candidacy ---
@@ -129,6 +146,18 @@ void BiggerSampleDaughters::Loop()
    double cut6Value = 30;
    double cut7Value = 7;
    // ---------------------------------------------
+
+   // ------------------------------------------------
+   // --- The Cut Values Used in Further Selection ---
+   // ------------------------------------------------
+   int cut21Value = 14;
+   // The cut 2 value has to do with the starting vertex of the daughter candidates
+   // The cut 3 value has to do with the neutrino vertex being within the fiducial volume
+   double cut241Value = 10; // The cut 4 has an or statement so it requires two values
+   double cut242Value = 0.25; // The cut 4 has an or statement so it requires two values
+   double cut25Value = 0.06;
+   // ------------------------------------------------
+
 
 
    int EventRunSubrun = 0;
@@ -143,6 +172,7 @@ void BiggerSampleDaughters::Loop()
 
 
       int ParticleContained = 0; // boolean for particle containment initialized as false
+      int ParticleContainedStart = 0; // boolean for particle start point initialized as false
 
 
       if (jentry%1000 == 0) std::cout<<"Event = "<<jentry<<std::endl;
@@ -154,8 +184,13 @@ void BiggerSampleDaughters::Loop()
       double EndX = track_endx;
       double EndY = track_endy;
       double EndZ = track_endz;
+      double StartX = vx;
+      double StartY = vy;
+      double StartZ = vz;
 
       if (EndX >= 10 && EndX <= 230 && EndY >= -105 && EndY <= 105 && EndZ >= 10 && EndZ <= 990) ParticleContained = 1; // <-- Containment conditions
+      //if (StartX >= 10 && StartX <= 230 && StartY >= -105 && StartY <= 105 && StartZ >= 10 && StartZ <= 990) ParticleContainedStart = 1; // <-- Containment conditions
+      if (start_contained) ParticleContainedStart = 1;
       // ----------------------------------|
 
 
@@ -167,6 +202,7 @@ void BiggerSampleDaughters::Loop()
       float nuFlash = -999;
       float obviousCosmic = -999;
       float nuenergy = -999;
+      float top_score = -999;
 
       for (Int_t i = 0; i < nevents; i++) {
          t->GetEntry(i);
@@ -179,6 +215,13 @@ void BiggerSampleDaughters::Loop()
 	    nuFlash = Nu_Flash_Chi2;
 	    obviousCosmic = Obvious_Cosmic_Chi2;
 	    nuenergy = NuEnergy;
+	    top_score = Topological_Score;
+	    pandora_vtx[i][0] = NuVx;
+	    pandora_vtx[i][1] = NuVy;
+	    pandora_vtx[i][2] = NuVz;
+	    pandora_pdg = Pandora_NuPDG;
+	    vtx_contained = Vtx_Contained;
+	    mc_vtx_contained = Mc_Vtx_Contained;
 	    if (mc_pdg == 13/* && generation == 2*/ && mc_neutrino == 1) { // If the track is a muon track, save four-momentum information
                Muons[i][0] = mc_energy;
 	       Muons[i][1] = mc_px;
@@ -215,10 +258,11 @@ void BiggerSampleDaughters::Loop()
       // ------------------------------------------------
 
 
-      if (Matched) {
+      if (Matched && mc_vtx_contained == 1) {
 
          //if ((EVT != event && RUN != run && SUB != subrun) || (jentry == nentries - 1)) { // Original attempt at filling the histograms correctly
          if ((EventRunSubrun != event + run + subrun) || (jentry == nentries - 1)) { // New attempt at figuring out cut by cut efficiencies
+            if (nuenergy > 0.146) hMatchedNuEnergy->Fill(nuenergy);
             hCutByCutMuonCandidate->Fill(0);
 	    hCutByCutMuonCandidateDivide->Fill(0); // Making the histogram to get the efficiency
 	    hCutByCutMuonCandidateDivide->Fill(1); // Making the histogram to get the efficiency
@@ -228,6 +272,16 @@ void BiggerSampleDaughters::Loop()
 	    hCutByCutMuonCandidateDivide->Fill(5); // Making the histogram to get the efficiency
 	    hCutByCutMuonCandidateDivide->Fill(6); // Making the histogram to get the efficiency
 	    hCutByCutMuonCandidateDivide->Fill(7); // Making the histogram to get the efficiency
+	    hCutByCutMuonCandidateDivide->Fill(8); // Making the histogram to get the efficiency
+	    hCutByCutMuonCandidateDivide->Fill(9); // Making the histogram to get the efficiency
+	    hCutByCutMuonCandidateDivide->Fill(10); // Making the histogram to get the efficiency
+	    hCutByCutMuonCandidateDivide->Fill(11); // Making the histogram to get the efficiency
+	    hCutByCutMuonCandidateDivide->Fill(12); // Making the histogram to get the efficiency
+	    hFurtherEventSelectionDivide->Fill(0); // Making the histogram to get the efficiency for the Further Selection
+	    hFurtherEventSelectionDivide->Fill(1); // Making the histogram to get the efficiency for the Further Selection
+	    hFurtherEventSelectionDivide->Fill(2); // Making the histogram to get the efficiency for the Further Selection
+	    hFurtherEventSelectionDivide->Fill(3); // Making the histogram to get the efficiency for the Further Selection
+	    hFurtherEventSelectionDivide->Fill(4); // Making the histogram to get the efficiency for the Further Selection
 	    if (cut1) {
                hCutByCutMuonCandidate->Fill(1);
 	       if(cut2) {
@@ -253,43 +307,84 @@ void BiggerSampleDaughters::Loop()
 	       //if (AmountPassed == 2) std::cout<<"For 2 Passed Tracks: Event, Run, Subrun = "<<event<<", "<<run<<", "<<subrun<<std::endl;
 	       //if (AmountPassed >= 3) std::cout<<"For 3 or More Passed Tracks: Event, Run, Subrun = "<<event<<", "<<run<<", "<<subrun<<std::endl;
 	       AmountPassed = 0;
+
+	       if (cut8) {
+	          hFurtherEventSelection->Fill(0);
+		  hCutByCutMuonCandidate->Fill(8);
+		  if (cut9) {
+		     hFurtherEventSelection->Fill(1);
+		     hCutByCutMuonCandidate->Fill(9);
+		     if (cut10) {
+		        hFurtherEventSelection->Fill(2);
+			hCutByCutMuonCandidate->Fill(10);
+			if (cut11) {
+			   hFurtherEventSelection->Fill(3);
+			   hCutByCutMuonCandidate->Fill(11);
+		        }
+		     }
+	          }
+	       }
+	       if (PassedAllCuts) {
+	          hFurtherEventSelection->Fill(4);
+		  hCutByCutMuonCandidate->Fill(12);
+		  if (nuenergy > 0.146) hPassedNuEnergy->Fill(nuenergy);
+	       }
 	    }
 	    if (!PassedEvent && jentry != 0) hNumMuonCandidates->Fill(0);
             EVT = event;
 	    RUN = run;
 	    SUB = subrun;
 	    EventRunSubrun = event + run + subrun;
-	    cut1 = false;
+	    cut1 = true; // Change back to false eventually!
 	    cut2 = false;
 	    cut3 = false;
-	    cut4 = false;
+	    cut4 = true; // Change back to false eventually!
 	    cut5 = false;
 	    cut6 = false;
 	    cut7 = false;
 	    PassedEvent = false;
+	    cut8 = false;
+	    cut9 = true; // Change back to false eventually!
+	    cut10 = false;
+	    cut11 = false;
+	    cut12 = false;
+	    PassedAllCuts = false;
          }
 
          if (!PassedEvent) {
             if (track_score > cut1Value) cut1 = true;
-	    else cut1 = false;
+	    else cut1 = true; // Change back to false eventually!
 	    if (vtx_distance < cut2Value) cut2 = true;
 	    else cut2 = false;
 	    if (generation == cut3Value) cut3 = true;
 	    else cut3 = false;
 	    if (track_length > cut4Value) cut4 = true;
-	    else cut4 = false;
+	    else cut4 = true; // Change back to false eventually!
             if (track_chi2_proton > cut5Value) cut5 = true;
 	    else cut5 = false;
 	    if (track_chi2_muon < cut6Value) cut6 = true;
 	    else cut6 = false;
             if (track_chi2_proton/track_chi2_muon > cut7Value) cut7 = true;	    
 	    else cut7 = false;
+	    if (pandora_pdg == cut21Value) cut8 = true;
+	    else cut8 = false;
+	    if (ParticleContainedStart == 1) cut9 = true;
+	    else cut9 = true; // Change back to false eventually!
+	    if (vtx_contained == 1) cut10 = true;
+	    else cut10 = false;
+	    if (nuFlash < cut241Value || top_score > cut242Value) cut11 = true;
+	    else cut11 = false;
+	    if (top_score > cut25Value) cut12 = true;
+	    else cut12 = false;
          }
 
-         if (PassedEvent || (track_score > cut1Value && vtx_distance < cut2Value && generation == cut3Value && track_length > cut4Value && track_chi2_proton > cut5Value && track_chi2_muon < cut6Value && track_chi2_proton/track_chi2_muon > cut7Value)) AmountPassed++;
+         if (PassedEvent || (/*track_score > cut1Value &&*/ vtx_distance < cut2Value && generation == cut3Value && /*track_length > cut4Value &&*/ track_chi2_proton > cut5Value && track_chi2_muon < cut6Value && track_chi2_proton/track_chi2_muon > cut7Value)) AmountPassed++;
 
 	 if (cut1 && cut2 && cut3 && cut4 && cut5 && cut6 && cut7) PassedEvent = true;
 	 else PassedEvent = false;
+
+	 if (cut1 && cut2 && cut3 && cut4 && cut5 && cut6 && cut7 && cut8 && cut9 && cut10 && cut11 && cut12) PassedAllCuts = true;
+	 else PassedAllCuts = false;
       }
 
 
@@ -357,12 +452,12 @@ void BiggerSampleDaughters::Loop()
 
       if ((Muons[k][8] == 1 || Pions[k][8] == 1)) {
          hMatchedT->Fill(T[k]);
-         if (Neutrinos[k][0] > 0.146) hMatchedNuEnergy->Fill(Neutrinos[k][0]);
+         //if (Neutrinos[k][0] > 0.146) hMatchedNuEnergy->Fill(Neutrinos[k][0]);
       }
 
-      if ((Muons[k][7] == 1 || Pions[k][7] == 1) && (Muons[k][8] == 1 || Pions[k][8] == 1)) {
+      if ((Muons[k][7] == 1 || Pions[k][7] == 1) /*&& (Muons[k][8] == 1 || Pions[k][8] == 1)*/) {
          hPassedT->Fill(T[k]);
-	 if (Neutrinos[k][0] > 0.146) hPassedNuEnergy->Fill(Neutrinos[k][0]);
+	 //if (Neutrinos[k][0] > 0.146) hPassedNuEnergy->Fill(Neutrinos[k][0]);
       }
    }// <-- End k For Loop for T calculations
 
