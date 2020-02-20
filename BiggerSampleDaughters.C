@@ -4,6 +4,7 @@
 #include <TStyle.h>
 #include <TCanvas.h>
 #include <iostream>
+#define PI 3.14159265
 
 // -------------------------------
 // --- Histograms Defined Here ---
@@ -50,16 +51,47 @@ TH1D *hPassedNuEnergy = new TH1D("hPassedNuEnergy", "CC-Coh Neutrino Energy for 
 TH1D *hMatchedT = new TH1D("hMatchedT", "CC-Coh |t| for Matched Events", 500, 0, 0.25);
 TH1D *hPassedT = new TH1D("hPassedT", "CC-Coh |t| for Events That Passed Selection", 500, 0, 0.25);
 
-TH1D *hCutByCutMuonCandidate = new TH1D("hCutByCutMuonCandidate", "The Cut by Cut Efficiency of the CC-Inclusive Muon Candidate Selection for CC-Coh Events", 13, -0.5, 12.5);
-TH1D *hCutByCutMuonCandidateDivide = new TH1D("hCutByCutMuonCandidateDivide", "The Cut by Cut Efficiency of the CC-Inclusive Muon Candidate Selection for CC-Coh Events Denominator", 13, -0.5, 12.5);
+TH1D *hCutByCutMuonCandidate = new TH1D("hCutByCutMuonCandidate", "The Cut by Cut Efficiency of the CC-Inclusive Muon Candidate Selection for CC-Coh Events", 15, -0.5, 14.5);
+TH1D *hCutByCutMuonCandidateDivide = new TH1D("hCutByCutMuonCandidateDivide", "The Cut by Cut Efficiency of the CC-Inclusive Muon Candidate Selection for CC-Coh Events Denominator", 15, -0.5, 14.5);
 TH1D *hNumMuonCandidates = new TH1D("hNumMuonCandidates", "The Number of Tracks that Passed the Muon Candidacy", 31, -0.5, 30.5);
 
 TH1D *hFurtherEventSelection = new TH1D("hFurtherEventSelection", "The Event Selection That Takes Place After Muon Candidacy for CC-Coh", 5, -0.5, 4.5);
 TH1D *hFurtherEventSelectionDivide = new TH1D("hFurtherEventSelectionDivide", "The Event Selection That Takes Place After Muon Candidacy for CC-Coh Denominator", 5, -0.5, 4.5);
+
+TH1D *hTrueConeAngle = new TH1D("hTrueConeAngle", "The Cone Angle from MC Truth Information", 181, -0.5, 180.5);
+TH1D *hRecoConeAngle = new TH1D("hRecoConeAngle", "The Cone Angle from Reconstructed Information", 181, -0.5, 180.5);
+
+TH1D *hTrueDoCA = new TH1D("hTrueDoCA", "The Distance of Closest Approach from MC Truth Information", 101, -0.5, 100.5);
+TH1D *hRecoDoCA = new TH1D("hRecoDoCA", "The Distance of Closest Approach from Reconstructed Information", 101, -0.5, 100.5);
 // -------------------------------
 
 
+// ---------------------------
+// --- Cone Angle Function ---
+// ---------------------------
+double ConeAngle(double x1, double y1, double z1, double x2, double y2, double z2)
+{
+  TVector3 v1(x1, y1, z1);
+  TVector3 v2(x2, y2, z2);
+  TVector3 z(0, 0, 1);
+  TVector3 v3 = v1 + v2;
+  Double_t coneangle = v3.Angle(z);
+  return coneangle;
+}
+// ---------------------------
 
+
+// -------------------------------------------
+// --- Distance of Closest Approach Method ---
+// -------------------------------------------
+double DoCA(double x0, double y0, double z0, double x1, double y1, double z1)
+{
+   double d = -999;
+   TVector3 v(x0-x1, y0-y1, z0-z1);
+   d = v.Mag();
+   return d;
+}
+// -------------------------------------------
 
 
 void BiggerSampleDaughters::Loop()
@@ -104,10 +136,10 @@ void BiggerSampleDaughters::Loop()
    std::cout<<"nevents = "<<nevents<<std::endl;
    // ------------------------------------------
 
-   double Muons [nevents][9];
-   double Pions [nevents][9];
+   double Muons [nevents][12];
+   double Pions [nevents][12];
    double T [nevents];
-   double Neutrinos [nevents][8];
+   double Neutrinos [nevents][9];
    float pandora_vtx [nevents][3];
    int pandora_pdg = 0;
    int vtx_contained = 0;
@@ -139,7 +171,7 @@ void BiggerSampleDaughters::Loop()
    // --- The Cut Values Used in Muon Candidacy ---
    // ---------------------------------------------
    double cut1Value = 0.85;
-   double cut2Value = 4;
+   double cut2Value = 4; // This is normally set at 4cm, but you've changed it so MAKE SURE TO CHANGE IT BACK!!
    int cut3Value = 2;
    double cut4Value = 20;
    double cut5Value = 60;
@@ -158,6 +190,41 @@ void BiggerSampleDaughters::Loop()
    double cut25Value = 0.06;
    // ------------------------------------------------
 
+   // --------------------------------------------
+   // --- The Cone Angle Calculation Variables ---
+   // --------------------------------------------
+   double CAValues [6];
+
+   CAValues[0] = 100;
+   CAValues[1] = 100;
+   CAValues[2] = 100;
+   CAValues[3] = 100;
+   CAValues[4] = 100;
+   CAValues[5] = 100;
+
+   double TrueCA = -99;
+   double RecoCA = -99;
+
+   double ConeAngleCutValue = 40;
+   // --------------------------------------------
+
+   // --------------------------------------
+   // --- The DoCA Calculation Variables ---
+   // --------------------------------------
+   double DoCAValues [6];
+
+   DoCAValues[0] = 0;
+   DoCAValues[1] = 0;
+   DoCAValues[2] = 0;
+   DoCAValues[3] = 0;
+   DoCAValues[4] = 0;
+   DoCAValues[5] = 0;
+
+   double TrueDoCA = -999;
+   double RecoDoCA = -999;
+
+   double DoCACutValue = 10;
+   // --------------------------------------
 
 
    int EventRunSubrun = 0;
@@ -232,6 +299,9 @@ void BiggerSampleDaughters::Loop()
 	       Muons[i][6] = subrun;
 	       Muons[i][7] = CC_Selected;
 	       Muons[i][8] = ParticleContained;
+	       Muons[i][9] = track_dirx;
+	       Muons[i][10] = track_diry;
+	       Muons[i][11] = track_dirz;
 	       Neutrinos[i][0] = NuEnergy;
 	       Neutrinos[i][1] = NuPx;
 	       Neutrinos[i][2] = NuPy;
@@ -240,6 +310,7 @@ void BiggerSampleDaughters::Loop()
 	       Neutrinos[i][5] = run;
 	       Neutrinos[i][6] = subrun;
 	       Neutrinos[i][7] = CC_Selected;
+	       Neutrinos[i][8] = Mc_Vtx_Contained;
 	    }
 	    if (mc_pdg == 211/* && generation == 2*/ && mc_neutrino == 1) { // If the track is a pion track, save four-momentum information
                Pions[i][0] = mc_energy;
@@ -251,6 +322,9 @@ void BiggerSampleDaughters::Loop()
 	       Pions[i][6] = subrun;
 	       Pions[i][7] = CC_Selected;
 	       Pions[i][8] = ParticleContained;
+	       Pions[i][9] = track_dirx;
+	       Pions[i][10] = track_diry;
+	       Pions[i][11] = track_dirz;
 	    }
 	 }
 
@@ -277,6 +351,8 @@ void BiggerSampleDaughters::Loop()
 	    hCutByCutMuonCandidateDivide->Fill(10); // Making the histogram to get the efficiency
 	    hCutByCutMuonCandidateDivide->Fill(11); // Making the histogram to get the efficiency
 	    hCutByCutMuonCandidateDivide->Fill(12); // Making the histogram to get the efficiency
+	    hCutByCutMuonCandidateDivide->Fill(13); // Making the histogram to get the efficiency
+	    hCutByCutMuonCandidateDivide->Fill(14); // Making the histogram to get the efficiency
 	    hFurtherEventSelectionDivide->Fill(0); // Making the histogram to get the efficiency for the Further Selection
 	    hFurtherEventSelectionDivide->Fill(1); // Making the histogram to get the efficiency for the Further Selection
 	    hFurtherEventSelectionDivide->Fill(2); // Making the histogram to get the efficiency for the Further Selection
@@ -328,6 +404,21 @@ void BiggerSampleDaughters::Loop()
 	          hFurtherEventSelection->Fill(4);
 		  hCutByCutMuonCandidate->Fill(12);
 		  if (nuenergy > 0.146) hPassedNuEnergy->Fill(nuenergy);
+		  if (RecoCA <= ConeAngleCutValue && RecoCA != -99) hCutByCutMuonCandidate->Fill(13);
+		  if (TrueCA != -99 && RecoCA != -99) {
+		     hTrueConeAngle->Fill(TrueCA);
+		     hRecoConeAngle->Fill(RecoCA);
+		     TrueCA = -99;
+		     RecoCA = -99;
+		  }
+		  if (RecoDoCA <= DoCACutValue && RecoDoCA != -999) hCutByCutMuonCandidate->Fill(14);
+		  if (TrueDoCA != -999 && RecoDoCA != -999) {
+		     //if (RecoDoCA > 50) std::cout<<"Event, Run, Subrun = "<<event<<", "<<run<<", "<<subrun<<std::endl;
+		     hTrueDoCA->Fill(TrueDoCA);
+		     hRecoDoCA->Fill(RecoDoCA);
+		     TrueDoCA = -999;
+		     RecoDoCA = -999;
+	          }
 	       }
 	    }
 	    if (!PassedEvent && jentry != 0) hNumMuonCandidates->Fill(0);
@@ -385,6 +476,33 @@ void BiggerSampleDaughters::Loop()
 
 	 if (cut1 && cut2 && cut3 && cut4 && cut5 && cut6 && cut7 && cut8 && cut9 && cut10 && cut11 && cut12) PassedAllCuts = true;
 	 else PassedAllCuts = false;
+
+	 if (PassedAllCuts) {
+	    double CAT = ConeAngle(CAValues[0], CAValues[1], CAValues[2], mc_px, mc_py, mc_pz)*180/PI;
+	    double CAR = ConeAngle(CAValues[3], CAValues[4], CAValues[5], track_dirx, track_diry, track_dirz)*180/PI;
+	    double DoCAT = DoCA(DoCAValues[0], DoCAValues[1], DoCAValues[2], mc_vx_sce, mc_vy_sce, mc_vz_sce);
+	    double DoCAR = DoCA(DoCAValues[3], DoCAValues[4], DoCAValues[5], vx, vy, vz);
+	    if ((TrueCA == -99 && RecoCA == -99) || (CAT < TrueCA && CAR < RecoCA)) {
+	       TrueCA = CAT;
+	       RecoCA = CAR;
+	       CAValues[0] = mc_px;
+	       CAValues[1] = mc_py;
+	       CAValues[2] = mc_pz;
+	       CAValues[3] = track_dirx;
+	       CAValues[4] = track_diry;
+	       CAValues[5] = track_dirz;
+	    }
+	    if ((TrueDoCA == -999 && RecoDoCA == -999) || (DoCAT < TrueDoCA && DoCAR < RecoDoCA)) {
+	       TrueDoCA = DoCAT;
+	       RecoDoCA = DoCAR;
+	       DoCAValues[0] = mc_vx_sce;
+	       DoCAValues[1] = mc_vy_sce;
+	       DoCAValues[2] = mc_vz_sce;
+	       DoCAValues[3] = vx;
+	       DoCAValues[4] = vy;
+	       DoCAValues[5] = vz;
+	    }
+         }
       }
 
 
@@ -446,20 +564,25 @@ void BiggerSampleDaughters::Loop()
    }// <-- End Event For Loop
 
 
-   for (Int_t k = 0; k < nevents; k++) {
+   /*for (Int_t k = 0; k < nevents; k++) {
       T[k] = abs(pow(Neutrinos[k][0] - Muons[k][0] - Pions[k][0], 2) - pow(Neutrinos[k][1] - Muons[k][1] - Pions[k][1], 2) - pow(Neutrinos[k][2] - Muons[k][2] - Pions[k][2], 2) - pow(Neutrinos[k][3] - Muons[k][3] - Pions[k][3], 2));
       //T[k] = pow(Muons[k][0] - Muons[k][3] + Pions[k][0] - Pions[k][3], 2) + pow(Muons[k][1] + Pions[k][1], 2) + pow(Muons[k][2] + Pions[k][2], 2);
+
+      if (Muons[k][1] != 0 && Muons[k][2] != 0 && Muons[k][3] != 0 && Neutrinos[k][8] == 1) {
+         hTrueConeAngle->Fill(ConeAngle(Muons[k][1], Muons[k][2], Muons[k][3], Pions[k][1], Pions[k][2], Pions[k][3])*180/PI);
+         hRecoConeAngle->Fill(ConeAngle(Muons[k][9], Muons[k][10], Muons[k][11], Pions[k][9], Pions[k][10], Pions[k][11])*180/PI);
+      }
 
       if ((Muons[k][8] == 1 || Pions[k][8] == 1)) {
          hMatchedT->Fill(T[k]);
          //if (Neutrinos[k][0] > 0.146) hMatchedNuEnergy->Fill(Neutrinos[k][0]);
-      }
+      }*/
 
-      if ((Muons[k][7] == 1 || Pions[k][7] == 1) /*&& (Muons[k][8] == 1 || Pions[k][8] == 1)*/) {
+      /*if ((Muons[k][7] == 1 || Pions[k][7] == 1)*/ /*&& (Muons[k][8] == 1 || Pions[k][8] == 1)*//*) {
          hPassedT->Fill(T[k]);
 	 //if (Neutrinos[k][0] > 0.146) hPassedNuEnergy->Fill(Neutrinos[k][0]);
       }
-   }// <-- End k For Loop for T calculations
+   }// <-- End k For Loop for T calculations*/
 
 
    std::cout<<"Matched an Event this many times = "<<CountMatching<<std::endl;
@@ -539,6 +662,12 @@ void BiggerSampleDaughters::Loop()
 
    hFurtherEventSelection->Write();
    hFurtherEventSelectionDivide->Write();
+
+   hTrueConeAngle->Write();
+   hRecoConeAngle->Write();
+
+   hTrueDoCA->Write();
+   hRecoDoCA->Write();
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 }

@@ -40,8 +40,8 @@ bool Within(bool w, double x, double y, double z)
    // ### Fiducial Volume ###
    // #######################
    double xFi = 10, xFf = 240;
-   double yFi = -95, yFf = 95;
-   double zFi = 10, zFf = 1030;
+   double yFi = -105, yFf = 105;
+   double zFi = 10, zFf = 990;
 
    if (w == false)
       {
@@ -120,6 +120,7 @@ void BiggerSampleEvent::Loop()
       bool containedRecoD = Within(0, nu_vx, nu_vy, nu_vz);
       bool containedTruthD = Within(0, mc_nu_vx, mc_nu_vy, mc_nu_vz);
       bool containedTruthSCED = Within(0, mc_nu_vx_sce, mc_nu_vy_sce, mc_nu_vz_sce);
+      bool containedTruthF = Within(1, mc_nu_vx, mc_nu_vy, mc_nu_vz);
       bool containedRecoF = Within(1, nu_vx, nu_vy, nu_vz);
 
       Event = event;
@@ -144,7 +145,8 @@ void BiggerSampleEvent::Loop()
       hPandoraPDGCode->Fill(nu_pdg);
       hNuFlash->Fill(nu_flash_chi2);
 
-      if (containedTruthD) Mc_Vtx_Contained = 1;
+      //if (containedTruthD) Mc_Vtx_Contained = 1;
+      if (containedTruthF) Mc_Vtx_Contained = 1;
       if (containedRecoF) Vtx_Contained = 1;
 
       if (containedRecoD && containedTruthD && containedTruthSCED) {

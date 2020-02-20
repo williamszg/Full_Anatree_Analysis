@@ -103,6 +103,18 @@ TH1D *hFurtherEventSelectionDivide = (TH1D*)f->Get("hFurtherEventSelectionDivide
 hFurtherEventSelection->Sumw2();
 hFurtherEventSelectionDivide->Sumw2();
 
+TH1D *hTrueConeAngle = (TH1D*)f->Get("hTrueConeAngle");
+TH1D *hRecoConeAngle = (TH1D*)f->Get("hRecoConeAngle");
+
+hTrueConeAngle->Sumw2();
+hRecoConeAngle->Sumw2();
+
+TH1D *hTrueDoCA = (TH1D*)f->Get("hTrueDoCA");
+TH1D *hRecoDoCA = (TH1D*)f->Get("hRecoDoCA");
+
+hTrueDoCA->Sumw2();
+hRecoDoCA->Sumw2();
+
 
 
 
@@ -745,6 +757,8 @@ hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(10, "Start vertex of all daughte
 hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(11, "Neutrino vertex is in the fiducial volume");
 hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(12, "Flash #chi^{2} < 10 OR topological score > 0.25");
 hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(13, "Topological score > 0.06");
+hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(14, "Cone Angle < 40^{o}");
+hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(15, "DoCA Cut < 7cm");
 
 hCutByCutMuonCandidate->Divide(hCutByCutMuonCandidateDivide);
 
@@ -768,4 +782,155 @@ hFurtherEventSelection->GetXaxis()->SetBinLabel(5, "Topological score > 0.06");
 hFurtherEventSelection->Divide(hFurtherEventSelectionDivide);
 
 hFurtherEventSelection->Draw("E1");
+
+
+
+TCanvas *c20 = new TCanvas("c20", "The True and Reconstructed Cone Angles for CC-Coh Events", 2);
+c20->SetTicks();
+c20->SetFillColor(kWhite);
+
+// Area normalzing the plot 
+hTrueConeAngle->Scale(1/hTrueConeAngle->Integral());
+hRecoConeAngle->Scale(1/hRecoConeAngle->Integral());
+
+hTrueConeAngle->SetLineColor(kBlue);
+hTrueConeAngle->SetLineWidth(2);
+hTrueConeAngle->SetFillColor(kBlue);
+hTrueConeAngle->SetFillStyle(3005);
+
+hRecoConeAngle->SetLineColor(kRed);
+hRecoConeAngle->SetLineWidth(2);
+hRecoConeAngle->SetFillColor(kRed);
+hRecoConeAngle->SetFillStyle(3006);
+
+hTrueConeAngle->GetXaxis()->SetTitle("Cone Angle [Degrees]");
+hTrueConeAngle->GetXaxis()->CenterTitle();
+//hTrueConeAngle->GetXaxis()->SetRangeUser(-20.5,20.5);
+
+hTrueConeAngle->GetYaxis()->SetTitle("Number of Events");
+hTrueConeAngle->GetYaxis()->CenterTitle();
+
+hTrueConeAngle->Draw("histo");
+hRecoConeAngle->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg20 = new TLegend();
+leg20 = new TLegend(0.58,0.65,1.00,1.00);
+leg20->SetTextSize(0.04);
+leg20->SetTextAlign(12);
+leg20->SetFillColor(kWhite);
+leg20->SetLineColor(kWhite);
+leg20->SetShadowColor(kWhite);
+leg20->SetHeader("Cone Angles");
+leg20->AddEntry(hTrueConeAngle,"MC Truth");
+leg20->AddEntry(hRecoConeAngle,"Reconstructed");
+leg20->Draw();
+
+
+
+TCanvas *c21 = new TCanvas("c21", "The True and Reconstructed Distance of Closest Approach for CC-Coh Events", 2);
+c21->SetTicks();
+c21->SetFillColor(kWhite);
+
+// Area normalzing the plot 
+hTrueDoCA->Scale(1/hTrueDoCA->Integral());
+hRecoDoCA->Scale(1/hRecoDoCA->Integral());
+
+hTrueDoCA->SetLineColor(kBlue);
+hTrueDoCA->SetLineWidth(2);
+hTrueDoCA->SetFillColor(kBlue);
+hTrueDoCA->SetFillStyle(3005);
+
+hRecoDoCA->SetLineColor(kRed);
+hRecoDoCA->SetLineWidth(2);
+hRecoDoCA->SetFillColor(kRed);
+hRecoDoCA->SetFillStyle(3006);
+
+hTrueDoCA->GetXaxis()->SetTitle("Distance of Closest Approach [cm]");
+hTrueDoCA->GetXaxis()->CenterTitle();
+//hTrueDoCA->GetXaxis()->SetRangeUser(-20.5,20.5);
+
+hTrueDoCA->GetYaxis()->SetTitle("Number of Events");
+hTrueDoCA->GetYaxis()->CenterTitle();
+
+hTrueDoCA->Draw("histo");
+hRecoDoCA->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg21 = new TLegend();
+leg21 = new TLegend(0.58,0.65,1.00,1.00);
+leg21->SetTextSize(0.04);
+leg21->SetTextAlign(12);
+leg21->SetFillColor(kWhite);
+leg21->SetLineColor(kWhite);
+leg21->SetShadowColor(kWhite);
+leg21->SetHeader("Distance of Closest Approach");
+leg21->AddEntry(hTrueDoCA,"MC Truth");
+leg21->AddEntry(hRecoDoCA,"Reconstructed");
+leg21->Draw();
+
+
+
+
+
+
+// --------------------------------------
+// --- Saving the Plots to PNG Images ---
+// --------------------------------------
+
+TImage *img1 = TImage::Create();
+img1->FromPad(c1);
+img1->WriteImage("/home/zwilliams/Desktop/ReconstructionTechNoteImages/MuonChi2.png");
+
+TImage *img2 = TImage::Create();
+img2->FromPad(c2);
+img2->WriteImage("/home/zwilliams/Desktop/ReconstructionTechNoteImages/ProtonChi2.png");
+
+TImage *img3 = TImage::Create();
+img3->FromPad(c3);
+img3->WriteImage("/home/zwilliams/Desktop/ReconstructionTechNoteImages/PandoraTrackLength.png");
+
+TImage *img4 = TImage::Create();
+img4->FromPad(c4);
+img4->WriteImage("/home/zwilliams/Desktop/ReconstructionTechNoteImages/MuonChi2VsProtonChi2_Muons.png");
+
+TImage *img5 = TImage::Create();
+img5->FromPad(c5);
+img5->WriteImage("/home/zwilliams/Desktop/ReconstructionTechNoteImages/MuonChi2VsProtonChi2_Pions.png");
+
+TImage *img6 = TImage::Create();
+img6->FromPad(c6);
+img6->WriteImage("/home/zwilliams/Desktop/ReconstructionTechNoteImages/MuonChi2VsProtonChi2_Protons.png");
+
+TImage *img7 = TImage::Create();
+img7->FromPad(c7);
+img7->WriteImage("/home/zwilliams/Desktop/ReconstructionTechNoteImages/Chi2Ratios.png");
+
+TImage *img8 = TImage::Create();
+img8->FromPad(c8);
+img8->WriteImage("/home/zwilliams/Desktop/ReconstructionTechNoteImages/TrueTrackLength.png");
+
+TImage *img9 = TImage::Create();
+img9->FromPad(c9);
+img9->WriteImage("/home/zwilliams/Desktop/ReconstructionTechNoteImages/PandoraVsTrueTrackLengthMuons.png");
+
+TImage *img10 = TImage::Create();
+img10->FromPad(c10);
+img10->WriteImage("/home/zwilliams/Desktop/ReconstructionTechNoteImages/PandoraVsTrueTrackLengthPions.png");
+
+TImage *img11 = TImage::Create();
+img11->FromPad(c11);
+img11->WriteImage("/home/zwilliams/Desktop/ReconstructionTechNoteImages/PandoraVsTrueTrackLengthProtons.png");
+
+TImage *img12 = TImage::Create();
+img12->FromPad(c12);
+img12->WriteImage("/home/zwilliams/Desktop/ReconstructionTechNoteImages/TrackScores.png");
+
+TImage *img13 = TImage::Create();
+img13->FromPad(c13);
+img13->WriteImage("/home/zwilliams/Desktop/ReconstructionTechNoteImages/VertexDistance.png");
+
+// --------------------------------------
 }
