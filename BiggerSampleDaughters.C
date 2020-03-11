@@ -63,6 +63,8 @@ TH1D *hRecoConeAngle = new TH1D("hRecoConeAngle", "The Cone Angle from Reconstru
 
 TH1D *hTrueDoCA = new TH1D("hTrueDoCA", "The Distance of Closest Approach from MC Truth Information", 101, -0.5, 100.5);
 TH1D *hRecoDoCA = new TH1D("hRecoDoCA", "The Distance of Closest Approach from Reconstructed Information", 101, -0.5, 100.5);
+
+TH1D *hPionOrMuonIsCandidate = new TH1D("hPionOrMuonIsCandidate", "Whether a Pion or a Muon or some other particle was selected as the Muon Candidate", 3, -0.5, 2.5);
 // -------------------------------
 
 
@@ -223,8 +225,15 @@ void BiggerSampleDaughters::Loop()
    double TrueDoCA = -999;
    double RecoDoCA = -999;
 
-   double DoCACutValue = 10;
+   double DoCACutValue = 7;
    // --------------------------------------
+
+   // --------------------------------------------
+   // --- Values for Memory in Selection Stage ---
+   // --------------------------------------------
+   int CurrentCandidatePDG = 0;
+   double CurrentCandidateLength = 0;
+   // --------------------------------------------
 
 
    int EventRunSubrun = 0;
@@ -274,7 +283,7 @@ void BiggerSampleDaughters::Loop()
       for (Int_t i = 0; i < nevents; i++) {
          t->GetEntry(i);
 
-	 if (Event == event && Run == run && Subrun == subrun && InteractionType == 3 && CCNC == 0) {
+	 if (Event == event && Run == run && Subrun == subrun && InteractionType == 3 && CCNC == 0 && is_track) {
             Matched = true;
 	    //if (jentry%10 == 0) std::cout<<"We Matched!"<<std::endl; // This is to see if we are actually making it to this point in the Matched condition!
 	    if (CC_Selected == 1) ccselected = true;
@@ -383,6 +392,9 @@ void BiggerSampleDaughters::Loop()
 	       //if (AmountPassed == 2) std::cout<<"For 2 Passed Tracks: Event, Run, Subrun = "<<event<<", "<<run<<", "<<subrun<<std::endl;
 	       //if (AmountPassed >= 3) std::cout<<"For 3 or More Passed Tracks: Event, Run, Subrun = "<<event<<", "<<run<<", "<<subrun<<std::endl;
 	       AmountPassed = 0;
+	       if (CurrentCandidatePDG == 13) hPionOrMuonIsCandidate->Fill(0);
+	       else if (CurrentCandidatePDG == 211) hPionOrMuonIsCandidate->Fill(1);
+	       else if (CurrentCandidatePDG != 0) hPionOrMuonIsCandidate->Fill(2);
 
 	       if (cut8) {
 	          hFurtherEventSelection->Fill(0);
@@ -440,6 +452,8 @@ void BiggerSampleDaughters::Loop()
 	    cut11 = false;
 	    cut12 = false;
 	    PassedAllCuts = false;
+	    CurrentCandidatePDG = 0;
+	    CurrentCandidateLength = 0;
          }
 
          if (!PassedEvent) {
@@ -471,7 +485,13 @@ void BiggerSampleDaughters::Loop()
 
          if (PassedEvent || (/*track_score > cut1Value &&*/ vtx_distance < cut2Value && generation == cut3Value && /*track_length > cut4Value &&*/ track_chi2_proton > cut5Value && track_chi2_muon < cut6Value && track_chi2_proton/track_chi2_muon > cut7Value)) AmountPassed++;
 
-	 if (cut1 && cut2 && cut3 && cut4 && cut5 && cut6 && cut7) PassedEvent = true;
+	 if (cut1 && cut2 && cut3 && cut4 && cut5 && cut6 && cut7) {
+            PassedEvent = true;
+	    if (track_length > CurrentCandidateLength) {
+	       CurrentCandidateLength = track_length;
+	       CurrentCandidatePDG = mc_pdg;
+	    }
+	 }
 	 else PassedEvent = false;
 
 	 if (cut1 && cut2 && cut3 && cut4 && cut5 && cut6 && cut7 && cut8 && cut9 && cut10 && cut11 && cut12) PassedAllCuts = true;
@@ -606,6 +626,10 @@ void BiggerSampleDaughters::Loop()
    hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(6, "p #chi^{2} > 60");
    hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(7, "#mu #chi^{2} < 30");
    hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(8, "p #chi^{2} / #mu #chi^{2} > 7");
+
+   hPionOrMuonIsCandidate->GetXaxis()->SetBinLabel(1, "Muon Selected");
+   hPionOrMuonIsCandidate->GetXaxis()->SetBinLabel(2, "Pion Selected");
+   hPionOrMuonIsCandidate->GetXaxis()->SetBinLabel(3, "Other Selected");
    // =====================================
 
 
@@ -668,6 +692,8 @@ void BiggerSampleDaughters::Loop()
 
    hTrueDoCA->Write();
    hRecoDoCA->Write();
+
+   hPionOrMuonIsCandidate->Write();
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 }
