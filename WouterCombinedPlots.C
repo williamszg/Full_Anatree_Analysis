@@ -115,6 +115,19 @@ TH1D *hRecoDoCA = (TH1D*)f->Get("hRecoDoCA");
 hTrueDoCA->Sumw2();
 hRecoDoCA->Sumw2();
 
+TH1D *hRecoVA0 = (TH1D*)f->Get("hRecoVA0");
+TH1D *hRecoVA1 = (TH1D*)f->Get("hRecoVA1");
+TH1D *hRecoVA2 = (TH1D*)f->Get("hRecoVA2");
+TH1D *hRecoVAAll = (TH1D*)f->Get("hRecoVAAll");
+
+//hRecoVA0->Sumw2();
+//hRecoVA1->Sumw2();
+//hRecoVA2->Sumw2();
+//hRecoVAAll->Sumw2();
+
+// Creating the Stacked Histogram
+THStack *hRecoVAStacked = new THStack("hRecoVAStacked", "Hit Charges from All Planes Stacked for CC-Coh Events");
+
 
 
 
@@ -873,6 +886,117 @@ leg21->Draw();
 
 
 
+TCanvas *c22 = new TCanvas("c22", "The Stacked Hit Charge for CC-Coh Events within Vertex Activity Distance", 10, 10, 700, 700);
+c22->SetTicks();
+c22->SetFillColor(kWhite);
+
+// Setting the Fill Colors
+hRecoVA0->SetLineColor(kBlue);
+hRecoVA0->SetLineWidth(2);
+hRecoVA0->SetFillColor(kBlue);
+hRecoVA0->SetFillStyle(3005);
+
+hRecoVA1->SetLineColor(kRed);
+hRecoVA1->SetLineWidth(2);
+hRecoVA1->SetFillColor(kRed);
+hRecoVA1->SetFillStyle(3006);
+
+hRecoVA2->SetLineColor(kGreen);
+hRecoVA2->SetLineWidth(2);
+hRecoVA2->SetFillColor(kGreen);
+hRecoVA2->SetFillStyle(3007);
+
+// Filling the Stacked Histogram
+hRecoVAStacked->Add(hRecoVA0);
+hRecoVAStacked->Add(hRecoVA1);
+hRecoVAStacked->Add(hRecoVA2);
+
+// Setting the Axis Labels
+hRecoVAStacked->GetXaxis()->SetTitle("Summed Hit Charge within VA Bubble [ADC]");
+hRecoVAStacked->GetXaxis()->CenterTitle();
+
+hRecoVAStacked->GetYaxis()->SetTitle("Number of Events");
+hRecoVAStacked->GetYaxis()->CenterTitle();
+
+// Drawing the Stacked and Non-Stacked Histograms
+hRecoVAStacked->Draw();
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg22 = new TLegend();
+leg22 = new TLegend(0.58,0.65,1.00,1.00);
+leg22->SetTextSize(0.04);
+leg22->SetTextAlign(12);
+leg22->SetFillColor(kWhite);
+leg22->SetLineColor(kWhite);
+leg22->SetShadowColor(kWhite);
+leg22->SetHeader("Vertex Activity");
+leg22->AddEntry(hRecoVA0,"Plane 0");
+leg22->AddEntry(hRecoVA1,"Plane 1");
+leg22->AddEntry(hRecoVA2,"Plane 2");
+leg22->Draw();
+
+
+
+TCanvas *c23 = new TCanvas("c23", "The Reconstructed Hit Charge for CC-Coh Events within Vertex Activity Distance", 2);
+c23->SetTicks();
+c23->SetFillColor(kWhite);
+
+// Area normalzing the plot 
+hRecoVA0->Scale(1/hRecoVA0->Integral());
+hRecoVA1->Scale(1/hRecoVA1->Integral());
+hRecoVA2->Scale(1/hRecoVA2->Integral());
+hRecoVAAll->Scale(1/hRecoVAAll->Integral());
+
+hRecoVA0->SetLineColor(kBlue);
+hRecoVA0->SetLineWidth(2);
+hRecoVA0->SetFillColor(kBlue);
+hRecoVA0->SetFillStyle(3005);
+
+hRecoVA1->SetLineColor(kRed);
+hRecoVA1->SetLineWidth(2);
+hRecoVA1->SetFillColor(kRed);
+hRecoVA1->SetFillStyle(3006);
+
+hRecoVA2->SetLineColor(kGreen);
+hRecoVA2->SetLineWidth(2);
+hRecoVA2->SetFillColor(kGreen);
+hRecoVA2->SetFillStyle(3007);
+
+hRecoVAAll->SetLineColor(kBlack);
+hRecoVAAll->SetLineWidth(2);
+hRecoVAAll->SetFillColor(kBlack);
+hRecoVAAll->SetFillStyle(3008);
+
+hRecoVAAll->GetXaxis()->SetTitle("Summed Hit Charge within VA Bubble [ADC]");
+hRecoVAAll->GetXaxis()->CenterTitle();
+
+hRecoVAAll->GetYaxis()->SetTitle("Number of Events");
+hRecoVAAll->GetYaxis()->CenterTitle();
+
+hRecoVAAll->Draw("histo");
+hRecoVA0->Draw("histosame");
+hRecoVA1->Draw("histosame");
+hRecoVA2->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg23 = new TLegend();
+leg23 = new TLegend(0.58,0.65,1.00,1.00);
+leg23->SetTextSize(0.04);
+leg23->SetTextAlign(12);
+leg23->SetFillColor(kWhite);
+leg23->SetLineColor(kWhite);
+leg23->SetShadowColor(kWhite);
+leg23->SetHeader("Vertex Activity");
+leg23->AddEntry(hRecoVA0,"Plane 0");
+leg23->AddEntry(hRecoVA1,"Plane 1");
+leg23->AddEntry(hRecoVA2,"Plane 2");
+leg23->AddEntry(hRecoVAAll,"All Planes");
+leg23->Draw();
+
+
+
 
 
 
@@ -931,6 +1055,10 @@ img12->WriteImage("/home/zwilliams/Desktop/ReconstructionTechNoteImages/TrackSco
 TImage *img13 = TImage::Create();
 img13->FromPad(c13);
 img13->WriteImage("/home/zwilliams/Desktop/ReconstructionTechNoteImages/VertexDistance.png");
+
+TImage *img14 = TImage::Create();
+img14->FromPad(c14);
+img14->WriteImage("/home/zwilliams/Desktop/ReconstructionTechNoteImages/CCInclusiveEffCCCohNuEnergy.png");
 
 // --------------------------------------
 }
