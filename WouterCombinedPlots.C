@@ -4,7 +4,6 @@ TFile *f2 = new TFile("EventNtuple.root"); // <-- File for Event Tree
 
 
 
-
 TH1D *hMuonMuonChi2 = (TH1D*)f->Get("hMuonMuonChi2");
 TH1D *hPionMuonChi2 = (TH1D*)f->Get("hPionMuonChi2");
 TH1D *hProtonMuonChi2 = (TH1D*)f->Get("hProtonMuonChi2");
@@ -757,6 +756,8 @@ c18->SetFillColor(kWhite);
 hCutByCutMuonCandidate->SetLineColor(kBlue);
 hCutByCutMuonCandidate->SetLineWidth(2);
 
+hCutByCutMuonCandidate->Divide(hCutByCutMuonCandidateDivide);
+
 hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(1, "Num. Matched Events");
 hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(2, "Track Score > 0.85");
 hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(3, "Vertex Distance < 4cm");
@@ -771,9 +772,7 @@ hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(11, "Neutrino vertex is in the f
 hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(12, "Flash #chi^{2} < 10 OR topological score > 0.25");
 hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(13, "Topological score > 0.06");
 hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(14, "Cone Angle < 40^{o}");
-hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(15, "DoCA Cut < 7cm");
-
-hCutByCutMuonCandidate->Divide(hCutByCutMuonCandidateDivide);
+hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(15, "DoCA Cut < 10cm");
 
 hCutByCutMuonCandidate->Draw("E1");
 
@@ -795,6 +794,85 @@ hFurtherEventSelection->GetXaxis()->SetBinLabel(5, "Topological score > 0.06");
 hFurtherEventSelection->Divide(hFurtherEventSelectionDivide);
 
 hFurtherEventSelection->Draw("E1");
+
+
+
+// -----------------------------
+// --- TGraph for Cone Angle ---
+// -----------------------------
+int n = 181;
+double x[181] = {0};
+double ConeAngleEff[181] = {0};
+double ConeAngleEffR[181] = {0};
+double CCCohConeAngle[181] = {0};
+double CCCohConeAngleR[181] = {0};
+
+for (int i = 0; i < n; i++)
+   {
+   x[i] = i*180/n;
+   for (int g = 1; g < i+1; g++)
+      {
+      CCCohConeAngle[i] += hTrueConeAngle->GetBinContent(g);
+      CCCohConeAngleR[i] += hRecoConeAngle->GetBinContent(g);
+      } // End g-Loop
+
+   ConeAngleEff[i] = 100*(CCCohConeAngle[i])/(hTrueConeAngle->GetEntries());
+   CCCohConeAngle[i] = CCCohConeAngle[i]*100/hTrueConeAngle->GetEntries();
+   ConeAngleEffR[i] = 100*(CCCohConeAngleR[i])/(hRecoConeAngle->GetEntries());
+   CCCohConeAngleR[i] = CCCohConeAngleR[i]*100/hRecoConeAngle->GetEntries();
+   } // End i-Loop
+
+TGraph* gConeAngleEff = new TGraph(n, x, ConeAngleEff);
+gConeAngleEff->SetTitle("ConeAngleEff");
+gConeAngleEff->SetName("ConeAngleEff");
+gConeAngleEff->SetFillColor(kWhite);
+gConeAngleEff->SetLineColor(kBlue);
+gConeAngleEff->SetLineWidth(2);
+TGraph* gCCCohConeAngle = new TGraph(n, x, CCCohConeAngle);
+gCCCohConeAngle->SetTitle("gCCCohConeAngle");
+gCCCohConeAngle->SetName("gCCCohConeAngle");
+gCCCohConeAngle->SetFillColor(kWhite);
+gCCCohConeAngle->SetLineColor(kBlue);
+gCCCohConeAngle->SetLineWidth(2);
+TGraph* gConeAngleEffR = new TGraph(n, x, ConeAngleEffR);
+gConeAngleEffR->SetTitle("ConeAngleEffR");
+gConeAngleEffR->SetName("ConeAngleEffR");
+gConeAngleEffR->SetFillColor(kWhite);
+gConeAngleEffR->SetLineColor(kRed);
+gConeAngleEffR->SetLineWidth(2);
+TGraph* gCCCohConeAngleR = new TGraph(n, x, CCCohConeAngleR);
+gCCCohConeAngleR->SetTitle("gCCCohConeAngleR");
+gCCCohConeAngleR->SetName("gCCCohConeAngleR");
+gCCCohConeAngleR->SetFillColor(kWhite);
+gCCCohConeAngleR->SetLineColor(kRed);
+gCCCohConeAngleR->SetLineWidth(2);
+
+TCanvas *c24 = new TCanvas("c24", "Cone Angle TGraphs");
+c24->SetTicks();
+c24->SetFillColor(kWhite);
+
+gCCCohConeAngle->GetXaxis()->SetTitle("Cone Angle [Degrees]");
+gCCCohConeAngle->GetXaxis()->CenterTitle();
+
+gCCCohConeAngle->GetYaxis()->SetTitle("Rejection (Background) Passed (Signal) [%]");
+gCCCohConeAngle->GetYaxis()->CenterTitle();
+
+gCCCohConeAngle->Draw();
+gCCCohConeAngleR->Draw("same");
+
+// ### Defining the legend for the plot ###
+TLegend *leg24 = new TLegend();
+leg24 = new TLegend(0.58,0.65,1.00,1.00);
+leg24->SetTextSize(0.04);
+leg24->SetTextAlign(12);
+leg24->SetFillColor(kWhite);
+leg24->SetLineColor(kWhite);
+leg24->SetShadowColor(kWhite);
+leg24->SetHeader("Channel");
+leg24->AddEntry(gCCCohConeAngle,"True");
+leg24->AddEntry(gCCCohConeAngleR,"Reco");
+leg24->Draw();
+// -----------------------------
 
 
 
@@ -842,6 +920,82 @@ leg20->Draw();
 
 
 
+// -----------------------
+// --- TGraph for DoCA ---
+// -----------------------
+int m = 101;
+double y[101] = {0};
+double DoCAEff[101] = {0};
+double CCCohDoCA[101] = {0};
+double CCCohDoCAR[101] = {0};
+double CCCohDoCARejection[101] = {0};
+
+for (int i = 0; i < m; i++) {
+   y[i] = i*100/m;
+   for (int g = 1; g < i+1; g++)
+      {
+      CCCohDoCA[i] += hTrueDoCA->GetBinContent(g);
+      CCCohDoCAR[i] += hRecoDoCA->GetBinContent(g);
+      } // End g-Loop
+
+
+   CCCohDoCARejection[i] = hRecoDoCA->GetEntries() - CCCohDoCA[i];
+
+   DoCAEff[i] = 100*(CCCohDoCA[i])/(hTrueDoCA->GetEntries());
+
+   CCCohDoCA[i] = CCCohDoCA[i]*100/(hTrueDoCA->GetEntries() - hTrueDoCA->GetBinContent(102));
+   CCCohDoCAR[i] = CCCohDoCAR[i]*100/hRecoDoCA->GetEntries();
+   CCCohDoCARejection[i] = CCCohDoCARejection[i]*100/hRecoDoCA->GetEntries();
+} // End i-Loop
+
+TGraph* gDoCAEff = new TGraph(m, y, DoCAEff);
+gDoCAEff->SetTitle("gDoCAEff");
+gDoCAEff->SetName("gDoCAEff");
+gDoCAEff->SetFillColor(kWhite);
+gDoCAEff->SetLineColor(kBlue);
+gDoCAEff->SetLineWidth(2);
+TGraph* gCCCohDoCA = new TGraph(m, y, CCCohDoCA);
+gCCCohDoCA->SetTitle("gCCCohDoCA");
+gCCCohDoCA->SetName("gCCCohDoCA");
+gCCCohDoCA->SetFillColor(kWhite);
+gCCCohDoCA->SetLineColor(kBlue);
+gCCCohDoCA->SetLineWidth(2);
+TGraph* gCCCohDoCAR = new TGraph(m, y, CCCohDoCAR);
+gCCCohDoCAR->SetTitle("gCCCohDoCAR");
+gCCCohDoCAR->SetName("gCCCohDoCAR");
+gCCCohDoCAR->SetFillColor(kWhite);
+gCCCohDoCAR->SetLineColor(kRed);
+gCCCohDoCAR->SetLineWidth(2);
+
+TCanvas *c25 = new TCanvas("c25", "DoCA TGraphs");
+c25->SetTicks();
+c25->SetFillColor(kWhite);
+
+gCCCohDoCAR->GetXaxis()->SetTitle("DoCA [cm]");
+gCCCohDoCAR->GetXaxis()->CenterTitle();
+
+gCCCohDoCAR->GetYaxis()->SetTitle("Rejection (Background) Passed (Signal) [%]");
+gCCCohDoCAR->GetYaxis()->CenterTitle();
+
+gCCCohDoCAR->Draw();
+gCCCohDoCA->Draw("same");
+
+// ### Defining the legend for the plot ###
+TLegend *leg25 = new TLegend();
+leg25 = new TLegend(0.58,0.65,1.00,1.00);
+leg25->SetTextSize(0.04);
+leg25->SetTextAlign(12);
+leg25->SetFillColor(kWhite);
+leg25->SetLineColor(kWhite);
+leg25->SetShadowColor(kWhite);
+leg25->SetHeader("Channel");
+leg25->AddEntry(gCCCohDoCA,"True");
+leg25->AddEntry(gCCCohDoCAR,"Reco");
+leg25->Draw();
+// -----------------------
+
+
+
 TCanvas *c21 = new TCanvas("c21", "The True and Reconstructed Distance of Closest Approach for CC-Coh Events", 2);
 c21->SetTicks();
 c21->SetFillColor(kWhite);
@@ -885,7 +1039,7 @@ leg21->AddEntry(hRecoDoCA,"Reconstructed");
 leg21->Draw();
 
 
-
+/*
 TCanvas *c22 = new TCanvas("c22", "The Stacked Hit Charge for CC-Coh Events within Vertex Activity Distance", 10, 10, 700, 700);
 c22->SetTicks();
 c22->SetFillColor(kWhite);
@@ -935,7 +1089,7 @@ leg22->AddEntry(hRecoVA0,"Plane 0");
 leg22->AddEntry(hRecoVA1,"Plane 1");
 leg22->AddEntry(hRecoVA2,"Plane 2");
 leg22->Draw();
-
+*/
 
 
 TCanvas *c23 = new TCanvas("c23", "The Reconstructed Hit Charge for CC-Coh Events within Vertex Activity Distance", 2);
