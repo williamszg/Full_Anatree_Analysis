@@ -168,11 +168,13 @@ void TwoBKGDDaughters::Loop()
    std::cout<<"nevents from matched = "<<nevents<<std::endl;
    // ------------------------------------------
 
-   double Muons [nevents][12];
-   double Pions [nevents][12];
-   double T [nevents];
-   double Neutrinos [nevents][9];
-   float pandora_vtx [nevents][3];
+   //Int_t NEvents = 10000;
+
+   //double Muons [NEvents][12];
+   //double Pions [NEvents][12];
+   //double T [NEvents];
+   //double Neutrinos [NEvents][9];
+   double pandora_vtx [nevents][3];
    int pandora_pdg = 0;
    int vtx_contained = 0;
    int mc_vtx_contained = 0;
@@ -330,7 +332,7 @@ void TwoBKGDDaughters::Loop()
       for (Int_t i = 0; i < nevents; i++) {
          t->GetEntry(i);
 
-	 if (Event == event && Run == run && Subrun == subrun && (InteractionType != InteractionType_Check || (InteractionType == InteractionType_Check && CCNC != CCOrNC_Check)) /*&& CCNC == CCOrNC_Check*/ && is_track) {
+	 if (Event == event && Run == run && Subrun == subrun && (InteractionType != InteractionType_Check || (InteractionType == InteractionType_Check && CCNC != CCOrNC_Check)) && is_track) {
             Matched = true;
 	    //if (jentry%10 == 0) std::cout<<"We Matched!"<<std::endl; // This is to see if we are actually making it to this point in the Matched condition!
 	    if (CC_Selected == 1) ccselected = true;
@@ -347,7 +349,7 @@ void TwoBKGDDaughters::Loop()
 	    mc_vtx_contained = Mc_Vtx_Contained;
 	    theDoCA = DoCA;
 	    theVA = Vtx_Activity;
-	    if (mc_pdg == 13/* && generation == 2*/ && mc_neutrino == 1) { // If the track is a muon track, save four-momentum information
+	    /*if (mc_pdg == 13 && generation == 2 && mc_neutrino == 1) { // If the track is a muon track, save four-momentum information
                Muons[i][0] = mc_energy;
 	       Muons[i][1] = mc_px;
 	       Muons[i][2] = mc_py;
@@ -370,7 +372,7 @@ void TwoBKGDDaughters::Loop()
 	       Neutrinos[i][7] = CC_Selected;
 	       Neutrinos[i][8] = Mc_Vtx_Contained;
 	    }
-	    if (mc_pdg == 211/* && generation == 2*/ && mc_neutrino == 1) { // If the track is a pion track, save four-momentum information
+	    if (mc_pdg == 211 && generation == 2 && mc_neutrino == 1) { // If the track is a pion track, save four-momentum information
                Pions[i][0] = mc_energy;
 	       Pions[i][1] = mc_px;
 	       Pions[i][2] = mc_py;
@@ -383,7 +385,7 @@ void TwoBKGDDaughters::Loop()
 	       Pions[i][9] = track_dirx;
 	       Pions[i][10] = track_diry;
 	       Pions[i][11] = track_dirz;
-	    }
+	    }*/
 	 }
 
       }
