@@ -878,36 +878,39 @@ gCCCohConeAngle->SetTitle("gCCCohConeAngle");
 gCCCohConeAngle->SetName("gCCCohConeAngle");
 gCCCohConeAngle->SetFillColor(kWhite);
 gCCCohConeAngle->SetLineColor(kBlue);
+gCCCohConeAngle->SetLineStyle(kDashed);
 gCCCohConeAngle->SetLineWidth(2);
 TGraph* gCCCohConeAngleR = new TGraph(n, x, CCCohConeAngleR);
 gCCCohConeAngleR->SetTitle("gCCCohConeAngleR");
 gCCCohConeAngleR->SetName("gCCCohConeAngleR");
 gCCCohConeAngleR->SetFillColor(kWhite);
-gCCCohConeAngleR->SetLineColor(kRed);
+gCCCohConeAngleR->SetLineColor(kBlue);
 gCCCohConeAngleR->SetLineWidth(2);
 TGraph* gCCResConeAngle = new TGraph(n, x, CCResConeAngle);
 gCCResConeAngle->SetTitle("gCCResConeAngle");
 gCCResConeAngle->SetName("gCCResConeAngle");
 gCCResConeAngle->SetFillColor(kWhite);
-gCCResConeAngle->SetLineColor(kGreen);
+gCCResConeAngle->SetLineColor(kRed);
+gCCResConeAngle->SetLineStyle(kDashed);
 gCCResConeAngle->SetLineWidth(2);
 TGraph* gCCResConeAngleR = new TGraph(n, x, CCResConeAngleR);
 gCCResConeAngleR->SetTitle("gCCResConeAngleR");
 gCCResConeAngleR->SetName("gCCResConeAngleR");
 gCCResConeAngleR->SetFillColor(kWhite);
-gCCResConeAngleR->SetLineColor(kYellow);
+gCCResConeAngleR->SetLineColor(kRed);
 gCCResConeAngleR->SetLineWidth(2);
 TGraph* gOtherConeAngle = new TGraph(n, x, OtherConeAngle);
 gOtherConeAngle->SetTitle("gOtherConeAngle");
 gOtherConeAngle->SetName("gOtherConeAngle");
 gOtherConeAngle->SetFillColor(kWhite);
 gOtherConeAngle->SetLineColor(kBlack);
+gOtherConeAngle->SetLineStyle(kDashed);
 gOtherConeAngle->SetLineWidth(2);
 TGraph* gOtherConeAngleR = new TGraph(n, x, OtherConeAngleR);
 gOtherConeAngleR->SetTitle("gOtherConeAngleR");
 gOtherConeAngleR->SetName("gOtherConeAngleR");
 gOtherConeAngleR->SetFillColor(kWhite);
-gOtherConeAngleR->SetLineColor(kViolet);
+gOtherConeAngleR->SetLineColor(kBlack);
 gOtherConeAngleR->SetLineWidth(2);
 
 TCanvas *c24 = new TCanvas("c24", "Cone Angle TGraphs");
@@ -961,36 +964,39 @@ hRecoConeAngleOther->Scale(1/hRecoConeAngleOther->Integral());
 
 
 hTrueConeAngle->SetLineColor(kBlue);
-hTrueConeAngle->SetLineWidth(2);
+hTrueConeAngle->SetLineStyle(kDashed);
+hTrueConeAngle->SetLineWidth(3);
 hTrueConeAngle->SetFillColor(kBlue);
 hTrueConeAngle->SetFillStyle(3005);
 
-hRecoConeAngle->SetLineColor(kRed);
-hRecoConeAngle->SetLineWidth(2);
-hRecoConeAngle->SetFillColor(kRed);
-hRecoConeAngle->SetFillStyle(3006);
+hRecoConeAngle->SetLineColor(kBlue);
+hRecoConeAngle->SetLineWidth(3);
+hRecoConeAngle->SetFillColor(kBlue);
+hRecoConeAngle->SetFillStyle(3003);
 
 
-hTrueConeAngleCCRes->SetLineColor(kGreen);
-hTrueConeAngleCCRes->SetLineWidth(2);
-hTrueConeAngleCCRes->SetFillColor(kGreen);
+hTrueConeAngleCCRes->SetLineColor(kRed);
+hTrueConeAngleCCRes->SetLineStyle(kDashed);
+hTrueConeAngleCCRes->SetLineWidth(3);
+hTrueConeAngleCCRes->SetFillColor(kRed);
 hTrueConeAngleCCRes->SetFillStyle(3005);
 
-hRecoConeAngleCCRes->SetLineColor(kYellow);
-hRecoConeAngleCCRes->SetLineWidth(2);
-hRecoConeAngleCCRes->SetFillColor(kYellow);
-hRecoConeAngleCCRes->SetFillStyle(3006);
+hRecoConeAngleCCRes->SetLineColor(kRed);
+hRecoConeAngleCCRes->SetLineWidth(3);
+hRecoConeAngleCCRes->SetFillColor(kRed);
+hRecoConeAngleCCRes->SetFillStyle(3003);
 
 
 hTrueConeAngleOther->SetLineColor(kBlack);
-hTrueConeAngleOther->SetLineWidth(2);
+hTrueConeAngleOther->SetLineStyle(kDashed);
+hTrueConeAngleOther->SetLineWidth(3);
 hTrueConeAngleOther->SetFillColor(kBlack);
 hTrueConeAngleOther->SetFillStyle(3005);
 
-hRecoConeAngleOther->SetLineColor(kViolet);
-hRecoConeAngleOther->SetLineWidth(2);
-hRecoConeAngleOther->SetFillColor(kViolet);
-hRecoConeAngleOther->SetFillStyle(3006);
+hRecoConeAngleOther->SetLineColor(kBlack);
+hRecoConeAngleOther->SetLineWidth(3);
+hRecoConeAngleOther->SetFillColor(kBlack);
+hRecoConeAngleOther->SetFillStyle(3003);
 
 
 hTrueConeAngle->GetXaxis()->SetTitle("Cone Angle [Degrees]");
@@ -1078,36 +1084,39 @@ gCCCohDoCA->SetTitle("gCCCohDoCA");
 gCCCohDoCA->SetName("gCCCohDoCA");
 gCCCohDoCA->SetFillColor(kWhite);
 gCCCohDoCA->SetLineColor(kBlue);
+gCCCohDoCA->SetLineStyle(kDashed);
 gCCCohDoCA->SetLineWidth(2);
 TGraph* gCCCohDoCAR = new TGraph(m, y, CCCohDoCAR);
 gCCCohDoCAR->SetTitle("gCCCohDoCAR");
 gCCCohDoCAR->SetName("gCCCohDoCAR");
 gCCCohDoCAR->SetFillColor(kWhite);
-gCCCohDoCAR->SetLineColor(kRed);
+gCCCohDoCAR->SetLineColor(kBlue);
 gCCCohDoCAR->SetLineWidth(2);
 TGraph* gCCResDoCA = new TGraph(m, y, CCResDoCA);
 gCCResDoCA->SetTitle("gCCResDoCA");
 gCCResDoCA->SetName("gCCResDoCA");
 gCCResDoCA->SetFillColor(kWhite);
-gCCResDoCA->SetLineColor(kGreen);
+gCCResDoCA->SetLineColor(kRed);
+gCCResDoCA->SetLineStyle(kDashed);
 gCCResDoCA->SetLineWidth(2);
 TGraph* gCCResDoCAR = new TGraph(m, y, CCResDoCAR);
 gCCResDoCAR->SetTitle("gCCResDoCAR");
 gCCResDoCAR->SetName("gCCResDoCAR");
 gCCResDoCAR->SetFillColor(kWhite);
-gCCResDoCAR->SetLineColor(kYellow);
+gCCResDoCAR->SetLineColor(kRed);
 gCCResDoCAR->SetLineWidth(2);
 TGraph* gOtherDoCA = new TGraph(m, y, OtherDoCA);
 gOtherDoCA->SetTitle("gOtherDoCA");
 gOtherDoCA->SetName("gOtherDoCA");
 gOtherDoCA->SetFillColor(kWhite);
 gOtherDoCA->SetLineColor(kBlack);
+gOtherDoCA->SetLineStyle(kDashed);
 gOtherDoCA->SetLineWidth(2);
 TGraph* gOtherDoCAR = new TGraph(m, y, OtherDoCAR);
 gOtherDoCAR->SetTitle("gOtherDoCAR");
 gOtherDoCAR->SetName("gOtherDoCAR");
 gOtherDoCAR->SetFillColor(kWhite);
-gOtherDoCAR->SetLineColor(kViolet);
+gOtherDoCAR->SetLineColor(kBlack);
 gOtherDoCAR->SetLineWidth(2);
 
 TCanvas *c25 = new TCanvas("c25", "DoCA TGraphs");
@@ -1161,35 +1170,38 @@ hRecoDoCAOther->Scale(1/hRecoDoCAOther->Integral());
 
 
 hTrueDoCA->SetLineColor(kBlue);
+hTrueDoCA->SetLineStyle(kDashed);
 hTrueDoCA->SetLineWidth(2);
 hTrueDoCA->SetFillColor(kBlue);
 hTrueDoCA->SetFillStyle(3005);
 
-hRecoDoCA->SetLineColor(kRed);
+hRecoDoCA->SetLineColor(kBlue);
 hRecoDoCA->SetLineWidth(2);
-hRecoDoCA->SetFillColor(kRed);
+hRecoDoCA->SetFillColor(kBlue);
 hRecoDoCA->SetFillStyle(3006);
 
 
-hTrueDoCACCRes->SetLineColor(kGreen);
+hTrueDoCACCRes->SetLineColor(kRed);
+hTrueDoCACCRes->SetLineStyle(kDashed);
 hTrueDoCACCRes->SetLineWidth(2);
-hTrueDoCACCRes->SetFillColor(kGreen);
+hTrueDoCACCRes->SetFillColor(kRed);
 hTrueDoCACCRes->SetFillStyle(3005);
 
-hRecoDoCACCRes->SetLineColor(kYellow);
+hRecoDoCACCRes->SetLineColor(kRed);
 hRecoDoCACCRes->SetLineWidth(2);
-hRecoDoCACCRes->SetFillColor(kYellow);
+hRecoDoCACCRes->SetFillColor(kRed);
 hRecoDoCACCRes->SetFillStyle(3006);
 
 
 hTrueDoCAOther->SetLineColor(kBlack);
+hTrueDoCAOther->SetLineStyle(kDashed);
 hTrueDoCAOther->SetLineWidth(2);
 hTrueDoCAOther->SetFillColor(kBlack);
 hTrueDoCAOther->SetFillStyle(3005);
 
-hRecoDoCAOther->SetLineColor(kViolet);
+hRecoDoCAOther->SetLineColor(kBlack);
 hRecoDoCAOther->SetLineWidth(2);
-hRecoDoCAOther->SetFillColor(kViolet);
+hRecoDoCAOther->SetFillColor(kBlack);
 hRecoDoCAOther->SetFillStyle(3006);
 
 
@@ -1288,19 +1300,19 @@ hRecoVA2CCRes->Scale(1/hRecoVA2CCRes->Integral());
 hRecoVA2Other->Scale(1/hRecoVA2Other->Integral());
 hRecoVA2->Scale(1/hRecoVA2->Integral());
 
-hRecoVA2CCRes->SetLineColor(kYellow);
+hRecoVA2CCRes->SetLineColor(kRed);
 hRecoVA2CCRes->SetLineWidth(2);
-hRecoVA2CCRes->SetFillColor(kYellow);
+hRecoVA2CCRes->SetFillColor(kRed);
 hRecoVA2CCRes->SetFillStyle(3005);
 
-hRecoVA2Other->SetLineColor(kViolet);
+hRecoVA2Other->SetLineColor(kBlack);
 hRecoVA2Other->SetLineWidth(2);
-hRecoVA2Other->SetFillColor(kViolet);
+hRecoVA2Other->SetFillColor(kBlack);
 hRecoVA2Other->SetFillStyle(3006);
 
-hRecoVA2->SetLineColor(kRed);
+hRecoVA2->SetLineColor(kBlue);
 hRecoVA2->SetLineWidth(2);
-hRecoVA2->SetFillColor(kRed);
+hRecoVA2->SetFillColor(kBlue);
 hRecoVA2->SetFillStyle(3007);
 
 hRecoVA2->GetXaxis()->SetTitle("Summed Hit Charge within VA Bubble [ADC]");
