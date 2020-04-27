@@ -111,7 +111,7 @@ void TwoBKGDEvent::Loop()
    // === Setting Events to Look At ===
    // =================================
    int CCOrNC_Check = 0; // 0 means CC and 1 means NC
-   int InteractionType_Check = 3; // 1 is for RES and 3 is for Coh
+   int InteractionType_Check = 0; // 0 is for QE 1 is for RES 2 is for DIS and 3 is for Coh
    // =================================
 
 
@@ -121,7 +121,8 @@ void TwoBKGDEvent::Loop()
    //TFile f("EventNtuple.root", "RECREATE");
    //TFile f("CCInclusive.root", "RECREATE");
    //TFile f("CCResEventNtuple.root", "RECREATE");
-   TFile f("OtherEventNtuple.root", "RECREATE");
+   TFile f("CCQEEventNtuple.root", "CREATE");
+   //TFile f("OtherEventNtuple.root", "RECREATE");
 
 
    // Initializing the Ntuple
@@ -289,7 +290,7 @@ void TwoBKGDEvent::Loop()
       //if (mc_nu_ccnc == 0 && mc_nu_pdg == 14 && num_primary_daughters >= 2) CountingBefore = CountingBefore + 1;
       if (nu_mu_cc_selected) hCCInclusiveAfterNuEnergy->Fill(mc_nu_energy);
 
-      if (/*mc_nu_ccnc != CCOrNC_Check && mc_nu_interaction_type != InteractionType_Check*/(mc_nu_interaction_type != InteractionType_Check || (mc_nu_interaction_type == InteractionType_Check && mc_nu_ccnc != CCOrNC_Check)) && mc_nu_pdg == 14/* && num_primary_daughters >= 2*/) { // set mc_nu_interaction_type back to 3 for Coh, but 1 is Res
+      if (mc_nu_interaction_type == InteractionType_Check && mc_nu_ccnc == CCOrNC_Check && mc_nu_pdg == 14) { // set mc_nu_interaction_type back to 3 for Coh, but 1 is Res
       //if (mc_nu_ccnc == 0 && mc_nu_pdg == 14 && num_primary_daughters >= 2) {
          EventNtuple.Fill(); // Filling the EventNtuple with the information I need strictly for CC-Coh Events
 	 hCCCohOrNot->Fill(1);
