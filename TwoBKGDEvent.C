@@ -123,7 +123,7 @@ void TwoBKGDEvent::Loop()
    //TFile f("CCQEEventNtuple.root", "RECREATE");
    //TFile f("CCResEventNtuple.root", "RECREATE");
    //TFile f("OtherEventNtuple.root", "RECREATE");
-   TFile f("AllEventNtuple.root", "CREATE");
+   TFile f("AllEventNtuple.root", "RECREATE");
 
 
    // Initializing the Ntuple

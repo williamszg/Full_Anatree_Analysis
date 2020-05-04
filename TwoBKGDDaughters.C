@@ -70,6 +70,9 @@ TH1D *hRecoVA2 = new TH1D("hRecoVA2", "The Vertex Activity from Reconstructed In
 TH1D *hRecoVAAll = new TH1D("hRecoVAAll", "The Vertex Activity from Reconstructed Information from all Planes", 1000, 0, 50000);
 
 TH1D *hPionOrMuonIsCandidate = new TH1D("hPionOrMuonIsCandidate", "Whether a Pion or a Muon or some other particle was selected as the Muon Candidate", 3, -0.5, 2.5);
+
+TH1D *hTrueOpeningAngle = new TH1D("hTrueOpeningAngle", "The Opening Angle from MC Truth Information", 181, -0.5, 180.5);
+TH1D *hRecoOpeningAngle = new TH1D("hRecoOpeningAngle", "The Opening Angle from Reconstructed Information", 181, -0.5, 180.5);
 // -------------------------------
 
 
@@ -86,6 +89,19 @@ double ConeAngle(double x1, double y1, double z1, double x2, double y2, double z
   return coneangle;
 }
 // ---------------------------
+
+
+// ------------------------------
+// --- Opening Angle Function ---
+// ------------------------------
+double OpeningAngle(double x1, double y1, double z1, double x2, double y2, double z2)
+{
+  TVector3 v1(x1, y1, z1);
+  TVector3 v2(x2, y2, z2);
+  Double_t openingangle = v1.Angle(v2);
+  return openingangle;
+}
+// ------------------------------
 
 
 // -------------------------------------------
@@ -243,6 +259,22 @@ void TwoBKGDDaughters::Loop()
 
    double ConeAngleCutValue = 40;
    // --------------------------------------------
+
+   // -----------------------------------------------
+   // --- The Opening Angle Calculation Variables ---
+   // -----------------------------------------------
+   double OAValues [6];
+
+   OAValues[0] = 100;
+   OAValues[1] = 100;
+   OAValues[2] = 100;
+   OAValues[3] = 100;
+   OAValues[4] = 100;
+   OAValues[5] = 100;
+
+   double TrueOA = -99;
+   double RecoOA = -99;
+   // -----------------------------------------------
 
    // --------------------------------------
    // --- The DoCA Calculation Variables ---
@@ -498,6 +530,12 @@ void TwoBKGDDaughters::Loop()
 		     TrueCA = -99;
 		     RecoCA = -99;
 		  }
+		  if (TrueOA != -99 && RecoOA != -99) {
+		     hTrueOpeningAngle->Fill(TrueOA);
+		     hRecoOpeningAngle->Fill(RecoOA);
+		     TrueOA = -99;
+		     RecoOA = -99;
+		  }
 		  //if (RecoDoCA <= DoCACutValue && RecoDoCA != -999) hCutByCutMuonCandidate->Fill(14);
 		  //if (theDoCA <= DoCACutValue && theDoCA != -999) hCutByCutMuonCandidate->Fill(14);
 		  if (TrueDoCA != -999 && RecoDoCA != -999) {
@@ -587,6 +625,8 @@ void TwoBKGDDaughters::Loop()
 	 if (PassedAllCuts) {
 	    double CAT = ConeAngle(CAValues[0], CAValues[1], CAValues[2], mc_px, mc_py, mc_pz)*180/PI;
 	    double CAR = ConeAngle(CAValues[3], CAValues[4], CAValues[5], track_dirx, track_diry, track_dirz)*180/PI;
+	    double OAT = OpeningAngle(OAValues[0], OAValues[1], OAValues[2], mc_px, mc_py, mc_pz)*180/PI;
+	    double OAR = OpeningAngle(OAValues[3], OAValues[4], OAValues[5], track_dirx, track_diry, track_dirz)*180/PI;
 	    double DoCAT = DoCAC(DoCAValues[0], DoCAValues[1], DoCAValues[2], mc_vx_sce, mc_vy_sce, mc_vz_sce);
 	    double DoCAR = DoCAC(DoCAValues[3], DoCAValues[4], DoCAValues[5], vx, vy, vz);
 	    if ((TrueCA == -99 && RecoCA == -99) || (CAT < TrueCA && CAR < RecoCA)) {
@@ -598,6 +638,16 @@ void TwoBKGDDaughters::Loop()
 	       CAValues[3] = track_dirx;
 	       CAValues[4] = track_diry;
 	       CAValues[5] = track_dirz;
+	    }
+	    if ((TrueOA == -99 && RecoOA == -99) || (OAT < TrueOA && OAR < RecoOA)) {
+	       TrueOA = OAT;
+	       RecoOA = OAR;
+	       OAValues[0] = mc_px;
+	       OAValues[1] = mc_py;
+	       OAValues[2] = mc_pz;
+	       OAValues[3] = track_dirx;
+	       OAValues[4] = track_diry;
+	       OAValues[5] = track_dirz;
 	    }
 	    if ((TrueDoCA == -999 && RecoDoCA == -999) || (DoCAT < TrueDoCA && DoCAR < RecoDoCA)) {
 	       TrueDoCA = DoCAT;
@@ -725,7 +775,7 @@ void TwoBKGDDaughters::Loop()
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
    //TFile *TDaughtersInfo = new TFile("Wouter_Daughter_Information.root", "RECREATE");
    //TFile *TDaughtersInfo = new TFile("Daughter_Information_CCCoh_Testing.root", "RECREATE");
-   TFile *TDaughtersInfo = new TFile("CCCoh_Daughter_Information.root", "CREATE");
+   TFile *TDaughtersInfo = new TFile("CCCoh_Daughter_Information.root", "RECREATE");
    //TFile *TDaughtersInfo = new TFile("CCQE_Daughter_Information.root", "RECREATE");
    //TFile *TDaughtersInfo = new TFile("CCRES_Daughter_Information.root", "RECREATE");
    //TFile *TDaughtersInfo = new TFile("CCDIS_Daughter_Information.root", "RECREATE");
@@ -792,6 +842,9 @@ void TwoBKGDDaughters::Loop()
    hRecoVAAll->Write();
 
    hPionOrMuonIsCandidate->Write();
+
+   hTrueOpeningAngle->Write();
+   hRecoOpeningAngle->Write();
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 }

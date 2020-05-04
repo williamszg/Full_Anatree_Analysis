@@ -107,11 +107,23 @@ void OneCCCohEvent::Loop()
    double CountingBefore = 0;
 
 
+   // =================================
+   // === Setting Events to Look At ===
+   // =================================
+   int CCOrNC_Check = 0; // 0 means CC and 1 means NC
+   int InteractionType_Check = 3; // 0 is for QE 1 is for RES 2 is for DIS and 3 is for Coh
+   // =================================
+
+
    // --------------------------------
    // --- Creating File for Ntuple ---
    // --------------------------------
    TFile f("EventNtuple.root", "RECREATE");
    //TFile f("CCInclusive.root", "RECREATE");
+   //TFile f("CCQEEventNtuple.root", "RECREATE");
+   //TFile f("CCResEventNtuple.root", "RECREATE");
+   //TFile f("OtherEventNtuple.root", "RECREATE");
+   //TFile f("AllEventNtuple.root", "RECREATE");
 
 
    // Initializing the Ntuple
@@ -148,8 +160,8 @@ void OneCCCohEvent::Loop()
 
    Long64_t nentries = fChain->GetEntriesFast();
 
-   int Nentries = nentries;
-   //int Nentries = 10000;
+   //int Nentries = nentries;
+   int Nentries = 83000;
 
    std::cout<<"|======================================|"<<std::endl;
    std::cout<<"     Number of Events = "<<nentries<<std::endl;
@@ -274,12 +286,13 @@ void OneCCCohEvent::Loop()
       
 
       hCCCohOrNot->Fill(0);
-      if (mc_nu_ccnc == 0 && mc_nu_pdg == 14/* && num_primary_daughters >= 2*/) hCCInclusiveBeforeNuEnergy->Fill(mc_nu_energy);
-      if (mc_nu_ccnc == 0 && mc_nu_pdg == 14 && mc_nu_interaction_type == 3/* && num_primary_daughters >= 2*/) CountingBefore = CountingBefore + 1; // set mc_nu_interaction_type back to 3 for Coh, but 1 is Res
+      if (mc_nu_ccnc == CCOrNC_Check && mc_nu_pdg == 14/* && num_primary_daughters >= 2*/) hCCInclusiveBeforeNuEnergy->Fill(mc_nu_energy);
+      if (mc_nu_ccnc == CCOrNC_Check && mc_nu_pdg == 14 && mc_nu_interaction_type == InteractionType_Check/* && num_primary_daughters >= 2*/) CountingBefore = CountingBefore + 1; // set mc_nu_interaction_type back to 3 for Coh, but 1 is Res
       //if (mc_nu_ccnc == 0 && mc_nu_pdg == 14 && num_primary_daughters >= 2) CountingBefore = CountingBefore + 1;
       if (nu_mu_cc_selected) hCCInclusiveAfterNuEnergy->Fill(mc_nu_energy);
 
-      if (mc_nu_ccnc == 0 && mc_nu_interaction_type == 3 && mc_nu_pdg == 14/* && num_primary_daughters >= 2*/) { // set mc_nu_interaction_type back to 3 for Coh, but 1 is Res
+      if (mc_nu_pdg == 14) {
+      //if (mc_nu_interaction_type == InteractionType_Check && mc_nu_ccnc == CCOrNC_Check && mc_nu_pdg == 14) { // set mc_nu_interaction_type back to 3 for Coh, but 1 is Res
       //if (mc_nu_ccnc == 0 && mc_nu_pdg == 14 && num_primary_daughters >= 2) {
          EventNtuple.Fill(); // Filling the EventNtuple with the information I need strictly for CC-Coh Events
 	 hCCCohOrNot->Fill(1);

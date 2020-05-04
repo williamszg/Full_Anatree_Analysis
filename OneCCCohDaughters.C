@@ -70,6 +70,9 @@ TH1D *hRecoVA2 = new TH1D("hRecoVA2", "The Vertex Activity from Reconstructed In
 TH1D *hRecoVAAll = new TH1D("hRecoVAAll", "The Vertex Activity from Reconstructed Information from all Planes", 1000, 0, 50000);
 
 TH1D *hPionOrMuonIsCandidate = new TH1D("hPionOrMuonIsCandidate", "Whether a Pion or a Muon or some other particle was selected as the Muon Candidate", 3, -0.5, 2.5);
+
+TH1D *hTrueOpeningAngle = new TH1D("hTrueOpeningAngle", "The Opening Angle from MC Truth Information", 181, -0.5, 180.5);
+TH1D *hRecoOpeningAngle = new TH1D("hRecoOpeningAngle", "The Opening Angle from Reconstructed Information", 181, -0.5, 180.5);
 // -------------------------------
 
 
@@ -86,6 +89,19 @@ double ConeAngle(double x1, double y1, double z1, double x2, double y2, double z
   return coneangle;
 }
 // ---------------------------
+
+
+// ------------------------------
+// --- Opening Angle Function ---
+// ------------------------------
+double OpeningAngle(double x1, double y1, double z1, double x2, double y2, double z2)
+{
+  TVector3 v1(x1, y1, z1);
+  TVector3 v2(x2, y2, z2);
+  Double_t openingangle = v1.Angle(v2);
+  return openingangle;
+}
+// ------------------------------
 
 
 // -------------------------------------------
@@ -119,6 +135,14 @@ void OneCCCohDaughters::Loop()
    if (fChain == 0) return;
 
 
+   // ==========================================
+   // === Selection Checks for Which Channel ===
+   // ==========================================
+   int CCOrNC_Check = 0; // 0 for CC and 1 for NC
+   int InteractionType_Check = 3; // 0 for QE 1 for Res 2 for DIS and 3 for Coh
+   // ==========================================
+
+
    int nPassedSelection = 0;
 
    // ------------------------------------------
@@ -126,6 +150,10 @@ void OneCCCohDaughters::Loop()
    // ------------------------------------------
    TFile *file = TFile::Open("EventNtuple.root");
    //TFile *file = TFile::Open("CCInclusive.root");
+   //TFile *file = TFile::Open("CCQEEventNtuple.root");
+   //TFile *file = TFile::Open("CCResEventNtuple.root");
+   //TFile *file = TFile::Open("OtherEventNtuple.root");
+   //TFile *file = TFile::Open("AllEventNtuple.root");
    TTree *t = (TTree*)file->Get("EventNtuple");
 
    int Event, Run, Subrun, CC_Selected, CCNC, InteractionType, Pandora_NuPDG, Vtx_Contained, Mc_Vtx_Contained;
@@ -158,11 +186,13 @@ void OneCCCohDaughters::Loop()
    std::cout<<"nevents from matched = "<<nevents<<std::endl;
    // ------------------------------------------
 
-   double Muons [nevents][12];
-   double Pions [nevents][12];
-   double T [nevents];
-   double Neutrinos [nevents][9];
-   float pandora_vtx [nevents][3];
+   //Int_t NEvents = 10000;
+
+   //double Muons [NEvents][12];
+   //double Pions [NEvents][12];
+   //double T [NEvents];
+   //double Neutrinos [NEvents][9];
+   double pandora_vtx [nevents][3];
    int pandora_pdg = 0;
    int vtx_contained = 0;
    int mc_vtx_contained = 0;
@@ -229,6 +259,22 @@ void OneCCCohDaughters::Loop()
 
    double ConeAngleCutValue = 40;
    // --------------------------------------------
+
+   // -----------------------------------------------
+   // --- The Opening Angle Calculation Variables ---
+   // -----------------------------------------------
+   double OAValues [6];
+
+   OAValues[0] = 100;
+   OAValues[1] = 100;
+   OAValues[2] = 100;
+   OAValues[3] = 100;
+   OAValues[4] = 100;
+   OAValues[5] = 100;
+
+   double TrueOA = -99;
+   double RecoOA = -99;
+   // -----------------------------------------------
 
    // --------------------------------------
    // --- The DoCA Calculation Variables ---
@@ -320,7 +366,8 @@ void OneCCCohDaughters::Loop()
       for (Int_t i = 0; i < nevents; i++) {
          t->GetEntry(i);
 
-	 if (Event == event && Run == run && Subrun == subrun && InteractionType == 3 && CCNC == 0 && is_track) {
+	 //if (Event == event && Run == run && Subrun == subrun && (InteractionType != InteractionType_Check || (InteractionType == InteractionType_Check && CCNC != CCOrNC_Check)) && is_track) {
+	 if (Event == event && Run == run && Subrun == subrun && InteractionType == InteractionType_Check && CCNC == CCOrNC_Check && is_track) {
             Matched = true;
 	    //if (jentry%10 == 0) std::cout<<"We Matched!"<<std::endl; // This is to see if we are actually making it to this point in the Matched condition!
 	    if (CC_Selected == 1) ccselected = true;
@@ -337,7 +384,7 @@ void OneCCCohDaughters::Loop()
 	    mc_vtx_contained = Mc_Vtx_Contained;
 	    theDoCA = DoCA;
 	    theVA = Vtx_Activity;
-	    if (mc_pdg == 13/* && generation == 2*/ && mc_neutrino == 1) { // If the track is a muon track, save four-momentum information
+	    /*if (mc_pdg == 13 && generation == 2 && mc_neutrino == 1) { // If the track is a muon track, save four-momentum information
                Muons[i][0] = mc_energy;
 	       Muons[i][1] = mc_px;
 	       Muons[i][2] = mc_py;
@@ -360,7 +407,7 @@ void OneCCCohDaughters::Loop()
 	       Neutrinos[i][7] = CC_Selected;
 	       Neutrinos[i][8] = Mc_Vtx_Contained;
 	    }
-	    if (mc_pdg == 211/* && generation == 2*/ && mc_neutrino == 1) { // If the track is a pion track, save four-momentum information
+	    if (mc_pdg == 211 && generation == 2 && mc_neutrino == 1) { // If the track is a pion track, save four-momentum information
                Pions[i][0] = mc_energy;
 	       Pions[i][1] = mc_px;
 	       Pions[i][2] = mc_py;
@@ -373,7 +420,7 @@ void OneCCCohDaughters::Loop()
 	       Pions[i][9] = track_dirx;
 	       Pions[i][10] = track_diry;
 	       Pions[i][11] = track_dirz;
-	    }
+	    }*/
 	 }
 
       }
@@ -483,6 +530,12 @@ void OneCCCohDaughters::Loop()
 		     TrueCA = -99;
 		     RecoCA = -99;
 		  }
+		  if (TrueOA != -99 && RecoOA != -99) {
+		     hTrueOpeningAngle->Fill(TrueOA);
+		     hRecoOpeningAngle->Fill(RecoOA);
+		     TrueOA = -99;
+		     RecoOA = -99;
+		  }
 		  //if (RecoDoCA <= DoCACutValue && RecoDoCA != -999) hCutByCutMuonCandidate->Fill(14);
 		  //if (theDoCA <= DoCACutValue && theDoCA != -999) hCutByCutMuonCandidate->Fill(14);
 		  if (TrueDoCA != -999 && RecoDoCA != -999) {
@@ -572,6 +625,8 @@ void OneCCCohDaughters::Loop()
 	 if (PassedAllCuts) {
 	    double CAT = ConeAngle(CAValues[0], CAValues[1], CAValues[2], mc_px, mc_py, mc_pz)*180/PI;
 	    double CAR = ConeAngle(CAValues[3], CAValues[4], CAValues[5], track_dirx, track_diry, track_dirz)*180/PI;
+	    double OAT = OpeningAngle(OAValues[0], OAValues[1], OAValues[2], mc_px, mc_py, mc_pz)*180/PI;
+	    double OAR = OpeningAngle(OAValues[3], OAValues[4], OAValues[5], track_dirx, track_diry, track_dirz)*180/PI;
 	    double DoCAT = DoCAC(DoCAValues[0], DoCAValues[1], DoCAValues[2], mc_vx_sce, mc_vy_sce, mc_vz_sce);
 	    double DoCAR = DoCAC(DoCAValues[3], DoCAValues[4], DoCAValues[5], vx, vy, vz);
 	    if ((TrueCA == -99 && RecoCA == -99) || (CAT < TrueCA && CAR < RecoCA)) {
@@ -583,6 +638,16 @@ void OneCCCohDaughters::Loop()
 	       CAValues[3] = track_dirx;
 	       CAValues[4] = track_diry;
 	       CAValues[5] = track_dirz;
+	    }
+	    if ((TrueOA == -99 && RecoOA == -99) || (OAT < TrueOA && OAR < RecoOA)) {
+	       TrueOA = OAT;
+	       RecoOA = OAR;
+	       OAValues[0] = mc_px;
+	       OAValues[1] = mc_py;
+	       OAValues[2] = mc_pz;
+	       OAValues[3] = track_dirx;
+	       OAValues[4] = track_diry;
+	       OAValues[5] = track_dirz;
 	    }
 	    if ((TrueDoCA == -999 && RecoDoCA == -999) || (DoCAT < TrueDoCA && DoCAR < RecoDoCA)) {
 	       TrueDoCA = DoCAT;
@@ -710,6 +775,11 @@ void OneCCCohDaughters::Loop()
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
    TFile *TDaughtersInfo = new TFile("Wouter_Daughter_Information.root", "RECREATE");
    //TFile *TDaughtersInfo = new TFile("Daughter_Information_CCCoh_Testing.root", "RECREATE");
+   //TFile *TDaughtersInfo = new TFile("CCCoh_Daughter_Information.root", "RECREATE");
+   //TFile *TDaughtersInfo = new TFile("CCQE_Daughter_Information.root", "RECREATE");
+   //TFile *TDaughtersInfo = new TFile("CCRES_Daughter_Information.root", "RECREATE");
+   //TFile *TDaughtersInfo = new TFile("CCDIS_Daughter_Information.root", "RECREATE");
+   //TFile *TDaughtersInfo = new TFile("Other_Daughter_Information.root", "RECREATE");
 
    hMuonMuonChi2->Write();
    hMuonProtonChi2->Write();
@@ -772,6 +842,9 @@ void OneCCCohDaughters::Loop()
    hRecoVAAll->Write();
 
    hPionOrMuonIsCandidate->Write();
+
+   hTrueOpeningAngle->Write();
+   hRecoOpeningAngle->Write();
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 }
