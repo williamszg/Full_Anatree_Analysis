@@ -7,6 +7,7 @@ TFile *f5 = new TFile("CCQE_Daughter_Information.root"); // <-- File for CCQE Da
 TFile *f6 = new TFile("NC_Daughter_Information.root"); // <-- File for NC Daughters Tree
 TFile *f7 = new TFile("CCDIS_Daughter_Information.root"); // <-- File for CCDIS Daughters Tree
 TFile *f8 = new TFile("CCCoh_Daughter_Information.root"); // <-- File for CCCoh Daughters Tree for Purity Plot!
+TFile *f9 = new TFile("CCInc_Daughter_Information.root"); // <-- File for CCInclusive Daughters Tree
 
 
 TH1D *hMuonMuonChi2 = (TH1D*)f->Get("hMuonMuonChi2");
@@ -220,6 +221,28 @@ hCutByCutMuonCandidateNC->Sumw2();
 hCutByCutMuonCandidateDivideNC->Sumw2();
 hCutByCutMuonCandidateCCCoh->Sumw2();
 hCutByCutMuonCandidateDivideCCCoh->Sumw2();
+
+TH1D *hTrueOpeningAngleCCRes = (TH1D*)f3->Get("hTrueOpeningAngle");
+TH1D *hRecoOpeningAngleCCRes = (TH1D*)f3->Get("hRecoOpeningAngle");
+TH1D *hTrueOpeningAngleCCDIS = (TH1D*)f7->Get("hTrueOpeningAngle");
+TH1D *hRecoOpeningAngleCCDIS = (TH1D*)f7->Get("hRecoOpeningAngle");
+TH1D *hTrueOpeningAngleCCInc = (TH1D*)f9->Get("hTrueOpeningAngle");
+TH1D *hRecoOpeningAngleCCInc = (TH1D*)f9->Get("hRecoOpeningAngle");
+TH1D *hTrueOpeningAngleCCQE = (TH1D*)f5->Get("hTrueOpeningAngle");
+TH1D *hRecoOpeningAngleCCQE = (TH1D*)f5->Get("hRecoOpeningAngle");
+TH1D *hTrueOpeningAngleCCCoh = (TH1D*)f->Get("hTrueOpeningAngle");
+TH1D *hRecoOpeningAngleCCCoh = (TH1D*)f->Get("hRecoOpeningAngle");
+
+hTrueOpeningAngleCCRes->Sumw2();
+hRecoOpeningAngleCCRes->Sumw2();
+hTrueOpeningAngleCCDIS->Sumw2();
+hRecoOpeningAngleCCDIS->Sumw2();
+hTrueOpeningAngleCCInc->Sumw2();
+hRecoOpeningAngleCCInc->Sumw2();
+hTrueOpeningAngleCCQE->Sumw2();
+hRecoOpeningAngleCCQE->Sumw2();
+hTrueOpeningAngleCCCoh->Sumw2();
+hRecoOpeningAngleCCCoh->Sumw2();
 
 // Creating the Stacked Histogram
 THStack *hRecoVAStacked = new THStack("hRecoVAStacked", "Hit Charges from All Planes Stacked for CC-Coh Events");
@@ -1936,6 +1959,125 @@ leg23->AddEntry(hRecoVA2CCDIS,"CCDIS Reco");
 leg23->AddEntry(hRecoVA2Other,"Other Reco");
 leg23->AddEntry(hRecoVA2NC,"NC Reco");
 leg23->Draw();
+
+
+
+TCanvas *c27 = new TCanvas("c27", "The True and Reconstructed Opening Angles", 2);
+c27->SetTicks();
+c27->SetFillColor(kWhite);
+
+// Area normalzing the plot 
+hTrueOpeningAngleCCCoh->Scale(1/hTrueOpeningAngleCCCoh->Integral());
+hRecoOpeningAngleCCCoh->Scale(1/hRecoOpeningAngleCCCoh->Integral());
+hTrueOpeningAngleCCInc->Scale(1/hTrueOpeningAngleCCInc->Integral());
+hRecoOpeningAngleCCInc->Scale(1/hRecoOpeningAngleCCInc->Integral());
+hTrueOpeningAngleCCQE->Scale(1/hTrueOpeningAngleCCQE->Integral());
+hRecoOpeningAngleCCQE->Scale(1/hRecoOpeningAngleCCQE->Integral());
+hTrueOpeningAngleCCRes->Scale(1/hTrueOpeningAngleCCRes->Integral());
+hRecoOpeningAngleCCRes->Scale(1/hRecoOpeningAngleCCRes->Integral());
+hTrueOpeningAngleCCDIS->Scale(1/hTrueOpeningAngleCCDIS->Integral());
+hRecoOpeningAngleCCDIS->Scale(1/hRecoOpeningAngleCCDIS->Integral());
+
+
+hTrueOpeningAngleCCCoh->SetLineColor(kBlue);
+hTrueOpeningAngleCCCoh->SetLineStyle(kDashed);
+hTrueOpeningAngleCCCoh->SetLineWidth(3);
+hTrueOpeningAngleCCCoh->SetFillColor(kBlue);
+hTrueOpeningAngleCCCoh->SetFillStyle(3005);
+
+hRecoOpeningAngleCCCoh->SetLineColor(kBlue);
+hRecoOpeningAngleCCCoh->SetLineWidth(3);
+hRecoOpeningAngleCCCoh->SetFillColor(kBlue);
+hRecoOpeningAngleCCCoh->SetFillStyle(3003);
+
+
+hTrueOpeningAngleCCQE->SetLineColor(kViolet);
+hTrueOpeningAngleCCQE->SetLineStyle(kDashed);
+hTrueOpeningAngleCCQE->SetLineWidth(3);
+hTrueOpeningAngleCCQE->SetFillColor(kViolet);
+hTrueOpeningAngleCCQE->SetFillStyle(3005);
+
+hRecoOpeningAngleCCQE->SetLineColor(kViolet);
+hRecoOpeningAngleCCQE->SetLineWidth(3);
+hRecoOpeningAngleCCQE->SetFillColor(kViolet);
+hRecoOpeningAngleCCQE->SetFillStyle(3003);
+
+
+hTrueOpeningAngleCCRes->SetLineColor(kRed);
+hTrueOpeningAngleCCRes->SetLineStyle(kDashed);
+hTrueOpeningAngleCCRes->SetLineWidth(3);
+hTrueOpeningAngleCCRes->SetFillColor(kRed);
+hTrueOpeningAngleCCRes->SetFillStyle(3005);
+
+hRecoOpeningAngleCCRes->SetLineColor(kRed);
+hRecoOpeningAngleCCRes->SetLineWidth(3);
+hRecoOpeningAngleCCRes->SetFillColor(kRed);
+hRecoOpeningAngleCCRes->SetFillStyle(3003);
+
+
+hTrueOpeningAngleCCDIS->SetLineColor(kOrange);
+hTrueOpeningAngleCCDIS->SetLineStyle(kDashed);
+hTrueOpeningAngleCCDIS->SetLineWidth(3);
+hTrueOpeningAngleCCDIS->SetFillColor(kOrange);
+hTrueOpeningAngleCCDIS->SetFillStyle(3005);
+
+hRecoOpeningAngleCCDIS->SetLineColor(kOrange);
+hRecoOpeningAngleCCDIS->SetLineWidth(3);
+hRecoOpeningAngleCCDIS->SetFillColor(kOrange);
+hRecoOpeningAngleCCDIS->SetFillStyle(3003);
+
+
+hTrueOpeningAngleCCInc->SetLineColor(kGray);
+hTrueOpeningAngleCCInc->SetLineStyle(kDashed);
+hTrueOpeningAngleCCInc->SetLineWidth(3);
+hTrueOpeningAngleCCInc->SetFillColor(kGray);
+hTrueOpeningAngleCCInc->SetFillStyle(3005);
+
+hRecoOpeningAngleCCInc->SetLineColor(kGray);
+hRecoOpeningAngleCCInc->SetLineWidth(3);
+hRecoOpeningAngleCCInc->SetFillColor(kGray);
+hRecoOpeningAngleCCInc->SetFillStyle(3003);
+
+
+hTrueOpeningAngleCCCoh->GetXaxis()->SetTitle("Opening Angle [Degrees]");
+hTrueOpeningAngleCCCoh->GetXaxis()->CenterTitle();
+//hTrueOpeningAngleCCCoh->GetXaxis()->SetRangeUser(-20.5,20.5);
+
+hTrueOpeningAngleCCCoh->GetYaxis()->SetTitle("Number of Events");
+hTrueOpeningAngleCCCoh->GetYaxis()->CenterTitle();
+
+hTrueOpeningAngleCCCoh->Draw("histo");
+hRecoOpeningAngleCCCoh->Draw("histosame");
+hTrueOpeningAngleCCQE->Draw("histosame");
+hRecoOpeningAngleCCQE->Draw("histosame");
+hTrueOpeningAngleCCRes->Draw("histosame");
+hRecoOpeningAngleCCRes->Draw("histosame");
+hTrueOpeningAngleCCDIS->Draw("histosame");
+hRecoOpeningAngleCCDIS->Draw("histosame");
+hTrueOpeningAngleCCInc->Draw("histosame");
+hRecoOpeningAngleCCInc->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg27 = new TLegend();
+leg27 = new TLegend(0.58,0.65,1.00,1.00);
+leg27->SetTextSize(0.04);
+leg27->SetTextAlign(12);
+leg27->SetFillColor(kWhite);
+leg27->SetLineColor(kWhite);
+leg27->SetShadowColor(kWhite);
+leg27->SetHeader("Cone Angles");
+leg27->AddEntry(hTrueOpeningAngleCCCoh,"CCCoh True");
+leg27->AddEntry(hRecoOpeningAngleCCCoh,"CCCoh Reco");
+leg27->AddEntry(hTrueOpeningAngleCCQE,"CCQE True");
+leg27->AddEntry(hRecoOpeningAngleCCQE,"CCQE Reco");
+leg27->AddEntry(hTrueOpeningAngleCCRes,"CCRes True");
+leg27->AddEntry(hRecoOpeningAngleCCRes,"CCRes Reco");
+leg27->AddEntry(hTrueOpeningAngleCCDIS,"CCDIS True");
+leg27->AddEntry(hRecoOpeningAngleCCDIS,"CCDIS Reco");
+leg27->AddEntry(hTrueOpeningAngleCCInc,"CCInc True");
+leg27->AddEntry(hRecoOpeningAngleCCInc,"CCInc Reco");
+leg27->Draw();
 
 
 
