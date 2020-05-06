@@ -186,11 +186,11 @@ OneCCCohDaughters::OneCCCohDaughters(TTree *tree) : fChain(0)
 // if parameter tree is not specified (or zero), connect the file
 // used to generate this class and read the Tree.
    if (tree == 0) {
-      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("NuCCanalyser_CCCoh_1.root");
+      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("/pnfs/uboone/persistent/users/zwilliam/cccoh_zgrw_new_sample/cccoh_zgrw_full/NuCCanalyser_CCCoh_3.root");
       if (!f || !f->IsOpen()) {
-         f = new TFile("NuCCanalyser_CCCoh_1.root");
+         f = new TFile("/pnfs/uboone/persistent/users/zwilliam/cccoh_zgrw_new_sample/cccoh_zgrw_full/NuCCanalyser_CCCoh_3.root");
       }
-      TDirectory * dir = (TDirectory*)f->Get("NuCCanalyser_CCCoh_1.root:/NuCCanalyzer");
+      TDirectory * dir = (TDirectory*)f->Get("/pnfs/uboone/persistent/users/zwilliam/cccoh_zgrw_new_sample/cccoh_zgrw_full/NuCCanalyser_CCCoh_3.root:/NuCCanalyzer");
       dir->GetObject("Daughters",tree);
 
    }
