@@ -51,8 +51,8 @@ TH1D *hPassedNuEnergy = new TH1D("hPassedNuEnergy", "CC-Coh Neutrino Energy for 
 TH1D *hMatchedT = new TH1D("hMatchedT", "CC-Coh |t| for Matched Events", 500, 0, 0.25);
 TH1D *hPassedT = new TH1D("hPassedT", "CC-Coh |t| for Events That Passed Selection", 500, 0, 0.25);
 
-TH1D *hCutByCutMuonCandidate = new TH1D("hCutByCutMuonCandidate", "The Cut by Cut Efficiency of the CC-Inclusive Muon Candidate Selection for CC-Coh Events", 15, -0.5, 14.5);
-TH1D *hCutByCutMuonCandidateDivide = new TH1D("hCutByCutMuonCandidateDivide", "The Cut by Cut Efficiency of the CC-Inclusive Muon Candidate Selection for CC-Coh Events Denominator", 15, -0.5, 14.5);
+TH1D *hCutByCutMuonCandidate = new TH1D("hCutByCutMuonCandidate", "The Cut by Cut Efficiency of the CC-Inclusive Muon Candidate Selection for CC-Coh Events", 16, -0.5, 15.5);
+TH1D *hCutByCutMuonCandidateDivide = new TH1D("hCutByCutMuonCandidateDivide", "The Cut by Cut Efficiency of the CC-Inclusive Muon Candidate Selection for CC-Coh Events Denominator", 16, -0.5, 15.5);
 TH1D *hNumMuonCandidates = new TH1D("hNumMuonCandidates", "The Number of Tracks that Passed the Muon Candidacy", 31, -0.5, 30.5);
 
 TH1D *hFurtherEventSelection = new TH1D("hFurtherEventSelection", "The Event Selection That Takes Place After Muon Candidacy for CC-Coh", 5, -0.5, 4.5);
@@ -73,6 +73,9 @@ TH1D *hPionOrMuonIsCandidate = new TH1D("hPionOrMuonIsCandidate", "Whether a Pio
 
 TH1D *hTrueOpeningAngle = new TH1D("hTrueOpeningAngle", "The Opening Angle from MC Truth Information", 181, -0.5, 180.5);
 TH1D *hRecoOpeningAngle = new TH1D("hRecoOpeningAngle", "The Opening Angle from Reconstructed Information", 181, -0.5, 180.5);
+
+TH1D *hCutByCutMuonCandidate2 = new TH1D("hCutByCutMuonCandidate2", "The Cut by Cut Efficiency of the CC-Inclusive Muon Candidate Selection for CC-Coh Events", 16, -0.5, 15.5);
+TH1D *hCutByCutMuonCandidateDivide2 = new TH1D("hCutByCutMuonCandidateDivide2", "The Cut by Cut Efficiency of the CC-Inclusive Muon Candidate Selection for CC-Coh Events Denominator", 16, -0.5, 15.5);
 // -------------------------------
 
 
@@ -201,23 +204,25 @@ void OneCCCohDaughters::Loop()
    int RUN = 0;
    int SUB = 0;
 
-   bool cut1 = true; // Change back to false eventually!
+   bool cut1 = false; // Change back to false eventually!
    bool cut2 = false;
    bool cut3 = false;
-   bool cut4 = true; // Change back to false eventually!
+   bool cut4 = false; // Change back to false eventually!
    bool cut5 = false;
    bool cut6 = false;
    bool cut7 = false;
    bool PassedEvent = false;
+   bool PassedEvent2 = false;
    int nPassedEvent = 0;
    int AmountPassed = 0;
 
    bool cut8 = false;
-   bool cut9 = true; // Change back to false eventually!
+   bool cut9 = false; // Change back to false eventually!
    bool cut10 = false;
    bool cut11 = false;
    bool cut12 = false;
    bool PassedAllCuts = false;
+   bool PassedAllCuts2 = false;
 
    // ---------------------------------------------
    // --- The Cut Values Used in Muon Candidacy ---
@@ -306,6 +311,8 @@ void OneCCCohDaughters::Loop()
    double VARecoAll = 0;
 
    double theVA = 0;
+   
+   double VACutValue = 8000;
    // -------------------------------
 
    // --------------------------------------------
@@ -368,6 +375,7 @@ void OneCCCohDaughters::Loop()
 
 	 //if (Event == event && Run == run && Subrun == subrun && (InteractionType != InteractionType_Check || (InteractionType == InteractionType_Check && CCNC != CCOrNC_Check)) && is_track) {
 	 if (Event == event && Run == run && Subrun == subrun && InteractionType == InteractionType_Check && CCNC == CCOrNC_Check && is_track) {
+	 //if (Event == event && Run == run && Subrun == subrun && CCNC == CCOrNC_Check && is_track) {
             Matched = true;
 	    //if (jentry%10 == 0) std::cout<<"We Matched!"<<std::endl; // This is to see if we are actually making it to this point in the Matched condition!
 	    if (CC_Selected == 1) ccselected = true;
@@ -447,8 +455,9 @@ void OneCCCohDaughters::Loop()
 
          //if ((EVT != event && RUN != run && SUB != subrun) || (jentry == nentries - 1)) { // Original attempt at filling the histograms correctly
          if ((EventRunSubrun != event + run + subrun) || (jentry == nentries - 1)) { // New attempt at figuring out cut by cut efficiencies
-            if (nuenergy > 0.146) hMatchedNuEnergy->Fill(nuenergy);
+            hMatchedNuEnergy->Fill(nuenergy);
             hCutByCutMuonCandidate->Fill(0);
+            hCutByCutMuonCandidate2->Fill(0);
 	    hCutByCutMuonCandidateDivide->Fill(0); // Making the histogram to get the efficiency
 	    hCutByCutMuonCandidateDivide->Fill(1); // Making the histogram to get the efficiency
 	    hCutByCutMuonCandidateDivide->Fill(2); // Making the histogram to get the efficiency
@@ -464,25 +473,83 @@ void OneCCCohDaughters::Loop()
 	    hCutByCutMuonCandidateDivide->Fill(12); // Making the histogram to get the efficiency
 	    hCutByCutMuonCandidateDivide->Fill(13); // Making the histogram to get the efficiency
 	    hCutByCutMuonCandidateDivide->Fill(14); // Making the histogram to get the efficiency
+	    hCutByCutMuonCandidateDivide->Fill(15); // Making the histogram to get the efficiency
+	    hCutByCutMuonCandidateDivide2->Fill(0); // Making the histogram to get the efficiency
+	    hCutByCutMuonCandidateDivide2->Fill(1); // Making the histogram to get the efficiency
+	    hCutByCutMuonCandidateDivide2->Fill(2); // Making the histogram to get the efficiency
+	    hCutByCutMuonCandidateDivide2->Fill(3); // Making the histogram to get the efficiency
+	    hCutByCutMuonCandidateDivide2->Fill(4); // Making the histogram to get the efficiency
+	    hCutByCutMuonCandidateDivide2->Fill(5); // Making the histogram to get the efficiency
+	    hCutByCutMuonCandidateDivide2->Fill(6); // Making the histogram to get the efficiency
+	    hCutByCutMuonCandidateDivide2->Fill(7); // Making the histogram to get the efficiency
+	    hCutByCutMuonCandidateDivide2->Fill(8); // Making the histogram to get the efficiency
+	    hCutByCutMuonCandidateDivide2->Fill(9); // Making the histogram to get the efficiency
+	    hCutByCutMuonCandidateDivide2->Fill(10); // Making the histogram to get the efficiency
+	    hCutByCutMuonCandidateDivide2->Fill(11); // Making the histogram to get the efficiency
+	    hCutByCutMuonCandidateDivide2->Fill(12); // Making the histogram to get the efficiency
+	    hCutByCutMuonCandidateDivide2->Fill(13); // Making the histogram to get the efficiency
+	    hCutByCutMuonCandidateDivide2->Fill(14); // Making the histogram to get the efficiency
+	    hCutByCutMuonCandidateDivide2->Fill(15); // Making the histogram to get the efficiency
 	    hFurtherEventSelectionDivide->Fill(0); // Making the histogram to get the efficiency for the Further Selection
 	    hFurtherEventSelectionDivide->Fill(1); // Making the histogram to get the efficiency for the Further Selection
 	    hFurtherEventSelectionDivide->Fill(2); // Making the histogram to get the efficiency for the Further Selection
 	    hFurtherEventSelectionDivide->Fill(3); // Making the histogram to get the efficiency for the Further Selection
 	    hFurtherEventSelectionDivide->Fill(4); // Making the histogram to get the efficiency for the Further Selection
+            hCutByCutMuonCandidate->Fill(1);
+	    if(cut2) {
+	       hCutByCutMuonCandidate->Fill(2);
+	       if(cut3) {
+	          hCutByCutMuonCandidate->Fill(3);
+		  hCutByCutMuonCandidate->Fill(4);
+	          if (cut5) {
+		     hCutByCutMuonCandidate->Fill(5);
+	             if (cut6) {
+		        hCutByCutMuonCandidate->Fill(6);
+		     }
+		  }
+	       }
+	    }
 	    if (cut1) {
-               hCutByCutMuonCandidate->Fill(1);
+               hCutByCutMuonCandidate2->Fill(1);
 	       if(cut2) {
-	          hCutByCutMuonCandidate->Fill(2);
+	          hCutByCutMuonCandidate2->Fill(2);
 		  if(cut3) {
-	             hCutByCutMuonCandidate->Fill(3);
+	             hCutByCutMuonCandidate2->Fill(3);
 		     if(cut4) {
-		        hCutByCutMuonCandidate->Fill(4);
+		        hCutByCutMuonCandidate2->Fill(4);
 			if (cut5) {
-		           hCutByCutMuonCandidate->Fill(5);
+		           hCutByCutMuonCandidate2->Fill(5);
 			   if (cut6) {
-		              hCutByCutMuonCandidate->Fill(6);
+		              hCutByCutMuonCandidate2->Fill(6);
 		           }
 		        }
+		     }
+		  }
+	       }
+	    }
+	    if (PassedEvent2) {
+	       hCutByCutMuonCandidate2->Fill(7);
+	       if (cut8) {
+		  hCutByCutMuonCandidate2->Fill(8);
+		  if (cut9) {
+		     hCutByCutMuonCandidate2->Fill(9);
+		     if (cut10) {
+			hCutByCutMuonCandidate2->Fill(10);
+			if (cut11) {
+			   hCutByCutMuonCandidate2->Fill(11);
+		        }
+		     }
+	          }
+	       }
+	       if (PassedAllCuts2) {
+		  hCutByCutMuonCandidate2->Fill(12);
+		  if (RecoCA <= ConeAngleCutValue && RecoCA != -99) { 
+		     hCutByCutMuonCandidate2->Fill(13);
+		     if (theDoCA <= DoCACutValue && theDoCA != -999) {
+			hCutByCutMuonCandidate2->Fill(14);
+			if (theVA <= VACutValue) {
+			   hCutByCutMuonCandidate2->Fill(15);
+			}
 		     }
 		  }
 	       }
@@ -501,27 +568,28 @@ void OneCCCohDaughters::Loop()
 	       if (cut8) {
 	          hFurtherEventSelection->Fill(0);
 		  hCutByCutMuonCandidate->Fill(8);
-		  if (cut9) {
-		     hFurtherEventSelection->Fill(1);
-		     hCutByCutMuonCandidate->Fill(9);
-		     if (cut10) {
-		        hFurtherEventSelection->Fill(2);
-			hCutByCutMuonCandidate->Fill(10);
-			if (cut11) {
-			   hFurtherEventSelection->Fill(3);
-			   hCutByCutMuonCandidate->Fill(11);
-		        }
+		  hFurtherEventSelection->Fill(1);
+		  hCutByCutMuonCandidate->Fill(9);
+		  if (cut10) {
+		     hFurtherEventSelection->Fill(2);
+                     hCutByCutMuonCandidate->Fill(10);
+	             if (cut11) {
+			hFurtherEventSelection->Fill(3);
+			hCutByCutMuonCandidate->Fill(11);
 		     }
-	          }
+		  }
 	       }
 	       if (PassedAllCuts) {
 	          hFurtherEventSelection->Fill(4);
 		  hCutByCutMuonCandidate->Fill(12);
-		  if (nuenergy > 0.146) hPassedNuEnergy->Fill(nuenergy);
+		  hPassedNuEnergy->Fill(nuenergy);
 		  if (RecoCA <= ConeAngleCutValue && RecoCA != -99) { 
 		     hCutByCutMuonCandidate->Fill(13);
 		     if (theDoCA <= DoCACutValue && theDoCA != -999) {
 			hCutByCutMuonCandidate->Fill(14);
+			if (theVA <= VACutValue) {
+			   hCutByCutMuonCandidate->Fill(15);
+			}
 		     }
 		  }
 		  if (TrueCA != -99 && RecoCA != -99) {
@@ -545,17 +613,16 @@ void OneCCCohDaughters::Loop()
 		     hRecoDoCA->Fill(theDoCA);
 		     TrueDoCA = -999;
 		     RecoDoCA = -999;
-
-		     hRecoVA0->Fill(VAReco0);
-		     hRecoVA1->Fill(VAReco1);
-		     //hRecoVA2->Fill(VAReco2);
-		     hRecoVA2->Fill(theVA);
-		     hRecoVAAll->Fill(VARecoAll);
-		     VAReco0 = 0;
-		     VAReco1 = 0;
-		     VAReco2 = 0;
-		     VARecoAll = 0;
-		  }
+                  }
+		  hRecoVA0->Fill(VAReco0);
+		  hRecoVA1->Fill(VAReco1);
+		  //hRecoVA2->Fill(VAReco2);
+		  hRecoVA2->Fill(theVA);
+		  hRecoVAAll->Fill(VARecoAll);
+		  VAReco0 = 0;
+		  VAReco1 = 0;
+		  VAReco2 = 0;
+		  VARecoAll = 0;
 	       }
 	    }
 	    if (!PassedEvent && jentry != 0) hNumMuonCandidates->Fill(0);
@@ -563,33 +630,35 @@ void OneCCCohDaughters::Loop()
 	    RUN = run;
 	    SUB = subrun;
 	    EventRunSubrun = event + run + subrun;
-	    cut1 = true; // Change back to false eventually!
+	    cut1 = false; // Change back to false eventually!
 	    cut2 = false;
 	    cut3 = false;
-	    cut4 = true; // Change back to false eventually!
+	    cut4 = false; // Change back to false eventually!
 	    cut5 = false;
 	    cut6 = false;
 	    cut7 = false;
 	    PassedEvent = false;
+	    PassedEvent2 = false;
 	    cut8 = false;
-	    cut9 = true; // Change back to false eventually!
+	    cut9 = false; // Change back to false eventually!
 	    cut10 = false;
 	    cut11 = false;
 	    cut12 = false;
 	    PassedAllCuts = false;
+	    PassedAllCuts2 = false;
 	    CurrentCandidatePDG = 0;
 	    CurrentCandidateLength = 0;
          }
 
          if (!PassedEvent) {
             if (track_score > cut1Value) cut1 = true;
-	    else cut1 = true; // Change back to false eventually!
+	    else cut1 = false; // Change back to false eventually!
 	    if (vtx_distance < cut2Value) cut2 = true;
 	    else cut2 = false;
 	    if (generation == cut3Value) cut3 = true;
 	    else cut3 = false;
 	    if (track_length > cut4Value) cut4 = true;
-	    else cut4 = true; // Change back to false eventually!
+	    else cut4 = false; // Change back to false eventually!
             if (track_chi2_proton > cut5Value) cut5 = true;
 	    else cut5 = false;
 	    if (track_chi2_muon < cut6Value) cut6 = true;
@@ -599,7 +668,7 @@ void OneCCCohDaughters::Loop()
 	    if (pandora_pdg == cut21Value) cut8 = true;
 	    else cut8 = false;
 	    if (ParticleContainedStart == 1) cut9 = true;
-	    else cut9 = true; // Change back to false eventually!
+	    else cut9 = false; // Change back to false eventually!
 	    if (vtx_contained == 1) cut10 = true;
 	    else cut10 = false;
 	    if (nuFlash < cut241Value || top_score > cut242Value) cut11 = true;
@@ -608,9 +677,9 @@ void OneCCCohDaughters::Loop()
 	    else cut12 = false;
          }
 
-         if (PassedEvent || (/*track_score > cut1Value &&*/ vtx_distance < cut2Value && generation == cut3Value && /*track_length > cut4Value &&*/ track_chi2_proton > cut5Value && track_chi2_muon < cut6Value && track_chi2_proton/track_chi2_muon > cut7Value)) AmountPassed++;
+         if (PassedEvent || (track_score > cut1Value && vtx_distance < cut2Value && generation == cut3Value && track_length > cut4Value && track_chi2_proton > cut5Value && track_chi2_muon < cut6Value && track_chi2_proton/track_chi2_muon > cut7Value)) AmountPassed++;
 
-	 if (cut1 && cut2 && cut3 && cut4 && cut5 && cut6 && cut7) {
+	 if (cut2 && cut3 && cut5 && cut6 && cut7) {
             PassedEvent = true;
 	    if (track_length > CurrentCandidateLength) {
 	       CurrentCandidateLength = track_length;
@@ -618,9 +687,15 @@ void OneCCCohDaughters::Loop()
 	    }
 	 }
 	 else PassedEvent = false;
+	 if (cut1 && cut2 && cut3 && cut4 && cut5 && cut6 && cut7) {
+            PassedEvent2 = true;
+	 }
+	 else PassedEvent2 = false;
 
-	 if (cut1 && cut2 && cut3 && cut4 && cut5 && cut6 && cut7 && cut8 && cut9 && cut10 && cut11 && cut12) PassedAllCuts = true;
+	 if (cut2 && cut3 && cut5 && cut6 && cut7 && cut8 && cut10 && cut11 && cut12) PassedAllCuts = true;
 	 else PassedAllCuts = false;
+	 if (cut1 && cut2 && cut3 && cut4 && cut5 && cut6 && cut7 && cut8 && cut9 && cut10 && cut11 && cut12) PassedAllCuts2 = true;
+	 else PassedAllCuts2 = false;
 
 	 if (PassedAllCuts) {
 	    double CAT = ConeAngle(CAValues[0], CAValues[1], CAValues[2], mc_px, mc_py, mc_pz)*180/PI;
@@ -780,6 +855,7 @@ void OneCCCohDaughters::Loop()
    //TFile *TDaughtersInfo = new TFile("CCRES_Daughter_Information.root", "RECREATE");
    //TFile *TDaughtersInfo = new TFile("CCDIS_Daughter_Information.root", "RECREATE");
    //TFile *TDaughtersInfo = new TFile("Other_Daughter_Information.root", "RECREATE");
+   //TFile *TDaughtersInfo = new TFile("CCInc_Daughter_Information.root", "RECREATE");
 
    hMuonMuonChi2->Write();
    hMuonProtonChi2->Write();
@@ -845,6 +921,9 @@ void OneCCCohDaughters::Loop()
 
    hTrueOpeningAngle->Write();
    hRecoOpeningAngle->Write();
+
+   hCutByCutMuonCandidate2->Write();
+   hCutByCutMuonCandidateDivide2->Write();
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 }
