@@ -208,6 +208,8 @@ TH1D *hCutByCutMuonCandidateNC = (TH1D*)f6->Get("hCutByCutMuonCandidate");
 TH1D *hCutByCutMuonCandidateDivideNC = (TH1D*)f6->Get("hCutByCutMuonCandidateDivide");
 TH1D *hCutByCutMuonCandidateCCCoh = (TH1D*)f8->Get("hCutByCutMuonCandidate");
 TH1D *hCutByCutMuonCandidateDivideCCCoh = (TH1D*)f8->Get("hCutByCutMuonCandidateDivide");
+TH1D *hCutByCutMuonCandidateCCInc = (TH1D*)f9->Get("hCutByCutMuonCandidate");
+TH1D *hCutByCutMuonCandidateDivideCCInc = (TH1D*)f9->Get("hCutByCutMuonCandidateDivide");
 
 hCutByCutMuonCandidateCCQE->Sumw2();
 hCutByCutMuonCandidateDivideCCQE->Sumw2();
@@ -221,6 +223,8 @@ hCutByCutMuonCandidateNC->Sumw2();
 hCutByCutMuonCandidateDivideNC->Sumw2();
 hCutByCutMuonCandidateCCCoh->Sumw2();
 hCutByCutMuonCandidateDivideCCCoh->Sumw2();
+hCutByCutMuonCandidateCCInc->Sumw2();
+hCutByCutMuonCandidateDivideCCInc->Sumw2();
 
 TH1D *hTrueOpeningAngleCCRes = (TH1D*)f3->Get("hTrueOpeningAngle");
 TH1D *hRecoOpeningAngleCCRes = (TH1D*)f3->Get("hRecoOpeningAngle");
@@ -232,6 +236,8 @@ TH1D *hTrueOpeningAngleCCQE = (TH1D*)f5->Get("hTrueOpeningAngle");
 TH1D *hRecoOpeningAngleCCQE = (TH1D*)f5->Get("hRecoOpeningAngle");
 TH1D *hTrueOpeningAngleCCCoh = (TH1D*)f->Get("hTrueOpeningAngle");
 TH1D *hRecoOpeningAngleCCCoh = (TH1D*)f->Get("hRecoOpeningAngle");
+TH1D *hTrueOpeningAngleOther = (TH1D*)f4->Get("hTrueOpeningAngle");
+TH1D *hRecoOpeningAngleOther = (TH1D*)f4->Get("hRecoOpeningAngle");
 
 hTrueOpeningAngleCCRes->Sumw2();
 hRecoOpeningAngleCCRes->Sumw2();
@@ -243,9 +249,25 @@ hTrueOpeningAngleCCQE->Sumw2();
 hRecoOpeningAngleCCQE->Sumw2();
 hTrueOpeningAngleCCCoh->Sumw2();
 hRecoOpeningAngleCCCoh->Sumw2();
+hTrueOpeningAngleOther->Sumw2();
+hRecoOpeningAngleOther->Sumw2();
 
 // Creating the Stacked Histogram
 THStack *hRecoVAStacked = new THStack("hRecoVAStacked", "Hit Charges from All Planes Stacked for CC-Coh Events");
+
+
+
+
+// ===================================================
+// --- Print Outs for Purity and Efficiency Tables ---
+// ===================================================
+for (int i = 1; i < 16; i++) {
+   std::cout<<"Number of Events = "<<hCutByCutMuonCandidateCCCoh->GetBinContent(i)<<", i = "<<i<<std::endl;
+   std::cout<<"Number of Events = "<<hCutByCutMuonCandidate->GetBinContent(i)<<", i = "<<i<<std::endl;
+   std::cout<<"Number of Events = "<<hCutByCutMuonCandidateCCInc->GetBinContent(i)<<", i = "<<i<<std::endl;
+   std::cout<<"Number of Events = "<<hCutByCutMuonCandidateOther->GetBinContent(i)<<", i = "<<i<<std::endl;
+}
+// ===================================================
 
 
 
@@ -907,6 +929,8 @@ hCutByCutMuonCandidateNC->SetLineColor(kGreen);
 hCutByCutMuonCandidateNC->SetLineWidth(2);
 hCutByCutMuonCandidateCCCoh->SetLineColor(kCyan);
 hCutByCutMuonCandidateCCCoh->SetLineWidth(2);
+hCutByCutMuonCandidateCCInc->SetLineColor(kGray);
+hCutByCutMuonCandidateCCInc->SetLineWidth(2);
 
 hCutByCutMuonCandidate->Divide(hCutByCutMuonCandidateDivide);
 hCutByCutMuonCandidateCCQE->Divide(hCutByCutMuonCandidateDivideCCQE);
@@ -915,6 +939,7 @@ hCutByCutMuonCandidateCCDIS->Divide(hCutByCutMuonCandidateDivideCCDIS);
 hCutByCutMuonCandidateOther->Divide(hCutByCutMuonCandidateDivideOther);
 hCutByCutMuonCandidateNC->Divide(hCutByCutMuonCandidateDivideNC);
 hCutByCutMuonCandidateCCCoh->Divide(hCutByCutMuonCandidatePurityDivide);
+hCutByCutMuonCandidateCCInc->Divide(hCutByCutMuonCandidateDivideCCInc);
 
 hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(1, "Num. Matched Events");
 hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(2, "Track Score > 0.85");
@@ -941,6 +966,7 @@ hCutByCutMuonCandidateCCDIS->Draw("E1same");
 hCutByCutMuonCandidateOther->Draw("E1same");
 hCutByCutMuonCandidateNC->Draw("E1same");
 hCutByCutMuonCandidateCCCoh->Draw("E1same");
+hCutByCutMuonCandidateCCInc->Draw("E1same");
 
 
 // ### Defining the legend for the plot ###
@@ -954,6 +980,7 @@ leg18->SetShadowColor(kWhite);
 leg18->SetHeader("Cone Angles");
 leg18->AddEntry(hCutByCutMuonCandidate,"CCCoh");
 leg18->AddEntry(hCutByCutMuonCandidateCCCoh,"CCCoh Purity");
+leg18->AddEntry(hCutByCutMuonCandidateCCInc,"CCInc");
 leg18->AddEntry(hCutByCutMuonCandidateCCQE,"CCQE");
 leg18->AddEntry(hCutByCutMuonCandidateCCRes,"CCRes");
 leg18->AddEntry(hCutByCutMuonCandidateCCDIS,"CCDIS");
@@ -1977,6 +2004,8 @@ hTrueOpeningAngleCCRes->Scale(1/hTrueOpeningAngleCCRes->Integral());
 hRecoOpeningAngleCCRes->Scale(1/hRecoOpeningAngleCCRes->Integral());
 hTrueOpeningAngleCCDIS->Scale(1/hTrueOpeningAngleCCDIS->Integral());
 hRecoOpeningAngleCCDIS->Scale(1/hRecoOpeningAngleCCDIS->Integral());
+hTrueOpeningAngleOther->Scale(1/hTrueOpeningAngleOther->Integral());
+hRecoOpeningAngleOther->Scale(1/hRecoOpeningAngleOther->Integral());
 
 
 hTrueOpeningAngleCCCoh->SetLineColor(kBlue);
@@ -2039,6 +2068,18 @@ hRecoOpeningAngleCCInc->SetFillColor(kGray);
 hRecoOpeningAngleCCInc->SetFillStyle(3003);
 
 
+hTrueOpeningAngleOther->SetLineColor(kBlack);
+hTrueOpeningAngleOther->SetLineStyle(kDashed);
+hTrueOpeningAngleOther->SetLineWidth(3);
+hTrueOpeningAngleOther->SetFillColor(kBlack);
+hTrueOpeningAngleOther->SetFillStyle(3005);
+
+hRecoOpeningAngleOther->SetLineColor(kBlack);
+hRecoOpeningAngleOther->SetLineWidth(3);
+hRecoOpeningAngleOther->SetFillColor(kBlack);
+hRecoOpeningAngleOther->SetFillStyle(3003);
+
+
 hTrueOpeningAngleCCCoh->GetXaxis()->SetTitle("Opening Angle [Degrees]");
 hTrueOpeningAngleCCCoh->GetXaxis()->CenterTitle();
 //hTrueOpeningAngleCCCoh->GetXaxis()->SetRangeUser(-20.5,20.5);
@@ -2054,6 +2095,8 @@ hTrueOpeningAngleCCRes->Draw("histosame");
 hRecoOpeningAngleCCRes->Draw("histosame");
 hTrueOpeningAngleCCDIS->Draw("histosame");
 hRecoOpeningAngleCCDIS->Draw("histosame");
+hTrueOpeningAngleOther->Draw("histosame");
+hRecoOpeningAngleOther->Draw("histosame");
 hTrueOpeningAngleCCInc->Draw("histosame");
 hRecoOpeningAngleCCInc->Draw("histosame");
 
@@ -2077,6 +2120,8 @@ leg27->AddEntry(hTrueOpeningAngleCCDIS,"CCDIS True");
 leg27->AddEntry(hRecoOpeningAngleCCDIS,"CCDIS Reco");
 leg27->AddEntry(hTrueOpeningAngleCCInc,"CCInc True");
 leg27->AddEntry(hRecoOpeningAngleCCInc,"CCInc Reco");
+leg27->AddEntry(hTrueOpeningAngleOther,"Other True");
+leg27->AddEntry(hRecoOpeningAngleOther,"Other Reco");
 leg27->Draw();
 
 
