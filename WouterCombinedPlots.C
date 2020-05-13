@@ -252,6 +252,20 @@ hRecoOpeningAngleCCCoh->Sumw2();
 hTrueOpeningAngleOther->Sumw2();
 hRecoOpeningAngleOther->Sumw2();
 
+TH1D *hCutByCutMuonCandidate2 = (TH1D*)f->Get("hCutByCutMuonCandidate2");
+TH1D *hCutByCutMuonCandidateDivide2 = (TH1D*)f->Get("hCutByCutMuonCandidateDivide2");
+TH1D *hCutByCutMuonCandidate2CCQE = (TH1D*)f5->Get("hCutByCutMuonCandidate2");
+TH1D *hCutByCutMuonCandidateDivide2CCQE = (TH1D*)f5->Get("hCutByCutMuonCandidateDivide2");
+TH1D *hCutByCutMuonCandidate2Other = (TH1D*)f4->Get("hCutByCutMuonCandidate2");
+TH1D *hCutByCutMuonCandidateDivide2Other = (TH1D*)f4->Get("hCutByCutMuonCandidateDivide2");
+
+hCutByCutMuonCandidate2->Sumw2();
+hCutByCutMuonCandidateDivide2->Sumw2();
+hCutByCutMuonCandidate2CCQE->Sumw2();
+hCutByCutMuonCandidateDivide2CCQE->Sumw2();
+hCutByCutMuonCandidate2Other->Sumw2();
+hCutByCutMuonCandidateDivide2Other->Sumw2();
+
 // Creating the Stacked Histogram
 THStack *hRecoVAStacked = new THStack("hRecoVAStacked", "Hit Charges from All Planes Stacked for CC-Coh Events");
 
@@ -261,11 +275,11 @@ THStack *hRecoVAStacked = new THStack("hRecoVAStacked", "Hit Charges from All Pl
 // ===================================================
 // --- Print Outs for Purity and Efficiency Tables ---
 // ===================================================
-for (int i = 1; i < 16; i++) {
-   std::cout<<"Number of Events = "<<hCutByCutMuonCandidateCCCoh->GetBinContent(i)<<", i = "<<i<<std::endl;
+for (int i = 1; i < 17; i++) {
    std::cout<<"Number of Events = "<<hCutByCutMuonCandidate->GetBinContent(i)<<", i = "<<i<<std::endl;
-   std::cout<<"Number of Events = "<<hCutByCutMuonCandidateCCInc->GetBinContent(i)<<", i = "<<i<<std::endl;
    std::cout<<"Number of Events = "<<hCutByCutMuonCandidateOther->GetBinContent(i)<<", i = "<<i<<std::endl;
+   std::cout<<"Number of Events = "<<hCutByCutMuonCandidate2->GetBinContent(i)<<", i = "<<i<<std::endl;
+   std::cout<<"Number of Events = "<<hCutByCutMuonCandidate2Other->GetBinContent(i)<<", i = "<<i<<std::endl;
 }
 // ===================================================
 
@@ -956,6 +970,7 @@ hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(12, "Flash #chi^{2} < 10 OR topo
 hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(13, "Topological score > 0.06");
 hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(14, "Cone Angle < 40^{o}");
 hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(15, "DoCA Cut < 10cm");
+hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(16, "VA Cut < 8000ADC");
 
 hCutByCutMuonCandidate->GetYaxis()->SetRangeUser(0,1.05);
 
@@ -977,7 +992,7 @@ leg18->SetTextAlign(12);
 leg18->SetFillColor(kWhite);
 leg18->SetLineColor(kWhite);
 leg18->SetShadowColor(kWhite);
-leg18->SetHeader("Cone Angles");
+leg18->SetHeader("Interaction Type");
 leg18->AddEntry(hCutByCutMuonCandidate,"CCCoh");
 leg18->AddEntry(hCutByCutMuonCandidateCCCoh,"CCCoh Purity");
 leg18->AddEntry(hCutByCutMuonCandidateCCInc,"CCInc");
@@ -2123,6 +2138,63 @@ leg27->AddEntry(hRecoOpeningAngleCCInc,"CCInc Reco");
 leg27->AddEntry(hTrueOpeningAngleOther,"Other True");
 leg27->AddEntry(hRecoOpeningAngleOther,"Other Reco");
 leg27->Draw();
+
+
+
+
+
+TCanvas *c28 = new TCanvas("c28", "The Efficiency of the Sample Selection of this Analysis");
+c28->SetTicks();
+c28->SetFillColor(kWhite);
+
+hCutByCutMuonCandidate2->SetLineColor(kBlue);
+hCutByCutMuonCandidate2->SetLineWidth(2);
+hCutByCutMuonCandidate2CCQE->SetLineColor(kViolet);
+hCutByCutMuonCandidate2CCQE->SetLineWidth(2);
+hCutByCutMuonCandidate2Other->SetLineColor(kBlack);
+hCutByCutMuonCandidate2Other->SetLineWidth(2);
+
+hCutByCutMuonCandidate2->Divide(hCutByCutMuonCandidateDivide2);
+hCutByCutMuonCandidate2CCQE->Divide(hCutByCutMuonCandidateDivide2CCQE);
+hCutByCutMuonCandidate2Other->Divide(hCutByCutMuonCandidateDivide2Other);
+
+hCutByCutMuonCandidate2->GetXaxis()->SetBinLabel(1, "Num. Matched Events");
+hCutByCutMuonCandidate2->GetXaxis()->SetBinLabel(2, "Track Score > 0.85");
+hCutByCutMuonCandidate2->GetXaxis()->SetBinLabel(3, "Vertex Distance < 4cm");
+hCutByCutMuonCandidate2->GetXaxis()->SetBinLabel(4, "Generation == 2");
+hCutByCutMuonCandidate2->GetXaxis()->SetBinLabel(5, "Track Length > 20cm");
+hCutByCutMuonCandidate2->GetXaxis()->SetBinLabel(6, "p #chi^{2} > 60");
+hCutByCutMuonCandidate2->GetXaxis()->SetBinLabel(7, "#mu #chi^{2} < 30");
+hCutByCutMuonCandidate2->GetXaxis()->SetBinLabel(8, "p #chi^{2} / #mu #chi^{2} > 7");
+hCutByCutMuonCandidate2->GetXaxis()->SetBinLabel(9, "Pandora PDG == 14");
+hCutByCutMuonCandidate2->GetXaxis()->SetBinLabel(10, "Start vertex of all daughters are at least 10cm from borders");
+hCutByCutMuonCandidate2->GetXaxis()->SetBinLabel(11, "Neutrino vertex is in the fiducial volume");
+hCutByCutMuonCandidate2->GetXaxis()->SetBinLabel(12, "Flash #chi^{2} < 10 OR topological score > 0.25");
+hCutByCutMuonCandidate2->GetXaxis()->SetBinLabel(13, "Topological score > 0.06");
+hCutByCutMuonCandidate2->GetXaxis()->SetBinLabel(14, "Cone Angle < 40^{o}");
+hCutByCutMuonCandidate2->GetXaxis()->SetBinLabel(15, "DoCA Cut < 10cm");
+hCutByCutMuonCandidate2->GetXaxis()->SetBinLabel(16, "VA Cut < 8000ADC");
+
+hCutByCutMuonCandidate2->GetYaxis()->SetRangeUser(0,1.05);
+
+hCutByCutMuonCandidate2->Draw("E1");
+hCutByCutMuonCandidate2CCQE->Draw("E1same");
+hCutByCutMuonCandidate2Other->Draw("E1same");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg28 = new TLegend();
+leg28 = new TLegend(0.58,0.65,1.00,1.00);
+leg28->SetTextSize(0.04);
+leg28->SetTextAlign(12);
+leg28->SetFillColor(kWhite);
+leg28->SetLineColor(kWhite);
+leg28->SetShadowColor(kWhite);
+leg28->SetHeader("Interaction Type");
+leg28->AddEntry(hCutByCutMuonCandidate2,"CCCoh");
+leg28->AddEntry(hCutByCutMuonCandidate2CCQE,"CCQE");
+leg28->AddEntry(hCutByCutMuonCandidate2Other,"Other");
+leg28->Draw();
 
 
 

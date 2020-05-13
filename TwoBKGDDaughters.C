@@ -159,8 +159,8 @@ void TwoBKGDDaughters::Loop()
    TFile *file = TFile::Open("AllEventNtuple.root");
    TTree *t = (TTree*)file->Get("EventNtuple");
 
-   int Event, Run, Subrun, CC_Selected, CCNC, InteractionType, Pandora_NuPDG, Vtx_Contained, Mc_Vtx_Contained;
-   float Nu_Flash_Chi2, Obvious_Cosmic_Chi2, NuEnergy, NuPx, NuPy, NuPz, NuVx, NuVy, NuVz, Topological_Score, DoCA, Vtx_Activity;
+   int Event, Run, Subrun, CC_Selected, CCNC, InteractionType, Pandora_NuPDG, Vtx_Contained, Mc_Vtx_Contained, nTracksInBubble;
+   float Nu_Flash_Chi2, Obvious_Cosmic_Chi2, NuEnergy, NuPx, NuPy, NuPz, NuVx, NuVy, NuVz, Topological_Score, DoCA, Vtx_Activity, Vtx_Activity_Tracks;
    int CountMatching = 0;
 
    t->SetBranchAddress("Event", &Event);
@@ -184,6 +184,8 @@ void TwoBKGDDaughters::Loop()
    t->SetBranchAddress("Mc_Vtx_Contained", &Mc_Vtx_Contained);
    t->SetBranchAddress("DoCA", &DoCA);
    t->SetBranchAddress("Vtx_Activity", &Vtx_Activity);
+   t->SetBranchAddress("Vtx_Activity_Tracks", &Vtx_Activity_Tracks);
+   t->SetBranchAddress("nTracksInBubble", &nTracksInBubble);
 
    Int_t nevents = t->GetEntries();
    std::cout<<"nevents from matched = "<<nevents<<std::endl;

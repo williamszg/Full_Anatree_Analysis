@@ -130,8 +130,8 @@ void TwoBKGDEvent::Loop()
    TTree EventNtuple("EventNtuple", "MC Event Ntuple Information");
 
    // Defining the Information for the Ntuple
-   int Event, Run, Subrun, CC_Selected, CCNC, InteractionType, Pandora_NuPDG, Vtx_Contained, Mc_Vtx_Contained;
-   float Nu_Flash_Chi2, Obvious_Cosmic_Chi2, NuEnergy, NuPx, NuPy, NuPz, NuVx, NuVy, NuVz, Topological_Score, DoCA, Vtx_Activity;
+   int Event, Run, Subrun, CC_Selected, CCNC, InteractionType, Pandora_NuPDG, Vtx_Contained, Mc_Vtx_Contained, nTracksInBubble;
+   float Nu_Flash_Chi2, Obvious_Cosmic_Chi2, NuEnergy, NuPx, NuPy, NuPz, NuVx, NuVy, NuVz, Topological_Score, DoCA, Vtx_Activity, Vtx_Activity_Tracks;
 
    EventNtuple.Branch("Event", &Event, "Event/I");
    EventNtuple.Branch("Run", &Run, "Run/I");
@@ -154,6 +154,8 @@ void TwoBKGDEvent::Loop()
    EventNtuple.Branch("Mc_Vtx_Contained", &Mc_Vtx_Contained, "Mc_Vtx_Contained/I");
    EventNtuple.Branch("DoCA", &DoCA, "DoCA/F");
    EventNtuple.Branch("Vtx_Activity", &Vtx_Activity, "Vtx_Activity/F");
+   EventNtuple.Branch("Vtx_Activity_Tracks", &Vtx_Activity_Tracks, "Vtx_Activity_Tracks/F");
+   EventNtuple.Branch("nTracksInBubble", &nTracksInBubble, "nTracksInBubble/I");
 
 
    if (fChain == 0) return;
@@ -208,6 +210,7 @@ void TwoBKGDEvent::Loop()
       // === DoCA Calculation Happens Here ===
       // =====================================
       float doca = 999;
+      int ntracksinsidebubble = 0;
       for (int i = 0; i < ntrks; i++) {
 	 int j = 2;
          //for (int j = 0; j < 3; j++) {
@@ -226,9 +229,21 @@ void TwoBKGDEvent::Loop()
 	       }// <-- Close Second Tracks For Loop
 	    }// <-- Close Number Trk Hits in Plane For Loop
 	 //}// <-- Close Planes For Loop
+         
+	 // -------------------------------------------
+         // --- Number of Tracks Within Bubble Size ---
+	 // -------------------------------------------
+	 double vertex_radius = 10; // <-- Setting the bubble radius in cm
+         double vertex_distance = Distance(nu_vx, nu_vy, nu_vz, trk_vtxx[i], trk_vtxy[i], trk_vtxz[i]);
+
+	 if (vertex_distance <= vertex_radius) ntracksinsidebubble++;
+	 // -------------------------------------------
+
       }// <-- Close Tracks For Loop
 
       DoCA = doca;
+      nTracksInBubble = ntracksinsidebubble;
+      if (jentry%10 == 0) std::cout<<"nTracksInBubble = "<<nTracksInBubble<<std::endl;
       // =====================================
 
 
@@ -240,6 +255,7 @@ void TwoBKGDEvent::Loop()
       float withinticks = 182;
       float WIRE = Wire(nu_vz);
       float TICK = Tick(nu_vx);
+      float vtxactivitytrks = 0;
 
       if (jentry%10 == 0) std::cout<<"Wire = "<<WIRE<<", Tick = "<<TICK<<std::endl;
 
@@ -248,11 +264,15 @@ void TwoBKGDEvent::Loop()
             //if (jentry%10 == 0) std::cout<<"Hit_Wire = "<<hit_wire[i]<<", Hit_Channel = "<<hit_channel[i]<<std::endl;
 	    if ((Difference(hit_channel[i], WIRE) <= withinwires) && (Difference(hit_peakT[i], TICK) <= withinticks)) {
 	       vtxactivity = vtxactivity + hit_charge[i];
+	       if (hit_trkid[i] >= 0) vtxactivitytrks = vtxactivitytrks + hit_charge[i];
 	    }// <-- Close Hit is Within Range Defined Condition
          }// <-- Close Hit is in Collection Plane Condition
       }// <-- Close Hits For Loop
 
       Vtx_Activity = vtxactivity;
+      Vtx_Activity_Tracks = vtxactivitytrks;
+      if (jentry%10 == 0) std::cout<<"Vtx_Activity = "<<Vtx_Activity<<std::endl;
+      if (jentry%10 == 0) std::cout<<"Vtx_Activity_Tracks = "<<Vtx_Activity_Tracks<<std::endl;
       // ================================================
 
 
