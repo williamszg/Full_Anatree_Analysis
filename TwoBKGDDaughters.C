@@ -381,8 +381,8 @@ void TwoBKGDDaughters::Loop()
       for (Int_t i = 0; i < nevents; i++) {
          t->GetEntry(i);
 
-	 if (Event == event && Run == run && Subrun == subrun && (InteractionType != InteractionType_Check || (InteractionType == InteractionType_Check && CCNC != CCOrNC_Check)) && is_track) {
-	 //if (Event == event && Run == run && Subrun == subrun && InteractionType == InteractionType_Check && CCNC == CCOrNC_Check && is_track) {
+	 //if (Event == event && Run == run && Subrun == subrun && (InteractionType != InteractionType_Check || (InteractionType == InteractionType_Check && CCNC != CCOrNC_Check)) && is_track) {
+	 if (Event == event && Run == run && Subrun == subrun && InteractionType == InteractionType_Check && CCNC == CCOrNC_Check && is_track) {
 	 //if (Event == event && Run == run && Subrun == subrun && CCNC == CCOrNC_Check && is_track) {
             Matched = true;
 	    //if (jentry%10 == 0) std::cout<<"We Matched!"<<std::endl; // This is to see if we are actually making it to this point in the Matched condition!
@@ -880,11 +880,11 @@ void TwoBKGDDaughters::Loop()
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
    //TFile *TDaughtersInfo = new TFile("Wouter_Daughter_Information.root", "RECREATE");
    //TFile *TDaughtersInfo = new TFile("Daughter_Information_CCCoh_Testing.root", "RECREATE");
-   //TFile *TDaughtersInfo = new TFile("CCCoh_Daughter_Information.root", "RECREATE");
+   TFile *TDaughtersInfo = new TFile("CCCoh_Daughter_Information.root", "RECREATE");
    //TFile *TDaughtersInfo = new TFile("CCQE_Daughter_Information.root", "RECREATE");
    //TFile *TDaughtersInfo = new TFile("CCRES_Daughter_Information.root", "RECREATE");
    //TFile *TDaughtersInfo = new TFile("CCDIS_Daughter_Information.root", "RECREATE");
-   TFile *TDaughtersInfo = new TFile("Other_Daughter_Information.root", "RECREATE");
+   //TFile *TDaughtersInfo = new TFile("Other_Daughter_Information.root", "RECREATE");
    //TFile *TDaughtersInfo = new TFile("CCInc_Daughter_Information.root", "RECREATE");
 
    hMuonMuonChi2->Write();
