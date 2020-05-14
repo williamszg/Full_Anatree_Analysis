@@ -51,8 +51,8 @@ TH1D *hPassedNuEnergy = new TH1D("hPassedNuEnergy", "CC-Coh Neutrino Energy for 
 TH1D *hMatchedT = new TH1D("hMatchedT", "CC-Coh |t| for Matched Events", 500, 0, 0.25);
 TH1D *hPassedT = new TH1D("hPassedT", "CC-Coh |t| for Events That Passed Selection", 500, 0, 0.25);
 
-TH1D *hCutByCutMuonCandidate = new TH1D("hCutByCutMuonCandidate", "The Cut by Cut Efficiency of the CC-Inclusive Muon Candidate Selection for CC-Coh Events", 16, -0.5, 15.5);
-TH1D *hCutByCutMuonCandidateDivide = new TH1D("hCutByCutMuonCandidateDivide", "The Cut by Cut Efficiency of the CC-Inclusive Muon Candidate Selection for CC-Coh Events Denominator", 16, -0.5, 15.5);
+TH1D *hCutByCutMuonCandidate = new TH1D("hCutByCutMuonCandidate", "The Cut by Cut Efficiency of the CC-Inclusive Muon Candidate Selection for CC-Coh Events", 18, -0.5, 17.5);
+TH1D *hCutByCutMuonCandidateDivide = new TH1D("hCutByCutMuonCandidateDivide", "The Cut by Cut Efficiency of the CC-Inclusive Muon Candidate Selection for CC-Coh Events Denominator", 18, -0.5, 17.5);
 TH1D *hNumMuonCandidates = new TH1D("hNumMuonCandidates", "The Number of Tracks that Passed the Muon Candidacy", 31, -0.5, 30.5);
 
 TH1D *hFurtherEventSelection = new TH1D("hFurtherEventSelection", "The Event Selection That Takes Place After Muon Candidacy for CC-Coh", 5, -0.5, 4.5);
@@ -74,8 +74,12 @@ TH1D *hPionOrMuonIsCandidate = new TH1D("hPionOrMuonIsCandidate", "Whether a Pio
 TH1D *hTrueOpeningAngle = new TH1D("hTrueOpeningAngle", "The Opening Angle from MC Truth Information", 181, -0.5, 180.5);
 TH1D *hRecoOpeningAngle = new TH1D("hRecoOpeningAngle", "The Opening Angle from Reconstructed Information", 181, -0.5, 180.5);
 
-TH1D *hCutByCutMuonCandidate2 = new TH1D("hCutByCutMuonCandidate2", "The Cut by Cut Efficiency of the CC-Inclusive Muon Candidate Selection for CC-Coh Events", 16, -0.5, 15.5);
-TH1D *hCutByCutMuonCandidateDivide2 = new TH1D("hCutByCutMuonCandidateDivide2", "The Cut by Cut Efficiency of the CC-Inclusive Muon Candidate Selection for CC-Coh Events Denominator", 16, -0.5, 15.5);
+TH1D *hCutByCutMuonCandidate2 = new TH1D("hCutByCutMuonCandidate2", "The Cut by Cut Efficiency of the CC-Inclusive Muon Candidate Selection for CC-Coh Events", 18, -0.5, 17.5);
+TH1D *hCutByCutMuonCandidateDivide2 = new TH1D("hCutByCutMuonCandidateDivide2", "The Cut by Cut Efficiency of the CC-Inclusive Muon Candidate Selection for CC-Coh Events Denominator", 18, -0.5, 17.5);
+
+TH1D *hNTracksInBubble = new TH1D("hNTracksInBubble", "The Number of Tracks within 10cm of Reconstructed Vertex", 16, -0.5, 15.5);
+TH1D *hRecoVA2Tracks = new TH1D("hRecoVA2Tracks", "The Vertex Activity from Reconstructed Information in Plane 2 Exclusively for Hits Belonging to a Track", 1000, 0, 50000);
+TH1D *hRecoVA2Minus = new TH1D("hRecoVA2Minus", "The Vertex Activity from Reconstructed Information in Plane 2 of Hits Not Belonging to Tracks", 1000, 0, 50000);
 // -------------------------------
 
 
@@ -142,7 +146,7 @@ void TwoBKGDDaughters::Loop()
    // === Selection Checks for Which Channel ===
    // ==========================================
    int CCOrNC_Check = 0; // 0 for CC and 1 for NC
-   int InteractionType_Check = 0; // 0 for QE 1 for Res 2 for DIS and 3 for Coh
+   int InteractionType_Check = 3; // 0 for QE 1 for Res 2 for DIS and 3 for Coh
    // ==========================================
 
 
@@ -371,12 +375,14 @@ void TwoBKGDDaughters::Loop()
       float obviousCosmic = -999;
       float nuenergy = -999;
       float top_score = -999;
+      float vtx_activity_tracks = 0;
+      float ntrksinbubble = 0;
 
       for (Int_t i = 0; i < nevents; i++) {
          t->GetEntry(i);
 
-	 //if (Event == event && Run == run && Subrun == subrun && (InteractionType != InteractionType_Check || (InteractionType == InteractionType_Check && CCNC != CCOrNC_Check)) && is_track) {
-	 if (Event == event && Run == run && Subrun == subrun && InteractionType == InteractionType_Check && CCNC == CCOrNC_Check && is_track) {
+	 if (Event == event && Run == run && Subrun == subrun && (InteractionType != InteractionType_Check || (InteractionType == InteractionType_Check && CCNC != CCOrNC_Check)) && is_track) {
+	 //if (Event == event && Run == run && Subrun == subrun && InteractionType == InteractionType_Check && CCNC == CCOrNC_Check && is_track) {
 	 //if (Event == event && Run == run && Subrun == subrun && CCNC == CCOrNC_Check && is_track) {
             Matched = true;
 	    //if (jentry%10 == 0) std::cout<<"We Matched!"<<std::endl; // This is to see if we are actually making it to this point in the Matched condition!
@@ -394,6 +400,9 @@ void TwoBKGDDaughters::Loop()
 	    mc_vtx_contained = Mc_Vtx_Contained;
 	    theDoCA = DoCA;
 	    theVA = Vtx_Activity;
+            vtx_activity_tracks = Vtx_Activity_Tracks;
+            ntrksinbubble = nTracksInBubble;
+      
 	    /*if (mc_pdg == 13 && generation == 2 && mc_neutrino == 1) { // If the track is a muon track, save four-momentum information
                Muons[i][0] = mc_energy;
 	       Muons[i][1] = mc_px;
@@ -476,6 +485,8 @@ void TwoBKGDDaughters::Loop()
 	    hCutByCutMuonCandidateDivide->Fill(13); // Making the histogram to get the efficiency
 	    hCutByCutMuonCandidateDivide->Fill(14); // Making the histogram to get the efficiency
 	    hCutByCutMuonCandidateDivide->Fill(15); // Making the histogram to get the efficiency
+	    hCutByCutMuonCandidateDivide->Fill(16); // Making the histogram to get the efficiency
+	    hCutByCutMuonCandidateDivide->Fill(17); // Making the histogram to get the efficiency
 	    hCutByCutMuonCandidateDivide2->Fill(0); // Making the histogram to get the efficiency
 	    hCutByCutMuonCandidateDivide2->Fill(1); // Making the histogram to get the efficiency
 	    hCutByCutMuonCandidateDivide2->Fill(2); // Making the histogram to get the efficiency
@@ -492,6 +503,8 @@ void TwoBKGDDaughters::Loop()
 	    hCutByCutMuonCandidateDivide2->Fill(13); // Making the histogram to get the efficiency
 	    hCutByCutMuonCandidateDivide2->Fill(14); // Making the histogram to get the efficiency
 	    hCutByCutMuonCandidateDivide2->Fill(15); // Making the histogram to get the efficiency
+	    hCutByCutMuonCandidateDivide2->Fill(16); // Making the histogram to get the efficiency
+	    hCutByCutMuonCandidateDivide2->Fill(17); // Making the histogram to get the efficiency
 	    hFurtherEventSelectionDivide->Fill(0); // Making the histogram to get the efficiency for the Further Selection
 	    hFurtherEventSelectionDivide->Fill(1); // Making the histogram to get the efficiency for the Further Selection
 	    hFurtherEventSelectionDivide->Fill(2); // Making the histogram to get the efficiency for the Further Selection
@@ -551,6 +564,12 @@ void TwoBKGDDaughters::Loop()
 			hCutByCutMuonCandidate2->Fill(14);
 			if (theVA <= VACutValue) {
 			   hCutByCutMuonCandidate2->Fill(15);
+                           if (ntrksinbubble >= 2) {
+                              hCutByCutMuonCandidate2->Fill(16);
+                              if (ntrksinbubble == 2) {
+                                 hCutByCutMuonCandidate2->Fill(17);
+                              }
+                           }
 			}
 		     }
 		  }
@@ -591,6 +610,12 @@ void TwoBKGDDaughters::Loop()
 			hCutByCutMuonCandidate->Fill(14);
 			if (theVA <= VACutValue) {
 			   hCutByCutMuonCandidate->Fill(15);
+                           if (ntrksinbubble >= 2) {
+			      hCutByCutMuonCandidate->Fill(16);
+                              if (ntrksinbubble == 2) {
+			         hCutByCutMuonCandidate->Fill(17);
+                              }
+                           }
 			}
 		     }
 		  }
@@ -620,11 +645,14 @@ void TwoBKGDDaughters::Loop()
 		  hRecoVA1->Fill(VAReco1);
 		  //hRecoVA2->Fill(VAReco2);
 		  hRecoVA2->Fill(theVA);
+                  hRecoVA2Tracks->Fill(vtx_activity_tracks);
+                  hRecoVA2Minus->Fill(theVA - vtx_activity_tracks);
 		  hRecoVAAll->Fill(VARecoAll);
 		  VAReco0 = 0;
 		  VAReco1 = 0;
 		  VAReco2 = 0;
 		  VARecoAll = 0;
+                  hNTracksInBubble->Fill(ntrksinbubble);
 	       }
 	    }
 	    if (!PassedEvent && jentry != 0) hNumMuonCandidates->Fill(0);
@@ -853,10 +881,10 @@ void TwoBKGDDaughters::Loop()
    //TFile *TDaughtersInfo = new TFile("Wouter_Daughter_Information.root", "RECREATE");
    //TFile *TDaughtersInfo = new TFile("Daughter_Information_CCCoh_Testing.root", "RECREATE");
    //TFile *TDaughtersInfo = new TFile("CCCoh_Daughter_Information.root", "RECREATE");
-   TFile *TDaughtersInfo = new TFile("CCQE_Daughter_Information.root", "RECREATE");
+   //TFile *TDaughtersInfo = new TFile("CCQE_Daughter_Information.root", "RECREATE");
    //TFile *TDaughtersInfo = new TFile("CCRES_Daughter_Information.root", "RECREATE");
    //TFile *TDaughtersInfo = new TFile("CCDIS_Daughter_Information.root", "RECREATE");
-   //TFile *TDaughtersInfo = new TFile("Other_Daughter_Information.root", "RECREATE");
+   TFile *TDaughtersInfo = new TFile("Other_Daughter_Information.root", "RECREATE");
    //TFile *TDaughtersInfo = new TFile("CCInc_Daughter_Information.root", "RECREATE");
 
    hMuonMuonChi2->Write();
@@ -926,6 +954,10 @@ void TwoBKGDDaughters::Loop()
 
    hCutByCutMuonCandidate2->Write();
    hCutByCutMuonCandidateDivide2->Write();
+
+   hNTracksInBubble->Write();
+   hRecoVA2Tracks->Write();
+   hRecoVA2Minus->Write();
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 }

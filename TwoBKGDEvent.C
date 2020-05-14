@@ -257,7 +257,7 @@ void TwoBKGDEvent::Loop()
       float TICK = Tick(nu_vx);
       float vtxactivitytrks = 0;
 
-      if (jentry%10 == 0) std::cout<<"Wire = "<<WIRE<<", Tick = "<<TICK<<std::endl;
+      //if (jentry%10 == 0) std::cout<<"Wire = "<<WIRE<<", Tick = "<<TICK<<std::endl;
 
       for (int i = 0; i < nallhits; i++) {
          if (hit_plane[i] == 2) {
@@ -276,7 +276,7 @@ void TwoBKGDEvent::Loop()
       // ================================================
 
 
-      if (jentry%10 == 0) { std::cout<<"DoCA, Vtx Activity = "<<DoCA<<", "<<Vtx_Activity<<std::endl; }
+      //if (jentry%10 == 0) { std::cout<<"DoCA, Vtx Activity = "<<DoCA<<", "<<Vtx_Activity<<std::endl; }
 
 
       //if (containedTruthD) Mc_Vtx_Contained = 1;
