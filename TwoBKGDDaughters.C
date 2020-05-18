@@ -146,7 +146,7 @@ void TwoBKGDDaughters::Loop()
    // === Selection Checks for Which Channel ===
    // ==========================================
    int CCOrNC_Check = 0; // 0 for CC and 1 for NC
-   int InteractionType_Check = 3; // 0 for QE 1 for Res 2 for DIS and 3 for Coh
+   int InteractionType_Check = 0; // 0 for QE 1 for Res 2 for DIS and 3 for Coh
    // ==========================================
 
 
@@ -880,8 +880,8 @@ void TwoBKGDDaughters::Loop()
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
    //TFile *TDaughtersInfo = new TFile("Wouter_Daughter_Information.root", "RECREATE");
    //TFile *TDaughtersInfo = new TFile("Daughter_Information_CCCoh_Testing.root", "RECREATE");
-   TFile *TDaughtersInfo = new TFile("CCCoh_Daughter_Information.root", "RECREATE");
-   //TFile *TDaughtersInfo = new TFile("CCQE_Daughter_Information.root", "RECREATE");
+   //TFile *TDaughtersInfo = new TFile("CCCoh_Daughter_Information.root", "RECREATE");
+   TFile *TDaughtersInfo = new TFile("CCQE_Daughter_Information.root", "RECREATE");
    //TFile *TDaughtersInfo = new TFile("CCRES_Daughter_Information.root", "RECREATE");
    //TFile *TDaughtersInfo = new TFile("CCDIS_Daughter_Information.root", "RECREATE");
    //TFile *TDaughtersInfo = new TFile("Other_Daughter_Information.root", "RECREATE");
