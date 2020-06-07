@@ -168,6 +168,7 @@ TH1D *hTrueDoCANC = (TH1D*)f6->Get("hTrueDoCA");
 TH1D *hRecoDoCANC = (TH1D*)f6->Get("hRecoDoCA");
 TH1D *hTrueDoCACCCoh = (TH1D*)f8->Get("hTrueDoCA");
 TH1D *hRecoDoCACCCoh = (TH1D*)f8->Get("hRecoDoCA");
+TH1D *hRecoDoCACosmic = (TH1D*)f->Get("hRecoDoCACosmic");
 
 hTrueDoCACCRes->Sumw2();
 hRecoDoCACCRes->Sumw2();
@@ -181,6 +182,7 @@ hTrueDoCANC->Sumw2();
 hRecoDoCANC->Sumw2();
 hTrueDoCACCCoh->Sumw2();
 hRecoDoCACCCoh->Sumw2();
+hRecoDoCACosmic->Sumw2();
 
 TH1D *hRecoVA2CCRes = (TH1D*)f3->Get("hRecoVA2");
 TH1D *hRecoVA2CCDIS = (TH1D*)f7->Get("hRecoVA2");
@@ -258,6 +260,7 @@ TH1D *hCutByCutMuonCandidate2CCQE = (TH1D*)f5->Get("hCutByCutMuonCandidate2");
 TH1D *hCutByCutMuonCandidateDivide2CCQE = (TH1D*)f5->Get("hCutByCutMuonCandidateDivide2");
 TH1D *hCutByCutMuonCandidate2Other = (TH1D*)f4->Get("hCutByCutMuonCandidate2");
 TH1D *hCutByCutMuonCandidateDivide2Other = (TH1D*)f4->Get("hCutByCutMuonCandidateDivide2");
+TH1D *hCutByCutMuonCandidate2CCCoh = (TH1D*)f8->Get("hCutByCutMuonCandidate2");
 
 hCutByCutMuonCandidate2->Sumw2();
 hCutByCutMuonCandidateDivide2->Sumw2();
@@ -265,6 +268,57 @@ hCutByCutMuonCandidate2CCQE->Sumw2();
 hCutByCutMuonCandidateDivide2CCQE->Sumw2();
 hCutByCutMuonCandidate2Other->Sumw2();
 hCutByCutMuonCandidateDivide2Other->Sumw2();
+hCutByCutMuonCandidate2CCCoh->Sumw2();
+
+TH1D *hNTracksInBubble5 = (TH1D*)f->Get("hNTracksInBubble5");
+TH1D *hNTracksInBubble = (TH1D*)f->Get("hNTracksInBubble");
+TH1D *hNTracksInBubble15 = (TH1D*)f->Get("hNTracksInBubble15");
+TH1D *hNTracksInBubbleOther5 = (TH1D*)f4->Get("hNTracksInBubble5");
+TH1D *hNTracksInBubbleOther = (TH1D*)f4->Get("hNTracksInBubble");
+TH1D *hNTracksInBubbleOther15 = (TH1D*)f4->Get("hNTracksInBubble15");
+
+hNTracksInBubble5->Sumw2();
+hNTracksInBubble->Sumw2();
+hNTracksInBubble15->Sumw2();
+hNTracksInBubbleOther5->Sumw2();
+hNTracksInBubbleOther->Sumw2();
+hNTracksInBubbleOther15->Sumw2();
+
+TH1D *hRecoVA2Tracks = (TH1D*)f->Get("hRecoVA2Tracks");
+TH1D *hRecoVA2TracksOther = (TH1D*)f4->Get("hRecoVA2Tracks");
+
+hRecoVA2Tracks->Sumw2();
+hRecoVA2TracksOther->Sumw2();
+
+TH1D *hRecoVA2Minus = (TH1D*)f->Get("hRecoVA2Minus");
+TH1D *hRecoVA2MinusOther = (TH1D*)f4->Get("hRecoVA2Minus");
+
+hRecoVA2Minus->Sumw2();
+hRecoVA2MinusOther->Sumw2();
+
+TH1D *hT = (TH1D*)f->Get("hT");
+TH1D *hTOther = (TH1D*)f4->Get("hT");
+
+hT->Sumw2();
+hTOther->Sumw2();
+
+TH1D *hT2_5 = (TH1D*)f->Get("hT2_5");
+TH1D *hT2_5Other = (TH1D*)f4->Get("hT2_5");
+
+hT2_5->Sumw2();
+hT2_5Other->Sumw2();
+
+TH1D *hT2 = (TH1D*)f->Get("hT2");
+TH1D *hT2Other = (TH1D*)f4->Get("hT2");
+
+hT2->Sumw2();
+hT2Other->Sumw2();
+
+TH1D *hT2_15 = (TH1D*)f->Get("hT2_15");
+TH1D *hT2_15Other = (TH1D*)f4->Get("hT2_15");
+
+hT2_15->Sumw2();
+hT2_15Other->Sumw2();
 
 // Creating the Stacked Histogram
 THStack *hRecoVAStacked = new THStack("hRecoVAStacked", "Hit Charges from All Planes Stacked for CC-Coh Events");
@@ -275,7 +329,7 @@ THStack *hRecoVAStacked = new THStack("hRecoVAStacked", "Hit Charges from All Pl
 // ===================================================
 // --- Print Outs for Purity and Efficiency Tables ---
 // ===================================================
-for (int i = 1; i < 17; i++) {
+for (int i = 1; i < 19; i++) {
    std::cout<<"Number of Events = "<<hCutByCutMuonCandidate->GetBinContent(i)<<", i = "<<i<<std::endl;
    std::cout<<"Number of Events = "<<hCutByCutMuonCandidateOther->GetBinContent(i)<<", i = "<<i<<std::endl;
    std::cout<<"Number of Events = "<<hCutByCutMuonCandidate2->GetBinContent(i)<<", i = "<<i<<std::endl;
@@ -908,16 +962,15 @@ leg17->Draw();
 // ----------------------------------------------
 // --- Making Histogram for Cut By Cut Purity ---
 // ----------------------------------------------
-TH1D *hCutByCutMuonCandidatePurityDivide = new TH1D("hCutByCutMuonCandidatePurityDivide", "The Cut by Cut Efficiency Division Histogram of the CC-Inclusive Muon Candidate Selection for CC-Coh Purity", 15, -0.5, 14.5);
+TH1D *hCutByCutMuonCandidatePurityDivide = new TH1D("hCutByCutMuonCandidatePurityDivide", "The Cut by Cut Efficiency Division Histogram of the CC-Inclusive Muon Candidate Selection for CC-Coh Purity", 18, -0.5, 17.5);
+TH1D *hCutByCutMuonCandidatePurityDivide2 = new TH1D("hCutByCutMuonCandidatePurityDivide2", "The Cut by Cut Efficiency Division Histogram of the CC-Inclusive Muon Candidate Selection for CC-Coh Purity All Cuts ON", 18, -0.5, 17.5);
 
-int nbins = 15;
+int nbins = 18;
 for (int i = 1; i < nbins+1; i++) {
-   std::cout<<"For i = "<<i<<std::endl;
    hCutByCutMuonCandidatePurityDivide->Fill((i-1), hCutByCutMuonCandidateOther->GetBinContent(i));
-   std::cout<<"Other is = "<<hCutByCutMuonCandidateOther->GetBinContent(i)<<std::endl;
    hCutByCutMuonCandidatePurityDivide->Fill((i-1), hCutByCutMuonCandidateCCCoh->GetBinContent(i));
-   std::cout<<"CCCoh is = "<<hCutByCutMuonCandidateCCCoh->GetBinContent(i)<<std::endl;
-   std::cout<<"Purity Divide is = "<<hCutByCutMuonCandidatePurityDivide->GetBinContent(i)<<std::endl;
+   hCutByCutMuonCandidatePurityDivide2->Fill((i-1), hCutByCutMuonCandidate2Other->GetBinContent(i));
+   hCutByCutMuonCandidatePurityDivide2->Fill((i-1), hCutByCutMuonCandidate2CCCoh->GetBinContent(i));
 } // <-- End of i For Loop for Purity Divide Histogram
 
 //hCutByCutMuonCandidatePurityDivide->Sumw2();
@@ -971,6 +1024,8 @@ hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(13, "Topological score > 0.06");
 hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(14, "Cone Angle < 40^{o}");
 hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(15, "DoCA Cut < 10cm");
 hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(16, "VA Cut < 8000ADC");
+hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(17, "Num Tracks in Bubble >= 2");
+hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(18, "Num Tracks in Bubble == 2");
 
 hCutByCutMuonCandidate->GetYaxis()->SetRangeUser(0,1.05);
 
@@ -1407,6 +1462,7 @@ double CCQEDoCA[101] = {0};
 double CCQEDoCAR[101] = {0};
 double NCDoCA[101] = {0};
 double NCDoCAR[101] = {0};
+double CosmicDoCAR[101] = {0};
 
 for (int i = 0; i < m; i++) {
    y[i] = i*100/m;
@@ -1426,6 +1482,7 @@ for (int i = 0; i < m; i++) {
       CCQEDoCAR[i] += hRecoDoCACCQE->GetBinContent(g);
       NCDoCA[i] += hTrueDoCANC->GetBinContent(g);
       NCDoCAR[i] += hRecoDoCANC->GetBinContent(g);
+      CosmicDoCAR[i] += hRecoDoCACosmic->GetBinContent(g);
       } // End g-Loop
 
 
@@ -1449,6 +1506,7 @@ for (int i = 0; i < m; i++) {
    CCQEDoCAR[i] = 100-(CCQEDoCAR[i]*100/hRecoDoCACCQE->GetEntries());
    NCDoCA[i] = 100-(NCDoCA[i]*100/(hTrueDoCANC->GetEntries() - hTrueDoCANC->GetBinContent(102)));
    NCDoCAR[i] = 100-(NCDoCAR[i]*100/hRecoDoCANC->GetEntries());
+   CosmicDoCAR[i] = 100-(CosmicDoCAR[i]*100/hRecoDoCACosmic->GetEntries());
 } // End i-Loop
 
 TGraph* gDoCAEff = new TGraph(m, y, DoCAEff);
@@ -1548,6 +1606,12 @@ gNCDoCAR->SetName("gNCDoCAR");
 gNCDoCAR->SetFillColor(kWhite);
 gNCDoCAR->SetLineColor(kGreen);
 gNCDoCAR->SetLineWidth(2);
+TGraph* gCosmicDoCAR = new TGraph(m, y, CosmicDoCAR);
+gCosmicDoCAR->SetTitle("gCosmicDoCAR");
+gCosmicDoCAR->SetName("gCosmicDoCAR");
+gCosmicDoCAR->SetFillColor(kWhite);
+gCosmicDoCAR->SetLineColor(kMagenta);
+gCosmicDoCAR->SetLineWidth(2);
 
 TCanvas *c25 = new TCanvas("c25", "DoCA TGraphs");
 c25->SetTicks();
@@ -1574,6 +1638,7 @@ gNCDoCA->Draw("same");
 gNCDoCAR->Draw("same");
 gDoCAPurity->Draw("same");
 gDoCAPurityR->Draw("same");
+gCosmicDoCAR->Draw("same");
 
 // ### Defining the legend for the plot ###
 TLegend *leg25 = new TLegend();
@@ -1598,6 +1663,7 @@ leg25->AddEntry(gOtherDoCA,"Other True");
 leg25->AddEntry(gOtherDoCAR,"Other Reco");
 leg25->AddEntry(gNCDoCA,"NC True");
 leg25->AddEntry(gNCDoCAR,"NC Reco");
+leg25->AddEntry(gCosmicDoCAR,"Cosmics");
 leg25->Draw();
 // -----------------------
 
@@ -1620,6 +1686,7 @@ hTrueDoCACCQE->Scale(1/hTrueDoCACCQE->Integral());
 hRecoDoCACCQE->Scale(1/hRecoDoCACCQE->Integral());
 hTrueDoCANC->Scale(1/hTrueDoCANC->Integral());
 hRecoDoCANC->Scale(1/hRecoDoCANC->Integral());
+hRecoDoCACosmic->Scale(1/hRecoDoCACosmic->Integral());
 
 
 hTrueDoCA->SetLineColor(kBlue);
@@ -1694,6 +1761,12 @@ hRecoDoCANC->SetFillColor(kGreen);
 hRecoDoCANC->SetFillStyle(3006);
 
 
+hRecoDoCACosmic->SetLineColor(kMagenta);
+hRecoDoCACosmic->SetLineWidth(2);
+hRecoDoCACosmic->SetFillColor(kMagenta);
+hRecoDoCACosmic->SetFillStyle(3006);
+
+
 hTrueDoCA->GetXaxis()->SetTitle("Distance of Closest Approach [cm]");
 hTrueDoCA->GetXaxis()->CenterTitle();
 //hTrueDoCA->GetXaxis()->SetRangeUser(-20.5,20.5);
@@ -1713,6 +1786,7 @@ hTrueDoCAOther->Draw("histosame");
 hRecoDoCAOther->Draw("histosame");
 hTrueDoCANC->Draw("histosame");
 hRecoDoCANC->Draw("histosame");
+hRecoDoCACosmic->Draw("histosame");
 
 
 // ### Defining the legend for the plot ###
@@ -1736,6 +1810,7 @@ leg21->AddEntry(hTrueDoCAOther,"Other True");
 leg21->AddEntry(hRecoDoCAOther,"Other Reco");
 leg21->AddEntry(hTrueDoCANC,"NC True");
 leg21->AddEntry(hRecoDoCANC,"NC Reco");
+leg21->AddEntry(hRecoDoCACosmic,"Cosmics");
 leg21->Draw();
 
 
@@ -2153,10 +2228,13 @@ hCutByCutMuonCandidate2CCQE->SetLineColor(kViolet);
 hCutByCutMuonCandidate2CCQE->SetLineWidth(2);
 hCutByCutMuonCandidate2Other->SetLineColor(kBlack);
 hCutByCutMuonCandidate2Other->SetLineWidth(2);
+hCutByCutMuonCandidate2CCCoh->SetLineColor(kCyan);
+hCutByCutMuonCandidate2CCCoh->SetLineWidth(2);
 
 hCutByCutMuonCandidate2->Divide(hCutByCutMuonCandidateDivide2);
 hCutByCutMuonCandidate2CCQE->Divide(hCutByCutMuonCandidateDivide2CCQE);
 hCutByCutMuonCandidate2Other->Divide(hCutByCutMuonCandidateDivide2Other);
+hCutByCutMuonCandidate2CCCoh->Divide(hCutByCutMuonCandidatePurityDivide2);
 
 hCutByCutMuonCandidate2->GetXaxis()->SetBinLabel(1, "Num. Matched Events");
 hCutByCutMuonCandidate2->GetXaxis()->SetBinLabel(2, "Track Score > 0.85");
@@ -2174,12 +2252,15 @@ hCutByCutMuonCandidate2->GetXaxis()->SetBinLabel(13, "Topological score > 0.06")
 hCutByCutMuonCandidate2->GetXaxis()->SetBinLabel(14, "Cone Angle < 40^{o}");
 hCutByCutMuonCandidate2->GetXaxis()->SetBinLabel(15, "DoCA Cut < 10cm");
 hCutByCutMuonCandidate2->GetXaxis()->SetBinLabel(16, "VA Cut < 8000ADC");
+hCutByCutMuonCandidate2->GetXaxis()->SetBinLabel(17, "Num Tracks in Bubble >= 2");
+hCutByCutMuonCandidate2->GetXaxis()->SetBinLabel(18, "Num Tracks in Bubble == 2");
 
 hCutByCutMuonCandidate2->GetYaxis()->SetRangeUser(0,1.05);
 
 hCutByCutMuonCandidate2->Draw("E1");
 hCutByCutMuonCandidate2CCQE->Draw("E1same");
 hCutByCutMuonCandidate2Other->Draw("E1same");
+hCutByCutMuonCandidate2CCCoh->Draw("E1same");
 
 
 // ### Defining the legend for the plot ###
@@ -2192,10 +2273,290 @@ leg28->SetLineColor(kWhite);
 leg28->SetShadowColor(kWhite);
 leg28->SetHeader("Interaction Type");
 leg28->AddEntry(hCutByCutMuonCandidate2,"CCCoh");
+leg28->AddEntry(hCutByCutMuonCandidate2CCCoh,"CCCoh Purity");
 leg28->AddEntry(hCutByCutMuonCandidate2CCQE,"CCQE");
 leg28->AddEntry(hCutByCutMuonCandidate2Other,"Other");
 leg28->Draw();
 
+
+
+
+
+TCanvas *c29 = new TCanvas("c29", "The Number of Tracks within a Bubble of 10cm from Reco Vertex");
+c29->SetTicks();
+c29->SetFillColor(kWhite);
+
+// Area normalzing the plot 
+hNTracksInBubble5->Scale(1/hNTracksInBubble5->Integral());
+hNTracksInBubble->Scale(1/hNTracksInBubble->Integral());
+hNTracksInBubble15->Scale(1/hNTracksInBubble15->Integral());
+hNTracksInBubbleOther5->Scale(1/hNTracksInBubbleOther5->Integral());
+hNTracksInBubbleOther->Scale(1/hNTracksInBubbleOther->Integral());
+hNTracksInBubbleOther15->Scale(1/hNTracksInBubbleOther15->Integral());
+
+hNTracksInBubble->SetLineColor(kBlue);
+hNTracksInBubble->SetLineWidth(2);
+hNTracksInBubble->SetLineStyle(6);
+hNTracksInBubbleOther->SetLineColor(kBlack);
+hNTracksInBubbleOther->SetLineWidth(2);
+hNTracksInBubbleOther->SetLineStyle(6);
+
+hNTracksInBubble5->SetLineColor(kBlue);
+hNTracksInBubble5->SetLineWidth(2);
+hNTracksInBubble5->SetLineStyle(2);
+hNTracksInBubbleOther5->SetLineColor(kBlack);
+hNTracksInBubbleOther5->SetLineWidth(2);
+hNTracksInBubbleOther5->SetLineStyle(2);
+
+hNTracksInBubble15->SetLineColor(kBlue);
+hNTracksInBubble15->SetLineWidth(2);
+hNTracksInBubble15->SetLineStyle(9);
+hNTracksInBubbleOther15->SetLineColor(kBlack);
+hNTracksInBubbleOther15->SetLineWidth(2);
+hNTracksInBubbleOther15->SetLineStyle(9);
+
+
+hNTracksInBubble->GetXaxis()->SetTitle("Number of Tracks with Start within 10cm of Reco Vertex");
+hNTracksInBubble->GetXaxis()->CenterTitle();
+
+hNTracksInBubble->GetYaxis()->SetTitle("Number of Events");
+hNTracksInBubble->GetYaxis()->CenterTitle();
+
+
+hNTracksInBubble->Draw("histo");
+hNTracksInBubble5->Draw("histosame");
+hNTracksInBubble15->Draw("histosame");
+hNTracksInBubbleOther5->Draw("histosame");
+hNTracksInBubbleOther->Draw("histosame");
+hNTracksInBubbleOther15->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg29 = new TLegend();
+leg29 = new TLegend(0.58,0.65,1.00,1.00);
+leg29->SetTextSize(0.04);
+leg29->SetTextAlign(12);
+leg29->SetFillColor(kWhite);
+leg29->SetLineColor(kWhite);
+leg29->SetShadowColor(kWhite);
+leg29->SetHeader("Interaction Type");
+leg29->AddEntry(hNTracksInBubble5,"CCCoh 5cm");
+leg29->AddEntry(hNTracksInBubble,"CCCoh 10cm");
+leg29->AddEntry(hNTracksInBubble15,"CCCoh 15cm");
+leg29->AddEntry(hNTracksInBubbleOther5,"Other 5cm");
+leg29->AddEntry(hNTracksInBubbleOther,"Other 10cm");
+leg29->AddEntry(hNTracksInBubbleOther15,"Other 15cm");
+leg29->Draw();
+
+
+
+TCanvas *c30 = new TCanvas("c30", "The Reconstructed Hit Charge for CC-Coh Events within Vertex Activity Distance for Only Tracks");
+c30->SetTicks();
+c30->SetFillColor(kWhite);
+
+// Area normalzing the plot 
+hRecoVA2Tracks->Scale(1/hRecoVA2Tracks->Integral());
+hRecoVA2TracksOther->Scale(1/hRecoVA2TracksOther->Integral());
+
+hRecoVA2TracksOther->SetLineColor(kBlack);
+hRecoVA2TracksOther->SetLineWidth(2);
+hRecoVA2TracksOther->SetFillColor(kBlack);
+hRecoVA2TracksOther->SetFillStyle(3001);
+hRecoVA2TracksOther->Rebin(rebinnum);
+
+hRecoVA2Tracks->SetLineColor(kBlue);
+hRecoVA2Tracks->SetLineWidth(2);
+hRecoVA2Tracks->SetFillColor(kBlue);
+hRecoVA2Tracks->SetFillStyle(3000);
+hRecoVA2Tracks->Rebin(rebinnum);
+
+hRecoVA2Tracks->GetXaxis()->SetTitle("Summed Hit Charge within VA Bubble [ADC]");
+hRecoVA2Tracks->GetXaxis()->CenterTitle();
+
+hRecoVA2Tracks->GetYaxis()->SetTitle("Number of Events");
+hRecoVA2Tracks->GetYaxis()->CenterTitle();
+
+hRecoVA2Tracks->Draw("histo");
+hRecoVA2TracksOther->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg30 = new TLegend();
+leg30 = new TLegend(0.58,0.65,1.00,1.00);
+leg30->SetTextSize(0.04);
+leg30->SetTextAlign(12);
+leg30->SetFillColor(kWhite);
+leg30->SetLineColor(kWhite);
+leg30->SetShadowColor(kWhite);
+leg30->SetHeader("Vertex Activity");
+leg30->AddEntry(hRecoVA2Tracks,"CCCoh Reco");
+leg30->AddEntry(hRecoVA2TracksOther,"Other Reco");
+leg30->Draw();
+
+
+
+TCanvas *c31 = new TCanvas("c31", "The Reconstructed Hit Charge for CC-Coh Events within Vertex Activity Distance for Just Nonassociated Hits");
+c31->SetTicks();
+c31->SetFillColor(kWhite);
+
+// Area normalzing the plot 
+hRecoVA2Minus->Scale(1/hRecoVA2Minus->Integral());
+hRecoVA2MinusOther->Scale(1/hRecoVA2MinusOther->Integral());
+
+hRecoVA2MinusOther->SetLineColor(kBlack);
+hRecoVA2MinusOther->SetLineWidth(2);
+hRecoVA2MinusOther->SetFillColor(kBlack);
+hRecoVA2MinusOther->SetFillStyle(3001);
+hRecoVA2MinusOther->Rebin(rebinnum);
+
+hRecoVA2Minus->SetLineColor(kBlue);
+hRecoVA2Minus->SetLineWidth(2);
+hRecoVA2Minus->SetFillColor(kBlue);
+hRecoVA2Minus->SetFillStyle(3000);
+hRecoVA2Minus->Rebin(rebinnum);
+
+hRecoVA2Minus->GetXaxis()->SetTitle("Summed Hit Charge within VA Bubble [ADC]");
+hRecoVA2Minus->GetXaxis()->CenterTitle();
+
+hRecoVA2Minus->GetYaxis()->SetTitle("Number of Events");
+hRecoVA2Minus->GetYaxis()->CenterTitle();
+
+hRecoVA2Minus->Draw("histo");
+hRecoVA2MinusOther->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg31 = new TLegend();
+leg31 = new TLegend(0.58,0.65,1.00,1.00);
+leg31->SetTextSize(0.04);
+leg31->SetTextAlign(12);
+leg31->SetFillColor(kWhite);
+leg31->SetLineColor(kWhite);
+leg31->SetShadowColor(kWhite);
+leg31->SetHeader("Vertex Activity");
+leg31->AddEntry(hRecoVA2Minus,"CCCoh Reco");
+leg31->AddEntry(hRecoVA2MinusOther,"Other Reco");
+leg31->Draw();
+
+
+
+TCanvas *c32 = new TCanvas("c32", "|t|");
+c32->SetTicks();
+c32->SetFillColor(kWhite);
+
+// Area normalzing the plot 
+hT->Scale(1/hT->Integral());
+hTOther->Scale(1/hTOther->Integral());
+
+hTOther->SetLineColor(kBlack);
+hTOther->SetLineWidth(2);
+hTOther->SetFillColor(kBlack);
+hTOther->SetFillStyle(3001);
+hTOther->Rebin(rebinnum);
+
+hT->SetLineColor(kBlue);
+hT->SetLineWidth(2);
+hT->SetFillColor(kBlue);
+hT->SetFillStyle(3000);
+hT->Rebin(rebinnum);
+
+hT->GetXaxis()->SetTitle("|t| [(GeV/c)^{2}]");
+hT->GetXaxis()->CenterTitle();
+
+hT->GetYaxis()->SetTitle("Number of Events");
+hT->GetYaxis()->CenterTitle();
+
+hT->Draw("histo");
+hTOther->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg32 = new TLegend();
+leg32 = new TLegend(0.58,0.65,1.00,1.00);
+leg32->SetTextSize(0.04);
+leg32->SetTextAlign(12);
+leg32->SetFillColor(kWhite);
+leg32->SetLineColor(kWhite);
+leg32->SetShadowColor(kWhite);
+leg32->SetHeader("|t|");
+leg32->AddEntry(hT,"CCCoh");
+leg32->AddEntry(hTOther,"Other");
+leg32->Draw();
+
+
+
+TCanvas *c33 = new TCanvas("c33", "|t| for EXACTLY 2 Tracks in Bubble Radius");
+c33->SetTicks();
+c33->SetFillColor(kWhite);
+
+// Area normalzing the plot 
+hT2_5->Scale(1/hT2_5->Integral());
+hT2_5Other->Scale(1/hT2_5Other->Integral());
+hT2->Scale(1/hT2->Integral());
+hT2Other->Scale(1/hT2Other->Integral());
+hT2_15->Scale(1/hT2_15->Integral());
+hT2_15Other->Scale(1/hT2_15Other->Integral());
+
+hT2_5Other->SetLineColor(kBlack);
+hT2_5Other->SetLineWidth(2);
+hT2_5Other->SetLineStyle(2);
+hT2_5Other->Rebin(rebinnum);
+
+hT2_5->SetLineColor(kBlue);
+hT2_5->SetLineWidth(2);
+hT2_5->SetLineStyle(2);
+hT2_5->Rebin(rebinnum);
+
+hT2Other->SetLineColor(kBlack);
+hT2Other->SetLineWidth(2);
+hT2Other->SetLineStyle(6);
+hT2Other->Rebin(rebinnum);
+
+hT2->SetLineColor(kBlue);
+hT2->SetLineWidth(2);
+hT2->SetLineStyle(6);
+hT2->Rebin(rebinnum);
+
+hT2_15Other->SetLineColor(kBlack);
+hT2_15Other->SetLineWidth(2);
+hT2_15Other->SetLineStyle(9);
+hT2_15Other->Rebin(rebinnum);
+
+hT2_15->SetLineColor(kBlue);
+hT2_15->SetLineWidth(2);
+hT2_15->SetLineStyle(9);
+hT2_15->Rebin(rebinnum);
+
+hT2->GetXaxis()->SetTitle("|t| [(GeV/c)^{2}]");
+hT2->GetXaxis()->CenterTitle();
+
+hT2->GetYaxis()->SetTitle("Number of Events");
+hT2->GetYaxis()->CenterTitle();
+
+hT2->Draw("histo");
+hT2Other->Draw("histosame");
+hT2_5->Draw("histosame");
+hT2_5Other->Draw("histosame");
+hT2_15->Draw("histosame");
+hT2_15Other->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg33 = new TLegend();
+leg33 = new TLegend(0.58,0.65,1.00,1.00);
+leg33->SetTextSize(0.04);
+leg33->SetTextAlign(12);
+leg33->SetFillColor(kWhite);
+leg33->SetLineColor(kWhite);
+leg33->SetShadowColor(kWhite);
+leg33->SetHeader("|t|");
+leg33->AddEntry(hT2_5,"CCCoh 5cm");
+leg33->AddEntry(hT2,"CCCoh 10cm");
+leg33->AddEntry(hT2_15,"CCCoh 15cm");
+leg33->AddEntry(hT2_5Other,"Other 5cm");
+leg33->AddEntry(hT2Other,"Other 10cm");
+leg33->AddEntry(hT2_15Other,"Other 15cm");
+leg33->Draw();
 
 
 
