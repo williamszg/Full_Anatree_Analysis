@@ -10,72 +10,72 @@ TFile *f8 = new TFile("CCCoh_Daughter_Information.root"); // <-- File for CCCoh 
 TFile *f9 = new TFile("CCInc_Daughter_Information.root"); // <-- File for CCInclusive Daughters Tree
 
 
-TH1D *hMuonMuonChi2 = (TH1D*)f->Get("hMuonMuonChi2");
-TH1D *hPionMuonChi2 = (TH1D*)f->Get("hPionMuonChi2");
-TH1D *hProtonMuonChi2 = (TH1D*)f->Get("hProtonMuonChi2");
+TH1D *hMuonMuonChi2 = (TH1D*)f9->Get("hMuonMuonChi2");
+TH1D *hPionMuonChi2 = (TH1D*)f9->Get("hPionMuonChi2");
+TH1D *hProtonMuonChi2 = (TH1D*)f9->Get("hProtonMuonChi2");
 
 hMuonMuonChi2->Sumw2();
 hPionMuonChi2->Sumw2();
 hProtonMuonChi2->Sumw2();
 
-TH1D *hMuonProtonChi2 = (TH1D*)f->Get("hMuonProtonChi2");
-TH1D *hPionProtonChi2 = (TH1D*)f->Get("hPionProtonChi2");
-TH1D *hProtonProtonChi2 = (TH1D*)f->Get("hProtonProtonChi2");
+TH1D *hMuonProtonChi2 = (TH1D*)f9->Get("hMuonProtonChi2");
+TH1D *hPionProtonChi2 = (TH1D*)f9->Get("hPionProtonChi2");
+TH1D *hProtonProtonChi2 = (TH1D*)f9->Get("hProtonProtonChi2");
 
 hMuonProtonChi2->Sumw2();
 hPionProtonChi2->Sumw2();
 hProtonProtonChi2->Sumw2();
 
-TH1D *hMuonPandoraTrackLength = (TH1D*)f->Get("hMuonPandoraTrackLength");
-TH1D *hPionPandoraTrackLength = (TH1D*)f->Get("hPionPandoraTrackLength");
-TH1D *hProtonPandoraTrackLength = (TH1D*)f->Get("hProtonPandoraTrackLength");
+TH1D *hMuonPandoraTrackLength = (TH1D*)f9->Get("hMuonPandoraTrackLength");
+TH1D *hPionPandoraTrackLength = (TH1D*)f9->Get("hPionPandoraTrackLength");
+TH1D *hProtonPandoraTrackLength = (TH1D*)f9->Get("hProtonPandoraTrackLength");
 
 hMuonPandoraTrackLength->Sumw2();
 hPionPandoraTrackLength->Sumw2();
 hProtonPandoraTrackLength->Sumw2();
 
-TH2D *hMuonTracksMuonChi2VsProtonChi2 = (TH2D*)f->Get("hMuonTracksMuonChi2VsProtonChi2");
-TH2D *hPionTracksMuonChi2VsProtonChi2 = (TH2D*)f->Get("hPionTracksMuonChi2VsProtonChi2");
-TH2D *hProtonTracksMuonChi2VsProtonChi2 = (TH2D*)f->Get("hProtonTracksMuonChi2VsProtonChi2");
+TH2D *hMuonTracksMuonChi2VsProtonChi2 = (TH2D*)f9->Get("hMuonTracksMuonChi2VsProtonChi2");
+TH2D *hPionTracksMuonChi2VsProtonChi2 = (TH2D*)f9->Get("hPionTracksMuonChi2VsProtonChi2");
+TH2D *hProtonTracksMuonChi2VsProtonChi2 = (TH2D*)f9->Get("hProtonTracksMuonChi2VsProtonChi2");
 
-TH1D *hMuonRatioChi2 = (TH1D*)f->Get("hMuonRatioChi2");
-TH1D *hPionRatioChi2 = (TH1D*)f->Get("hPionRatioChi2");
-TH1D *hProtonRatioChi2 = (TH1D*)f->Get("hProtonRatioChi2");
+TH1D *hMuonRatioChi2 = (TH1D*)f9->Get("hMuonRatioChi2");
+TH1D *hPionRatioChi2 = (TH1D*)f9->Get("hPionRatioChi2");
+TH1D *hProtonRatioChi2 = (TH1D*)f9->Get("hProtonRatioChi2");
 
 hMuonRatioChi2->Sumw2();
 hPionRatioChi2->Sumw2();
 hProtonRatioChi2->Sumw2();
 
-TH1D *hMuonTrueTrackLength = (TH1D*)f->Get("hMuonTrueTrackLength");
-TH1D *hPionTrueTrackLength = (TH1D*)f->Get("hPionTrueTrackLength");
-TH1D *hProtonTrueTrackLength = (TH1D*)f->Get("hProtonTrueTrackLength");
+TH1D *hMuonTrueTrackLength = (TH1D*)f9->Get("hMuonTrueTrackLength");
+TH1D *hPionTrueTrackLength = (TH1D*)f9->Get("hPionTrueTrackLength");
+TH1D *hProtonTrueTrackLength = (TH1D*)f9->Get("hProtonTrueTrackLength");
 
 hMuonTrueTrackLength->Sumw2();
 hPionTrueTrackLength->Sumw2();
 hProtonTrueTrackLength->Sumw2();
 
-TH2D *hMuonPandoraVsTrueTrackLength = (TH2D*)f->Get("hMuonPandoraVsTrueTrackLength");
-TH2D *hPionPandoraVsTrueTrackLength = (TH2D*)f->Get("hPionPandoraVsTrueTrackLength");
-TH2D *hProtonPandoraVsTrueTrackLength = (TH2D*)f->Get("hProtonPandoraVsTrueTrackLength");
+TH2D *hMuonPandoraVsTrueTrackLength = (TH2D*)f9->Get("hMuonPandoraVsTrueTrackLength");
+TH2D *hPionPandoraVsTrueTrackLength = (TH2D*)f9->Get("hPionPandoraVsTrueTrackLength");
+TH2D *hProtonPandoraVsTrueTrackLength = (TH2D*)f9->Get("hProtonPandoraVsTrueTrackLength");
 
-TH1D *hMuonTrackScore = (TH1D*)f->Get("hMuonTrackScore");
-TH1D *hPionTrackScore = (TH1D*)f->Get("hPionTrackScore");
-TH1D *hProtonTrackScore = (TH1D*)f->Get("hProtonTrackScore");
+TH1D *hMuonTrackScore = (TH1D*)f9->Get("hMuonTrackScore");
+TH1D *hPionTrackScore = (TH1D*)f9->Get("hPionTrackScore");
+TH1D *hProtonTrackScore = (TH1D*)f9->Get("hProtonTrackScore");
 
 hMuonTrackScore->Sumw2();
 hPionTrackScore->Sumw2();
 hProtonTrackScore->Sumw2();
 
-TH1D *hMuonVtxDistance = (TH1D*)f->Get("hMuonVtxDistance");
-TH1D *hPionVtxDistance = (TH1D*)f->Get("hPionVtxDistance");
-TH1D *hProtonVtxDistance = (TH1D*)f->Get("hProtonVtxDistance");
+TH1D *hMuonVtxDistance = (TH1D*)f9->Get("hMuonVtxDistance");
+TH1D *hPionVtxDistance = (TH1D*)f9->Get("hPionVtxDistance");
+TH1D *hProtonVtxDistance = (TH1D*)f9->Get("hProtonVtxDistance");
 
 hMuonVtxDistance->Sumw2();
 hPionVtxDistance->Sumw2();
 hProtonVtxDistance->Sumw2();
 
-TH1D *hMatchedNuEnergy = (TH1D*)f->Get("hMatchedNuEnergy");
-TH1D *hPassedNuEnergy = (TH1D*)f->Get("hPassedNuEnergy");
+TH1D *hMatchedNuEnergy = (TH1D*)f9->Get("hMatchedNuEnergy");
+TH1D *hPassedNuEnergy = (TH1D*)f9->Get("hPassedNuEnergy");
 
 hMatchedNuEnergy->Sumw2();
 hPassedNuEnergy->Sumw2();
@@ -261,6 +261,14 @@ TH1D *hCutByCutMuonCandidateDivide2CCQE = (TH1D*)f5->Get("hCutByCutMuonCandidate
 TH1D *hCutByCutMuonCandidate2Other = (TH1D*)f4->Get("hCutByCutMuonCandidate2");
 TH1D *hCutByCutMuonCandidateDivide2Other = (TH1D*)f4->Get("hCutByCutMuonCandidateDivide2");
 TH1D *hCutByCutMuonCandidate2CCCoh = (TH1D*)f8->Get("hCutByCutMuonCandidate2");
+TH1D *hCutByCutMuonCandidate2CCRes = (TH1D*)f3->Get("hCutByCutMuonCandidate2");
+TH1D *hCutByCutMuonCandidateDivide2CCRes = (TH1D*)f3->Get("hCutByCutMuonCandidateDivide2");
+TH1D *hCutByCutMuonCandidate2CCDIS = (TH1D*)f7->Get("hCutByCutMuonCandidate2");
+TH1D *hCutByCutMuonCandidateDivide2CCDIS = (TH1D*)f7->Get("hCutByCutMuonCandidateDivide2");
+TH1D *hCutByCutMuonCandidate2CCInc = (TH1D*)f9->Get("hCutByCutMuonCandidate2");
+TH1D *hCutByCutMuonCandidateDivide2CCInc = (TH1D*)f9->Get("hCutByCutMuonCandidateDivide2");
+TH1D *hCutByCutMuonCandidate2NC = (TH1D*)f6->Get("hCutByCutMuonCandidate2");
+TH1D *hCutByCutMuonCandidateDivide2NC = (TH1D*)f6->Get("hCutByCutMuonCandidateDivide2");
 
 hCutByCutMuonCandidate2->Sumw2();
 hCutByCutMuonCandidateDivide2->Sumw2();
@@ -269,6 +277,14 @@ hCutByCutMuonCandidateDivide2CCQE->Sumw2();
 hCutByCutMuonCandidate2Other->Sumw2();
 hCutByCutMuonCandidateDivide2Other->Sumw2();
 hCutByCutMuonCandidate2CCCoh->Sumw2();
+hCutByCutMuonCandidate2CCRes->Sumw2();
+hCutByCutMuonCandidateDivide2CCRes->Sumw2();
+hCutByCutMuonCandidate2CCDIS->Sumw2();
+hCutByCutMuonCandidateDivide2CCDIS->Sumw2();
+hCutByCutMuonCandidate2CCInc->Sumw2();
+hCutByCutMuonCandidateDivide2CCInc->Sumw2();
+hCutByCutMuonCandidate2NC->Sumw2();
+hCutByCutMuonCandidateDivide2NC->Sumw2();
 
 TH1D *hNTracksInBubble5 = (TH1D*)f->Get("hNTracksInBubble5");
 TH1D *hNTracksInBubble = (TH1D*)f->Get("hNTracksInBubble");
@@ -297,9 +313,21 @@ hRecoVA2Minus->Sumw2();
 hRecoVA2MinusOther->Sumw2();
 
 TH1D *hT = (TH1D*)f->Get("hT");
+TH1D *hTCCQE = (TH1D*)f5->Get("hT");
+TH1D *hTCCRes = (TH1D*)f3->Get("hT");
+TH1D *hTCCDIS = (TH1D*)f7->Get("hT");
+TH1D *hTCCInc = (TH1D*)f9->Get("hT");
+TH1D *hTNC = (TH1D*)f6->Get("hT");
+TH1D *hTCCCoh = (TH1D*)f8->Get("hT");
 TH1D *hTOther = (TH1D*)f4->Get("hT");
 
 hT->Sumw2();
+hTCCQE->Sumw2();
+hTCCRes->Sumw2();
+hTCCDIS->Sumw2();
+hTCCInc->Sumw2();
+hTNC->Sumw2();
+hTCCCoh->Sumw2();
 hTOther->Sumw2();
 
 TH1D *hT2_5 = (TH1D*)f->Get("hT2_5");
@@ -320,6 +348,20 @@ TH1D *hT2_15Other = (TH1D*)f4->Get("hT2_15");
 hT2_15->Sumw2();
 hT2_15Other->Sumw2();
 
+TH1D *hNTracksInBubbleCCCoh = (TH1D*)f8->Get("hNTracksInBubble");
+TH1D *hNTracksInBubbleCCQE = (TH1D*)f5->Get("hNTracksInBubble");
+TH1D *hNTracksInBubbleCCRes = (TH1D*)f3->Get("hNTracksInBubble");
+TH1D *hNTracksInBubbleCCDIS = (TH1D*)f7->Get("hNTracksInBubble");
+TH1D *hNTracksInBubbleCCInc = (TH1D*)f9->Get("hNTracksInBubble");
+TH1D *hNTracksInBubbleNC = (TH1D*)f6->Get("hNTracksInBubble");
+
+hNTracksInBubbleCCCoh->Sumw2();
+hNTracksInBubbleCCQE->Sumw2();
+hNTracksInBubbleCCRes->Sumw2();
+hNTracksInBubbleCCDIS->Sumw2();
+hNTracksInBubbleCCInc->Sumw2();
+hNTracksInBubbleNC->Sumw2();
+
 // Creating the Stacked Histogram
 THStack *hRecoVAStacked = new THStack("hRecoVAStacked", "Hit Charges from All Planes Stacked for CC-Coh Events");
 
@@ -329,11 +371,32 @@ THStack *hRecoVAStacked = new THStack("hRecoVAStacked", "Hit Charges from All Pl
 // ===================================================
 // --- Print Outs for Purity and Efficiency Tables ---
 // ===================================================
+std::cout<<"This is for the Modified Table!!!"<<std::endl;
 for (int i = 1; i < 19; i++) {
-   std::cout<<"Number of Events = "<<hCutByCutMuonCandidate->GetBinContent(i)<<", i = "<<i<<std::endl;
-   std::cout<<"Number of Events = "<<hCutByCutMuonCandidateOther->GetBinContent(i)<<", i = "<<i<<std::endl;
-   std::cout<<"Number of Events = "<<hCutByCutMuonCandidate2->GetBinContent(i)<<", i = "<<i<<std::endl;
-   std::cout<<"Number of Events = "<<hCutByCutMuonCandidate2Other->GetBinContent(i)<<", i = "<<i<<std::endl;
+   std::cout<<
+	   hCutByCutMuonCandidate->GetBinContent(i)<<
+	   //hCutByCutMuonCandidateCCQE->GetBinContent(i)<<
+	   //hCutByCutMuonCandidateCCRes->GetBinContent(i)<<
+	   //hCutByCutMuonCandidateCCDIS->GetBinContent(i)<<
+	   //hCutByCutMuonCandidateCCInc->GetBinContent(i)<<	   
+	   //hCutByCutMuonCandidateNC->GetBinContent(i)<<
+	   //hCutByCutMuonCandidateOther->GetBinContent(i)<<
+	   //hCutByCutMuonCandidateCCCoh->GetBinContent(i)<<
+	   std::endl;
+}
+std::cout<<" "<<std::endl;
+std::cout<<"This is for the Unmodified Table!!!"<<std::endl;
+for (int i = 1; i < 19; i++) {
+   std::cout<<
+	   hCutByCutMuonCandidate2->GetBinContent(i)<<
+	   //hCutByCutMuonCandidate2CCQE->GetBinContent(i)<<
+	   //hCutByCutMuonCandidate2CCRes->GetBinContent(i)<<
+	   //hCutByCutMuonCandidate2CCDIS->GetBinContent(i)<<
+	   //hCutByCutMuonCandidate2CCInc->GetBinContent(i)<<	   
+	   //hCutByCutMuonCandidate2NC->GetBinContent(i)<<
+	   //hCutByCutMuonCandidate2Other->GetBinContent(i)<<
+	   //hCutByCutMuonCandidate2CCCoh->GetBinContent(i)<<
+	   std::endl;
 }
 // ===================================================
 
@@ -376,7 +439,7 @@ hMuonMuonChi2->GetYaxis()->CenterTitle();
 
 hMuonMuonChi2->Draw("histo");
 hPionMuonChi2->Draw("histosame");
-//hProtonMuonChi2->Draw("histosame");
+hProtonMuonChi2->Draw("histosame");
 
 
 // ### Defining the legend for the plot ###
@@ -390,7 +453,7 @@ leg1->SetShadowColor(kWhite);
 leg1->SetHeader("Particle");
 leg1->AddEntry(hMuonMuonChi2,"#mu");
 leg1->AddEntry(hPionMuonChi2,"#pi");
-//leg1->AddEntry(hProtonMuonChi2,"p");
+leg1->AddEntry(hProtonMuonChi2,"p");
 leg1->Draw();
 
 
@@ -431,7 +494,7 @@ hMuonProtonChi2->GetYaxis()->CenterTitle();
 
 hMuonProtonChi2->Draw("histo");
 hPionProtonChi2->Draw("histosame");
-//hProtonProtonChi2->Draw("histosame");
+hProtonProtonChi2->Draw("histosame");
 
 
 // ### Defining the legend for the plot ###
@@ -445,7 +508,7 @@ leg2->SetShadowColor(kWhite);
 leg2->SetHeader("Particle");
 leg2->AddEntry(hMuonProtonChi2,"#mu");
 leg2->AddEntry(hPionProtonChi2,"#pi");
-//leg2->AddEntry(hProtonProtonChi2,"p");
+leg2->AddEntry(hProtonProtonChi2,"p");
 leg2->Draw();
 
 
@@ -482,7 +545,7 @@ hPionPandoraTrackLength->GetYaxis()->SetTitle("Normalized Events");
 hPionPandoraTrackLength->GetYaxis()->CenterTitle();
 
 hPionPandoraTrackLength->Draw("histo");
-//hProtonPandoraTrackLength->Draw("histosame");
+hProtonPandoraTrackLength->Draw("histosame");
 hMuonPandoraTrackLength->Draw("histosame");
 
 
@@ -497,7 +560,7 @@ leg3->SetShadowColor(kWhite);
 leg3->SetHeader("Particle");
 leg3->AddEntry(hMuonPandoraTrackLength,"#mu");
 leg3->AddEntry(hPionPandoraTrackLength,"#pi");
-//leg3->AddEntry(hProtonPandoraTrackLength,"p");
+leg3->AddEntry(hProtonPandoraTrackLength,"p");
 leg3->Draw();
 
 
@@ -600,7 +663,7 @@ hPionRatioChi2->GetYaxis()->SetTitle("Normalized Events");
 hPionRatioChi2->GetYaxis()->CenterTitle();
 
 hPionRatioChi2->Draw("histo");
-//hProtonRatioChi2->Draw("histosame");
+hProtonRatioChi2->Draw("histosame");
 hMuonRatioChi2->Draw("histosame");
 
 
@@ -615,7 +678,7 @@ leg7->SetShadowColor(kWhite);
 leg7->SetHeader("Particle");
 leg7->AddEntry(hMuonRatioChi2,"#mu");
 leg7->AddEntry(hPionRatioChi2,"#pi");
-//leg7->AddEntry(hProtonRatioChi2,"p");
+leg7->AddEntry(hProtonRatioChi2,"p");
 leg7->Draw();
 
 
@@ -652,7 +715,7 @@ hPionTrueTrackLength->GetYaxis()->SetTitle("Normalized Events");
 hPionTrueTrackLength->GetYaxis()->CenterTitle();
 
 hPionTrueTrackLength->Draw("histo");
-//hProtonTrueTrackLength->Draw("histosame");
+hProtonTrueTrackLength->Draw("histosame");
 hMuonTrueTrackLength->Draw("histosame");
 
 
@@ -667,7 +730,7 @@ leg8->SetShadowColor(kWhite);
 leg8->SetHeader("Particle");
 leg8->AddEntry(hMuonTrueTrackLength,"#mu");
 leg8->AddEntry(hPionTrueTrackLength,"#pi");
-//leg8->AddEntry(hProtonTrueTrackLength,"p");
+leg8->AddEntry(hProtonTrueTrackLength,"p");
 leg8->Draw();
 
 
@@ -760,7 +823,7 @@ hMuonTrackScore->GetYaxis()->CenterTitle();
 gPad->SetLogy();
 hMuonTrackScore->Draw("histo");
 hPionTrackScore->Draw("histosame");
-//hProtonTrackScore->Draw("histosame");
+hProtonTrackScore->Draw("histosame");
 
 
 // ### Defining the legend for the plot ###
@@ -774,7 +837,7 @@ leg12->SetShadowColor(kWhite);
 leg12->SetHeader("Particle");
 leg12->AddEntry(hMuonTrackScore,"#mu");
 leg12->AddEntry(hPionTrackScore,"#pi");
-//leg12->AddEntry(hProtonTrackScore,"p");
+leg12->AddEntry(hProtonTrackScore,"p");
 leg12->Draw();
 
 
@@ -813,7 +876,7 @@ hMuonVtxDistance->GetYaxis()->CenterTitle();
 gPad->SetLogy();
 hMuonVtxDistance->Draw("histo");
 hPionVtxDistance->Draw("histosame");
-//hProtonVtxDistance->Draw("histosame");
+hProtonVtxDistance->Draw("histosame");
 
 
 // ### Defining the legend for the plot ###
@@ -827,7 +890,7 @@ leg13->SetShadowColor(kWhite);
 leg13->SetHeader("Particle");
 leg13->AddEntry(hMuonVtxDistance,"#mu");
 leg13->AddEntry(hPionVtxDistance,"#pi");
-//leg13->AddEntry(hProtonVtxDistance,"p");
+leg13->AddEntry(hProtonVtxDistance,"p");
 leg13->Draw();
 
 
@@ -2230,11 +2293,23 @@ hCutByCutMuonCandidate2Other->SetLineColor(kBlack);
 hCutByCutMuonCandidate2Other->SetLineWidth(2);
 hCutByCutMuonCandidate2CCCoh->SetLineColor(kCyan);
 hCutByCutMuonCandidate2CCCoh->SetLineWidth(2);
+hCutByCutMuonCandidate2CCRes->SetLineColor(kRed);
+hCutByCutMuonCandidate2CCRes->SetLineWidth(2);
+hCutByCutMuonCandidate2CCDIS->SetLineColor(kOrange);
+hCutByCutMuonCandidate2CCDIS->SetLineWidth(2);
+hCutByCutMuonCandidate2CCInc->SetLineColor(kGray);
+hCutByCutMuonCandidate2CCInc->SetLineWidth(2);
+hCutByCutMuonCandidate2NC->SetLineColor(kGreen);
+hCutByCutMuonCandidate2NC->SetLineWidth(2);
 
 hCutByCutMuonCandidate2->Divide(hCutByCutMuonCandidateDivide2);
 hCutByCutMuonCandidate2CCQE->Divide(hCutByCutMuonCandidateDivide2CCQE);
 hCutByCutMuonCandidate2Other->Divide(hCutByCutMuonCandidateDivide2Other);
 hCutByCutMuonCandidate2CCCoh->Divide(hCutByCutMuonCandidatePurityDivide2);
+hCutByCutMuonCandidate2CCRes->Divide(hCutByCutMuonCandidateDivide2CCRes);
+hCutByCutMuonCandidate2CCDIS->Divide(hCutByCutMuonCandidateDivide2CCDIS);
+hCutByCutMuonCandidate2CCInc->Divide(hCutByCutMuonCandidateDivide2CCInc);
+hCutByCutMuonCandidate2NC->Divide(hCutByCutMuonCandidateDivide2NC);
 
 hCutByCutMuonCandidate2->GetXaxis()->SetBinLabel(1, "Num. Matched Events");
 hCutByCutMuonCandidate2->GetXaxis()->SetBinLabel(2, "Track Score > 0.85");
@@ -2260,6 +2335,10 @@ hCutByCutMuonCandidate2->GetYaxis()->SetRangeUser(0,1.05);
 hCutByCutMuonCandidate2->Draw("E1");
 hCutByCutMuonCandidate2CCQE->Draw("E1same");
 hCutByCutMuonCandidate2Other->Draw("E1same");
+hCutByCutMuonCandidate2CCRes->Draw("E1same");
+hCutByCutMuonCandidate2CCDIS->Draw("E1same");
+hCutByCutMuonCandidate2CCInc->Draw("E1same");
+hCutByCutMuonCandidate2NC->Draw("E1same");
 hCutByCutMuonCandidate2CCCoh->Draw("E1same");
 
 
@@ -2275,6 +2354,10 @@ leg28->SetHeader("Interaction Type");
 leg28->AddEntry(hCutByCutMuonCandidate2,"CCCoh");
 leg28->AddEntry(hCutByCutMuonCandidate2CCCoh,"CCCoh Purity");
 leg28->AddEntry(hCutByCutMuonCandidate2CCQE,"CCQE");
+leg28->AddEntry(hCutByCutMuonCandidate2CCRes,"CCRes");
+leg28->AddEntry(hCutByCutMuonCandidate2CCDIS,"CCDIS");
+leg28->AddEntry(hCutByCutMuonCandidate2CCInc,"CCInc");
+leg28->AddEntry(hCutByCutMuonCandidate2NC,"NC");
 leg28->AddEntry(hCutByCutMuonCandidate2Other,"Other");
 leg28->Draw();
 
@@ -2296,10 +2379,10 @@ hNTracksInBubbleOther15->Scale(1/hNTracksInBubbleOther15->Integral());
 
 hNTracksInBubble->SetLineColor(kBlue);
 hNTracksInBubble->SetLineWidth(2);
-hNTracksInBubble->SetLineStyle(6);
+//hNTracksInBubble->SetLineStyle(6);
 hNTracksInBubbleOther->SetLineColor(kBlack);
 hNTracksInBubbleOther->SetLineWidth(2);
-hNTracksInBubbleOther->SetLineStyle(6);
+//hNTracksInBubbleOther->SetLineStyle(6);
 
 hNTracksInBubble5->SetLineColor(kBlue);
 hNTracksInBubble5->SetLineWidth(2);
@@ -2347,6 +2430,67 @@ leg29->AddEntry(hNTracksInBubbleOther5,"Other 5cm");
 leg29->AddEntry(hNTracksInBubbleOther,"Other 10cm");
 leg29->AddEntry(hNTracksInBubbleOther15,"Other 15cm");
 leg29->Draw();
+
+
+
+
+
+TCanvas *c35 = new TCanvas("c35", "The Number of Tracks within a Bubble of 10cm from Reco Vertex");
+c35->SetTicks();
+c35->SetFillColor(kWhite);
+
+// Area normalzing the plot 
+hNTracksInBubbleCCQE->Scale(1/hNTracksInBubbleCCQE->Integral());
+hNTracksInBubbleCCRes->Scale(1/hNTracksInBubbleCCRes->Integral());
+hNTracksInBubbleCCDIS->Scale(1/hNTracksInBubbleCCDIS->Integral());
+hNTracksInBubbleCCInc->Scale(1/hNTracksInBubbleCCInc->Integral());
+hNTracksInBubbleNC->Scale(1/hNTracksInBubbleNC->Integral());
+
+hNTracksInBubble->SetLineColor(kBlue);
+hNTracksInBubble->SetLineWidth(2);
+hNTracksInBubbleCCQE->SetLineColor(kViolet);
+hNTracksInBubbleCCQE->SetLineWidth(2);
+hNTracksInBubbleCCRes->SetLineColor(kRed);
+hNTracksInBubbleCCRes->SetLineWidth(2);
+hNTracksInBubbleCCDIS->SetLineColor(kOrange);
+hNTracksInBubbleCCDIS->SetLineWidth(2);
+hNTracksInBubbleCCInc->SetLineColor(kGray);
+hNTracksInBubbleCCInc->SetLineWidth(2);
+hNTracksInBubbleOther->SetLineColor(kBlack);
+hNTracksInBubbleOther->SetLineWidth(2);
+hNTracksInBubbleNC->SetLineColor(kGreen);
+hNTracksInBubbleNC->SetLineWidth(2);
+
+
+hNTracksInBubble->Draw("histo");
+//hNTracksInBubbleCCQE->Draw("histosame");
+//hNTracksInBubbleCCRes->Draw("histosame");
+//hNTracksInBubbleCCDIS->Draw("histosame");
+//hNTracksInBubbleCCInc->Draw("histosame");
+hNTracksInBubbleOther->Draw("histosame");
+//hNTracksInBubbleNC->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg35 = new TLegend();
+leg35 = new TLegend(0.58,0.65,1.00,1.00);
+leg35->SetTextSize(0.04);
+leg35->SetTextAlign(12);
+leg35->SetFillColor(kWhite);
+leg35->SetLineColor(kWhite);
+leg35->SetShadowColor(kWhite);
+leg35->SetHeader("Interaction Type");
+leg35->AddEntry(hNTracksInBubble,"CCCoh");
+//leg35->AddEntry(hNTracksInBubbleCCQE,"CCQE");
+//leg35->AddEntry(hNTracksInBubbleCCRes,"CCRes");
+//leg35->AddEntry(hNTracksInBubbleCCDIS,"CCDIS");
+//leg35->AddEntry(hNTracksInBubbleCCInc,"CCInc");
+leg35->AddEntry(hNTracksInBubbleOther,"Other");
+//leg35->AddEntry(hNTracksInBubbleNC,"NC");
+leg35->Draw();
+
+
+
 
 
 
@@ -2440,25 +2584,182 @@ leg31->Draw();
 
 
 
+// -----------------------------
+// --- TGraph for |t| Effici ---
+// -----------------------------
+int s = 1000;
+double e[1000] = {0};
+double TEff[1000] = {0};
+double TPurity[1000] = {0};
+double CCCohT[1000] = {0};
+double CCCohT2[1000] = {0};
+double CCResT[1000] = {0};
+double CCDIST[1000] = {0};
+double OtherT[1000] = {0};
+double CCQET[1000] = {0};
+double NCT[1000] = {0};
+
+for (int i = 0; i < s; i++)
+   {
+   e[i] = i*1./s;
+   for (int g = 1; g < i+1; g++)
+      {
+      CCCohT[i] += hT->GetBinContent(g);
+      CCCohT2[i] += hTCCCoh->GetBinContent(g);
+      CCResT[i] += hTCCRes->GetBinContent(g);
+      CCDIST[i] += hTCCDIS->GetBinContent(g);
+      OtherT[i] += hTOther->GetBinContent(g);
+      CCQET[i] += hTCCQE->GetBinContent(g);
+      NCT[i] += hTNC->GetBinContent(g);
+      } // End g-Loop
+
+   TPurity[i] = 100*(CCCohT2[i])/(CCCohT2[i] + OtherT[i]);
+   if (i == 0) TPurity[i] = 0;
+   TEff[i] = 100*(CCCohT2[i])/(hTCCCoh->GetEntries());
+   CCCohT[i] = CCCohT[i]*100/hT->GetEntries();
+   CCResT[i] = 100-(CCResT[i]*100/hTCCRes->GetEntries());
+   CCDIST[i] = 100-(CCDIST[i]*100/hTCCDIS->GetEntries());
+   OtherT[i] = 100-(OtherT[i]*100/hTOther->GetEntries());
+   CCQET[i] = 100-(CCQET[i]*100/hTCCQE->GetEntries());
+   NCT[i] = 100-(NCT[i]*100/hTNC->GetEntries());
+   } // End i-Loop
+
+TGraph* gTEff = new TGraph(s, e, TEff);
+gTEff->SetTitle("TEff");
+gTEff->SetName("TEff");
+gTEff->SetFillColor(kWhite);
+gTEff->SetLineColor(kBlue);
+gTEff->SetLineWidth(2);
+TGraph* gTPurity = new TGraph(s, e, TPurity);
+gTPurity->SetTitle("TPurity");
+gTPurity->SetName("TPurity");
+gTPurity->SetFillColor(kWhite);
+gTPurity->SetLineColor(kCyan);
+gTPurity->SetLineStyle(kDashed);
+gTPurity->SetLineWidth(2);
+TGraph* gCCCohT = new TGraph(s, e, CCCohT);
+gCCCohT->SetTitle("gCCCohT");
+gCCCohT->SetName("gCCCohT");
+gCCCohT->SetFillColor(kWhite);
+gCCCohT->SetLineColor(kBlue);
+gCCCohT->SetLineStyle(kDashed);
+gCCCohT->SetLineWidth(2);
+TGraph* gCCResT = new TGraph(s, e, CCResT);
+gCCResT->SetTitle("gCCResT");
+gCCResT->SetName("gCCResT");
+gCCResT->SetFillColor(kWhite);
+gCCResT->SetLineColor(kRed);
+gCCResT->SetLineStyle(kDashed);
+gCCResT->SetLineWidth(2);
+TGraph* gCCDIST = new TGraph(s, e, CCDIST);
+gCCDIST->SetTitle("gCCDIST");
+gCCDIST->SetName("gCCDIST");
+gCCDIST->SetFillColor(kWhite);
+gCCDIST->SetLineColor(kOrange);
+gCCDIST->SetLineStyle(kDashed);
+gCCDIST->SetLineWidth(2);
+TGraph* gOtherT = new TGraph(s, e, OtherT);
+gOtherT->SetTitle("gOtherT");
+gOtherT->SetName("gOtherT");
+gOtherT->SetFillColor(kWhite);
+gOtherT->SetLineColor(kBlack);
+gOtherT->SetLineStyle(kDashed);
+gOtherT->SetLineWidth(2);
+TGraph* gCCQET = new TGraph(s, e, CCQET);
+gCCQET->SetTitle("gCCQET");
+gCCQET->SetName("gCCQET");
+gCCQET->SetFillColor(kWhite);
+gCCQET->SetLineColor(kViolet);
+gCCQET->SetLineStyle(kDashed);
+gCCQET->SetLineWidth(2);
+TGraph* gNCT = new TGraph(s, e, NCT);
+gNCT->SetTitle("gNCT");
+gNCT->SetName("gNCT");
+gNCT->SetFillColor(kWhite);
+gNCT->SetLineColor(kGreen);
+gNCT->SetLineStyle(kDashed);
+gNCT->SetLineWidth(2);
+
+TCanvas *c34 = new TCanvas("c34", "|t| TGraphs");
+c34->SetTicks();
+c34->SetFillColor(kWhite);
+
+gCCCohT->GetXaxis()->SetTitle("|t| [(GeV/c)^{2}]");
+gCCCohT->GetXaxis()->CenterTitle();
+gCCCohT->GetXaxis()->SetRangeUser(0,1);
+
+gCCCohT->GetYaxis()->SetTitle("Rejection (Background) Passed (Signal) [%]");
+gCCCohT->GetYaxis()->CenterTitle();
+
+gCCCohT->Draw();
+gCCResT->Draw("same");
+gCCDIST->Draw("same");
+gOtherT->Draw("same");
+gCCQET->Draw("same");
+gNCT->Draw("same");
+gTPurity->Draw("same");
+
+// ### Defining the legend for the plot ###
+TLegend *leg34 = new TLegend();
+leg34 = new TLegend(0.58,0.65,1.00,1.00);
+leg34->SetTextSize(0.04);
+leg34->SetTextAlign(12);
+leg34->SetFillColor(kWhite);
+leg34->SetLineColor(kWhite);
+leg34->SetShadowColor(kWhite);
+leg34->SetHeader("Channel");
+leg34->AddEntry(gCCCohT,"CCCoh True");
+leg34->AddEntry(gTPurity,"CCCoh Purity True");
+leg34->AddEntry(gCCQET,"CCQE True");
+leg34->AddEntry(gCCResT,"CCRes True");
+leg34->AddEntry(gCCDIST,"CCDIS True");
+leg34->AddEntry(gOtherT,"Other True");
+leg34->AddEntry(gNCT,"NC True");
+leg34->Draw();
+// ----------------------------
+
+
+
 TCanvas *c32 = new TCanvas("c32", "|t|");
 c32->SetTicks();
 c32->SetFillColor(kWhite);
 
 // Area normalzing the plot 
 hT->Scale(1/hT->Integral());
+hTCCQE->Scale(1/hTCCQE->Integral());
+hTCCRes->Scale(1/hTCCRes->Integral());
+hTCCDIS->Scale(1/hTCCDIS->Integral());
+hTCCInc->Scale(1/hTCCInc->Integral());
+hTNC->Scale(1/hTNC->Integral());
 hTOther->Scale(1/hTOther->Integral());
 
 hTOther->SetLineColor(kBlack);
 hTOther->SetLineWidth(2);
-hTOther->SetFillColor(kBlack);
-hTOther->SetFillStyle(3001);
 hTOther->Rebin(rebinnum);
 
 hT->SetLineColor(kBlue);
 hT->SetLineWidth(2);
-hT->SetFillColor(kBlue);
-hT->SetFillStyle(3000);
 hT->Rebin(rebinnum);
+
+hTCCQE->SetLineColor(kViolet);
+hTCCQE->SetLineWidth(2);
+hTCCQE->Rebin(rebinnum);
+
+hTCCRes->SetLineColor(kRed);
+hTCCRes->SetLineWidth(2);
+hTCCRes->Rebin(rebinnum);
+
+hTCCDIS->SetLineColor(kOrange);
+hTCCDIS->SetLineWidth(2);
+hTCCDIS->Rebin(rebinnum);
+
+hTCCInc->SetLineColor(kGray);
+hTCCInc->SetLineWidth(2);
+hTCCInc->Rebin(rebinnum);
+
+hTNC->SetLineColor(kGreen);
+hTNC->SetLineWidth(2);
+hTNC->Rebin(rebinnum);
 
 hT->GetXaxis()->SetTitle("|t| [(GeV/c)^{2}]");
 hT->GetXaxis()->CenterTitle();
@@ -2467,6 +2768,11 @@ hT->GetYaxis()->SetTitle("Number of Events");
 hT->GetYaxis()->CenterTitle();
 
 hT->Draw("histo");
+hTCCQE->Draw("histosame");
+hTCCRes->Draw("histosame");
+hTCCDIS->Draw("histosame");
+hTCCInc->Draw("histosame");
+hTNC->Draw("histosame");
 hTOther->Draw("histosame");
 
 
@@ -2480,6 +2786,11 @@ leg32->SetLineColor(kWhite);
 leg32->SetShadowColor(kWhite);
 leg32->SetHeader("|t|");
 leg32->AddEntry(hT,"CCCoh");
+leg32->AddEntry(hTCCQE,"CCQE");
+leg32->AddEntry(hTCCRes,"CCRes");
+leg32->AddEntry(hTCCDIS,"CCDIS");
+leg32->AddEntry(hTCCInc,"CCInc");
+leg32->AddEntry(hTNC,"NC");
 leg32->AddEntry(hTOther,"Other");
 leg32->Draw();
 
