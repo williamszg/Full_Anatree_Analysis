@@ -1,6 +1,6 @@
 void RunMeBKGDDaughters(){
-gROOT->ProcessLine(".L TwoBKGDDaughters.C");
-gROOT->ProcessLine("TwoBKGDDaughters t");
+gROOT->ProcessLine(".L BackgroundDaughters.C");
+gROOT->ProcessLine("BackgroundDaughters t");
 gROOT->ProcessLine("t.Loop()");
 gROOT->ProcessLine(".q");
 }

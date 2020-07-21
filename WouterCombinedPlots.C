@@ -372,7 +372,7 @@ THStack *hRecoVAStacked = new THStack("hRecoVAStacked", "Hit Charges from All Pl
 // --- Print Outs for Purity and Efficiency Tables ---
 // ===================================================
 std::cout<<"This is for the Modified Table!!!"<<std::endl;
-for (int i = 1; i < 19; i++) {
+for (int i = 1; i < 20; i++) {
    std::cout<<
 	   hCutByCutMuonCandidate->GetBinContent(i)<<
 	   //hCutByCutMuonCandidateCCQE->GetBinContent(i)<<
@@ -386,7 +386,7 @@ for (int i = 1; i < 19; i++) {
 }
 std::cout<<" "<<std::endl;
 std::cout<<"This is for the Unmodified Table!!!"<<std::endl;
-for (int i = 1; i < 19; i++) {
+for (int i = 1; i < 20; i++) {
    std::cout<<
 	   hCutByCutMuonCandidate2->GetBinContent(i)<<
 	   //hCutByCutMuonCandidate2CCQE->GetBinContent(i)<<
@@ -1025,10 +1025,10 @@ leg17->Draw();
 // ----------------------------------------------
 // --- Making Histogram for Cut By Cut Purity ---
 // ----------------------------------------------
-TH1D *hCutByCutMuonCandidatePurityDivide = new TH1D("hCutByCutMuonCandidatePurityDivide", "The Cut by Cut Efficiency Division Histogram of the CC-Inclusive Muon Candidate Selection for CC-Coh Purity", 18, -0.5, 17.5);
-TH1D *hCutByCutMuonCandidatePurityDivide2 = new TH1D("hCutByCutMuonCandidatePurityDivide2", "The Cut by Cut Efficiency Division Histogram of the CC-Inclusive Muon Candidate Selection for CC-Coh Purity All Cuts ON", 18, -0.5, 17.5);
+TH1D *hCutByCutMuonCandidatePurityDivide = new TH1D("hCutByCutMuonCandidatePurityDivide", "The Cut by Cut Efficiency Division Histogram of the CC-Inclusive Muon Candidate Selection for CC-Coh Purity", 19, -0.5, 18.5);
+TH1D *hCutByCutMuonCandidatePurityDivide2 = new TH1D("hCutByCutMuonCandidatePurityDivide2", "The Cut by Cut Efficiency Division Histogram of the CC-Inclusive Muon Candidate Selection for CC-Coh Purity All Cuts ON", 19, -0.5, 18.5);
 
-int nbins = 18;
+int nbins = 19;
 for (int i = 1; i < nbins+1; i++) {
    hCutByCutMuonCandidatePurityDivide->Fill((i-1), hCutByCutMuonCandidateOther->GetBinContent(i));
    hCutByCutMuonCandidatePurityDivide->Fill((i-1), hCutByCutMuonCandidateCCCoh->GetBinContent(i));
@@ -1084,22 +1084,23 @@ hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(10, "Start vertex of all daughte
 hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(11, "Neutrino vertex is in the fiducial volume");
 hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(12, "Flash #chi^{2} < 10 OR topological score > 0.25");
 hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(13, "Topological score > 0.06");
-hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(14, "Cone Angle < 40^{o}");
-hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(15, "DoCA Cut < 10cm");
-hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(16, "VA Cut < 8000ADC");
-hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(17, "Num Tracks in Bubble >= 2");
-hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(18, "Num Tracks in Bubble == 2");
+hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(14, "#nu Flash #chi^{2}/Obvious Cosmic Flash #chi^{2} < 5");
+hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(15, "Num Tracks in Bubble >= 2");
+hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(16, "Num Tracks in Bubble == 2");
+hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(17, "Cone Angle < 20^{o}");
+hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(18, "DoCA Cut < 7cm");
+hCutByCutMuonCandidate->GetXaxis()->SetBinLabel(19, "VA Cut < 7500ADC");
 
 hCutByCutMuonCandidate->GetYaxis()->SetRangeUser(0,1.05);
 
 hCutByCutMuonCandidate->Draw("E1");
 hCutByCutMuonCandidateCCQE->Draw("E1same");
 hCutByCutMuonCandidateCCRes->Draw("E1same");
-hCutByCutMuonCandidateCCDIS->Draw("E1same");
+//hCutByCutMuonCandidateCCDIS->Draw("E1same");
 hCutByCutMuonCandidateOther->Draw("E1same");
-hCutByCutMuonCandidateNC->Draw("E1same");
+//hCutByCutMuonCandidateNC->Draw("E1same");
 hCutByCutMuonCandidateCCCoh->Draw("E1same");
-hCutByCutMuonCandidateCCInc->Draw("E1same");
+//hCutByCutMuonCandidateCCInc->Draw("E1same");
 
 
 // ### Defining the legend for the plot ###
@@ -1113,12 +1114,12 @@ leg18->SetShadowColor(kWhite);
 leg18->SetHeader("Interaction Type");
 leg18->AddEntry(hCutByCutMuonCandidate,"CCCoh");
 leg18->AddEntry(hCutByCutMuonCandidateCCCoh,"CCCoh Purity");
-leg18->AddEntry(hCutByCutMuonCandidateCCInc,"CCInc");
+//leg18->AddEntry(hCutByCutMuonCandidateCCInc,"CCInc");
 leg18->AddEntry(hCutByCutMuonCandidateCCQE,"CCQE");
 leg18->AddEntry(hCutByCutMuonCandidateCCRes,"CCRes");
-leg18->AddEntry(hCutByCutMuonCandidateCCDIS,"CCDIS");
+//leg18->AddEntry(hCutByCutMuonCandidateCCDIS,"CCDIS");
 leg18->AddEntry(hCutByCutMuonCandidateOther,"Other");
-leg18->AddEntry(hCutByCutMuonCandidateNC,"NC");
+//leg18->AddEntry(hCutByCutMuonCandidateNC,"NC");
 leg18->Draw();
 
 
@@ -2324,11 +2325,12 @@ hCutByCutMuonCandidate2->GetXaxis()->SetBinLabel(10, "Start vertex of all daught
 hCutByCutMuonCandidate2->GetXaxis()->SetBinLabel(11, "Neutrino vertex is in the fiducial volume");
 hCutByCutMuonCandidate2->GetXaxis()->SetBinLabel(12, "Flash #chi^{2} < 10 OR topological score > 0.25");
 hCutByCutMuonCandidate2->GetXaxis()->SetBinLabel(13, "Topological score > 0.06");
-hCutByCutMuonCandidate2->GetXaxis()->SetBinLabel(14, "Cone Angle < 40^{o}");
-hCutByCutMuonCandidate2->GetXaxis()->SetBinLabel(15, "DoCA Cut < 10cm");
-hCutByCutMuonCandidate2->GetXaxis()->SetBinLabel(16, "VA Cut < 8000ADC");
-hCutByCutMuonCandidate2->GetXaxis()->SetBinLabel(17, "Num Tracks in Bubble >= 2");
-hCutByCutMuonCandidate2->GetXaxis()->SetBinLabel(18, "Num Tracks in Bubble == 2");
+hCutByCutMuonCandidate2->GetXaxis()->SetBinLabel(14, "#nu Flash #chi^{2}/Obvious Cosmic Flash #chi^{2} < 5");
+hCutByCutMuonCandidate2->GetXaxis()->SetBinLabel(15, "Num Tracks in Bubble >= 2");
+hCutByCutMuonCandidate2->GetXaxis()->SetBinLabel(16, "Num Tracks in Bubble == 2");
+hCutByCutMuonCandidate2->GetXaxis()->SetBinLabel(17, "Cone Angle < 20^{o}");
+hCutByCutMuonCandidate2->GetXaxis()->SetBinLabel(18, "DoCA Cut < 7cm");
+hCutByCutMuonCandidate2->GetXaxis()->SetBinLabel(19, "VA Cut < 7500ADC");
 
 hCutByCutMuonCandidate2->GetYaxis()->SetRangeUser(0,1.05);
 
@@ -2336,9 +2338,9 @@ hCutByCutMuonCandidate2->Draw("E1");
 hCutByCutMuonCandidate2CCQE->Draw("E1same");
 hCutByCutMuonCandidate2Other->Draw("E1same");
 hCutByCutMuonCandidate2CCRes->Draw("E1same");
-hCutByCutMuonCandidate2CCDIS->Draw("E1same");
-hCutByCutMuonCandidate2CCInc->Draw("E1same");
-hCutByCutMuonCandidate2NC->Draw("E1same");
+//hCutByCutMuonCandidate2CCDIS->Draw("E1same");
+//hCutByCutMuonCandidate2CCInc->Draw("E1same");
+//hCutByCutMuonCandidate2NC->Draw("E1same");
 hCutByCutMuonCandidate2CCCoh->Draw("E1same");
 
 
@@ -2355,9 +2357,9 @@ leg28->AddEntry(hCutByCutMuonCandidate2,"CCCoh");
 leg28->AddEntry(hCutByCutMuonCandidate2CCCoh,"CCCoh Purity");
 leg28->AddEntry(hCutByCutMuonCandidate2CCQE,"CCQE");
 leg28->AddEntry(hCutByCutMuonCandidate2CCRes,"CCRes");
-leg28->AddEntry(hCutByCutMuonCandidate2CCDIS,"CCDIS");
-leg28->AddEntry(hCutByCutMuonCandidate2CCInc,"CCInc");
-leg28->AddEntry(hCutByCutMuonCandidate2NC,"NC");
+//leg28->AddEntry(hCutByCutMuonCandidate2CCDIS,"CCDIS");
+//leg28->AddEntry(hCutByCutMuonCandidate2CCInc,"CCInc");
+//leg28->AddEntry(hCutByCutMuonCandidate2NC,"NC");
 leg28->AddEntry(hCutByCutMuonCandidate2Other,"Other");
 leg28->Draw();
 
