@@ -1,3 +1,8 @@
+#include <TH1.h>
+#include <TH2.h>
+#include <TStyle.h>
+#include <TCanvas.h>
+
 {
 TFile *f = new TFile("Wouter_Daughter_Information.root"); // <-- File for Daughters Tree
 TFile *f2 = new TFile("EventNtuple.root"); // <-- File for Event Tree
@@ -74,11 +79,15 @@ hMuonVtxDistance->Sumw2();
 hPionVtxDistance->Sumw2();
 hProtonVtxDistance->Sumw2();
 
-TH1D *hMatchedNuEnergy = (TH1D*)f9->Get("hMatchedNuEnergy");
-TH1D *hPassedNuEnergy = (TH1D*)f9->Get("hPassedNuEnergy");
+TH1D *hMatchedNuEnergy = (TH1D*)f->Get("hMatchedNuEnergy");
+TH1D *hPassedNuEnergy = (TH1D*)f->Get("hPassedNuEnergy");
+TH1D *hAfterNuEnergy = (TH1D*)f->Get("hAfterNuEnergy");
+TH1D *hAfterNuEnergy2 = (TH1D*)f->Get("hAfterNuEnergy2");
 
 hMatchedNuEnergy->Sumw2();
 hPassedNuEnergy->Sumw2();
+hAfterNuEnergy->Sumw2();
+hAfterNuEnergy2->Sumw2();
 
 TH1D *hNuVtxDiffX = (TH1D*)f2->Get("hNuVtxDiffX");
 TH1D *hNuVtxDiffY = (TH1D*)f2->Get("hNuVtxDiffY");
@@ -365,6 +374,46 @@ hNTracksInBubbleNC->Sumw2();
 // Creating the Stacked Histogram
 THStack *hRecoVAStacked = new THStack("hRecoVAStacked", "Hit Charges from All Planes Stacked for CC-Coh Events");
 
+TH1D *hCondensedSelectionCCCoh = new TH1D("hCondensedSelectionCCCoh", "The Cut By Cut Selection", 6, -0.5, 5.5);
+TH1D *hCondensedSelectionCCCohDivide = new TH1D("hCondensedSelectionCCCohDivide", "The Cut By Cut Selection", 6, -0.5, 5.5);
+
+TH1D *hCondensedSelectionOther = new TH1D("hCondensedSelectionOther", "The Cut By Cut Selection", 6, -0.5, 5.5);
+TH1D *hCondensedSelectionOtherDivide = new TH1D("hCondensedSelectionOtherDivide", "The Cut By Cut Selection", 6, -0.5, 5.5);
+
+hCondensedSelectionCCCoh->Fill(0., hCutByCutMuonCandidate2->GetBinContent(1));
+hCondensedSelectionCCCoh->Fill(1., hCutByCutMuonCandidate2->GetBinContent(14));
+hCondensedSelectionCCCoh->Fill(2., hCutByCutMuonCandidate2->GetBinContent(16));
+hCondensedSelectionCCCoh->Fill(3., hCutByCutMuonCandidate2->GetBinContent(17));
+hCondensedSelectionCCCoh->Fill(4., hCutByCutMuonCandidate2->GetBinContent(18));
+hCondensedSelectionCCCoh->Fill(5., hCutByCutMuonCandidate2->GetBinContent(19));
+
+hCondensedSelectionCCCohDivide->Fill(0., hCutByCutMuonCandidate2->GetBinContent(1));
+hCondensedSelectionCCCohDivide->Fill(1., hCutByCutMuonCandidate2->GetBinContent(1));
+hCondensedSelectionCCCohDivide->Fill(2., hCutByCutMuonCandidate2->GetBinContent(1));
+hCondensedSelectionCCCohDivide->Fill(3., hCutByCutMuonCandidate2->GetBinContent(1));
+hCondensedSelectionCCCohDivide->Fill(4., hCutByCutMuonCandidate2->GetBinContent(1));
+hCondensedSelectionCCCohDivide->Fill(5., hCutByCutMuonCandidate2->GetBinContent(1));
+
+hCondensedSelectionOther->Fill(0., hCutByCutMuonCandidate2Other->GetBinContent(1));
+hCondensedSelectionOther->Fill(1., hCutByCutMuonCandidate2Other->GetBinContent(14));
+hCondensedSelectionOther->Fill(2., hCutByCutMuonCandidate2Other->GetBinContent(16));
+hCondensedSelectionOther->Fill(3., hCutByCutMuonCandidate2Other->GetBinContent(17));
+hCondensedSelectionOther->Fill(4., hCutByCutMuonCandidate2Other->GetBinContent(18));
+hCondensedSelectionOther->Fill(5., hCutByCutMuonCandidate2Other->GetBinContent(19));
+
+hCondensedSelectionOtherDivide->Fill(0., hCutByCutMuonCandidate2Other->GetBinContent(1));
+hCondensedSelectionOtherDivide->Fill(1., hCutByCutMuonCandidate2Other->GetBinContent(1));
+hCondensedSelectionOtherDivide->Fill(2., hCutByCutMuonCandidate2Other->GetBinContent(1));
+hCondensedSelectionOtherDivide->Fill(3., hCutByCutMuonCandidate2Other->GetBinContent(1));
+hCondensedSelectionOtherDivide->Fill(4., hCutByCutMuonCandidate2Other->GetBinContent(1));
+hCondensedSelectionOtherDivide->Fill(5., hCutByCutMuonCandidate2Other->GetBinContent(1));
+
+hCondensedSelectionCCCoh->Sumw2();
+hCondensedSelectionCCCohDivide->Sumw2();
+
+hCondensedSelectionOther->Sumw2();
+hCondensedSelectionOtherDivide->Sumw2();
+
 
 
 
@@ -388,9 +437,9 @@ std::cout<<" "<<std::endl;
 std::cout<<"This is for the Unmodified Table!!!"<<std::endl;
 for (int i = 1; i < 20; i++) {
    std::cout<<
-	   hCutByCutMuonCandidate2->GetBinContent(i)<<
+	   //hCutByCutMuonCandidate2->GetBinContent(i)<<
 	   //hCutByCutMuonCandidate2CCQE->GetBinContent(i)<<
-	   //hCutByCutMuonCandidate2CCRes->GetBinContent(i)<<
+	   hCutByCutMuonCandidate2CCRes->GetBinContent(i)<<
 	   //hCutByCutMuonCandidate2CCDIS->GetBinContent(i)<<
 	   //hCutByCutMuonCandidate2CCInc->GetBinContent(i)<<	   
 	   //hCutByCutMuonCandidate2NC->GetBinContent(i)<<
@@ -901,8 +950,14 @@ c14->SetFillColor(kWhite);
 
 hPassedNuEnergy->SetLineColor(kBlue);
 hPassedNuEnergy->SetLineWidth(2);
+//hAfterNuEnergy->SetLineColor(kBlue);
+//hAfterNuEnergy->SetLineWidth(2);
+//hAfterNuEnergy2->SetLineColor(kRed);
+//hAfterNuEnergy2->SetLineWidth(2);
 
 hPassedNuEnergy->Divide(hMatchedNuEnergy);
+hAfterNuEnergy->Divide(hMatchedNuEnergy);
+hAfterNuEnergy2->Divide(hMatchedNuEnergy);
 
 hPassedNuEnergy->GetXaxis()->SetTitle("E_{#nu} [GeV]");
 hPassedNuEnergy->GetXaxis()->CenterTitle();
@@ -911,7 +966,24 @@ hPassedNuEnergy->GetYaxis()->SetTitle("Passing Efficiency");
 hPassedNuEnergy->GetYaxis()->CenterTitle();
 
 hPassedNuEnergy->Draw("E1");
+//hAfterNuEnergy->Draw("E1");
+//hAfterNuEnergy2->Draw("E1");
 
+/*
+// ### Defining the legend for the plot ###
+TLegend *leg14 = new TLegend();
+leg14 = new TLegend(0.58,0.65,1.00,1.00);
+leg14->SetTextSize(0.04);
+leg14->SetTextAlign(12);
+leg14->SetFillColor(kWhite);
+leg14->SetLineColor(kWhite);
+leg14->SetShadowColor(kWhite);
+leg14->SetHeader("Stages");
+//leg14->AddEntry(hPassedNuEnergy,"Passed CC-Inclusive Preselection");
+leg14->AddEntry(hAfterNuEnergy,"Passed Entire Selection With Cuts Off");
+leg14->AddEntry(hAfterNuEnergy2,"Passed Entire Selection With Cuts On");
+leg14->Draw();
+*/
 
 
 TCanvas *c15 = new TCanvas("c15", "The Difference (Reco - Truth) Between Neutrino Vtx X Positions for Truth and Truth with SCE", 2);
@@ -1096,11 +1168,11 @@ hCutByCutMuonCandidate->GetYaxis()->SetRangeUser(0,1.05);
 hCutByCutMuonCandidate->Draw("E1");
 hCutByCutMuonCandidateCCQE->Draw("E1same");
 hCutByCutMuonCandidateCCRes->Draw("E1same");
-//hCutByCutMuonCandidateCCDIS->Draw("E1same");
+hCutByCutMuonCandidateCCDIS->Draw("E1same");
 hCutByCutMuonCandidateOther->Draw("E1same");
-//hCutByCutMuonCandidateNC->Draw("E1same");
+hCutByCutMuonCandidateNC->Draw("E1same");
 hCutByCutMuonCandidateCCCoh->Draw("E1same");
-//hCutByCutMuonCandidateCCInc->Draw("E1same");
+hCutByCutMuonCandidateCCInc->Draw("E1same");
 
 
 // ### Defining the legend for the plot ###
@@ -1114,12 +1186,12 @@ leg18->SetShadowColor(kWhite);
 leg18->SetHeader("Interaction Type");
 leg18->AddEntry(hCutByCutMuonCandidate,"CCCoh");
 leg18->AddEntry(hCutByCutMuonCandidateCCCoh,"CCCoh Purity");
-//leg18->AddEntry(hCutByCutMuonCandidateCCInc,"CCInc");
+leg18->AddEntry(hCutByCutMuonCandidateCCInc,"CCInc");
 leg18->AddEntry(hCutByCutMuonCandidateCCQE,"CCQE");
 leg18->AddEntry(hCutByCutMuonCandidateCCRes,"CCRes");
-//leg18->AddEntry(hCutByCutMuonCandidateCCDIS,"CCDIS");
+leg18->AddEntry(hCutByCutMuonCandidateCCDIS,"CCDIS");
 leg18->AddEntry(hCutByCutMuonCandidateOther,"Other");
-//leg18->AddEntry(hCutByCutMuonCandidateNC,"NC");
+leg18->AddEntry(hCutByCutMuonCandidateNC,"NC");
 leg18->Draw();
 
 
@@ -1325,18 +1397,18 @@ gCCCohConeAngle->GetYaxis()->CenterTitle();
 
 gCCCohConeAngle->Draw();
 gCCCohConeAngleR->Draw("same");
-gCCResConeAngle->Draw("same");
-gCCResConeAngleR->Draw("same");
-gCCDISConeAngle->Draw("same");
-gCCDISConeAngleR->Draw("same");
+//gCCResConeAngle->Draw("same");
+//gCCResConeAngleR->Draw("same");
+//gCCDISConeAngle->Draw("same");
+//gCCDISConeAngleR->Draw("same");
 gOtherConeAngle->Draw("same");
 gOtherConeAngleR->Draw("same");
-gCCQEConeAngle->Draw("same");
-gCCQEConeAngleR->Draw("same");
-gNCConeAngle->Draw("same");
-gNCConeAngleR->Draw("same");
-gConeAnglePurity->Draw("same");
-gConeAnglePurityR->Draw("same");
+//gCCQEConeAngle->Draw("same");
+//gCCQEConeAngleR->Draw("same");
+//gNCConeAngle->Draw("same");
+//gNCConeAngleR->Draw("same");
+//gConeAnglePurity->Draw("same");
+//gConeAnglePurityR->Draw("same");
 
 // ### Defining the legend for the plot ###
 TLegend *leg24 = new TLegend();
@@ -1349,18 +1421,18 @@ leg24->SetShadowColor(kWhite);
 leg24->SetHeader("Channel");
 leg24->AddEntry(gCCCohConeAngle,"CCCoh True");
 leg24->AddEntry(gCCCohConeAngleR,"CCCoh Reco");
-leg24->AddEntry(gConeAnglePurity,"CCCoh Purity True");
-leg24->AddEntry(gConeAnglePurityR,"CCCoh Purity Reco");
-leg24->AddEntry(gCCQEConeAngle,"CCQE True");
-leg24->AddEntry(gCCQEConeAngleR,"CCQE Reco");
-leg24->AddEntry(gCCResConeAngle,"CCRes True");
-leg24->AddEntry(gCCResConeAngleR,"CCRes Reco");
-leg24->AddEntry(gCCDISConeAngle,"CCDIS True");
-leg24->AddEntry(gCCDISConeAngleR,"CCDIS Reco");
+//leg24->AddEntry(gConeAnglePurity,"CCCoh Purity True");
+//leg24->AddEntry(gConeAnglePurityR,"CCCoh Purity Reco");
+//leg24->AddEntry(gCCQEConeAngle,"CCQE True");
+//leg24->AddEntry(gCCQEConeAngleR,"CCQE Reco");
+//leg24->AddEntry(gCCResConeAngle,"CCRes True");
+//leg24->AddEntry(gCCResConeAngleR,"CCRes Reco");
+//leg24->AddEntry(gCCDISConeAngle,"CCDIS True");
+//leg24->AddEntry(gCCDISConeAngleR,"CCDIS Reco");
 leg24->AddEntry(gOtherConeAngle,"Other True");
 leg24->AddEntry(gOtherConeAngleR,"Other Reco");
-leg24->AddEntry(gNCConeAngle,"NC True");
-leg24->AddEntry(gNCConeAngleR,"NC Reco");
+//leg24->AddEntry(gNCConeAngle,"NC True");
+//leg24->AddEntry(gNCConeAngleR,"NC Reco");
 leg24->Draw();
 // -----------------------------
 
@@ -1466,16 +1538,16 @@ hTrueConeAngle->GetYaxis()->CenterTitle();
 
 hTrueConeAngle->Draw("histo");
 hRecoConeAngle->Draw("histosame");
-hTrueConeAngleCCQE->Draw("histosame");
-hRecoConeAngleCCQE->Draw("histosame");
-hTrueConeAngleCCRes->Draw("histosame");
-hRecoConeAngleCCRes->Draw("histosame");
-hTrueConeAngleCCDIS->Draw("histosame");
-hRecoConeAngleCCDIS->Draw("histosame");
+//hTrueConeAngleCCQE->Draw("histosame");
+//hRecoConeAngleCCQE->Draw("histosame");
+//hTrueConeAngleCCRes->Draw("histosame");
+//hRecoConeAngleCCRes->Draw("histosame");
+//hTrueConeAngleCCDIS->Draw("histosame");
+//hRecoConeAngleCCDIS->Draw("histosame");
 hTrueConeAngleOther->Draw("histosame");
 hRecoConeAngleOther->Draw("histosame");
-hTrueConeAngleNC->Draw("histosame");
-hRecoConeAngleNC->Draw("histosame");
+//hTrueConeAngleNC->Draw("histosame");
+//hRecoConeAngleNC->Draw("histosame");
 
 
 // ### Defining the legend for the plot ###
@@ -1489,16 +1561,16 @@ leg20->SetShadowColor(kWhite);
 leg20->SetHeader("Cone Angles");
 leg20->AddEntry(hTrueConeAngle,"CCCoh True");
 leg20->AddEntry(hRecoConeAngle,"CCCoh Reco");
-leg20->AddEntry(hTrueConeAngleCCQE,"CCQE True");
-leg20->AddEntry(hRecoConeAngleCCQE,"CCQE Reco");
-leg20->AddEntry(hTrueConeAngleCCRes,"CCRes True");
-leg20->AddEntry(hRecoConeAngleCCRes,"CCRes Reco");
-leg20->AddEntry(hTrueConeAngleCCDIS,"CCDIS True");
-leg20->AddEntry(hRecoConeAngleCCDIS,"CCDIS Reco");
+//leg20->AddEntry(hTrueConeAngleCCQE,"CCQE True");
+//leg20->AddEntry(hRecoConeAngleCCQE,"CCQE Reco");
+//leg20->AddEntry(hTrueConeAngleCCRes,"CCRes True");
+//leg20->AddEntry(hRecoConeAngleCCRes,"CCRes Reco");
+//leg20->AddEntry(hTrueConeAngleCCDIS,"CCDIS True");
+//leg20->AddEntry(hRecoConeAngleCCDIS,"CCDIS Reco");
 leg20->AddEntry(hTrueConeAngleOther,"Other True");
 leg20->AddEntry(hRecoConeAngleOther,"Other Reco");
-leg20->AddEntry(hTrueConeAngleNC,"NC True");
-leg20->AddEntry(hRecoConeAngleNC,"NC Reco");
+//leg20->AddEntry(hTrueConeAngleNC,"NC True");
+//leg20->AddEntry(hRecoConeAngleNC,"NC Reco");
 leg20->Draw();
 
 
@@ -1690,18 +1762,18 @@ gCCCohDoCAR->GetYaxis()->CenterTitle();
 
 gCCCohDoCAR->Draw();
 gCCCohDoCA->Draw("same");
-gCCResDoCA->Draw("same");
-gCCResDoCAR->Draw("same");
-gCCDISDoCA->Draw("same");
-gCCDISDoCAR->Draw("same");
+//gCCResDoCA->Draw("same");
+//gCCResDoCAR->Draw("same");
+//gCCDISDoCA->Draw("same");
+//gCCDISDoCAR->Draw("same");
 gOtherDoCA->Draw("same");
 gOtherDoCAR->Draw("same");
-gCCQEDoCA->Draw("same");
-gCCQEDoCAR->Draw("same");
-gNCDoCA->Draw("same");
-gNCDoCAR->Draw("same");
-gDoCAPurity->Draw("same");
-gDoCAPurityR->Draw("same");
+//gCCQEDoCA->Draw("same");
+//gCCQEDoCAR->Draw("same");
+//gNCDoCA->Draw("same");
+//gNCDoCAR->Draw("same");
+//gDoCAPurity->Draw("same");
+//gDoCAPurityR->Draw("same");
 gCosmicDoCAR->Draw("same");
 
 // ### Defining the legend for the plot ###
@@ -1715,18 +1787,18 @@ leg25->SetShadowColor(kWhite);
 leg25->SetHeader("Channel");
 leg25->AddEntry(gCCCohDoCA,"CCCoh True");
 leg25->AddEntry(gCCCohDoCAR,"CCCoh Reco");
-leg25->AddEntry(gDoCAPurity,"CCCoh Purity True");
-leg25->AddEntry(gDoCAPurityR,"CCCoh Purity Reco");
-leg25->AddEntry(gCCQEDoCA,"CCQE True");
-leg25->AddEntry(gCCQEDoCAR,"CCQE Reco");
-leg25->AddEntry(gCCResDoCA,"CCRes True");
-leg25->AddEntry(gCCResDoCAR,"CCRes Reco");
-leg25->AddEntry(gCCDISDoCA,"CCDIS True");
-leg25->AddEntry(gCCDISDoCAR,"CCDIS Reco");
+//leg25->AddEntry(gDoCAPurity,"CCCoh Purity True");
+//leg25->AddEntry(gDoCAPurityR,"CCCoh Purity Reco");
+//leg25->AddEntry(gCCQEDoCA,"CCQE True");
+//leg25->AddEntry(gCCQEDoCAR,"CCQE Reco");
+//leg25->AddEntry(gCCResDoCA,"CCRes True");
+//leg25->AddEntry(gCCResDoCAR,"CCRes Reco");
+//leg25->AddEntry(gCCDISDoCA,"CCDIS True");
+//leg25->AddEntry(gCCDISDoCAR,"CCDIS Reco");
 leg25->AddEntry(gOtherDoCA,"Other True");
 leg25->AddEntry(gOtherDoCAR,"Other Reco");
-leg25->AddEntry(gNCDoCA,"NC True");
-leg25->AddEntry(gNCDoCAR,"NC Reco");
+//leg25->AddEntry(gNCDoCA,"NC True");
+//leg25->AddEntry(gNCDoCAR,"NC Reco");
 leg25->AddEntry(gCosmicDoCAR,"Cosmics");
 leg25->Draw();
 // -----------------------
@@ -1840,16 +1912,16 @@ hTrueDoCA->GetYaxis()->CenterTitle();
 
 hTrueDoCA->Draw("histo");
 hRecoDoCA->Draw("histosame");
-hTrueDoCACCQE->Draw("histosame");
-hRecoDoCACCQE->Draw("histosame");
-hTrueDoCACCRes->Draw("histosame");
-hRecoDoCACCRes->Draw("histosame");
-hTrueDoCACCDIS->Draw("histosame");
-hRecoDoCACCDIS->Draw("histosame");
+//hTrueDoCACCQE->Draw("histosame");
+//hRecoDoCACCQE->Draw("histosame");
+//hTrueDoCACCRes->Draw("histosame");
+//hRecoDoCACCRes->Draw("histosame");
+//hTrueDoCACCDIS->Draw("histosame");
+//hRecoDoCACCDIS->Draw("histosame");
 hTrueDoCAOther->Draw("histosame");
 hRecoDoCAOther->Draw("histosame");
-hTrueDoCANC->Draw("histosame");
-hRecoDoCANC->Draw("histosame");
+//hTrueDoCANC->Draw("histosame");
+//hRecoDoCANC->Draw("histosame");
 hRecoDoCACosmic->Draw("histosame");
 
 
@@ -1864,16 +1936,16 @@ leg21->SetShadowColor(kWhite);
 leg21->SetHeader("Distance of Closest Approach");
 leg21->AddEntry(hTrueDoCA,"CCCoh True");
 leg21->AddEntry(hRecoDoCA,"CCCoh Reco");
-leg21->AddEntry(hTrueDoCACCQE,"CCQE True");
-leg21->AddEntry(hRecoDoCACCQE,"CCQE Reco");
-leg21->AddEntry(hTrueDoCACCRes,"CCRes True");
-leg21->AddEntry(hRecoDoCACCRes,"CCRes Reco");
-leg21->AddEntry(hTrueDoCACCDIS,"CCDIS True");
-leg21->AddEntry(hRecoDoCACCDIS,"CCDIS Reco");
+//leg21->AddEntry(hTrueDoCACCQE,"CCQE True");
+//leg21->AddEntry(hRecoDoCACCQE,"CCQE Reco");
+//leg21->AddEntry(hTrueDoCACCRes,"CCRes True");
+//leg21->AddEntry(hRecoDoCACCRes,"CCRes Reco");
+//leg21->AddEntry(hTrueDoCACCDIS,"CCDIS True");
+//leg21->AddEntry(hRecoDoCACCDIS,"CCDIS Reco");
 leg21->AddEntry(hTrueDoCAOther,"Other True");
 leg21->AddEntry(hRecoDoCAOther,"Other Reco");
-leg21->AddEntry(hTrueDoCANC,"NC True");
-leg21->AddEntry(hRecoDoCANC,"NC Reco");
+//leg21->AddEntry(hTrueDoCANC,"NC True");
+//leg21->AddEntry(hRecoDoCANC,"NC Reco");
 leg21->AddEntry(hRecoDoCACosmic,"Cosmics");
 leg21->Draw();
 
@@ -2032,12 +2104,12 @@ gCCCohVAR->GetYaxis()->SetTitle("Rejection (Background) Passed (Signal) [%]");
 gCCCohVAR->GetYaxis()->CenterTitle();
 
 gCCCohVAR->Draw();
-gCCResVAR->Draw("same");
-gCCDISVAR->Draw("same");
+//gCCResVAR->Draw("same");
+//gCCDISVAR->Draw("same");
 gOtherVAR->Draw("same");
-gCCQEVAR->Draw("same");
-gNCVAR->Draw("same");
-gVAPurityR->Draw("same");
+//gCCQEVAR->Draw("same");
+//gNCVAR->Draw("same");
+//gVAPurityR->Draw("same");
 
 // ### Defining the legend for the plot ###
 TLegend *leg26 = new TLegend();
@@ -2049,12 +2121,12 @@ leg26->SetLineColor(kWhite);
 leg26->SetShadowColor(kWhite);
 leg26->SetHeader("Channel");
 leg26->AddEntry(gCCCohVAR,"CCCoh Reco");
-leg26->AddEntry(gVAPurityR,"CCCoh Purity Reco");
-leg26->AddEntry(gCCQEVAR,"CCQE Reco");
-leg26->AddEntry(gCCResVAR,"CCRes Reco");
-leg26->AddEntry(gCCDISVAR,"CCDIS Reco");
+//leg26->AddEntry(gVAPurityR,"CCCoh Purity Reco");
+//leg26->AddEntry(gCCQEVAR,"CCQE Reco");
+//leg26->AddEntry(gCCResVAR,"CCRes Reco");
+//leg26->AddEntry(gCCDISVAR,"CCDIS Reco");
 leg26->AddEntry(gOtherVAR,"Other Reco");
-leg26->AddEntry(gNCVAR,"NC Reco");
+//leg26->AddEntry(gNCVAR,"NC Reco");
 leg26->Draw();
 // ----------------------------------
 
@@ -2117,10 +2189,10 @@ hRecoVA2->GetYaxis()->SetTitle("Number of Events");
 hRecoVA2->GetYaxis()->CenterTitle();
 
 hRecoVA2->Draw("histo");
-hRecoVA2NC->Draw("histosame");
-hRecoVA2CCRes->Draw("histosame");
-hRecoVA2CCDIS->Draw("histosame");
-hRecoVA2CCQE->Draw("histosame");
+//hRecoVA2NC->Draw("histosame");
+//hRecoVA2CCRes->Draw("histosame");
+//hRecoVA2CCDIS->Draw("histosame");
+//hRecoVA2CCQE->Draw("histosame");
 hRecoVA2Other->Draw("histosame");
 
 
@@ -2134,11 +2206,11 @@ leg23->SetLineColor(kWhite);
 leg23->SetShadowColor(kWhite);
 leg23->SetHeader("Vertex Activity");
 leg23->AddEntry(hRecoVA2,"CCCoh Reco");
-leg23->AddEntry(hRecoVA2CCQE,"CCQE Reco");
-leg23->AddEntry(hRecoVA2CCRes,"CCRes Reco");
-leg23->AddEntry(hRecoVA2CCDIS,"CCDIS Reco");
+//leg23->AddEntry(hRecoVA2CCQE,"CCQE Reco");
+//leg23->AddEntry(hRecoVA2CCRes,"CCRes Reco");
+//leg23->AddEntry(hRecoVA2CCDIS,"CCDIS Reco");
 leg23->AddEntry(hRecoVA2Other,"Other Reco");
-leg23->AddEntry(hRecoVA2NC,"NC Reco");
+//leg23->AddEntry(hRecoVA2NC,"NC Reco");
 leg23->Draw();
 
 
@@ -2338,9 +2410,9 @@ hCutByCutMuonCandidate2->Draw("E1");
 hCutByCutMuonCandidate2CCQE->Draw("E1same");
 hCutByCutMuonCandidate2Other->Draw("E1same");
 hCutByCutMuonCandidate2CCRes->Draw("E1same");
-//hCutByCutMuonCandidate2CCDIS->Draw("E1same");
-//hCutByCutMuonCandidate2CCInc->Draw("E1same");
-//hCutByCutMuonCandidate2NC->Draw("E1same");
+hCutByCutMuonCandidate2CCDIS->Draw("E1same");
+hCutByCutMuonCandidate2CCInc->Draw("E1same");
+hCutByCutMuonCandidate2NC->Draw("E1same");
 hCutByCutMuonCandidate2CCCoh->Draw("E1same");
 
 
@@ -2357,9 +2429,9 @@ leg28->AddEntry(hCutByCutMuonCandidate2,"CCCoh");
 leg28->AddEntry(hCutByCutMuonCandidate2CCCoh,"CCCoh Purity");
 leg28->AddEntry(hCutByCutMuonCandidate2CCQE,"CCQE");
 leg28->AddEntry(hCutByCutMuonCandidate2CCRes,"CCRes");
-//leg28->AddEntry(hCutByCutMuonCandidate2CCDIS,"CCDIS");
-//leg28->AddEntry(hCutByCutMuonCandidate2CCInc,"CCInc");
-//leg28->AddEntry(hCutByCutMuonCandidate2NC,"NC");
+leg28->AddEntry(hCutByCutMuonCandidate2CCDIS,"CCDIS");
+leg28->AddEntry(hCutByCutMuonCandidate2CCInc,"CCInc");
+leg28->AddEntry(hCutByCutMuonCandidate2NC,"NC");
 leg28->AddEntry(hCutByCutMuonCandidate2Other,"Other");
 leg28->Draw();
 
@@ -2870,6 +2942,48 @@ leg33->AddEntry(hT2_5Other,"Other 5cm");
 leg33->AddEntry(hT2Other,"Other 10cm");
 leg33->AddEntry(hT2_15Other,"Other 15cm");
 leg33->Draw();
+
+
+
+TCanvas *c36 = new TCanvas("c36", "Cut By Cut Selection");
+c36->SetTicks();
+c36->SetFillColor(kWhite);
+
+
+hCondensedSelectionCCCoh->SetLineColor(kBlue);
+hCondensedSelectionCCCoh->SetLineWidth(2);
+hCondensedSelectionOther->SetLineColor(kBlack);
+hCondensedSelectionOther->SetLineWidth(2);
+
+hCondensedSelectionCCCoh->Divide(hCondensedSelectionCCCohDivide);
+hCondensedSelectionOther->Divide(hCondensedSelectionOtherDivide);
+
+hCondensedSelectionCCCoh->GetXaxis()->SetBinLabel(1, "Starting Events");
+hCondensedSelectionCCCoh->GetXaxis()->SetBinLabel(2, "CC-Inclusive Preselection");
+hCondensedSelectionCCCoh->GetXaxis()->SetBinLabel(3, "Num. Tracks == 2");
+hCondensedSelectionCCCoh->GetXaxis()->SetBinLabel(4, "Cone Angle < 20 Degrees");
+hCondensedSelectionCCCoh->GetXaxis()->SetBinLabel(5, "DoCA < 7 cm");
+hCondensedSelectionCCCoh->GetXaxis()->SetBinLabel(6, "Vertex Activity < 7500 ADC");
+
+hCondensedSelectionCCCoh->GetYaxis()->SetRangeUser(0, 1.05);
+
+hCondensedSelectionCCCoh->Draw("histo");
+hCondensedSelectionOther->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg36 = new TLegend();
+leg36 = new TLegend(0.58,0.65,1.00,1.00);
+leg36->SetTextSize(0.04);
+leg36->SetTextAlign(12);
+leg36->SetFillColor(kWhite);
+leg36->SetLineColor(kWhite);
+leg36->SetShadowColor(kWhite);
+leg36->SetHeader("Channel");
+leg36->AddEntry(hCondensedSelectionCCCoh,"CCCoh");
+leg36->AddEntry(hCondensedSelectionOther,"Other");
+leg36->Draw();
+
 
 
 

@@ -164,7 +164,7 @@ void BackgroundDaughters::Loop()
    // === Selection Checks for Which Channel ===
    // ==========================================
    int CCOrNC_Check = 0; // 0 for CC and 1 for NC
-   int InteractionType_Check = 3; // 0 for QE 1 for Res 2 for DIS and 3 for Coh
+   int InteractionType_Check = 2; // 0 for QE 1 for Res 2 for DIS and 3 for Coh
    // ==========================================
 
 
@@ -420,9 +420,9 @@ void BackgroundDaughters::Loop()
       for (Int_t i = 0; i < nevents; i++) {
          t->GetEntry(i);
 
-	 if (Event == event && Run == run && Subrun == subrun && (InteractionType != InteractionType_Check || (InteractionType == InteractionType_Check && CCNC != CCOrNC_Check)) && is_track) {
+	 //if (Event == event && Run == run && Subrun == subrun && (InteractionType != InteractionType_Check || (InteractionType == InteractionType_Check && CCNC != CCOrNC_Check)) && is_track) {
 	 //if (Event == event && Run == run && Subrun == subrun && InteractionType == InteractionType_Check && CCNC == CCOrNC_Check && is_track) {
-	 //if (Event == event && Run == run && Subrun == subrun && CCNC == CCOrNC_Check && is_track) {
+	 if (Event == event && Run == run && Subrun == subrun && CCNC == CCOrNC_Check && is_track) {
             Matched = true;
 	    //if (jentry%10 == 0) std::cout<<"We Matched!"<<std::endl; // This is to see if we are actually making it to this point in the Matched condition!
 	    if (CC_Selected == 1) ccselected = true;
@@ -625,6 +625,7 @@ void BackgroundDaughters::Loop()
 	       }
 	       if (PassedAllCuts2) {
 		  hCutByCutMuonCandidate2->Fill(13);
+		  hPassedNuEnergy->Fill(nuenergy);
 		  if (ntrksinbubble >= 2) { 
 		     hCutByCutMuonCandidate2->Fill(14);
 		     if (ntrksinbubble == 2) {
@@ -674,7 +675,6 @@ void BackgroundDaughters::Loop()
 	       if (PassedAllCuts) {
 	          hFurtherEventSelection->Fill(4);
 		  hCutByCutMuonCandidate->Fill(13);
-		  hPassedNuEnergy->Fill(nuenergy);
 		  if (ntrksinbubble >= 2) { 
 		     hCutByCutMuonCandidate->Fill(14);
 		     if (ntrksinbubble == 2) {
@@ -974,8 +974,8 @@ void BackgroundDaughters::Loop()
    //TFile *TDaughtersInfo = new TFile("CCQE_Daughter_Information.root", "RECREATE");
    //TFile *TDaughtersInfo = new TFile("CCRES_Daughter_Information.root", "RECREATE");
    //TFile *TDaughtersInfo = new TFile("CCDIS_Daughter_Information.root", "RECREATE");
-   TFile *TDaughtersInfo = new TFile("Other_Daughter_Information.root", "RECREATE");
-   //TFile *TDaughtersInfo = new TFile("CCInc_Daughter_Information.root", "RECREATE");
+   //TFile *TDaughtersInfo = new TFile("Other_Daughter_Information.root", "RECREATE");
+   TFile *TDaughtersInfo = new TFile("CCInc_Daughter_Information.root", "RECREATE");
    //TFile *TDaughtersInfo = new TFile("NC_Daughter_Information.root", "RECREATE");
 
    hMuonMuonChi2->Write();

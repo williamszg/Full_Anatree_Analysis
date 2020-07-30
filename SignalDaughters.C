@@ -625,6 +625,7 @@ void SignalDaughters::Loop()
 	       }
 	       if (PassedAllCuts2) {
 		  hCutByCutMuonCandidate2->Fill(13);
+		  hPassedNuEnergy->Fill(nuenergy);
 		  if (ntrksinbubble >= 2) { 
 		     hCutByCutMuonCandidate2->Fill(14);
 		     if (ntrksinbubble == 2) {
@@ -674,7 +675,6 @@ void SignalDaughters::Loop()
 	       if (PassedAllCuts) {
 	          hFurtherEventSelection->Fill(4);
 		  hCutByCutMuonCandidate->Fill(13);
-		  hPassedNuEnergy->Fill(nuenergy);
 		  if (ntrksinbubble >= 2) { 
 		     hCutByCutMuonCandidate->Fill(14);
 		     if (ntrksinbubble == 2) {
