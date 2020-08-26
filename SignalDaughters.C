@@ -74,8 +74,8 @@ TH1D *hPionOrMuonIsCandidate = new TH1D("hPionOrMuonIsCandidate", "Whether a Pio
 TH1D *hTrueOpeningAngle = new TH1D("hTrueOpeningAngle", "The Opening Angle from MC Truth Information", 181, -0.5, 180.5);
 TH1D *hRecoOpeningAngle = new TH1D("hRecoOpeningAngle", "The Opening Angle from Reconstructed Information", 181, -0.5, 180.5);
 
-TH1D *hCutByCutMuonCandidate2 = new TH1D("hCutByCutMuonCandidate2", "The Cut by Cut Efficiency of the CC-Inclusive Muon Candidate Selection for CC-Coh Events", 19, -0.5, 18.5);
-TH1D *hCutByCutMuonCandidateDivide2 = new TH1D("hCutByCutMuonCandidateDivide2", "The Cut by Cut Efficiency of the CC-Inclusive Muon Candidate Selection for CC-Coh Events Denominator", 19, -0.5, 18.5);
+TH1D *hCutByCutMuonCandidate2 = new TH1D("hCutByCutMuonCandidate2", "The Cut by Cut Efficiency of the CC-Inclusive Muon Candidate Selection for CC-Coh Events", 20, -0.5, 19.5);
+TH1D *hCutByCutMuonCandidateDivide2 = new TH1D("hCutByCutMuonCandidateDivide2", "The Cut by Cut Efficiency of the CC-Inclusive Muon Candidate Selection for CC-Coh Events Denominator", 20, -0.5, 19.5);
 
 TH1D *hNTracksInBubble5 = new TH1D("hNTracksInBubble5", "The Number of Tracks within 5cm of Reconstructed Vertex", 16, -0.5, 15.5);
 TH1D *hNTracksInBubble = new TH1D("hNTracksInBubble", "The Number of Tracks within 10cm of Reconstructed Vertex", 16, -0.5, 15.5);
@@ -98,6 +98,39 @@ TH2D *hRecoConeAngleVsOpeningAngle = new TH2D("hRecoConeAngleVsOpeningAngle", "C
 
 TH1D *hAfterNuEnergy = new TH1D("hAfterNuEnergy", "Neutrino Energy for CC-Coh Events That Pass My Selection with Cuts Off", 25, 0, 5);
 TH1D *hAfterNuEnergy2 = new TH1D("hAfterNuEnergy2", "Neutrino Energy for CC-Coh Events That Pass My Selection with All Cuts On", 25, 0, 5);
+
+TH1D *hMuonCandidateMuonChi2After = new TH1D("hMuonCandidateMuonChi2After", "The Muon #chi^{2} Score for Muon Candidate Tracks After Main Selection", 1000, 0, 350);
+TH1D *hPionCandidateMuonChi2After = new TH1D("hPionCandidateMuonChi2After", "The Muon #chi^{2} Score for Pion Candidate Tracks After Main Selection", 1000, 0, 350);
+
+TH1D *hMuonCandidateProtonChi2After = new TH1D("hMuonCandidateProtonChi2After", "The Proton #chi^{2} Score for Muon Candidate Tracks After Main Selection", 1000, 0, 350);
+TH1D *hPionCandidateProtonChi2After = new TH1D("hPionCandidateProtonChi2After", "The Proton #chi^{2} Score for Pion Candidate Tracks After Main Selection", 1000, 0, 350);
+
+TH2D *hMuonCandidateTracksMuonChi2VsProtonChi2After = new TH2D("hMuonCandidateTracksMuonChi2VsProtonChi2After", "For Muon Candidate Tracks the Muon #chi^{2} Vs Proton #chi^{2} After My Selection", 1000, 0, 350, 1000, 0, 350);
+TH2D *hPionCandidateTracksMuonChi2VsProtonChi2After = new TH2D("hPionCandidateTracksMuonChi2VsProtonChi2After", "For Pion Candidate Tracks the Muon #chi^{2} Vs Proton #chi^{2} After My Selection", 1000, 0, 350, 1000, 0, 350);
+
+TH1D *hMuonCandidateTrueTrackLengthAfter = new TH1D("hMuonCandidateTrueTrackLengthAfter", "The True Track Length of Muon Candidate Tracks After My Selection", 1000, -0.5, 999.5);
+TH1D *hPionCandidateTrueTrackLengthAfter = new TH1D("hPionCandidateTrueTrackLengthAfter", "The True Track Length of Pion Candidate Tracks After My Selection", 1000, -0.5, 999.5);
+
+TH1D *hMuonCandidateRecoTrackLengthAfter = new TH1D("hMuonCandidateRecoTrackLengthAfter", "The Reconstructed Track Length of Muon Candidate Tracks After My Selection", 1000, -0.5, 999.5);
+TH1D *hPionCandidateRecoTrackLengthAfter = new TH1D("hPionCandidateRecoTrackLengthAfter", "The Reconstructed Track Length of Pion Candidate Tracks After My Selection", 1000, -0.5, 999.5);
+
+TH1D *hMuonCandidateDeltaLengthAfter = new TH1D("hMuonCandidateDeltaLengthAfter", "The Difference (True - Reco) Length of Muon Candidate Tracks After My Selection", 1000, -500, 500);
+TH1D *hPionCandidateDeltaLengthAfter = new TH1D("hPionCandidateDeltaLengthAfter", "The Difference (True - Reco) Length of Pion Candidate Tracks After My Selection", 1000, -500, 500);
+
+TH2D *hMuonCandidateRecoLengthVsMuonChi2 = new TH2D("hMuonCandidateRecoLengthVsMuonChi2", "For Muon Candidate Tracks the Reco Length Vs Muon #chi^{2} After My Selection", 1000, 0, 350, 1000, -0.5, 999.5);
+TH2D *hMuonCandidateRecoLengthVsProtonChi2 = new TH2D("hMuonCandidateRecoLengthVsProtonChi2", "For Muon Candidate Tracks the Reco Length Vs Proton #chi^{2} After My Selection", 1000, 0, 350, 1000, -0.5, 999.5);
+
+TH2D *hPionCandidateRecoLengthVsMuonChi2 = new TH2D("hPionCandidateRecoLengthVsMuonChi2", "For Pion Candidate Tracks the Reco Length Vs Muon #chi^{2} After My Selection", 1000, 0, 350,  1000, -0.5, 999.5);
+TH2D *hPionCandidateRecoLengthVsProtonChi2 = new TH2D("hPionCandidateRecoLengthVsProtonChi2", "For Pion Candidate Tracks the Reco Length Vs Proton #chi^{2} After My Selection", 1000, 0, 350, 1000, -0.5, 999.5);
+
+TH1D *hMuonCandidateTrueTrackLengthAfter2 = new TH1D("hMuonCandidateTrueTrackLengthAfter2", "The True Track Length of Muon Candidate Tracks After My Pion Selection", 1000, -0.5, 999.5);
+TH1D *hPionCandidateTrueTrackLengthAfter2 = new TH1D("hPionCandidateTrueTrackLengthAfter2", "The True Track Length of Pion Candidate Tracks After My Pion Selection", 1000, -0.5, 999.5);
+
+TH1D *hMuonCandidateRecoTrackLengthAfter2 = new TH1D("hMuonCandidateRecoTrackLengthAfter2", "The Reconstructed Track Length of Muon Candidate Tracks After My Pion Selection", 1000, -0.5, 999.5);
+TH1D *hPionCandidateRecoTrackLengthAfter2 = new TH1D("hPionCandidateRecoTrackLengthAfter2", "The Reconstructed Track Length of Pion Candidate Tracks After My Pion Selection", 1000, -0.5, 999.5);
+
+TH1D *hMuonCandidateDeltaLengthAfter2 = new TH1D("hMuonCandidateDeltaLengthAfter2", "The Difference (True - Reco) Length of Muon Candidate Tracks After My Pion Selection", 1000, -500, 500);
+TH1D *hPionCandidateDeltaLengthAfter2 = new TH1D("hPionCandidateDeltaLengthAfter2", "The Difference (True - Reco) Length of Pion Candidate Tracks After My Pion Selection", 1000, -500, 500);
 // -------------------------------
 
 
@@ -167,8 +200,18 @@ void SignalDaughters::Loop()
    int InteractionType_Check = 3; // 0 for QE 1 for Res 2 for DIS and 3 for Coh
    // ==========================================
 
-
    int nPassedSelection = 0;
+
+
+
+   /*TFile f("CCCohPassedSelection.root", "CREATE");
+
+   TTree Ntuple("Ntuple", "Event Ntuple Information that Passed Selection");
+
+   int EventRunSubrunPassed;
+
+   Ntuple.Branch("EventRunSubrunPassed", &EventRunSubrunPassed, "EventRunSubrunPassed/I");*/
+
 
    // ------------------------------------------
    // --- Trying to Load in the Saved Ntuple ---
@@ -352,11 +395,25 @@ void SignalDaughters::Loop()
    double VACutValue = 7500; //was at 8000
    // -------------------------------
 
+   // ----------------------------
+   // --- Pion Candidates Cuts ---
+   // ----------------------------
+   double MuonChi2CutValue = 20;
+   double ProtonChi2CutValue = 50;
+   // ----------------------------
+
    // --------------------------------------------
    // --- Values for Memory in Selection Stage ---
    // --------------------------------------------
    int CurrentCandidatePDG = 0;
-   double CurrentCandidateLength = 0;
+   double CurrentCandidateMuonChi2 = -99;
+   double CurrentCandidateProtonChi2 = -99;
+   double CurrentCandidateTrueLength = -99;
+   double CurrentCandidateLength = -99;
+   double PionCandidateMuonChi2 = -99;
+   double PionCandidateProtonChi2 = -99;
+   double PionCandidateTrueLength = -99;
+   double PionCandidateLength = -99;
    // --------------------------------------------
 
 
@@ -416,6 +473,10 @@ void SignalDaughters::Loop()
       float theDoCACosmic = 9999;
       float CACosmic = 9999;
       float CACosmicBoth = 9999;
+      double VertexX = -9999;
+      double VertexY = -9999;
+      double VertexZ = -9999;
+      double distanceToNuVtx = 99999;
 
       for (Int_t i = 0; i < nevents; i++) {
          t->GetEntry(i);
@@ -435,6 +496,9 @@ void SignalDaughters::Loop()
 	    pandora_vtx[i][0] = NuVx;
 	    pandora_vtx[i][1] = NuVy;
 	    pandora_vtx[i][2] = NuVz;
+	    VertexX = NuVx;
+	    VertexY = NuVy;
+	    VertexZ = NuVz;
 	    pandora_pdg = Pandora_NuPDG;
 	    vtx_contained = Vtx_Contained;
 	    mc_vtx_contained = Mc_Vtx_Contained;
@@ -513,6 +577,8 @@ void SignalDaughters::Loop()
 
       if (Matched && mc_vtx_contained == 1) {
 
+         distanceToNuVtx = Distance(StartX, StartY, StartZ, VertexX, VertexY, VertexZ);
+
          t1 = t1 + mc_energy - mc_pz;
 	 t2 = t2 + mc_px;
 	 t3 = t3 + mc_py;
@@ -569,6 +635,7 @@ void SignalDaughters::Loop()
 	    hCutByCutMuonCandidateDivide2->Fill(16); // Making the histogram to get the efficiency
 	    hCutByCutMuonCandidateDivide2->Fill(17); // Making the histogram to get the efficiency
 	    hCutByCutMuonCandidateDivide2->Fill(18); // Making the histogram to get the efficiency
+	    hCutByCutMuonCandidateDivide2->Fill(19); // Making the histogram to get the efficiency
 	    hFurtherEventSelectionDivide->Fill(0); // Making the histogram to get the efficiency for the Further Selection
 	    hFurtherEventSelectionDivide->Fill(1); // Making the histogram to get the efficiency for the Further Selection
 	    hFurtherEventSelectionDivide->Fill(2); // Making the histogram to get the efficiency for the Further Selection
@@ -636,7 +703,34 @@ void SignalDaughters::Loop()
                               hCutByCutMuonCandidate2->Fill(17);
                               if (theVA <= VACutValue) {
                                  hCutByCutMuonCandidate2->Fill(18);
+				 //EventRunSubrunPassed = EventRunSubrun;
+				 //Ntuple.Fill();
 				 hAfterNuEnergy2->Fill(nuenergy);
+                                 hMuonCandidateTrueTrackLengthAfter->Fill(CurrentCandidateTrueLength);
+                                 hMuonCandidateRecoTrackLengthAfter->Fill(CurrentCandidateLength);
+		                 hMuonCandidateMuonChi2After->Fill(CurrentCandidateMuonChi2);
+		                 hMuonCandidateProtonChi2After->Fill(CurrentCandidateProtonChi2);
+		                 hMuonCandidateTracksMuonChi2VsProtonChi2After->Fill(CurrentCandidateProtonChi2, CurrentCandidateMuonChi2);
+		                 hPionCandidateTrueTrackLengthAfter->Fill(PionCandidateTrueLength);
+                                 hPionCandidateRecoTrackLengthAfter->Fill(PionCandidateLength);
+		                 hPionCandidateMuonChi2After->Fill(PionCandidateMuonChi2);
+		                 hPionCandidateProtonChi2After->Fill(PionCandidateProtonChi2);
+		                 hPionCandidateTracksMuonChi2VsProtonChi2After->Fill(PionCandidateProtonChi2, PionCandidateMuonChi2);
+				 hMuonCandidateDeltaLengthAfter->Fill(CurrentCandidateTrueLength - CurrentCandidateLength);
+				 hPionCandidateDeltaLengthAfter->Fill(PionCandidateTrueLength - PionCandidateLength);
+				 hMuonCandidateRecoLengthVsMuonChi2->Fill(CurrentCandidateMuonChi2, CurrentCandidateLength);
+				 hMuonCandidateRecoLengthVsProtonChi2->Fill(CurrentCandidateProtonChi2, CurrentCandidateLength);
+				 hPionCandidateRecoLengthVsMuonChi2->Fill(PionCandidateMuonChi2, PionCandidateLength);
+				 hPionCandidateRecoLengthVsProtonChi2->Fill(PionCandidateProtonChi2, PionCandidateLength);
+				 if (PionCandidateMuonChi2 >= 0 && PionCandidateMuonChi2 < MuonChi2CutValue && (PionCandidateProtonChi2 > ProtonChi2CutValue || PionCandidateProtonChi2 == 0)) {
+                                    hCutByCutMuonCandidate2->Fill(19);
+                                    hMuonCandidateTrueTrackLengthAfter2->Fill(CurrentCandidateTrueLength);
+                                    hMuonCandidateRecoTrackLengthAfter2->Fill(CurrentCandidateLength);
+		                    hPionCandidateTrueTrackLengthAfter2->Fill(PionCandidateTrueLength);
+                                    hPionCandidateRecoTrackLengthAfter2->Fill(PionCandidateLength);
+				    hMuonCandidateDeltaLengthAfter2->Fill(CurrentCandidateTrueLength - CurrentCandidateLength);
+				    hPionCandidateDeltaLengthAfter2->Fill(PionCandidateTrueLength - PionCandidateLength);
+			         }
                               }
                            }
 			}
@@ -765,7 +859,15 @@ void SignalDaughters::Loop()
 	    PassedAllCuts = false;
 	    PassedAllCuts2 = false;
 	    CurrentCandidatePDG = 0;
-	    CurrentCandidateLength = 0;
+	    CurrentCandidateMuonChi2 = -99;
+	    CurrentCandidateProtonChi2 = -99;
+	    CurrentCandidateTrueLength = -99;
+	    CurrentCandidateLength = -99;
+	    PionCandidateMuonChi2 = -99;
+	    PionCandidateProtonChi2 = -99;
+	    PionCandidateTrueLength = -99;
+	    PionCandidateLength = -99;
+
          }
 
          if (!PassedEvent) {
@@ -801,10 +903,6 @@ void SignalDaughters::Loop()
 
 	 if (cut2 && cut3 && cut5 && cut6 && cut7) {
             PassedEvent = true;
-	    if (track_length > CurrentCandidateLength) {
-	       CurrentCandidateLength = track_length;
-	       CurrentCandidatePDG = mc_pdg;
-	    }
 	 }
 	 else PassedEvent = false;
 	 if (cut1 && cut2 && cut3 && cut4 && cut5 && cut6 && cut7) {
@@ -869,6 +967,38 @@ void SignalDaughters::Loop()
          //if (track_chi2_proton > 60 && track_chi2_muon < 30 && (track_chi2_proton/track_chi2_muon) > 7 && track_score > 0.8 && vtx_distance < 4 && track_length > 20 && (nuFlash/obviousCosmic) < 5 && nuFlash < 10) {
             nPassedSelection++;
 	    //hPassedNuEnergy->Fill(nuenergy);
+	    
+	    if (distanceToNuVtx < VACut && track_length > CurrentCandidateLength && track_is_muon_candidate) {
+	       if (CurrentCandidateLength != -99 && PionCandidateLength == -99) {
+		  PionCandidateLength = CurrentCandidateLength;
+		  PionCandidateTrueLength = CurrentCandidateTrueLength;
+		  PionCandidateMuonChi2 = CurrentCandidateMuonChi2;
+		  PionCandidateProtonChi2 = CurrentCandidateProtonChi2;
+	          }
+	       if (CurrentCandidateLength != -99 && CurrentCandidateLength > PionCandidateLength && PionCandidateLength != -99) {
+		  PionCandidateLength = CurrentCandidateLength;
+		  PionCandidateTrueLength = CurrentCandidateTrueLength;
+		  PionCandidateMuonChi2 = CurrentCandidateMuonChi2;
+		  PionCandidateProtonChi2 = CurrentCandidateProtonChi2;
+		  }
+	       CurrentCandidateLength = track_length;
+	       CurrentCandidateTrueLength = mc_length;
+	       CurrentCandidateMuonChi2 = track_chi2_muon;
+	       CurrentCandidateProtonChi2 = track_chi2_proton;
+	       CurrentCandidatePDG = mc_pdg;
+	    }
+	    if (distanceToNuVtx < VACut && track_length > PionCandidateLength && !track_is_muon_candidate) {
+	       PionCandidateLength = track_length;
+	       PionCandidateTrueLength = mc_length;
+	       PionCandidateMuonChi2 = track_chi2_muon;
+	       PionCandidateProtonChi2 = track_chi2_proton;
+	    }
+	    if (distanceToNuVtx < VACut && track_length > PionCandidateLength && track_is_muon_candidate && track_length < CurrentCandidateLength) {
+	       PionCandidateLength = track_length;
+	       PionCandidateTrueLength = mc_length;
+	       PionCandidateMuonChi2 = track_chi2_muon;
+	       PionCandidateProtonChi2 = track_chi2_proton;
+	    }
 	 }
 
 	 // === For Muon Tracks That Are Direct Neutrino Daughters And Matched A Neutrino ===
@@ -964,6 +1094,9 @@ void SignalDaughters::Loop()
    hPionOrMuonIsCandidate->GetXaxis()->SetBinLabel(3, "Other Selected");
    // =====================================
 
+   file->Close();
+   //Ntuple.Write();
+   //f.Close();
 
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
    // %%% Saving Histograms to File %%%
@@ -1067,6 +1200,39 @@ void SignalDaughters::Loop()
 
    hAfterNuEnergy->Write();
    hAfterNuEnergy2->Write();
+
+   hMuonCandidateMuonChi2After->Write();
+   hPionCandidateMuonChi2After->Write();
+
+   hMuonCandidateProtonChi2After->Write();
+   hPionCandidateProtonChi2After->Write();
+
+   hMuonCandidateTracksMuonChi2VsProtonChi2After->Write();
+   hPionCandidateTracksMuonChi2VsProtonChi2After->Write();
+
+   hMuonCandidateTrueTrackLengthAfter->Write();
+   hPionCandidateTrueTrackLengthAfter->Write();
+
+   hMuonCandidateRecoTrackLengthAfter->Write();
+   hPionCandidateRecoTrackLengthAfter->Write();
+
+   hMuonCandidateDeltaLengthAfter->Write();
+   hPionCandidateDeltaLengthAfter->Write();
+
+   hMuonCandidateRecoLengthVsMuonChi2->Write();
+   hMuonCandidateRecoLengthVsProtonChi2->Write();
+
+   hPionCandidateRecoLengthVsMuonChi2->Write();
+   hPionCandidateRecoLengthVsProtonChi2->Write();
+
+   hMuonCandidateTrueTrackLengthAfter2->Write();
+   hPionCandidateTrueTrackLengthAfter2->Write();
+
+   hMuonCandidateRecoTrackLengthAfter2->Write();
+   hPionCandidateRecoTrackLengthAfter2->Write();
+
+   hMuonCandidateDeltaLengthAfter2->Write();
+   hPionCandidateDeltaLengthAfter2->Write();
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 }
