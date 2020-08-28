@@ -371,14 +371,128 @@ hNTracksInBubbleCCDIS->Sumw2();
 hNTracksInBubbleCCInc->Sumw2();
 hNTracksInBubbleNC->Sumw2();
 
+TH1D *hMuonCandidateMuonChi2After = (TH1D*)f->Get("hMuonCandidateMuonChi2After");
+TH1D *hMuonCandidateMuonChi2AfterOther = (TH1D*)f4->Get("hMuonCandidateMuonChi2After");
+
+hMuonCandidateMuonChi2After->Sumw2();
+hMuonCandidateMuonChi2AfterOther->Sumw2();
+
+TH1D *hMuonCandidateProtonChi2After = (TH1D*)f->Get("hMuonCandidateProtonChi2After");
+TH1D *hMuonCandidateProtonChi2AfterOther = (TH1D*)f4->Get("hMuonCandidateProtonChi2After");
+
+hMuonCandidateProtonChi2After->Sumw2();
+hMuonCandidateProtonChi2AfterOther->Sumw2();
+
+TH1D *hPionCandidateMuonChi2After = (TH1D*)f->Get("hPionCandidateMuonChi2After");
+TH1D *hPionCandidateMuonChi2AfterOther = (TH1D*)f4->Get("hPionCandidateMuonChi2After");
+
+hPionCandidateMuonChi2After->Sumw2();
+hPionCandidateMuonChi2AfterOther->Sumw2();
+
+TH1D *hPionCandidateProtonChi2After = (TH1D*)f->Get("hPionCandidateProtonChi2After");
+TH1D *hPionCandidateProtonChi2AfterOther = (TH1D*)f4->Get("hPionCandidateProtonChi2After");
+
+hPionCandidateProtonChi2After->Sumw2();
+hPionCandidateProtonChi2AfterOther->Sumw2();
+
+TH2D *hMuonCandidateTracksMuonChi2VsProtonChi2After = (TH2D*)f->Get("hMuonCandidateTracksMuonChi2VsProtonChi2After");
+TH2D *hMuonCandidateTracksMuonChi2VsProtonChi2AfterOther = (TH2D*)f4->Get("hMuonCandidateTracksMuonChi2VsProtonChi2After");
+
+TH2D *hPionCandidateTracksMuonChi2VsProtonChi2After = (TH2D*)f->Get("hPionCandidateTracksMuonChi2VsProtonChi2After");
+TH2D *hPionCandidateTracksMuonChi2VsProtonChi2AfterOther = (TH2D*)f4->Get("hPionCandidateTracksMuonChi2VsProtonChi2After");
+
+TH1D *hMuonCandidateTrueTrackLengthAfter = (TH1D*)f->Get("hMuonCandidateTrueTrackLengthAfter");
+TH1D *hMuonCandidateTrueTrackLengthAfterOther = (TH1D*)f4->Get("hMuonCandidateTrueTrackLengthAfter");
+
+hMuonCandidateTrueTrackLengthAfter->Sumw2();
+hMuonCandidateTrueTrackLengthAfterOther->Sumw2();
+
+TH1D *hMuonCandidateRecoTrackLengthAfter = (TH1D*)f->Get("hMuonCandidateRecoTrackLengthAfter");
+TH1D *hMuonCandidateRecoTrackLengthAfterOther = (TH1D*)f4->Get("hMuonCandidateRecoTrackLengthAfter");
+
+hMuonCandidateRecoTrackLengthAfter->Sumw2();
+hMuonCandidateRecoTrackLengthAfterOther->Sumw2();
+
+TH1D *hPionCandidateTrueTrackLengthAfter = (TH1D*)f->Get("hPionCandidateTrueTrackLengthAfter");
+TH1D *hPionCandidateTrueTrackLengthAfterOther = (TH1D*)f4->Get("hPionCandidateTrueTrackLengthAfter");
+
+hPionCandidateTrueTrackLengthAfter->Sumw2();
+hPionCandidateTrueTrackLengthAfterOther->Sumw2();
+
+TH1D *hPionCandidateRecoTrackLengthAfter = (TH1D*)f->Get("hPionCandidateRecoTrackLengthAfter");
+TH1D *hPionCandidateRecoTrackLengthAfterOther = (TH1D*)f4->Get("hPionCandidateRecoTrackLengthAfter");
+
+hPionCandidateRecoTrackLengthAfter->Sumw2();
+hPionCandidateRecoTrackLengthAfterOther->Sumw2();
+
+TH1D *hMuonCandidateDeltaLengthAfter = (TH1D*)f->Get("hMuonCandidateDeltaLengthAfter");
+TH1D *hMuonCandidateDeltaLengthAfterOther = (TH1D*)f4->Get("hMuonCandidateDeltaLengthAfter");
+
+hMuonCandidateDeltaLengthAfter->Sumw2();
+hMuonCandidateDeltaLengthAfterOther->Sumw2();
+
+TH1D *hPionCandidateDeltaLengthAfter = (TH1D*)f->Get("hPionCandidateDeltaLengthAfter");
+TH1D *hPionCandidateDeltaLengthAfterOther = (TH1D*)f4->Get("hPionCandidateDeltaLengthAfter");
+
+hPionCandidateDeltaLengthAfter->Sumw2();
+hPionCandidateDeltaLengthAfterOther->Sumw2();
+
+TH1D *hMuonCandidateTrueTrackLengthAfter2 = (TH1D*)f->Get("hMuonCandidateTrueTrackLengthAfter2");
+TH1D *hMuonCandidateTrueTrackLengthAfter2Other = (TH1D*)f4->Get("hMuonCandidateTrueTrackLengthAfter2");
+
+hMuonCandidateTrueTrackLengthAfter2->Sumw2();
+hMuonCandidateTrueTrackLengthAfter2Other->Sumw2();
+
+TH1D *hMuonCandidateRecoTrackLengthAfter2 = (TH1D*)f->Get("hMuonCandidateRecoTrackLengthAfter2");
+TH1D *hMuonCandidateRecoTrackLengthAfter2Other = (TH1D*)f4->Get("hMuonCandidateRecoTrackLengthAfter2");
+
+hMuonCandidateRecoTrackLengthAfter2->Sumw2();
+hMuonCandidateRecoTrackLengthAfter2Other->Sumw2();
+
+TH1D *hPionCandidateTrueTrackLengthAfter2 = (TH1D*)f->Get("hPionCandidateTrueTrackLengthAfter2");
+TH1D *hPionCandidateTrueTrackLengthAfter2Other = (TH1D*)f4->Get("hPionCandidateTrueTrackLengthAfter2");
+
+hPionCandidateTrueTrackLengthAfter2->Sumw2();
+hPionCandidateTrueTrackLengthAfter2Other->Sumw2();
+
+TH1D *hPionCandidateRecoTrackLengthAfter2 = (TH1D*)f->Get("hPionCandidateRecoTrackLengthAfter2");
+TH1D *hPionCandidateRecoTrackLengthAfter2Other = (TH1D*)f4->Get("hPionCandidateRecoTrackLengthAfter2");
+
+hPionCandidateRecoTrackLengthAfter2->Sumw2();
+hPionCandidateRecoTrackLengthAfter2Other->Sumw2();
+
+TH1D *hMuonCandidateDeltaLengthAfter2 = (TH1D*)f->Get("hMuonCandidateDeltaLengthAfter2");
+TH1D *hMuonCandidateDeltaLengthAfter2Other = (TH1D*)f4->Get("hMuonCandidateDeltaLengthAfter2");
+
+hMuonCandidateDeltaLengthAfter2->Sumw2();
+hMuonCandidateDeltaLengthAfter2Other->Sumw2();
+
+TH1D *hPionCandidateDeltaLengthAfter2 = (TH1D*)f->Get("hPionCandidateDeltaLengthAfter2");
+TH1D *hPionCandidateDeltaLengthAfter2Other = (TH1D*)f4->Get("hPionCandidateDeltaLengthAfter2");
+
+hPionCandidateDeltaLengthAfter2->Sumw2();
+hPionCandidateDeltaLengthAfter2Other->Sumw2();
+
+TH2D *hMuonCandidateRecoLengthVsMuonChi2 = (TH2D*)f->Get("hMuonCandidateRecoLengthVsMuonChi2");
+TH2D *hMuonCandidateRecoLengthVsMuonChi2Other = (TH2D*)f4->Get("hMuonCandidateRecoLengthVsMuonChi2");
+
+TH2D *hMuonCandidateRecoLengthVsProtonChi2 = (TH2D*)f->Get("hMuonCandidateRecoLengthVsProtonChi2");
+TH2D *hMuonCandidateRecoLengthVsProtonChi2Other = (TH2D*)f4->Get("hMuonCandidateRecoLengthVsProtonChi2");
+
+TH2D *hPionCandidateRecoLengthVsMuonChi2 = (TH2D*)f->Get("hPionCandidateRecoLengthVsMuonChi2");
+TH2D *hPionCandidateRecoLengthVsMuonChi2Other = (TH2D*)f4->Get("hPionCandidateRecoLengthVsMuonChi2");
+
+TH2D *hPionCandidateRecoLengthVsProtonChi2 = (TH2D*)f->Get("hPionCandidateRecoLengthVsProtonChi2");
+TH2D *hPionCandidateRecoLengthVsProtonChi2Other = (TH2D*)f4->Get("hPionCandidateRecoLengthVsProtonChi2");
+
 // Creating the Stacked Histogram
 THStack *hRecoVAStacked = new THStack("hRecoVAStacked", "Hit Charges from All Planes Stacked for CC-Coh Events");
 
-TH1D *hCondensedSelectionCCCoh = new TH1D("hCondensedSelectionCCCoh", "The Cut By Cut Selection", 6, -0.5, 5.5);
-TH1D *hCondensedSelectionCCCohDivide = new TH1D("hCondensedSelectionCCCohDivide", "The Cut By Cut Selection", 6, -0.5, 5.5);
+TH1D *hCondensedSelectionCCCoh = new TH1D("hCondensedSelectionCCCoh", "The Cut By Cut Selection", 7, -0.5, 6.5);
+TH1D *hCondensedSelectionCCCohDivide = new TH1D("hCondensedSelectionCCCohDivide", "The Cut By Cut Selection", 7, -0.5, 6.5);
 
-TH1D *hCondensedSelectionOther = new TH1D("hCondensedSelectionOther", "The Cut By Cut Selection", 6, -0.5, 5.5);
-TH1D *hCondensedSelectionOtherDivide = new TH1D("hCondensedSelectionOtherDivide", "The Cut By Cut Selection", 6, -0.5, 5.5);
+TH1D *hCondensedSelectionOther = new TH1D("hCondensedSelectionOther", "The Cut By Cut Selection", 7, -0.5, 6.5);
+TH1D *hCondensedSelectionOtherDivide = new TH1D("hCondensedSelectionOtherDivide", "The Cut By Cut Selection", 7, -0.5, 6.5);
 
 hCondensedSelectionCCCoh->Fill(0., hCutByCutMuonCandidate2->GetBinContent(1));
 hCondensedSelectionCCCoh->Fill(1., hCutByCutMuonCandidate2->GetBinContent(14));
@@ -386,6 +500,7 @@ hCondensedSelectionCCCoh->Fill(2., hCutByCutMuonCandidate2->GetBinContent(16));
 hCondensedSelectionCCCoh->Fill(3., hCutByCutMuonCandidate2->GetBinContent(17));
 hCondensedSelectionCCCoh->Fill(4., hCutByCutMuonCandidate2->GetBinContent(18));
 hCondensedSelectionCCCoh->Fill(5., hCutByCutMuonCandidate2->GetBinContent(19));
+hCondensedSelectionCCCoh->Fill(6., hCutByCutMuonCandidate2->GetBinContent(20));
 
 hCondensedSelectionCCCohDivide->Fill(0., hCutByCutMuonCandidate2->GetBinContent(1));
 hCondensedSelectionCCCohDivide->Fill(1., hCutByCutMuonCandidate2->GetBinContent(1));
@@ -393,6 +508,7 @@ hCondensedSelectionCCCohDivide->Fill(2., hCutByCutMuonCandidate2->GetBinContent(
 hCondensedSelectionCCCohDivide->Fill(3., hCutByCutMuonCandidate2->GetBinContent(1));
 hCondensedSelectionCCCohDivide->Fill(4., hCutByCutMuonCandidate2->GetBinContent(1));
 hCondensedSelectionCCCohDivide->Fill(5., hCutByCutMuonCandidate2->GetBinContent(1));
+hCondensedSelectionCCCohDivide->Fill(6., hCutByCutMuonCandidate2->GetBinContent(1));
 
 hCondensedSelectionOther->Fill(0., hCutByCutMuonCandidate2Other->GetBinContent(1));
 hCondensedSelectionOther->Fill(1., hCutByCutMuonCandidate2Other->GetBinContent(14));
@@ -400,6 +516,7 @@ hCondensedSelectionOther->Fill(2., hCutByCutMuonCandidate2Other->GetBinContent(1
 hCondensedSelectionOther->Fill(3., hCutByCutMuonCandidate2Other->GetBinContent(17));
 hCondensedSelectionOther->Fill(4., hCutByCutMuonCandidate2Other->GetBinContent(18));
 hCondensedSelectionOther->Fill(5., hCutByCutMuonCandidate2Other->GetBinContent(19));
+hCondensedSelectionOther->Fill(6., hCutByCutMuonCandidate2Other->GetBinContent(20));
 
 hCondensedSelectionOtherDivide->Fill(0., hCutByCutMuonCandidate2Other->GetBinContent(1));
 hCondensedSelectionOtherDivide->Fill(1., hCutByCutMuonCandidate2Other->GetBinContent(1));
@@ -407,6 +524,7 @@ hCondensedSelectionOtherDivide->Fill(2., hCutByCutMuonCandidate2Other->GetBinCon
 hCondensedSelectionOtherDivide->Fill(3., hCutByCutMuonCandidate2Other->GetBinContent(1));
 hCondensedSelectionOtherDivide->Fill(4., hCutByCutMuonCandidate2Other->GetBinContent(1));
 hCondensedSelectionOtherDivide->Fill(5., hCutByCutMuonCandidate2Other->GetBinContent(1));
+hCondensedSelectionOtherDivide->Fill(6., hCutByCutMuonCandidate2Other->GetBinContent(1));
 
 hCondensedSelectionCCCoh->Sumw2();
 hCondensedSelectionCCCohDivide->Sumw2();
@@ -1098,9 +1216,9 @@ leg17->Draw();
 // --- Making Histogram for Cut By Cut Purity ---
 // ----------------------------------------------
 TH1D *hCutByCutMuonCandidatePurityDivide = new TH1D("hCutByCutMuonCandidatePurityDivide", "The Cut by Cut Efficiency Division Histogram of the CC-Inclusive Muon Candidate Selection for CC-Coh Purity", 19, -0.5, 18.5);
-TH1D *hCutByCutMuonCandidatePurityDivide2 = new TH1D("hCutByCutMuonCandidatePurityDivide2", "The Cut by Cut Efficiency Division Histogram of the CC-Inclusive Muon Candidate Selection for CC-Coh Purity All Cuts ON", 19, -0.5, 18.5);
+TH1D *hCutByCutMuonCandidatePurityDivide2 = new TH1D("hCutByCutMuonCandidatePurityDivide2", "The Cut by Cut Efficiency Division Histogram of the CC-Inclusive Muon Candidate Selection for CC-Coh Purity All Cuts ON", 20, -0.5, 19.5);
 
-int nbins = 19;
+int nbins = 20;
 for (int i = 1; i < nbins+1; i++) {
    hCutByCutMuonCandidatePurityDivide->Fill((i-1), hCutByCutMuonCandidateOther->GetBinContent(i));
    hCutByCutMuonCandidatePurityDivide->Fill((i-1), hCutByCutMuonCandidateCCCoh->GetBinContent(i));
@@ -2984,6 +3102,525 @@ leg36->AddEntry(hCondensedSelectionCCCoh,"CCCoh");
 leg36->AddEntry(hCondensedSelectionOther,"Other");
 leg36->Draw();
 
+
+
+TCanvas *c37 = new TCanvas("c37", "Candidates Muon Chi2");
+c37->SetTicks();
+c37->SetFillColor(kWhite);
+
+
+// Area normalzing the plot 
+hMuonCandidateMuonChi2After->Scale(1/hMuonCandidateMuonChi2After->Integral());
+hPionCandidateMuonChi2After->Scale(1/hPionCandidateMuonChi2After->Integral());
+hMuonCandidateMuonChi2AfterOther->Scale(1/hMuonCandidateMuonChi2AfterOther->Integral());
+hPionCandidateMuonChi2AfterOther->Scale(1/hPionCandidateMuonChi2AfterOther->Integral());
+
+hMuonCandidateMuonChi2After->SetLineColor(kBlue);
+hMuonCandidateMuonChi2After->SetLineWidth(2);
+hMuonCandidateMuonChi2After->Rebin(5);
+hPionCandidateMuonChi2After->SetLineColor(kCyan);
+hPionCandidateMuonChi2After->SetLineWidth(2);
+hPionCandidateMuonChi2After->Rebin(5);
+hMuonCandidateMuonChi2AfterOther->SetLineColor(kBlack);
+hMuonCandidateMuonChi2AfterOther->SetLineWidth(2);
+hMuonCandidateMuonChi2AfterOther->Rebin(5);
+hPionCandidateMuonChi2AfterOther->SetLineColor(kGray);
+hPionCandidateMuonChi2AfterOther->SetLineWidth(2);
+hPionCandidateMuonChi2AfterOther->Rebin(5);
+
+hMuonCandidateMuonChi2AfterOther->GetXaxis()->SetTitle("#mu #chi^{2}");
+hMuonCandidateMuonChi2AfterOther->GetXaxis()->CenterTitle();
+hMuonCandidateMuonChi2AfterOther->GetXaxis()->SetRangeUser(0, 100);
+
+hMuonCandidateMuonChi2AfterOther->GetYaxis()->SetTitle("Normalized Events");
+hMuonCandidateMuonChi2AfterOther->GetYaxis()->CenterTitle();
+
+hMuonCandidateMuonChi2AfterOther->Draw("histo");
+hPionCandidateMuonChi2After->Draw("histosame");
+hMuonCandidateMuonChi2After->Draw("histosame");
+hPionCandidateMuonChi2AfterOther->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg37 = new TLegend();
+leg37 = new TLegend(0.58,0.65,1.00,1.00);
+leg37->SetTextSize(0.04);
+leg37->SetTextAlign(12);
+leg37->SetFillColor(kWhite);
+leg37->SetLineColor(kWhite);
+leg37->SetShadowColor(kWhite);
+leg37->SetHeader("Channel and Candidate");
+leg37->AddEntry(hMuonCandidateMuonChi2After,"#mu Candidate CCCoh");
+leg37->AddEntry(hPionCandidateMuonChi2After,"#pi Candidate CCCoh");
+leg37->AddEntry(hMuonCandidateMuonChi2AfterOther,"#mu Candidate Other");
+leg37->AddEntry(hPionCandidateMuonChi2AfterOther,"#pi Candidate Other");
+leg37->Draw();
+
+
+
+TCanvas *c38 = new TCanvas("c38", "Candidates Proton Chi2");
+c38->SetTicks();
+c38->SetFillColor(kWhite);
+
+
+// Area normalzing the plot 
+hMuonCandidateProtonChi2After->Scale(1/hMuonCandidateProtonChi2After->Integral());
+hPionCandidateProtonChi2After->Scale(1/hPionCandidateProtonChi2After->Integral());
+hMuonCandidateProtonChi2AfterOther->Scale(1/hMuonCandidateProtonChi2AfterOther->Integral());
+hPionCandidateProtonChi2AfterOther->Scale(1/hPionCandidateProtonChi2AfterOther->Integral());
+
+hMuonCandidateProtonChi2After->SetLineColor(kBlue);
+hMuonCandidateProtonChi2After->SetLineWidth(2);
+hMuonCandidateProtonChi2After->Rebin(5);
+hPionCandidateProtonChi2After->SetLineColor(kCyan);
+hPionCandidateProtonChi2After->SetLineWidth(2);
+hPionCandidateProtonChi2After->Rebin(5);
+hMuonCandidateProtonChi2AfterOther->SetLineColor(kBlack);
+hMuonCandidateProtonChi2AfterOther->SetLineWidth(2);
+hMuonCandidateProtonChi2AfterOther->Rebin(5);
+hPionCandidateProtonChi2AfterOther->SetLineColor(kGray);
+hPionCandidateProtonChi2AfterOther->SetLineWidth(2);
+hPionCandidateProtonChi2AfterOther->Rebin(5);
+
+hPionCandidateProtonChi2AfterOther->GetXaxis()->SetTitle("p #chi^{2}");
+hPionCandidateProtonChi2AfterOther->GetXaxis()->CenterTitle();
+hPionCandidateProtonChi2AfterOther->GetXaxis()->SetRangeUser(0, 350);
+
+hPionCandidateProtonChi2AfterOther->GetYaxis()->SetTitle("Normalized Events");
+hPionCandidateProtonChi2AfterOther->GetYaxis()->CenterTitle();
+
+hPionCandidateProtonChi2AfterOther->Draw("histo");
+hPionCandidateProtonChi2After->Draw("histosame");
+hMuonCandidateProtonChi2After->Draw("histosame");
+hMuonCandidateProtonChi2AfterOther->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg38 = new TLegend();
+leg38 = new TLegend(0.58,0.65,1.00,1.00);
+leg38->SetTextSize(0.04);
+leg38->SetTextAlign(12);
+leg38->SetFillColor(kWhite);
+leg38->SetLineColor(kWhite);
+leg38->SetShadowColor(kWhite);
+leg38->SetHeader("Channel and Candidate");
+leg38->AddEntry(hMuonCandidateProtonChi2After,"#mu Candidate CCCoh");
+leg38->AddEntry(hPionCandidateProtonChi2After,"#pi Candidate CCCoh");
+leg38->AddEntry(hMuonCandidateProtonChi2AfterOther,"#mu Candidate Other");
+leg38->AddEntry(hPionCandidateProtonChi2AfterOther,"#pi Candidate Other");
+leg38->Draw();
+
+
+
+TCanvas *c39 = new TCanvas("c39", "#mu Candidates True and Reco Track Lengths");
+c39->SetTicks();
+c39->SetFillColor(kWhite);
+
+
+// Area normalzing the plot 
+hMuonCandidateTrueTrackLengthAfter->Scale(1/hMuonCandidateTrueTrackLengthAfter->Integral());
+hMuonCandidateRecoTrackLengthAfter->Scale(1/hMuonCandidateRecoTrackLengthAfter->Integral());
+hMuonCandidateTrueTrackLengthAfterOther->Scale(1/hMuonCandidateTrueTrackLengthAfterOther->Integral());
+hMuonCandidateRecoTrackLengthAfterOther->Scale(1/hMuonCandidateRecoTrackLengthAfterOther->Integral());
+
+hMuonCandidateTrueTrackLengthAfter->SetLineColor(kBlue);
+hMuonCandidateTrueTrackLengthAfter->SetLineWidth(2);
+hMuonCandidateTrueTrackLengthAfter->Rebin(20);
+hMuonCandidateRecoTrackLengthAfter->SetLineColor(kCyan);
+hMuonCandidateRecoTrackLengthAfter->SetLineWidth(2);
+hMuonCandidateRecoTrackLengthAfter->Rebin(20);
+hMuonCandidateTrueTrackLengthAfterOther->SetLineColor(kBlack);
+hMuonCandidateTrueTrackLengthAfterOther->SetLineWidth(2);
+hMuonCandidateTrueTrackLengthAfterOther->Rebin(20);
+hMuonCandidateRecoTrackLengthAfterOther->SetLineColor(kGray);
+hMuonCandidateRecoTrackLengthAfterOther->SetLineWidth(2);
+hMuonCandidateRecoTrackLengthAfterOther->Rebin(20);
+
+hMuonCandidateRecoTrackLengthAfterOther->GetXaxis()->SetTitle("Track Length [cm]");
+hMuonCandidateRecoTrackLengthAfterOther->GetXaxis()->CenterTitle();
+//hMuonCandidateRecoTrackLengthAfterOther->GetXaxis()->SetRangeUser(0, 350);
+
+hMuonCandidateRecoTrackLengthAfterOther->GetYaxis()->SetTitle("Normalized Events");
+hMuonCandidateRecoTrackLengthAfterOther->GetYaxis()->CenterTitle();
+
+hMuonCandidateRecoTrackLengthAfterOther->Draw("histo");
+hMuonCandidateTrueTrackLengthAfterOther->Draw("histosame");
+hMuonCandidateRecoTrackLengthAfter->Draw("histosame");
+hMuonCandidateTrueTrackLengthAfter->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg39 = new TLegend();
+leg39 = new TLegend(0.58,0.65,1.00,1.00);
+leg39->SetTextSize(0.04);
+leg39->SetTextAlign(12);
+leg39->SetFillColor(kWhite);
+leg39->SetLineColor(kWhite);
+leg39->SetShadowColor(kWhite);
+leg39->SetHeader("Channel");
+leg39->AddEntry(hMuonCandidateTrueTrackLengthAfter,"#mu Candidate True CCCoh");
+leg39->AddEntry(hMuonCandidateRecoTrackLengthAfter,"#mu Candidate Reco CCCoh");
+leg39->AddEntry(hMuonCandidateTrueTrackLengthAfterOther,"#mu Candidate True Other");
+leg39->AddEntry(hMuonCandidateRecoTrackLengthAfterOther,"#mu Candidate Reco Other");
+leg39->Draw();
+
+
+
+TCanvas *c40 = new TCanvas("c40", "#pi Candidates True and Reco Track Lengths");
+c40->SetTicks();
+c40->SetFillColor(kWhite);
+
+
+// Area normalzing the plot 
+hPionCandidateTrueTrackLengthAfter->Scale(1/hPionCandidateTrueTrackLengthAfter->Integral());
+hPionCandidateRecoTrackLengthAfter->Scale(1/hPionCandidateRecoTrackLengthAfter->Integral());
+hPionCandidateTrueTrackLengthAfterOther->Scale(1/hPionCandidateTrueTrackLengthAfterOther->Integral());
+hPionCandidateRecoTrackLengthAfterOther->Scale(1/hPionCandidateRecoTrackLengthAfterOther->Integral());
+
+hPionCandidateTrueTrackLengthAfter->SetLineColor(kBlue);
+hPionCandidateTrueTrackLengthAfter->SetLineWidth(2);
+hPionCandidateTrueTrackLengthAfter->Rebin(10);
+hPionCandidateRecoTrackLengthAfter->SetLineColor(kCyan);
+hPionCandidateRecoTrackLengthAfter->SetLineWidth(2);
+hPionCandidateRecoTrackLengthAfter->Rebin(10);
+hPionCandidateTrueTrackLengthAfterOther->SetLineColor(kBlack);
+hPionCandidateTrueTrackLengthAfterOther->SetLineWidth(2);
+hPionCandidateTrueTrackLengthAfterOther->Rebin(10);
+hPionCandidateRecoTrackLengthAfterOther->SetLineColor(kGray);
+hPionCandidateRecoTrackLengthAfterOther->SetLineWidth(2);
+hPionCandidateRecoTrackLengthAfterOther->Rebin(10);
+
+hPionCandidateRecoTrackLengthAfterOther->GetXaxis()->SetTitle("Track Length [cm]");
+hPionCandidateRecoTrackLengthAfterOther->GetXaxis()->CenterTitle();
+//hPionCandidateRecoTrackLengthAfterOther->GetXaxis()->SetRangeUser(0, 350);
+
+hPionCandidateRecoTrackLengthAfterOther->GetYaxis()->SetTitle("Normalized Events");
+hPionCandidateRecoTrackLengthAfterOther->GetYaxis()->CenterTitle();
+
+hPionCandidateRecoTrackLengthAfterOther->Draw("histo");
+hPionCandidateTrueTrackLengthAfterOther->Draw("histosame");
+hPionCandidateRecoTrackLengthAfter->Draw("histosame");
+hPionCandidateTrueTrackLengthAfter->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg40 = new TLegend();
+leg40 = new TLegend(0.58,0.65,1.00,1.00);
+leg40->SetTextSize(0.04);
+leg40->SetTextAlign(12);
+leg40->SetFillColor(kWhite);
+leg40->SetLineColor(kWhite);
+leg40->SetShadowColor(kWhite);
+leg40->SetHeader("Channel");
+leg40->AddEntry(hPionCandidateTrueTrackLengthAfter,"#pi Candidate True CCCoh");
+leg40->AddEntry(hPionCandidateRecoTrackLengthAfter,"#pi Candidate Reco CCCoh");
+leg40->AddEntry(hPionCandidateTrueTrackLengthAfterOther,"#pi Candidate True Other");
+leg40->AddEntry(hPionCandidateRecoTrackLengthAfterOther,"#pi Candidate Reco Other");
+leg40->Draw();
+
+
+
+TCanvas *c41 = new TCanvas("c41", "Delta Track Lengths");
+c41->SetTicks();
+c41->SetFillColor(kWhite);
+
+
+// Area normalzing the plot 
+hMuonCandidateDeltaLengthAfter->Scale(1/hMuonCandidateDeltaLengthAfter->Integral());
+hMuonCandidateDeltaLengthAfterOther->Scale(1/hMuonCandidateDeltaLengthAfterOther->Integral());
+hPionCandidateDeltaLengthAfter->Scale(1/hPionCandidateDeltaLengthAfter->Integral());
+hPionCandidateDeltaLengthAfterOther->Scale(1/hPionCandidateDeltaLengthAfterOther->Integral());
+
+hMuonCandidateDeltaLengthAfter->SetLineColor(kBlue);
+hMuonCandidateDeltaLengthAfter->SetLineWidth(2);
+hMuonCandidateDeltaLengthAfter->Rebin(10);
+hPionCandidateDeltaLengthAfter->SetLineColor(kCyan);
+hPionCandidateDeltaLengthAfter->SetLineWidth(2);
+hPionCandidateDeltaLengthAfter->Rebin(10);
+hMuonCandidateDeltaLengthAfterOther->SetLineColor(kBlack);
+hMuonCandidateDeltaLengthAfterOther->SetLineWidth(2);
+hMuonCandidateDeltaLengthAfterOther->Rebin(10);
+hPionCandidateDeltaLengthAfterOther->SetLineColor(kGray);
+hPionCandidateDeltaLengthAfterOther->SetLineWidth(2);
+hPionCandidateDeltaLengthAfterOther->Rebin(10);
+
+hPionCandidateDeltaLengthAfterOther->GetXaxis()->SetTitle("#Delta Track Length (True - Reco) [cm]");
+hPionCandidateDeltaLengthAfterOther->GetXaxis()->CenterTitle();
+//hPionCandidateDeltaLengthAfterOther->GetXaxis()->SetRangeUser(0, 350);
+
+hPionCandidateDeltaLengthAfterOther->GetYaxis()->SetTitle("Normalized Events");
+hPionCandidateDeltaLengthAfterOther->GetYaxis()->CenterTitle();
+
+hPionCandidateDeltaLengthAfterOther->Draw("histo");
+hMuonCandidateDeltaLengthAfterOther->Draw("histosame");
+hPionCandidateDeltaLengthAfter->Draw("histosame");
+hMuonCandidateDeltaLengthAfter->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg41 = new TLegend();
+leg41 = new TLegend(0.58,0.65,1.00,1.00);
+leg41->SetTextSize(0.04);
+leg41->SetTextAlign(12);
+leg41->SetFillColor(kWhite);
+leg41->SetLineColor(kWhite);
+leg41->SetShadowColor(kWhite);
+leg41->SetHeader("Channel and Candidate");
+leg41->AddEntry(hMuonCandidateDeltaLengthAfter,"#mu Candidate CCCoh");
+leg41->AddEntry(hPionCandidateDeltaLengthAfter,"#pi Candidate CCCoh");
+leg41->AddEntry(hMuonCandidateDeltaLengthAfterOther,"#mu Candidate Other");
+leg41->AddEntry(hPionCandidateDeltaLengthAfterOther,"#pi Candidate Other");
+leg41->Draw();
+
+
+
+TCanvas *c42 = new TCanvas("c42", "#mu Candidates True and Reco Track Lengths After Proton Chi2 Selection");
+c42->SetTicks();
+c42->SetFillColor(kWhite);
+
+
+// Area normalzing the plot 
+hMuonCandidateTrueTrackLengthAfter2->Scale(1/hMuonCandidateTrueTrackLengthAfter2->Integral());
+hMuonCandidateRecoTrackLengthAfter2->Scale(1/hMuonCandidateRecoTrackLengthAfter2->Integral());
+hMuonCandidateTrueTrackLengthAfter2Other->Scale(1/hMuonCandidateTrueTrackLengthAfter2Other->Integral());
+hMuonCandidateRecoTrackLengthAfter2Other->Scale(1/hMuonCandidateRecoTrackLengthAfter2Other->Integral());
+
+hMuonCandidateTrueTrackLengthAfter2->SetLineColor(kBlue);
+hMuonCandidateTrueTrackLengthAfter2->SetLineWidth(2);
+hMuonCandidateTrueTrackLengthAfter2->Rebin(20);
+hMuonCandidateRecoTrackLengthAfter2->SetLineColor(kCyan);
+hMuonCandidateRecoTrackLengthAfter2->SetLineWidth(2);
+hMuonCandidateRecoTrackLengthAfter2->Rebin(20);
+hMuonCandidateTrueTrackLengthAfter2Other->SetLineColor(kBlack);
+hMuonCandidateTrueTrackLengthAfter2Other->SetLineWidth(2);
+hMuonCandidateTrueTrackLengthAfter2Other->Rebin(20);
+hMuonCandidateRecoTrackLengthAfter2Other->SetLineColor(kGray);
+hMuonCandidateRecoTrackLengthAfter2Other->SetLineWidth(2);
+hMuonCandidateRecoTrackLengthAfter2Other->Rebin(20);
+
+hMuonCandidateRecoTrackLengthAfter2Other->GetXaxis()->SetTitle("Track Length [cm]");
+hMuonCandidateRecoTrackLengthAfter2Other->GetXaxis()->CenterTitle();
+//hMuonCandidateRecoTrackLengthAfter2Other->GetXaxis()->SetRangeUser(0, 350);
+
+hMuonCandidateRecoTrackLengthAfter2Other->GetYaxis()->SetTitle("Normalized Events");
+hMuonCandidateRecoTrackLengthAfter2Other->GetYaxis()->CenterTitle();
+
+hMuonCandidateRecoTrackLengthAfter2Other->Draw("histo");
+hMuonCandidateTrueTrackLengthAfter2Other->Draw("histosame");
+hMuonCandidateRecoTrackLengthAfter2->Draw("histosame");
+hMuonCandidateTrueTrackLengthAfter2->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg42 = new TLegend();
+leg42 = new TLegend(0.58,0.65,1.00,1.00);
+leg42->SetTextSize(0.04);
+leg42->SetTextAlign(12);
+leg42->SetFillColor(kWhite);
+leg42->SetLineColor(kWhite);
+leg42->SetShadowColor(kWhite);
+leg42->SetHeader("Channel");
+leg42->AddEntry(hMuonCandidateTrueTrackLengthAfter2,"#mu Candidate True CCCoh");
+leg42->AddEntry(hMuonCandidateRecoTrackLengthAfter2,"#mu Candidate Reco CCCoh");
+leg42->AddEntry(hMuonCandidateTrueTrackLengthAfter2Other,"#mu Candidate True Other");
+leg42->AddEntry(hMuonCandidateRecoTrackLengthAfter2Other,"#mu Candidate Reco Other");
+leg42->Draw();
+
+
+
+TCanvas *c43 = new TCanvas("c43", "#pi Candidates True and Reco Track Lengths After Proton Chi2 Selection");
+c43->SetTicks();
+c43->SetFillColor(kWhite);
+
+
+// Area normalzing the plot 
+hPionCandidateTrueTrackLengthAfter2->Scale(1/hPionCandidateTrueTrackLengthAfter2->Integral());
+hPionCandidateRecoTrackLengthAfter2->Scale(1/hPionCandidateRecoTrackLengthAfter2->Integral());
+hPionCandidateTrueTrackLengthAfter2Other->Scale(1/hPionCandidateTrueTrackLengthAfter2Other->Integral());
+hPionCandidateRecoTrackLengthAfter2Other->Scale(1/hPionCandidateRecoTrackLengthAfter2Other->Integral());
+
+hPionCandidateTrueTrackLengthAfter2->SetLineColor(kBlue);
+hPionCandidateTrueTrackLengthAfter2->SetLineWidth(2);
+hPionCandidateTrueTrackLengthAfter2->Rebin(10);
+hPionCandidateRecoTrackLengthAfter2->SetLineColor(kCyan);
+hPionCandidateRecoTrackLengthAfter2->SetLineWidth(2);
+hPionCandidateRecoTrackLengthAfter2->Rebin(10);
+hPionCandidateTrueTrackLengthAfter2Other->SetLineColor(kBlack);
+hPionCandidateTrueTrackLengthAfter2Other->SetLineWidth(2);
+hPionCandidateTrueTrackLengthAfter2Other->Rebin(10);
+hPionCandidateRecoTrackLengthAfter2Other->SetLineColor(kGray);
+hPionCandidateRecoTrackLengthAfter2Other->SetLineWidth(2);
+hPionCandidateRecoTrackLengthAfter2Other->Rebin(10);
+
+hPionCandidateRecoTrackLengthAfter2Other->GetXaxis()->SetTitle("Track Length [cm]");
+hPionCandidateRecoTrackLengthAfter2Other->GetXaxis()->CenterTitle();
+//hPionCandidateRecoTrackLengthAfter2Other->GetXaxis()->SetRangeUser(0, 350);
+
+hPionCandidateRecoTrackLengthAfter2Other->GetYaxis()->SetTitle("Normalized Events");
+hPionCandidateRecoTrackLengthAfter2Other->GetYaxis()->CenterTitle();
+
+hPionCandidateRecoTrackLengthAfter2Other->Draw("histo");
+hPionCandidateTrueTrackLengthAfter2Other->Draw("histosame");
+hPionCandidateRecoTrackLengthAfter2->Draw("histosame");
+hPionCandidateTrueTrackLengthAfter2->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg43 = new TLegend();
+leg43 = new TLegend(0.58,0.65,1.00,1.00);
+leg43->SetTextSize(0.04);
+leg43->SetTextAlign(12);
+leg43->SetFillColor(kWhite);
+leg43->SetLineColor(kWhite);
+leg43->SetShadowColor(kWhite);
+leg43->SetHeader("Channel");
+leg43->AddEntry(hPionCandidateTrueTrackLengthAfter2,"#pi Candidate True CCCoh");
+leg43->AddEntry(hPionCandidateRecoTrackLengthAfter2,"#pi Candidate Reco CCCoh");
+leg43->AddEntry(hPionCandidateTrueTrackLengthAfter2Other,"#pi Candidate True Other");
+leg43->AddEntry(hPionCandidateRecoTrackLengthAfter2Other,"#pi Candidate Reco Other");
+leg43->Draw();
+
+
+
+TCanvas *c44 = new TCanvas("c44", "Delta Track Lengths After Proton Chi2 Selection");
+c44->SetTicks();
+c44->SetFillColor(kWhite);
+
+
+// Area normalzing the plot 
+hMuonCandidateDeltaLengthAfter2->Scale(1/hMuonCandidateDeltaLengthAfter2->Integral());
+hMuonCandidateDeltaLengthAfter2Other->Scale(1/hMuonCandidateDeltaLengthAfter2Other->Integral());
+hPionCandidateDeltaLengthAfter2->Scale(1/hPionCandidateDeltaLengthAfter2->Integral());
+hPionCandidateDeltaLengthAfter2Other->Scale(1/hPionCandidateDeltaLengthAfter2Other->Integral());
+
+hMuonCandidateDeltaLengthAfter2->SetLineColor(kBlue);
+hMuonCandidateDeltaLengthAfter2->SetLineWidth(2);
+hMuonCandidateDeltaLengthAfter2->Rebin(10);
+hPionCandidateDeltaLengthAfter2->SetLineColor(kCyan);
+hPionCandidateDeltaLengthAfter2->SetLineWidth(2);
+hPionCandidateDeltaLengthAfter2->Rebin(10);
+hMuonCandidateDeltaLengthAfter2Other->SetLineColor(kBlack);
+hMuonCandidateDeltaLengthAfter2Other->SetLineWidth(2);
+hMuonCandidateDeltaLengthAfter2Other->Rebin(10);
+hPionCandidateDeltaLengthAfter2Other->SetLineColor(kGray);
+hPionCandidateDeltaLengthAfter2Other->SetLineWidth(2);
+hPionCandidateDeltaLengthAfter2Other->Rebin(10);
+
+hPionCandidateDeltaLengthAfter2Other->GetXaxis()->SetTitle("#Delta Track Length (True - Reco) [cm]");
+hPionCandidateDeltaLengthAfter2Other->GetXaxis()->CenterTitle();
+//hPionCandidateDeltaLengthAfter2Other->GetXaxis()->SetRangeUser(0, 350);
+
+hPionCandidateDeltaLengthAfter2Other->GetYaxis()->SetTitle("Normalized Events");
+hPionCandidateDeltaLengthAfter2Other->GetYaxis()->CenterTitle();
+
+hPionCandidateDeltaLengthAfter2Other->Draw("histo");
+hMuonCandidateDeltaLengthAfter2Other->Draw("histosame");
+hPionCandidateDeltaLengthAfter2->Draw("histosame");
+hMuonCandidateDeltaLengthAfter2->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg44 = new TLegend();
+leg44 = new TLegend(0.58,0.65,1.00,1.00);
+leg44->SetTextSize(0.04);
+leg44->SetTextAlign(12);
+leg44->SetFillColor(kWhite);
+leg44->SetLineColor(kWhite);
+leg44->SetShadowColor(kWhite);
+leg44->SetHeader("Channel and Candidate");
+leg44->AddEntry(hMuonCandidateDeltaLengthAfter2,"#mu Candidate CCCoh");
+leg44->AddEntry(hPionCandidateDeltaLengthAfter2,"#pi Candidate CCCoh");
+leg44->AddEntry(hMuonCandidateDeltaLengthAfter2Other,"#mu Candidate Other");
+leg44->AddEntry(hPionCandidateDeltaLengthAfter2Other,"#pi Candidate Other");
+leg44->Draw();
+
+
+
+TCanvas *c45 = new TCanvas("c45", "Muon Candidates #mu #chi^{2} Vs p #chi^{2} for CCCoh Events", 2);
+c45->SetTicks();
+c45->SetFillColor(kWhite);
+
+hMuonCandidateTracksMuonChi2VsProtonChi2After->GetXaxis()->SetTitle("p #chi^{2}");
+hMuonCandidateTracksMuonChi2VsProtonChi2After->GetXaxis()->CenterTitle();
+
+hMuonCandidateTracksMuonChi2VsProtonChi2After->GetYaxis()->SetTitle("#mu #chi^{2}");
+hMuonCandidateTracksMuonChi2VsProtonChi2After->GetYaxis()->CenterTitle();
+
+hMuonCandidateTracksMuonChi2VsProtonChi2After->RebinX(10);
+hMuonCandidateTracksMuonChi2VsProtonChi2After->RebinY(5);
+
+hMuonCandidateTracksMuonChi2VsProtonChi2After->SetAxisRange(0., 350., "X");
+hMuonCandidateTracksMuonChi2VsProtonChi2After->SetAxisRange(0., 60., "Y");
+
+gStyle->SetPalette(kRainBow);
+gPad->SetLogz();
+hMuonCandidateTracksMuonChi2VsProtonChi2After->Draw("COLZ");
+
+
+
+TCanvas *c46 = new TCanvas("c46", "Muon Candidates #mu #chi^{2} Vs p #chi^{2} for Other Events", 2);
+c46->SetTicks();
+c46->SetFillColor(kWhite);
+
+hMuonCandidateTracksMuonChi2VsProtonChi2AfterOther->GetXaxis()->SetTitle("p #chi^{2}");
+hMuonCandidateTracksMuonChi2VsProtonChi2AfterOther->GetXaxis()->CenterTitle();
+
+hMuonCandidateTracksMuonChi2VsProtonChi2AfterOther->GetYaxis()->SetTitle("#mu #chi^{2}");
+hMuonCandidateTracksMuonChi2VsProtonChi2AfterOther->GetYaxis()->CenterTitle();
+
+hMuonCandidateTracksMuonChi2VsProtonChi2AfterOther->RebinX(10);
+hMuonCandidateTracksMuonChi2VsProtonChi2AfterOther->RebinY(5);
+
+hMuonCandidateTracksMuonChi2VsProtonChi2AfterOther->SetAxisRange(0., 350., "X");
+hMuonCandidateTracksMuonChi2VsProtonChi2AfterOther->SetAxisRange(0., 60., "Y");
+
+gStyle->SetPalette(kRainBow);
+gPad->SetLogz();
+hMuonCandidateTracksMuonChi2VsProtonChi2AfterOther->Draw("COLZ");
+
+
+
+TCanvas *c47 = new TCanvas("c47", "Pion Candidates #mu #chi^{2} Vs p #chi^{2} for CCCoh Events", 2);
+c47->SetTicks();
+c47->SetFillColor(kWhite);
+
+hPionCandidateTracksMuonChi2VsProtonChi2After->GetXaxis()->SetTitle("p #chi^{2}");
+hPionCandidateTracksMuonChi2VsProtonChi2After->GetXaxis()->CenterTitle();
+
+hPionCandidateTracksMuonChi2VsProtonChi2After->GetYaxis()->SetTitle("#mu #chi^{2}");
+hPionCandidateTracksMuonChi2VsProtonChi2After->GetYaxis()->CenterTitle();
+
+hPionCandidateTracksMuonChi2VsProtonChi2After->RebinX(10);
+hPionCandidateTracksMuonChi2VsProtonChi2After->RebinY(5);
+
+hPionCandidateTracksMuonChi2VsProtonChi2After->SetAxisRange(0., 350., "X");
+hPionCandidateTracksMuonChi2VsProtonChi2After->SetAxisRange(0., 100., "Y");
+
+gStyle->SetPalette(kRainBow);
+gPad->SetLogz();
+hPionCandidateTracksMuonChi2VsProtonChi2After->Draw("COLZ");
+
+
+
+TCanvas *c48 = new TCanvas("c48", "Pion Candidates #mu #chi^{2} Vs p #chi^{2} for Other Events", 2);
+c48->SetTicks();
+c48->SetFillColor(kWhite);
+
+hPionCandidateTracksMuonChi2VsProtonChi2AfterOther->GetXaxis()->SetTitle("p #chi^{2}");
+hPionCandidateTracksMuonChi2VsProtonChi2AfterOther->GetXaxis()->CenterTitle();
+
+hPionCandidateTracksMuonChi2VsProtonChi2AfterOther->GetYaxis()->SetTitle("#mu #chi^{2}");
+hPionCandidateTracksMuonChi2VsProtonChi2AfterOther->GetYaxis()->CenterTitle();
+
+hPionCandidateTracksMuonChi2VsProtonChi2AfterOther->RebinX(10);
+hPionCandidateTracksMuonChi2VsProtonChi2AfterOther->RebinY(5);
+
+hPionCandidateTracksMuonChi2VsProtonChi2AfterOther->SetAxisRange(0., 350., "X");
+hPionCandidateTracksMuonChi2VsProtonChi2AfterOther->SetAxisRange(0., 100., "Y");
+
+gStyle->SetPalette(kRainBow);
+gPad->SetLogz();
+hPionCandidateTracksMuonChi2VsProtonChi2AfterOther->Draw("COLZ");
 
 
 
