@@ -25,17 +25,17 @@ TH2D *hMuonTracksMuonChi2VsProtonChi2 = new TH2D("hMuonTracksMuonChi2VsProtonChi
 TH2D *hPionTracksMuonChi2VsProtonChi2 = new TH2D("hPionTracksMuonChi2VsProtonChi2", "For Pion Tracks the Muon #chi^{2} Vs Proton #chi^{2}", 1000, 0, 350, 1000, 0, 350);
 TH2D *hProtonTracksMuonChi2VsProtonChi2 = new TH2D("hProtonTracksMuonChi2VsProtonChi2", "For Proton Tracks the Muon #chi^{2} Vs Proton #chi^{2}", 1000, 0, 350, 1000, 0, 350);
 
-TH1D *hMuonPandoraTrackLength = new TH1D("hMuonPandoraTrackLength", "The Track Length of Pandora Muon Tracks", 401, -0.5, 400.5);
-TH1D *hPionPandoraTrackLength = new TH1D("hPionPandoraTrackLength", "The Track Length of Pandora Pion Tracks", 401, -0.5, 400.5);
-TH1D *hProtonPandoraTrackLength = new TH1D("hProtonPandoraTrackLength", "The Track Length of Pandora Proton Tracks", 401, -0.5, 400.5);
+TH1D *hMuonPandoraTrackLength = new TH1D("hMuonPandoraTrackLength", "The Track Length of Pandora Muon Tracks", 400, 0, 400);
+TH1D *hPionPandoraTrackLength = new TH1D("hPionPandoraTrackLength", "The Track Length of Pandora Pion Tracks", 400, 0, 400);
+TH1D *hProtonPandoraTrackLength = new TH1D("hProtonPandoraTrackLength", "The Track Length of Pandora Proton Tracks", 400, 0, 400);
 
-TH1D *hMuonTrueTrackLength = new TH1D("hMuonTrueTrackLength", "The True Track Length of Muon Tracks", 401, -0.5, 400.5);
-TH1D *hPionTrueTrackLength = new TH1D("hPionTrueTrackLength", "The True Track Length of Pion Tracks", 401, -0.5, 400.5);
-TH1D *hProtonTrueTrackLength = new TH1D("hProtonTrueTrackLength", "The True Track Length of Proton Tracks", 401, -0.5, 400.5);
+TH1D *hMuonTrueTrackLength = new TH1D("hMuonTrueTrackLength", "The True Track Length of Muon Tracks", 400, 0, 400);
+TH1D *hPionTrueTrackLength = new TH1D("hPionTrueTrackLength", "The True Track Length of Pion Tracks", 400, 0, 400);
+TH1D *hProtonTrueTrackLength = new TH1D("hProtonTrueTrackLength", "The True Track Length of Proton Tracks", 400, 0, 400);
 
-TH2D *hMuonPandoraVsTrueTrackLength = new TH2D("hMuonPandoraVsTrueTrackLength", "Pandora Vs True Track Length for Muons", 401, -0.5, 400.5, 401, -0.5, 400.5);
-TH2D *hPionPandoraVsTrueTrackLength = new TH2D("hPionPandoraVsTrueTrackLength", "Pandora Vs True Track Length for Pions", 401, -0.5, 400.5, 401, -0.5, 400.5);
-TH2D *hProtonPandoraVsTrueTrackLength = new TH2D("hProtonPandoraVsTrueTrackLength", "Pandora Vs True Track Length for Protons", 401, -0.5, 400.5, 401, -0.5, 400.5);
+TH2D *hMuonPandoraVsTrueTrackLength = new TH2D("hMuonPandoraVsTrueTrackLength", "Pandora Vs True Track Length for Muons", 400, 0, 400, 400, 0, 400);
+TH2D *hPionPandoraVsTrueTrackLength = new TH2D("hPionPandoraVsTrueTrackLength", "Pandora Vs True Track Length for Pions", 400, 0, 400, 400, 0, 400);
+TH2D *hProtonPandoraVsTrueTrackLength = new TH2D("hProtonPandoraVsTrueTrackLength", "Pandora Vs True Track Length for Protons", 400, 0, 400, 400, 0, 400);
 
 TH1D *hMuonTrackScore = new TH1D("hMuonTrackScore", "The Track Score of Muon Tracks", 100, 0.6, 1.0);
 TH1D *hPionTrackScore = new TH1D("hPionTrackScore", "The Track Score of Pion Tracks", 100, 0.6, 1.0);
@@ -53,16 +53,16 @@ TH1D *hPassedT = new TH1D("hPassedT", "CC-Coh |t| for Events That Passed Selecti
 
 TH1D *hCutByCutMuonCandidate = new TH1D("hCutByCutMuonCandidate", "The Cut by Cut Efficiency of the CC-Inclusive Muon Candidate Selection for CC-Coh Events", 19, -0.5, 18.5);
 TH1D *hCutByCutMuonCandidateDivide = new TH1D("hCutByCutMuonCandidateDivide", "The Cut by Cut Efficiency of the CC-Inclusive Muon Candidate Selection for CC-Coh Events Denominator", 19, -0.5, 18.5);
-TH1D *hNumMuonCandidates = new TH1D("hNumMuonCandidates", "The Number of Tracks that Passed the Muon Candidacy", 31, -0.5, 30.5);
+TH1D *hNumMuonCandidates = new TH1D("hNumMuonCandidates", "The Number of Tracks that Passed the Muon Candidacy", 30, 0, 30);
 
 TH1D *hFurtherEventSelection = new TH1D("hFurtherEventSelection", "The Event Selection That Takes Place After Muon Candidacy for CC-Coh", 5, -0.5, 4.5);
 TH1D *hFurtherEventSelectionDivide = new TH1D("hFurtherEventSelectionDivide", "The Event Selection That Takes Place After Muon Candidacy for CC-Coh Denominator", 5, -0.5, 4.5);
 
-TH1D *hTrueConeAngle = new TH1D("hTrueConeAngle", "The Cone Angle from MC Truth Information", 181, -0.5, 180.5);
-TH1D *hRecoConeAngle = new TH1D("hRecoConeAngle", "The Cone Angle from Reconstructed Information", 181, -0.5, 180.5);
+TH1D *hTrueConeAngle = new TH1D("hTrueConeAngle", "The Cone Angle from MC Truth Information", 180, 0, 180);
+TH1D *hRecoConeAngle = new TH1D("hRecoConeAngle", "The Cone Angle from Reconstructed Information", 180, 0, 180);
 
-TH1D *hTrueDoCA = new TH1D("hTrueDoCA", "The Distance of Closest Approach from MC Truth Information", 101, -0.5, 100.5);
-TH1D *hRecoDoCA = new TH1D("hRecoDoCA", "The Distance of Closest Approach from Reconstructed Information", 101, -0.5, 100.5);
+TH1D *hTrueDoCA = new TH1D("hTrueDoCA", "The Distance of Closest Approach from MC Truth Information", 100, 0, 100);
+TH1D *hRecoDoCA = new TH1D("hRecoDoCA", "The Distance of Closest Approach from Reconstructed Information", 100, 0, 100);
 
 TH1D *hRecoVA0 = new TH1D("hRecoVA0", "The Vertex Activity from Reconstructed Information in Plane 0", 1000, 0, 50000);
 TH1D *hRecoVA1 = new TH1D("hRecoVA1", "The Vertex Activity from Reconstructed Information in Plane 1", 1000, 0, 50000);
@@ -71,8 +71,8 @@ TH1D *hRecoVAAll = new TH1D("hRecoVAAll", "The Vertex Activity from Reconstructe
 
 TH1D *hPionOrMuonIsCandidate = new TH1D("hPionOrMuonIsCandidate", "Whether a Pion or a Muon or some other particle was selected as the Muon Candidate", 3, -0.5, 2.5);
 
-TH1D *hTrueOpeningAngle = new TH1D("hTrueOpeningAngle", "The Opening Angle from MC Truth Information", 181, -0.5, 180.5);
-TH1D *hRecoOpeningAngle = new TH1D("hRecoOpeningAngle", "The Opening Angle from Reconstructed Information", 181, -0.5, 180.5);
+TH1D *hTrueOpeningAngle = new TH1D("hTrueOpeningAngle", "The Opening Angle from MC Truth Information", 180, 0, 180);
+TH1D *hRecoOpeningAngle = new TH1D("hRecoOpeningAngle", "The Opening Angle from Reconstructed Information", 180, 0, 180);
 
 TH1D *hCutByCutMuonCandidate2 = new TH1D("hCutByCutMuonCandidate2", "The Cut by Cut Efficiency of the CC-Inclusive Muon Candidate Selection for CC-Coh Events", 20, -0.5, 19.5);
 TH1D *hCutByCutMuonCandidateDivide2 = new TH1D("hCutByCutMuonCandidateDivide2", "The Cut by Cut Efficiency of the CC-Inclusive Muon Candidate Selection for CC-Coh Events Denominator", 20, -0.5, 19.5);
@@ -85,16 +85,16 @@ TH1D *hRecoVA2Tracks = new TH1D("hRecoVA2Tracks", "The Vertex Activity from Reco
 TH1D *hRecoVA2Minus = new TH1D("hRecoVA2Minus", "The Vertex Activity from Reconstructed Information in Plane 2 of Hits Not Belonging to Tracks", 1000, 0, 50000);
 TH1D *hRecoVA2Cosmic = new TH1D("hRecoVA2Cosmic", "The Vertex Activity from Reconstructed Information in Plane 2 of Hits Belonging to Cosmic Tracks", 1000, 0, 50000);
 TH1D *hRecoVA2Chosen = new TH1D("hRecoVA2Chosen", "The Vertex Activity from Reconstructed Information in Plane 2 of Hits Belonging to Tracks That Aren't Cosmics", 1000, 0, 50000);
-TH1D *hRecoConeAngleCosmic = new TH1D("hRecoConeAngleCosmic", "The Cone Angle from Reconstructed Information for Cosmic Tracks", 181, -0.5, 180.5);
-TH1D *hRecoConeAngleCosmicBoth = new TH1D("hRecoConeAngleCosmicBoth", "The Cone Angle from Reconstructed Information for Cosmic Tracks", 181, -0.5, 180.5);
-TH1D *hRecoDoCACosmic = new TH1D("hRecoDoCACosmic", "The Distance of Closest Approach from Reconstructed Information for Cosmics", 101, -0.5, 100.5);
+TH1D *hRecoConeAngleCosmic = new TH1D("hRecoConeAngleCosmic", "The Cone Angle from Reconstructed Information for Cosmic Tracks", 180, 0, 180);
+TH1D *hRecoConeAngleCosmicBoth = new TH1D("hRecoConeAngleCosmicBoth", "The Cone Angle from Reconstructed Information for Cosmic Tracks", 180, 0, 180);
+TH1D *hRecoDoCACosmic = new TH1D("hRecoDoCACosmic", "The Distance of Closest Approach from Reconstructed Information for Cosmics", 100, 0, 100);
 TH1D *hT = new TH1D("hT", "|t| for Events That Passed Selection", 1000, 0, 1.0);
 TH1D *hT2_5 = new TH1D("hT2_5", "|t| for Events That Passed Selection with 2 Tracks Within the Bubble Radius of 5cm", 1000, 0, 1.0);
 TH1D *hT2 = new TH1D("hT2", "|t| for Events That Passed Selection with 2 Tracks Within the Bubble Radius of 10cm", 1000, 0, 1.0);
 TH1D *hT2_15 = new TH1D("hT2_15", "|t| for Events That Passed Selection with 2 Tracks Within the Bubble Radius of 15cm", 1000, 0, 1.0);
 
-TH2D *hTrueConeAngleVsOpeningAngle = new TH2D("hTrueConeAngleVsOpeningAngle", "Cone Angle Vs Opening Angle from True Information", 181, -0.5, 180.5, 181, -0.5, 180.5);
-TH2D *hRecoConeAngleVsOpeningAngle = new TH2D("hRecoConeAngleVsOpeningAngle", "Cone Angle Vs Opening Angle from Reco Information", 181, -0.5, 180.5, 181, -0.5, 180.5);
+TH2D *hTrueConeAngleVsOpeningAngle = new TH2D("hTrueConeAngleVsOpeningAngle", "Cone Angle Vs Opening Angle from True Information", 180, 0, 180, 180, 0, 180);
+TH2D *hRecoConeAngleVsOpeningAngle = new TH2D("hRecoConeAngleVsOpeningAngle", "Cone Angle Vs Opening Angle from Reco Information", 180, 0, 180, 180, 0, 180);
 
 TH1D *hAfterNuEnergy = new TH1D("hAfterNuEnergy", "Neutrino Energy for CC-Coh Events That Pass My Selection with Cuts Off", 25, 0, 5);
 TH1D *hAfterNuEnergy2 = new TH1D("hAfterNuEnergy2", "Neutrino Energy for CC-Coh Events That Pass My Selection with All Cuts On", 25, 0, 5);
@@ -114,8 +114,8 @@ TH1D *hPionCandidateTrueTrackLengthAfter = new TH1D("hPionCandidateTrueTrackLeng
 TH1D *hMuonCandidateRecoTrackLengthAfter = new TH1D("hMuonCandidateRecoTrackLengthAfter", "The Reconstructed Track Length of Muon Candidate Tracks After My Selection", 1000, -0.5, 999.5);
 TH1D *hPionCandidateRecoTrackLengthAfter = new TH1D("hPionCandidateRecoTrackLengthAfter", "The Reconstructed Track Length of Pion Candidate Tracks After My Selection", 1000, -0.5, 999.5);
 
-TH1D *hMuonCandidateDeltaLengthAfter = new TH1D("hMuonCandidateDeltaLengthAfter", "The Difference (True - Reco) Length of Muon Candidate Tracks After My Selection", 1000, -500, 500);
-TH1D *hPionCandidateDeltaLengthAfter = new TH1D("hPionCandidateDeltaLengthAfter", "The Difference (True - Reco) Length of Pion Candidate Tracks After My Selection", 1000, -500, 500);
+TH1D *hMuonCandidateDeltaLengthAfter = new TH1D("hMuonCandidateDeltaLengthAfter", "The Difference (True - Reco) Length of Muon Candidate Tracks After My Selection", 1000, -250, 250);
+TH1D *hPionCandidateDeltaLengthAfter = new TH1D("hPionCandidateDeltaLengthAfter", "The Difference (True - Reco) Length of Pion Candidate Tracks After My Selection", 1000, -250, 250);
 
 TH2D *hMuonCandidateRecoLengthVsMuonChi2 = new TH2D("hMuonCandidateRecoLengthVsMuonChi2", "For Muon Candidate Tracks the Reco Length Vs Muon #chi^{2} After My Selection", 1000, 0, 350, 1000, -0.5, 999.5);
 TH2D *hMuonCandidateRecoLengthVsProtonChi2 = new TH2D("hMuonCandidateRecoLengthVsProtonChi2", "For Muon Candidate Tracks the Reco Length Vs Proton #chi^{2} After My Selection", 1000, 0, 350, 1000, -0.5, 999.5);
@@ -129,8 +129,113 @@ TH1D *hPionCandidateTrueTrackLengthAfter2 = new TH1D("hPionCandidateTrueTrackLen
 TH1D *hMuonCandidateRecoTrackLengthAfter2 = new TH1D("hMuonCandidateRecoTrackLengthAfter2", "The Reconstructed Track Length of Muon Candidate Tracks After My Pion Selection", 1000, -0.5, 999.5);
 TH1D *hPionCandidateRecoTrackLengthAfter2 = new TH1D("hPionCandidateRecoTrackLengthAfter2", "The Reconstructed Track Length of Pion Candidate Tracks After My Pion Selection", 1000, -0.5, 999.5);
 
-TH1D *hMuonCandidateDeltaLengthAfter2 = new TH1D("hMuonCandidateDeltaLengthAfter2", "The Difference (True - Reco) Length of Muon Candidate Tracks After My Pion Selection", 1000, -500, 500);
-TH1D *hPionCandidateDeltaLengthAfter2 = new TH1D("hPionCandidateDeltaLengthAfter2", "The Difference (True - Reco) Length of Pion Candidate Tracks After My Pion Selection", 1000, -500, 500);
+TH1D *hMuonCandidateDeltaLengthAfter2 = new TH1D("hMuonCandidateDeltaLengthAfter2", "The Difference (True - Reco) Length of Muon Candidate Tracks After My Pion Selection", 1000, -250, 250);
+TH1D *hPionCandidateDeltaLengthAfter2 = new TH1D("hPionCandidateDeltaLengthAfter2", "The Difference (True - Reco) Length of Pion Candidate Tracks After My Pion Selection", 1000, -250, 250);
+
+TH1D *hTrueConeAngleAfter = new TH1D("hTrueConeAngleAfter", "The Cone Angle from MC Truth Information After Pion Selection", 180, 0, 180);
+TH1D *hRecoConeAngleAfter = new TH1D("hRecoConeAngleAfter", "The Cone Angle from Reconstructed Information After Pion Selection", 180, 0, 180);
+
+TH1D *hTrueOpeningAngleAfter = new TH1D("hTrueOpeningAngleAfter", "The Opening Angle from MC Truth Information After Pion Selection", 180, 0, 180);
+TH1D *hRecoOpeningAngleAfter = new TH1D("hRecoOpeningAngleAfter", "The Opening Angle from Reconstructed Information After Pion Selection", 180, 0, 180);
+
+TH1D *hTrueMuonOpeningAngleAfter = new TH1D("hTrueMuonOpeningAngleAfter", "The Muon Candidate's Opening Angle from MC Truth Information After Pion Selection", 180, 0, 180);
+TH1D *hRecoMuonOpeningAngleAfter = new TH1D("hRecoMuonOpeningAngleAfter", "The Muon Candidate's Opening Angle from Reconstructed Information After Pion Selection", 180, 0, 180);
+
+TH1D *hTruePionOpeningAngleAfter = new TH1D("hTruePionOpeningAngleAfter", "The Pion Candidate's Opening Angle from MC Truth Information After Pion Selection", 180, 0, 180);
+TH1D *hRecoPionOpeningAngleAfter = new TH1D("hRecoPionOpeningAngleAfter", "The Pion Candidate's Opening Angle from Reconstructed Information After Pion Selection", 180, 0, 180);
+
+TH1D *hMuonCandidateAfterMomentumTrue = new TH1D("hMuonCandidateAfterMomentumTrue", "The Muon Candidate's True Momentum After Pion Selection", 1000, 0, 5);
+TH1D *hPionCandidateAfterMomentumTrue = new TH1D("hPionCandidateAfterMomentumTrue", "The Pion Candidate's True Momentum After Pion Selection", 1000, 0, 5);
+
+TH1D *hMuonCandidateAfterMomentumReco = new TH1D("hMuonCandidateAfterMomentumReco", "The Muon Candidate's Reco Momentum After Pion Selection", 1000, 0, 5);
+TH1D *hPionCandidateAfterMomentumReco = new TH1D("hPionCandidateAfterMomentumReco", "The Pion Candidate's Reco Momentum After Pion Selection", 1000, 0, 5);
+
+TH1D *hTAfterTrue = new TH1D("hTAfterTrue", "True |t| After Pion Selection", 1000, 0, 1.0);
+TH1D *hTAfterReco = new TH1D("hTAfterReco", "Reco |t| After Pion Selection", 1000, 0, 1.0);
+
+TH1D *hMuonCandidateAfterLMomentumReco = new TH1D("hMuonCandidateAfterLMomentumReco", "The Muon Candidate's Reco Length Based Momentum After Pion Selection", 1000, 0, 5);
+TH1D *hPionCandidateAfterLMomentumReco = new TH1D("hPionCandidateAfterLMomentumReco", "The Pion Candidate's Reco Length Based Momentum After Pion Selection", 1000, 0, 5);
+
+TH1D *hMuonCandidateAfterMomentumDelta = new TH1D("hMuonCandidateAfterMomentumDelta", "The Muon Candidate's Delta Momentum (True - Reco MCS) After Pion Selection", 1000, -2.5, 2.5);
+TH1D *hPionCandidateAfterMomentumDelta = new TH1D("hPionCandidateAfterMomentumDelta", "The Pion Candidate's Delta Momentum (True - Reco MCS) After Pion Selection", 1000, -2.5, 2.5);
+
+TH1D *hMuonCandidateAfterLMomentumDelta = new TH1D("hMuonCandidateAfterLMomentumDelta", "The Muon Candidate's Delta Momentum (True - Reco Range) After Pion Selection", 1000, -2.5, 2.5);
+TH1D *hPionCandidateAfterLMomentumDelta = new TH1D("hPionCandidateAfterLMomentumDelta", "The Pion Candidate's Delta Momentum (True - Reco Range) After Pion Selection", 1000, -2.5, 2.5);
+
+TH1D *hTrueConeAngleAfter2 = new TH1D("hTrueConeAngleAfter2", "The Cone Angle from MC Truth Information After 2 Tracks", 180, 0, 180);
+TH1D *hRecoConeAngleAfter2 = new TH1D("hRecoConeAngleAfter2", "The Cone Angle from Reconstructed Information After 2 Tracks", 180, 0, 180);
+
+TH1D *hTrueOpeningAngleAfter2 = new TH1D("hTrueOpeningAngleAfter2", "The Opening Angle from MC Truth Information After 2 Tracks", 180, 0, 180);
+TH1D *hRecoOpeningAngleAfter2 = new TH1D("hRecoOpeningAngleAfter2", "The Opening Angle from Reconstructed Information After 2 Tracks", 180, 0, 180);
+
+TH1D *hTrueMuonOpeningAngleAfter2 = new TH1D("hTrueMuonOpeningAngleAfter2", "The Muon Candidate's Opening Angle from MC Truth Information After 2 Tracks", 180, 0, 180);
+TH1D *hRecoMuonOpeningAngleAfter2 = new TH1D("hRecoMuonOpeningAngleAfter2", "The Muon Candidate's Opening Angle from Reconstructed Information After 2 Tracks", 180, 0, 180);
+
+TH1D *hTruePionOpeningAngleAfter2 = new TH1D("hTruePionOpeningAngleAfter2", "The Pion Candidate's Opening Angle from MC Truth Information After 2 Tracks", 180, 0, 180);
+TH1D *hRecoPionOpeningAngleAfter2 = new TH1D("hRecoPionOpeningAngleAfter2", "The Pion Candidate's Opening Angle from Reconstructed Information After 2 Tracks", 180, 0, 180);
+
+TH1D *hMuonCandidateAfter2MomentumTrue = new TH1D("hMuonCandidateAfter2MomentumTrue", "The Muon Candidate's True Momentum After 2 Tracks", 1000, 0, 5);
+TH1D *hPionCandidateAfter2MomentumTrue = new TH1D("hPionCandidateAfter2MomentumTrue", "The Pion Candidate's True Momentum After 2 Tracks", 1000, 0, 5);
+
+TH1D *hMuonCandidateAfter2MomentumReco = new TH1D("hMuonCandidateAfter2MomentumReco", "The Muon Candidate's Reco Momentum After 2 Tracks", 1000, 0, 5);
+TH1D *hPionCandidateAfter2MomentumReco = new TH1D("hPionCandidateAfter2MomentumReco", "The Pion Candidate's Reco Momentum After 2 Tracks", 1000, 0, 5);
+
+TH1D *hMuonCandidateAfter2LMomentumReco = new TH1D("hMuonCandidateAfter2LMomentumReco", "The Muon Candidate's Reco Length Based Momentum After 2 Tracks", 1000, 0, 5);
+TH1D *hPionCandidateAfter2LMomentumReco = new TH1D("hPionCandidateAfter2LMomentumReco", "The Pion Candidate's Reco Length Based Momentum After 2 Tracks", 1000, 0, 5);
+
+TH1D *hMuonCandidateAfter2MomentumDelta = new TH1D("hMuonCandidateAfter2MomentumDelta", "The Muon Candidate's Delta Momentum (True - Reco MCS) After 2 Tracks", 1000, -2.5, 2.5);
+TH1D *hPionCandidateAfter2MomentumDelta = new TH1D("hPionCandidateAfter2MomentumDelta", "The Pion Candidate's Delta Momentum (True - Reco MCS) After 2 Tracks", 1000, -2.5, 2.5);
+
+TH1D *hMuonCandidateAfter2LMomentumDelta = new TH1D("hMuonCandidateAfter2LMomentumDelta", "The Muon Candidate's Delta Momentum (True - Reco Range) After 2 Tracks", 1000, -2.5, 2.5);
+TH1D *hPionCandidateAfter2LMomentumDelta = new TH1D("hPionCandidateAfter2LMomentumDelta", "The Pion Candidate's Delta Momentum (True - Reco Range) After 2 Tracks", 1000, -2.5, 2.5);
+
+TH1D *hTAfter2True = new TH1D("hTAfter2True", "True |t| After 2 Tracks", 1000, 0, 1.0);
+TH1D *hTAfter2Reco = new TH1D("hTAfter2Reco", "Reco |t| After 2 Tracks", 1000, 0, 1.0);
+
+TH1D *hTAfterDelta = new TH1D("hTAfterDelta", "Delta |t| (True - Reco) After Pion Selection", 1000, -0.5, 0.5);
+TH1D *hTAfter2Delta = new TH1D("hTAfter2Delta", "Delta |t| (True - Reco) After 2 Tracks", 1000, -0.5, 0.5);
+
+TH1D *hMuonCandidateAfterContainedMomentumTrue = new TH1D("hMuonCandidateAfterContainedMomentumTrue", "The Muon Candidate's True Momentum After Pion Selection of Contained Tracks", 1000, 0, 5);
+TH1D *hPionCandidateAfterContainedMomentumTrue = new TH1D("hPionCandidateAfterContainedMomentumTrue", "The Pion Candidate's True Momentum After Pion Selection of Contained Tracks", 1000, 0, 5);
+
+TH1D *hMuonCandidateAfterContainedMomentumReco = new TH1D("hMuonCandidateAfterContainedMomentumReco", "The Muon Candidate's Reco Momentum After Pion Selection of Contained Tracks", 1000, 0, 5);
+TH1D *hPionCandidateAfterContainedMomentumReco = new TH1D("hPionCandidateAfterContainedMomentumReco", "The Pion Candidate's Reco Momentum After Pion Selection of Contained Tracks", 1000, 0, 5);
+
+TH1D *hMuonCandidateAfterContainedLMomentumReco = new TH1D("hMuonCandidateAfterContainedLMomentumReco", "The Muon Candidate's Reco Length Based Momentum After Pion Selection of Contained Tracks", 1000, 0, 5);
+TH1D *hPionCandidateAfterContainedLMomentumReco = new TH1D("hPionCandidateAfterContainedLMomentumReco", "The Pion Candidate's Reco Length Based Momentum After Pion Selection of Contained Tracks", 1000, 0, 5);
+
+TH1D *hMuonCandidateAfterContainedMomentumDelta = new TH1D("hMuonCandidateAfterContainedMomentumDelta", "The Muon Candidate's Delta Momentum (True - Reco MCS) After Pion Selection of Contained Tracks", 1000, -2.5, 2.5);
+TH1D *hPionCandidateAfterContainedMomentumDelta = new TH1D("hPionCandidateAfterContainedMomentumDelta", "The Pion Candidate's Delta Momentum (True - Reco MCS) After Pion Selection of Contained Tracks", 1000, -2.5, 2.5);
+
+TH1D *hMuonCandidateAfterContainedLMomentumDelta = new TH1D("hMuonCandidateAfterContainedLMomentumDelta", "The Muon Candidate's Delta Momentum (True - Reco Range) After Pion Selection of Contained Tracks", 1000, -2.5, 2.5);
+TH1D *hPionCandidateAfterContainedLMomentumDelta = new TH1D("hPionCandidateAfterContainedLMomentumDelta", "The Pion Candidate's Delta Momentum (True - Reco Range) After Pion Selection of Contained Tracks", 1000, -2.5, 2.5);
+
+TH1D *hMuonCandidateAfterUnContainedMomentumTrue = new TH1D("hMuonCandidateAfterUnContainedMomentumTrue", "The Muon Candidate's True Momentum After Pion Selection of UnContained Tracks", 1000, 0, 5);
+TH1D *hPionCandidateAfterUnContainedMomentumTrue = new TH1D("hPionCandidateAfterUnContainedMomentumTrue", "The Pion Candidate's True Momentum After Pion Selection of UnContained Tracks", 1000, 0, 5);
+
+TH1D *hMuonCandidateAfterUnContainedMomentumReco = new TH1D("hMuonCandidateAfterUnContainedMomentumReco", "The Muon Candidate's Reco Momentum After Pion Selection of UnContained Tracks", 1000, 0, 5);
+TH1D *hPionCandidateAfterUnContainedMomentumReco = new TH1D("hPionCandidateAfterUnContainedMomentumReco", "The Pion Candidate's Reco Momentum After Pion Selection of UnContained Tracks", 1000, 0, 5);
+
+TH1D *hMuonCandidateAfterUnContainedLMomentumReco = new TH1D("hMuonCandidateAfterUnContainedLMomentumReco", "The Muon Candidate's Reco Length Based Momentum After Pion Selection of UnContained Tracks", 1000, 0, 5);
+TH1D *hPionCandidateAfterUnContainedLMomentumReco = new TH1D("hPionCandidateAfterUnContainedLMomentumReco", "The Pion Candidate's Reco Length Based Momentum After Pion Selection of UnContained Tracks", 1000, 0, 5);
+
+TH1D *hMuonCandidateAfterUnContainedMomentumDelta = new TH1D("hMuonCandidateAfterUnContainedMomentumDelta", "The Muon Candidate's Delta Momentum (True - Reco MCS) After Pion Selection of UnContained Tracks", 1000, -2.5, 2.5);
+TH1D *hPionCandidateAfterUnContainedMomentumDelta = new TH1D("hPionCandidateAfterUnContainedMomentumDelta", "The Pion Candidate's Delta Momentum (True - Reco MCS) After Pion Selection of UnContained Tracks", 1000, -2.5, 2.5);
+
+TH1D *hMuonCandidateAfterUnContainedLMomentumDelta = new TH1D("hMuonCandidateAfterUnContainedLMomentumDelta", "The Muon Candidate's Delta Momentum (True - Reco Range) After Pion Selection of UnContained Tracks", 1000, -2.5, 2.5);
+TH1D *hPionCandidateAfterUnContainedLMomentumDelta = new TH1D("hPionCandidateAfterUnContainedLMomentumDelta", "The Pion Candidate's Delta Momentum (True - Reco Range) After Pion Selection of UnContained Tracks", 1000, -2.5, 2.5);
+
+TH1D *hMuonCandidateAfterComboMomentumReco = new TH1D("hMuonCandidateAfterComboMomentumReco", "The Muon Candidate's Reco Momentum After Pion Selection Using Combination", 1000, 0, 5);
+TH1D *hPionCandidateAfterComboMomentumReco = new TH1D("hPionCandidateAfterComboMomentumReco", "The Pion Candidate's Reco Momentum After Pion Selection Using Combination", 1000, 0, 5);
+
+TH1D *hMuonCandidateAfterComboMomentumDelta = new TH1D("hMuonCandidateAfterComboMomentumDelta", "The Muon Candidate's Delta Momentum (True - Reco MCS) After Pion Selection Using Combination", 1000, -2.5, 2.5);
+TH1D *hPionCandidateAfterComboMomentumDelta = new TH1D("hPionCandidateAfterComboMomentumDelta", "The Pion Candidate's Delta Momentum (True - Reco MCS) After Pion Selection Using Combination", 1000, -2.5, 2.5);
+
+TH1D *hMuonCandidateAfter2ComboMomentumReco = new TH1D("hMuonCandidateAfter2ComboMomentumReco", "The Muon Candidate's Reco Momentum After 2 Tracks Using Combination", 1000, 0, 5);
+TH1D *hPionCandidateAfter2ComboMomentumReco = new TH1D("hPionCandidateAfter2ComboMomentumReco", "The Pion Candidate's Reco Momentum After 2 Tracks Using Combination", 1000, 0, 5);
+
+TH1D *hMuonCandidateAfter2ComboMomentumDelta = new TH1D("hMuonCandidateAfter2ComboMomentumDelta", "The Muon Candidate's Delta Momentum (True - Reco MCS) After 2 Tracks Using Combination", 1000, -2.5, 2.5);
+TH1D *hPionCandidateAfter2ComboMomentumDelta = new TH1D("hPionCandidateAfter2ComboMomentumDelta", "The Pion Candidate's Delta Momentum (True - Reco MCS) After 2 Tracks Using Combination", 1000, -2.5, 2.5);
 // -------------------------------
 
 
@@ -410,10 +515,35 @@ void BackgroundDaughters::Loop()
    double CurrentCandidateProtonChi2 = -99;
    double CurrentCandidateTrueLength = -99;
    double CurrentCandidateLength = -99;
+   double CurrentCandidateTOA = -99;
+   double CurrentCandidateROA = -99;
+   double CurrentCandidateTM = -99;
+   double CurrentCandidateRM = -99;
+   double CurrentCandidateRLM = -99;
+   double CurrentCandidateRMCombo = -99;
+   double CurrentCandidateE = -99;
+   double CurrentCandidatePx = -99;
+   double CurrentCandidatePy = -99;
+   double CurrentCandidatePz = -99;
+   double CurrentCandidateContained = 0;
    double PionCandidateMuonChi2 = -99;
    double PionCandidateProtonChi2 = -99;
    double PionCandidateTrueLength = -99;
    double PionCandidateLength = -99;
+   double PionCandidateTOA = -99;
+   double PionCandidateROA = -99;
+   double PionCandidateTM = -99;
+   double PionCandidateRM = -99;
+   double PionCandidateRLM = -99;
+   double PionCandidateRMCombo = -99;
+   double PionCandidateE = -99;
+   double PionCandidatePx = -99;
+   double PionCandidatePy = -99;
+   double PionCandidatePz = -99;
+   double PionCandidateContained = 0;
+
+   double MuonMass = 0.1057; //mass in GeV
+   double PionMass = 0.13957; //mass in GeV
    // --------------------------------------------
 
 
@@ -422,7 +552,7 @@ void BackgroundDaughters::Loop()
    Long64_t nentries = fChain->GetEntriesFast();
 
    //Long64_t Nentries = nentries; // <-- Comment this out to run over the number below.
-   Long64_t Nentries = 60000; // <-- Comment this out to run over entire file!
+   Long64_t Nentries = 120000; // <-- Comment this out to run over entire file!
 
    Long64_t nbytes = 0, nb = 0;
    for (Long64_t jentry=0; jentry<Nentries; jentry++) {
@@ -697,6 +827,31 @@ void BackgroundDaughters::Loop()
 		     hCutByCutMuonCandidate2->Fill(14);
 		     if (ntrksinbubble == 2) {
 			hCutByCutMuonCandidate2->Fill(15);
+                        hTrueConeAngleAfter2->Fill(TrueCA);
+                        hRecoConeAngleAfter2->Fill(RecoCA);
+                        hTrueOpeningAngleAfter2->Fill(TrueOA);
+                        hRecoOpeningAngleAfter2->Fill(RecoOA);
+			hTrueMuonOpeningAngleAfter2->Fill(CurrentCandidateTOA);
+		        hRecoMuonOpeningAngleAfter2->Fill(CurrentCandidateROA);
+		        hTruePionOpeningAngleAfter2->Fill(PionCandidateTOA);
+		        hRecoPionOpeningAngleAfter2->Fill(PionCandidateROA);
+			hMuonCandidateAfter2MomentumTrue->Fill(CurrentCandidateTM);
+			hMuonCandidateAfter2MomentumReco->Fill(CurrentCandidateRM);
+			hPionCandidateAfter2MomentumTrue->Fill(PionCandidateTM);
+			hPionCandidateAfter2MomentumReco->Fill(PionCandidateRM);
+			hMuonCandidateAfter2LMomentumReco->Fill(CurrentCandidateRLM);
+			hPionCandidateAfter2LMomentumReco->Fill(PionCandidateRLM);
+			hMuonCandidateAfter2MomentumDelta->Fill(CurrentCandidateTM - CurrentCandidateRM);
+			hPionCandidateAfter2MomentumDelta->Fill(PionCandidateTM - PionCandidateRM);
+			hMuonCandidateAfter2LMomentumDelta->Fill(CurrentCandidateTM - CurrentCandidateRLM);
+			hPionCandidateAfter2LMomentumDelta->Fill(PionCandidateTM - PionCandidateRLM);
+			hTAfter2True->Fill(t_MC);
+			hTAfter2Reco->Fill(pow(PionCandidateE+CurrentCandidateE-PionCandidatePz-CurrentCandidatePz,2) + pow((PionCandidatePx+CurrentCandidatePx),2) + pow((PionCandidatePy+CurrentCandidatePy),2));
+			hTAfter2Delta->Fill(t_MC - pow(PionCandidateE+CurrentCandidateE-PionCandidatePz-CurrentCandidatePz,2) + pow((PionCandidatePx+CurrentCandidatePx),2) + pow((PionCandidatePy+CurrentCandidatePy),2));
+		        hMuonCandidateAfter2ComboMomentumReco->Fill(CurrentCandidateRMCombo);
+			hPionCandidateAfter2ComboMomentumReco->Fill(PionCandidateRMCombo);
+			hMuonCandidateAfter2ComboMomentumDelta->Fill(CurrentCandidateTM - CurrentCandidateRMCombo);
+			hPionCandidateAfter2ComboMomentumDelta->Fill(PionCandidateTM - PionCandidateRMCombo);
 			if (RecoCA <= ConeAngleCutValue && RecoCA != -99) {
 			   hCutByCutMuonCandidate2->Fill(16);
                            if (theDoCA <= DoCACutValue && theDoCA != -999) {
@@ -730,6 +885,59 @@ void BackgroundDaughters::Loop()
                                     hPionCandidateRecoTrackLengthAfter2->Fill(PionCandidateLength);
 				    hMuonCandidateDeltaLengthAfter2->Fill(CurrentCandidateTrueLength - CurrentCandidateLength);
 				    hPionCandidateDeltaLengthAfter2->Fill(PionCandidateTrueLength - PionCandidateLength);
+                                    hTrueConeAngleAfter->Fill(TrueCA);
+                                    hRecoConeAngleAfter->Fill(RecoCA);
+                                    hTrueOpeningAngleAfter->Fill(TrueOA);
+                                    hRecoOpeningAngleAfter->Fill(RecoOA);
+				    hTrueMuonOpeningAngleAfter->Fill(CurrentCandidateTOA);
+				    hRecoMuonOpeningAngleAfter->Fill(CurrentCandidateROA);
+				    hTruePionOpeningAngleAfter->Fill(PionCandidateTOA);
+				    hRecoPionOpeningAngleAfter->Fill(PionCandidateROA);
+				    hMuonCandidateAfterMomentumTrue->Fill(CurrentCandidateTM);
+				    hMuonCandidateAfterMomentumReco->Fill(CurrentCandidateRM);
+				    hPionCandidateAfterMomentumTrue->Fill(PionCandidateTM);
+				    hPionCandidateAfterMomentumReco->Fill(PionCandidateRM);
+				    hMuonCandidateAfterLMomentumReco->Fill(CurrentCandidateRLM);
+				    hPionCandidateAfterLMomentumReco->Fill(PionCandidateRLM);
+				    hMuonCandidateAfterMomentumDelta->Fill(CurrentCandidateTM - CurrentCandidateRM);
+				    hPionCandidateAfterMomentumDelta->Fill(PionCandidateTM - PionCandidateRM);
+				    hMuonCandidateAfterLMomentumDelta->Fill(CurrentCandidateTM - CurrentCandidateRLM);
+				    hPionCandidateAfterLMomentumDelta->Fill(PionCandidateTM - PionCandidateRLM);
+			            hTAfterTrue->Fill(t_MC);
+			            hTAfterReco->Fill(pow(PionCandidateE+CurrentCandidateE-PionCandidatePz-CurrentCandidatePz,2) + pow((PionCandidatePx+CurrentCandidatePx),2) + pow((PionCandidatePy+CurrentCandidatePy),2));
+			            hTAfterDelta->Fill(t_MC - pow(PionCandidateE+CurrentCandidateE-PionCandidatePz-CurrentCandidatePz,2) + pow((PionCandidatePx+CurrentCandidatePx),2) + pow((PionCandidatePy+CurrentCandidatePy),2));
+				    if (CurrentCandidateContained == 1) {
+				       hMuonCandidateAfterContainedMomentumTrue->Fill(CurrentCandidateTM);
+				       hMuonCandidateAfterContainedMomentumReco->Fill(CurrentCandidateRM);
+				       hMuonCandidateAfterContainedLMomentumReco->Fill(CurrentCandidateRLM);
+				       hMuonCandidateAfterContainedMomentumDelta->Fill(CurrentCandidateTM - CurrentCandidateRM);
+				       hMuonCandidateAfterContainedLMomentumDelta->Fill(CurrentCandidateTM - CurrentCandidateRLM);
+				    }
+				    if (CurrentCandidateContained == 0) {
+				       hMuonCandidateAfterUnContainedMomentumTrue->Fill(CurrentCandidateTM);
+				       hMuonCandidateAfterUnContainedMomentumReco->Fill(CurrentCandidateRM);
+				       hMuonCandidateAfterUnContainedLMomentumReco->Fill(CurrentCandidateRLM);
+				       hMuonCandidateAfterUnContainedMomentumDelta->Fill(CurrentCandidateTM - CurrentCandidateRM);
+				       hMuonCandidateAfterUnContainedLMomentumDelta->Fill(CurrentCandidateTM - CurrentCandidateRLM);
+				    }
+				    if (PionCandidateContained == 1) {
+				       hPionCandidateAfterContainedMomentumTrue->Fill(PionCandidateTM);
+				       hPionCandidateAfterContainedMomentumReco->Fill(PionCandidateRM);
+				       hPionCandidateAfterContainedLMomentumReco->Fill(PionCandidateRLM);
+				       hPionCandidateAfterContainedMomentumDelta->Fill(PionCandidateTM - PionCandidateRM);
+				       hPionCandidateAfterContainedLMomentumDelta->Fill(PionCandidateTM - PionCandidateRLM);
+				    }
+				    if (PionCandidateContained == 0) {
+				       hPionCandidateAfterUnContainedMomentumTrue->Fill(PionCandidateTM);
+				       hPionCandidateAfterUnContainedMomentumReco->Fill(PionCandidateRM);
+				       hPionCandidateAfterUnContainedLMomentumReco->Fill(PionCandidateRLM);
+				       hPionCandidateAfterUnContainedMomentumDelta->Fill(PionCandidateTM - PionCandidateRM);
+				       hPionCandidateAfterUnContainedLMomentumDelta->Fill(PionCandidateTM - PionCandidateRLM);
+				    }
+				    hMuonCandidateAfterComboMomentumReco->Fill(CurrentCandidateRMCombo);
+				    hPionCandidateAfterComboMomentumReco->Fill(PionCandidateRMCombo);
+				    hMuonCandidateAfterComboMomentumDelta->Fill(CurrentCandidateTM - CurrentCandidateRMCombo);
+				    hPionCandidateAfterComboMomentumDelta->Fill(PionCandidateTM - PionCandidateRMCombo);
 			         }
                               }
                            }
@@ -863,10 +1071,32 @@ void BackgroundDaughters::Loop()
 	    CurrentCandidateProtonChi2 = -99;
 	    CurrentCandidateTrueLength = -99;
 	    CurrentCandidateLength = -99;
+	    CurrentCandidateTOA = -99;
+	    CurrentCandidateROA = -99;
+	    CurrentCandidateTM = -99;
+	    CurrentCandidateRM = -99;
+	    CurrentCandidateRLM = -99;
+	    CurrentCandidateRMCombo = -99;
+	    CurrentCandidateE = -99;
+	    CurrentCandidatePx = -99;
+	    CurrentCandidatePy = -99;
+	    CurrentCandidatePz = -99;
+	    CurrentCandidateContained = 0;
 	    PionCandidateMuonChi2 = -99;
 	    PionCandidateProtonChi2 = -99;
 	    PionCandidateTrueLength = -99;
 	    PionCandidateLength = -99;
+	    PionCandidateTOA = -99;
+	    PionCandidateROA = -99;
+	    PionCandidateTM = -99;
+	    PionCandidateRM = -99;
+	    PionCandidateRLM = -99;
+	    PionCandidateRMCombo = -99;
+	    PionCandidateE = -99;
+	    PionCandidatePx = -99;
+	    PionCandidatePy = -99;
+	    PionCandidatePz = -99;
+	    PionCandidateContained = 0;
 
          }
 
@@ -970,34 +1200,101 @@ void BackgroundDaughters::Loop()
 	    
 	    if (distanceToNuVtx < VACut && track_length > CurrentCandidateLength && track_is_muon_candidate) {
 	       if (CurrentCandidateLength != -99 && PionCandidateLength == -99) {
+		  PionCandidateContained = CurrentCandidateContained;
 		  PionCandidateLength = CurrentCandidateLength;
 		  PionCandidateTrueLength = CurrentCandidateTrueLength;
 		  PionCandidateMuonChi2 = CurrentCandidateMuonChi2;
 		  PionCandidateProtonChi2 = CurrentCandidateProtonChi2;
+		  PionCandidateTOA = CurrentCandidateTOA;
+		  PionCandidateROA = CurrentCandidateROA;
+		  PionCandidateTM = CurrentCandidateTM;
+		  PionCandidateRM = CurrentCandidateRM;
+		  PionCandidateRLM = CurrentCandidateRLM;
+		  PionCandidateRMCombo = CurrentCandidateRMCombo;
+		  PionCandidateE = pow((CurrentCandidateE*CurrentCandidateE) - (MuonMass*MuonMass) + (PionMass*PionMass), 0.5);
+		  PionCandidatePx = CurrentCandidatePx;
+		  PionCandidatePy = CurrentCandidatePy;
+		  PionCandidatePz = CurrentCandidatePz;
 	          }
 	       if (CurrentCandidateLength != -99 && CurrentCandidateLength > PionCandidateLength && PionCandidateLength != -99) {
+		  PionCandidateContained = CurrentCandidateContained;
 		  PionCandidateLength = CurrentCandidateLength;
 		  PionCandidateTrueLength = CurrentCandidateTrueLength;
 		  PionCandidateMuonChi2 = CurrentCandidateMuonChi2;
 		  PionCandidateProtonChi2 = CurrentCandidateProtonChi2;
+		  PionCandidateTOA = CurrentCandidateTOA;
+		  PionCandidateROA = CurrentCandidateROA;
+		  PionCandidateTM = CurrentCandidateTM;
+		  PionCandidateRM = CurrentCandidateRM;
+		  PionCandidateRLM = CurrentCandidateRLM;
+		  PionCandidateRMCombo = CurrentCandidateRMCombo;
+		  PionCandidateE = pow((CurrentCandidateE*CurrentCandidateE) - (MuonMass*MuonMass) + (PionMass*PionMass), 0.5);
+		  PionCandidatePx = CurrentCandidatePx;
+		  PionCandidatePy = CurrentCandidatePy;
+		  PionCandidatePz = CurrentCandidatePz;
 		  }
+	       TVector3 p(mc_px, mc_py, mc_pz);
+	       if (track_endx >= 10. && track_endx <= 230. && track_endy >= -105. && track_endy <= 105. && track_endz >= 10. && track_endz <= 990.) {
+	          CurrentCandidateContained = 1;
+	       } else {CurrentCandidateContained = 0;}
 	       CurrentCandidateLength = track_length;
 	       CurrentCandidateTrueLength = mc_length;
 	       CurrentCandidateMuonChi2 = track_chi2_muon;
 	       CurrentCandidateProtonChi2 = track_chi2_proton;
 	       CurrentCandidatePDG = mc_pdg;
+               CurrentCandidateTOA = OpeningAngle(0, 0, 1, mc_px, mc_py, mc_pz)*180/PI;
+	       CurrentCandidateROA = OpeningAngle(0, 0, 1, track_dirx, track_diry, track_dirz)*180/PI;
+	       CurrentCandidateTM = p.Mag();
+	       CurrentCandidateRM = track_mcs_mom;
+	       CurrentCandidateRLM = track_range_mom_mu;
+	       if (CurrentCandidateContained == 1) CurrentCandidateRMCombo = track_range_mom_mu;
+	       if (CurrentCandidateContained == 0) CurrentCandidateRMCombo = track_mcs_mom;
+	       CurrentCandidateE = pow((CurrentCandidateRMCombo*CurrentCandidateRMCombo) + (MuonMass*MuonMass), 0.5);
+	       CurrentCandidatePx = CurrentCandidateRMCombo*track_dirx;
+	       CurrentCandidatePy = CurrentCandidateRMCombo*track_diry;
+	       CurrentCandidatePz = CurrentCandidateRMCombo*track_dirz;
 	    }
 	    if (distanceToNuVtx < VACut && track_length > PionCandidateLength && !track_is_muon_candidate) {
+	       if (track_endx >= 10. && track_endx <= 230. && track_endy >= -105. && track_endy <= 105. && track_endz >= 10. && track_endz <= 990.) {
+	          PionCandidateContained = 1;
+	       } else {PionCandidateContained = 0;}
 	       PionCandidateLength = track_length;
 	       PionCandidateTrueLength = mc_length;
 	       PionCandidateMuonChi2 = track_chi2_muon;
 	       PionCandidateProtonChi2 = track_chi2_proton;
+               PionCandidateTOA = OpeningAngle(0, 0, 1, mc_px, mc_py, mc_pz)*180/PI;
+	       PionCandidateROA = OpeningAngle(0, 0, 1, track_dirx, track_diry, track_dirz)*180/PI;
+	       TVector3 q(mc_px, mc_py, mc_pz);
+	       PionCandidateTM = q.Mag();
+	       PionCandidateRM = track_mcs_mom;
+	       PionCandidateRLM = track_range_mom_mu;
+	       if (PionCandidateContained == 1) PionCandidateRMCombo = track_range_mom_mu;
+	       if (PionCandidateContained == 0) PionCandidateRMCombo = track_mcs_mom;
+	       PionCandidateE = pow((PionCandidateRMCombo*PionCandidateRMCombo) + (PionMass*PionMass), 0.5);
+	       PionCandidatePx = PionCandidateRMCombo*track_dirx;
+	       PionCandidatePy = PionCandidateRMCombo*track_diry;
+	       PionCandidatePz = PionCandidateRMCombo*track_dirz;
 	    }
 	    if (distanceToNuVtx < VACut && track_length > PionCandidateLength && track_is_muon_candidate && track_length < CurrentCandidateLength) {
+	       if (track_endx >= 10. && track_endx <= 230. && track_endy >= -105. && track_endy <= 105. && track_endz >= 10. && track_endz <= 990.) {
+	          PionCandidateContained = 1;
+	       } else {PionCandidateContained = 0;}
 	       PionCandidateLength = track_length;
 	       PionCandidateTrueLength = mc_length;
 	       PionCandidateMuonChi2 = track_chi2_muon;
 	       PionCandidateProtonChi2 = track_chi2_proton;
+               PionCandidateTOA = OpeningAngle(0, 0, 1, mc_px, mc_py, mc_pz)*180/PI;
+	       PionCandidateROA = OpeningAngle(0, 0, 1, track_dirx, track_diry, track_dirz)*180/PI;
+	       TVector3 q(mc_px, mc_py, mc_pz);
+	       PionCandidateTM = q.Mag();
+	       PionCandidateRM = track_mcs_mom;
+	       PionCandidateRLM = track_range_mom_mu;
+	       if (PionCandidateContained == 1) PionCandidateRMCombo = track_range_mom_mu;
+	       if (PionCandidateContained == 0) PionCandidateRMCombo = track_mcs_mom;
+	       PionCandidateE = pow((PionCandidateRMCombo*PionCandidateRMCombo) + (PionMass*PionMass), 0.5);
+	       PionCandidatePx = PionCandidateRMCombo*track_dirx;
+	       PionCandidatePy = PionCandidateRMCombo*track_diry;
+	       PionCandidatePz = PionCandidateRMCombo*track_dirz;
 	    }
 	 }
 
@@ -1233,6 +1530,111 @@ void BackgroundDaughters::Loop()
 
    hMuonCandidateDeltaLengthAfter2->Write();
    hPionCandidateDeltaLengthAfter2->Write();
+
+   hTrueConeAngleAfter->Write();
+   hRecoConeAngleAfter->Write();
+
+   hTrueOpeningAngleAfter->Write();
+   hRecoOpeningAngleAfter->Write();
+
+   hTrueMuonOpeningAngleAfter->Write();
+   hRecoMuonOpeningAngleAfter->Write();
+
+   hTruePionOpeningAngleAfter->Write();
+   hRecoPionOpeningAngleAfter->Write();
+
+   hMuonCandidateAfterMomentumTrue->Write();
+   hPionCandidateAfterMomentumTrue->Write();
+
+   hMuonCandidateAfterMomentumReco->Write();
+   hPionCandidateAfterMomentumReco->Write();
+
+   hTAfterTrue->Write();
+   hTAfterReco->Write();
+
+   hMuonCandidateAfterLMomentumReco->Write();
+   hPionCandidateAfterLMomentumReco->Write();
+
+   hMuonCandidateAfterMomentumDelta->Write();
+   hPionCandidateAfterMomentumDelta->Write();
+
+   hMuonCandidateAfterLMomentumDelta->Write();
+   hPionCandidateAfterLMomentumDelta->Write();
+
+   hTrueConeAngleAfter2->Write();
+   hRecoConeAngleAfter2->Write();
+
+   hTrueOpeningAngleAfter2->Write();
+   hRecoOpeningAngleAfter2->Write();
+
+   hTrueMuonOpeningAngleAfter2->Write();
+   hRecoMuonOpeningAngleAfter2->Write();
+
+   hTruePionOpeningAngleAfter2->Write();
+   hRecoPionOpeningAngleAfter2->Write();
+
+   hMuonCandidateAfter2MomentumTrue->Write();
+   hPionCandidateAfter2MomentumTrue->Write();
+
+   hMuonCandidateAfter2MomentumReco->Write();
+   hPionCandidateAfter2MomentumReco->Write();
+
+   hMuonCandidateAfter2LMomentumReco->Write();
+   hPionCandidateAfter2LMomentumReco->Write();
+
+   hMuonCandidateAfter2MomentumDelta->Write();
+   hPionCandidateAfter2MomentumDelta->Write();
+
+   hMuonCandidateAfter2LMomentumDelta->Write();
+   hPionCandidateAfter2LMomentumDelta->Write();
+
+   hTAfter2True->Write();
+   hTAfter2Reco->Write();
+
+   hTAfterDelta->Write();
+   hTAfter2Delta->Write();
+
+   hMuonCandidateAfterContainedMomentumTrue->Write();
+   hPionCandidateAfterContainedMomentumTrue->Write();
+
+   hMuonCandidateAfterContainedMomentumReco->Write();
+   hPionCandidateAfterContainedMomentumReco->Write();
+
+   hMuonCandidateAfterContainedLMomentumReco->Write();
+   hPionCandidateAfterContainedLMomentumReco->Write();
+
+   hMuonCandidateAfterContainedMomentumDelta->Write();
+   hPionCandidateAfterContainedMomentumDelta->Write();
+
+   hMuonCandidateAfterContainedLMomentumDelta->Write();
+   hPionCandidateAfterContainedLMomentumDelta->Write();
+
+   hMuonCandidateAfterUnContainedMomentumTrue->Write();
+   hPionCandidateAfterUnContainedMomentumTrue->Write();
+
+   hMuonCandidateAfterUnContainedMomentumReco->Write();
+   hPionCandidateAfterUnContainedMomentumReco->Write();
+
+   hMuonCandidateAfterUnContainedLMomentumReco->Write();
+   hPionCandidateAfterUnContainedLMomentumReco->Write();
+
+   hMuonCandidateAfterUnContainedMomentumDelta->Write();
+   hPionCandidateAfterUnContainedMomentumDelta->Write();
+
+   hMuonCandidateAfterUnContainedLMomentumDelta->Write();
+   hPionCandidateAfterUnContainedLMomentumDelta->Write();
+
+   hMuonCandidateAfterComboMomentumReco->Write();
+   hPionCandidateAfterComboMomentumReco->Write();
+
+   hMuonCandidateAfterComboMomentumDelta->Write();
+   hPionCandidateAfterComboMomentumDelta->Write();
+
+   hMuonCandidateAfter2ComboMomentumReco->Write();
+   hPionCandidateAfter2ComboMomentumReco->Write();
+
+   hMuonCandidateAfter2ComboMomentumDelta->Write();
+   hPionCandidateAfter2ComboMomentumDelta->Write();
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 }
