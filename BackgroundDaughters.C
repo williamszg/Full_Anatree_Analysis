@@ -228,14 +228,14 @@ TH1D *hPionCandidateAfterUnContainedLMomentumDelta = new TH1D("hPionCandidateAft
 TH1D *hMuonCandidateAfterComboMomentumReco = new TH1D("hMuonCandidateAfterComboMomentumReco", "The Muon Candidate's Reco Momentum After Pion Selection Using Combination", 1000, 0, 5);
 TH1D *hPionCandidateAfterComboMomentumReco = new TH1D("hPionCandidateAfterComboMomentumReco", "The Pion Candidate's Reco Momentum After Pion Selection Using Combination", 1000, 0, 5);
 
-TH1D *hMuonCandidateAfterComboMomentumDelta = new TH1D("hMuonCandidateAfterComboMomentumDelta", "The Muon Candidate's Delta Momentum (True - Reco MCS) After Pion Selection Using Combination", 1000, -2.5, 2.5);
-TH1D *hPionCandidateAfterComboMomentumDelta = new TH1D("hPionCandidateAfterComboMomentumDelta", "The Pion Candidate's Delta Momentum (True - Reco MCS) After Pion Selection Using Combination", 1000, -2.5, 2.5);
+TH1D *hMuonCandidateAfterComboMomentumDelta = new TH1D("hMuonCandidateAfterComboMomentumDelta", "The Muon Candidate's Delta Momentum (True - Reco Combo) After Pion Selection Using Combination", 1000, -2.5, 2.5);
+TH1D *hPionCandidateAfterComboMomentumDelta = new TH1D("hPionCandidateAfterComboMomentumDelta", "The Pion Candidate's Delta Momentum (True - Reco Combo) After Pion Selection Using Combination", 1000, -2.5, 2.5);
 
 TH1D *hMuonCandidateAfter2ComboMomentumReco = new TH1D("hMuonCandidateAfter2ComboMomentumReco", "The Muon Candidate's Reco Momentum After 2 Tracks Using Combination", 1000, 0, 5);
 TH1D *hPionCandidateAfter2ComboMomentumReco = new TH1D("hPionCandidateAfter2ComboMomentumReco", "The Pion Candidate's Reco Momentum After 2 Tracks Using Combination", 1000, 0, 5);
 
-TH1D *hMuonCandidateAfter2ComboMomentumDelta = new TH1D("hMuonCandidateAfter2ComboMomentumDelta", "The Muon Candidate's Delta Momentum (True - Reco MCS) After 2 Tracks Using Combination", 1000, -2.5, 2.5);
-TH1D *hPionCandidateAfter2ComboMomentumDelta = new TH1D("hPionCandidateAfter2ComboMomentumDelta", "The Pion Candidate's Delta Momentum (True - Reco MCS) After 2 Tracks Using Combination", 1000, -2.5, 2.5);
+TH1D *hMuonCandidateAfter2ComboMomentumDelta = new TH1D("hMuonCandidateAfter2ComboMomentumDelta", "The Muon Candidate's Delta Momentum (True - Reco Combo) After 2 Tracks Using Combination", 1000, -2.5, 2.5);
+TH1D *hPionCandidateAfter2ComboMomentumDelta = new TH1D("hPionCandidateAfter2ComboMomentumDelta", "The Pion Candidate's Delta Momentum (True - Reco Combo) After 2 Tracks Using Combination", 1000, -2.5, 2.5);
 // -------------------------------
 
 
@@ -289,6 +289,21 @@ double Distance(double x0, double y0, double z0, double x1, double y1, double z1
    TVector3 v01(x0-x1, y0-y1, z0-z1);
    d = v01.Mag();
    return d;
+}
+// -----------------------------------
+
+
+// -----------------------------------
+// --- Pion Momentum Estimate Andy ---
+// -----------------------------------
+double PionMomentumEstimate(double r)
+{
+   double a = 0.25798;
+   double b = 0.0024088;
+   double c = 0.18828;
+   double d = 0.11687;
+   double p = a + b*r - c*pow(r,-d);
+   return p;
 }
 // -----------------------------------
 
@@ -526,6 +541,9 @@ void BackgroundDaughters::Loop()
    double CurrentCandidatePy = -99;
    double CurrentCandidatePz = -99;
    double CurrentCandidateContained = 0;
+   double CurrentCandidateDirX = -99;
+   double CurrentCandidateDirY = -99;
+   double CurrentCandidateDirZ = -99;
    double PionCandidateMuonChi2 = -99;
    double PionCandidateProtonChi2 = -99;
    double PionCandidateTrueLength = -99;
@@ -573,7 +591,8 @@ void BackgroundDaughters::Loop()
       // ----------------------------------|
       double EndX = track_endx;
       double EndY = track_endy;
-      double EndZ = track_endz;
+      //double EndZ = track_endz;
+      double EndZ = vz + track_length*track_dirz;
       double StartX = vx;
       double StartY = vy;
       double StartZ = vz;
@@ -1082,6 +1101,9 @@ void BackgroundDaughters::Loop()
 	    CurrentCandidatePy = -99;
 	    CurrentCandidatePz = -99;
 	    CurrentCandidateContained = 0;
+	    CurrentCandidateDirX = -99;
+	    CurrentCandidateDirY = -99;
+	    CurrentCandidateDirZ = -99;
 	    PionCandidateMuonChi2 = -99;
 	    PionCandidateProtonChi2 = -99;
 	    PionCandidateTrueLength = -99;
@@ -1209,12 +1231,13 @@ void BackgroundDaughters::Loop()
 		  PionCandidateROA = CurrentCandidateROA;
 		  PionCandidateTM = CurrentCandidateTM;
 		  PionCandidateRM = CurrentCandidateRM;
-		  PionCandidateRLM = CurrentCandidateRLM;
-		  PionCandidateRMCombo = CurrentCandidateRMCombo;
-		  PionCandidateE = pow((CurrentCandidateE*CurrentCandidateE) - (MuonMass*MuonMass) + (PionMass*PionMass), 0.5);
-		  PionCandidatePx = CurrentCandidatePx;
-		  PionCandidatePy = CurrentCandidatePy;
-		  PionCandidatePz = CurrentCandidatePz;
+		  PionCandidateRLM = PionMomentumEstimate(PionCandidateLength);
+	          if (PionCandidateContained == 1) PionCandidateRMCombo = PionMomentumEstimate(PionCandidateLength);
+	          if (PionCandidateContained == 0) PionCandidateRMCombo = CurrentCandidateRM;
+		  PionCandidateE = pow((CurrentCandidateE*CurrentCandidateE) - (CurrentCandidateRMCombo*CurrentCandidateRMCombo) + (CurrentCandidateRM*CurrentCandidateRM) - (MuonMass*MuonMass) + (PionMass*PionMass), 0.5);
+		  PionCandidatePx = PionCandidateRMCombo*CurrentCandidateDirX;
+		  PionCandidatePy = PionCandidateRMCombo*CurrentCandidateDirY;
+		  PionCandidatePz = PionCandidateRMCombo*CurrentCandidateDirZ;
 	          }
 	       if (CurrentCandidateLength != -99 && CurrentCandidateLength > PionCandidateLength && PionCandidateLength != -99) {
 		  PionCandidateContained = CurrentCandidateContained;
@@ -1226,15 +1249,16 @@ void BackgroundDaughters::Loop()
 		  PionCandidateROA = CurrentCandidateROA;
 		  PionCandidateTM = CurrentCandidateTM;
 		  PionCandidateRM = CurrentCandidateRM;
-		  PionCandidateRLM = CurrentCandidateRLM;
-		  PionCandidateRMCombo = CurrentCandidateRMCombo;
-		  PionCandidateE = pow((CurrentCandidateE*CurrentCandidateE) - (MuonMass*MuonMass) + (PionMass*PionMass), 0.5);
-		  PionCandidatePx = CurrentCandidatePx;
-		  PionCandidatePy = CurrentCandidatePy;
-		  PionCandidatePz = CurrentCandidatePz;
+		  PionCandidateRLM = PionMomentumEstimate(PionCandidateLength);
+	          if (PionCandidateContained == 1) PionCandidateRMCombo = PionMomentumEstimate(PionCandidateLength);
+	          if (PionCandidateContained == 0) PionCandidateRMCombo = CurrentCandidateRM;
+		  PionCandidateE = pow((CurrentCandidateE*CurrentCandidateE) - (CurrentCandidateRMCombo*CurrentCandidateRMCombo) + (CurrentCandidateRM*CurrentCandidateRM) - (MuonMass*MuonMass) + (PionMass*PionMass), 0.5);
+		  PionCandidatePx = PionCandidateRMCombo*CurrentCandidateDirX;
+		  PionCandidatePy = PionCandidateRMCombo*CurrentCandidateDirY;
+		  PionCandidatePz = PionCandidateRMCombo*CurrentCandidateDirZ;
 		  }
 	       TVector3 p(mc_px, mc_py, mc_pz);
-	       if (track_endx >= 10. && track_endx <= 230. && track_endy >= -105. && track_endy <= 105. && track_endz >= 10. && track_endz <= 990.) {
+	       if (EndX >= 10. && EndX <= 230. && EndY >= -105. && EndY <= 105. && EndZ >= 10. && EndZ <= 990.) {
 	          CurrentCandidateContained = 1;
 	       } else {CurrentCandidateContained = 0;}
 	       CurrentCandidateLength = track_length;
@@ -1253,9 +1277,12 @@ void BackgroundDaughters::Loop()
 	       CurrentCandidatePx = CurrentCandidateRMCombo*track_dirx;
 	       CurrentCandidatePy = CurrentCandidateRMCombo*track_diry;
 	       CurrentCandidatePz = CurrentCandidateRMCombo*track_dirz;
+	       CurrentCandidateDirX = track_dirx;
+	       CurrentCandidateDirY = track_diry;
+	       CurrentCandidateDirZ = track_dirz;
 	    }
 	    if (distanceToNuVtx < VACut && track_length > PionCandidateLength && !track_is_muon_candidate) {
-	       if (track_endx >= 10. && track_endx <= 230. && track_endy >= -105. && track_endy <= 105. && track_endz >= 10. && track_endz <= 990.) {
+	       if (EndX >= 10. && EndX <= 230. && EndY >= -105. && EndY <= 105. && EndZ >= 10. && EndZ <= 990.) {
 	          PionCandidateContained = 1;
 	       } else {PionCandidateContained = 0;}
 	       PionCandidateLength = track_length;
@@ -1267,16 +1294,16 @@ void BackgroundDaughters::Loop()
 	       TVector3 q(mc_px, mc_py, mc_pz);
 	       PionCandidateTM = q.Mag();
 	       PionCandidateRM = track_mcs_mom;
-	       PionCandidateRLM = track_range_mom_mu;
-	       if (PionCandidateContained == 1) PionCandidateRMCombo = track_range_mom_mu;
+	       PionCandidateRLM = PionMomentumEstimate(PionCandidateLength);
+	       if (PionCandidateContained == 1) PionCandidateRMCombo = PionMomentumEstimate(PionCandidateLength);
 	       if (PionCandidateContained == 0) PionCandidateRMCombo = track_mcs_mom;
-	       PionCandidateE = pow((PionCandidateRMCombo*PionCandidateRMCombo) + (PionMass*PionMass), 0.5);
+	       PionCandidateE = pow((PionCandidateRM*PionCandidateRM) + (PionMass*PionMass), 0.5);
 	       PionCandidatePx = PionCandidateRMCombo*track_dirx;
 	       PionCandidatePy = PionCandidateRMCombo*track_diry;
 	       PionCandidatePz = PionCandidateRMCombo*track_dirz;
 	    }
 	    if (distanceToNuVtx < VACut && track_length > PionCandidateLength && track_is_muon_candidate && track_length < CurrentCandidateLength) {
-	       if (track_endx >= 10. && track_endx <= 230. && track_endy >= -105. && track_endy <= 105. && track_endz >= 10. && track_endz <= 990.) {
+	       if (EndX >= 10. && EndX <= 230. && EndY >= -105. && EndY <= 105. && EndZ >= 10. && EndZ <= 990.) {
 	          PionCandidateContained = 1;
 	       } else {PionCandidateContained = 0;}
 	       PionCandidateLength = track_length;
@@ -1288,10 +1315,10 @@ void BackgroundDaughters::Loop()
 	       TVector3 q(mc_px, mc_py, mc_pz);
 	       PionCandidateTM = q.Mag();
 	       PionCandidateRM = track_mcs_mom;
-	       PionCandidateRLM = track_range_mom_mu;
-	       if (PionCandidateContained == 1) PionCandidateRMCombo = track_range_mom_mu;
+	       PionCandidateRLM = PionMomentumEstimate(PionCandidateLength);
+	       if (PionCandidateContained == 1) PionCandidateRMCombo = PionMomentumEstimate(PionCandidateLength);
 	       if (PionCandidateContained == 0) PionCandidateRMCombo = track_mcs_mom;
-	       PionCandidateE = pow((PionCandidateRMCombo*PionCandidateRMCombo) + (PionMass*PionMass), 0.5);
+	       PionCandidateE = pow((PionCandidateRM*PionCandidateRM) + (PionMass*PionMass), 0.5);
 	       PionCandidatePx = PionCandidateRMCombo*track_dirx;
 	       PionCandidatePy = PionCandidateRMCombo*track_diry;
 	       PionCandidatePz = PionCandidateRMCombo*track_dirz;

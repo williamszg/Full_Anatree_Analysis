@@ -15,25 +15,25 @@ TFile *f8 = new TFile("CCCoh_Daughter_Information.root"); // <-- File for CCCoh 
 TFile *f9 = new TFile("CCInc_Daughter_Information.root"); // <-- File for CCInclusive Daughters Tree
 
 
-TH1D *hMuonMuonChi2 = (TH1D*)f9->Get("hMuonMuonChi2");
-TH1D *hPionMuonChi2 = (TH1D*)f9->Get("hPionMuonChi2");
-TH1D *hProtonMuonChi2 = (TH1D*)f9->Get("hProtonMuonChi2");
+TH1D *hMuonMuonChi2 = (TH1D*)f->Get("hMuonMuonChi2");
+TH1D *hPionMuonChi2 = (TH1D*)f->Get("hPionMuonChi2");
+TH1D *hProtonMuonChi2 = (TH1D*)f->Get("hProtonMuonChi2");
 
 hMuonMuonChi2->Sumw2();
 hPionMuonChi2->Sumw2();
 hProtonMuonChi2->Sumw2();
 
-TH1D *hMuonProtonChi2 = (TH1D*)f9->Get("hMuonProtonChi2");
-TH1D *hPionProtonChi2 = (TH1D*)f9->Get("hPionProtonChi2");
-TH1D *hProtonProtonChi2 = (TH1D*)f9->Get("hProtonProtonChi2");
+TH1D *hMuonProtonChi2 = (TH1D*)f->Get("hMuonProtonChi2");
+TH1D *hPionProtonChi2 = (TH1D*)f->Get("hPionProtonChi2");
+TH1D *hProtonProtonChi2 = (TH1D*)f->Get("hProtonProtonChi2");
 
 hMuonProtonChi2->Sumw2();
 hPionProtonChi2->Sumw2();
 hProtonProtonChi2->Sumw2();
 
-TH1D *hMuonPandoraTrackLength = (TH1D*)f9->Get("hMuonPandoraTrackLength");
-TH1D *hPionPandoraTrackLength = (TH1D*)f9->Get("hPionPandoraTrackLength");
-TH1D *hProtonPandoraTrackLength = (TH1D*)f9->Get("hProtonPandoraTrackLength");
+TH1D *hMuonPandoraTrackLength = (TH1D*)f->Get("hMuonPandoraTrackLength");
+TH1D *hPionPandoraTrackLength = (TH1D*)f->Get("hPionPandoraTrackLength");
+TH1D *hProtonPandoraTrackLength = (TH1D*)f->Get("hProtonPandoraTrackLength");
 
 hMuonPandoraTrackLength->Sumw2();
 hPionPandoraTrackLength->Sumw2();
@@ -43,9 +43,9 @@ TH2D *hMuonTracksMuonChi2VsProtonChi2 = (TH2D*)f9->Get("hMuonTracksMuonChi2VsPro
 TH2D *hPionTracksMuonChi2VsProtonChi2 = (TH2D*)f9->Get("hPionTracksMuonChi2VsProtonChi2");
 TH2D *hProtonTracksMuonChi2VsProtonChi2 = (TH2D*)f9->Get("hProtonTracksMuonChi2VsProtonChi2");
 
-TH1D *hMuonRatioChi2 = (TH1D*)f9->Get("hMuonRatioChi2");
-TH1D *hPionRatioChi2 = (TH1D*)f9->Get("hPionRatioChi2");
-TH1D *hProtonRatioChi2 = (TH1D*)f9->Get("hProtonRatioChi2");
+TH1D *hMuonRatioChi2 = (TH1D*)f->Get("hMuonRatioChi2");
+TH1D *hPionRatioChi2 = (TH1D*)f->Get("hPionRatioChi2");
+TH1D *hProtonRatioChi2 = (TH1D*)f->Get("hProtonRatioChi2");
 
 hMuonRatioChi2->Sumw2();
 hPionRatioChi2->Sumw2();
@@ -63,17 +63,17 @@ TH2D *hMuonPandoraVsTrueTrackLength = (TH2D*)f9->Get("hMuonPandoraVsTrueTrackLen
 TH2D *hPionPandoraVsTrueTrackLength = (TH2D*)f9->Get("hPionPandoraVsTrueTrackLength");
 TH2D *hProtonPandoraVsTrueTrackLength = (TH2D*)f9->Get("hProtonPandoraVsTrueTrackLength");
 
-TH1D *hMuonTrackScore = (TH1D*)f9->Get("hMuonTrackScore");
-TH1D *hPionTrackScore = (TH1D*)f9->Get("hPionTrackScore");
-TH1D *hProtonTrackScore = (TH1D*)f9->Get("hProtonTrackScore");
+TH1D *hMuonTrackScore = (TH1D*)f->Get("hMuonTrackScore");
+TH1D *hPionTrackScore = (TH1D*)f->Get("hPionTrackScore");
+TH1D *hProtonTrackScore = (TH1D*)f->Get("hProtonTrackScore");
 
 hMuonTrackScore->Sumw2();
 hPionTrackScore->Sumw2();
 hProtonTrackScore->Sumw2();
 
-TH1D *hMuonVtxDistance = (TH1D*)f9->Get("hMuonVtxDistance");
-TH1D *hPionVtxDistance = (TH1D*)f9->Get("hPionVtxDistance");
-TH1D *hProtonVtxDistance = (TH1D*)f9->Get("hProtonVtxDistance");
+TH1D *hMuonVtxDistance = (TH1D*)f->Get("hMuonVtxDistance");
+TH1D *hPionVtxDistance = (TH1D*)f->Get("hPionVtxDistance");
+TH1D *hProtonVtxDistance = (TH1D*)f->Get("hProtonVtxDistance");
 
 hMuonVtxDistance->Sumw2();
 hPionVtxDistance->Sumw2();
@@ -536,6 +536,7 @@ TH1D *hPionCandidateAfterMomentumRecoOther = (TH1D*)f4->Get("hPionCandidateAfter
 TH1D *hMuonCandidateAfterContainedMomentumTrue = (TH1D*)f->Get("hMuonCandidateAfterContainedMomentumTrue");
 TH1D *hMuonCandidateAfterContainedMomentumTrueCCCoh = (TH1D*)f8->Get("hMuonCandidateAfterContainedMomentumTrue");
 TH1D *hMuonCandidateAfterContainedMomentumTrueCCQE = (TH1D*)f5->Get("hMuonCandidateAfterContainedMomentumTrue");
+TH1D *hMuonCandidateAfterContainedMomentumTrueCCRes = (TH1D*)f3->Get("hMuonCandidateAfterContainedMomentumTrue");
 TH1D *hMuonCandidateAfterContainedMomentumTrueOther = (TH1D*)f4->Get("hMuonCandidateAfterContainedMomentumTrue");
 
 hMuonCandidateAfterContainedMomentumTrue->Sumw2();
@@ -543,6 +544,7 @@ hMuonCandidateAfterContainedMomentumTrue->Sumw2();
 TH1D *hMuonCandidateAfterContainedMomentumReco = (TH1D*)f->Get("hMuonCandidateAfterContainedMomentumReco");
 TH1D *hMuonCandidateAfterContainedMomentumRecoCCCoh = (TH1D*)f8->Get("hMuonCandidateAfterContainedMomentumReco");
 TH1D *hMuonCandidateAfterContainedMomentumRecoCCQE = (TH1D*)f5->Get("hMuonCandidateAfterContainedMomentumReco");
+TH1D *hMuonCandidateAfterContainedMomentumRecoCCRes = (TH1D*)f3->Get("hMuonCandidateAfterContainedMomentumReco");
 TH1D *hMuonCandidateAfterContainedMomentumRecoOther = (TH1D*)f4->Get("hMuonCandidateAfterContainedMomentumReco");
 
 hMuonCandidateAfterContainedMomentumReco->Sumw2();
@@ -550,6 +552,7 @@ hMuonCandidateAfterContainedMomentumReco->Sumw2();
 TH1D *hPionCandidateAfterContainedMomentumTrue = (TH1D*)f->Get("hPionCandidateAfterContainedMomentumTrue");
 TH1D *hPionCandidateAfterContainedMomentumTrueCCCoh = (TH1D*)f8->Get("hPionCandidateAfterContainedMomentumTrue");
 TH1D *hPionCandidateAfterContainedMomentumTrueCCQE = (TH1D*)f5->Get("hPionCandidateAfterContainedMomentumTrue");
+TH1D *hPionCandidateAfterContainedMomentumTrueCCRes = (TH1D*)f3->Get("hPionCandidateAfterContainedMomentumTrue");
 TH1D *hPionCandidateAfterContainedMomentumTrueOther = (TH1D*)f4->Get("hPionCandidateAfterContainedMomentumTrue");
 
 hPionCandidateAfterContainedMomentumTrue->Sumw2();
@@ -557,6 +560,7 @@ hPionCandidateAfterContainedMomentumTrue->Sumw2();
 TH1D *hPionCandidateAfterContainedMomentumReco = (TH1D*)f->Get("hPionCandidateAfterContainedMomentumReco");
 TH1D *hPionCandidateAfterContainedMomentumRecoCCCoh = (TH1D*)f8->Get("hPionCandidateAfterContainedMomentumReco");
 TH1D *hPionCandidateAfterContainedMomentumRecoCCQE = (TH1D*)f5->Get("hPionCandidateAfterContainedMomentumReco");
+TH1D *hPionCandidateAfterContainedMomentumRecoCCRes = (TH1D*)f3->Get("hPionCandidateAfterContainedMomentumReco");
 TH1D *hPionCandidateAfterContainedMomentumRecoOther = (TH1D*)f4->Get("hPionCandidateAfterContainedMomentumReco");
 
 hPionCandidateAfterContainedMomentumReco->Sumw2();
@@ -564,6 +568,7 @@ hPionCandidateAfterContainedMomentumReco->Sumw2();
 TH1D *hMuonCandidateAfterUnContainedMomentumTrue = (TH1D*)f->Get("hMuonCandidateAfterUnContainedMomentumTrue");
 TH1D *hMuonCandidateAfterUnContainedMomentumTrueCCCoh = (TH1D*)f8->Get("hMuonCandidateAfterUnContainedMomentumTrue");
 TH1D *hMuonCandidateAfterUnContainedMomentumTrueCCQE = (TH1D*)f5->Get("hMuonCandidateAfterUnContainedMomentumTrue");
+TH1D *hMuonCandidateAfterUnContainedMomentumTrueCCRes = (TH1D*)f3->Get("hMuonCandidateAfterUnContainedMomentumTrue");
 TH1D *hMuonCandidateAfterUnContainedMomentumTrueOther = (TH1D*)f4->Get("hMuonCandidateAfterUnContainedMomentumTrue");
 
 hMuonCandidateAfterUnContainedMomentumTrue->Sumw2();
@@ -571,6 +576,7 @@ hMuonCandidateAfterUnContainedMomentumTrue->Sumw2();
 TH1D *hMuonCandidateAfterUnContainedMomentumReco = (TH1D*)f->Get("hMuonCandidateAfterUnContainedMomentumReco");
 TH1D *hMuonCandidateAfterUnContainedMomentumRecoCCCoh = (TH1D*)f8->Get("hMuonCandidateAfterUnContainedMomentumReco");
 TH1D *hMuonCandidateAfterUnContainedMomentumRecoCCQE = (TH1D*)f5->Get("hMuonCandidateAfterUnContainedMomentumReco");
+TH1D *hMuonCandidateAfterUnContainedMomentumRecoCCRes = (TH1D*)f3->Get("hMuonCandidateAfterUnContainedMomentumReco");
 TH1D *hMuonCandidateAfterUnContainedMomentumRecoOther = (TH1D*)f4->Get("hMuonCandidateAfterUnContainedMomentumReco");
 
 hMuonCandidateAfterUnContainedMomentumReco->Sumw2();
@@ -578,6 +584,7 @@ hMuonCandidateAfterUnContainedMomentumReco->Sumw2();
 TH1D *hPionCandidateAfterUnContainedMomentumTrue = (TH1D*)f->Get("hPionCandidateAfterUnContainedMomentumTrue");
 TH1D *hPionCandidateAfterUnContainedMomentumTrueCCCoh = (TH1D*)f8->Get("hPionCandidateAfterUnContainedMomentumTrue");
 TH1D *hPionCandidateAfterUnContainedMomentumTrueCCQE = (TH1D*)f5->Get("hPionCandidateAfterUnContainedMomentumTrue");
+TH1D *hPionCandidateAfterUnContainedMomentumTrueCCRes = (TH1D*)f3->Get("hPionCandidateAfterUnContainedMomentumTrue");
 TH1D *hPionCandidateAfterUnContainedMomentumTrueOther = (TH1D*)f4->Get("hPionCandidateAfterUnContainedMomentumTrue");
 
 hPionCandidateAfterUnContainedMomentumTrue->Sumw2();
@@ -585,6 +592,7 @@ hPionCandidateAfterUnContainedMomentumTrue->Sumw2();
 TH1D *hPionCandidateAfterUnContainedMomentumReco = (TH1D*)f->Get("hPionCandidateAfterUnContainedMomentumReco");
 TH1D *hPionCandidateAfterUnContainedMomentumRecoCCCoh = (TH1D*)f8->Get("hPionCandidateAfterUnContainedMomentumReco");
 TH1D *hPionCandidateAfterUnContainedMomentumRecoCCQE = (TH1D*)f5->Get("hPionCandidateAfterUnContainedMomentumReco");
+TH1D *hPionCandidateAfterUnContainedMomentumRecoCCRes = (TH1D*)f3->Get("hPionCandidateAfterUnContainedMomentumReco");
 TH1D *hPionCandidateAfterUnContainedMomentumRecoOther = (TH1D*)f4->Get("hPionCandidateAfterUnContainedMomentumReco");
 
 hPionCandidateAfterUnContainedMomentumTrue->Sumw2();
@@ -592,6 +600,7 @@ hPionCandidateAfterUnContainedMomentumTrue->Sumw2();
 TH1D *hMuonCandidateAfterContainedLMomentumReco = (TH1D*)f->Get("hMuonCandidateAfterContainedLMomentumReco");
 TH1D *hMuonCandidateAfterContainedLMomentumRecoCCCoh = (TH1D*)f8->Get("hMuonCandidateAfterContainedLMomentumReco");
 TH1D *hMuonCandidateAfterContainedLMomentumRecoCCQE = (TH1D*)f5->Get("hMuonCandidateAfterContainedLMomentumReco");
+TH1D *hMuonCandidateAfterContainedLMomentumRecoCCRes = (TH1D*)f3->Get("hMuonCandidateAfterContainedLMomentumReco");
 TH1D *hMuonCandidateAfterContainedLMomentumRecoOther = (TH1D*)f4->Get("hMuonCandidateAfterContainedLMomentumReco");
 
 hMuonCandidateAfterContainedLMomentumReco->Sumw2();
@@ -599,6 +608,7 @@ hMuonCandidateAfterContainedLMomentumReco->Sumw2();
 TH1D *hPionCandidateAfterContainedLMomentumReco = (TH1D*)f->Get("hPionCandidateAfterContainedLMomentumReco");
 TH1D *hPionCandidateAfterContainedLMomentumRecoCCCoh = (TH1D*)f8->Get("hPionCandidateAfterContainedLMomentumReco");
 TH1D *hPionCandidateAfterContainedLMomentumRecoCCQE = (TH1D*)f5->Get("hPionCandidateAfterContainedLMomentumReco");
+TH1D *hPionCandidateAfterContainedLMomentumRecoCCRes = (TH1D*)f3->Get("hPionCandidateAfterContainedLMomentumReco");
 TH1D *hPionCandidateAfterContainedLMomentumRecoOther = (TH1D*)f4->Get("hPionCandidateAfterContainedLMomentumReco");
 
 hPionCandidateAfterContainedLMomentumReco->Sumw2();
@@ -606,6 +616,7 @@ hPionCandidateAfterContainedLMomentumReco->Sumw2();
 TH1D *hMuonCandidateAfterUnContainedLMomentumReco = (TH1D*)f->Get("hMuonCandidateAfterUnContainedLMomentumReco");
 TH1D *hMuonCandidateAfterUnContainedLMomentumRecoCCCoh = (TH1D*)f8->Get("hMuonCandidateAfterUnContainedLMomentumReco");
 TH1D *hMuonCandidateAfterUnContainedLMomentumRecoCCQE = (TH1D*)f5->Get("hMuonCandidateAfterUnContainedLMomentumReco");
+TH1D *hMuonCandidateAfterUnContainedLMomentumRecoCCRes = (TH1D*)f3->Get("hMuonCandidateAfterUnContainedLMomentumReco");
 TH1D *hMuonCandidateAfterUnContainedLMomentumRecoOther = (TH1D*)f4->Get("hMuonCandidateAfterUnContainedLMomentumReco");
 
 hMuonCandidateAfterUnContainedLMomentumReco->Sumw2();
@@ -613,6 +624,7 @@ hMuonCandidateAfterUnContainedLMomentumReco->Sumw2();
 TH1D *hPionCandidateAfterUnContainedLMomentumReco = (TH1D*)f->Get("hPionCandidateAfterUnContainedLMomentumReco");
 TH1D *hPionCandidateAfterUnContainedLMomentumRecoCCCoh = (TH1D*)f8->Get("hPionCandidateAfterUnContainedLMomentumReco");
 TH1D *hPionCandidateAfterUnContainedLMomentumRecoCCQE = (TH1D*)f5->Get("hPionCandidateAfterUnContainedLMomentumReco");
+TH1D *hPionCandidateAfterUnContainedLMomentumRecoCCRes = (TH1D*)f3->Get("hPionCandidateAfterUnContainedLMomentumReco");
 TH1D *hPionCandidateAfterUnContainedLMomentumRecoOther = (TH1D*)f4->Get("hPionCandidateAfterUnContainedLMomentumReco");
 
 hPionCandidateAfterUnContainedLMomentumReco->Sumw2();
@@ -620,92 +632,158 @@ hPionCandidateAfterUnContainedLMomentumReco->Sumw2();
 TH1D *hTAfterTrue = (TH1D*)f->Get("hTAfterTrue");
 TH1D *hTAfterTrueCCCoh = (TH1D*)f8->Get("hTAfterTrue");
 TH1D *hTAfterTrueCCQE = (TH1D*)f5->Get("hTAfterTrue");
+TH1D *hTAfterTrueCCRes = (TH1D*)f3->Get("hTAfterTrue");
 TH1D *hTAfterTrueOther = (TH1D*)f4->Get("hTAfterTrue");
 
 TH1D *hTAfterReco = (TH1D*)f->Get("hTAfterReco");
 TH1D *hTAfterRecoCCCoh = (TH1D*)f8->Get("hTAfterReco");
 TH1D *hTAfterRecoCCQE = (TH1D*)f5->Get("hTAfterReco");
+TH1D *hTAfterRecoCCRes = (TH1D*)f3->Get("hTAfterReco");
 TH1D *hTAfterRecoOther = (TH1D*)f4->Get("hTAfterReco");
 
 TH1D *hTAfterDelta = (TH1D*)f->Get("hTAfterDelta");
 TH1D *hTAfterDeltaCCCoh = (TH1D*)f8->Get("hTAfterDelta");
 TH1D *hTAfterDeltaCCQE = (TH1D*)f5->Get("hTAfterDelta");
+TH1D *hTAfterDeltaCCRes = (TH1D*)f3->Get("hTAfterDelta");
 TH1D *hTAfterDeltaOther = (TH1D*)f4->Get("hTAfterDelta");
 
 TH1D *hTAfter2True = (TH1D*)f->Get("hTAfter2True");
 TH1D *hTAfter2TrueCCCoh = (TH1D*)f8->Get("hTAfter2True");
 TH1D *hTAfter2TrueCCQE = (TH1D*)f5->Get("hTAfter2True");
+TH1D *hTAfter2TrueCCRes = (TH1D*)f3->Get("hTAfter2True");
 TH1D *hTAfter2TrueOther = (TH1D*)f4->Get("hTAfter2True");
 
 TH1D *hTAfter2Reco = (TH1D*)f->Get("hTAfter2Reco");
 TH1D *hTAfter2RecoCCCoh = (TH1D*)f8->Get("hTAfter2Reco");
 TH1D *hTAfter2RecoCCQE = (TH1D*)f5->Get("hTAfter2Reco");
+TH1D *hTAfter2RecoCCRes = (TH1D*)f3->Get("hTAfter2Reco");
 TH1D *hTAfter2RecoOther = (TH1D*)f4->Get("hTAfter2Reco");
 
 TH1D *hTAfter2Delta = (TH1D*)f->Get("hTAfter2Delta");
 TH1D *hTAfter2DeltaCCCoh = (TH1D*)f8->Get("hTAfter2Delta");
 TH1D *hTAfter2DeltaCCQE = (TH1D*)f5->Get("hTAfter2Delta");
+TH1D *hTAfter2DeltaCCRes = (TH1D*)f3->Get("hTAfter2Delta");
 TH1D *hTAfter2DeltaOther = (TH1D*)f4->Get("hTAfter2Delta");
 
 TH1D *hTrueConeAngleAfter2 = (TH1D*)f->Get("hTrueConeAngleAfter2");
 TH1D *hTrueConeAngleAfter2CCCoh = (TH1D*)f8->Get("hTrueConeAngleAfter2");
 TH1D *hTrueConeAngleAfter2CCQE = (TH1D*)f5->Get("hTrueConeAngleAfter2");
+TH1D *hTrueConeAngleAfter2CCRes = (TH1D*)f3->Get("hTrueConeAngleAfter2");
 TH1D *hTrueConeAngleAfter2Other = (TH1D*)f4->Get("hTrueConeAngleAfter2");
 
 TH1D *hRecoConeAngleAfter2 = (TH1D*)f->Get("hRecoConeAngleAfter2");
 TH1D *hRecoConeAngleAfter2CCCoh = (TH1D*)f8->Get("hRecoConeAngleAfter2");
 TH1D *hRecoConeAngleAfter2CCQE = (TH1D*)f5->Get("hRecoConeAngleAfter2");
+TH1D *hRecoConeAngleAfter2CCRes = (TH1D*)f3->Get("hRecoConeAngleAfter2");
 TH1D *hRecoConeAngleAfter2Other = (TH1D*)f4->Get("hRecoConeAngleAfter2");
 
 TH1D *hTrueOpeningAngleAfter2 = (TH1D*)f->Get("hTrueOpeningAngleAfter2");
 TH1D *hTrueOpeningAngleAfter2CCCoh = (TH1D*)f8->Get("hTrueOpeningAngleAfter2");
 TH1D *hTrueOpeningAngleAfter2CCQE = (TH1D*)f5->Get("hTrueOpeningAngleAfter2");
+TH1D *hTrueOpeningAngleAfter2CCRes = (TH1D*)f3->Get("hTrueOpeningAngleAfter2");
 TH1D *hTrueOpeningAngleAfter2Other = (TH1D*)f4->Get("hTrueOpeningAngleAfter2");
 
 TH1D *hRecoOpeningAngleAfter2 = (TH1D*)f->Get("hRecoOpeningAngleAfter2");
 TH1D *hRecoOpeningAngleAfter2CCCoh = (TH1D*)f8->Get("hRecoOpeningAngleAfter2");
 TH1D *hRecoOpeningAngleAfter2CCQE = (TH1D*)f5->Get("hRecoOpeningAngleAfter2");
+TH1D *hRecoOpeningAngleAfter2CCRes = (TH1D*)f3->Get("hRecoOpeningAngleAfter2");
 TH1D *hRecoOpeningAngleAfter2Other = (TH1D*)f4->Get("hRecoOpeningAngleAfter2");
 
 TH1D *hMuonCandidateAfter2MomentumTrue = (TH1D*)f->Get("hMuonCandidateAfter2MomentumTrue");
 TH1D *hMuonCandidateAfter2MomentumTrueCCCoh = (TH1D*)f8->Get("hMuonCandidateAfter2MomentumTrue");
 TH1D *hMuonCandidateAfter2MomentumTrueCCQE = (TH1D*)f5->Get("hMuonCandidateAfter2MomentumTrue");
+TH1D *hMuonCandidateAfter2MomentumTrueCCRes = (TH1D*)f3->Get("hMuonCandidateAfter2MomentumTrue");
 TH1D *hMuonCandidateAfter2MomentumTrueOther = (TH1D*)f4->Get("hMuonCandidateAfter2MomentumTrue");
 
 TH1D *hMuonCandidateAfter2MomentumReco = (TH1D*)f->Get("hMuonCandidateAfter2MomentumReco");
 TH1D *hMuonCandidateAfter2MomentumRecoCCCoh = (TH1D*)f8->Get("hMuonCandidateAfter2MomentumReco");
 TH1D *hMuonCandidateAfter2MomentumRecoCCQE = (TH1D*)f5->Get("hMuonCandidateAfter2MomentumReco");
+TH1D *hMuonCandidateAfter2MomentumRecoCCRes = (TH1D*)f3->Get("hMuonCandidateAfter2MomentumReco");
 TH1D *hMuonCandidateAfter2MomentumRecoOther = (TH1D*)f4->Get("hMuonCandidateAfter2MomentumReco");
 
 TH1D *hPionCandidateAfter2MomentumTrue = (TH1D*)f->Get("hPionCandidateAfter2MomentumTrue");
 TH1D *hPionCandidateAfter2MomentumTrueCCCoh = (TH1D*)f8->Get("hPionCandidateAfter2MomentumTrue");
 TH1D *hPionCandidateAfter2MomentumTrueCCQE = (TH1D*)f5->Get("hPionCandidateAfter2MomentumTrue");
+TH1D *hPionCandidateAfter2MomentumTrueCCRes = (TH1D*)f3->Get("hPionCandidateAfter2MomentumTrue");
 TH1D *hPionCandidateAfter2MomentumTrueOther = (TH1D*)f4->Get("hPionCandidateAfter2MomentumTrue");
 
 TH1D *hPionCandidateAfter2MomentumReco = (TH1D*)f->Get("hPionCandidateAfter2MomentumReco");
 TH1D *hPionCandidateAfter2MomentumRecoCCCoh = (TH1D*)f8->Get("hPionCandidateAfter2MomentumReco");
 TH1D *hPionCandidateAfter2MomentumRecoCCQE = (TH1D*)f5->Get("hPionCandidateAfter2MomentumReco");
+TH1D *hPionCandidateAfter2MomentumRecoCCRes = (TH1D*)f3->Get("hPionCandidateAfter2MomentumReco");
 TH1D *hPionCandidateAfter2MomentumRecoOther = (TH1D*)f4->Get("hPionCandidateAfter2MomentumReco");
 
 TH1D *hMuonCandidateAfterComboMomentumReco = (TH1D*)f->Get("hMuonCandidateAfterComboMomentumReco");
 TH1D *hMuonCandidateAfterComboMomentumRecoCCCoh = (TH1D*)f8->Get("hMuonCandidateAfterComboMomentumReco");
 TH1D *hMuonCandidateAfterComboMomentumRecoCCQE = (TH1D*)f5->Get("hMuonCandidateAfterComboMomentumReco");
+TH1D *hMuonCandidateAfterComboMomentumRecoCCRes = (TH1D*)f3->Get("hMuonCandidateAfterComboMomentumReco");
 TH1D *hMuonCandidateAfterComboMomentumRecoOther = (TH1D*)f4->Get("hMuonCandidateAfterComboMomentumReco");
 
 TH1D *hPionCandidateAfterComboMomentumReco = (TH1D*)f->Get("hPionCandidateAfterComboMomentumReco");
 TH1D *hPionCandidateAfterComboMomentumRecoCCCoh = (TH1D*)f8->Get("hPionCandidateAfterComboMomentumReco");
 TH1D *hPionCandidateAfterComboMomentumRecoCCQE = (TH1D*)f5->Get("hPionCandidateAfterComboMomentumReco");
+TH1D *hPionCandidateAfterComboMomentumRecoCCRes = (TH1D*)f3->Get("hPionCandidateAfterComboMomentumReco");
 TH1D *hPionCandidateAfterComboMomentumRecoOther = (TH1D*)f4->Get("hPionCandidateAfterComboMomentumReco");
 
 TH1D *hMuonCandidateAfter2ComboMomentumReco = (TH1D*)f->Get("hMuonCandidateAfter2ComboMomentumReco");
 TH1D *hMuonCandidateAfter2ComboMomentumRecoCCCoh = (TH1D*)f8->Get("hMuonCandidateAfter2ComboMomentumReco");
 TH1D *hMuonCandidateAfter2ComboMomentumRecoCCQE = (TH1D*)f5->Get("hMuonCandidateAfter2ComboMomentumReco");
+TH1D *hMuonCandidateAfter2ComboMomentumRecoCCRes = (TH1D*)f3->Get("hMuonCandidateAfter2ComboMomentumReco");
 TH1D *hMuonCandidateAfter2ComboMomentumRecoOther = (TH1D*)f4->Get("hMuonCandidateAfter2ComboMomentumReco");
 
 TH1D *hPionCandidateAfter2ComboMomentumReco = (TH1D*)f->Get("hPionCandidateAfter2ComboMomentumReco");
 TH1D *hPionCandidateAfter2ComboMomentumRecoCCCoh = (TH1D*)f8->Get("hPionCandidateAfter2ComboMomentumReco");
 TH1D *hPionCandidateAfter2ComboMomentumRecoCCQE = (TH1D*)f5->Get("hPionCandidateAfter2ComboMomentumReco");
+TH1D *hPionCandidateAfter2ComboMomentumRecoCCRes = (TH1D*)f3->Get("hPionCandidateAfter2ComboMomentumReco");
 TH1D *hPionCandidateAfter2ComboMomentumRecoOther = (TH1D*)f4->Get("hPionCandidateAfter2ComboMomentumReco");
+
+TH1D *hMuonCandidateAfterComboMomentumDelta = (TH1D*)f->Get("hMuonCandidateAfterComboMomentumDelta");
+TH1D *hMuonCandidateAfterComboMomentumDeltaCCCoh = (TH1D*)f8->Get("hMuonCandidateAfterComboMomentumDelta");
+TH1D *hMuonCandidateAfterComboMomentumDeltaCCQE = (TH1D*)f5->Get("hMuonCandidateAfterComboMomentumDelta");
+TH1D *hMuonCandidateAfterComboMomentumDeltaCCRes = (TH1D*)f3->Get("hMuonCandidateAfterComboMomentumDelta");
+TH1D *hMuonCandidateAfterComboMomentumDeltaOther = (TH1D*)f4->Get("hMuonCandidateAfterComboMomentumDelta");
+
+TH1D *hPionCandidateAfterComboMomentumDelta = (TH1D*)f->Get("hPionCandidateAfterComboMomentumDelta");
+TH1D *hPionCandidateAfterComboMomentumDeltaCCCoh = (TH1D*)f8->Get("hPionCandidateAfterComboMomentumDelta");
+TH1D *hPionCandidateAfterComboMomentumDeltaCCQE = (TH1D*)f5->Get("hPionCandidateAfterComboMomentumDelta");
+TH1D *hPionCandidateAfterComboMomentumDeltaCCRes = (TH1D*)f3->Get("hPionCandidateAfterComboMomentumDelta");
+TH1D *hPionCandidateAfterComboMomentumDeltaOther = (TH1D*)f4->Get("hPionCandidateAfterComboMomentumDelta");
+
+TH1D *hMuonCandidateAfter2ComboMomentumDelta = (TH1D*)f->Get("hMuonCandidateAfter2ComboMomentumDelta");
+TH1D *hMuonCandidateAfter2ComboMomentumDeltaCCCoh = (TH1D*)f8->Get("hMuonCandidateAfter2ComboMomentumDelta");
+TH1D *hMuonCandidateAfter2ComboMomentumDeltaCCQE = (TH1D*)f5->Get("hMuonCandidateAfter2ComboMomentumDelta");
+TH1D *hMuonCandidateAfter2ComboMomentumDeltaCCRes = (TH1D*)f3->Get("hMuonCandidateAfter2ComboMomentumDelta");
+TH1D *hMuonCandidateAfter2ComboMomentumDeltaOther = (TH1D*)f4->Get("hMuonCandidateAfter2ComboMomentumDelta");
+
+TH1D *hPionCandidateAfter2ComboMomentumDelta = (TH1D*)f->Get("hPionCandidateAfter2ComboMomentumDelta");
+TH1D *hPionCandidateAfter2ComboMomentumDeltaCCCoh = (TH1D*)f8->Get("hPionCandidateAfter2ComboMomentumDelta");
+TH1D *hPionCandidateAfter2ComboMomentumDeltaCCQE = (TH1D*)f5->Get("hPionCandidateAfter2ComboMomentumDelta");
+TH1D *hPionCandidateAfter2ComboMomentumDeltaCCRes = (TH1D*)f3->Get("hPionCandidateAfter2ComboMomentumDelta");
+TH1D *hPionCandidateAfter2ComboMomentumDeltaOther = (TH1D*)f4->Get("hPionCandidateAfter2ComboMomentumDelta");
+
+TH1D *hMuonCandidateAfterMomentumDelta = (TH1D*)f->Get("hMuonCandidateAfterMomentumDelta");
+TH1D *hMuonCandidateAfterMomentumDeltaCCCoh = (TH1D*)f8->Get("hMuonCandidateAfterMomentumDelta");
+TH1D *hMuonCandidateAfterMomentumDeltaCCQE = (TH1D*)f5->Get("hMuonCandidateAfterMomentumDelta");
+TH1D *hMuonCandidateAfterMomentumDeltaCCRes = (TH1D*)f3->Get("hMuonCandidateAfterMomentumDelta");
+TH1D *hMuonCandidateAfterMomentumDeltaOther = (TH1D*)f4->Get("hMuonCandidateAfterMomentumDelta");
+
+TH1D *hPionCandidateAfterMomentumDelta = (TH1D*)f->Get("hPionCandidateAfterMomentumDelta");
+TH1D *hPionCandidateAfterMomentumDeltaCCCoh = (TH1D*)f8->Get("hPionCandidateAfterMomentumDelta");
+TH1D *hPionCandidateAfterMomentumDeltaCCQE = (TH1D*)f5->Get("hPionCandidateAfterMomentumDelta");
+TH1D *hPionCandidateAfterMomentumDeltaCCRes = (TH1D*)f3->Get("hPionCandidateAfterMomentumDelta");
+TH1D *hPionCandidateAfterMomentumDeltaOther = (TH1D*)f4->Get("hPionCandidateAfterMomentumDelta");
+
+TH1D *hMuonCandidateAfterLMomentumDelta = (TH1D*)f->Get("hMuonCandidateAfterLMomentumDelta");
+TH1D *hMuonCandidateAfterLMomentumDeltaCCCoh = (TH1D*)f8->Get("hMuonCandidateAfterLMomentumDelta");
+TH1D *hMuonCandidateAfterLMomentumDeltaCCQE = (TH1D*)f5->Get("hMuonCandidateAfterLMomentumDelta");
+TH1D *hMuonCandidateAfterLMomentumDeltaCCRes = (TH1D*)f3->Get("hMuonCandidateAfterLMomentumDelta");
+TH1D *hMuonCandidateAfterLMomentumDeltaOther = (TH1D*)f4->Get("hMuonCandidateAfterLMomentumDelta");
+
+TH1D *hPionCandidateAfterLMomentumDelta = (TH1D*)f->Get("hPionCandidateAfterLMomentumDelta");
+TH1D *hPionCandidateAfterLMomentumDeltaCCCoh = (TH1D*)f8->Get("hPionCandidateAfterLMomentumDelta");
+TH1D *hPionCandidateAfterLMomentumDeltaCCQE = (TH1D*)f5->Get("hPionCandidateAfterLMomentumDelta");
+TH1D *hPionCandidateAfterLMomentumDeltaCCRes = (TH1D*)f3->Get("hPionCandidateAfterLMomentumDelta");
+TH1D *hPionCandidateAfterLMomentumDeltaOther = (TH1D*)f4->Get("hPionCandidateAfterLMomentumDelta");
 
 // Creating the Stacked Histogram
 THStack *hRecoVAStacked = new THStack("hRecoVAStacked", "Hit Charges from All Planes Stacked for CC-Coh Events");
@@ -737,6 +815,89 @@ THStack *hTAfterTrueStacked = new THStack("hTAfterTrueStacked", "");
 THStack *hTAfter2TrueStacked = new THStack("hTAfter2TrueStacked", "");
 THStack *hTAfterRecoStacked = new THStack("hTAfterRecoStacked", "");
 THStack *hTAfter2RecoStacked = new THStack("hTAfter2RecoStacked", "");
+
+
+
+// --------------------------------------------------
+// --- Signal to Background Ratios for Selections ---
+// --------------------------------------------------
+/*TH1D *hConeAngleSignalBackground = new TH1D("hConeAngleSignalBackground", "#frac{s}{#sqrt{s+b}} vs. Cone Angle", 180, 0, 180.0);
+TH1D *hConeAngleSignalBackgroundCCCoh = new TH1D("hConeAngleSignalBackgroundCCCoh", "", 180, 0, 180.0);
+TH1D *hConeAngleSignalBackgroundOther = new TH1D("hConeAngleSignalBackgroundOther", "", 180, 0, 180.0);
+
+for (int i = 0; i < 180; i++) {
+   for (int j = i+1; j > 0; j--) {
+      hConeAngleSignalBackgroundCCCoh->Fill(i+0.5, hRecoConeAngleCCCoh->GetBinContent(j));
+      hConeAngleSignalBackgroundOther->Fill(i+0.5, hRecoConeAngleCCCoh->GetBinContent(j));
+   }
+}
+
+for (int i = 0; i < 180; i++) {
+   hConeAngleSignalBackground->Fill((i*(180-0)/180)+(((180-0)/180)/2.0), (hConeAngleSignalBackgroundCCCoh->GetBinContent(i+1))/pow((hConeAngleSignalBackgroundCCCoh->GetBinContent(i+1)) + (hConeAngleSignalBackgroundOther->GetBinContent(i+1)), 0.5));
+}*/
+// --------------------------------------------------
+
+
+
+// ----------------------------------
+// --- Making Cross Section Plots ---
+// ----------------------------------
+TH1D *hOpeningAngleCrossSection = new TH1D("hOpeningAngleCrossSection", "The Differential Cross Section as a Function of Opening Angle", 180, 0, 180.0);
+TH1D *hMuonMomentumCrossSection = new TH1D("hMuonMomentumCrossSection", "The Differential Cross Section as a Function of Muon Momentum", 1000, 0, 5.0);
+TH1D *hPionMomentumCrossSection = new TH1D("hPionMomentumCrossSection", "The Differential Cross Section as a Function of Pion Momentum", 1000, 0, 5.0);
+TH1D *hTCrossSection = new TH1D("hTCrossSection", "The Differential Cross Section as a Function of |t|", 1000, 0, 1.0);
+
+TH1D *hOpeningAngleCrossSectionTrue = new TH1D("hOpeningAngleCrossSectionTrue", "The Differential Cross Section as a Function of Opening Angle from Truth", 180, 0, 180.0);
+TH1D *hMuonMomentumCrossSectionTrue = new TH1D("hMuonMomentumCrossSectionTrue", "The Differential Cross Section as a Function of Muon Momentum from Truth", 1000, 0, 5.0);
+TH1D *hPionMomentumCrossSectionTrue = new TH1D("hPionMomentumCrossSectionTrue", "The Differential Cross Section as a Function of Pion Momentum from Truth", 1000, 0, 5.0);
+TH1D *hTCrossSectionTrue = new TH1D("hTCrossSectionTrue", "The Differential Cross Section as a Function of |t| from Truth", 1000, 0, 1.0);
+
+TH1D *hOpeningAngleCrossSectionEfficiency = new TH1D("hOpeningAngleCrossSectionEfficiency", "The Differential Cross Section as a Function of Opening Angle Efficiency", 180, 0, 180.0);
+TH1D *hOpeningAngleCrossSectionTrueEfficiency = new TH1D("hOpeningAngleCrossSectionTrueEfficiency", "The Differential Cross Section as a Function of Opening Angle from Truth Efficiency", 180, 0, 180.0);
+
+double Flux = (13.2/1.6)*(1.16*pow(10,11));
+double NTargets = 9.380433269*pow(10,29);
+double ScaleHistograms = 94.60121044;
+double DeltaAngle = 1.0;
+double DeltaMomentum = 5.0/1000.0;
+double DeltaT = 1.0/1000.0;
+double DummyEfficiency = 0.26;
+double DummyScale = 49.0/11571.0;
+double TrueCrossSection = (hMuonCandidateAfterMomentumTrue->Integral())*ScaleHistograms*DummyScale/(Flux*DummyEfficiency*NTargets);
+double RecoCrossSection = (hMuonCandidateAfterComboMomentumReco->Integral())*ScaleHistograms*DummyScale/(Flux*DummyEfficiency*NTargets);
+
+for (int i = 0; i < 181; i++) {
+   double OATheta = i + 0.5;   
+   if (hRecoOpeningAngleAfter2->GetBinContent(i+1) == 0) { hOpeningAngleCrossSectionEfficiency->Fill(OATheta, DummyEfficiency); }
+   else if (hRecoOpeningAngleAfter->GetBinContent(i+1) == 0) { hOpeningAngleCrossSectionEfficiency->Fill(OATheta, DummyEfficiency); }
+   else { hOpeningAngleCrossSectionEfficiency->Fill(OATheta, (hRecoOpeningAngleAfter->GetBinContent(i+1))/((1/0.48)*(hRecoOpeningAngleAfter2->GetBinContent(i+1)))); }
+   if (hTrueOpeningAngleAfter2->GetBinContent(i+1) == 0) { hOpeningAngleCrossSectionTrueEfficiency->Fill(OATheta, DummyEfficiency); }
+   else if (hTrueOpeningAngleAfter->GetBinContent(i+1) == 0) { hOpeningAngleCrossSectionTrueEfficiency->Fill(OATheta, DummyEfficiency); }
+   else { hOpeningAngleCrossSectionTrueEfficiency->Fill(OATheta, (hTrueOpeningAngleAfter->GetBinContent(i+1))/((1/0.48)*(hTrueOpeningAngleAfter2->GetBinContent(i+1)))); }
+
+   if (hOpeningAngleCrossSectionEfficiency->GetBinContent(i+1) == 0) { hOpeningAngleCrossSectionEfficiency->Fill(OATheta, DummyEfficiency); }
+   if (hOpeningAngleCrossSectionTrueEfficiency->GetBinContent(i+1) == 0) { hOpeningAngleCrossSectionTrueEfficiency->Fill(OATheta, DummyEfficiency); }
+
+   //std::cout<<"Reco OA Efficiency = "<<hOpeningAngleCrossSectionEfficiency->GetBinContent(i+1)<<", i = "<<i<<std::endl;
+}
+
+for (int i = 0; i < 180; i++) {
+   //hOpeningAngleCrossSection->Fill((i*DeltaAngle)+(DeltaAngle/2.0), ((hRecoOpeningAngleAfter->GetBinContent(i+1))*ScaleHistograms*DummyScale)/(DeltaAngle*Flux*DummyEfficiency*NTargets));
+   //hOpeningAngleCrossSectionTrue->Fill((i*DeltaAngle)+(DeltaAngle/2.0), ((hTrueOpeningAngleAfter->GetBinContent(i+1))*ScaleHistograms*DummyScale)/(DeltaAngle*Flux*DummyEfficiency*NTargets));
+   hOpeningAngleCrossSection->Fill((i*DeltaAngle)+(DeltaAngle/2.0), ((hRecoOpeningAngleAfter->GetBinContent(i+1))*ScaleHistograms*DummyScale)/(DeltaAngle*Flux*hOpeningAngleCrossSectionEfficiency->GetBinContent(i+1)*NTargets));
+   hOpeningAngleCrossSectionTrue->Fill((i*DeltaAngle)+(DeltaAngle/2.0), ((hTrueOpeningAngleAfter->GetBinContent(i+1))*ScaleHistograms*DummyScale)/(DeltaAngle*Flux*hOpeningAngleCrossSectionTrueEfficiency->GetBinContent(i+1)*NTargets));
+}
+for (int i = 0; i < 1000; i++) {
+   hMuonMomentumCrossSection->Fill((i*DeltaMomentum)+(DeltaMomentum/2.0), ((hMuonCandidateAfterComboMomentumReco->GetBinContent(i+1))*ScaleHistograms*DummyScale)/(DeltaMomentum*Flux*DummyEfficiency*NTargets));
+   hPionMomentumCrossSection->Fill((i*DeltaMomentum)+(DeltaMomentum/2.0), ((hPionCandidateAfterComboMomentumReco->GetBinContent(i+1))*ScaleHistograms*DummyScale)/(DeltaMomentum*Flux*DummyEfficiency*NTargets));
+   hTCrossSection->Fill((i*DeltaT)+(DeltaT/2.0), ((hTAfterReco->GetBinContent(i+1))*ScaleHistograms*DummyScale)/(DeltaT*Flux*DummyEfficiency*NTargets));
+   hMuonMomentumCrossSectionTrue->Fill((i*DeltaMomentum)+(DeltaMomentum/2.0), ((hMuonCandidateAfterMomentumTrue->GetBinContent(i+1))*ScaleHistograms*DummyScale)/(DeltaMomentum*Flux*DummyEfficiency*NTargets));
+   hPionMomentumCrossSectionTrue->Fill((i*DeltaMomentum)+(DeltaMomentum/2.0), ((hPionCandidateAfterMomentumTrue->GetBinContent(i+1))*ScaleHistograms*DummyScale)/(DeltaMomentum*Flux*DummyEfficiency*NTargets));
+   hTCrossSectionTrue->Fill((i*DeltaT)+(DeltaT/2.0), ((hTAfterTrue->GetBinContent(i+1))*ScaleHistograms*DummyScale)/(DeltaT*Flux*DummyEfficiency*NTargets));
+}
+// ----------------------------------
+
+
 
 TH1D *hCondensedSelectionCCCoh = new TH1D("hCondensedSelectionCCCoh", "The Cut By Cut Selection", 7, -0.5, 6.5);
 TH1D *hCondensedSelectionCCCohDivide = new TH1D("hCondensedSelectionCCCohDivide", "The Cut By Cut Selection", 7, -0.5, 6.5);
@@ -829,7 +990,7 @@ c1->SetFillColor(kWhite);
 // Area normalzing the plot 
 hMuonMuonChi2->Scale(1/hMuonMuonChi2->Integral());
 hPionMuonChi2->Scale(1/hPionMuonChi2->Integral());
-hProtonMuonChi2->Scale(1/hProtonMuonChi2->Integral());
+//hProtonMuonChi2->Scale(1/hProtonMuonChi2->Integral());
 
 hMuonMuonChi2->SetFillColor(kBlue);
 hMuonMuonChi2->SetFillStyle(3005);
@@ -858,7 +1019,7 @@ hMuonMuonChi2->GetYaxis()->CenterTitle();
 
 hMuonMuonChi2->Draw("histo");
 hPionMuonChi2->Draw("histosame");
-hProtonMuonChi2->Draw("histosame");
+//hProtonMuonChi2->Draw("histosame");
 
 
 // ### Defining the legend for the plot ###
@@ -872,7 +1033,7 @@ leg1->SetShadowColor(kWhite);
 leg1->SetHeader("Particle");
 leg1->AddEntry(hMuonMuonChi2,"#mu");
 leg1->AddEntry(hPionMuonChi2,"#pi");
-leg1->AddEntry(hProtonMuonChi2,"p");
+//leg1->AddEntry(hProtonMuonChi2,"p");
 leg1->Draw();
 
 
@@ -884,7 +1045,7 @@ c2->SetFillColor(kWhite);
 // Area normalzing the plot 
 hMuonProtonChi2->Scale(1/hMuonProtonChi2->Integral());
 hPionProtonChi2->Scale(1/hPionProtonChi2->Integral());
-hProtonProtonChi2->Scale(1/hProtonProtonChi2->Integral());
+//hProtonProtonChi2->Scale(1/hProtonProtonChi2->Integral());
 
 hMuonProtonChi2->SetFillColor(kBlue);
 hMuonProtonChi2->SetFillStyle(3005);
@@ -913,7 +1074,7 @@ hMuonProtonChi2->GetYaxis()->CenterTitle();
 
 hMuonProtonChi2->Draw("histo");
 hPionProtonChi2->Draw("histosame");
-hProtonProtonChi2->Draw("histosame");
+//hProtonProtonChi2->Draw("histosame");
 
 
 // ### Defining the legend for the plot ###
@@ -927,7 +1088,7 @@ leg2->SetShadowColor(kWhite);
 leg2->SetHeader("Particle");
 leg2->AddEntry(hMuonProtonChi2,"#mu");
 leg2->AddEntry(hPionProtonChi2,"#pi");
-leg2->AddEntry(hProtonProtonChi2,"p");
+//leg2->AddEntry(hProtonProtonChi2,"p");
 leg2->Draw();
 
 
@@ -939,7 +1100,7 @@ c3->SetFillColor(kWhite);
 // Area normalzing the plot 
 hMuonPandoraTrackLength->Scale(1/hMuonPandoraTrackLength->Integral());
 hPionPandoraTrackLength->Scale(1/hPionPandoraTrackLength->Integral());
-hProtonPandoraTrackLength->Scale(1/hProtonPandoraTrackLength->Integral());
+//hProtonPandoraTrackLength->Scale(1/hProtonPandoraTrackLength->Integral());
 
 hMuonPandoraTrackLength->SetFillColor(kBlue);
 hMuonPandoraTrackLength->SetFillStyle(3005);
@@ -964,7 +1125,7 @@ hPionPandoraTrackLength->GetYaxis()->SetTitle("Normalized Events");
 hPionPandoraTrackLength->GetYaxis()->CenterTitle();
 
 hPionPandoraTrackLength->Draw("histo");
-hProtonPandoraTrackLength->Draw("histosame");
+//hProtonPandoraTrackLength->Draw("histosame");
 hMuonPandoraTrackLength->Draw("histosame");
 
 
@@ -979,7 +1140,7 @@ leg3->SetShadowColor(kWhite);
 leg3->SetHeader("Particle");
 leg3->AddEntry(hMuonPandoraTrackLength,"#mu");
 leg3->AddEntry(hPionPandoraTrackLength,"#pi");
-leg3->AddEntry(hProtonPandoraTrackLength,"p");
+//leg3->AddEntry(hProtonPandoraTrackLength,"p");
 leg3->Draw();
 
 
@@ -1057,7 +1218,7 @@ c7->SetFillColor(kWhite);
 // Area normalzing the plot 
 hMuonRatioChi2->Scale(1/hMuonRatioChi2->Integral());
 hPionRatioChi2->Scale(1/hPionRatioChi2->Integral());
-hProtonRatioChi2->Scale(1/hProtonRatioChi2->Integral());
+//hProtonRatioChi2->Scale(1/hProtonRatioChi2->Integral());
 
 hMuonRatioChi2->SetFillColor(kBlue);
 hMuonRatioChi2->SetFillStyle(3005);
@@ -1082,7 +1243,7 @@ hPionRatioChi2->GetYaxis()->SetTitle("Normalized Events");
 hPionRatioChi2->GetYaxis()->CenterTitle();
 
 hPionRatioChi2->Draw("histo");
-hProtonRatioChi2->Draw("histosame");
+//hProtonRatioChi2->Draw("histosame");
 hMuonRatioChi2->Draw("histosame");
 
 
@@ -1097,7 +1258,7 @@ leg7->SetShadowColor(kWhite);
 leg7->SetHeader("Particle");
 leg7->AddEntry(hMuonRatioChi2,"#mu");
 leg7->AddEntry(hPionRatioChi2,"#pi");
-leg7->AddEntry(hProtonRatioChi2,"p");
+//leg7->AddEntry(hProtonRatioChi2,"p");
 leg7->Draw();
 
 
@@ -1215,7 +1376,7 @@ c12->SetFillColor(kWhite);
 // Area normalzing the plot 
 hMuonTrackScore->Scale(1/hMuonTrackScore->Integral());
 hPionTrackScore->Scale(1/hPionTrackScore->Integral());
-hProtonTrackScore->Scale(1/hProtonTrackScore->Integral());
+//hProtonTrackScore->Scale(1/hProtonTrackScore->Integral());
 
 hMuonTrackScore->SetFillColor(kBlue);
 hMuonTrackScore->SetFillStyle(3005);
@@ -1242,7 +1403,7 @@ hMuonTrackScore->GetYaxis()->CenterTitle();
 gPad->SetLogy();
 hMuonTrackScore->Draw("histo");
 hPionTrackScore->Draw("histosame");
-hProtonTrackScore->Draw("histosame");
+//hProtonTrackScore->Draw("histosame");
 
 
 // ### Defining the legend for the plot ###
@@ -1256,7 +1417,7 @@ leg12->SetShadowColor(kWhite);
 leg12->SetHeader("Particle");
 leg12->AddEntry(hMuonTrackScore,"#mu");
 leg12->AddEntry(hPionTrackScore,"#pi");
-leg12->AddEntry(hProtonTrackScore,"p");
+//leg12->AddEntry(hProtonTrackScore,"p");
 leg12->Draw();
 
 
@@ -1268,7 +1429,7 @@ c13->SetFillColor(kWhite);
 // Area normalzing the plot 
 hMuonVtxDistance->Scale(1/hMuonVtxDistance->Integral());
 hPionVtxDistance->Scale(1/hPionVtxDistance->Integral());
-hProtonVtxDistance->Scale(1/hProtonVtxDistance->Integral());
+//hProtonVtxDistance->Scale(1/hProtonVtxDistance->Integral());
 
 hMuonVtxDistance->SetFillColor(kBlue);
 hMuonVtxDistance->SetFillStyle(3005);
@@ -1295,7 +1456,7 @@ hMuonVtxDistance->GetYaxis()->CenterTitle();
 gPad->SetLogy();
 hMuonVtxDistance->Draw("histo");
 hPionVtxDistance->Draw("histosame");
-hProtonVtxDistance->Draw("histosame");
+//hProtonVtxDistance->Draw("histosame");
 
 
 // ### Defining the legend for the plot ###
@@ -1309,7 +1470,7 @@ leg13->SetShadowColor(kWhite);
 leg13->SetHeader("Particle");
 leg13->AddEntry(hMuonVtxDistance,"#mu");
 leg13->AddEntry(hPionVtxDistance,"#pi");
-leg13->AddEntry(hProtonVtxDistance,"p");
+//leg13->AddEntry(hProtonVtxDistance,"p");
 leg13->Draw();
 
 
@@ -1608,6 +1769,8 @@ double CCQEConeAngle[181] = {0};
 double CCQEConeAngleR[181] = {0};
 double NCConeAngle[181] = {0};
 double NCConeAngleR[181] = {0};
+double MaximizeCA[181] = {0};
+double MaximizeCAR[181] = {0};
 
 for (int i = 0; i < n; i++)
    {
@@ -1630,8 +1793,12 @@ for (int i = 0; i < n; i++)
       NCConeAngleR[i] += hRecoConeAngleNC->GetBinContent(g);
       } // End g-Loop
 
+   MaximizeCA[i] = CCCohConeAngle2[i]/pow(CCCohConeAngle2[i] + OtherConeAngle[i], 0.5);
+   MaximizeCAR[i] = CCCohConeAngleR2[i]/pow(CCCohConeAngleR2[i] + OtherConeAngleR[i], 0.5);
    ConeAnglePurity[i] = 100*(CCCohConeAngle2[i])/(CCCohConeAngle2[i] + OtherConeAngle[i]);
    ConeAnglePurityR[i] = 100*(CCCohConeAngleR2[i])/(CCCohConeAngleR2[i] + OtherConeAngleR[i]);
+   if (i == 0) MaximizeCA[i] = 0;
+   if (i == 0) MaximizeCAR[i] = 0;
    if (i == 0) ConeAnglePurity[i] = 0;
    if (i == 0) ConeAnglePurityR[i] = 0;
    ConeAngleEff[i] = 100*(CCCohConeAngle2[i])/(hTrueConeAngleCCCoh->GetEntries());
@@ -1650,6 +1817,18 @@ for (int i = 0; i < n; i++)
    NCConeAngleR[i] = 100-(NCConeAngleR[i]*100/hRecoConeAngleNC->GetEntries());
    } // End i-Loop
 
+TGraph* gMaximizeConeAngle = new TGraph(n, x, MaximizeCA);
+gMaximizeConeAngle->SetTitle("MaximizeConeAngle");
+gMaximizeConeAngle->SetName("MaximizeConeAngle");
+gMaximizeConeAngle->SetFillColor(kWhite);
+gMaximizeConeAngle->SetLineColor(kBlue);
+gMaximizeConeAngle->SetLineWidth(2);
+TGraph* gMaximizeConeAngleR = new TGraph(n, x, MaximizeCAR);
+gMaximizeConeAngleR->SetTitle("MaximizeConeAngleR");
+gMaximizeConeAngleR->SetName("MaximizeConeAngleR");
+gMaximizeConeAngleR->SetFillColor(kWhite);
+gMaximizeConeAngleR->SetLineColor(kRed);
+gMaximizeConeAngleR->SetLineWidth(2);
 TGraph* gConeAngleEff = new TGraph(n, x, ConeAngleEff);
 gConeAngleEff->SetTitle("ConeAngleEff");
 gConeAngleEff->SetName("ConeAngleEff");
@@ -1969,6 +2148,8 @@ double CCQEDoCAR[101] = {0};
 double NCDoCA[101] = {0};
 double NCDoCAR[101] = {0};
 double CosmicDoCAR[101] = {0};
+double MaximizeDoCA[101] = {0};
+double MaximizeDoCAR[101] = {0};
 
 for (int i = 0; i < m; i++) {
    y[i] = i*100/m;
@@ -1994,9 +2175,13 @@ for (int i = 0; i < m; i++) {
 
    CCCohDoCARejection[i] = hRecoDoCA->GetEntries() - CCCohDoCA[i];
 
+   MaximizeDoCA[i] = CCCohDoCA2[i]/pow(CCCohDoCA2[i] + OtherDoCA[i], 0.5);
+   MaximizeDoCAR[i] = CCCohDoCAR2[i]/pow(CCCohDoCAR2[i] + OtherDoCAR[i], 0.5);
    DoCAEff[i] = 100*(CCCohDoCA[i])/(hTrueDoCA->GetEntries());
    DoCAPurity[i] = 100*(CCCohDoCA2[i])/(CCCohDoCA2[i] + OtherDoCA[i]);
    DoCAPurityR[i] = 100*(CCCohDoCAR2[i])/(CCCohDoCAR2[i] + OtherDoCAR[i]);
+   if (i == 0) MaximizeDoCA[i] = 0;
+   if (i == 0) MaximizeDoCAR[i] = 0;
    if (i == 0) DoCAPurity[i] = 0;
    if (i == 0) DoCAPurityR[i] = 0;
    CCCohDoCA[i] = CCCohDoCA[i]*100/(hTrueDoCA->GetEntries() - hTrueDoCA->GetBinContent(102));
@@ -2015,6 +2200,18 @@ for (int i = 0; i < m; i++) {
    CosmicDoCAR[i] = 100-(CosmicDoCAR[i]*100/hRecoDoCACosmic->GetEntries());
 } // End i-Loop
 
+TGraph* gMaximizeDoCA = new TGraph(m, y, MaximizeDoCA);
+gMaximizeDoCA->SetTitle("MaximizeDoCA");
+gMaximizeDoCA->SetName("MaximizeDoCA");
+gMaximizeDoCA->SetFillColor(kWhite);
+gMaximizeDoCA->SetLineColor(kBlue);
+gMaximizeDoCA->SetLineWidth(2);
+TGraph* gMaximizeDoCAR = new TGraph(m, y, MaximizeDoCAR);
+gMaximizeDoCAR->SetTitle("MaximizeDoCAR");
+gMaximizeDoCAR->SetName("MaximizeDoCAR");
+gMaximizeDoCAR->SetFillColor(kWhite);
+gMaximizeDoCAR->SetLineColor(kRed);
+gMaximizeDoCAR->SetLineWidth(2);
 TGraph* gDoCAEff = new TGraph(m, y, DoCAEff);
 gDoCAEff->SetTitle("gDoCAEff");
 gDoCAEff->SetName("gDoCAEff");
@@ -2387,6 +2584,7 @@ double CCDISVAR[1000] = {0};
 double OtherVAR[1000] = {0};
 double CCQEVAR[1000] = {0};
 double NCVAR[1000] = {0};
+double MaximizeVAR[1000] = {0};
 
 for (int i = 0; i < p; i++)
    {
@@ -2402,7 +2600,9 @@ for (int i = 0; i < p; i++)
       NCVAR[i] += hRecoVA2NC->GetBinContent(g);
       } // End g-Loop
 
+   MaximizeVAR[i] = CCCohVAR2[i]/pow(CCCohVAR2[i] + OtherVAR[i], 0.5);
    VAPurityR[i] = 100*CCCohVAR2[i]/(CCCohVAR2[i] + OtherVAR[i]);
+   if (i == 0) MaximizeVAR[i] = 0;
    if (i == 0) VAPurityR[i] = 0;
    VAEffR[i] = 100*(CCCohVAR[i])/(hRecoVA2->GetEntries());
    CCCohVAR[i] = CCCohVAR[i]*100/hRecoVA2->GetEntries();
@@ -2413,6 +2613,12 @@ for (int i = 0; i < p; i++)
    NCVAR[i] = 100-(NCVAR[i]*100/hRecoVA2NC->GetEntries());
    } // End i-Loop
 
+TGraph* gMaximizeVAR = new TGraph(p, r, MaximizeVAR);
+gMaximizeVAR->SetTitle("MaximizeVAR");
+gMaximizeVAR->SetName("MaximizeVAR");
+gMaximizeVAR->SetFillColor(kWhite);
+gMaximizeVAR->SetLineColor(kRed);
+gMaximizeVAR->SetLineWidth(2);
 TGraph* gVAEffR = new TGraph(p, r, VAEffR);
 gVAEffR->SetTitle("VAEffR");
 gVAEffR->SetName("VAEffR");
@@ -3038,11 +3244,16 @@ double TEff[1000] = {0};
 double TPurity[1000] = {0};
 double CCCohT[1000] = {0};
 double CCCohT2[1000] = {0};
+double CCCohTR2[1000] = {0};
 double CCResT[1000] = {0};
 double CCDIST[1000] = {0};
 double OtherT[1000] = {0};
+double OtherT2[1000] = {0};
+double OtherTR2[1000] = {0};
 double CCQET[1000] = {0};
 double NCT[1000] = {0};
+double MaximizeT[1000] = {0};
+double MaximizeTR[1000] = {0};
 
 for (int i = 0; i < s; i++)
    {
@@ -3050,25 +3261,48 @@ for (int i = 0; i < s; i++)
    for (int g = 1; g < i+1; g++)
       {
       CCCohT[i] += hT->GetBinContent(g);
-      CCCohT2[i] += hTCCCoh->GetBinContent(g);
+      CCCohT2[i] += hTAfter2True->GetBinContent(g);
+      CCCohTR2[i] += hTAfter2Reco->GetBinContent(g);
       CCResT[i] += hTCCRes->GetBinContent(g);
       CCDIST[i] += hTCCDIS->GetBinContent(g);
-      OtherT[i] += hTOther->GetBinContent(g);
+      OtherT[i] += hTAfterTrueOther->GetBinContent(g);
+      OtherT2[i] += hTAfter2TrueOther->GetBinContent(g);
+      OtherTR2[i] += hTAfter2RecoOther->GetBinContent(g);
       CCQET[i] += hTCCQE->GetBinContent(g);
       NCT[i] += hTNC->GetBinContent(g);
       } // End g-Loop
 
-   TPurity[i] = 100*(CCCohT2[i])/(CCCohT2[i] + OtherT[i]);
+   MaximizeT[i] = CCCohT2[i]/pow(CCCohT2[i] + OtherT2[i], 0.5);
+   MaximizeTR[i] = CCCohTR2[i]/pow(CCCohTR2[i] + OtherTR2[i], 0.5);
+   TPurity[i] = 100*(CCCohT2[i])/(CCCohT2[i] + OtherT2[i]);
+   if (i == 0) MaximizeT[i] = 0;
+   if (i == 0) MaximizeTR[i] = 0;
    if (i == 0) TPurity[i] = 0;
    TEff[i] = 100*(CCCohT2[i])/(hTCCCoh->GetEntries());
    CCCohT[i] = CCCohT[i]*100/hT->GetEntries();
+   CCCohT2[i] = CCCohT2[i]*100/hTAfter2True->GetEntries();
+   CCCohTR2[i] = CCCohTR2[i]*100/hTAfter2Reco->GetEntries();
    CCResT[i] = 100-(CCResT[i]*100/hTCCRes->GetEntries());
    CCDIST[i] = 100-(CCDIST[i]*100/hTCCDIS->GetEntries());
-   OtherT[i] = 100-(OtherT[i]*100/hTOther->GetEntries());
+   OtherT[i] = 100-(OtherT[i]*100/hTAfterTrueOther->GetEntries());
+   OtherT2[i] = 100-(OtherT2[i]*100/hTAfter2TrueOther->GetEntries());
+   OtherTR2[i] = 100-(OtherTR2[i]*100/hTAfter2RecoOther->GetEntries());
    CCQET[i] = 100-(CCQET[i]*100/hTCCQE->GetEntries());
    NCT[i] = 100-(NCT[i]*100/hTNC->GetEntries());
    } // End i-Loop
 
+TGraph* gMaximizeT = new TGraph(s, e, MaximizeT);
+gMaximizeT->SetTitle("MaximizeT");
+gMaximizeT->SetName("MaximizeT");
+gMaximizeT->SetFillColor(kWhite);
+gMaximizeT->SetLineColor(kBlue);
+gMaximizeT->SetLineWidth(2);
+TGraph* gMaximizeTR = new TGraph(s, e, MaximizeTR);
+gMaximizeTR->SetTitle("MaximizeTR");
+gMaximizeTR->SetName("MaximizeTR");
+gMaximizeTR->SetFillColor(kWhite);
+gMaximizeTR->SetLineColor(kRed);
+gMaximizeTR->SetLineWidth(2);
 TGraph* gTEff = new TGraph(s, e, TEff);
 gTEff->SetTitle("TEff");
 gTEff->SetName("TEff");
@@ -3089,6 +3323,19 @@ gCCCohT->SetFillColor(kWhite);
 gCCCohT->SetLineColor(kBlue);
 gCCCohT->SetLineStyle(kDashed);
 gCCCohT->SetLineWidth(2);
+TGraph* gCCCohT2 = new TGraph(s, e, CCCohT2);
+gCCCohT2->SetTitle("gCCCohT2");
+gCCCohT2->SetName("gCCCohT2");
+gCCCohT2->SetFillColor(kWhite);
+gCCCohT2->SetLineColor(kBlue);
+gCCCohT2->SetLineStyle(kDashed);
+gCCCohT2->SetLineWidth(2);
+TGraph* gCCCohTR2 = new TGraph(s, e, CCCohTR2);
+gCCCohTR2->SetTitle("gCCCohTR2");
+gCCCohTR2->SetName("gCCCohTR2");
+gCCCohTR2->SetFillColor(kWhite);
+gCCCohTR2->SetLineColor(kBlue);
+gCCCohTR2->SetLineWidth(2);
 TGraph* gCCResT = new TGraph(s, e, CCResT);
 gCCResT->SetTitle("gCCResT");
 gCCResT->SetName("gCCResT");
@@ -3110,6 +3357,19 @@ gOtherT->SetFillColor(kWhite);
 gOtherT->SetLineColor(kBlack);
 gOtherT->SetLineStyle(kDashed);
 gOtherT->SetLineWidth(2);
+TGraph* gOtherT2 = new TGraph(s, e, OtherT2);
+gOtherT2->SetTitle("gOtherT2");
+gOtherT2->SetName("gOtherT2");
+gOtherT2->SetFillColor(kWhite);
+gOtherT2->SetLineColor(kBlack);
+gOtherT2->SetLineStyle(kDashed);
+gOtherT2->SetLineWidth(2);
+TGraph* gOtherTR2 = new TGraph(s, e, OtherTR2);
+gOtherTR2->SetTitle("gOtherTR2");
+gOtherTR2->SetName("gOtherTR2");
+gOtherTR2->SetFillColor(kWhite);
+gOtherTR2->SetLineColor(kBlack);
+gOtherTR2->SetLineWidth(2);
 TGraph* gCCQET = new TGraph(s, e, CCQET);
 gCCQET->SetTitle("gCCQET");
 gCCQET->SetName("gCCQET");
@@ -3129,20 +3389,24 @@ TCanvas *c34 = new TCanvas("c34", "|t| TGraphs");
 c34->SetTicks();
 c34->SetFillColor(kWhite);
 
-gCCCohT->GetXaxis()->SetTitle("|t| [(GeV/c)^{2}]");
-gCCCohT->GetXaxis()->CenterTitle();
-gCCCohT->GetXaxis()->SetRangeUser(0,1);
+gCCCohT2->GetXaxis()->SetTitle("|t| [(GeV/c)^{2}]");
+gCCCohT2->GetXaxis()->CenterTitle();
+gCCCohT2->GetXaxis()->SetRangeUser(0,1);
 
-gCCCohT->GetYaxis()->SetTitle("Rejection (Background) Passed (Signal) [%]");
-gCCCohT->GetYaxis()->CenterTitle();
+gCCCohT2->GetYaxis()->SetTitle("Rejection (Background) Passed (Signal) [%]");
+gCCCohT2->GetYaxis()->CenterTitle();
 
-gCCCohT->Draw();
-gCCResT->Draw("same");
-gCCDIST->Draw("same");
-gOtherT->Draw("same");
-gCCQET->Draw("same");
-gNCT->Draw("same");
-gTPurity->Draw("same");
+//gCCCohT->Draw();
+gCCCohT2->Draw();
+gCCCohTR2->Draw("same");
+//gCCResT->Draw("same");
+//gCCDIST->Draw("same");
+//gOtherT->Draw("same");
+gOtherT2->Draw("same");
+gOtherTR2->Draw("same");
+//gCCQET->Draw("same");
+//gNCT->Draw("same");
+//gTPurity->Draw("same");
 
 // ### Defining the legend for the plot ###
 TLegend *leg34 = new TLegend();
@@ -3153,13 +3417,15 @@ leg34->SetFillColor(kWhite);
 leg34->SetLineColor(kWhite);
 leg34->SetShadowColor(kWhite);
 leg34->SetHeader("Channel");
-leg34->AddEntry(gCCCohT,"CCCoh True");
-leg34->AddEntry(gTPurity,"CCCoh Purity True");
-leg34->AddEntry(gCCQET,"CCQE True");
-leg34->AddEntry(gCCResT,"CCRes True");
-leg34->AddEntry(gCCDIST,"CCDIS True");
-leg34->AddEntry(gOtherT,"Other True");
-leg34->AddEntry(gNCT,"NC True");
+leg34->AddEntry(gCCCohT2,"CCCoh True");
+leg34->AddEntry(gCCCohTR2,"CCCoh Reco");
+//leg34->AddEntry(gTPurity,"CCCoh Purity True");
+//leg34->AddEntry(gCCQET,"CCQE True");
+//leg34->AddEntry(gCCResT,"CCRes True");
+//leg34->AddEntry(gCCDIST,"CCDIS True");
+leg34->AddEntry(gOtherT2,"Other True");
+leg34->AddEntry(gOtherTR2,"Other Reco");
+//leg34->AddEntry(gNCT,"NC True");
 leg34->Draw();
 // ----------------------------
 
@@ -3882,29 +4148,47 @@ TCanvas *c49 = new TCanvas("c49", "Stacked True Cone Angles After Selection");
 c49->SetTicks();
 c49->SetFillColor(kWhite);
 
-hTrueConeAngleAfterCCCoh->SetFillColor(kBlue);
-//hTrueConeAngleAfterCCCoh->Scale(CCCohScaleFactor);
-hTrueConeAngleAfterCCCoh->Rebin(10);
+hTrueConeAngleAfter->SetFillColor(kBlue);
+hTrueConeAngleAfter->Scale(CCCohScaleFactor);
+hTrueConeAngleAfter->Rebin(10);
+//hTrueConeAngleAfterCCCoh->SetFillColor(kBlue);
+//hTrueConeAngleAfterCCCoh->Rebin(10);
 hTrueConeAngleAfterCCQE->SetFillColor(kViolet);
 hTrueConeAngleAfterCCQE->Rebin(10);
-//hTrueConeAngleAfterCCRes->SetFillColor(kRed);
-//hTrueConeAngleAfterCCRes->Rebin(10);
+hTrueConeAngleAfterCCRes->SetFillColor(kRed);
+hTrueConeAngleAfterCCRes->Rebin(10);
 hTrueConeAngleAfterOther->SetFillColor(kBlack);
 hTrueConeAngleAfterOther->Rebin(10);
 hTrueConeAngleAfterOther->Add(hTrueConeAngleAfterCCQE, -1);
-//hTrueConeAngleAfterOther->Add(hTrueConeAngleAfterCCRes, -1);
+hTrueConeAngleAfterOther->Add(hTrueConeAngleAfterCCRes, -1);
 hTrueConeAngleAfterStacked->Add(hTrueConeAngleAfterOther);
 hTrueConeAngleAfterStacked->Add(hTrueConeAngleAfterCCQE);
-//hTrueConeAngleAfterStacked->Add(hTrueConeAngleAfterCCRes);
-hTrueConeAngleAfterStacked->Add(hTrueConeAngleAfterCCCoh);
+hTrueConeAngleAfterStacked->Add(hTrueConeAngleAfterCCRes);
+hTrueConeAngleAfterStacked->Add(hTrueConeAngleAfter);
+//hTrueConeAngleAfterStacked->Add(hTrueConeAngleAfterCCCoh);
 
-//hTrueConeAngleAfterStacked->GetXaxis()->SetTitle("Cone Angle [Degrees]");
-//hTrueConeAngleAfterStacked->GetXaxis()->CenterTitle();
+hTrueConeAngleAfterStacked->Draw("HIST");
+hTrueConeAngleAfterStacked->GetXaxis()->SetTitle("Cone Angle [Degrees]");
+hTrueConeAngleAfterStacked->GetXaxis()->CenterTitle();
+hTrueConeAngleAfterStacked->GetYaxis()->SetTitle("Number of Events");
+hTrueConeAngleAfterStacked->GetYaxis()->CenterTitle();
+c49->Modified();
 
-//hTrueConeAngleAfterStacked->GetYaxis()->SetTitle("Number of Events");
-//hTrueConeAngleAfterStacked->GetYaxis()->CenterTitle();
-
-hTrueConeAngleAfterStacked->Draw();
+// ### Defining the legend for the plot ###
+TLegend *leg49 = new TLegend();
+leg49 = new TLegend(0.58,0.65,1.00,1.00);
+leg49->SetTextSize(0.04);
+leg49->SetTextAlign(12);
+leg49->SetFillColor(kWhite);
+leg49->SetLineColor(kWhite);
+leg49->SetShadowColor(kWhite);
+leg49->SetHeader("Channel");
+leg49->AddEntry(hTrueConeAngleAfter,"True CC-Coh");
+//leg49->AddEntry(hTrueConeAngleAfterCCCoh,"True CC-Coh");
+leg49->AddEntry(hTrueConeAngleAfterCCQE,"True CC-QE");
+leg49->AddEntry(hTrueConeAngleAfterCCRes,"True CC-Res");
+leg49->AddEntry(hTrueConeAngleAfterOther,"True Other");
+leg49->Draw();
 
 
 
@@ -3912,29 +4196,47 @@ TCanvas *c50 = new TCanvas("c50", "Stacked Reco Cone Angles After Selection");
 c50->SetTicks();
 c50->SetFillColor(kWhite);
 
-hRecoConeAngleAfterCCCoh->SetFillColor(kBlue);
-//hRecoConeAngleAfterCCCoh->Scale(CCCohScaleFactor);
-hRecoConeAngleAfterCCCoh->Rebin(10);
+hRecoConeAngleAfter->SetFillColor(kBlue);
+hRecoConeAngleAfter->Scale(CCCohScaleFactor);
+hRecoConeAngleAfter->Rebin(10);
+//hRecoConeAngleAfterCCCoh->SetFillColor(kBlue);
+//hRecoConeAngleAfterCCCoh->Rebin(10);
 hRecoConeAngleAfterCCQE->SetFillColor(kViolet);
 hRecoConeAngleAfterCCQE->Rebin(10);
-//hRecoConeAngleAfterCCRes->SetFillColor(kRed);
-//hRecoConeAngleAfterCCRes->Rebin(10);
+hRecoConeAngleAfterCCRes->SetFillColor(kRed);
+hRecoConeAngleAfterCCRes->Rebin(10);
 hRecoConeAngleAfterOther->SetFillColor(kBlack);
 hRecoConeAngleAfterOther->Rebin(10);
 hRecoConeAngleAfterOther->Add(hRecoConeAngleAfterCCQE, -1);
-//hRecoConeAngleAfterOther->Add(hRecoConeAngleAfterCCRes, -1);
+hRecoConeAngleAfterOther->Add(hRecoConeAngleAfterCCRes, -1);
 hRecoConeAngleAfterStacked->Add(hRecoConeAngleAfterOther);
 hRecoConeAngleAfterStacked->Add(hRecoConeAngleAfterCCQE);
-//hRecoConeAngleAfterStacked->Add(hRecoConeAngleAfterCCRes);
-hRecoConeAngleAfterStacked->Add(hRecoConeAngleAfterCCCoh);
+hRecoConeAngleAfterStacked->Add(hRecoConeAngleAfterCCRes);
+hRecoConeAngleAfterStacked->Add(hRecoConeAngleAfter);
+//hRecoConeAngleAfterStacked->Add(hRecoConeAngleAfterCCCoh);
 
-//hRecoConeAngleAfterStacked->GetXaxis()->SetTitle("Cone Angle [Degrees]");
-//hRecoConeAngleAfterStacked->GetXaxis()->CenterTitle();
+hRecoConeAngleAfterStacked->Draw("HIST");
+hRecoConeAngleAfterStacked->GetXaxis()->SetTitle("Cone Angle [Degrees]");
+hRecoConeAngleAfterStacked->GetXaxis()->CenterTitle();
+hRecoConeAngleAfterStacked->GetYaxis()->SetTitle("Number of Events");
+hRecoConeAngleAfterStacked->GetYaxis()->CenterTitle();
+c50->Modified();
 
-//hRecoConeAngleAfterStacked->GetYaxis()->SetTitle("Number of Events");
-//hRecoConeAngleAfterStacked->GetYaxis()->CenterTitle();
-
-hRecoConeAngleAfterStacked->Draw();
+// ### Defining the legend for the plot ###
+TLegend *leg50 = new TLegend();
+leg50 = new TLegend(0.58,0.65,1.00,1.00);
+leg50->SetTextSize(0.04);
+leg50->SetTextAlign(12);
+leg50->SetFillColor(kWhite);
+leg50->SetLineColor(kWhite);
+leg50->SetShadowColor(kWhite);
+leg50->SetHeader("Channel");
+leg50->AddEntry(hRecoConeAngleAfter,"Reco CC-Coh");
+//leg50->AddEntry(hRecoConeAngleAfterCCCoh,"Reco CC-Coh");
+leg50->AddEntry(hRecoConeAngleAfterCCQE,"Reco CC-QE");
+leg50->AddEntry(hRecoConeAngleAfterCCRes,"Reco CC-Res");
+leg50->AddEntry(hRecoConeAngleAfterOther,"Reco Other");
+leg50->Draw();
 
 
 
@@ -3942,29 +4244,47 @@ TCanvas *c51 = new TCanvas("c51", "Stacked True Opening Angles After Selection")
 c51->SetTicks();
 c51->SetFillColor(kWhite);
 
-hTrueOpeningAngleAfterCCCoh->SetFillColor(kBlue);
-//hTrueOpeningAngleAfterCCCoh->Scale(CCCohScaleFactor);
-hTrueOpeningAngleAfterCCCoh->Rebin(10);
+hTrueOpeningAngleAfter->SetFillColor(kBlue);
+hTrueOpeningAngleAfter->Scale(CCCohScaleFactor);
+hTrueOpeningAngleAfter->Rebin(10);
+//hTrueOpeningAngleAfterCCCoh->SetFillColor(kBlue);
+//hTrueOpeningAngleAfterCCCoh->Rebin(10);
 hTrueOpeningAngleAfterCCQE->SetFillColor(kViolet);
 hTrueOpeningAngleAfterCCQE->Rebin(10);
-//hTrueOpeningAngleAfterCCRes->SetFillColor(kRed);
-//hTrueOpeningAngleAfterCCRes->Rebin(10);
+hTrueOpeningAngleAfterCCRes->SetFillColor(kRed);
+hTrueOpeningAngleAfterCCRes->Rebin(10);
 hTrueOpeningAngleAfterOther->SetFillColor(kBlack);
 hTrueOpeningAngleAfterOther->Rebin(10);
 hTrueOpeningAngleAfterOther->Add(hTrueOpeningAngleAfterCCQE, -1);
-//hTrueOpeningAngleAfterOther->Add(hTrueOpeningAngleAfterCCRes, -1);
+hTrueOpeningAngleAfterOther->Add(hTrueOpeningAngleAfterCCRes, -1);
 hTrueOpeningAngleAfterStacked->Add(hTrueOpeningAngleAfterOther);
 hTrueOpeningAngleAfterStacked->Add(hTrueOpeningAngleAfterCCQE);
-//hTrueOpeningAngleAfterStacked->Add(hTrueOpeningAngleAfterCCRes);
-hTrueOpeningAngleAfterStacked->Add(hTrueOpeningAngleAfterCCCoh);
+hTrueOpeningAngleAfterStacked->Add(hTrueOpeningAngleAfterCCRes);
+hTrueOpeningAngleAfterStacked->Add(hTrueOpeningAngleAfter);
+//hTrueOpeningAngleAfterStacked->Add(hTrueOpeningAngleAfterCCCoh);
 
-//hTrueOpeningAngleAfterStacked->GetXaxis()->SetTitle("Opening Angle [Degrees]");
-//hTrueOpeningAngleAfterStacked->GetXaxis()->CenterTitle();
+hTrueOpeningAngleAfterStacked->Draw("HIST");
+hTrueOpeningAngleAfterStacked->GetXaxis()->SetTitle("Opening Angle [Degrees]");
+hTrueOpeningAngleAfterStacked->GetXaxis()->CenterTitle();
+hTrueOpeningAngleAfterStacked->GetYaxis()->SetTitle("Number of Events");
+hTrueOpeningAngleAfterStacked->GetYaxis()->CenterTitle();
+c51->Modified();
 
-//hTrueOpeningAngleAfterStacked->GetYaxis()->SetTitle("Number of Events");
-//hTrueOpeningAngleAfterStacked->GetYaxis()->CenterTitle();
-
-hTrueOpeningAngleAfterStacked->Draw();
+// ### Defining the legend for the plot ###
+TLegend *leg51 = new TLegend();
+leg51 = new TLegend(0.58,0.65,1.00,1.00);
+leg51->SetTextSize(0.04);
+leg51->SetTextAlign(12);
+leg51->SetFillColor(kWhite);
+leg51->SetLineColor(kWhite);
+leg51->SetShadowColor(kWhite);
+leg51->SetHeader("Channel");
+leg51->AddEntry(hTrueOpeningAngleAfter,"True CC-Coh");
+//leg51->AddEntry(hTrueOpeningAngleAfterCCCoh,"True CC-Coh");
+leg51->AddEntry(hTrueOpeningAngleAfterCCQE,"True CC-QE");
+leg51->AddEntry(hTrueOpeningAngleAfterCCRes,"True CC-Res");
+leg51->AddEntry(hTrueOpeningAngleAfterOther,"True Other");
+leg51->Draw();
 
 
 
@@ -3972,59 +4292,95 @@ TCanvas *c52 = new TCanvas("c52", "Stacked Reco Opening Angles After Selection")
 c52->SetTicks();
 c52->SetFillColor(kWhite);
 
-hRecoOpeningAngleAfterCCCoh->SetFillColor(kBlue);
-//hRecoOpeningAngleAfterCCCoh->Scale(CCCohScaleFactor);
-hRecoOpeningAngleAfterCCCoh->Rebin(10);
+hRecoOpeningAngleAfter->SetFillColor(kBlue);
+hRecoOpeningAngleAfter->Scale(CCCohScaleFactor);
+hRecoOpeningAngleAfter->Rebin(10);
+//hRecoOpeningAngleAfterCCCoh->SetFillColor(kBlue);
+//hRecoOpeningAngleAfterCCCoh->Rebin(10);
 hRecoOpeningAngleAfterCCQE->SetFillColor(kViolet);
 hRecoOpeningAngleAfterCCQE->Rebin(10);
-//hRecoOpeningAngleAfterCCRes->SetFillColor(kRed);
-//hRecoOpeningAngleAfterCCRes->Rebin(10);
+hRecoOpeningAngleAfterCCRes->SetFillColor(kRed);
+hRecoOpeningAngleAfterCCRes->Rebin(10);
 hRecoOpeningAngleAfterOther->SetFillColor(kBlack);
 hRecoOpeningAngleAfterOther->Rebin(10);
 hRecoOpeningAngleAfterOther->Add(hRecoOpeningAngleAfterCCQE, -1);
-//hRecoOpeningAngleAfterOther->Add(hRecoOpeningAngleAfterCCRes, -1);
+hRecoOpeningAngleAfterOther->Add(hRecoOpeningAngleAfterCCRes, -1);
 hRecoOpeningAngleAfterStacked->Add(hRecoOpeningAngleAfterOther);
 hRecoOpeningAngleAfterStacked->Add(hRecoOpeningAngleAfterCCQE);
-//hRecoOpeningAngleAfterStacked->Add(hRecoOpeningAngleAfterCCRes);
-hRecoOpeningAngleAfterStacked->Add(hRecoOpeningAngleAfterCCCoh);
+hRecoOpeningAngleAfterStacked->Add(hRecoOpeningAngleAfterCCRes);
+hRecoOpeningAngleAfterStacked->Add(hRecoOpeningAngleAfter);
+//hRecoOpeningAngleAfterStacked->Add(hRecoOpeningAngleAfterCCCoh);
 
-//hRecoOpeningAngleAfterStacked->GetXaxis()->SetTitle("Opening Angle [Degrees]");
-//hRecoOpeningAngleAfterStacked->GetXaxis()->CenterTitle();
+hRecoOpeningAngleAfterStacked->Draw("HIST");
+hRecoOpeningAngleAfterStacked->GetXaxis()->SetTitle("Opening Angle [Degrees]");
+hRecoOpeningAngleAfterStacked->GetXaxis()->CenterTitle();
+hRecoOpeningAngleAfterStacked->GetYaxis()->SetTitle("Number of Events");
+hRecoOpeningAngleAfterStacked->GetYaxis()->CenterTitle();
+c52->Modified();
 
-//hRecoOpeningAngleAfterStacked->GetYaxis()->SetTitle("Number of Events");
-//hRecoOpeningAngleAfterStacked->GetYaxis()->CenterTitle();
+// ### Defining the legend for the plot ###
+TLegend *leg52 = new TLegend();
+leg52 = new TLegend(0.58,0.65,1.00,1.00);
+leg52->SetTextSize(0.04);
+leg52->SetTextAlign(12);
+leg52->SetFillColor(kWhite);
+leg52->SetLineColor(kWhite);
+leg52->SetShadowColor(kWhite);
+leg52->SetHeader("Channel");
+leg52->AddEntry(hRecoOpeningAngleAfter,"Reco CC-Coh");
+//leg52->AddEntry(hRecoOpeningAngleAfterCCCoh,"Reco CC-Coh");
+leg52->AddEntry(hRecoOpeningAngleAfterCCQE,"Reco CC-QE");
+leg52->AddEntry(hRecoOpeningAngleAfterCCRes,"Reco CC-Res");
+leg52->AddEntry(hRecoOpeningAngleAfterOther,"Reco Other");
+leg52->Draw();
 
-hRecoOpeningAngleAfterStacked->Draw();
 
-
-
+/*
 TCanvas *c53 = new TCanvas("c53", "Stacked True Muon Candidate Momentums After Selection");
 c53->SetTicks();
 c53->SetFillColor(kWhite);
 
-hMuonCandidateAfterMomentumTrueCCCoh->SetFillColor(kBlue);
-//hMuonCandidateAfterMomentumTrueCCCoh->Scale(CCCohScaleFactor);
-hMuonCandidateAfterMomentumTrueCCCoh->Rebin(100);
+hMuonCandidateAfterMomentumTrue->SetFillColor(kBlue);
+hMuonCandidateAfterMomentumTrue->Scale(CCCohScaleFactor);
+hMuonCandidateAfterMomentumTrue->Rebin(100);
+//hMuonCandidateAfterMomentumTrueCCCoh->SetFillColor(kBlue);
+//hMuonCandidateAfterMomentumTrueCCCoh->Rebin(100);
 hMuonCandidateAfterMomentumTrueCCQE->SetFillColor(kViolet);
 hMuonCandidateAfterMomentumTrueCCQE->Rebin(100);
-//hMuonCandidateAfterMomentumTrueCCRes->SetFillColor(kRed);
-//hMuonCandidateAfterMomentumTrueCCRes->Rebin(100);
+hMuonCandidateAfterMomentumTrueCCRes->SetFillColor(kRed);
+hMuonCandidateAfterMomentumTrueCCRes->Rebin(100);
 hMuonCandidateAfterMomentumTrueOther->SetFillColor(kBlack);
 hMuonCandidateAfterMomentumTrueOther->Rebin(100);
 hMuonCandidateAfterMomentumTrueOther->Add(hMuonCandidateAfterMomentumTrueCCQE, -1);
-//hMuonCandidateAfterMomentumTrueOther->Add(hMuonCandidateAfterMomentumTrueCCRes, -1);
+hMuonCandidateAfterMomentumTrueOther->Add(hMuonCandidateAfterMomentumTrueCCRes, -1);
 hMuonCandidateAfterMomentumTrueStacked->Add(hMuonCandidateAfterMomentumTrueOther);
 hMuonCandidateAfterMomentumTrueStacked->Add(hMuonCandidateAfterMomentumTrueCCQE);
-//hMuonCandidateAfterMomentumTrueStacked->Add(hMuonCandidateAfterMomentumTrueCCRes);
-hMuonCandidateAfterMomentumTrueStacked->Add(hMuonCandidateAfterMomentumTrueCCCoh);
+hMuonCandidateAfterMomentumTrueStacked->Add(hMuonCandidateAfterMomentumTrueCCRes);
+hMuonCandidateAfterMomentumTrueStacked->Add(hMuonCandidateAfterMomentumTrue);
+//hMuonCandidateAfterMomentumTrueStacked->Add(hMuonCandidateAfterMomentumTrueCCCoh);
 
-//hMuonCandidateAfterMomentumTrueStacked->GetXaxis()->SetTitle("#mu Momentum [GeV/c]");
-//hMuonCandidateAfterMomentumTrueStacked->GetXaxis()->CenterTitle();
+hMuonCandidateAfterMomentumTrueStacked->Draw("HIST");
+hMuonCandidateAfterMomentumTrueStacked->GetXaxis()->SetTitle("p_{#mu} [GeV/c]");
+hMuonCandidateAfterMomentumTrueStacked->GetXaxis()->CenterTitle();
+hMuonCandidateAfterMomentumTrueStacked->GetYaxis()->SetTitle("Number of Events");
+hMuonCandidateAfterMomentumTrueStacked->GetYaxis()->CenterTitle();
+c53->Modified();
 
-//hMuonCandidateAfterMomentumTrueStacked->GetYaxis()->SetTitle("Number of Events");
-//hMuonCandidateAfterMomentumTrueStacked->GetYaxis()->CenterTitle();
-
-hMuonCandidateAfterMomentumTrueStacked->Draw();
+// ### Defining the legend for the plot ###
+TLegend *leg53 = new TLegend();
+leg53 = new TLegend(0.58,0.65,1.00,1.00);
+leg53->SetTextSize(0.04);
+leg53->SetTextAlign(12);
+leg53->SetFillColor(kWhite);
+leg53->SetLineColor(kWhite);
+leg53->SetShadowColor(kWhite);
+leg53->SetHeader("Channel");
+leg53->AddEntry(hMuonCandidateAfterMomentumTrue,"True CC-Coh");
+//leg53->AddEntry(hMuonCandidateAfterMomentumTrueCCCoh,"True CC-Coh");
+leg53->AddEntry(hMuonCandidateAfterMomentumTrueCCQE,"True CC-QE");
+leg53->AddEntry(hMuonCandidateAfterMomentumTrueCCRes,"True CC-Res");
+leg53->AddEntry(hMuonCandidateAfterMomentumTrueOther,"True Other");
+leg53->Draw();
 
 
 
@@ -4032,89 +4388,143 @@ TCanvas *c54 = new TCanvas("c54", "Stacked Reco Muon Candidate Momentums After S
 c54->SetTicks();
 c54->SetFillColor(kWhite);
 
-hMuonCandidateAfterMomentumRecoCCCoh->SetFillColor(kBlue);
-//hMuonCandidateAfterMomentumRecoCCCoh->Scale(CCCohScaleFactor);
-hMuonCandidateAfterMomentumRecoCCCoh->Rebin(100);
+hMuonCandidateAfterMomentumReco->SetFillColor(kBlue);
+hMuonCandidateAfterMomentumReco->Scale(CCCohScaleFactor);
+hMuonCandidateAfterMomentumReco->Rebin(100);
+//hMuonCandidateAfterMomentumRecoCCCoh->SetFillColor(kBlue);
+//hMuonCandidateAfterMomentumRecoCCCoh->Rebin(100);
 hMuonCandidateAfterMomentumRecoCCQE->SetFillColor(kViolet);
 hMuonCandidateAfterMomentumRecoCCQE->Rebin(100);
-//hMuonCandidateAfterMomentumRecoCCRes->SetFillColor(kRed);
-//hMuonCandidateAfterMomentumRecoCCRes->Rebin(100);
+hMuonCandidateAfterMomentumRecoCCRes->SetFillColor(kRed);
+hMuonCandidateAfterMomentumRecoCCRes->Rebin(100);
 hMuonCandidateAfterMomentumRecoOther->SetFillColor(kBlack);
 hMuonCandidateAfterMomentumRecoOther->Rebin(100);
 hMuonCandidateAfterMomentumRecoOther->Add(hMuonCandidateAfterMomentumRecoCCQE, -1);
-//hMuonCandidateAfterMomentumRecoOther->Add(hMuonCandidateAfterMomentumRecoCCRes, -1);
+hMuonCandidateAfterMomentumRecoOther->Add(hMuonCandidateAfterMomentumRecoCCRes, -1);
 hMuonCandidateAfterMomentumRecoStacked->Add(hMuonCandidateAfterMomentumRecoOther);
 hMuonCandidateAfterMomentumRecoStacked->Add(hMuonCandidateAfterMomentumRecoCCQE);
-//hMuonCandidateAfterMomentumRecoStacked->Add(hMuonCandidateAfterMomentumRecoCCRes);
-hMuonCandidateAfterMomentumRecoStacked->Add(hMuonCandidateAfterMomentumRecoCCCoh);
+hMuonCandidateAfterMomentumRecoStacked->Add(hMuonCandidateAfterMomentumRecoCCRes);
+hMuonCandidateAfterMomentumRecoStacked->Add(hMuonCandidateAfterMomentumReco);
+//hMuonCandidateAfterMomentumRecoStacked->Add(hMuonCandidateAfterMomentumRecoCCCoh);
 
-//hMuonCandidateAfterMomentumRecoStacked->GetXaxis()->SetTitle("#mu Momentum [GeV/c]");
-//hMuonCandidateAfterMomentumRecoStacked->GetXaxis()->CenterTitle();
+hMuonCandidateAfterMomentumRecoStacked->Draw("HIST");
+hMuonCandidateAfterMomentumRecoStacked->GetXaxis()->SetTitle("p_{#mu} [GeV/c]");
+hMuonCandidateAfterMomentumRecoStacked->GetXaxis()->CenterTitle();
+hMuonCandidateAfterMomentumRecoStacked->GetYaxis()->SetTitle("Number of Events");
+hMuonCandidateAfterMomentumRecoStacked->GetYaxis()->CenterTitle();
+c54->Modified();
 
-//hMuonCandidateAfterMomentumRecoStacked->GetYaxis()->SetTitle("Number of Events");
-//hMuonCandidateAfterMomentumRecoStacked->GetYaxis()->CenterTitle();
+// ### Defining the legend for the plot ###
+TLegend *leg54 = new TLegend();
+leg54 = new TLegend(0.58,0.65,1.00,1.00);
+leg54->SetTextSize(0.04);
+leg54->SetTextAlign(12);
+leg54->SetFillColor(kWhite);
+leg54->SetLineColor(kWhite);
+leg54->SetShadowColor(kWhite);
+leg54->SetHeader("Channel");
+leg54->AddEntry(hMuonCandidateAfterMomentumReco,"Reco CC-Coh");
+//leg54->AddEntry(hMuonCandidateAfterMomentumRecoCCCoh,"Reco CC-Coh");
+leg54->AddEntry(hMuonCandidateAfterMomentumRecoCCQE,"Reco CC-QE");
+leg54->AddEntry(hMuonCandidateAfterMomentumRecoCCRes,"Reco CC-Res");
+leg54->AddEntry(hMuonCandidateAfterMomentumRecoOther,"Reco Other");
+leg54->Draw();
+*/
 
-hMuonCandidateAfterMomentumRecoStacked->Draw();
-
-
-
+/*
 TCanvas *c55 = new TCanvas("c55", "Stacked True Pion Candidate Momentums After Selection");
 c55->SetTicks();
 c55->SetFillColor(kWhite);
 
-hPionCandidateAfterMomentumTrueCCCoh->SetFillColor(kBlue);
-//hPionCandidateAfterMomentumTrueCCCoh->Scale(CCCohScaleFactor);
-hPionCandidateAfterMomentumTrueCCCoh->Rebin(100);
+hPionCandidateAfterMomentumTrue->SetFillColor(kBlue);
+hPionCandidateAfterMomentumTrue->Scale(CCCohScaleFactor);
+hPionCandidateAfterMomentumTrue->Rebin(100);
+//hPionCandidateAfterMomentumTrueCCCoh->SetFillColor(kBlue);
+//hPionCandidateAfterMomentumTrueCCCoh->Rebin(100);
 hPionCandidateAfterMomentumTrueCCQE->SetFillColor(kViolet);
 hPionCandidateAfterMomentumTrueCCQE->Rebin(100);
-//hPionCandidateAfterMomentumTrueCCRes->SetFillColor(kRed);
-//hPionCandidateAfterMomentumTrueCCRes->Rebin(100);
+hPionCandidateAfterMomentumTrueCCRes->SetFillColor(kRed);
+hPionCandidateAfterMomentumTrueCCRes->Rebin(100);
 hPionCandidateAfterMomentumTrueOther->SetFillColor(kBlack);
 hPionCandidateAfterMomentumTrueOther->Rebin(100);
 hPionCandidateAfterMomentumTrueOther->Add(hPionCandidateAfterMomentumTrueCCQE, -1);
-//hPionCandidateAfterMomentumTrueOther->Add(hPionCandidateAfterMomentumTrueCCRes, -1);
+hPionCandidateAfterMomentumTrueOther->Add(hPionCandidateAfterMomentumTrueCCRes, -1);
 hPionCandidateAfterMomentumTrueStacked->Add(hPionCandidateAfterMomentumTrueOther);
 hPionCandidateAfterMomentumTrueStacked->Add(hPionCandidateAfterMomentumTrueCCQE);
-//hPionCandidateAfterMomentumTrueStacked->Add(hPionCandidateAfterMomentumTrueCCRes);
-hPionCandidateAfterMomentumTrueStacked->Add(hPionCandidateAfterMomentumTrueCCCoh);
+hPionCandidateAfterMomentumTrueStacked->Add(hPionCandidateAfterMomentumTrueCCRes);
+hPionCandidateAfterMomentumTrueStacked->Add(hPionCandidateAfterMomentumTrue);
+//hPionCandidateAfterMomentumTrueStacked->Add(hPionCandidateAfterMomentumTrueCCCoh);
 
-//hPionCandidateAfterMomentumTrueStacked->GetXaxis()->SetTitle("#pi Momentum [GeV/c]");
-//hPionCandidateAfterMomentumTrueStacked->GetXaxis()->CenterTitle();
+hPionCandidateAfterMomentumTrueStacked->Draw("HIST");
+hPionCandidateAfterMomentumTrueStacked->GetXaxis()->SetTitle("p_{#pi} [GeV/c]");
+hPionCandidateAfterMomentumTrueStacked->GetXaxis()->CenterTitle();
+hPionCandidateAfterMomentumTrueStacked->GetYaxis()->SetTitle("Number of Events");
+hPionCandidateAfterMomentumTrueStacked->GetYaxis()->CenterTitle();
+c55->Modified();
 
-//hPionCandidateAfterMomentumTrueStacked->GetYaxis()->SetTitle("Number of Events");
-//hPionCandidateAfterMomentumTrueStacked->GetYaxis()->CenterTitle();
-
-hPionCandidateAfterMomentumTrueStacked->Draw();
-
+// ### Defining the legend for the plot ###
+TLegend *leg55 = new TLegend();
+leg55 = new TLegend(0.58,0.65,1.00,1.00);
+leg55->SetTextSize(0.04);
+leg55->SetTextAlign(12);
+leg55->SetFillColor(kWhite);
+leg55->SetLineColor(kWhite);
+leg55->SetShadowColor(kWhite);
+leg55->SetHeader("Channel");
+leg55->AddEntry(hPionCandidateAfterMomentumTrue,"True CC-Coh");
+//leg55->AddEntry(hPionCandidateAfterMomentumTrueCCCoh,"True CC-Coh");
+leg55->AddEntry(hPionCandidateAfterMomentumTrueCCQE,"True CC-QE");
+leg55->AddEntry(hPionCandidateAfterMomentumTrueCCRes,"True CC-Res");
+leg55->AddEntry(hPionCandidateAfterMomentumTrueOther,"True Other");
+leg55->Draw();
+*/
 
 
 TCanvas *c56 = new TCanvas("c56", "Stacked Reco Pion Candidate Momentums After Selection");
 c56->SetTicks();
 c56->SetFillColor(kWhite);
 
-hPionCandidateAfterMomentumRecoCCCoh->SetFillColor(kBlue);
-//hPionCandidateAfterMomentumRecoCCCoh->Scale(CCCohScaleFactor);
-hPionCandidateAfterMomentumRecoCCCoh->Rebin(100);
+hPionCandidateAfterMomentumReco->SetFillColor(kBlue);
+hPionCandidateAfterMomentumReco->Scale(CCCohScaleFactor);
+hPionCandidateAfterMomentumReco->Rebin(100);
+//hPionCandidateAfterMomentumRecoCCCoh->SetFillColor(kBlue);
+//hPionCandidateAfterMomentumRecoCCCoh->Rebin(100);
 hPionCandidateAfterMomentumRecoCCQE->SetFillColor(kViolet);
 hPionCandidateAfterMomentumRecoCCQE->Rebin(100);
-//hPionCandidateAfterMomentumRecoCCRes->SetFillColor(kRed);
-//hPionCandidateAfterMomentumRecoCCRes->Rebin(100);
+hPionCandidateAfterMomentumRecoCCRes->SetFillColor(kRed);
+hPionCandidateAfterMomentumRecoCCRes->Rebin(100);
 hPionCandidateAfterMomentumRecoOther->SetFillColor(kBlack);
 hPionCandidateAfterMomentumRecoOther->Rebin(100);
 hPionCandidateAfterMomentumRecoOther->Add(hPionCandidateAfterMomentumRecoCCQE, -1);
-//hPionCandidateAfterMomentumRecoOther->Add(hPionCandidateAfterMomentumRecoCCRes, -1);
+hPionCandidateAfterMomentumRecoOther->Add(hPionCandidateAfterMomentumRecoCCRes, -1);
 hPionCandidateAfterMomentumRecoStacked->Add(hPionCandidateAfterMomentumRecoOther);
 hPionCandidateAfterMomentumRecoStacked->Add(hPionCandidateAfterMomentumRecoCCQE);
-//hPionCandidateAfterMomentumRecoStacked->Add(hPionCandidateAfterMomentumRecoCCRes);
-hPionCandidateAfterMomentumRecoStacked->Add(hPionCandidateAfterMomentumRecoCCCoh);
+hPionCandidateAfterMomentumRecoStacked->Add(hPionCandidateAfterMomentumRecoCCRes);
+hPionCandidateAfterMomentumRecoStacked->Add(hPionCandidateAfterMomentumReco);
+//hPionCandidateAfterMomentumRecoStacked->Add(hPionCandidateAfterMomentumRecoCCCoh);
 
-//hPionCandidateAfterMomentumRecoStacked->GetXaxis()->SetTitle("#pi Momentum [GeV/c]");
-//hPionCandidateAfterMomentumRecoStacked->GetXaxis()->CenterTitle();
+hPionCandidateAfterMomentumRecoStacked->Draw("HIST");
+hPionCandidateAfterMomentumRecoStacked->GetXaxis()->SetTitle("p_{#pi} [GeV/c]");
+hPionCandidateAfterMomentumRecoStacked->GetXaxis()->CenterTitle();
+hPionCandidateAfterMomentumRecoStacked->GetYaxis()->SetTitle("Number of Events");
+hPionCandidateAfterMomentumRecoStacked->GetYaxis()->CenterTitle();
+c56->Modified();
 
-//hPionCandidateAfterMomentumRecoStacked->GetYaxis()->SetTitle("Number of Events");
-//hPionCandidateAfterMomentumRecoStacked->GetYaxis()->CenterTitle();
-
-hPionCandidateAfterMomentumRecoStacked->Draw();
+// ### Defining the legend for the plot ###
+TLegend *leg56 = new TLegend();
+leg56 = new TLegend(0.58,0.65,1.00,1.00);
+leg56->SetTextSize(0.04);
+leg56->SetTextAlign(12);
+leg56->SetFillColor(kWhite);
+leg56->SetLineColor(kWhite);
+leg56->SetShadowColor(kWhite);
+leg56->SetHeader("Channel");
+leg56->AddEntry(hPionCandidateAfterMomentumReco,"Reco CC-Coh");
+//leg56->AddEntry(hPionCandidateAfterMomentumRecoCCCoh,"Reco CC-Coh");
+leg56->AddEntry(hPionCandidateAfterMomentumRecoCCQE,"Reco CC-QE");
+leg56->AddEntry(hPionCandidateAfterMomentumRecoCCRes,"Reco CC-Res");
+leg56->AddEntry(hPionCandidateAfterMomentumRecoOther,"Reco Other");
+leg56->Draw();
 
 
 
@@ -4122,29 +4532,47 @@ TCanvas *c57 = new TCanvas("c57", "Stacked True Muon Candidate Momentums After 2
 c57->SetTicks();
 c57->SetFillColor(kWhite);
 
-hMuonCandidateAfter2MomentumTrueCCCoh->SetFillColor(kBlue);
-//hMuonCandidateAfter2MomentumTrueCCCoh->Scale(CCCohScaleFactor);
-hMuonCandidateAfter2MomentumTrueCCCoh->Rebin(100);
+hMuonCandidateAfter2MomentumTrue->SetFillColor(kBlue);
+hMuonCandidateAfter2MomentumTrue->Scale(CCCohScaleFactor);
+hMuonCandidateAfter2MomentumTrue->Rebin(100);
+//hMuonCandidateAfter2MomentumTrueCCCoh->SetFillColor(kBlue);
+//hMuonCandidateAfter2MomentumTrueCCCoh->Rebin(100);
 hMuonCandidateAfter2MomentumTrueCCQE->SetFillColor(kViolet);
 hMuonCandidateAfter2MomentumTrueCCQE->Rebin(100);
-//hMuonCandidateAfter2MomentumTrueCCRes->SetFillColor(kRed);
-//hMuonCandidateAfter2MomentumTrueCCRes->Rebin(100);
+hMuonCandidateAfter2MomentumTrueCCRes->SetFillColor(kRed);
+hMuonCandidateAfter2MomentumTrueCCRes->Rebin(100);
 hMuonCandidateAfter2MomentumTrueOther->SetFillColor(kBlack);
 hMuonCandidateAfter2MomentumTrueOther->Rebin(100);
 hMuonCandidateAfter2MomentumTrueOther->Add(hMuonCandidateAfter2MomentumTrueCCQE, -1);
-//hMuonCandidateAfter2MomentumTrueOther->Add(hMuonCandidateAfter2MomentumTrueCCRes, -1);
+hMuonCandidateAfter2MomentumTrueOther->Add(hMuonCandidateAfter2MomentumTrueCCRes, -1);
 hMuonCandidateAfter2MomentumTrueStacked->Add(hMuonCandidateAfter2MomentumTrueOther);
 hMuonCandidateAfter2MomentumTrueStacked->Add(hMuonCandidateAfter2MomentumTrueCCQE);
-//hMuonCandidateAfter2MomentumTrueStacked->Add(hMuonCandidateAfter2MomentumTrueCCRes);
-hMuonCandidateAfter2MomentumTrueStacked->Add(hMuonCandidateAfter2MomentumTrueCCCoh);
+hMuonCandidateAfter2MomentumTrueStacked->Add(hMuonCandidateAfter2MomentumTrueCCRes);
+hMuonCandidateAfter2MomentumTrueStacked->Add(hMuonCandidateAfter2MomentumTrue);
+//hMuonCandidateAfter2MomentumTrueStacked->Add(hMuonCandidateAfter2MomentumTrueCCCoh);
 
-//hMuonCandidateAfter2MomentumTrueStacked->GetXaxis()->SetTitle("#mu Momentum [GeV/c]");
-//hMuonCandidateAfter2MomentumTrueStacked->GetXaxis()->CenterTitle();
+hMuonCandidateAfter2MomentumTrueStacked->Draw("HIST");
+hMuonCandidateAfter2MomentumTrueStacked->GetXaxis()->SetTitle("p_{#mu} [GeV/c]");
+hMuonCandidateAfter2MomentumTrueStacked->GetXaxis()->CenterTitle();
+hMuonCandidateAfter2MomentumTrueStacked->GetYaxis()->SetTitle("Number of Events");
+hMuonCandidateAfter2MomentumTrueStacked->GetYaxis()->CenterTitle();
+c57->Modified();
 
-//hMuonCandidateAfter2MomentumTrueStacked->GetYaxis()->SetTitle("Number of Events");
-//hMuonCandidateAfter2MomentumTrueStacked->GetYaxis()->CenterTitle();
-
-hMuonCandidateAfter2MomentumTrueStacked->Draw();
+// ### Defining the legend for the plot ###
+TLegend *leg57 = new TLegend();
+leg57 = new TLegend(0.58,0.65,1.00,1.00);
+leg57->SetTextSize(0.04);
+leg57->SetTextAlign(12);
+leg57->SetFillColor(kWhite);
+leg57->SetLineColor(kWhite);
+leg57->SetShadowColor(kWhite);
+leg57->SetHeader("Channel");
+leg57->AddEntry(hMuonCandidateAfter2MomentumTrue,"True CC-Coh");
+//leg57->AddEntry(hMuonCandidateAfter2MomentumTrueCCCoh,"True CC-Coh");
+leg57->AddEntry(hMuonCandidateAfter2MomentumTrueCCQE,"True CC-QE");
+leg57->AddEntry(hMuonCandidateAfter2MomentumTrueCCRes,"True CC-Res");
+leg57->AddEntry(hMuonCandidateAfter2MomentumTrueOther,"True Other");
+leg57->Draw();
 
 
 
@@ -4152,29 +4580,47 @@ TCanvas *c58 = new TCanvas("c58", "Stacked Reco Muon Candidate Momentums After 2
 c58->SetTicks();
 c58->SetFillColor(kWhite);
 
-hMuonCandidateAfter2MomentumRecoCCCoh->SetFillColor(kBlue);
-//hMuonCandidateAfter2MomentumRecoCCCoh->Scale(CCCohScaleFactor);
-hMuonCandidateAfter2MomentumRecoCCCoh->Rebin(100);
+hMuonCandidateAfter2MomentumReco->SetFillColor(kBlue);
+hMuonCandidateAfter2MomentumReco->Scale(CCCohScaleFactor);
+hMuonCandidateAfter2MomentumReco->Rebin(100);
+//hMuonCandidateAfter2MomentumRecoCCCoh->SetFillColor(kBlue);
+//hMuonCandidateAfter2MomentumRecoCCCoh->Rebin(100);
 hMuonCandidateAfter2MomentumRecoCCQE->SetFillColor(kViolet);
 hMuonCandidateAfter2MomentumRecoCCQE->Rebin(100);
-//hMuonCandidateAfter2MomentumRecoCCRes->SetFillColor(kRed);
-//hMuonCandidateAfter2MomentumRecoCCRes->Rebin(100);
+hMuonCandidateAfter2MomentumRecoCCRes->SetFillColor(kRed);
+hMuonCandidateAfter2MomentumRecoCCRes->Rebin(100);
 hMuonCandidateAfter2MomentumRecoOther->SetFillColor(kBlack);
 hMuonCandidateAfter2MomentumRecoOther->Rebin(100);
 hMuonCandidateAfter2MomentumRecoOther->Add(hMuonCandidateAfter2MomentumRecoCCQE, -1);
-//hMuonCandidateAfter2MomentumRecoOther->Add(hMuonCandidateAfter2MomentumRecoCCRes, -1);
+hMuonCandidateAfter2MomentumRecoOther->Add(hMuonCandidateAfter2MomentumRecoCCRes, -1);
 hMuonCandidateAfter2MomentumRecoStacked->Add(hMuonCandidateAfter2MomentumRecoOther);
 hMuonCandidateAfter2MomentumRecoStacked->Add(hMuonCandidateAfter2MomentumRecoCCQE);
-//hMuonCandidateAfter2MomentumRecoStacked->Add(hMuonCandidateAfter2MomentumRecoCCRes);
-hMuonCandidateAfter2MomentumRecoStacked->Add(hMuonCandidateAfter2MomentumRecoCCCoh);
+hMuonCandidateAfter2MomentumRecoStacked->Add(hMuonCandidateAfter2MomentumRecoCCRes);
+hMuonCandidateAfter2MomentumRecoStacked->Add(hMuonCandidateAfter2MomentumReco);
+//hMuonCandidateAfter2MomentumRecoStacked->Add(hMuonCandidateAfter2MomentumRecoCCCoh);
 
-//hMuonCandidateAfter2MomentumRecoStacked->GetXaxis()->SetTitle("#mu Momentum [GeV/c]");
-//hMuonCandidateAfter2MomentumRecoStacked->GetXaxis()->CenterTitle();
+hMuonCandidateAfter2MomentumRecoStacked->Draw("HIST");
+hMuonCandidateAfter2MomentumRecoStacked->GetXaxis()->SetTitle("p_{#mu} [GeV/c]");
+hMuonCandidateAfter2MomentumRecoStacked->GetXaxis()->CenterTitle();
+hMuonCandidateAfter2MomentumRecoStacked->GetYaxis()->SetTitle("Number of Events");
+hMuonCandidateAfter2MomentumRecoStacked->GetYaxis()->CenterTitle();
+c58->Modified();
 
-//hMuonCandidateAfter2MomentumRecoStacked->GetYaxis()->SetTitle("Number of Events");
-//hMuonCandidateAfter2MomentumRecoStacked->GetYaxis()->CenterTitle();
-
-hMuonCandidateAfter2MomentumRecoStacked->Draw();
+// ### Defining the legend for the plot ###
+TLegend *leg58 = new TLegend();
+leg58 = new TLegend(0.58,0.65,1.00,1.00);
+leg58->SetTextSize(0.04);
+leg58->SetTextAlign(12);
+leg58->SetFillColor(kWhite);
+leg58->SetLineColor(kWhite);
+leg58->SetShadowColor(kWhite);
+leg58->SetHeader("Channel");
+leg58->AddEntry(hMuonCandidateAfter2MomentumReco,"Reco CC-Coh");
+//leg58->AddEntry(hMuonCandidateAfter2MomentumRecoCCCoh,"Reco CC-Coh");
+leg58->AddEntry(hMuonCandidateAfter2MomentumRecoCCQE,"Reco CC-QE");
+leg58->AddEntry(hMuonCandidateAfter2MomentumRecoCCRes,"Reco CC-Res");
+leg58->AddEntry(hMuonCandidateAfter2MomentumRecoOther,"Reco Other");
+leg58->Draw();
 
 
 
@@ -4182,29 +4628,47 @@ TCanvas *c59 = new TCanvas("c59", "Stacked True Pion Candidate Momentums After 2
 c59->SetTicks();
 c59->SetFillColor(kWhite);
 
-hPionCandidateAfter2MomentumTrueCCCoh->SetFillColor(kBlue);
-//hPionCandidateAfter2MomentumTrueCCCoh->Scale(CCCohScaleFactor);
-hPionCandidateAfter2MomentumTrueCCCoh->Rebin(100);
+hPionCandidateAfter2MomentumTrue->SetFillColor(kBlue);
+hPionCandidateAfter2MomentumTrue->Scale(CCCohScaleFactor);
+hPionCandidateAfter2MomentumTrue->Rebin(100);
+//hPionCandidateAfter2MomentumTrueCCCoh->SetFillColor(kBlue);
+//hPionCandidateAfter2MomentumTrueCCCoh->Rebin(100);
 hPionCandidateAfter2MomentumTrueCCQE->SetFillColor(kViolet);
 hPionCandidateAfter2MomentumTrueCCQE->Rebin(100);
-//hPionCandidateAfter2MomentumTrueCCRes->SetFillColor(kRed);
-//hPionCandidateAfter2MomentumTrueCCRes->Rebin(100);
+hPionCandidateAfter2MomentumTrueCCRes->SetFillColor(kRed);
+hPionCandidateAfter2MomentumTrueCCRes->Rebin(100);
 hPionCandidateAfter2MomentumTrueOther->SetFillColor(kBlack);
 hPionCandidateAfter2MomentumTrueOther->Rebin(100);
 hPionCandidateAfter2MomentumTrueOther->Add(hPionCandidateAfter2MomentumTrueCCQE, -1);
-//hPionCandidateAfter2MomentumTrueOther->Add(hPionCandidateAfter2MomentumTrueCCRes, -1);
+hPionCandidateAfter2MomentumTrueOther->Add(hPionCandidateAfter2MomentumTrueCCRes, -1);
 hPionCandidateAfter2MomentumTrueStacked->Add(hPionCandidateAfter2MomentumTrueOther);
 hPionCandidateAfter2MomentumTrueStacked->Add(hPionCandidateAfter2MomentumTrueCCQE);
-//hPionCandidateAfter2MomentumTrueStacked->Add(hPionCandidateAfter2MomentumTrueCCRes);
-hPionCandidateAfter2MomentumTrueStacked->Add(hPionCandidateAfter2MomentumTrueCCCoh);
+hPionCandidateAfter2MomentumTrueStacked->Add(hPionCandidateAfter2MomentumTrueCCRes);
+hPionCandidateAfter2MomentumTrueStacked->Add(hPionCandidateAfter2MomentumTrue);
+//hPionCandidateAfter2MomentumTrueStacked->Add(hPionCandidateAfter2MomentumTrueCCCoh);
 
-//hPionCandidateAfter2MomentumTrueStacked->GetXaxis()->SetTitle("#pi Momentum [GeV/c]");
-//hPionCandidateAfter2MomentumTrueStacked->GetXaxis()->CenterTitle();
+hPionCandidateAfter2MomentumTrueStacked->Draw("HIST");
+hPionCandidateAfter2MomentumTrueStacked->GetXaxis()->SetTitle("p_{#pi} [GeV/c]");
+hPionCandidateAfter2MomentumTrueStacked->GetXaxis()->CenterTitle();
+hPionCandidateAfter2MomentumTrueStacked->GetYaxis()->SetTitle("Number of Events");
+hPionCandidateAfter2MomentumTrueStacked->GetYaxis()->CenterTitle();
+c59->Modified();
 
-//hPionCandidateAfter2MomentumTrueStacked->GetYaxis()->SetTitle("Number of Events");
-//hPionCandidateAfter2MomentumTrueStacked->GetYaxis()->CenterTitle();
-
-hPionCandidateAfter2MomentumTrueStacked->Draw();
+// ### Defining the legend for the plot ###
+TLegend *leg59 = new TLegend();
+leg59 = new TLegend(0.58,0.65,1.00,1.00);
+leg59->SetTextSize(0.04);
+leg59->SetTextAlign(12);
+leg59->SetFillColor(kWhite);
+leg59->SetLineColor(kWhite);
+leg59->SetShadowColor(kWhite);
+leg59->SetHeader("Channel");
+leg59->AddEntry(hPionCandidateAfter2MomentumTrue,"True CC-Coh");
+//leg59->AddEntry(hPionCandidateAfter2MomentumTrueCCCoh,"True CC-Coh");
+leg59->AddEntry(hPionCandidateAfter2MomentumTrueCCQE,"True CC-QE");
+leg59->AddEntry(hPionCandidateAfter2MomentumTrueCCRes,"True CC-Res");
+leg59->AddEntry(hPionCandidateAfter2MomentumTrueOther,"True Other");
+leg59->Draw();
 
 
 
@@ -4212,59 +4676,95 @@ TCanvas *c60 = new TCanvas("c60", "Stacked Reco Pion Candidate Momentums After 2
 c60->SetTicks();
 c60->SetFillColor(kWhite);
 
-hPionCandidateAfter2MomentumRecoCCCoh->SetFillColor(kBlue);
-//hPionCandidateAfter2MomentumRecoCCCoh->Scale(CCCohScaleFactor);
-hPionCandidateAfter2MomentumRecoCCCoh->Rebin(100);
+hPionCandidateAfter2MomentumReco->SetFillColor(kBlue);
+hPionCandidateAfter2MomentumReco->Scale(CCCohScaleFactor);
+hPionCandidateAfter2MomentumReco->Rebin(100);
+//hPionCandidateAfter2MomentumRecoCCCoh->SetFillColor(kBlue);
+//hPionCandidateAfter2MomentumRecoCCCoh->Rebin(100);
 hPionCandidateAfter2MomentumRecoCCQE->SetFillColor(kViolet);
 hPionCandidateAfter2MomentumRecoCCQE->Rebin(100);
-//hPionCandidateAfter2MomentumRecoCCRes->SetFillColor(kRed);
-//hPionCandidateAfter2MomentumRecoCCRes->Rebin(100);
+hPionCandidateAfter2MomentumRecoCCRes->SetFillColor(kRed);
+hPionCandidateAfter2MomentumRecoCCRes->Rebin(100);
 hPionCandidateAfter2MomentumRecoOther->SetFillColor(kBlack);
 hPionCandidateAfter2MomentumRecoOther->Rebin(100);
 hPionCandidateAfter2MomentumRecoOther->Add(hPionCandidateAfter2MomentumRecoCCQE, -1);
-//hPionCandidateAfter2MomentumRecoOther->Add(hPionCandidateAfter2MomentumRecoCCRes, -1);
+hPionCandidateAfter2MomentumRecoOther->Add(hPionCandidateAfter2MomentumRecoCCRes, -1);
 hPionCandidateAfter2MomentumRecoStacked->Add(hPionCandidateAfter2MomentumRecoOther);
 hPionCandidateAfter2MomentumRecoStacked->Add(hPionCandidateAfter2MomentumRecoCCQE);
-//hPionCandidateAfter2MomentumRecoStacked->Add(hPionCandidateAfter2MomentumRecoCCRes);
-hPionCandidateAfter2MomentumRecoStacked->Add(hPionCandidateAfter2MomentumRecoCCCoh);
+hPionCandidateAfter2MomentumRecoStacked->Add(hPionCandidateAfter2MomentumRecoCCRes);
+hPionCandidateAfter2MomentumRecoStacked->Add(hPionCandidateAfter2MomentumReco);
+//hPionCandidateAfter2MomentumRecoStacked->Add(hPionCandidateAfter2MomentumRecoCCCoh);
 
-//hPionCandidateAfter2MomentumRecoStacked->GetXaxis()->SetTitle("#pi Momentum [GeV/c]");
-//hPionCandidateAfter2MomentumRecoStacked->GetXaxis()->CenterTitle();
+hPionCandidateAfter2MomentumRecoStacked->Draw("HIST");
+hPionCandidateAfter2MomentumRecoStacked->GetXaxis()->SetTitle("p_{#pi} [GeV/c]");
+hPionCandidateAfter2MomentumRecoStacked->GetXaxis()->CenterTitle();
+hPionCandidateAfter2MomentumRecoStacked->GetYaxis()->SetTitle("Number of Events");
+hPionCandidateAfter2MomentumRecoStacked->GetYaxis()->CenterTitle();
+c60->Modified();
 
-//hPionCandidateAfter2MomentumRecoStacked->GetYaxis()->SetTitle("Number of Events");
-//hPionCandidateAfter2MomentumRecoStacked->GetYaxis()->CenterTitle();
+// ### Defining the legend for the plot ###
+TLegend *leg60 = new TLegend();
+leg60 = new TLegend(0.58,0.65,1.00,1.00);
+leg60->SetTextSize(0.04);
+leg60->SetTextAlign(12);
+leg60->SetFillColor(kWhite);
+leg60->SetLineColor(kWhite);
+leg60->SetShadowColor(kWhite);
+leg60->SetHeader("Channel");
+leg60->AddEntry(hPionCandidateAfter2MomentumReco,"Reco CC-Coh");
+//leg60->AddEntry(hPionCandidateAfter2MomentumRecoCCCoh,"Reco CC-Coh");
+leg60->AddEntry(hPionCandidateAfter2MomentumRecoCCQE,"Reco CC-QE");
+leg60->AddEntry(hPionCandidateAfter2MomentumRecoCCRes,"Reco CC-Res");
+leg60->AddEntry(hPionCandidateAfter2MomentumRecoOther,"Reco Other");
+leg60->Draw();
 
-hPionCandidateAfter2MomentumRecoStacked->Draw();
 
-
-
+/*
 TCanvas *c61 = new TCanvas("c61", "Stacked Reco Muon Candidate Combo Momentums After Selection");
 c61->SetTicks();
 c61->SetFillColor(kWhite);
 
-hMuonCandidateAfterComboMomentumRecoCCCoh->SetFillColor(kBlue);
-//hMuonCandidateAfterComboMomentumRecoCCCoh->Scale(CCCohScaleFactor);
-hMuonCandidateAfterComboMomentumRecoCCCoh->Rebin(100);
+hMuonCandidateAfterComboMomentumReco->SetFillColor(kBlue);
+hMuonCandidateAfterComboMomentumReco->Scale(CCCohScaleFactor);
+hMuonCandidateAfterComboMomentumReco->Rebin(100);
+//hMuonCandidateAfterComboMomentumRecoCCCoh->SetFillColor(kBlue);
+//hMuonCandidateAfterComboMomentumRecoCCCoh->Rebin(100);
 hMuonCandidateAfterComboMomentumRecoCCQE->SetFillColor(kViolet);
 hMuonCandidateAfterComboMomentumRecoCCQE->Rebin(100);
-//hMuonCandidateAfterComboMomentumRecoCCRes->SetFillColor(kRed);
-//hMuonCandidateAfterComboMomentumRecoCCRes->Rebin(100);
+hMuonCandidateAfterComboMomentumRecoCCRes->SetFillColor(kRed);
+hMuonCandidateAfterComboMomentumRecoCCRes->Rebin(100);
 hMuonCandidateAfterComboMomentumRecoOther->SetFillColor(kBlack);
 hMuonCandidateAfterComboMomentumRecoOther->Rebin(100);
 hMuonCandidateAfterComboMomentumRecoOther->Add(hMuonCandidateAfterComboMomentumRecoCCQE, -1);
-//hMuonCandidateAfterComboMomentumRecoOther->Add(hMuonCandidateAfterComboMomentumRecoCCRes, -1);
+hMuonCandidateAfterComboMomentumRecoOther->Add(hMuonCandidateAfterComboMomentumRecoCCRes, -1);
 hMuonCandidateAfterComboMomentumRecoStacked->Add(hMuonCandidateAfterComboMomentumRecoOther);
 hMuonCandidateAfterComboMomentumRecoStacked->Add(hMuonCandidateAfterComboMomentumRecoCCQE);
-//hMuonCandidateAfterComboMomentumRecoStacked->Add(hMuonCandidateAfterComboMomentumRecoCCRes);
-hMuonCandidateAfterComboMomentumRecoStacked->Add(hMuonCandidateAfterComboMomentumRecoCCCoh);
+hMuonCandidateAfterComboMomentumRecoStacked->Add(hMuonCandidateAfterComboMomentumRecoCCRes);
+hMuonCandidateAfterComboMomentumRecoStacked->Add(hMuonCandidateAfterComboMomentumReco);
+//hMuonCandidateAfterComboMomentumRecoStacked->Add(hMuonCandidateAfterComboMomentumRecoCCCoh);
 
-//hMuonCandidateAfterComboMomentumRecoStacked->GetXaxis()->SetTitle("#mu Momentum [GeV/c]");
-//hMuonCandidateAfterComboMomentumRecoStacked->GetXaxis()->CenterTitle();
+hMuonCandidateAfterComboMomentumRecoStacked->Draw("HIST");
+hMuonCandidateAfterComboMomentumRecoStacked->GetXaxis()->SetTitle("p_{#mu} [GeV/c]");
+hMuonCandidateAfterComboMomentumRecoStacked->GetXaxis()->CenterTitle();
+hMuonCandidateAfterComboMomentumRecoStacked->GetYaxis()->SetTitle("Number of Events");
+hMuonCandidateAfterComboMomentumRecoStacked->GetYaxis()->CenterTitle();
+c61->Modified();
 
-//hMuonCandidateAfterComboMomentumRecoStacked->GetYaxis()->SetTitle("Number of Events");
-//hMuonCandidateAfterComboMomentumRecoStacked->GetYaxis()->CenterTitle();
-
-hMuonCandidateAfterComboMomentumRecoStacked->Draw();
+// ### Defining the legend for the plot ###
+TLegend *leg61 = new TLegend();
+leg61 = new TLegend(0.58,0.65,1.00,1.00);
+leg61->SetTextSize(0.04);
+leg61->SetTextAlign(12);
+leg61->SetFillColor(kWhite);
+leg61->SetLineColor(kWhite);
+leg61->SetShadowColor(kWhite);
+leg61->SetHeader("Channel");
+leg61->AddEntry(hMuonCandidateAfterComboMomentumReco,"Reco CC-Coh");
+//leg61->AddEntry(hMuonCandidateAfterComboMomentumRecoCCCoh,"Reco CC-Coh");
+leg61->AddEntry(hMuonCandidateAfterComboMomentumRecoCCQE,"Reco CC-QE");
+leg61->AddEntry(hMuonCandidateAfterComboMomentumRecoCCRes,"Reco CC-Res");
+leg61->AddEntry(hMuonCandidateAfterComboMomentumRecoOther,"Reco Other");
+leg61->Draw();
 
 
 
@@ -4272,29 +4772,47 @@ TCanvas *c62 = new TCanvas("c62", "Stacked Reco Pion Candidate Combo Momentums A
 c62->SetTicks();
 c62->SetFillColor(kWhite);
 
-hPionCandidateAfterComboMomentumRecoCCCoh->SetFillColor(kBlue);
-//hPionCandidateAfterComboMomentumRecoCCCoh->Scale(CCCohScaleFactor);
-hPionCandidateAfterComboMomentumRecoCCCoh->Rebin(100);
+hPionCandidateAfterComboMomentumReco->SetFillColor(kBlue);
+hPionCandidateAfterComboMomentumReco->Scale(CCCohScaleFactor);
+hPionCandidateAfterComboMomentumReco->Rebin(100);
+//hPionCandidateAfterComboMomentumRecoCCCoh->SetFillColor(kBlue);
+//hPionCandidateAfterComboMomentumRecoCCCoh->Rebin(100);
 hPionCandidateAfterComboMomentumRecoCCQE->SetFillColor(kViolet);
 hPionCandidateAfterComboMomentumRecoCCQE->Rebin(100);
-//hPionCandidateAfterComboMomentumRecoCCRes->SetFillColor(kRed);
-//hPionCandidateAfterComboMomentumRecoCCRes->Rebin(100);
+hPionCandidateAfterComboMomentumRecoCCRes->SetFillColor(kRed);
+hPionCandidateAfterComboMomentumRecoCCRes->Rebin(100);
 hPionCandidateAfterComboMomentumRecoOther->SetFillColor(kBlack);
 hPionCandidateAfterComboMomentumRecoOther->Rebin(100);
 hPionCandidateAfterComboMomentumRecoOther->Add(hPionCandidateAfterComboMomentumRecoCCQE, -1);
-//hPionCandidateAfterComboMomentumRecoOther->Add(hPionCandidateAfterComboMomentumRecoCCRes, -1);
+hPionCandidateAfterComboMomentumRecoOther->Add(hPionCandidateAfterComboMomentumRecoCCRes, -1);
 hPionCandidateAfterComboMomentumRecoStacked->Add(hPionCandidateAfterComboMomentumRecoOther);
 hPionCandidateAfterComboMomentumRecoStacked->Add(hPionCandidateAfterComboMomentumRecoCCQE);
-//hPionCandidateAfterComboMomentumRecoStacked->Add(hPionCandidateAfterComboMomentumRecoCCRes);
-hPionCandidateAfterComboMomentumRecoStacked->Add(hPionCandidateAfterComboMomentumRecoCCCoh);
+hPionCandidateAfterComboMomentumRecoStacked->Add(hPionCandidateAfterComboMomentumRecoCCRes);
+hPionCandidateAfterComboMomentumRecoStacked->Add(hPionCandidateAfterComboMomentumReco);
+//hPionCandidateAfterComboMomentumRecoStacked->Add(hPionCandidateAfterComboMomentumRecoCCCoh);
 
-//hPionCandidateAfterComboMomentumRecoStacked->GetXaxis()->SetTitle("#mu Momentum [GeV/c]");
-//hPionCandidateAfterComboMomentumRecoStacked->GetXaxis()->CenterTitle();
+hPionCandidateAfterComboMomentumRecoStacked->Draw("HIST");
+hPionCandidateAfterComboMomentumRecoStacked->GetXaxis()->SetTitle("p_{#pi} [GeV/c]");
+hPionCandidateAfterComboMomentumRecoStacked->GetXaxis()->CenterTitle();
+hPionCandidateAfterComboMomentumRecoStacked->GetYaxis()->SetTitle("Number of Events");
+hPionCandidateAfterComboMomentumRecoStacked->GetYaxis()->CenterTitle();
+c62->Modified();
 
-//hPionCandidateAfterComboMomentumRecoStacked->GetYaxis()->SetTitle("Number of Events");
-//hPionCandidateAfterComboMomentumRecoStacked->GetYaxis()->CenterTitle();
-
-hPionCandidateAfterComboMomentumRecoStacked->Draw();
+// ### Defining the legend for the plot ###
+TLegend *leg62 = new TLegend();
+leg62 = new TLegend(0.58,0.65,1.00,1.00);
+leg62->SetTextSize(0.04);
+leg62->SetTextAlign(12);
+leg62->SetFillColor(kWhite);
+leg62->SetLineColor(kWhite);
+leg62->SetShadowColor(kWhite);
+leg62->SetHeader("Channel");
+leg62->AddEntry(hPionCandidateAfterComboMomentumReco,"Reco CC-Coh");
+//leg62->AddEntry(hPionCandidateAfterComboMomentumRecoCCCoh,"Reco CC-Coh");
+leg62->AddEntry(hPionCandidateAfterComboMomentumRecoCCQE,"Reco CC-QE");
+leg62->AddEntry(hPionCandidateAfterComboMomentumRecoCCRes,"Reco CC-Res");
+leg62->AddEntry(hPionCandidateAfterComboMomentumRecoOther,"Reco Other");
+leg62->Draw();
 
 
 
@@ -4302,29 +4820,47 @@ TCanvas *c63 = new TCanvas("c63", "Stacked Reco Muon Candidate Combo Momentums A
 c63->SetTicks();
 c63->SetFillColor(kWhite);
 
-hMuonCandidateAfter2ComboMomentumRecoCCCoh->SetFillColor(kBlue);
-//hMuonCandidateAfter2ComboMomentumRecoCCCoh->Scale(CCCohScaleFactor);
-hMuonCandidateAfter2ComboMomentumRecoCCCoh->Rebin(100);
+hMuonCandidateAfter2ComboMomentumReco->SetFillColor(kBlue);
+hMuonCandidateAfter2ComboMomentumReco->Scale(CCCohScaleFactor);
+hMuonCandidateAfter2ComboMomentumReco->Rebin(100);
+//hMuonCandidateAfter2ComboMomentumRecoCCCoh->SetFillColor(kBlue);
+//hMuonCandidateAfter2ComboMomentumRecoCCCoh->Rebin(100);
 hMuonCandidateAfter2ComboMomentumRecoCCQE->SetFillColor(kViolet);
 hMuonCandidateAfter2ComboMomentumRecoCCQE->Rebin(100);
-//hMuonCandidateAfter2ComboMomentumRecoCCRes->SetFillColor(kRed);
-//hMuonCandidateAfter2ComboMomentumRecoCCRes->Rebin(100);
+hMuonCandidateAfter2ComboMomentumRecoCCRes->SetFillColor(kRed);
+hMuonCandidateAfter2ComboMomentumRecoCCRes->Rebin(100);
 hMuonCandidateAfter2ComboMomentumRecoOther->SetFillColor(kBlack);
 hMuonCandidateAfter2ComboMomentumRecoOther->Rebin(100);
 hMuonCandidateAfter2ComboMomentumRecoOther->Add(hMuonCandidateAfter2ComboMomentumRecoCCQE, -1);
-//hMuonCandidateAfter2ComboMomentumRecoOther->Add(hMuonCandidateAfter2ComboMomentumRecoCCRes, -1);
+hMuonCandidateAfter2ComboMomentumRecoOther->Add(hMuonCandidateAfter2ComboMomentumRecoCCRes, -1);
 hMuonCandidateAfter2ComboMomentumRecoStacked->Add(hMuonCandidateAfter2ComboMomentumRecoOther);
 hMuonCandidateAfter2ComboMomentumRecoStacked->Add(hMuonCandidateAfter2ComboMomentumRecoCCQE);
-//hMuonCandidateAfter2ComboMomentumRecoStacked->Add(hMuonCandidateAfter2ComboMomentumRecoCCRes);
-hMuonCandidateAfter2ComboMomentumRecoStacked->Add(hMuonCandidateAfter2ComboMomentumRecoCCCoh);
+hMuonCandidateAfter2ComboMomentumRecoStacked->Add(hMuonCandidateAfter2ComboMomentumRecoCCRes);
+hMuonCandidateAfter2ComboMomentumRecoStacked->Add(hMuonCandidateAfter2ComboMomentumReco);
+//hMuonCandidateAfter2ComboMomentumRecoStacked->Add(hMuonCandidateAfter2ComboMomentumRecoCCCoh);
 
-//hMuonCandidateAfter2ComboMomentumRecoStacked->GetXaxis()->SetTitle("#mu Momentum [GeV/c]");
-//hMuonCandidateAfter2ComboMomentumRecoStacked->GetXaxis()->CenterTitle();
+hMuonCandidateAfter2ComboMomentumRecoStacked->Draw("HIST");
+hMuonCandidateAfter2ComboMomentumRecoStacked->GetXaxis()->SetTitle("p_{#mu} [GeV/c]");
+hMuonCandidateAfter2ComboMomentumRecoStacked->GetXaxis()->CenterTitle();
+hMuonCandidateAfter2ComboMomentumRecoStacked->GetYaxis()->SetTitle("Number of Events");
+hMuonCandidateAfter2ComboMomentumRecoStacked->GetYaxis()->CenterTitle();
+c63->Modified();
 
-//hMuonCandidateAfter2ComboMomentumRecoStacked->GetYaxis()->SetTitle("Number of Events");
-//hMuonCandidateAfter2ComboMomentumRecoStacked->GetYaxis()->CenterTitle();
-
-hMuonCandidateAfter2ComboMomentumRecoStacked->Draw();
+// ### Defining the legend for the plot ###
+TLegend *leg63 = new TLegend();
+leg63 = new TLegend(0.58,0.65,1.00,1.00);
+leg63->SetTextSize(0.04);
+leg63->SetTextAlign(12);
+leg63->SetFillColor(kWhite);
+leg63->SetLineColor(kWhite);
+leg63->SetShadowColor(kWhite);
+leg63->SetHeader("Channel");
+leg63->AddEntry(hMuonCandidateAfter2ComboMomentumReco,"Reco CC-Coh");
+//leg63->AddEntry(hMuonCandidateAfter2ComboMomentumRecoCCCoh,"Reco CC-Coh");
+leg63->AddEntry(hMuonCandidateAfter2ComboMomentumRecoCCQE,"Reco CC-QE");
+leg63->AddEntry(hMuonCandidateAfter2ComboMomentumRecoCCRes,"Reco CC-Res");
+leg63->AddEntry(hMuonCandidateAfter2ComboMomentumRecoOther,"Reco Other");
+leg63->Draw();
 
 
 
@@ -4332,59 +4868,95 @@ TCanvas *c64 = new TCanvas("c64", "Stacked Reco Pion Candidate Combo Momentums A
 c64->SetTicks();
 c64->SetFillColor(kWhite);
 
-hPionCandidateAfter2ComboMomentumRecoCCCoh->SetFillColor(kBlue);
-//hPionCandidateAfter2ComboMomentumRecoCCCoh->Scale(CCCohScaleFactor);
-hPionCandidateAfter2ComboMomentumRecoCCCoh->Rebin(100);
+hPionCandidateAfter2ComboMomentumReco->SetFillColor(kBlue);
+hPionCandidateAfter2ComboMomentumReco->Scale(CCCohScaleFactor);
+hPionCandidateAfter2ComboMomentumReco->Rebin(100);
+//hPionCandidateAfter2ComboMomentumRecoCCCoh->SetFillColor(kBlue);
+//hPionCandidateAfter2ComboMomentumRecoCCCoh->Rebin(100);
 hPionCandidateAfter2ComboMomentumRecoCCQE->SetFillColor(kViolet);
 hPionCandidateAfter2ComboMomentumRecoCCQE->Rebin(100);
-//hPionCandidateAfter2ComboMomentumRecoCCRes->SetFillColor(kRed);
-//hPionCandidateAfter2ComboMomentumRecoCCRes->Rebin(100);
+hPionCandidateAfter2ComboMomentumRecoCCRes->SetFillColor(kRed);
+hPionCandidateAfter2ComboMomentumRecoCCRes->Rebin(100);
 hPionCandidateAfter2ComboMomentumRecoOther->SetFillColor(kBlack);
 hPionCandidateAfter2ComboMomentumRecoOther->Rebin(100);
 hPionCandidateAfter2ComboMomentumRecoOther->Add(hPionCandidateAfter2ComboMomentumRecoCCQE, -1);
-//hPionCandidateAfter2ComboMomentumRecoOther->Add(hPionCandidateAfter2ComboMomentumRecoCCRes, -1);
+hPionCandidateAfter2ComboMomentumRecoOther->Add(hPionCandidateAfter2ComboMomentumRecoCCRes, -1);
 hPionCandidateAfter2ComboMomentumRecoStacked->Add(hPionCandidateAfter2ComboMomentumRecoOther);
 hPionCandidateAfter2ComboMomentumRecoStacked->Add(hPionCandidateAfter2ComboMomentumRecoCCQE);
-//hPionCandidateAfter2ComboMomentumRecoStacked->Add(hPionCandidateAfter2ComboMomentumRecoCCRes);
-hPionCandidateAfter2ComboMomentumRecoStacked->Add(hPionCandidateAfter2ComboMomentumRecoCCCoh);
+hPionCandidateAfter2ComboMomentumRecoStacked->Add(hPionCandidateAfter2ComboMomentumRecoCCRes);
+hPionCandidateAfter2ComboMomentumRecoStacked->Add(hPionCandidateAfter2ComboMomentumReco);
+//hPionCandidateAfter2ComboMomentumRecoStacked->Add(hPionCandidateAfter2ComboMomentumRecoCCCoh);
 
-//hPionCandidateAfter2ComboMomentumRecoStacked->GetXaxis()->SetTitle("#mu Momentum [GeV/c]");
-//hPionCandidateAfter2ComboMomentumRecoStacked->GetXaxis()->CenterTitle();
+hPionCandidateAfter2ComboMomentumRecoStacked->Draw("HIST");
+hPionCandidateAfter2ComboMomentumRecoStacked->GetXaxis()->SetTitle("p_{#pi} [GeV/c]");
+hPionCandidateAfter2ComboMomentumRecoStacked->GetXaxis()->CenterTitle();
+hPionCandidateAfter2ComboMomentumRecoStacked->GetYaxis()->SetTitle("Number of Events");
+hPionCandidateAfter2ComboMomentumRecoStacked->GetYaxis()->CenterTitle();
+c64->Modified();
 
-//hPionCandidateAfter2ComboMomentumRecoStacked->GetYaxis()->SetTitle("Number of Events");
-//hPionCandidateAfter2ComboMomentumRecoStacked->GetYaxis()->CenterTitle();
-
-hPionCandidateAfter2ComboMomentumRecoStacked->Draw();
-
+// ### Defining the legend for the plot ###
+TLegend *leg64 = new TLegend();
+leg64 = new TLegend(0.58,0.65,1.00,1.00);
+leg64->SetTextSize(0.04);
+leg64->SetTextAlign(12);
+leg64->SetFillColor(kWhite);
+leg64->SetLineColor(kWhite);
+leg64->SetShadowColor(kWhite);
+leg64->SetHeader("Channel");
+leg64->AddEntry(hPionCandidateAfter2ComboMomentumReco,"Reco CC-Coh");
+//leg64->AddEntry(hPionCandidateAfter2ComboMomentumRecoCCCoh,"Reco CC-Coh");
+leg64->AddEntry(hPionCandidateAfter2ComboMomentumRecoCCQE,"Reco CC-QE");
+leg64->AddEntry(hPionCandidateAfter2ComboMomentumRecoCCRes,"Reco CC-Res");
+leg64->AddEntry(hPionCandidateAfter2ComboMomentumRecoOther,"Reco Other");
+leg64->Draw();
+*/
 
 
 TCanvas *c65 = new TCanvas("c65", "Stacked True |t| After Selection");
 c65->SetTicks();
 c65->SetFillColor(kWhite);
 
-hTAfterTrueCCCoh->SetFillColor(kBlue);
-//hTAfterTrueCCCoh->Scale(CCCohScaleFactor);
-hTAfterTrueCCCoh->Rebin(50);
+hTAfterTrue->SetFillColor(kBlue);
+hTAfterTrue->Scale(CCCohScaleFactor);
+hTAfterTrue->Rebin(50);
+//hTAfterTrueCCCoh->SetFillColor(kBlue);
+//hTAfterTrueCCCoh->Rebin(50);
 hTAfterTrueCCQE->SetFillColor(kViolet);
 hTAfterTrueCCQE->Rebin(50);
-//hTAfterTrueCCRes->SetFillColor(kRed);
-//hTAfterTrueCCRes->Rebin(50);
+hTAfterTrueCCRes->SetFillColor(kRed);
+hTAfterTrueCCRes->Rebin(50);
 hTAfterTrueOther->SetFillColor(kBlack);
 hTAfterTrueOther->Rebin(50);
 hTAfterTrueOther->Add(hTAfterTrueCCQE, -1);
-//hTAfterTrueOther->Add(hTAfterTrueCCRes, -1);
+hTAfterTrueOther->Add(hTAfterTrueCCRes, -1);
 hTAfterTrueStacked->Add(hTAfterTrueOther);
 hTAfterTrueStacked->Add(hTAfterTrueCCQE);
-//hTAfterTrueStacked->Add(hTAfterTrueCCRes);
-hTAfterTrueStacked->Add(hTAfterTrueCCCoh);
+hTAfterTrueStacked->Add(hTAfterTrueCCRes);
+hTAfterTrueStacked->Add(hTAfterTrue);
+//hTAfterTrueStacked->Add(hTAfterTrueCCCoh);
 
-//hTAfterTrueStacked->GetXaxis()->SetTitle("#mu Momentum [GeV/c]");
-//hTAfterTrueStacked->GetXaxis()->CenterTitle();
+hTAfterTrueStacked->Draw("HIST");
+hTAfterTrueStacked->GetXaxis()->SetTitle("|t| [GeV^{2}]");
+hTAfterTrueStacked->GetXaxis()->CenterTitle();
+hTAfterTrueStacked->GetYaxis()->SetTitle("Number of Events");
+hTAfterTrueStacked->GetYaxis()->CenterTitle();
+c65->Modified();
 
-//hTAfterTrueStacked->GetYaxis()->SetTitle("Number of Events");
-//hTAfterTrueStacked->GetYaxis()->CenterTitle();
-
-hTAfterTrueStacked->Draw();
+// ### Defining the legend for the plot ###
+TLegend *leg65 = new TLegend();
+leg65 = new TLegend(0.58,0.65,1.00,1.00);
+leg65->SetTextSize(0.04);
+leg65->SetTextAlign(12);
+leg65->SetFillColor(kWhite);
+leg65->SetLineColor(kWhite);
+leg65->SetShadowColor(kWhite);
+leg65->SetHeader("Channel");
+leg65->AddEntry(hTAfterTrue,"True CC-Coh");
+//leg65->AddEntry(hTAfterTrueCCCoh,"True CC-Coh");
+leg65->AddEntry(hTAfterTrueCCQE,"True CC-QE");
+leg65->AddEntry(hTAfterTrueCCRes,"True CC-Res");
+leg65->AddEntry(hTAfterTrueOther,"True Other");
+leg65->Draw();
 
 
 
@@ -4392,32 +4964,51 @@ TCanvas *c66 = new TCanvas("c66", "Stacked Reco |t| After Selection");
 c66->SetTicks();
 c66->SetFillColor(kWhite);
 
-hTAfterRecoCCCoh->SetFillColor(kBlue);
-//hTAfterRecoCCCoh->Scale(CCCohScaleFactor);
-hTAfterRecoCCCoh->Rebin(50);
+hTAfterReco->SetFillColor(kBlue);
+hTAfterReco->Scale(CCCohScaleFactor);
+hTAfterReco->Rebin(50);
+//hTAfterRecoCCCoh->SetFillColor(kBlue);
+//hTAfterRecoCCCoh->Rebin(50);
 hTAfterRecoCCQE->SetFillColor(kViolet);
 hTAfterRecoCCQE->Rebin(50);
-//hTAfterRecoCCRes->SetFillColor(kRed);
-//hTAfterRecoCCRes->Rebin(50);
+hTAfterRecoCCRes->SetFillColor(kRed);
+hTAfterRecoCCRes->Rebin(50);
 hTAfterRecoOther->SetFillColor(kBlack);
 hTAfterRecoOther->Rebin(50);
 hTAfterRecoOther->Add(hTAfterRecoCCQE, -1);
-//hTAfterRecoOther->Add(hTAfterRecoCCRes, -1);
+hTAfterRecoOther->Add(hTAfterRecoCCRes, -1);
 hTAfterRecoStacked->Add(hTAfterRecoOther);
 hTAfterRecoStacked->Add(hTAfterRecoCCQE);
-//hTAfterRecoStacked->Add(hTAfterRecoCCRes);
-hTAfterRecoStacked->Add(hTAfterRecoCCCoh);
+hTAfterRecoStacked->Add(hTAfterRecoCCRes);
+hTAfterRecoStacked->Add(hTAfterReco);
+//hTAfterRecoStacked->Add(hTAfterRecoCCCoh);
 
-hTAfterRecoStacked->Draw();
+hTAfterRecoStacked->Draw("HIST");
 hTAfterRecoStacked->GetXaxis()->SetTitle("|t| [GeV^{2}]");
 hTAfterRecoStacked->GetXaxis()->CenterTitle();
 hTAfterRecoStacked->GetYaxis()->SetTitle("Number of Events");
 hTAfterRecoStacked->GetYaxis()->CenterTitle();
 c66->Modified();
 
+// ### Defining the legend for the plot ###
+TLegend *leg66 = new TLegend();
+leg66 = new TLegend(0.58,0.65,1.00,1.00);
+leg66->SetTextSize(0.04);
+leg66->SetTextAlign(12);
+leg66->SetFillColor(kWhite);
+leg66->SetLineColor(kWhite);
+leg66->SetShadowColor(kWhite);
+leg66->SetHeader("Channel");
+leg66->AddEntry(hTAfterReco,"Reco CC-Coh");
+//leg66->AddEntry(hTAfterRecoCCCoh,"Reco CC-Coh");
+leg66->AddEntry(hTAfterRecoCCQE,"Reco CC-QE");
+leg66->AddEntry(hTAfterRecoCCRes,"Reco CC-Res");
+leg66->AddEntry(hTAfterRecoOther,"Reco Other");
+leg66->Draw();
 
 
-TCanvas *c67 = new TCanvas("c67", "The MCS and Range Based Momentum for Contained Muon Candidates");
+
+TCanvas *c67 = new TCanvas("c67", "The MCS and Range Based Momentum for UnContained Muon Candidates");
 c67->SetTicks();
 c67->SetFillColor(kWhite);
 
@@ -4465,7 +5056,7 @@ leg67->Draw();
 
 
 
-TCanvas *c68 = new TCanvas("c68", "The MCS and Range Based Momentum for Contained Pion Candidates");
+TCanvas *c68 = new TCanvas("c68", "The MCS and Range Based Momentum for UnContained Pion Candidates");
 c68->SetTicks();
 c68->SetFillColor(kWhite);
 
@@ -4517,28 +5108,47 @@ TCanvas *c69 = new TCanvas("c69", "Stacked True |t| After 2 Tracks");
 c69->SetTicks();
 c69->SetFillColor(kWhite);
 
-hTAfter2TrueCCCoh->SetFillColor(kBlue);
-//hTAfter2TrueCCCoh->Scale(CCCohScaleFactor);
-hTAfter2TrueCCCoh->Rebin(50);
+hTAfter2True->SetFillColor(kBlue);
+hTAfter2True->Scale(CCCohScaleFactor);
+hTAfter2True->Rebin(50);
+//hTAfter2TrueCCCoh->SetFillColor(kBlue);
+//hTAfter2TrueCCCoh->Rebin(50);
 hTAfter2TrueCCQE->SetFillColor(kViolet);
 hTAfter2TrueCCQE->Rebin(50);
-//hTAfter2TrueCCRes->SetFillColor(kRed);
-//hTAfter2TrueCCRes->Rebin(50);
+hTAfter2TrueCCRes->SetFillColor(kRed);
+hTAfter2TrueCCRes->Rebin(50);
 hTAfter2TrueOther->SetFillColor(kBlack);
 hTAfter2TrueOther->Rebin(50);
 hTAfter2TrueOther->Add(hTAfter2TrueCCQE, -1);
-//hTAfter2TrueOther->Add(hTAfter2TrueCCRes, -1);
+hTAfter2TrueOther->Add(hTAfter2TrueCCRes, -1);
 hTAfter2TrueStacked->Add(hTAfter2TrueOther);
 hTAfter2TrueStacked->Add(hTAfter2TrueCCQE);
-//hTAfter2TrueStacked->Add(hTAfter2TrueCCRes);
-hTAfter2TrueStacked->Add(hTAfter2TrueCCCoh);
+hTAfter2TrueStacked->Add(hTAfter2TrueCCRes);
+hTAfter2TrueStacked->Add(hTAfter2True);
+//hTAfter2TrueStacked->Add(hTAfter2TrueCCCoh);
 
-hTAfter2TrueStacked->Draw();
+hTAfter2TrueStacked->Draw("HIST");
 hTAfter2TrueStacked->GetXaxis()->SetTitle("|t| [GeV^{2}]");
 hTAfter2TrueStacked->GetXaxis()->CenterTitle();
 hTAfter2TrueStacked->GetYaxis()->SetTitle("Number of Events");
 hTAfter2TrueStacked->GetYaxis()->CenterTitle();
 c69->Modified();
+
+// ### Defining the legend for the plot ###
+TLegend *leg69 = new TLegend();
+leg69 = new TLegend(0.58,0.65,1.00,1.00);
+leg69->SetTextSize(0.04);
+leg69->SetTextAlign(12);
+leg69->SetFillColor(kWhite);
+leg69->SetLineColor(kWhite);
+leg69->SetShadowColor(kWhite);
+leg69->SetHeader("Channel");
+leg69->AddEntry(hTAfter2True,"True CC-Coh");
+//leg69->AddEntry(hTAfter2TrueCCCoh,"True CC-Coh");
+leg69->AddEntry(hTAfter2TrueCCQE,"True CC-QE");
+leg69->AddEntry(hTAfter2TrueCCRes,"True CC-Res");
+leg69->AddEntry(hTAfter2TrueOther,"True Other");
+leg69->Draw();
 
 
 
@@ -4546,28 +5156,698 @@ TCanvas *c70 = new TCanvas("c70", "Stacked Reco |t| After 2 Tracks");
 c70->SetTicks();
 c70->SetFillColor(kWhite);
 
-hTAfter2RecoCCCoh->SetFillColor(kBlue);
-//hTAfter2RecoCCCoh->Scale(CCCohScaleFactor);
-hTAfter2RecoCCCoh->Rebin(50);
+hTAfter2Reco->SetFillColor(kBlue);
+hTAfter2Reco->Scale(CCCohScaleFactor);
+hTAfter2Reco->Rebin(50);
+//hTAfter2RecoCCCoh->SetFillColor(kBlue);
+//hTAfter2RecoCCCoh->Rebin(50);
 hTAfter2RecoCCQE->SetFillColor(kViolet);
 hTAfter2RecoCCQE->Rebin(50);
-//hTAfter2RecoCCRes->SetFillColor(kRed);
-//hTAfter2RecoCCRes->Rebin(50);
+hTAfter2RecoCCRes->SetFillColor(kRed);
+hTAfter2RecoCCRes->Rebin(50);
 hTAfter2RecoOther->SetFillColor(kBlack);
 hTAfter2RecoOther->Rebin(50);
 hTAfter2RecoOther->Add(hTAfter2RecoCCQE, -1);
-//hTAfter2RecoOther->Add(hTAfter2RecoCCRes, -1);
+hTAfter2RecoOther->Add(hTAfter2RecoCCRes, -1);
 hTAfter2RecoStacked->Add(hTAfter2RecoOther);
 hTAfter2RecoStacked->Add(hTAfter2RecoCCQE);
-//hTAfter2RecoStacked->Add(hTAfter2RecoCCRes);
-hTAfter2RecoStacked->Add(hTAfter2RecoCCCoh);
+hTAfter2RecoStacked->Add(hTAfter2RecoCCRes);
+hTAfter2RecoStacked->Add(hTAfter2Reco);
+//hTAfter2RecoStacked->Add(hTAfter2RecoCCCoh);
 
-hTAfter2RecoStacked->Draw();
+hTAfter2RecoStacked->Draw("HIST");
 hTAfter2RecoStacked->GetXaxis()->SetTitle("|t| [GeV^{2}]");
 hTAfter2RecoStacked->GetXaxis()->CenterTitle();
 hTAfter2RecoStacked->GetYaxis()->SetTitle("Number of Events");
 hTAfter2RecoStacked->GetYaxis()->CenterTitle();
 c70->Modified();
+
+// ### Defining the legend for the plot ###
+TLegend *leg70 = new TLegend();
+leg70 = new TLegend(0.58,0.65,1.00,1.00);
+leg70->SetTextSize(0.04);
+leg70->SetTextAlign(12);
+leg70->SetFillColor(kWhite);
+leg70->SetLineColor(kWhite);
+leg70->SetShadowColor(kWhite);
+leg70->SetHeader("Channel");
+leg70->AddEntry(hTAfter2Reco,"Reco CC-Coh");
+//leg70->AddEntry(hTAfter2RecoCCCoh,"Reco CC-Coh");
+leg70->AddEntry(hTAfter2RecoCCQE,"Reco CC-QE");
+leg70->AddEntry(hTAfter2RecoCCRes,"Reco CC-Res");
+leg70->AddEntry(hTAfter2RecoOther,"Reco Other");
+leg70->Draw();
+
+
+
+TCanvas *c71 = new TCanvas("c71", "The MCS and Range Based Momentum for Contained Muon Candidates");
+c71->SetTicks();
+c71->SetFillColor(kWhite);
+
+// Area normalzing the plot 
+hMuonCandidateAfterContainedMomentumTrue->Scale(1/hMuonCandidateAfterContainedMomentumTrue->Integral());
+hMuonCandidateAfterContainedMomentumReco->Scale(1/hMuonCandidateAfterContainedMomentumReco->Integral());
+hMuonCandidateAfterContainedLMomentumReco->Scale(1/hMuonCandidateAfterContainedLMomentumReco->Integral());
+
+hMuonCandidateAfterContainedMomentumTrue->SetLineColor(kBlue);
+hMuonCandidateAfterContainedMomentumTrue->SetLineWidth(2);
+hMuonCandidateAfterContainedMomentumTrue->Rebin(10);
+
+hMuonCandidateAfterContainedMomentumReco->SetLineColor(kRed);
+hMuonCandidateAfterContainedMomentumReco->SetLineWidth(2);
+hMuonCandidateAfterContainedMomentumReco->Rebin(10);
+
+hMuonCandidateAfterContainedLMomentumReco->SetLineColor(kGreen);
+hMuonCandidateAfterContainedLMomentumReco->SetLineWidth(2);
+hMuonCandidateAfterContainedLMomentumReco->Rebin(10);
+
+hMuonCandidateAfterContainedLMomentumReco->GetXaxis()->SetTitle("p_{#mu} [GeV/c]");
+hMuonCandidateAfterContainedLMomentumReco->GetXaxis()->CenterTitle();
+
+hMuonCandidateAfterContainedLMomentumReco->GetYaxis()->SetTitle("Normalized Events");
+hMuonCandidateAfterContainedLMomentumReco->GetYaxis()->CenterTitle();
+
+hMuonCandidateAfterContainedLMomentumReco->Draw("histo");
+hMuonCandidateAfterContainedMomentumReco->Draw("histosame");
+hMuonCandidateAfterContainedMomentumTrue->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg71 = new TLegend();
+leg71 = new TLegend(0.58,0.65,1.00,1.00);
+leg71->SetTextSize(0.04);
+leg71->SetTextAlign(12);
+leg71->SetFillColor(kWhite);
+leg71->SetLineColor(kWhite);
+leg71->SetShadowColor(kWhite);
+leg71->SetHeader("Channel");
+leg71->AddEntry(hMuonCandidateAfterContainedMomentumTrue,"True CC-Coh");
+leg71->AddEntry(hMuonCandidateAfterContainedMomentumReco,"Reco CC-Coh MCS");
+leg71->AddEntry(hMuonCandidateAfterContainedLMomentumReco,"Reco CC-Coh Range");
+leg71->Draw();
+
+
+
+TCanvas *c72 = new TCanvas("c72", "The MCS and Range Based Momentum for Contained Pion Candidates");
+c72->SetTicks();
+c72->SetFillColor(kWhite);
+
+// Area normalzing the plot 
+hPionCandidateAfterContainedMomentumTrue->Scale(1/hPionCandidateAfterContainedMomentumTrue->Integral());
+hPionCandidateAfterContainedMomentumReco->Scale(1/hPionCandidateAfterContainedMomentumReco->Integral());
+hPionCandidateAfterContainedLMomentumReco->Scale(1/hPionCandidateAfterContainedLMomentumReco->Integral());
+
+hPionCandidateAfterContainedMomentumTrue->SetLineColor(kBlue);
+hPionCandidateAfterContainedMomentumTrue->SetLineWidth(2);
+hPionCandidateAfterContainedMomentumTrue->Rebin(10);
+
+hPionCandidateAfterContainedMomentumReco->SetLineColor(kRed);
+hPionCandidateAfterContainedMomentumReco->SetLineWidth(2);
+hPionCandidateAfterContainedMomentumReco->Rebin(10);
+
+hPionCandidateAfterContainedLMomentumReco->SetLineColor(kGreen);
+hPionCandidateAfterContainedLMomentumReco->SetLineWidth(2);
+hPionCandidateAfterContainedLMomentumReco->Rebin(10);
+
+hPionCandidateAfterContainedLMomentumReco->GetXaxis()->SetTitle("p_{#pi} [GeV/c]");
+hPionCandidateAfterContainedLMomentumReco->GetXaxis()->CenterTitle();
+
+hPionCandidateAfterContainedLMomentumReco->GetYaxis()->SetTitle("Normalized Events");
+hPionCandidateAfterContainedLMomentumReco->GetYaxis()->CenterTitle();
+
+hPionCandidateAfterContainedLMomentumReco->Draw("histo");
+hPionCandidateAfterContainedMomentumReco->Draw("histosame");
+hPionCandidateAfterContainedMomentumTrue->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg72 = new TLegend();
+leg72 = new TLegend(0.58,0.65,1.00,1.00);
+leg72->SetTextSize(0.04);
+leg72->SetTextAlign(12);
+leg72->SetFillColor(kWhite);
+leg72->SetLineColor(kWhite);
+leg72->SetShadowColor(kWhite);
+leg72->SetHeader("Channel");
+leg72->AddEntry(hPionCandidateAfterContainedMomentumTrue,"True CC-Coh");
+leg72->AddEntry(hPionCandidateAfterContainedMomentumReco,"Reco CC-Coh MCS");
+leg72->AddEntry(hPionCandidateAfterContainedLMomentumReco,"Reco CC-Coh Range");
+leg72->Draw();
+
+
+
+TCanvas *c73 = new TCanvas("c73", "The Combo MCS and Range Based Momentum for Muon Candidates");
+c73->SetTicks();
+c73->SetFillColor(kWhite);
+
+// Area normalzing the plot 
+hMuonCandidateAfterMomentumTrue->Scale(1/hMuonCandidateAfterMomentumTrue->Integral());
+hMuonCandidateAfterComboMomentumReco->Scale(1/hMuonCandidateAfterComboMomentumReco->Integral());
+
+hMuonCandidateAfterMomentumTrue->SetLineColor(kBlue);
+hMuonCandidateAfterMomentumTrue->SetLineWidth(2);
+hMuonCandidateAfterMomentumTrue->Rebin(10);
+
+hMuonCandidateAfterComboMomentumReco->SetLineColor(kRed);
+hMuonCandidateAfterComboMomentumReco->SetLineWidth(2);
+hMuonCandidateAfterComboMomentumReco->Rebin(10);
+
+hMuonCandidateAfterComboMomentumReco->GetXaxis()->SetTitle("p_{#mu} [GeV/c]");
+hMuonCandidateAfterComboMomentumReco->GetXaxis()->CenterTitle();
+
+hMuonCandidateAfterComboMomentumReco->GetYaxis()->SetTitle("Normalized Events");
+hMuonCandidateAfterComboMomentumReco->GetYaxis()->CenterTitle();
+
+hMuonCandidateAfterComboMomentumReco->Draw("histo");
+hMuonCandidateAfterMomentumTrue->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg73 = new TLegend();
+leg73 = new TLegend(0.58,0.65,1.00,1.00);
+leg73->SetTextSize(0.04);
+leg73->SetTextAlign(12);
+leg73->SetFillColor(kWhite);
+leg73->SetLineColor(kWhite);
+leg73->SetShadowColor(kWhite);
+leg73->SetHeader("Channel");
+leg73->AddEntry(hMuonCandidateAfterMomentumTrue,"True CC-Coh");
+leg73->AddEntry(hMuonCandidateAfterComboMomentumReco,"Reco CC-Coh");
+leg73->Draw();
+
+
+
+TCanvas *c74 = new TCanvas("c74", "The Combo MCS and Range Based Momentum for Pion Candidates");
+c74->SetTicks();
+c74->SetFillColor(kWhite);
+
+// Area normalzing the plot 
+hPionCandidateAfterMomentumTrue->Scale(1/hPionCandidateAfterMomentumTrue->Integral());
+hPionCandidateAfterComboMomentumReco->Scale(1/hPionCandidateAfterComboMomentumReco->Integral());
+
+hPionCandidateAfterMomentumTrue->SetLineColor(kBlue);
+hPionCandidateAfterMomentumTrue->SetLineWidth(2);
+hPionCandidateAfterMomentumTrue->Rebin(10);
+
+hPionCandidateAfterComboMomentumReco->SetLineColor(kRed);
+hPionCandidateAfterComboMomentumReco->SetLineWidth(2);
+hPionCandidateAfterComboMomentumReco->Rebin(10);
+
+hPionCandidateAfterComboMomentumReco->GetXaxis()->SetTitle("p_{#pi} [GeV/c]");
+hPionCandidateAfterComboMomentumReco->GetXaxis()->CenterTitle();
+
+hPionCandidateAfterComboMomentumReco->GetYaxis()->SetTitle("Normalized Events");
+hPionCandidateAfterComboMomentumReco->GetYaxis()->CenterTitle();
+
+hPionCandidateAfterComboMomentumReco->Draw("histo");
+hPionCandidateAfterMomentumTrue->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg74 = new TLegend();
+leg74 = new TLegend(0.58,0.65,1.00,1.00);
+leg74->SetTextSize(0.04);
+leg74->SetTextAlign(12);
+leg74->SetFillColor(kWhite);
+leg74->SetLineColor(kWhite);
+leg74->SetShadowColor(kWhite);
+leg74->SetHeader("Channel");
+leg74->AddEntry(hPionCandidateAfterMomentumTrue,"True CC-Coh");
+leg74->AddEntry(hPionCandidateAfterComboMomentumReco,"Reco CC-Coh");
+leg74->Draw();
+
+
+/*
+TCanvas *c75 = new TCanvas("c75", "The Reconstructed and True |t| After Pion Selection");
+c75->SetTicks();
+c75->SetFillColor(kWhite);
+
+// Area normalzing the plot 
+hTAfterTrue->Scale(1/hTAfterTrue->Integral());
+hTAfterReco->Scale(1/hTAfterReco->Integral());
+hTAfterTrueOther->Scale(1/hTAfterTrueOther->Integral());
+hTAfterRecoOther->Scale(1/hTAfterRecoOther->Integral());
+
+hTAfterTrue->SetLineColor(kBlue);
+hTAfterTrue->SetLineWidth(2);
+hTAfterTrue->Rebin(50);
+
+hTAfterReco->SetLineColor(kCyan);
+hTAfterReco->SetLineWidth(2);
+hTAfterReco->Rebin(50);
+
+hTAfterTrueOther->SetLineColor(kBlack);
+hTAfterTrueOther->SetLineWidth(2);
+
+hTAfterRecoOther->SetLineColor(kGray);
+hTAfterRecoOther->SetLineWidth(2);
+
+hTAfterReco->GetXaxis()->SetTitle("|t| [GeV^{2}]");
+hTAfterReco->GetXaxis()->CenterTitle();
+
+hTAfterReco->GetYaxis()->SetTitle("Normalized Events");
+hTAfterReco->GetYaxis()->CenterTitle();
+
+hTAfterReco->Draw("histo");
+hTAfterTrue->Draw("histosame");
+hTAfterTrueOther->Draw("histosame");
+hTAfterRecoOther->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg75 = new TLegend();
+leg75 = new TLegend(0.58,0.65,1.00,1.00);
+leg75->SetTextSize(0.04);
+leg75->SetTextAlign(12);
+leg75->SetFillColor(kWhite);
+leg75->SetLineColor(kWhite);
+leg75->SetShadowColor(kWhite);
+leg75->SetHeader("Channel");
+leg75->AddEntry(hTAfterTrue,"True CC-Coh");
+leg75->AddEntry(hTAfterReco,"Reco CC-Coh");
+leg75->AddEntry(hTAfterTrueOther,"True Other");
+leg75->AddEntry(hTAfterRecoOther,"Reco Other");
+leg75->Draw();
+
+
+
+TCanvas *c76 = new TCanvas("c76", "The Reconstructed and True |t| After 2 Tracks");
+c76->SetTicks();
+c76->SetFillColor(kWhite);
+
+// Area normalzing the plot 
+hTAfter2True->Scale(1/hTAfter2True->Integral());
+hTAfter2Reco->Scale(1/hTAfter2Reco->Integral());
+hTAfter2TrueOther->Scale(1/hTAfter2TrueOther->Integral());
+hTAfter2RecoOther->Scale(1/hTAfter2RecoOther->Integral());
+
+hTAfter2True->SetLineColor(kBlue);
+hTAfter2True->SetLineWidth(2);
+hTAfter2True->Rebin(50);
+
+hTAfter2Reco->SetLineColor(kCyan);
+hTAfter2Reco->SetLineWidth(2);
+hTAfter2Reco->Rebin(50);
+
+hTAfter2TrueOther->SetLineColor(kBlack);
+hTAfter2TrueOther->SetLineWidth(2);
+
+hTAfter2RecoOther->SetLineColor(kGray);
+hTAfter2RecoOther->SetLineWidth(2);
+
+hTAfter2Reco->GetXaxis()->SetTitle("|t| [GeV^{2}]");
+hTAfter2Reco->GetXaxis()->CenterTitle();
+
+hTAfter2Reco->GetYaxis()->SetTitle("Normalized Events");
+hTAfter2Reco->GetYaxis()->CenterTitle();
+
+hTAfter2Reco->Draw("histo");
+hTAfter2True->Draw("histosame");
+hTAfter2TrueOther->Draw("histosame");
+hTAfter2RecoOther->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg76 = new TLegend();
+leg76 = new TLegend(0.58,0.65,1.00,1.00);
+leg76->SetTextSize(0.04);
+leg76->SetTextAlign(12);
+leg76->SetFillColor(kWhite);
+leg76->SetLineColor(kWhite);
+leg76->SetShadowColor(kWhite);
+leg76->SetHeader("Channel");
+leg76->AddEntry(hTAfter2True,"True CC-Coh");
+leg76->AddEntry(hTAfter2Reco,"Reco CC-Coh");
+leg76->AddEntry(hTAfter2TrueOther,"True Other");
+leg76->AddEntry(hTAfter2RecoOther,"Reco Other");
+leg76->Draw();*/
+
+
+
+TCanvas *c77 = new TCanvas("c77", "The Opening Angle Differential Cross Section");
+c77->SetTicks();
+c77->SetFillColor(kWhite);
+
+hOpeningAngleCrossSectionTrue->SetLineColor(kBlue);
+hOpeningAngleCrossSectionTrue->SetLineWidth(2);
+hOpeningAngleCrossSectionTrue->Rebin(10);
+
+hOpeningAngleCrossSection->SetLineColor(kRed);
+hOpeningAngleCrossSection->SetLineWidth(2);
+hOpeningAngleCrossSection->Rebin(10);
+
+hOpeningAngleCrossSection->GetXaxis()->SetTitle("#theta_{#mu#pi} [Degrees]");
+hOpeningAngleCrossSection->GetXaxis()->CenterTitle();
+
+hOpeningAngleCrossSection->GetYaxis()->SetTitle("#frac{d#sigma_{i}}{d#theta_{#mu#pi}_{i}}");
+hOpeningAngleCrossSection->GetYaxis()->CenterTitle();
+
+hOpeningAngleCrossSection->Draw("histo");
+hOpeningAngleCrossSectionTrue->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg77 = new TLegend();
+leg77 = new TLegend(0.58,0.65,1.00,1.00);
+leg77->SetTextSize(0.04);
+leg77->SetTextAlign(12);
+leg77->SetFillColor(kWhite);
+leg77->SetLineColor(kWhite);
+leg77->SetShadowColor(kWhite);
+leg77->SetHeader("Channel");
+leg77->AddEntry(hOpeningAngleCrossSectionTrue,"True");
+leg77->AddEntry(hOpeningAngleCrossSection,"Reco");
+leg77->Draw();
+
+
+
+TCanvas *c78 = new TCanvas("c78", "The Muon Momentum Differential Cross Section");
+c78->SetTicks();
+c78->SetFillColor(kWhite);
+
+hMuonMomentumCrossSectionTrue->SetLineColor(kBlue);
+hMuonMomentumCrossSectionTrue->SetLineWidth(2);
+hMuonMomentumCrossSectionTrue->Rebin(50);
+
+hMuonMomentumCrossSection->SetLineColor(kRed);
+hMuonMomentumCrossSection->SetLineWidth(2);
+hMuonMomentumCrossSection->Rebin(50);
+
+hMuonMomentumCrossSection->GetXaxis()->SetTitle("p_{#mu} [GeV/c]");
+hMuonMomentumCrossSection->GetXaxis()->CenterTitle();
+
+hMuonMomentumCrossSection->GetYaxis()->SetTitle("#frac{d#sigma_{i}}{dp_{#mu}_{i}}");
+hMuonMomentumCrossSection->GetYaxis()->CenterTitle();
+
+hMuonMomentumCrossSection->Draw("histo");
+hMuonMomentumCrossSectionTrue->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg78 = new TLegend();
+leg78 = new TLegend(0.58,0.65,1.00,1.00);
+leg78->SetTextSize(0.04);
+leg78->SetTextAlign(12);
+leg78->SetFillColor(kWhite);
+leg78->SetLineColor(kWhite);
+leg78->SetShadowColor(kWhite);
+leg78->SetHeader("Channel");
+leg78->AddEntry(hMuonMomentumCrossSectionTrue,"True");
+leg78->AddEntry(hMuonMomentumCrossSection,"Reco");
+leg78->Draw();
+
+
+
+TCanvas *c79 = new TCanvas("c79", "The Pion Momentum Differential Cross Section");
+c79->SetTicks();
+c79->SetFillColor(kWhite);
+
+hPionMomentumCrossSectionTrue->SetLineColor(kBlue);
+hPionMomentumCrossSectionTrue->SetLineWidth(2);
+hPionMomentumCrossSectionTrue->Rebin(50);
+
+hPionMomentumCrossSection->SetLineColor(kRed);
+hPionMomentumCrossSection->SetLineWidth(2);
+hPionMomentumCrossSection->Rebin(50);
+
+hPionMomentumCrossSection->GetXaxis()->SetTitle("p_{#pi} [GeV/c]");
+hPionMomentumCrossSection->GetXaxis()->CenterTitle();
+
+hPionMomentumCrossSection->GetYaxis()->SetTitle("#frac{d#sigma_{i}}{dp_{#pi}_{i}}");
+hPionMomentumCrossSection->GetYaxis()->CenterTitle();
+
+hPionMomentumCrossSection->Draw("histo");
+hPionMomentumCrossSectionTrue->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg79 = new TLegend();
+leg79 = new TLegend(0.58,0.65,1.00,1.00);
+leg79->SetTextSize(0.04);
+leg79->SetTextAlign(12);
+leg79->SetFillColor(kWhite);
+leg79->SetLineColor(kWhite);
+leg79->SetShadowColor(kWhite);
+leg79->SetHeader("Channel");
+leg79->AddEntry(hPionMomentumCrossSectionTrue,"True");
+leg79->AddEntry(hPionMomentumCrossSection,"Reco");
+leg79->Draw();
+
+
+
+TCanvas *c80 = new TCanvas("c80", "The |t| Differential Cross Section");
+c80->SetTicks();
+c80->SetFillColor(kWhite);
+
+hTCrossSectionTrue->SetLineColor(kBlue);
+hTCrossSectionTrue->SetLineWidth(2);
+hTCrossSectionTrue->Rebin(50);
+
+hTCrossSection->SetLineColor(kRed);
+hTCrossSection->SetLineWidth(2);
+hTCrossSection->Rebin(50);
+
+hTCrossSection->GetXaxis()->SetTitle("|t| [GeV^{2}]");
+hTCrossSection->GetXaxis()->CenterTitle();
+
+hTCrossSection->GetYaxis()->SetTitle("#frac{d#sigma_{i}}{d|t|_{i}}");
+hTCrossSection->GetYaxis()->CenterTitle();
+
+hTCrossSection->Draw("histo");
+hTCrossSectionTrue->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg80 = new TLegend();
+leg80 = new TLegend(0.58,0.65,1.00,1.00);
+leg80->SetTextSize(0.04);
+leg80->SetTextAlign(12);
+leg80->SetFillColor(kWhite);
+leg80->SetLineColor(kWhite);
+leg80->SetShadowColor(kWhite);
+leg80->SetHeader("Channel");
+leg80->AddEntry(hTCrossSectionTrue,"True");
+leg80->AddEntry(hTCrossSection,"Reco");
+leg80->Draw();
+
+
+
+TCanvas *c81 = new TCanvas("c81", "Maximize Cone Angle");
+c81->SetTicks();
+c81->SetFillColor(kWhite);
+
+gMaximizeConeAngle->GetXaxis()->SetTitle("Cone Angle [Degrees]");
+gMaximizeConeAngle->GetXaxis()->CenterTitle();
+gMaximizeConeAngle->GetXaxis()->SetRangeUser(0,180);
+
+gMaximizeConeAngle->GetYaxis()->SetTitle("#frac{S}{#sqrt{S + B}}");
+gMaximizeConeAngle->GetYaxis()->CenterTitle();
+
+gMaximizeConeAngle->Draw();
+gMaximizeConeAngleR->Draw("same");
+
+// ### Defining the legend for the plot ###
+TLegend *leg81 = new TLegend();
+leg81 = new TLegend(0.58,0.65,1.00,1.00);
+leg81->SetTextSize(0.04);
+leg81->SetTextAlign(12);
+leg81->SetFillColor(kWhite);
+leg81->SetLineColor(kWhite);
+leg81->SetShadowColor(kWhite);
+leg81->SetHeader("Maximize");
+leg81->AddEntry(gMaximizeConeAngle,"True");
+leg81->AddEntry(gMaximizeConeAngleR,"Reco");
+leg81->Draw();
+
+
+
+TCanvas *c82 = new TCanvas("c82", "Maximize DoCA");
+c82->SetTicks();
+c82->SetFillColor(kWhite);
+
+gMaximizeDoCA->GetXaxis()->SetTitle("DoCA [cm]");
+gMaximizeDoCA->GetXaxis()->CenterTitle();
+gMaximizeDoCA->GetXaxis()->SetRangeUser(0,100);
+
+gMaximizeDoCA->GetYaxis()->SetTitle("#frac{S}{#sqrt{S + B}}");
+gMaximizeDoCA->GetYaxis()->CenterTitle();
+
+gMaximizeDoCA->Draw();
+gMaximizeDoCAR->Draw("same");
+
+// ### Defining the legend for the plot ###
+TLegend *leg82 = new TLegend();
+leg82 = new TLegend(0.58,0.65,1.00,1.00);
+leg82->SetTextSize(0.04);
+leg82->SetTextAlign(12);
+leg82->SetFillColor(kWhite);
+leg82->SetLineColor(kWhite);
+leg82->SetShadowColor(kWhite);
+leg82->SetHeader("Maximize");
+leg82->AddEntry(gMaximizeDoCA,"True");
+leg82->AddEntry(gMaximizeDoCAR,"Reco");
+leg82->Draw();
+
+
+
+TCanvas *c83 = new TCanvas("c83", "Maximize VA");
+c83->SetTicks();
+c83->SetFillColor(kWhite);
+
+gMaximizeVAR->GetXaxis()->SetTitle("Vertex Activity [ADC]");
+gMaximizeVAR->GetXaxis()->CenterTitle();
+//gMaximizeVAR->GetXaxis()->SetRangeUser(0,100);
+
+gMaximizeVAR->GetYaxis()->SetTitle("#frac{S}{#sqrt{S + B}}");
+gMaximizeVAR->GetYaxis()->CenterTitle();
+
+gMaximizeVAR->Draw();
+
+// ### Defining the legend for the plot ###
+TLegend *leg83 = new TLegend();
+leg83 = new TLegend(0.58,0.65,1.00,1.00);
+leg83->SetTextSize(0.04);
+leg83->SetTextAlign(12);
+leg83->SetFillColor(kWhite);
+leg83->SetLineColor(kWhite);
+leg83->SetShadowColor(kWhite);
+leg83->SetHeader("Maximize");
+leg83->AddEntry(gMaximizeVAR,"Reco");
+leg83->Draw();
+
+
+
+TCanvas *c84 = new TCanvas("c84", "Maximize |t|");
+c84->SetTicks();
+c84->SetFillColor(kWhite);
+
+gMaximizeTR->GetXaxis()->SetTitle("|t| [GeV^{2}/c^{2}]");
+gMaximizeTR->GetXaxis()->CenterTitle();
+gMaximizeTR->GetXaxis()->SetRangeUser(0,1);
+
+gMaximizeTR->GetYaxis()->SetTitle("#frac{S}{#sqrt{S + B}}");
+gMaximizeTR->GetYaxis()->CenterTitle();
+
+gMaximizeTR->Draw();
+gMaximizeT->Draw("same");
+
+// ### Defining the legend for the plot ###
+TLegend *leg84 = new TLegend();
+leg84 = new TLegend(0.58,0.65,1.00,1.00);
+leg84->SetTextSize(0.04);
+leg84->SetTextAlign(12);
+leg84->SetFillColor(kWhite);
+leg84->SetLineColor(kWhite);
+leg84->SetShadowColor(kWhite);
+leg84->SetHeader("Maximize");
+leg84->AddEntry(gMaximizeT,"True");
+leg84->AddEntry(gMaximizeTR,"Reco");
+leg84->Draw();
+
+
+
+TCanvas *c85 = new TCanvas("c85", "The Deltas for Momentum Calculations of Muon Candidates");
+c85->SetTicks();
+c85->SetFillColor(kWhite);
+
+// Area normalzing the plot 
+hMuonCandidateAfterMomentumDelta->Scale(1/hMuonCandidateAfterMomentumDelta->Integral());
+hMuonCandidateAfterLMomentumDelta->Scale(1/hMuonCandidateAfterLMomentumDelta->Integral());
+hMuonCandidateAfterComboMomentumDelta->Scale(1/hMuonCandidateAfterComboMomentumDelta->Integral());
+
+hMuonCandidateAfterMomentumDelta->SetLineColor(kBlue);
+hMuonCandidateAfterMomentumDelta->SetLineWidth(2);
+hMuonCandidateAfterMomentumDelta->Rebin(10);
+
+hMuonCandidateAfterLMomentumDelta->SetLineColor(kGreen);
+hMuonCandidateAfterLMomentumDelta->SetLineWidth(2);
+hMuonCandidateAfterLMomentumDelta->Rebin(10);
+
+hMuonCandidateAfterComboMomentumDelta->SetLineColor(kRed);
+hMuonCandidateAfterComboMomentumDelta->SetLineWidth(2);
+hMuonCandidateAfterComboMomentumDelta->Rebin(10);
+
+hMuonCandidateAfterLMomentumDelta->GetXaxis()->SetTitle("p_{#mu} [GeV/c]");
+hMuonCandidateAfterLMomentumDelta->GetXaxis()->CenterTitle();
+
+hMuonCandidateAfterLMomentumDelta->GetYaxis()->SetTitle("Normalized Events");
+hMuonCandidateAfterLMomentumDelta->GetYaxis()->CenterTitle();
+
+hMuonCandidateAfterLMomentumDelta->Draw("histo");
+hMuonCandidateAfterMomentumDelta->Draw("histosame");
+hMuonCandidateAfterComboMomentumDelta->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg85 = new TLegend();
+leg85 = new TLegend(0.58,0.65,1.00,1.00);
+leg85->SetTextSize(0.04);
+leg85->SetTextAlign(12);
+leg85->SetFillColor(kWhite);
+leg85->SetLineColor(kWhite);
+leg85->SetShadowColor(kWhite);
+leg85->SetHeader("Reco Momentas");
+leg85->AddEntry(hMuonCandidateAfterMomentumDelta,"True - MCS Reco");
+leg85->AddEntry(hMuonCandidateAfterLMomentumDelta,"True - Range Reco");
+leg85->AddEntry(hMuonCandidateAfterComboMomentumDelta,"True - Combo Reco");
+leg85->Draw();
+
+
+
+TCanvas *c86 = new TCanvas("c86", "The Deltas for Momentum Calculations of Pion Candidates");
+c86->SetTicks();
+c86->SetFillColor(kWhite);
+
+// Area normalzing the plot 
+hPionCandidateAfterMomentumDelta->Scale(1/hPionCandidateAfterMomentumDelta->Integral());
+hPionCandidateAfterLMomentumDelta->Scale(1/hPionCandidateAfterLMomentumDelta->Integral());
+hPionCandidateAfterComboMomentumDelta->Scale(1/hPionCandidateAfterComboMomentumDelta->Integral());
+
+hPionCandidateAfterMomentumDelta->SetLineColor(kBlue);
+hPionCandidateAfterMomentumDelta->SetLineWidth(2);
+hPionCandidateAfterMomentumDelta->Rebin(10);
+
+hPionCandidateAfterLMomentumDelta->SetLineColor(kGreen);
+hPionCandidateAfterLMomentumDelta->SetLineWidth(2);
+hPionCandidateAfterLMomentumDelta->Rebin(10);
+
+hPionCandidateAfterComboMomentumDelta->SetLineColor(kRed);
+hPionCandidateAfterComboMomentumDelta->SetLineWidth(2);
+hPionCandidateAfterComboMomentumDelta->Rebin(10);
+
+hPionCandidateAfterMomentumDelta->GetXaxis()->SetTitle("p_{#pi} [GeV/c]");
+hPionCandidateAfterMomentumDelta->GetXaxis()->CenterTitle();
+
+hPionCandidateAfterMomentumDelta->GetYaxis()->SetTitle("Normalized Events");
+hPionCandidateAfterMomentumDelta->GetYaxis()->CenterTitle();
+
+hPionCandidateAfterMomentumDelta->Draw("histo");
+hPionCandidateAfterComboMomentumDelta->Draw("histosame");
+hPionCandidateAfterLMomentumDelta->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg86 = new TLegend();
+leg86 = new TLegend(0.58,0.65,1.00,1.00);
+leg86->SetTextSize(0.04);
+leg86->SetTextAlign(12);
+leg86->SetFillColor(kWhite);
+leg86->SetLineColor(kWhite);
+leg86->SetShadowColor(kWhite);
+leg86->SetHeader("Reco Momentas");
+leg86->AddEntry(hPionCandidateAfterMomentumDelta,"True - MCS Reco");
+leg86->AddEntry(hPionCandidateAfterLMomentumDelta,"True - Range Reco");
+leg86->AddEntry(hPionCandidateAfterComboMomentumDelta,"True - Combo Reco");
+leg86->Draw();
+
+
+
+// ----------------------------------------------------
+// --- Printing Out The True and Reco Cross Section ---
+// ----------------------------------------------------
+std::cout<<"The True Cross Section = "<<TrueCrossSection<<std::endl;
+std::cout<<"The Reco Cross Section = "<<RecoCrossSection<<std::endl;
+// ----------------------------------------------------
 
 
 
