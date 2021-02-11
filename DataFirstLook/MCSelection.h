@@ -1470,11 +1470,11 @@ MCSelection::MCSelection(TTree *tree) : fChain(0)
 // if parameter tree is not specified (or zero), connect the file
 // used to generate this class and read the Tree.
    if (tree == 0) {
-      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("/media/zwilliams/Monsivais's External Hard Drive/CCCohFiles/prodgenie_bnb_nu_uboone_overlay_mcc9.1_v08_00_00_26_filter_run1_reco2_reco2.root");
+      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("/pnfs/uboone/persistent/users/davidc/searchingfornues/v08_00_00_43/0928/prodgenie_bnb_nu_uboone_overlay_mcc9.1_v08_00_00_26_filter_run1_reco2_reco2.root");
       if (!f || !f->IsOpen()) {
-         f = new TFile("/media/zwilliams/Monsivais's External Hard Drive/CCCohFiles/prodgenie_bnb_nu_uboone_overlay_mcc9.1_v08_00_00_26_filter_run1_reco2_reco2.root");
+         f = new TFile("/pnfs/uboone/persistent/users/davidc/searchingfornues/v08_00_00_43/0928/prodgenie_bnb_nu_uboone_overlay_mcc9.1_v08_00_00_26_filter_run1_reco2_reco2.root");
       }
-      TDirectory * dir = (TDirectory*)f->Get("/media/zwilliams/Monsivais's External Hard Drive/CCCohFiles/prodgenie_bnb_nu_uboone_overlay_mcc9.1_v08_00_00_26_filter_run1_reco2_reco2.root:/nuselection");
+      TDirectory * dir = (TDirectory*)f->Get("/pnfs/uboone/persistent/users/davidc/searchingfornues/v08_00_00_43/0928/prodgenie_bnb_nu_uboone_overlay_mcc9.1_v08_00_00_26_filter_run1_reco2_reco2.root:/nuselection");
       dir->GetObject("NeutrinoSelectionFilter",tree);
 
    }

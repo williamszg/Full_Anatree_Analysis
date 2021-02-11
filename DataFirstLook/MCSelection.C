@@ -632,7 +632,7 @@ void MCSelection::Loop()
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
    // %%% Saving Histograms to a File Here %%%
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-   TFile *TMCInfo = new TFile("MC_Histograms.root", "CREATE");
+   TFile *TMCInfo = new TFile("MC_Histograms.root", "RECREATE");
 
    hNumMuonCandidates->Write();
    hNumTrksWithin10->Write();
