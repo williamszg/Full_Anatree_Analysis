@@ -26,6 +26,19 @@ hTAfter2TrueCCCoh->Sumw2();
 hTAfter2TrueOther->Sumw2();
 
 
+TH1D *hT2 = (TH1D*)f4->Get("hTPionCandidate");
+TH1D *hTAfterRecoCCCoh = (TH1D*)f2->Get("hTAfterReco");
+TH1D *hTAfterRecoOther = (TH1D*)f3->Get("hTAfterReco");
+TH1D *hTAfterTrueCCCoh = (TH1D*)f2->Get("hTAfterTrue");
+TH1D *hTAfterTrueOther = (TH1D*)f3->Get("hTAfterTrue");
+
+hT2->Sumw2();
+hTAfterRecoCCCoh->Sumw2();
+hTAfterRecoOther->Sumw2();
+hTAfterTrueCCCoh->Sumw2();
+hTAfterTrueOther->Sumw2();
+
+
 TH1D *hNumTrksWithin10 = (TH1D*)f4->Get("hNumTrksWithin10");
 TH1D *hNTracksInBubbleCCCoh = (TH1D*)f2->Get("hNTracksInBubble");
 TH1D *hNTracksInBubbleOther = (TH1D*)f3->Get("hNTracksInBubble");
@@ -88,6 +101,26 @@ TH2D *hPionCandidateTracksMuonChi2VsProtonChi2 = (TH2D*)f4->Get("hPionCandidateT
 TH2D *hMuonCandidateTracksMuonChi2VsProtonChi2AfterDoCA = (TH2D*)f4->Get("hMuonCandidateTracksMuonChi2VsProtonChi2AfterDoCA");
 TH2D *hPionCandidateTracksMuonChi2VsProtonChi2AfterDoCA = (TH2D*)f4->Get("hPionCandidateTracksMuonChi2VsProtonChi2AfterDoCA");
 
+
+TH1D *hDeltaPTT = (TH1D*)f4->Get("hDeltaPTT");
+TH1D *hDeltaPTTPC = (TH1D*)f4->Get("hDeltaPTTPC");
+
+hDeltaPTT->Sumw2();
+hDeltaPTTPC->Sumw2();
+
+
+TH1D *hPN = (TH1D*)f4->Get("hPN");
+TH1D *hPNPC = (TH1D*)f4->Get("hPNPC");
+
+hPN->Sumw2();
+hPNPC->Sumw2();
+
+
+TH1D *hDeltaAlphaT = (TH1D*)f4->Get("hDeltaAlphaT");
+TH1D *hDeltaAlphaTPC = (TH1D*)f4->Get("hDeltaAlphaTPC");
+
+hDeltaAlphaT->Sumw2();
+hDeltaAlphaTPC->Sumw2();
 
 
 
@@ -507,4 +540,181 @@ hPionCandidateTracksMuonChi2VsProtonChi2AfterDoCA->SetAxisRange(0., 100., "Y");
 gStyle->SetPalette(kRainBow);
 gPad->SetLogz();
 hPionCandidateTracksMuonChi2VsProtonChi2AfterDoCA->Draw("COLZ");
+
+
+
+
+
+TCanvas *c11 = new TCanvas("c11", "The Area Normalized |t| Plots After Pion Candidate Selection");
+c11->SetTicks();
+c11->SetFillColor(kWhite);
+
+// Adding the MC Histograms
+hTAfterRecoCCCoh->Add(hTAfterRecoOther);
+hTAfterTrueCCCoh->Add(hTAfterTrueOther);
+
+// Area normalzing the plot 
+hTAfterRecoCCCoh->Scale(1/hTAfterRecoCCCoh->Integral());
+hTAfterTrueCCCoh->Scale(1/hTAfterTrueCCCoh->Integral());
+//hTAfterRecoCCCoh->Scale(AfterTracksCutMCtoDataScaleFactor);
+//hTAfterTrueCCCoh->Scale(AfterTracksCutMCtoDataScaleFactor);
+hT2->Scale(1/hT2->Integral());
+
+// Setting Drawing Parameters
+hTAfterTrueCCCoh->SetLineColor(kBlue);
+hTAfterTrueCCCoh->SetLineWidth(2);
+hTAfterTrueCCCoh->Rebin(50);
+
+hTAfterRecoCCCoh->SetLineColor(kRed);
+hTAfterRecoCCCoh->SetLineWidth(2);
+hTAfterRecoCCCoh->Rebin(50);
+
+hT2->SetLineColor(kBlack);
+hT2->SetLineWidth(2);
+hT2->Rebin(50);
+
+hT2->GetXaxis()->SetTitle("|t| [GeV^{2}/c^{2}]");
+hT2->GetXaxis()->CenterTitle();
+
+hT2->GetYaxis()->SetTitle("Normalized Events");
+hT2->GetYaxis()->CenterTitle();
+
+hT2->Draw("E1");
+hTAfterRecoCCCoh->Draw("histosame");
+hTAfterTrueCCCoh->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg11 = new TLegend();
+leg11 = new TLegend(0.58,0.65,1.00,1.00);
+leg11->SetTextSize(0.04);
+leg11->SetTextAlign(12);
+leg11->SetFillColor(kWhite);
+leg11->SetLineColor(kWhite);
+leg11->SetShadowColor(kWhite);
+leg11->SetHeader("Samples");
+leg11->AddEntry(hTAfterTrueCCCoh,"MC True");
+leg11->AddEntry(hTAfterRecoCCCoh,"MC Reco");
+leg11->AddEntry(hT2,"Data");
+leg11->Draw();
+
+
+
+
+
+TCanvas *c12 = new TCanvas("c12", "The TKI Variable DeltaP_TT Plots After 2-Tracks and After Pion Candidate Selection");
+c12->SetTicks();
+c12->SetFillColor(kWhite);
+
+// Setting Drawing Parameters
+hDeltaPTT->SetLineColor(kBlue);
+hDeltaPTT->SetLineWidth(2);
+hDeltaPTT->Rebin(50);
+
+hDeltaPTTPC->SetLineColor(kRed);
+hDeltaPTTPC->SetLineWidth(2);
+hDeltaPTTPC->Rebin(50);
+
+hDeltaPTT->GetXaxis()->SetTitle("#deltap_{TT} [GeV/c]");
+hDeltaPTT->GetXaxis()->CenterTitle();
+
+hDeltaPTT->GetYaxis()->SetTitle("Normalized Events");
+hDeltaPTT->GetYaxis()->CenterTitle();
+
+hDeltaPTT->Draw("E1");
+hDeltaPTTPC->Draw("E1same");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg12 = new TLegend();
+leg12 = new TLegend(0.58,0.65,1.00,1.00);
+leg12->SetTextSize(0.04);
+leg12->SetTextAlign(12);
+leg12->SetFillColor(kWhite);
+leg12->SetLineColor(kWhite);
+leg12->SetShadowColor(kWhite);
+leg12->SetHeader("After Which Selection");
+leg12->AddEntry(hDeltaPTT,"2-Tracks");
+leg12->AddEntry(hDeltaPTTPC,"Pion Candidacy");
+leg12->Draw();
+
+
+
+
+
+TCanvas *c13 = new TCanvas("c13", "The TKI Variable P_N Plots After 2-Tracks and After Pion Candidate Selection");
+c13->SetTicks();
+c13->SetFillColor(kWhite);
+
+// Setting Drawing Parameters
+hPN->SetLineColor(kBlue);
+hPN->SetLineWidth(2);
+hPN->Rebin(50);
+
+hPNPC->SetLineColor(kRed);
+hPNPC->SetLineWidth(2);
+hPNPC->Rebin(50);
+
+hPN->GetXaxis()->SetTitle("p_{N} [GeV/c]");
+hPN->GetXaxis()->CenterTitle();
+
+hPN->GetYaxis()->SetTitle("Normalized Events");
+hPN->GetYaxis()->CenterTitle();
+
+hPN->Draw("E1");
+hPNPC->Draw("E1same");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg13 = new TLegend();
+leg13 = new TLegend(0.58,0.65,1.00,1.00);
+leg13->SetTextSize(0.04);
+leg13->SetTextAlign(12);
+leg13->SetFillColor(kWhite);
+leg13->SetLineColor(kWhite);
+leg13->SetShadowColor(kWhite);
+leg13->SetHeader("After Which Selection");
+leg13->AddEntry(hPN,"2-Tracks");
+leg13->AddEntry(hPNPC,"Pion Candidacy");
+leg13->Draw();
+
+
+
+
+
+TCanvas *c14 = new TCanvas("c14", "The TKI Variable DeltaAlpha_T Plots After 2-Tracks and After Pion Candidate Selection");
+c14->SetTicks();
+c14->SetFillColor(kWhite);
+
+// Setting Drawing Parameters
+hDeltaAlphaT->SetLineColor(kBlue);
+hDeltaAlphaT->SetLineWidth(2);
+hDeltaAlphaT->Rebin(10);
+
+hDeltaAlphaTPC->SetLineColor(kRed);
+hDeltaAlphaTPC->SetLineWidth(2);
+hDeltaAlphaTPC->Rebin(10);
+
+hDeltaAlphaT->GetXaxis()->SetTitle("#delta#alpha_{T} [Degrees]");
+hDeltaAlphaT->GetXaxis()->CenterTitle();
+
+hDeltaAlphaT->GetYaxis()->SetTitle("Normalized Events");
+hDeltaAlphaT->GetYaxis()->CenterTitle();
+
+hDeltaAlphaT->Draw("E1");
+hDeltaAlphaTPC->Draw("E1same");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg14 = new TLegend();
+leg14 = new TLegend(0.58,0.65,1.00,1.00);
+leg14->SetTextSize(0.04);
+leg14->SetTextAlign(12);
+leg14->SetFillColor(kWhite);
+leg14->SetLineColor(kWhite);
+leg14->SetShadowColor(kWhite);
+leg14->SetHeader("After Which Selection");
+leg14->AddEntry(hDeltaAlphaT,"2-Tracks");
+leg14->AddEntry(hDeltaAlphaTPC,"Pion Candidacy");
+leg14->Draw();
 }

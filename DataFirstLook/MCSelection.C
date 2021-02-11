@@ -1,5 +1,5 @@
-#define DataSelection_cxx
-#include "DataSelection.h"
+#define MCSelection_cxx
+#include "MCSelection.h"
 #include <TH2.h>
 #include <TStyle.h>
 #include <TCanvas.h>
@@ -23,8 +23,8 @@ TH1D *hT = new TH1D("hT", "Reco |t| After 2 Tracks", 1000, 0, 1.0);
 TH1D *hTConeAngle = new TH1D("hTConeAngle", "Reco |t| After Cone Angle", 1000, 0, 1.0);
 TH1D *hTDoCA = new TH1D("hTDoCA", "Reco |t| After DoCA", 1000, 0, 1.0);
 TH1D *hTPionCandidate = new TH1D("hTPionCandidate", "Reco |t| After Pion Candidacy", 1000, 0, 1.0);
-TH1D *hDoCAFor2Tracks = new TH1D("hDoCAFor2Tracks", "The Distance of Closest Approach from Reconstructed Information for Data", 100, 0, 100);
-TH1D *hDoCAVtxDistanceFor2Tracks = new TH1D("hDoCAVtxDistanceFor2Tracks", "The Distance of Closest Approach from Reconstructed Information for Data Using Vtx Distance", 100, 0, 100);
+TH1D *hDoCAFor2Tracks = new TH1D("hDoCAFor2Tracks", "The Distance of Closest Approach from Reconstructed Information for MC", 100, 0, 100);
+TH1D *hDoCAVtxDistanceFor2Tracks = new TH1D("hDoCAVtxDistanceFor2Tracks", "The Distance of Closest Approach from Reconstructed Information for MC Using Vtx Distance", 100, 0, 100);
 
 TH2D *hMuonCandidateTracksMuonChi2VsProtonChi2 = new TH2D("hMuonCandidateTracksMuonChi2VsProtonChi2", "For Muon Candidate Tracks the Muon #chi^{2} Vs Proton #chi^{2}", 1000, 0, 350, 1000, 0, 350);
 TH2D *hPionCandidateTracksMuonChi2VsProtonChi2 = new TH2D("hPionCandidateTracksMuonChi2VsProtonChi2", "For Pion Candidate Tracks the Muon #chi^{2} Vs Proton #chi^{2}", 1000, 0, 350, 1000, 0, 350);
@@ -202,7 +202,7 @@ double P_N_Alpha_T(bool w, double mu_x, double mu_y, double mu_z, double E_mu, d
 
 
 
-void DataSelection::Loop()
+void MCSelection::Loop()
 {
    // ===============================================
    // === The Total Number of Events of This File ===
@@ -632,7 +632,7 @@ void DataSelection::Loop()
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
    // %%% Saving Histograms to a File Here %%%
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-   TFile *TDataInfo = new TFile("Data_Histograms.root", "RECREATE");
+   TFile *TMCInfo = new TFile("MC_Histograms.root", "CREATE");
 
    hNumMuonCandidates->Write();
    hNumTrksWithin10->Write();
