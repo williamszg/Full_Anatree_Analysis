@@ -43,6 +43,9 @@ TH1D *hDeltaAlphaT = new TH1D("hDeltaAlphaT", "The TKI Variable Known as DeltaAl
 TH1D *hDeltaPTTPC = new TH1D("hDeltaPTTPC", "The TKI Variable Known as DeltaP_TT for Events with 2-Tracks after Pion Candidacy", 1000, 0, 1);
 TH1D *hPNPC = new TH1D("hPNPC", "The TKI Variable Known as P_N for Events with 2-Tracks after Pion Candidacy", 1000, 0, 10);
 TH1D *hDeltaAlphaTPC = new TH1D("hDeltaAlphaTPC", "The TKI Variable Known as DeltaAlpha_T for Events with 2-Tracks after Pion Candidacy", 180, 0, 180);
+
+TH1D *hNSliceNumberAfterMuon = new TH1D("hNSliceNumberAfterMuon", "The Number of Neutrino Slices Identified by the Slice ID After Muon Candidacy", 2, -0.5, 1.5);
+TH1D *hNSliceNumberAfterPion = new TH1D("hNSliceNumberAfterPion", "The Number of Neutrino Slices Identified by the Slice ID After Pion Candidacy", 2, -0.5, 1.5);
 // ---------------------------------------
 
 
@@ -489,6 +492,7 @@ void DataSelection::Loop()
          hNumTrksWithin10->Fill(NumTrksWithin10);
 	 NumCCInclusivePreSelection++;
 	 hPassedCCInclusivePreSelection->Fill(1);
+	 hNSliceNumberAfterMuon->Fill(nslice);
 	 if (NumTrksWithin10 == NumTrksWithin10Cut) {
 	    NumEventsWithTrksWithin10++;
 	    hConeAngleFor2Tracks->Fill(SavedConeAngle);
@@ -572,6 +576,7 @@ void DataSelection::Loop()
 	             hDeltaPTTPC->Fill(DeltaP_TT(0, 0, 1, mu.X(), mu.Y(), mu.Z(), pi.X(), pi.Y(), pi.Z()));
 	             hPNPC->Fill(P_N_Alpha_T(0, mu.X(), mu.Y(), mu.Z(), Trk1MuEnergy, pi.X(), pi.Y(), pi.Z(), Trk2MuEnergy));
 	             hDeltaAlphaTPC->Fill(P_N_Alpha_T(1, mu.X(), mu.Y(), mu.Z(), Trk1MuEnergy, pi.X(), pi.Y(), pi.Z(), Trk2MuEnergy)*180/PI);
+		     hNSliceNumberAfterPion->Fill(nslice);
 		     if (t < TCut) {
 		        NumEventsWithT++;
 			hRecoNuEnergyT->Fill(Trk1MuEnergy + Trk2MuEnergy);
@@ -665,5 +670,8 @@ void DataSelection::Loop()
    hDeltaPTTPC->Write();
    hPNPC->Write();
    hDeltaAlphaTPC->Write();
+
+   hNSliceNumberAfterMuon->Write();
+   hNSliceNumberAfterPion->Write();
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 }
