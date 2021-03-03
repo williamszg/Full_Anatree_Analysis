@@ -376,10 +376,7 @@ void MCCCCohSelection::Loop()
       // |======================================================|
       // |=== Ensuring I'm Selecting CC-Coh Pion Events Here ===|
       // |======================================================|
-      std::cout<<"nu_pdg = "<<nu_pdg<<std::endl;
-      std::cout<<"ccnc = "<<ccnc<<std::endl;
-      std::cout<<"interaction = "<<interaction<<std::endl;
-      //if (nu_pdg == 14 && ccnc == 0 && interaction == 3)
+      if (nu_pdg == 14 && ccnc == 0 && interaction == 3) {
       // |======================================================|
 
       // |=========================================|
@@ -596,6 +593,7 @@ void MCCCCohSelection::Loop()
 	    }
 	 }
       }
+      }// Closing If Statement Ensuring CC-Coh Pion Events
 
       if (!CCInclusivePreSelection) hPassedCCInclusivePreSelection->Fill(0);
       // |=========================================|
@@ -646,7 +644,7 @@ void MCCCCohSelection::Loop()
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
    // %%% Saving Histograms to a File Here %%%
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-   TFile *TMCInfo = new TFile("MC_CCCoh_Histograms.root", "CREATE");
+   TFile *TMCInfo = new TFile("MC_CCCoh_Histograms.root", "RECREATE");
 
    hNumMuonCandidates->Write();
    hNumTrksWithin10->Write();
