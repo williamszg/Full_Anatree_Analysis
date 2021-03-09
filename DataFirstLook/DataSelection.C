@@ -46,6 +46,26 @@ TH1D *hDeltaAlphaTPC = new TH1D("hDeltaAlphaTPC", "The TKI Variable Known as Del
 
 TH1D *hNSliceNumberAfterMuon = new TH1D("hNSliceNumberAfterMuon", "The Number of Neutrino Slices Identified by the Slice ID After Muon Candidacy", 2, -0.5, 1.5);
 TH1D *hNSliceNumberAfterPion = new TH1D("hNSliceNumberAfterPion", "The Number of Neutrino Slices Identified by the Slice ID After Pion Candidacy", 2, -0.5, 1.5);
+
+TH1D *hRecoMuonCandidateMomentum = new TH1D("hRecoMuonCandidateMomentum", "The Muon Candidates Reconstructed Momentum After 2-Tracks Selection", 1000, 0, 10);
+TH1D *hRecoPionCandidateMomentum = new TH1D("hRecoPionCandidateMomentum", "The Pion Candidates Reconstructed Momentum After 2-Tracks Selection", 1000, 0, 10);
+TH1D *hRecoMuonCandidateMomentumAfterPC = new TH1D("hRecoMuonCandidateMomentumAfterPC", "The Muon Candidates Reconstructed Momentum After Pion Candidacy", 1000, 0, 10);
+TH1D *hRecoPionCandidateMomentumAfterPC = new TH1D("hRecoPionCandidateMomentumAfterPC", "The Pion Candidates Reconstructed Momentum After Pion Candidacy", 1000, 0, 10);
+
+TH1D *hRecoMuonCandidateTheta = new TH1D("hRecoMuonCandidateTheta", "The Muon Candidates Reconstructed #theta_{#mu} After 2-Tracks Selection", 1000, 0, 180);
+TH1D *hRecoPionCandidateTheta = new TH1D("hRecoPionCandidateTheta", "The Pion Candidates Reconstructed #theta_{#pi} After 2-Tracks Selection", 1000, 0, 180);
+TH1D *hRecoMuonCandidateThetaAfterPC = new TH1D("hRecoMuonCandidateThetaAfterPC", "The Muon Candidates Reconstructed #theta_{#mu} After Pion Candidacy", 1000, 0, 180);
+TH1D *hRecoPionCandidateThetaAfterPC = new TH1D("hRecoPionCandidateThetaAfterPC", "The Pion Candidates Reconstructed #theta_{#pi} After Pion Candidacy", 1000, 0, 180);
+
+TH1D *hRecoMuonCandidateCosTheta = new TH1D("hRecoMuonCandidateCosTheta", "The Muon Candidates Reconstructed Cos(#theta_{#mu}) After 2-Tracks Selection", 1000, 0, 1);
+TH1D *hRecoPionCandidateCosTheta = new TH1D("hRecoPionCandidateCosTheta", "The Pion Candidates Reconstructed Cos(#theta_{#pi}) After 2-Tracks Selection", 1000, 0, 1);
+TH1D *hRecoMuonCandidateCosThetaAfterPC = new TH1D("hRecoMuonCandidateCosThetaAfterPC", "The Muon Candidates Reconstructed Cos(#theta_{#mu}) After Pion Candidacy", 1000, 0, 1);
+TH1D *hRecoPionCandidateCosThetaAfterPC = new TH1D("hRecoPionCandidateCosThetaAfterPC", "The Pion Candidates Reconstructed Cos(#theta_{#pi}) After Pion Candidacy", 1000, 0, 1);
+
+TH1D *hRecoMuonCandidatePhi = new TH1D("hRecoMuonCandidatePhi", "The Muon Candidates Reconstructed #phi_{#mu} After 2-Tracks Selection", 1000, -180, 180);
+TH1D *hRecoPionCandidatePhi = new TH1D("hRecoPionCandidatePhi", "The Pion Candidates Reconstructed #phi_{#pi} After 2-Tracks Selection", 1000, -180, 180);
+TH1D *hRecoMuonCandidatePhiAfterPC = new TH1D("hRecoMuonCandidatePhiAfterPC", "The Muon Candidates Reconstructed #phi_{#mu} After Pion Candidacy", 1000, -180, 180);
+TH1D *hRecoPionCandidatePhiAfterPC = new TH1D("hRecoPionCandidatePhiAfterPC", "The Pion Candidates Reconstructed #phi_{#pi} After Pion Candidacy", 1000, -180, 180);
 // ---------------------------------------
 
 
@@ -557,6 +577,14 @@ void DataSelection::Loop()
 	    hDeltaAlphaT->Fill(P_N_Alpha_T(1, mu.X(), mu.Y(), mu.Z(), Trk1MuEnergy, pi.X(), pi.Y(), pi.Z(), Trk2MuEnergy)*180/PI);
 
 	    hRecoNuEnergy->Fill(Trk1MuEnergy + Trk2MuEnergy);
+	    hRecoMuonCandidateMomentum->Fill(mu.Mag());
+	    hRecoPionCandidateMomentum->Fill(pi.Mag());
+	    hRecoMuonCandidateTheta->Fill(mu.Theta()*180/PI);
+	    hRecoPionCandidateTheta->Fill(pi.Theta()*180/PI);
+	    hRecoMuonCandidateCosTheta->Fill(mu.CosTheta());
+	    hRecoPionCandidateCosTheta->Fill(pi.CosTheta());
+	    hRecoMuonCandidatePhi->Fill(mu.Phi()*180/PI);
+	    hRecoPionCandidatePhi->Fill(pi.Phi()*180/PI);
 	    if (SavedConeAngle <= ConeAngleCut) {
 	       NumEventsWithConeAngle++;
 	       hTConeAngle->Fill(t);
@@ -577,6 +605,14 @@ void DataSelection::Loop()
 	             hPNPC->Fill(P_N_Alpha_T(0, mu.X(), mu.Y(), mu.Z(), Trk1MuEnergy, pi.X(), pi.Y(), pi.Z(), Trk2MuEnergy));
 	             hDeltaAlphaTPC->Fill(P_N_Alpha_T(1, mu.X(), mu.Y(), mu.Z(), Trk1MuEnergy, pi.X(), pi.Y(), pi.Z(), Trk2MuEnergy)*180/PI);
 		     hNSliceNumberAfterPion->Fill(nslice);
+		     hRecoMuonCandidateMomentumAfterPC->Fill(mu.Mag());
+		     hRecoPionCandidateMomentumAfterPC->Fill(pi.Mag());
+		     hRecoMuonCandidateThetaAfterPC->Fill(mu.Theta()*180/PI);
+		     hRecoPionCandidateThetaAfterPC->Fill(pi.Theta()*180/PI);
+		     hRecoMuonCandidateCosThetaAfterPC->Fill(mu.CosTheta());
+		     hRecoPionCandidateCosThetaAfterPC->Fill(pi.CosTheta());
+		     hRecoMuonCandidatePhiAfterPC->Fill(mu.Phi()*180/PI);
+		     hRecoPionCandidatePhiAfterPC->Fill(pi.Phi()*180/PI);
 		     if (t < TCut) {
 		        NumEventsWithT++;
 			hRecoNuEnergyT->Fill(Trk1MuEnergy + Trk2MuEnergy);
@@ -673,5 +709,25 @@ void DataSelection::Loop()
 
    hNSliceNumberAfterMuon->Write();
    hNSliceNumberAfterPion->Write();
+
+   hRecoMuonCandidateMomentum->Write();
+   hRecoPionCandidateMomentum->Write();
+   hRecoMuonCandidateMomentumAfterPC->Write();
+   hRecoPionCandidateMomentumAfterPC->Write();
+
+   hRecoMuonCandidateTheta->Write();
+   hRecoPionCandidateTheta->Write();
+   hRecoMuonCandidateThetaAfterPC->Write();
+   hRecoPionCandidateThetaAfterPC->Write();
+
+   hRecoMuonCandidateCosTheta->Write();
+   hRecoPionCandidateCosTheta->Write();
+   hRecoMuonCandidateCosThetaAfterPC->Write();
+   hRecoPionCandidateCosThetaAfterPC->Write();
+
+   hRecoMuonCandidatePhi->Write();
+   hRecoPionCandidatePhi->Write();
+   hRecoMuonCandidatePhiAfterPC->Write();
+   hRecoPionCandidatePhiAfterPC->Write();
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 }

@@ -9,6 +9,7 @@ TFile *f2 = new TFile("../CCCoh_Daughter_Information.root"); // <-- File for CCC
 TFile *f3 = new TFile("../Other_Daughter_Information.root"); // <-- File for Other Daughters Tree
 TFile *f4 = new TFile("Data_Histograms.root"); // <-- File for Data Information
 TFile *f5 = new TFile("MC_Histograms.root"); // <-- File for New MC Information
+TFile *f6 = new TFile("MC_CCCoh_Histograms.root"); // <-- File for New MC CCCoh Information
 
 
 
@@ -16,6 +17,7 @@ TFile *f5 = new TFile("MC_Histograms.root"); // <-- File for New MC Information
 
 TH1D *hT = (TH1D*)f4->Get("hT");
 TH1D *hTReco = (TH1D*)f5->Get("hT");
+TH1D *hTRecoCCCoh = (TH1D*)f6->Get("hT");
 TH1D *hTAfter2RecoCCCoh = (TH1D*)f2->Get("hTAfter2Reco");
 TH1D *hTAfter2RecoOther = (TH1D*)f3->Get("hTAfter2Reco");
 TH1D *hTAfter2TrueCCCoh = (TH1D*)f2->Get("hTAfter2True");
@@ -23,6 +25,7 @@ TH1D *hTAfter2TrueOther = (TH1D*)f3->Get("hTAfter2True");
 
 hT->Sumw2();
 hTReco->Sumw2();
+hTRecoCCCoh->Sumw2();
 hTAfter2RecoCCCoh->Sumw2();
 hTAfter2RecoOther->Sumw2();
 hTAfter2TrueCCCoh->Sumw2();
@@ -31,6 +34,7 @@ hTAfter2TrueOther->Sumw2();
 
 TH1D *hT2 = (TH1D*)f4->Get("hTPionCandidate");
 TH1D *hT2Reco = (TH1D*)f5->Get("hTPionCandidate");
+TH1D *hT2RecoCCCoh = (TH1D*)f6->Get("hTPionCandidate");
 TH1D *hTAfterRecoCCCoh = (TH1D*)f2->Get("hTAfterReco");
 TH1D *hTAfterRecoOther = (TH1D*)f3->Get("hTAfterReco");
 TH1D *hTAfterTrueCCCoh = (TH1D*)f2->Get("hTAfterTrue");
@@ -38,6 +42,7 @@ TH1D *hTAfterTrueOther = (TH1D*)f3->Get("hTAfterTrue");
 
 hT2->Sumw2();
 hT2Reco->Sumw2();
+hT2RecoCCCoh->Sumw2();
 hTAfterRecoCCCoh->Sumw2();
 hTAfterRecoOther->Sumw2();
 hTAfterTrueCCCoh->Sumw2();
@@ -48,26 +53,31 @@ TH1D *hNumTrksWithin10 = (TH1D*)f4->Get("hNumTrksWithin10");
 TH1D *hNTracksInBubbleCCCoh = (TH1D*)f2->Get("hNTracksInBubble");
 TH1D *hNTracksInBubbleOther = (TH1D*)f3->Get("hNTracksInBubble");
 TH1D *hNumTrksWithin10MCReco = (TH1D*)f5->Get("hNumTrksWithin10");
+TH1D *hNumTrksWithin10MCCCCoh = (TH1D*)f6->Get("hNumTrksWithin10");
 
 hNumTrksWithin10->Sumw2();
 hNTracksInBubbleCCCoh->Sumw2();
 hNTracksInBubbleOther->Sumw2();
 hNumTrksWithin10MCReco->Sumw2();
+hNumTrksWithin10MCCCCoh->Sumw2();
 
 
 TH1D *hNumMuonCandidates = (TH1D*)f4->Get("hNumMuonCandidates");
 TH1D *hNumMuonCandidatesCCCoh = (TH1D*)f2->Get("hNumMuonCandidates");
 TH1D *hNumMuonCandidatesOther = (TH1D*)f3->Get("hNumMuonCandidates");
 TH1D *hNumMuonCandidatesMCReco = (TH1D*)f5->Get("hNumMuonCandidates");
+TH1D *hNumMuonCandidatesMCCCCoh = (TH1D*)f6->Get("hNumMuonCandidates");
 
 hNumMuonCandidates->Sumw2();
 hNumMuonCandidatesCCCoh->Sumw2();
 hNumMuonCandidatesOther->Sumw2();
 hNumMuonCandidatesMCReco->Sumw2();
+hNumMuonCandidatesMCCCCoh->Sumw2();
 
 
 TH1D *hConeAngleFor2Tracks = (TH1D*)f4->Get("hConeAngleFor2Tracks");
 TH1D *hConeAngleFor2TracksReco = (TH1D*)f5->Get("hConeAngleFor2Tracks");
+TH1D *hConeAngleFor2TracksRecoCCCoh = (TH1D*)f6->Get("hConeAngleFor2Tracks");
 TH1D *hRecoConeAngleCCCoh = (TH1D*)f2->Get("hRecoConeAngleAfter2");
 TH1D *hRecoConeAngleOther = (TH1D*)f3->Get("hRecoConeAngleAfter2");
 TH1D *hTrueConeAngleCCCoh = (TH1D*)f2->Get("hTrueConeAngleAfter2");
@@ -75,6 +85,7 @@ TH1D *hTrueConeAngleOther = (TH1D*)f3->Get("hTrueConeAngleAfter2");
 
 hConeAngleFor2Tracks->Sumw2();
 hConeAngleFor2TracksReco->Sumw2();
+hConeAngleFor2TracksRecoCCCoh->Sumw2();
 hRecoConeAngleCCCoh->Sumw2();
 hRecoConeAngleOther->Sumw2();
 hTrueConeAngleCCCoh->Sumw2();
@@ -87,6 +98,7 @@ TH1D *hRecoOpeningAngleOther = (TH1D*)f3->Get("hRecoOpeningAngleAfter2");
 TH1D *hTrueOpeningAngleCCCoh = (TH1D*)f2->Get("hTrueOpeningAngleAfter2");
 TH1D *hTrueOpeningAngleOther = (TH1D*)f3->Get("hTrueOpeningAngleAfter2");
 TH1D *hOpeningAngleFor2TracksMCReco = (TH1D*)f5->Get("hOpeningAngleFor2Tracks");
+TH1D *hOpeningAngleFor2TracksMCCCCoh = (TH1D*)f6->Get("hOpeningAngleFor2Tracks");
 
 hOpeningAngleFor2Tracks->Sumw2();
 hRecoOpeningAngleCCCoh->Sumw2();
@@ -94,6 +106,7 @@ hRecoOpeningAngleOther->Sumw2();
 hTrueOpeningAngleCCCoh->Sumw2();
 hTrueOpeningAngleOther->Sumw2();
 hOpeningAngleFor2TracksMCReco->Sumw2();
+hOpeningAngleFor2TracksMCCCCoh->Sumw2();
 
 
 TH1D *hRecoNuEnergy = (TH1D*)f4->Get("hRecoNuEnergy");
@@ -117,23 +130,35 @@ TH2D *hPionCandidateTracksMuonChi2VsProtonChi2AfterDoCA = (TH2D*)f4->Get("hPionC
 
 TH1D *hDeltaPTT = (TH1D*)f4->Get("hDeltaPTT");
 TH1D *hDeltaPTTPC = (TH1D*)f4->Get("hDeltaPTTPC");
+TH1D *hDeltaPTTCCCoh = (TH1D*)f6->Get("hDeltaPTT");
+TH1D *hDeltaPTTPCCCCoh = (TH1D*)f6->Get("hDeltaPTTPC");
 
 hDeltaPTT->Sumw2();
 hDeltaPTTPC->Sumw2();
+hDeltaPTTCCCoh->Sumw2();
+hDeltaPTTPCCCCoh->Sumw2();
 
 
 TH1D *hPN = (TH1D*)f4->Get("hPN");
 TH1D *hPNPC = (TH1D*)f4->Get("hPNPC");
+TH1D *hPNCCCoh = (TH1D*)f6->Get("hPN");
+TH1D *hPNPCCCCoh = (TH1D*)f6->Get("hPNPC");
 
 hPN->Sumw2();
 hPNPC->Sumw2();
+hPNCCCoh->Sumw2();
+hPNPCCCCoh->Sumw2();
 
 
 TH1D *hDeltaAlphaT = (TH1D*)f4->Get("hDeltaAlphaT");
 TH1D *hDeltaAlphaTPC = (TH1D*)f4->Get("hDeltaAlphaTPC");
+TH1D *hDeltaAlphaTCCCoh = (TH1D*)f6->Get("hDeltaAlphaT");
+TH1D *hDeltaAlphaTPCCCCoh = (TH1D*)f6->Get("hDeltaAlphaTPC");
 
 hDeltaAlphaT->Sumw2();
 hDeltaAlphaTPC->Sumw2();
+hDeltaAlphaTCCCoh->Sumw2();
+hDeltaAlphaTPCCCCoh->Sumw2();
 
 
 
@@ -163,6 +188,7 @@ hTAfter2TrueCCCoh->Scale(1/hTAfter2TrueCCCoh->Integral());
 //hTAfter2TrueCCCoh->Scale(After2TracksCutMCtoDataScaleFactor);
 hT->Scale(1/hT->Integral());
 hTReco->Scale(1/hTReco->Integral());
+hTRecoCCCoh->Scale(1/hTRecoCCCoh->Integral());
 
 // Setting Drawing Parameters
 hTAfter2TrueCCCoh->SetLineColor(kBlue);
@@ -181,6 +207,10 @@ hTReco->SetLineColor(kGreen);
 hTReco->SetLineWidth(2);
 hTReco->Rebin(50);
 
+hTRecoCCCoh->SetLineColor(kViolet);
+hTRecoCCCoh->SetLineWidth(2);
+hTRecoCCCoh->Rebin(50);
+
 hT->GetXaxis()->SetTitle("|t| [GeV^{2}/c^{2}]");
 hT->GetXaxis()->CenterTitle();
 
@@ -189,6 +219,7 @@ hT->GetYaxis()->CenterTitle();
 
 hT->Draw("E1");
 hTReco->Draw("histosame");
+hTRecoCCCoh->Draw("histosame");
 hTAfter2RecoCCCoh->Draw("histosame");
 hTAfter2TrueCCCoh->Draw("histosame");
 
@@ -205,6 +236,7 @@ leg1->SetHeader("Samples");
 leg1->AddEntry(hTAfter2TrueCCCoh,"MC True");
 leg1->AddEntry(hTAfter2RecoCCCoh,"MC Reco");
 leg1->AddEntry(hTReco,"MC Reco New");
+leg1->AddEntry(hTRecoCCCoh,"MC Reco New CC-Coh");
 leg1->AddEntry(hT,"Data");
 leg1->Draw();
 
@@ -222,6 +254,7 @@ hNTracksInBubbleCCCoh->Add(hNTracksInBubbleOther);
 hNTracksInBubbleCCCoh->Scale(1/hNTracksInBubbleCCCoh->Integral());
 hNumTrksWithin10->Scale(1/hNumTrksWithin10->Integral());
 hNumTrksWithin10MCReco->Scale(1/hNumTrksWithin10MCReco->Integral());
+hNumTrksWithin10MCCCCoh->Scale(1/hNumTrksWithin10MCCCCoh->Integral());
 
 // Setting Drawing Parameters
 hNTracksInBubbleCCCoh->SetLineColor(kRed);
@@ -236,6 +269,10 @@ hNumTrksWithin10MCReco->SetLineColor(kGreen);
 hNumTrksWithin10MCReco->SetLineWidth(2);
 //hNumTrksWithin10MCReco->Rebin(50);
 
+hNumTrksWithin10MCCCCoh->SetLineColor(kViolet);
+hNumTrksWithin10MCCCCoh->SetLineWidth(2);
+//hNumTrksWithin10MCCCCoh->Rebin(50);
+
 hNumTrksWithin10->GetXaxis()->SetTitle("Number of Tracks");
 hNumTrksWithin10->GetXaxis()->CenterTitle();
 
@@ -245,6 +282,7 @@ hNumTrksWithin10->GetYaxis()->CenterTitle();
 hNumTrksWithin10->Draw("E1");
 hNTracksInBubbleCCCoh->Draw("histosame");
 hNumTrksWithin10MCReco->Draw("histosame");
+hNumTrksWithin10MCCCCoh->Draw("histosame");
 
 
 // ### Defining the legend for the plot ###
@@ -258,6 +296,7 @@ leg2->SetShadowColor(kWhite);
 leg2->SetHeader("Samples");
 leg2->AddEntry(hNTracksInBubbleCCCoh,"MC Reco");
 leg2->AddEntry(hNumTrksWithin10MCReco,"MC Reco New");
+leg2->AddEntry(hNumTrksWithin10MCCCCoh,"MC Reco New CC-Coh");
 leg2->AddEntry(hNumTrksWithin10,"Data");
 leg2->Draw();
 
@@ -275,6 +314,7 @@ hNumMuonCandidatesCCCoh->Add(hNumMuonCandidatesOther);
 hNumMuonCandidatesCCCoh->Scale(1/hNumMuonCandidatesCCCoh->Integral());
 hNumMuonCandidates->Scale(1/hNumMuonCandidates->Integral());
 hNumMuonCandidatesMCReco->Scale(1/hNumMuonCandidatesMCReco->Integral());
+hNumMuonCandidatesMCCCCoh->Scale(1/hNumMuonCandidatesMCCCCoh->Integral());
 
 // Setting Drawing Parameters
 hNumMuonCandidatesCCCoh->SetLineColor(kRed);
@@ -289,6 +329,10 @@ hNumMuonCandidatesMCReco->SetLineColor(kGreen);
 hNumMuonCandidatesMCReco->SetLineWidth(2);
 //hNumMuonCandidatesMCReco->Rebin(50);
 
+hNumMuonCandidatesMCCCCoh->SetLineColor(kViolet);
+hNumMuonCandidatesMCCCCoh->SetLineWidth(2);
+//hNumMuonCandidatesMCCCCoh->Rebin(50);
+
 hNumMuonCandidates->GetXaxis()->SetTitle("Number of Muon Candidates");
 hNumMuonCandidates->GetXaxis()->CenterTitle();
 
@@ -298,6 +342,7 @@ hNumMuonCandidates->GetYaxis()->CenterTitle();
 hNumMuonCandidates->Draw("E1");
 hNumMuonCandidatesCCCoh->Draw("histosame");
 hNumMuonCandidatesMCReco->Draw("histosame");
+hNumMuonCandidatesMCCCCoh->Draw("histosame");
 
 
 // ### Defining the legend for the plot ###
@@ -311,6 +356,7 @@ leg3->SetShadowColor(kWhite);
 leg3->SetHeader("Samples");
 leg3->AddEntry(hNumMuonCandidatesCCCoh,"MC Reco");
 leg3->AddEntry(hNumMuonCandidatesMCReco,"MC Reco New");
+leg3->AddEntry(hNumMuonCandidatesMCCCCoh,"MC Reco New CC-Coh");
 leg3->AddEntry(hNumMuonCandidates,"Data");
 leg3->Draw();
 
@@ -332,6 +378,7 @@ hTrueConeAngleCCCoh->Scale(1/hTrueConeAngleCCCoh->Integral());
 //hTrueConeAngleCCCoh->Scale(After2TracksCutMCtoDataScaleFactor);
 hConeAngleFor2Tracks->Scale(1/hConeAngleFor2Tracks->Integral());
 hConeAngleFor2TracksReco->Scale(1/hConeAngleFor2TracksReco->Integral());
+hConeAngleFor2TracksRecoCCCoh->Scale(1/hConeAngleFor2TracksRecoCCCoh->Integral());
 
 // Setting Drawing Parameters
 hTrueConeAngleCCCoh->SetLineColor(kBlue);
@@ -350,6 +397,10 @@ hConeAngleFor2TracksReco->SetLineColor(kGreen);
 hConeAngleFor2TracksReco->SetLineWidth(2);
 hConeAngleFor2TracksReco->Rebin(5);
 
+hConeAngleFor2TracksRecoCCCoh->SetLineColor(kViolet);
+hConeAngleFor2TracksRecoCCCoh->SetLineWidth(2);
+hConeAngleFor2TracksRecoCCCoh->Rebin(5);
+
 hTrueConeAngleCCCoh->GetXaxis()->SetTitle("Cone Angles [Degrees]");
 hTrueConeAngleCCCoh->GetXaxis()->CenterTitle();
 
@@ -360,6 +411,7 @@ hTrueConeAngleCCCoh->Draw("histo");
 hRecoConeAngleCCCoh->Draw("histosame");
 hConeAngleFor2Tracks->Draw("E1same");
 hConeAngleFor2TracksReco->Draw("histosame");
+hConeAngleFor2TracksRecoCCCoh->Draw("histosame");
 
 
 // ### Defining the legend for the plot ###
@@ -374,6 +426,7 @@ leg4->SetHeader("Samples");
 leg4->AddEntry(hTrueConeAngleCCCoh,"MC True");
 leg4->AddEntry(hRecoConeAngleCCCoh,"MC Reco");
 leg4->AddEntry(hConeAngleFor2TracksReco,"MC Reco New");
+leg4->AddEntry(hConeAngleFor2TracksRecoCCCoh,"MC Reco New CC-Coh");
 leg4->AddEntry(hConeAngleFor2Tracks,"Data");
 leg4->Draw();
 
@@ -395,6 +448,7 @@ hTrueOpeningAngleCCCoh->Scale(1/hTrueOpeningAngleCCCoh->Integral());
 //hTrueOpeningAngleCCCoh->Scale(After2TracksCutMCtoDataScaleFactor);
 hOpeningAngleFor2Tracks->Scale(1/hOpeningAngleFor2Tracks->Integral());
 hOpeningAngleFor2TracksMCReco->Scale(1/hOpeningAngleFor2TracksMCReco->Integral());
+hOpeningAngleFor2TracksMCCCCoh->Scale(1/hOpeningAngleFor2TracksMCCCCoh->Integral());
 
 // Setting Drawing Parameters
 hTrueOpeningAngleCCCoh->SetLineColor(kBlue);
@@ -413,6 +467,10 @@ hOpeningAngleFor2TracksMCReco->SetLineColor(kGreen);
 hOpeningAngleFor2TracksMCReco->SetLineWidth(2);
 hOpeningAngleFor2TracksMCReco->Rebin(5);
 
+hOpeningAngleFor2TracksMCCCCoh->SetLineColor(kViolet);
+hOpeningAngleFor2TracksMCCCCoh->SetLineWidth(2);
+hOpeningAngleFor2TracksMCCCCoh->Rebin(5);
+
 hOpeningAngleFor2Tracks->GetXaxis()->SetTitle("#theta_{#mu#pi} [Degrees]");
 hOpeningAngleFor2Tracks->GetXaxis()->CenterTitle();
 
@@ -423,6 +481,7 @@ hOpeningAngleFor2Tracks->Draw("E1");
 hRecoOpeningAngleCCCoh->Draw("histosame");
 hTrueOpeningAngleCCCoh->Draw("histosame");
 hOpeningAngleFor2TracksMCReco->Draw("histosame");
+hOpeningAngleFor2TracksMCCCCoh->Draw("histosame");
 
 
 // ### Defining the legend for the plot ###
@@ -437,6 +496,7 @@ leg5->SetHeader("Samples");
 leg5->AddEntry(hTrueOpeningAngleCCCoh,"MC True");
 leg5->AddEntry(hRecoOpeningAngleCCCoh,"MC Reco");
 leg5->AddEntry(hOpeningAngleFor2TracksMCReco,"MC Reco New");
+leg5->AddEntry(hOpeningAngleFor2TracksMCCCCoh,"MC Reco New CC-Coh");
 leg5->AddEntry(hOpeningAngleFor2Tracks,"Data");
 leg5->Draw();
 
@@ -608,6 +668,7 @@ hTAfterTrueCCCoh->Scale(1/hTAfterTrueCCCoh->Integral());
 //hTAfterTrueCCCoh->Scale(AfterTracksCutMCtoDataScaleFactor);
 hT2->Scale(1/hT2->Integral());
 hT2Reco->Scale(1/hT2Reco->Integral());
+hT2RecoCCCoh->Scale(1/hT2RecoCCCoh->Integral());
 
 // Setting Drawing Parameters
 hTAfterTrueCCCoh->SetLineColor(kBlue);
@@ -626,6 +687,10 @@ hT2Reco->SetLineColor(kGreen);
 hT2Reco->SetLineWidth(2);
 hT2Reco->Rebin(50);
 
+hT2RecoCCCoh->SetLineColor(kViolet);
+hT2RecoCCCoh->SetLineWidth(2);
+hT2RecoCCCoh->Rebin(50);
+
 hT2->GetXaxis()->SetTitle("|t| [GeV^{2}/c^{2}]");
 hT2->GetXaxis()->CenterTitle();
 
@@ -634,6 +699,7 @@ hT2->GetYaxis()->CenterTitle();
 
 hT2->Draw("E1");
 hT2Reco->Draw("histosame");
+hT2RecoCCCoh->Draw("histosame");
 hTAfterRecoCCCoh->Draw("histosame");
 hTAfterTrueCCCoh->Draw("histosame");
 
@@ -650,6 +716,7 @@ leg11->SetHeader("Samples");
 leg11->AddEntry(hTAfterTrueCCCoh,"MC True");
 leg11->AddEntry(hTAfterRecoCCCoh,"MC Reco");
 leg11->AddEntry(hT2Reco,"MC Reco New");
+leg11->AddEntry(hT2RecoCCCoh,"MC Reco New CC-Coh");
 leg11->AddEntry(hT2,"Data");
 leg11->Draw();
 
@@ -664,11 +731,19 @@ c12->SetFillColor(kWhite);
 // Setting Drawing Parameters
 hDeltaPTT->SetLineColor(kBlue);
 hDeltaPTT->SetLineWidth(2);
-hDeltaPTT->Rebin(50);
+hDeltaPTT->Rebin(20);
 
 hDeltaPTTPC->SetLineColor(kRed);
 hDeltaPTTPC->SetLineWidth(2);
-hDeltaPTTPC->Rebin(50);
+hDeltaPTTPC->Rebin(20);
+
+hDeltaPTTCCCoh->SetLineColor(kCyan);
+hDeltaPTTCCCoh->SetLineWidth(2);
+hDeltaPTTCCCoh->Rebin(20);
+
+hDeltaPTTPCCCCoh->SetLineColor(kMagenta);
+hDeltaPTTPCCCCoh->SetLineWidth(2);
+hDeltaPTTPCCCCoh->Rebin(20);
 
 hDeltaPTT->GetXaxis()->SetTitle("#deltap_{TT} [GeV/c]");
 hDeltaPTT->GetXaxis()->CenterTitle();
@@ -678,6 +753,8 @@ hDeltaPTT->GetYaxis()->CenterTitle();
 
 hDeltaPTT->Draw("E1");
 hDeltaPTTPC->Draw("E1same");
+hDeltaPTTCCCoh->Draw("histosame");
+hDeltaPTTPCCCCoh->Draw("histosame");
 
 
 // ### Defining the legend for the plot ###
@@ -691,6 +768,8 @@ leg12->SetShadowColor(kWhite);
 leg12->SetHeader("After Which Selection");
 leg12->AddEntry(hDeltaPTT,"2-Tracks");
 leg12->AddEntry(hDeltaPTTPC,"Pion Candidacy");
+leg12->AddEntry(hDeltaPTTCCCoh,"2-Tracks MC New CC-Coh");
+leg12->AddEntry(hDeltaPTTPCCCCoh,"Pion Candidacy MC New CC-Coh");
 leg12->Draw();
 
 
@@ -704,11 +783,19 @@ c13->SetFillColor(kWhite);
 // Setting Drawing Parameters
 hPN->SetLineColor(kBlue);
 hPN->SetLineWidth(2);
-hPN->Rebin(50);
+hPN->Rebin(20);
 
 hPNPC->SetLineColor(kRed);
 hPNPC->SetLineWidth(2);
-hPNPC->Rebin(50);
+hPNPC->Rebin(20);
+
+hPNCCCoh->SetLineColor(kCyan);
+hPNCCCoh->SetLineWidth(2);
+hPNCCCoh->Rebin(20);
+
+hPNPCCCCoh->SetLineColor(kMagenta);
+hPNPCCCCoh->SetLineWidth(2);
+hPNPCCCCoh->Rebin(20);
 
 hPN->GetXaxis()->SetTitle("p_{N} [GeV/c]");
 hPN->GetXaxis()->CenterTitle();
@@ -718,6 +805,8 @@ hPN->GetYaxis()->CenterTitle();
 
 hPN->Draw("E1");
 hPNPC->Draw("E1same");
+hPNCCCoh->Draw("histosame");
+hPNPCCCCoh->Draw("histosame");
 
 
 // ### Defining the legend for the plot ###
@@ -731,6 +820,8 @@ leg13->SetShadowColor(kWhite);
 leg13->SetHeader("After Which Selection");
 leg13->AddEntry(hPN,"2-Tracks");
 leg13->AddEntry(hPNPC,"Pion Candidacy");
+leg13->AddEntry(hPNCCCoh,"2-Tracks MC New CC-Coh");
+leg13->AddEntry(hPNPCCCCoh,"Pion Candidacy MC New CC-Coh");
 leg13->Draw();
 
 
@@ -744,11 +835,19 @@ c14->SetFillColor(kWhite);
 // Setting Drawing Parameters
 hDeltaAlphaT->SetLineColor(kBlue);
 hDeltaAlphaT->SetLineWidth(2);
-hDeltaAlphaT->Rebin(10);
+hDeltaAlphaT->Rebin(5);
 
 hDeltaAlphaTPC->SetLineColor(kRed);
 hDeltaAlphaTPC->SetLineWidth(2);
-hDeltaAlphaTPC->Rebin(10);
+hDeltaAlphaTPC->Rebin(5);
+
+hDeltaAlphaTCCCoh->SetLineColor(kCyan);
+hDeltaAlphaTCCCoh->SetLineWidth(2);
+hDeltaAlphaTCCCoh->Rebin(5);
+
+hDeltaAlphaTPCCCCoh->SetLineColor(kMagenta);
+hDeltaAlphaTPCCCCoh->SetLineWidth(2);
+hDeltaAlphaTPCCCCoh->Rebin(5);
 
 hDeltaAlphaT->GetXaxis()->SetTitle("#delta#alpha_{T} [Degrees]");
 hDeltaAlphaT->GetXaxis()->CenterTitle();
@@ -758,6 +857,8 @@ hDeltaAlphaT->GetYaxis()->CenterTitle();
 
 hDeltaAlphaT->Draw("E1");
 hDeltaAlphaTPC->Draw("E1same");
+hDeltaAlphaTCCCoh->Draw("histosame");
+hDeltaAlphaTPCCCCoh->Draw("histosame");
 
 
 // ### Defining the legend for the plot ###
@@ -771,5 +872,7 @@ leg14->SetShadowColor(kWhite);
 leg14->SetHeader("After Which Selection");
 leg14->AddEntry(hDeltaAlphaT,"2-Tracks");
 leg14->AddEntry(hDeltaAlphaTPC,"Pion Candidacy");
+leg14->AddEntry(hDeltaAlphaTCCCoh,"2-Tracks MC New CC-Coh");
+leg14->AddEntry(hDeltaAlphaTPCCCCoh,"Pion Candidacy MC New CC-Coh");
 leg14->Draw();
 }
