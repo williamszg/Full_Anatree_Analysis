@@ -13,6 +13,7 @@
 // --- The Histograms Are Defined Here ---
 // ---------------------------------------
 TH1D *hNumMuonCandidates = new TH1D("hNumMuonCandidates", "The Number of Muon Candidates per Event", 30, 0, 30);
+TH1D *hNumMuonCandidatesAfterCCInclusive = new TH1D("hNumMuonCandidatesAfterCCInclusive", "The Number of Muon Candidates per Event After the CC-Inclusive Selection", 30, 0, 30);
 TH1D *hNumTrksWithin10 = new TH1D("hNumTrksWithin10", "The Number of Tracks Within 10cm of Neutrino Vertex", 16, -0.5, 15.5);
 TH1D *hPassedCCInclusivePreSelection = new TH1D("hPassedCCInclusivePreSelection", "The Number of Events That Passed the CCInclusive PreSelection", 2, -0.5, 1.5);
 
@@ -66,6 +67,21 @@ TH1D *hRecoMuonCandidatePhi = new TH1D("hRecoMuonCandidatePhi", "The Muon Candid
 TH1D *hRecoPionCandidatePhi = new TH1D("hRecoPionCandidatePhi", "The Pion Candidates Reconstructed #phi_{#pi} After 2-Tracks Selection", 1000, -180, 180);
 TH1D *hRecoMuonCandidatePhiAfterPC = new TH1D("hRecoMuonCandidatePhiAfterPC", "The Muon Candidates Reconstructed #phi_{#mu} After Pion Candidacy", 1000, -180, 180);
 TH1D *hRecoPionCandidatePhiAfterPC = new TH1D("hRecoPionCandidatePhiAfterPC", "The Pion Candidates Reconstructed #phi_{#pi} After Pion Candidacy", 1000, -180, 180);
+
+TH2D *hOpeningAngleVsConeAngle2Tracks = new TH2D("hOpeningAngleVsConeAngle2Tracks", "#theta_{#mu#pi} Vs Cone Angle After 2-Tracks Selection", 180, 0, 180, 180, 0, 180);
+TH2D *hOpeningAngleVsConeAnglePC = new TH2D("hOpeningAngleVsConeAnglePC", "#theta_{#mu#pi} Vs Cone Angle After Pion Candidacy", 180, 0, 180, 180, 0, 180);
+
+TH1D *hRecoMuonCandidateCaloU = new TH1D("hRecoMuonCandidateCaloU", "The Muon Candidates Reconstructed Calo Energy in U-Plane After 2-Tracks Selection", 1000, 0, 5000);
+TH1D *hRecoPionCandidateCaloU = new TH1D("hRecoPionCandidateCaloU", "The Pion Candidates Reconstructed Calo Energy in U-Plane After 2-Tracks Selection", 1000, 0, 5000);
+TH1D *hRecoCaloU = new TH1D("hRecoCaloU", "The Reconstructed Calo Energy in U-Plane After 2-Tracks Selection", 1000, 0, 5000);
+
+TH1D *hRecoMuonCandidateCaloV = new TH1D("hRecoMuonCandidateCaloV", "The Muon Candidates Reconstructed Calo Energy in V-Plane After 2-Tracks Selection", 1000, 0, 5000);
+TH1D *hRecoPionCandidateCaloV = new TH1D("hRecoPionCandidateCaloV", "The Pion Candidates Reconstructed Calo Energy in V-Plane After 2-Tracks Selection", 1000, 0, 5000);
+TH1D *hRecoCaloV = new TH1D("hRecoCaloV", "The Reconstructed Calo Energy in V-Plane After 2-Tracks Selection", 1000, 0, 5000);
+
+TH1D *hRecoMuonCandidateCaloY = new TH1D("hRecoMuonCandidateCaloY", "The Muon Candidates Reconstructed Calo Energy in Y-Plane After 2-Tracks Selection", 1000, 0, 5000);
+TH1D *hRecoPionCandidateCaloY = new TH1D("hRecoPionCandidateCaloY", "The Pion Candidates Reconstructed Calo Energy in Y-Plane After 2-Tracks Selection", 1000, 0, 5000);
+TH1D *hRecoCaloY = new TH1D("hRecoCaloY", "The Reconstructed Calo Energy in Y-Plane After 2-Tracks Selection", 1000, 0, 5000);
 // ---------------------------------------
 
 
@@ -323,6 +339,7 @@ void MCSelection::Loop()
    double VACut = 0;
    double PionCandidateMuonCut = 20;
    double PionCandidateProtonCut = 50;
+   double OpeningAngleCut = 90;
    double TCut = 0.25;
    // |========================================|
 
@@ -336,6 +353,7 @@ void MCSelection::Loop()
    int NumEventsWithDoCA = 0;
    int NumEventsWithVA = 0;
    int NumEventsWithPionCandidate = 0;
+   int NumEventsWithOA = 0;
    int NumEventsWithT = 0;
    // |======================================|
 
@@ -379,6 +397,8 @@ void MCSelection::Loop()
       double SavedConeAngle = 900;
       TVector3 p1;
       TVector3 p2;
+      TVector3 e1;
+      TVector3 e2;
       int Trk1MuonCandidate = 0;
       int Trk2MuonCandidate = 0;
       double Trk1TrackLength = 0;
@@ -456,6 +476,7 @@ void MCSelection::Loop()
 		  p1.SetY(-1*TrackMom*trk_dir_y_v->at(i));
 	          p1.SetZ(-1*TrackMom*trk_dir_z_v->at(i));
 	       }
+	       e1.SetXYZ(trk_calo_energy_u_v->at(i), trk_calo_energy_v_v->at(i), trk_calo_energy_y_v->at(i));
 	       if (TrackScore && VtxDistance && Generation && TrackLength && ProtonChi2 && MuonChi2 && RatioChi2) Trk1MuonCandidate = 1;
 	       Trk1TrackLength = trk_len_v->at(i);
 	       Trk1Chi2Muon = trk_pid_chimu_v->at(i);
@@ -470,6 +491,7 @@ void MCSelection::Loop()
 		  p2.SetY(-1*TrackMom*trk_dir_y_v->at(i));
 	          p2.SetZ(-1*TrackMom*trk_dir_z_v->at(i));
 	       }
+	       e2.SetXYZ(trk_calo_energy_u_v->at(i), trk_calo_energy_v_v->at(i), trk_calo_energy_y_v->at(i));
 	       if (TrackScore && VtxDistance && Generation && TrackLength && ProtonChi2 && MuonChi2 && RatioChi2) Trk2MuonCandidate = 1; 
 	       Trk2TrackLength = trk_len_v->at(i);
 	       Trk2Chi2Muon = trk_pid_chimu_v->at(i);
@@ -513,6 +535,7 @@ void MCSelection::Loop()
 	 NumCCInclusivePreSelection++;
 	 hPassedCCInclusivePreSelection->Fill(1);
          hNSliceNumberAfterMuon->Fill(nslice);
+         hNumMuonCandidatesAfterCCInclusive->Fill(NumMuonCandidates);
 	 if (NumTrksWithin10 == NumTrksWithin10Cut) {
 	    NumEventsWithTrksWithin10++;
 	    hConeAngleFor2Tracks->Fill(SavedConeAngle);
@@ -526,6 +549,8 @@ void MCSelection::Loop()
 	    double PionCandidateProtonChi2 = 999;
 	    TVector3 mu;
 	    TVector3 pi;
+	    TVector3 muE;
+	    TVector3 piE;
 	    if (Trk1MuonCandidate == 1 && Trk2MuonCandidate == 1) {
 	       if (Trk1TrackLength > Trk2TrackLength) {
                   hMuonCandidateTracksMuonChi2VsProtonChi2->Fill(Trk1Chi2Proton, Trk1Chi2Muon);
@@ -533,9 +558,11 @@ void MCSelection::Loop()
 	          MuonCandidateMuonChi2 = Trk1Chi2Muon;
 	          MuonCandidateProtonChi2 = Trk1Chi2Proton;
 		  mu.SetXYZ(p1.X(), p1.Y(), p1.Z());
+		  muE.SetXYZ(e1.X(), e1.Y(), e1.Z());
 	          PionCandidateMuonChi2 = Trk2Chi2Muon;
 	          PionCandidateProtonChi2 = Trk2Chi2Proton;
 		  pi.SetXYZ(p2.X(), p2.Y(), p2.Z());
+		  piE.SetXYZ(e2.X(), e2.Y(), e2.Z());
 	       }
 	       if (Trk2TrackLength > Trk1TrackLength) {
                   hMuonCandidateTracksMuonChi2VsProtonChi2->Fill(Trk2Chi2Proton, Trk2Chi2Muon);
@@ -543,9 +570,11 @@ void MCSelection::Loop()
 	          MuonCandidateMuonChi2 = Trk2Chi2Muon;
 	          MuonCandidateProtonChi2 = Trk2Chi2Proton;
 		  mu.SetXYZ(p2.X(), p2.Y(), p2.Z());
+		  muE.SetXYZ(e2.X(), e2.Y(), e2.Z());
 	          PionCandidateMuonChi2 = Trk1Chi2Muon;
 	          PionCandidateProtonChi2 = Trk1Chi2Proton;
 		  pi.SetXYZ(p1.X(), p1.Y(), p1.Z());
+		  piE.SetXYZ(e1.X(), e1.Y(), e1.Z());
 	       }
 	    }
 	    if (Trk1MuonCandidate == 1 && Trk2MuonCandidate != 1) {
@@ -554,9 +583,11 @@ void MCSelection::Loop()
 	       MuonCandidateMuonChi2 = Trk1Chi2Muon;
 	       MuonCandidateProtonChi2 = Trk1Chi2Proton;
 	       mu.SetXYZ(p1.X(), p1.Y(), p1.Z());
+	       muE.SetXYZ(e1.X(), e1.Y(), e1.Z());
 	       PionCandidateMuonChi2 = Trk2Chi2Muon;
 	       PionCandidateProtonChi2 = Trk2Chi2Proton; 
 	       pi.SetXYZ(p2.X(), p2.Y(), p2.Z());
+	       piE.SetXYZ(e2.X(), e2.Y(), e2.Z());
 	    }
 	    if (Trk2MuonCandidate == 1 && Trk1MuonCandidate != 1) {
                hMuonCandidateTracksMuonChi2VsProtonChi2->Fill(Trk2Chi2Proton, Trk2Chi2Muon);
@@ -564,13 +595,16 @@ void MCSelection::Loop()
 	       MuonCandidateMuonChi2 = Trk2Chi2Muon;
 	       MuonCandidateProtonChi2 = Trk2Chi2Proton;
 	       mu.SetXYZ(p2.X(), p2.Y(), p2.Z());
+	       muE.SetXYZ(e2.X(), e2.Y(), e2.Z());
 	       PionCandidateMuonChi2 = Trk1Chi2Muon;
 	       PionCandidateProtonChi2 = Trk1Chi2Proton;
 	       pi.SetXYZ(p1.X(), p1.Y(), p1.Z());
+	       piE.SetXYZ(e1.X(), e1.Y(), e1.Z());
             }
 
 	    double SavedOpeningAngle = OpeningAngle(mu.X(), mu.Y(), mu.Z(), pi.X(), pi.Y(), pi.Z())*180/PI;
 	    hOpeningAngleFor2Tracks->Fill(SavedOpeningAngle);
+            hOpeningAngleVsConeAngle2Tracks->Fill(SavedConeAngle, SavedOpeningAngle);
 
 	    hDeltaPTT->Fill(DeltaP_TT(0, 0, 1, mu.X(), mu.Y(), mu.Z(), pi.X(), pi.Y(), pi.Z()));
 	    hPN->Fill(P_N_Alpha_T(0, mu.X(), mu.Y(), mu.Z(), Trk1MuEnergy, pi.X(), pi.Y(), pi.Z(), Trk2MuEnergy));
@@ -585,6 +619,15 @@ void MCSelection::Loop()
 	    hRecoPionCandidateCosTheta->Fill(pi.CosTheta());
 	    hRecoMuonCandidatePhi->Fill(mu.Phi()*180/PI);
 	    hRecoPionCandidatePhi->Fill(pi.Phi()*180/PI);
+	    hRecoMuonCandidateCaloU->Fill(muE.X());
+	    hRecoPionCandidateCaloU->Fill(piE.X());
+	    hRecoCaloU->Fill(muE.X() + piE.X());
+	    hRecoMuonCandidateCaloV->Fill(muE.Y());
+	    hRecoPionCandidateCaloV->Fill(piE.Y());
+	    hRecoCaloV->Fill(muE.Y() + piE.Y());
+	    hRecoMuonCandidateCaloY->Fill(muE.Z());
+	    hRecoPionCandidateCaloY->Fill(piE.Z());
+	    hRecoCaloY->Fill(muE.Z() + piE.Z());
 	    if (SavedConeAngle <= ConeAngleCut) {
 	       NumEventsWithConeAngle++;
 	       hTConeAngle->Fill(t);
@@ -613,10 +656,14 @@ void MCSelection::Loop()
 		     hRecoPionCandidateCosThetaAfterPC->Fill(pi.CosTheta());
 		     hRecoMuonCandidatePhiAfterPC->Fill(mu.Phi()*180/PI);
 		     hRecoPionCandidatePhiAfterPC->Fill(pi.Phi()*180/PI);
-		     if (t < TCut) {
-		        NumEventsWithT++;
-			hRecoNuEnergyT->Fill(Trk1MuEnergy + Trk2MuEnergy);
-	                //std::cout<<evt<<", "<<run<<", "<<sub<<std::endl;
+                     hOpeningAngleVsConeAnglePC->Fill(SavedConeAngle, SavedOpeningAngle);
+		     if (SavedOpeningAngle < OpeningAngleCut) {
+			NumEventsWithOA++;
+		        if (t < TCut) {
+		           NumEventsWithT++;
+			   hRecoNuEnergyT->Fill(Trk1MuEnergy + Trk2MuEnergy);
+	                   //std::cout<<evt<<", "<<run<<", "<<sub<<std::endl;
+		        }
 		     }
 	          }
 	       }
@@ -663,6 +710,8 @@ void MCSelection::Loop()
    std::cout<<"|-------------------------------------------------------------------------------|"<<std::endl;
    std::cout<<"|- Total Number of Events Passing Pion Candidacy Cut = "<<NumEventsWithPionCandidate<<std::endl;
    std::cout<<"|-------------------------------------------------------------------------------|"<<std::endl;
+   std::cout<<"|- Total Number of Events Passing Opening Angle Cut = "<<NumEventsWithOA<<std::endl;
+   std::cout<<"|-------------------------------------------------------------------------------|"<<std::endl;
    std::cout<<"|- Total Number of Events Passing |t| Cut = "<<NumEventsWithT<<std::endl;
    std::cout<<"|-------------------------------------------------------------------------------|"<<std::endl;
 
@@ -676,6 +725,7 @@ void MCSelection::Loop()
    TFile *TMCInfo = new TFile("MC_Histograms.root", "RECREATE");
 
    hNumMuonCandidates->Write();
+   hNumMuonCandidatesAfterCCInclusive->Write();
    hNumTrksWithin10->Write();
    hPassedCCInclusivePreSelection->Write();
 
@@ -729,5 +779,20 @@ void MCSelection::Loop()
    hRecoPionCandidatePhi->Write();
    hRecoMuonCandidatePhiAfterPC->Write();
    hRecoPionCandidatePhiAfterPC->Write();
+
+   hOpeningAngleVsConeAngle2Tracks->Write();
+   hOpeningAngleVsConeAnglePC->Write();
+
+   hRecoMuonCandidateCaloU->Write();
+   hRecoPionCandidateCaloU->Write();
+   hRecoCaloU->Write();
+
+   hRecoMuonCandidateCaloV->Write();
+   hRecoPionCandidateCaloV->Write();
+   hRecoCaloV->Write();
+
+   hRecoMuonCandidateCaloY->Write();
+   hRecoPionCandidateCaloY->Write();
+   hRecoCaloY->Write();
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 }

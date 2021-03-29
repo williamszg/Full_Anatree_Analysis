@@ -109,6 +109,15 @@ hOpeningAngleFor2TracksMCReco->Sumw2();
 hOpeningAngleFor2TracksMCCCCoh->Sumw2();
 
 
+TH1D *hOpeningAngleForPC = (TH1D*)f4->Get("hOpeningAngleForPionCandidate");
+TH1D *hOpeningAngleForPCMCReco = (TH1D*)f5->Get("hOpeningAngleForPionCandidate");
+TH1D *hOpeningAngleForPCMCCCCoh = (TH1D*)f6->Get("hOpeningAngleForPionCandidate");
+
+hOpeningAngleForPC->Sumw2();
+hOpeningAngleForPCMCReco->Sumw2();
+hOpeningAngleForPCMCCCCoh->Sumw2();
+
+
 TH1D *hRecoNuEnergy = (TH1D*)f4->Get("hRecoNuEnergy");
 TH1D *hRecoNuEnergyConeAngle = (TH1D*)f4->Get("hRecoNuEnergyConeAngle");
 TH1D *hRecoNuEnergyDoCA = (TH1D*)f4->Get("hRecoNuEnergyDoCA");
@@ -161,12 +170,162 @@ hDeltaAlphaTCCCoh->Sumw2();
 hDeltaAlphaTPCCCCoh->Sumw2();
 
 
+// ==========================================
+// === These are the kinematic histograms ===
+// ==========================================
+TH1D *hRecoMuonCandidateMomentumData = (TH1D*)f4->Get("hRecoMuonCandidateMomentum");
+TH1D *hRecoMuonCandidateMomentumMC = (TH1D*)f5->Get("hRecoMuonCandidateMomentum");
+TH1D *hRecoMuonCandidateMomentumMCCCCoh = (TH1D*)f6->Get("hRecoMuonCandidateMomentum");
+
+hRecoMuonCandidateMomentumData->Sumw2();
+hRecoMuonCandidateMomentumMC->Sumw2();
+hRecoMuonCandidateMomentumMCCCCoh->Sumw2();
+
+
+TH1D *hRecoMuonCandidateMomentumAfterPCData = (TH1D*)f4->Get("hRecoMuonCandidateMomentumAfterPC");
+TH1D *hRecoMuonCandidateMomentumAfterPCMC = (TH1D*)f5->Get("hRecoMuonCandidateMomentumAfterPC");
+TH1D *hRecoMuonCandidateMomentumAfterPCMCCCCoh = (TH1D*)f6->Get("hRecoMuonCandidateMomentumAfterPC");
+
+hRecoMuonCandidateMomentumAfterPCData->Sumw2();
+hRecoMuonCandidateMomentumAfterPCMC->Sumw2();
+hRecoMuonCandidateMomentumAfterPCMCCCCoh->Sumw2();
+
+
+TH1D *hRecoPionCandidateMomentumData = (TH1D*)f4->Get("hRecoPionCandidateMomentum");
+TH1D *hRecoPionCandidateMomentumMC = (TH1D*)f5->Get("hRecoPionCandidateMomentum");
+TH1D *hRecoPionCandidateMomentumMCCCCoh = (TH1D*)f6->Get("hRecoPionCandidateMomentum");
+
+hRecoPionCandidateMomentumData->Sumw2();
+hRecoPionCandidateMomentumMC->Sumw2();
+hRecoPionCandidateMomentumMCCCCoh->Sumw2();
+
+
+TH1D *hRecoPionCandidateMomentumAfterPCData = (TH1D*)f4->Get("hRecoPionCandidateMomentumAfterPC");
+TH1D *hRecoPionCandidateMomentumAfterPCMC = (TH1D*)f5->Get("hRecoPionCandidateMomentumAfterPC");
+TH1D *hRecoPionCandidateMomentumAfterPCMCCCCoh = (TH1D*)f6->Get("hRecoPionCandidateMomentumAfterPC");
+
+hRecoPionCandidateMomentumAfterPCData->Sumw2();
+hRecoPionCandidateMomentumAfterPCMC->Sumw2();
+hRecoPionCandidateMomentumAfterPCMCCCCoh->Sumw2();
+
+
+TH1D *hRecoMuonCandidateCosThetaData = (TH1D*)f4->Get("hRecoMuonCandidateCosTheta");
+TH1D *hRecoMuonCandidateCosThetaMC = (TH1D*)f5->Get("hRecoMuonCandidateCosTheta");
+TH1D *hRecoMuonCandidateCosThetaMCCCCoh = (TH1D*)f6->Get("hRecoMuonCandidateCosTheta");
+
+hRecoMuonCandidateCosThetaData->Sumw2();
+hRecoMuonCandidateCosThetaMC->Sumw2();
+hRecoMuonCandidateCosThetaMCCCCoh->Sumw2();
+
+
+TH1D *hRecoMuonCandidateCosThetaAfterPCData = (TH1D*)f4->Get("hRecoMuonCandidateCosThetaAfterPC");
+TH1D *hRecoMuonCandidateCosThetaAfterPCMC = (TH1D*)f5->Get("hRecoMuonCandidateCosThetaAfterPC");
+TH1D *hRecoMuonCandidateCosThetaAfterPCMCCCCoh = (TH1D*)f6->Get("hRecoMuonCandidateCosThetaAfterPC");
+
+hRecoMuonCandidateCosThetaAfterPCData->Sumw2();
+hRecoMuonCandidateCosThetaAfterPCMC->Sumw2();
+hRecoMuonCandidateCosThetaAfterPCMCCCCoh->Sumw2();
+
+
+TH1D *hRecoPionCandidateCosThetaData = (TH1D*)f4->Get("hRecoPionCandidateCosTheta");
+TH1D *hRecoPionCandidateCosThetaMC = (TH1D*)f5->Get("hRecoPionCandidateCosTheta");
+TH1D *hRecoPionCandidateCosThetaMCCCCoh = (TH1D*)f6->Get("hRecoPionCandidateCosTheta");
+
+hRecoPionCandidateCosThetaData->Sumw2();
+hRecoPionCandidateCosThetaMC->Sumw2();
+hRecoPionCandidateCosThetaMCCCCoh->Sumw2();
+
+
+TH1D *hRecoPionCandidateCosThetaAfterPCData = (TH1D*)f4->Get("hRecoPionCandidateCosThetaAfterPC");
+TH1D *hRecoPionCandidateCosThetaAfterPCMC = (TH1D*)f5->Get("hRecoPionCandidateCosThetaAfterPC");
+TH1D *hRecoPionCandidateCosThetaAfterPCMCCCCoh = (TH1D*)f6->Get("hRecoPionCandidateCosThetaAfterPC");
+
+hRecoPionCandidateCosThetaAfterPCData->Sumw2();
+hRecoPionCandidateCosThetaAfterPCMC->Sumw2();
+hRecoPionCandidateCosThetaAfterPCMCCCCoh->Sumw2();
+
+
+TH1D *hRecoMuonCandidateThetaData = (TH1D*)f4->Get("hRecoMuonCandidateTheta");
+TH1D *hRecoMuonCandidateThetaMC = (TH1D*)f5->Get("hRecoMuonCandidateTheta");
+TH1D *hRecoMuonCandidateThetaMCCCCoh = (TH1D*)f6->Get("hRecoMuonCandidateTheta");
+
+hRecoMuonCandidateThetaData->Sumw2();
+hRecoMuonCandidateThetaMC->Sumw2();
+hRecoMuonCandidateThetaMCCCCoh->Sumw2();
+
+
+TH1D *hRecoMuonCandidateThetaAfterPCData = (TH1D*)f4->Get("hRecoMuonCandidateThetaAfterPC");
+TH1D *hRecoMuonCandidateThetaAfterPCMC = (TH1D*)f5->Get("hRecoMuonCandidateThetaAfterPC");
+TH1D *hRecoMuonCandidateThetaAfterPCMCCCCoh = (TH1D*)f6->Get("hRecoMuonCandidateThetaAfterPC");
+
+hRecoMuonCandidateThetaAfterPCData->Sumw2();
+hRecoMuonCandidateThetaAfterPCMC->Sumw2();
+hRecoMuonCandidateThetaAfterPCMCCCCoh->Sumw2();
+
+
+TH1D *hRecoPionCandidateThetaData = (TH1D*)f4->Get("hRecoPionCandidateTheta");
+TH1D *hRecoPionCandidateThetaMC = (TH1D*)f5->Get("hRecoPionCandidateTheta");
+TH1D *hRecoPionCandidateThetaMCCCCoh = (TH1D*)f6->Get("hRecoPionCandidateTheta");
+
+hRecoPionCandidateThetaData->Sumw2();
+hRecoPionCandidateThetaMC->Sumw2();
+hRecoPionCandidateThetaMCCCCoh->Sumw2();
+
+
+TH1D *hRecoPionCandidateThetaAfterPCData = (TH1D*)f4->Get("hRecoPionCandidateThetaAfterPC");
+TH1D *hRecoPionCandidateThetaAfterPCMC = (TH1D*)f5->Get("hRecoPionCandidateThetaAfterPC");
+TH1D *hRecoPionCandidateThetaAfterPCMCCCCoh = (TH1D*)f6->Get("hRecoPionCandidateThetaAfterPC");
+
+hRecoPionCandidateThetaAfterPCData->Sumw2();
+hRecoPionCandidateThetaAfterPCMC->Sumw2();
+hRecoPionCandidateThetaAfterPCMCCCCoh->Sumw2();
+
+
+TH1D *hRecoMuonCandidatePhiData = (TH1D*)f4->Get("hRecoMuonCandidatePhi");
+TH1D *hRecoMuonCandidatePhiMC = (TH1D*)f5->Get("hRecoMuonCandidatePhi");
+TH1D *hRecoMuonCandidatePhiMCCCCoh = (TH1D*)f6->Get("hRecoMuonCandidatePhi");
+
+hRecoMuonCandidatePhiData->Sumw2();
+hRecoMuonCandidatePhiMC->Sumw2();
+hRecoMuonCandidatePhiMCCCCoh->Sumw2();
+
+
+TH1D *hRecoMuonCandidatePhiAfterPCData = (TH1D*)f4->Get("hRecoMuonCandidatePhiAfterPC");
+TH1D *hRecoMuonCandidatePhiAfterPCMC = (TH1D*)f5->Get("hRecoMuonCandidatePhiAfterPC");
+TH1D *hRecoMuonCandidatePhiAfterPCMCCCCoh = (TH1D*)f6->Get("hRecoMuonCandidatePhiAfterPC");
+
+hRecoMuonCandidatePhiAfterPCData->Sumw2();
+hRecoMuonCandidatePhiAfterPCMC->Sumw2();
+hRecoMuonCandidatePhiAfterPCMCCCCoh->Sumw2();
+
+
+TH1D *hRecoPionCandidatePhiData = (TH1D*)f4->Get("hRecoPionCandidatePhi");
+TH1D *hRecoPionCandidatePhiMC = (TH1D*)f5->Get("hRecoPionCandidatePhi");
+TH1D *hRecoPionCandidatePhiMCCCCoh = (TH1D*)f6->Get("hRecoPionCandidatePhi");
+
+hRecoPionCandidatePhiData->Sumw2();
+hRecoPionCandidatePhiMC->Sumw2();
+hRecoPionCandidatePhiMCCCCoh->Sumw2();
+
+
+TH1D *hRecoPionCandidatePhiAfterPCData = (TH1D*)f4->Get("hRecoPionCandidatePhiAfterPC");
+TH1D *hRecoPionCandidatePhiAfterPCMC = (TH1D*)f5->Get("hRecoPionCandidatePhiAfterPC");
+TH1D *hRecoPionCandidatePhiAfterPCMCCCCoh = (TH1D*)f6->Get("hRecoPionCandidatePhiAfterPC");
+
+hRecoPionCandidatePhiAfterPCData->Sumw2();
+hRecoPionCandidatePhiAfterPCMC->Sumw2();
+hRecoPionCandidatePhiAfterPCMCCCCoh->Sumw2();
+// ==========================================
+
+
 
 
 // ========================================
 // === Defining Some Scale Factors Here ===
 // ========================================
 double After2TracksCutMCtoDataScaleFactor = 4132./17065.;
+double Run1ScaleFactorData = 1.2847059/0.05;
+double MCCCCohToDataScaleFactor = 378./121.;
 // ========================================
 
 
@@ -181,14 +340,15 @@ c1->SetFillColor(kWhite);
 hTAfter2RecoCCCoh->Add(hTAfter2RecoOther);
 hTAfter2TrueCCCoh->Add(hTAfter2TrueOther);
 
-// Area normalzing the plot 
-hTAfter2RecoCCCoh->Scale(1/hTAfter2RecoCCCoh->Integral());
-hTAfter2TrueCCCoh->Scale(1/hTAfter2TrueCCCoh->Integral());
-//hTAfter2RecoCCCoh->Scale(After2TracksCutMCtoDataScaleFactor);
-//hTAfter2TrueCCCoh->Scale(After2TracksCutMCtoDataScaleFactor);
-hT->Scale(1/hT->Integral());
-hTReco->Scale(1/hTReco->Integral());
-hTRecoCCCoh->Scale(1/hTRecoCCCoh->Integral());
+// Area normalizing the plot 
+//hTAfter2RecoCCCoh->Scale(1/hTAfter2RecoCCCoh->Integral());
+//hTAfter2TrueCCCoh->Scale(1/hTAfter2TrueCCCoh->Integral());
+//hT->Scale(1/hT->Integral());
+//hTReco->Scale(1/hTReco->Integral());
+//hTRecoCCCoh->Scale(1/hTRecoCCCoh->Integral());
+hTAfter2RecoCCCoh->Scale(After2TracksCutMCtoDataScaleFactor*Run1ScaleFactorData);
+hTAfter2TrueCCCoh->Scale(After2TracksCutMCtoDataScaleFactor*Run1ScaleFactorData);
+hT->Scale(Run1ScaleFactorData);
 
 // Setting Drawing Parameters
 hTAfter2TrueCCCoh->SetLineColor(kBlue);
@@ -250,11 +410,13 @@ c2->SetFillColor(kWhite);
 // Adding the MC Histograms
 hNTracksInBubbleCCCoh->Add(hNTracksInBubbleOther);
 
-// Area normalzing the plot 
-hNTracksInBubbleCCCoh->Scale(1/hNTracksInBubbleCCCoh->Integral());
-hNumTrksWithin10->Scale(1/hNumTrksWithin10->Integral());
-hNumTrksWithin10MCReco->Scale(1/hNumTrksWithin10MCReco->Integral());
-hNumTrksWithin10MCCCCoh->Scale(1/hNumTrksWithin10MCCCCoh->Integral());
+// Area normalizing the plot 
+//hNTracksInBubbleCCCoh->Scale(1/hNTracksInBubbleCCCoh->Integral());
+//hNumTrksWithin10->Scale(1/hNumTrksWithin10->Integral());
+//hNumTrksWithin10MCReco->Scale(1/hNumTrksWithin10MCReco->Integral());
+//hNumTrksWithin10MCCCCoh->Scale(1/hNumTrksWithin10MCCCCoh->Integral());
+hNTracksInBubbleCCCoh->Scale(After2TracksCutMCtoDataScaleFactor*Run1ScaleFactorData);
+hNumTrksWithin10->Scale(Run1ScaleFactorData);
 
 // Setting Drawing Parameters
 hNTracksInBubbleCCCoh->SetLineColor(kRed);
@@ -310,11 +472,13 @@ c3->SetFillColor(kWhite);
 // Adding the MC Histograms
 hNumMuonCandidatesCCCoh->Add(hNumMuonCandidatesOther);
 
-// Area normalzing the plot 
-hNumMuonCandidatesCCCoh->Scale(1/hNumMuonCandidatesCCCoh->Integral());
-hNumMuonCandidates->Scale(1/hNumMuonCandidates->Integral());
-hNumMuonCandidatesMCReco->Scale(1/hNumMuonCandidatesMCReco->Integral());
-hNumMuonCandidatesMCCCCoh->Scale(1/hNumMuonCandidatesMCCCCoh->Integral());
+// Area normalizing the plot 
+//hNumMuonCandidatesCCCoh->Scale(1/hNumMuonCandidatesCCCoh->Integral());
+//hNumMuonCandidates->Scale(1/hNumMuonCandidates->Integral());
+//hNumMuonCandidatesMCReco->Scale(1/hNumMuonCandidatesMCReco->Integral());
+//hNumMuonCandidatesMCCCCoh->Scale(1/hNumMuonCandidatesMCCCCoh->Integral());
+hNumMuonCandidatesCCCoh->Scale(After2TracksCutMCtoDataScaleFactor*Run1ScaleFactorData);
+hNumMuonCandidates->Scale(Run1ScaleFactorData);
 
 // Setting Drawing Parameters
 hNumMuonCandidatesCCCoh->SetLineColor(kRed);
@@ -371,45 +535,46 @@ c4->SetFillColor(kWhite);
 hRecoConeAngleCCCoh->Add(hRecoConeAngleOther);
 hTrueConeAngleCCCoh->Add(hTrueConeAngleOther);
 
-// Area normalzing the plot 
-hRecoConeAngleCCCoh->Scale(1/hRecoConeAngleCCCoh->Integral());
-hTrueConeAngleCCCoh->Scale(1/hTrueConeAngleCCCoh->Integral());
-//hRecoConeAngleCCCoh->Scale(After2TracksCutMCtoDataScaleFactor);
-//hTrueConeAngleCCCoh->Scale(After2TracksCutMCtoDataScaleFactor);
-hConeAngleFor2Tracks->Scale(1/hConeAngleFor2Tracks->Integral());
-hConeAngleFor2TracksReco->Scale(1/hConeAngleFor2TracksReco->Integral());
-hConeAngleFor2TracksRecoCCCoh->Scale(1/hConeAngleFor2TracksRecoCCCoh->Integral());
+// Area normalizing the plot 
+//hRecoConeAngleCCCoh->Scale(1/hRecoConeAngleCCCoh->Integral());
+//hTrueConeAngleCCCoh->Scale(1/hTrueConeAngleCCCoh->Integral());
+//hConeAngleFor2Tracks->Scale(1/hConeAngleFor2Tracks->Integral());
+//hConeAngleFor2TracksReco->Scale(1/hConeAngleFor2TracksReco->Integral());
+//hConeAngleFor2TracksRecoCCCoh->Scale(1/hConeAngleFor2TracksRecoCCCoh->Integral());
+hRecoConeAngleCCCoh->Scale(After2TracksCutMCtoDataScaleFactor*Run1ScaleFactorData);
+hTrueConeAngleCCCoh->Scale(After2TracksCutMCtoDataScaleFactor*Run1ScaleFactorData);
+hConeAngleFor2Tracks->Scale(Run1ScaleFactorData);
 
 // Setting Drawing Parameters
 hTrueConeAngleCCCoh->SetLineColor(kBlue);
 hTrueConeAngleCCCoh->SetLineWidth(2);
-hTrueConeAngleCCCoh->Rebin(5);
+hTrueConeAngleCCCoh->Rebin(9);
 
 hRecoConeAngleCCCoh->SetLineColor(kRed);
 hRecoConeAngleCCCoh->SetLineWidth(2);
-hRecoConeAngleCCCoh->Rebin(5);
+hRecoConeAngleCCCoh->Rebin(9);
 
 hConeAngleFor2Tracks->SetLineColor(kBlack);
 hConeAngleFor2Tracks->SetLineWidth(2);
-hConeAngleFor2Tracks->Rebin(5);
+hConeAngleFor2Tracks->Rebin(9);
 
 hConeAngleFor2TracksReco->SetLineColor(kGreen);
 hConeAngleFor2TracksReco->SetLineWidth(2);
-hConeAngleFor2TracksReco->Rebin(5);
+hConeAngleFor2TracksReco->Rebin(9);
 
 hConeAngleFor2TracksRecoCCCoh->SetLineColor(kViolet);
 hConeAngleFor2TracksRecoCCCoh->SetLineWidth(2);
-hConeAngleFor2TracksRecoCCCoh->Rebin(5);
+hConeAngleFor2TracksRecoCCCoh->Rebin(9);
 
-hTrueConeAngleCCCoh->GetXaxis()->SetTitle("Cone Angles [Degrees]");
-hTrueConeAngleCCCoh->GetXaxis()->CenterTitle();
+hConeAngleFor2Tracks->GetXaxis()->SetTitle("Cone Angles [Degrees]");
+hConeAngleFor2Tracks->GetXaxis()->CenterTitle();
 
-hTrueConeAngleCCCoh->GetYaxis()->SetTitle("Normalized Events");
-hTrueConeAngleCCCoh->GetYaxis()->CenterTitle();
+hConeAngleFor2Tracks->GetYaxis()->SetTitle("Normalized Events");
+hConeAngleFor2Tracks->GetYaxis()->CenterTitle();
 
-hTrueConeAngleCCCoh->Draw("histo");
+hConeAngleFor2Tracks->Draw("E1");
+hTrueConeAngleCCCoh->Draw("histosame");
 hRecoConeAngleCCCoh->Draw("histosame");
-hConeAngleFor2Tracks->Draw("E1same");
 hConeAngleFor2TracksReco->Draw("histosame");
 hConeAngleFor2TracksRecoCCCoh->Draw("histosame");
 
@@ -441,35 +606,36 @@ c5->SetFillColor(kWhite);
 hRecoOpeningAngleCCCoh->Add(hRecoOpeningAngleOther);
 hTrueOpeningAngleCCCoh->Add(hTrueOpeningAngleOther);
 
-// Area normalzing the plot 
-hRecoOpeningAngleCCCoh->Scale(1/hRecoOpeningAngleCCCoh->Integral());
-hTrueOpeningAngleCCCoh->Scale(1/hTrueOpeningAngleCCCoh->Integral());
-//hRecoOpeningAngleCCCoh->Scale(After2TracksCutMCtoDataScaleFactor);
-//hTrueOpeningAngleCCCoh->Scale(After2TracksCutMCtoDataScaleFactor);
-hOpeningAngleFor2Tracks->Scale(1/hOpeningAngleFor2Tracks->Integral());
-hOpeningAngleFor2TracksMCReco->Scale(1/hOpeningAngleFor2TracksMCReco->Integral());
-hOpeningAngleFor2TracksMCCCCoh->Scale(1/hOpeningAngleFor2TracksMCCCCoh->Integral());
+// Area normalizing the plot 
+//hRecoOpeningAngleCCCoh->Scale(1/hRecoOpeningAngleCCCoh->Integral());
+//hTrueOpeningAngleCCCoh->Scale(1/hTrueOpeningAngleCCCoh->Integral());
+//hOpeningAngleFor2Tracks->Scale(1/hOpeningAngleFor2Tracks->Integral());
+//hOpeningAngleFor2TracksMCReco->Scale(1/hOpeningAngleFor2TracksMCReco->Integral());
+//hOpeningAngleFor2TracksMCCCCoh->Scale(1/hOpeningAngleFor2TracksMCCCCoh->Integral());
+hRecoOpeningAngleCCCoh->Scale(After2TracksCutMCtoDataScaleFactor*Run1ScaleFactorData);
+hTrueOpeningAngleCCCoh->Scale(After2TracksCutMCtoDataScaleFactor*Run1ScaleFactorData);
+hOpeningAngleFor2Tracks->Scale(Run1ScaleFactorData);
 
 // Setting Drawing Parameters
 hTrueOpeningAngleCCCoh->SetLineColor(kBlue);
 hTrueOpeningAngleCCCoh->SetLineWidth(2);
-hTrueOpeningAngleCCCoh->Rebin(5);
+hTrueOpeningAngleCCCoh->Rebin(9);
 
 hRecoOpeningAngleCCCoh->SetLineColor(kRed);
 hRecoOpeningAngleCCCoh->SetLineWidth(2);
-hRecoOpeningAngleCCCoh->Rebin(5);
+hRecoOpeningAngleCCCoh->Rebin(9);
 
 hOpeningAngleFor2Tracks->SetLineColor(kBlack);
 hOpeningAngleFor2Tracks->SetLineWidth(2);
-hOpeningAngleFor2Tracks->Rebin(5);
+hOpeningAngleFor2Tracks->Rebin(9);
 
 hOpeningAngleFor2TracksMCReco->SetLineColor(kGreen);
 hOpeningAngleFor2TracksMCReco->SetLineWidth(2);
-hOpeningAngleFor2TracksMCReco->Rebin(5);
+hOpeningAngleFor2TracksMCReco->Rebin(9);
 
 hOpeningAngleFor2TracksMCCCCoh->SetLineColor(kViolet);
 hOpeningAngleFor2TracksMCCCCoh->SetLineWidth(2);
-hOpeningAngleFor2TracksMCCCCoh->Rebin(5);
+hOpeningAngleFor2TracksMCCCCoh->Rebin(9);
 
 hOpeningAngleFor2Tracks->GetXaxis()->SetTitle("#theta_{#mu#pi} [Degrees]");
 hOpeningAngleFor2Tracks->GetXaxis()->CenterTitle();
@@ -661,14 +827,15 @@ c11->SetFillColor(kWhite);
 hTAfterRecoCCCoh->Add(hTAfterRecoOther);
 hTAfterTrueCCCoh->Add(hTAfterTrueOther);
 
-// Area normalzing the plot 
-hTAfterRecoCCCoh->Scale(1/hTAfterRecoCCCoh->Integral());
-hTAfterTrueCCCoh->Scale(1/hTAfterTrueCCCoh->Integral());
-//hTAfterRecoCCCoh->Scale(AfterTracksCutMCtoDataScaleFactor);
-//hTAfterTrueCCCoh->Scale(AfterTracksCutMCtoDataScaleFactor);
-hT2->Scale(1/hT2->Integral());
-hT2Reco->Scale(1/hT2Reco->Integral());
-hT2RecoCCCoh->Scale(1/hT2RecoCCCoh->Integral());
+// Area normalizing the plot 
+//hTAfterRecoCCCoh->Scale(1/hTAfterRecoCCCoh->Integral());
+//hTAfterTrueCCCoh->Scale(1/hTAfterTrueCCCoh->Integral());
+//hT2->Scale(1/hT2->Integral());
+//hT2Reco->Scale(1/hT2Reco->Integral());
+//hT2RecoCCCoh->Scale(1/hT2RecoCCCoh->Integral());
+hTAfterRecoCCCoh->Scale(After2TracksCutMCtoDataScaleFactor*Run1ScaleFactorData);
+hTAfterTrueCCCoh->Scale(After2TracksCutMCtoDataScaleFactor*Run1ScaleFactorData);
+hT2->Scale(Run1ScaleFactorData);
 
 // Setting Drawing Parameters
 hTAfterTrueCCCoh->SetLineColor(kBlue);
@@ -728,6 +895,10 @@ TCanvas *c12 = new TCanvas("c12", "The TKI Variable DeltaP_TT Plots After 2-Trac
 c12->SetTicks();
 c12->SetFillColor(kWhite);
 
+// Area normalizing the plot 
+hDeltaPTTCCCoh->Scale(MCCCCohToDataScaleFactor);
+hDeltaPTTPCCCCoh->Scale(MCCCCohToDataScaleFactor);
+
 // Setting Drawing Parameters
 hDeltaPTT->SetLineColor(kBlue);
 hDeltaPTT->SetLineWidth(2);
@@ -779,6 +950,10 @@ leg12->Draw();
 TCanvas *c13 = new TCanvas("c13", "The TKI Variable P_N Plots After 2-Tracks and After Pion Candidate Selection");
 c13->SetTicks();
 c13->SetFillColor(kWhite);
+
+// Area normalizing the plot 
+hPNCCCoh->Scale(MCCCCohToDataScaleFactor);
+hPNPCCCCoh->Scale(MCCCCohToDataScaleFactor);
 
 // Setting Drawing Parameters
 hPN->SetLineColor(kBlue);
@@ -832,6 +1007,10 @@ TCanvas *c14 = new TCanvas("c14", "The TKI Variable DeltaAlpha_T Plots After 2-T
 c14->SetTicks();
 c14->SetFillColor(kWhite);
 
+// Area normalizing the plot 
+hDeltaAlphaTCCCoh->Scale(MCCCCohToDataScaleFactor);
+hDeltaAlphaTPCCCCoh->Scale(MCCCCohToDataScaleFactor);
+
 // Setting Drawing Parameters
 hDeltaAlphaT->SetLineColor(kBlue);
 hDeltaAlphaT->SetLineWidth(2);
@@ -875,4 +1054,602 @@ leg14->AddEntry(hDeltaAlphaTPC,"Pion Candidacy");
 leg14->AddEntry(hDeltaAlphaTCCCoh,"2-Tracks MC New CC-Coh");
 leg14->AddEntry(hDeltaAlphaTPCCCCoh,"Pion Candidacy MC New CC-Coh");
 leg14->Draw();
+
+
+
+
+
+TCanvas *c15 = new TCanvas("c15", "The Muon Candidate and Pion Candidate Momenta After 2-Track Selection");
+c15->SetTicks();
+c15->SetFillColor(kWhite);
+
+// Area normalizing the plot 
+hRecoMuonCandidateMomentumData->Scale(Run1ScaleFactorData);
+hRecoPionCandidateMomentumData->Scale(Run1ScaleFactorData);
+
+// Setting Drawing Parameters
+hRecoMuonCandidateMomentumData->SetLineColor(kBlack);
+hRecoMuonCandidateMomentumData->SetLineWidth(2);
+hRecoMuonCandidateMomentumData->Rebin(10);
+
+hRecoMuonCandidateMomentumMC->SetLineColor(kGreen);
+hRecoMuonCandidateMomentumMC->SetLineWidth(2);
+hRecoMuonCandidateMomentumMC->Rebin(10);
+
+hRecoMuonCandidateMomentumMCCCCoh->SetLineColor(kViolet);
+hRecoMuonCandidateMomentumMCCCCoh->SetLineWidth(2);
+hRecoMuonCandidateMomentumMCCCCoh->Rebin(10);
+
+hRecoPionCandidateMomentumData->SetLineColor(kGray);
+hRecoPionCandidateMomentumData->SetLineWidth(2);
+hRecoPionCandidateMomentumData->Rebin(10);
+
+hRecoPionCandidateMomentumMC->SetLineColor(kBlue);
+hRecoPionCandidateMomentumMC->SetLineWidth(2);
+hRecoPionCandidateMomentumMC->Rebin(10);
+
+hRecoPionCandidateMomentumMCCCCoh->SetLineColor(kRed);
+hRecoPionCandidateMomentumMCCCCoh->SetLineWidth(2);
+hRecoPionCandidateMomentumMCCCCoh->Rebin(10);
+
+hRecoPionCandidateMomentumData->GetXaxis()->SetTitle("p [GeV/c]");
+hRecoPionCandidateMomentumData->GetXaxis()->CenterTitle();
+hRecoPionCandidateMomentumData->GetXaxis()->SetRangeUser(0, 3);
+
+hRecoPionCandidateMomentumData->GetYaxis()->SetTitle("Normalized Events");
+hRecoPionCandidateMomentumData->GetYaxis()->CenterTitle();
+
+hRecoPionCandidateMomentumData->Draw("E1");
+hRecoMuonCandidateMomentumData->Draw("E1same");
+hRecoMuonCandidateMomentumMC->Draw("histosame");
+hRecoPionCandidateMomentumMC->Draw("histosame");
+hRecoMuonCandidateMomentumMCCCCoh->Draw("histosame");
+hRecoPionCandidateMomentumMCCCCoh->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg15 = new TLegend();
+leg15 = new TLegend(0.58,0.65,1.00,1.00);
+leg15->SetTextSize(0.04);
+leg15->SetTextAlign(12);
+leg15->SetFillColor(kWhite);
+leg15->SetLineColor(kWhite);
+leg15->SetShadowColor(kWhite);
+leg15->SetHeader("Which Particle Candidate");
+leg15->AddEntry(hRecoMuonCandidateMomentumData,"#mu Candidate Data");
+leg15->AddEntry(hRecoPionCandidateMomentumData,"#pi Candidate Data");
+leg15->AddEntry(hRecoMuonCandidateMomentumMC,"#mu Candidate MC");
+leg15->AddEntry(hRecoPionCandidateMomentumMC,"#pi Candidate MC");
+leg15->AddEntry(hRecoMuonCandidateMomentumMCCCCoh,"#mu Candidate MC CC-Coh");
+leg15->AddEntry(hRecoPionCandidateMomentumMCCCCoh,"#pi Candidate MC CC-Coh");
+leg15->Draw();
+
+
+
+
+
+TCanvas *c16 = new TCanvas("c16", "The Muon Candidate and Pion Candidate Momenta After Pion Candidacy");
+c16->SetTicks();
+c16->SetFillColor(kWhite);
+
+// Area normalizing the plot 
+hRecoMuonCandidateMomentumAfterPCData->Scale(Run1ScaleFactorData);
+hRecoPionCandidateMomentumAfterPCData->Scale(Run1ScaleFactorData);
+
+// Setting Drawing Parameters
+hRecoMuonCandidateMomentumAfterPCData->SetLineColor(kBlack);
+hRecoMuonCandidateMomentumAfterPCData->SetLineWidth(2);
+hRecoMuonCandidateMomentumAfterPCData->Rebin(10);
+
+hRecoMuonCandidateMomentumAfterPCMC->SetLineColor(kGreen);
+hRecoMuonCandidateMomentumAfterPCMC->SetLineWidth(2);
+hRecoMuonCandidateMomentumAfterPCMC->Rebin(10);
+
+hRecoMuonCandidateMomentumAfterPCMCCCCoh->SetLineColor(kViolet);
+hRecoMuonCandidateMomentumAfterPCMCCCCoh->SetLineWidth(2);
+hRecoMuonCandidateMomentumAfterPCMCCCCoh->Rebin(10);
+
+hRecoPionCandidateMomentumAfterPCData->SetLineColor(kGray);
+hRecoPionCandidateMomentumAfterPCData->SetLineWidth(2);
+hRecoPionCandidateMomentumAfterPCData->Rebin(10);
+
+hRecoPionCandidateMomentumAfterPCMC->SetLineColor(kBlue);
+hRecoPionCandidateMomentumAfterPCMC->SetLineWidth(2);
+hRecoPionCandidateMomentumAfterPCMC->Rebin(10);
+
+hRecoPionCandidateMomentumAfterPCMCCCCoh->SetLineColor(kRed);
+hRecoPionCandidateMomentumAfterPCMCCCCoh->SetLineWidth(2);
+hRecoPionCandidateMomentumAfterPCMCCCCoh->Rebin(10);
+
+hRecoPionCandidateMomentumAfterPCData->GetXaxis()->SetTitle("p [GeV/c]");
+hRecoPionCandidateMomentumAfterPCData->GetXaxis()->CenterTitle();
+hRecoPionCandidateMomentumAfterPCData->GetXaxis()->SetRangeUser(0, 3);
+
+hRecoPionCandidateMomentumAfterPCData->GetYaxis()->SetTitle("Normalized Events");
+hRecoPionCandidateMomentumAfterPCData->GetYaxis()->CenterTitle();
+
+hRecoPionCandidateMomentumAfterPCData->Draw("E1");
+hRecoMuonCandidateMomentumAfterPCData->Draw("E1same");
+hRecoMuonCandidateMomentumAfterPCMC->Draw("histosame");
+hRecoPionCandidateMomentumAfterPCMC->Draw("histosame");
+hRecoMuonCandidateMomentumAfterPCMCCCCoh->Draw("histosame");
+hRecoPionCandidateMomentumAfterPCMCCCCoh->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg16 = new TLegend();
+leg16 = new TLegend(0.58,0.65,1.00,1.00);
+leg16->SetTextSize(0.04);
+leg16->SetTextAlign(12);
+leg16->SetFillColor(kWhite);
+leg16->SetLineColor(kWhite);
+leg16->SetShadowColor(kWhite);
+leg16->SetHeader("Which Particle Candidate");
+leg16->AddEntry(hRecoMuonCandidateMomentumAfterPCData,"#mu Candidate Data");
+leg16->AddEntry(hRecoPionCandidateMomentumAfterPCData,"#pi Candidate Data");
+leg16->AddEntry(hRecoMuonCandidateMomentumAfterPCMC,"#mu Candidate MC");
+leg16->AddEntry(hRecoPionCandidateMomentumAfterPCMC,"#pi Candidate MC");
+leg16->AddEntry(hRecoMuonCandidateMomentumAfterPCMCCCCoh,"#mu Candidate MC CC-Coh");
+leg16->AddEntry(hRecoPionCandidateMomentumAfterPCMCCCCoh,"#pi Candidate MC CC-Coh");
+leg16->Draw();
+
+
+
+
+
+TCanvas *c17 = new TCanvas("c17", "The Muon Candidate and Pion Candidate Cos(#theta) After 2-Track Selection");
+c17->SetTicks();
+c17->SetFillColor(kWhite);
+
+// Area normalizing the plot 
+hRecoMuonCandidateCosThetaData->Scale(Run1ScaleFactorData);
+hRecoPionCandidateCosThetaData->Scale(Run1ScaleFactorData);
+
+// Setting Drawing Parameters
+hRecoMuonCandidateCosThetaData->SetLineColor(kBlack);
+hRecoMuonCandidateCosThetaData->SetLineWidth(2);
+hRecoMuonCandidateCosThetaData->Rebin(50);
+
+hRecoMuonCandidateCosThetaMC->SetLineColor(kGreen);
+hRecoMuonCandidateCosThetaMC->SetLineWidth(2);
+hRecoMuonCandidateCosThetaMC->Rebin(50);
+
+hRecoMuonCandidateCosThetaMCCCCoh->SetLineColor(kViolet);
+hRecoMuonCandidateCosThetaMCCCCoh->SetLineWidth(2);
+hRecoMuonCandidateCosThetaMCCCCoh->Rebin(50);
+
+hRecoPionCandidateCosThetaData->SetLineColor(kGray);
+hRecoPionCandidateCosThetaData->SetLineWidth(2);
+hRecoPionCandidateCosThetaData->Rebin(50);
+
+hRecoPionCandidateCosThetaMC->SetLineColor(kBlue);
+hRecoPionCandidateCosThetaMC->SetLineWidth(2);
+hRecoPionCandidateCosThetaMC->Rebin(50);
+
+hRecoPionCandidateCosThetaMCCCCoh->SetLineColor(kRed);
+hRecoPionCandidateCosThetaMCCCCoh->SetLineWidth(2);
+hRecoPionCandidateCosThetaMCCCCoh->Rebin(50);
+
+hRecoMuonCandidateCosThetaData->GetXaxis()->SetTitle("Cos(#theta)");
+hRecoMuonCandidateCosThetaData->GetXaxis()->CenterTitle();
+
+hRecoMuonCandidateCosThetaData->GetYaxis()->SetTitle("Normalized Events");
+hRecoMuonCandidateCosThetaData->GetYaxis()->CenterTitle();
+
+hRecoMuonCandidateCosThetaData->Draw("E1");
+hRecoPionCandidateCosThetaData->Draw("E1same");
+hRecoMuonCandidateCosThetaMC->Draw("histosame");
+hRecoPionCandidateCosThetaMC->Draw("histosame");
+hRecoMuonCandidateCosThetaMCCCCoh->Draw("histosame");
+hRecoPionCandidateCosThetaMCCCCoh->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg17 = new TLegend();
+leg17 = new TLegend(0.58,0.65,1.00,1.00);
+leg17->SetTextSize(0.04);
+leg17->SetTextAlign(12);
+leg17->SetFillColor(kWhite);
+leg17->SetLineColor(kWhite);
+leg17->SetShadowColor(kWhite);
+leg17->SetHeader("Which Particle Candidate");
+leg17->AddEntry(hRecoMuonCandidateCosThetaData,"#mu Candidate Data");
+leg17->AddEntry(hRecoPionCandidateCosThetaData,"#pi Candidate Data");
+leg17->AddEntry(hRecoMuonCandidateCosThetaMC,"#mu Candidate MC");
+leg17->AddEntry(hRecoPionCandidateCosThetaMC,"#pi Candidate MC");
+leg17->AddEntry(hRecoMuonCandidateCosThetaMCCCCoh,"#mu Candidate MC CC-Coh");
+leg17->AddEntry(hRecoPionCandidateCosThetaMCCCCoh,"#pi Candidate MC CC-Coh");
+leg17->Draw();
+
+
+
+
+
+TCanvas *c18 = new TCanvas("c18", "The Muon Candidate and Pion Candidate Cos(#theta) After Pion Candidacy");
+c18->SetTicks();
+c18->SetFillColor(kWhite);
+
+// Area normalizing the plot 
+hRecoMuonCandidateCosThetaAfterPCData->Scale(Run1ScaleFactorData);
+hRecoPionCandidateCosThetaAfterPCData->Scale(Run1ScaleFactorData);
+
+// Setting Drawing Parameters
+hRecoMuonCandidateCosThetaAfterPCData->SetLineColor(kBlack);
+hRecoMuonCandidateCosThetaAfterPCData->SetLineWidth(2);
+hRecoMuonCandidateCosThetaAfterPCData->Rebin(50);
+
+hRecoMuonCandidateCosThetaAfterPCMC->SetLineColor(kGreen);
+hRecoMuonCandidateCosThetaAfterPCMC->SetLineWidth(2);
+hRecoMuonCandidateCosThetaAfterPCMC->Rebin(50);
+
+hRecoMuonCandidateCosThetaAfterPCMCCCCoh->SetLineColor(kViolet);
+hRecoMuonCandidateCosThetaAfterPCMCCCCoh->SetLineWidth(2);
+hRecoMuonCandidateCosThetaAfterPCMCCCCoh->Rebin(50);
+
+hRecoPionCandidateCosThetaAfterPCData->SetLineColor(kGray);
+hRecoPionCandidateCosThetaAfterPCData->SetLineWidth(2);
+hRecoPionCandidateCosThetaAfterPCData->Rebin(50);
+
+hRecoPionCandidateCosThetaAfterPCMC->SetLineColor(kBlue);
+hRecoPionCandidateCosThetaAfterPCMC->SetLineWidth(2);
+hRecoPionCandidateCosThetaAfterPCMC->Rebin(50);
+
+hRecoPionCandidateCosThetaAfterPCMCCCCoh->SetLineColor(kRed);
+hRecoPionCandidateCosThetaAfterPCMCCCCoh->SetLineWidth(2);
+hRecoPionCandidateCosThetaAfterPCMCCCCoh->Rebin(50);
+
+hRecoMuonCandidateCosThetaAfterPCData->GetXaxis()->SetTitle("Cos(#theta)");
+hRecoMuonCandidateCosThetaAfterPCData->GetXaxis()->CenterTitle();
+
+hRecoMuonCandidateCosThetaAfterPCData->GetYaxis()->SetTitle("Normalized Events");
+hRecoMuonCandidateCosThetaAfterPCData->GetYaxis()->CenterTitle();
+
+hRecoMuonCandidateCosThetaAfterPCData->Draw("E1");
+hRecoPionCandidateCosThetaAfterPCData->Draw("E1same");
+hRecoMuonCandidateCosThetaAfterPCMC->Draw("histosame");
+hRecoPionCandidateCosThetaAfterPCMC->Draw("histosame");
+hRecoMuonCandidateCosThetaAfterPCMCCCCoh->Draw("histosame");
+hRecoPionCandidateCosThetaAfterPCMCCCCoh->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg18 = new TLegend();
+leg18 = new TLegend(0.58,0.65,1.00,1.00);
+leg18->SetTextSize(0.04);
+leg18->SetTextAlign(12);
+leg18->SetFillColor(kWhite);
+leg18->SetLineColor(kWhite);
+leg18->SetShadowColor(kWhite);
+leg18->SetHeader("Which Particle Candidate");
+leg18->AddEntry(hRecoMuonCandidateCosThetaAfterPCData,"#mu Candidate Data");
+leg18->AddEntry(hRecoPionCandidateCosThetaAfterPCData,"#pi Candidate Data");
+leg18->AddEntry(hRecoMuonCandidateCosThetaAfterPCMC,"#mu Candidate MC");
+leg18->AddEntry(hRecoPionCandidateCosThetaAfterPCMC,"#pi Candidate MC");
+leg18->AddEntry(hRecoMuonCandidateCosThetaAfterPCMCCCCoh,"#mu Candidate MC CC-Coh");
+leg18->AddEntry(hRecoPionCandidateCosThetaAfterPCMCCCCoh,"#pi Candidate MC CC-Coh");
+leg18->Draw();
+
+
+
+
+
+TCanvas *c19 = new TCanvas("c19", "The Muon Candidate and Pion Candidate #theta After 2-Track Selection");
+c19->SetTicks();
+c19->SetFillColor(kWhite);
+
+// Area normalizing the plot 
+hRecoMuonCandidateThetaData->Scale(Run1ScaleFactorData);
+hRecoPionCandidateThetaData->Scale(Run1ScaleFactorData);
+
+// Setting Drawing Parameters
+hRecoMuonCandidateThetaData->SetLineColor(kBlack);
+hRecoMuonCandidateThetaData->SetLineWidth(2);
+hRecoMuonCandidateThetaData->Rebin(25);
+
+hRecoMuonCandidateThetaMC->SetLineColor(kGreen);
+hRecoMuonCandidateThetaMC->SetLineWidth(2);
+hRecoMuonCandidateThetaMC->Rebin(25);
+
+hRecoMuonCandidateThetaMCCCCoh->SetLineColor(kViolet);
+hRecoMuonCandidateThetaMCCCCoh->SetLineWidth(2);
+hRecoMuonCandidateThetaMCCCCoh->Rebin(25);
+
+hRecoPionCandidateThetaData->SetLineColor(kGray);
+hRecoPionCandidateThetaData->SetLineWidth(2);
+hRecoPionCandidateThetaData->Rebin(25);
+
+hRecoPionCandidateThetaMC->SetLineColor(kBlue);
+hRecoPionCandidateThetaMC->SetLineWidth(2);
+hRecoPionCandidateThetaMC->Rebin(25);
+
+hRecoPionCandidateThetaMCCCCoh->SetLineColor(kRed);
+hRecoPionCandidateThetaMCCCCoh->SetLineWidth(2);
+hRecoPionCandidateThetaMCCCCoh->Rebin(25);
+
+hRecoMuonCandidateThetaData->GetXaxis()->SetTitle("#theta [Degrees]");
+hRecoMuonCandidateThetaData->GetXaxis()->CenterTitle();
+hRecoMuonCandidateThetaData->GetXaxis()->SetRangeUser(0, 90);
+
+hRecoMuonCandidateThetaData->GetYaxis()->SetTitle("Normalized Events");
+hRecoMuonCandidateThetaData->GetYaxis()->CenterTitle();
+
+hRecoMuonCandidateThetaData->Draw("E1");
+hRecoPionCandidateThetaData->Draw("E1same");
+hRecoMuonCandidateThetaMC->Draw("histosame");
+hRecoPionCandidateThetaMC->Draw("histosame");
+hRecoMuonCandidateThetaMCCCCoh->Draw("histosame");
+hRecoPionCandidateThetaMCCCCoh->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg19 = new TLegend();
+leg19 = new TLegend(0.58,0.65,1.00,1.00);
+leg19->SetTextSize(0.04);
+leg19->SetTextAlign(12);
+leg19->SetFillColor(kWhite);
+leg19->SetLineColor(kWhite);
+leg19->SetShadowColor(kWhite);
+leg19->SetHeader("Which Particle Candidate");
+leg19->AddEntry(hRecoMuonCandidateThetaData,"#mu Candidate Data");
+leg19->AddEntry(hRecoPionCandidateThetaData,"#pi Candidate Data");
+leg19->AddEntry(hRecoMuonCandidateThetaMC,"#mu Candidate MC");
+leg19->AddEntry(hRecoPionCandidateThetaMC,"#pi Candidate MC");
+leg19->AddEntry(hRecoMuonCandidateThetaMCCCCoh,"#mu Candidate MC CC-Coh");
+leg19->AddEntry(hRecoPionCandidateThetaMCCCCoh,"#pi Candidate MC CC-Coh");
+leg19->Draw();
+
+
+
+
+
+TCanvas *c20 = new TCanvas("c20", "The Muon Candidate and Pion Candidate #theta After Pion Candidacy");
+c20->SetTicks();
+c20->SetFillColor(kWhite);
+
+// Area normalizing the plot 
+hRecoMuonCandidateThetaAfterPCData->Scale(Run1ScaleFactorData);
+hRecoPionCandidateThetaAfterPCData->Scale(Run1ScaleFactorData);
+
+// Setting Drawing Parameters
+hRecoMuonCandidateThetaAfterPCData->SetLineColor(kBlack);
+hRecoMuonCandidateThetaAfterPCData->SetLineWidth(2);
+hRecoMuonCandidateThetaAfterPCData->Rebin(25);
+
+hRecoMuonCandidateThetaAfterPCMC->SetLineColor(kGreen);
+hRecoMuonCandidateThetaAfterPCMC->SetLineWidth(2);
+hRecoMuonCandidateThetaAfterPCMC->Rebin(25);
+
+hRecoMuonCandidateThetaAfterPCMCCCCoh->SetLineColor(kViolet);
+hRecoMuonCandidateThetaAfterPCMCCCCoh->SetLineWidth(2);
+hRecoMuonCandidateThetaAfterPCMCCCCoh->Rebin(25);
+
+hRecoPionCandidateThetaAfterPCData->SetLineColor(kGray);
+hRecoPionCandidateThetaAfterPCData->SetLineWidth(2);
+hRecoPionCandidateThetaAfterPCData->Rebin(25);
+
+hRecoPionCandidateThetaAfterPCMC->SetLineColor(kBlue);
+hRecoPionCandidateThetaAfterPCMC->SetLineWidth(2);
+hRecoPionCandidateThetaAfterPCMC->Rebin(25);
+
+hRecoPionCandidateThetaAfterPCMCCCCoh->SetLineColor(kRed);
+hRecoPionCandidateThetaAfterPCMCCCCoh->SetLineWidth(2);
+hRecoPionCandidateThetaAfterPCMCCCCoh->Rebin(25);
+
+hRecoMuonCandidateThetaAfterPCData->GetXaxis()->SetTitle("#theta [Degrees]");
+hRecoMuonCandidateThetaAfterPCData->GetXaxis()->CenterTitle();
+hRecoMuonCandidateThetaAfterPCData->GetXaxis()->SetRangeUser(0, 90);
+
+hRecoMuonCandidateThetaAfterPCData->GetYaxis()->SetTitle("Normalized Events");
+hRecoMuonCandidateThetaAfterPCData->GetYaxis()->CenterTitle();
+
+hRecoMuonCandidateThetaAfterPCData->Draw("E1");
+hRecoPionCandidateThetaAfterPCData->Draw("E1same");
+hRecoMuonCandidateThetaAfterPCMC->Draw("histosame");
+hRecoPionCandidateThetaAfterPCMC->Draw("histosame");
+hRecoMuonCandidateThetaAfterPCMCCCCoh->Draw("histosame");
+hRecoPionCandidateThetaAfterPCMCCCCoh->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg20 = new TLegend();
+leg20 = new TLegend(0.58,0.65,1.00,1.00);
+leg20->SetTextSize(0.04);
+leg20->SetTextAlign(12);
+leg20->SetFillColor(kWhite);
+leg20->SetLineColor(kWhite);
+leg20->SetShadowColor(kWhite);
+leg20->SetHeader("Which Particle Candidate");
+leg20->AddEntry(hRecoMuonCandidateThetaAfterPCData,"#mu Candidate Data");
+leg20->AddEntry(hRecoPionCandidateThetaAfterPCData,"#pi Candidate Data");
+leg20->AddEntry(hRecoMuonCandidateThetaAfterPCMC,"#mu Candidate MC");
+leg20->AddEntry(hRecoPionCandidateThetaAfterPCMC,"#pi Candidate MC");
+leg20->AddEntry(hRecoMuonCandidateThetaAfterPCMCCCCoh,"#mu Candidate MC CC-Coh");
+leg20->AddEntry(hRecoPionCandidateThetaAfterPCMCCCCoh,"#pi Candidate MC CC-Coh");
+leg20->Draw();
+
+
+
+
+
+TCanvas *c21 = new TCanvas("c21", "The Muon Candidate and Pion Candidate #phi After 2-Track Selection");
+c21->SetTicks();
+c21->SetFillColor(kWhite);
+
+// Area normalizing the plot 
+hRecoMuonCandidatePhiData->Scale(Run1ScaleFactorData);
+hRecoPionCandidatePhiData->Scale(Run1ScaleFactorData);
+
+// Setting Drawing Parameters
+hRecoMuonCandidatePhiData->SetLineColor(kBlack);
+hRecoMuonCandidatePhiData->SetLineWidth(2);
+hRecoMuonCandidatePhiData->Rebin(40);
+
+hRecoMuonCandidatePhiMC->SetLineColor(kGreen);
+hRecoMuonCandidatePhiMC->SetLineWidth(2);
+hRecoMuonCandidatePhiMC->Rebin(40);
+
+hRecoMuonCandidatePhiMCCCCoh->SetLineColor(kViolet);
+hRecoMuonCandidatePhiMCCCCoh->SetLineWidth(2);
+hRecoMuonCandidatePhiMCCCCoh->Rebin(40);
+
+hRecoPionCandidatePhiData->SetLineColor(kGray);
+hRecoPionCandidatePhiData->SetLineWidth(2);
+hRecoPionCandidatePhiData->Rebin(40);
+
+hRecoPionCandidatePhiMC->SetLineColor(kBlue);
+hRecoPionCandidatePhiMC->SetLineWidth(2);
+hRecoPionCandidatePhiMC->Rebin(40);
+
+hRecoPionCandidatePhiMCCCCoh->SetLineColor(kRed);
+hRecoPionCandidatePhiMCCCCoh->SetLineWidth(2);
+hRecoPionCandidatePhiMCCCCoh->Rebin(40);
+
+hRecoMuonCandidatePhiData->GetXaxis()->SetTitle("#phi [Degrees]");
+hRecoMuonCandidatePhiData->GetXaxis()->CenterTitle();
+
+hRecoMuonCandidatePhiData->GetYaxis()->SetTitle("Normalized Events");
+hRecoMuonCandidatePhiData->GetYaxis()->CenterTitle();
+hRecoMuonCandidatePhiData->GetYaxis()->SetRangeUser(0, 6500);
+
+hRecoMuonCandidatePhiData->Draw("E1");
+hRecoPionCandidatePhiData->Draw("E1same");
+hRecoMuonCandidatePhiMC->Draw("histosame");
+hRecoPionCandidatePhiMC->Draw("histosame");
+hRecoMuonCandidatePhiMCCCCoh->Draw("histosame");
+hRecoPionCandidatePhiMCCCCoh->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg21 = new TLegend();
+leg21 = new TLegend(0.58,0.65,1.00,1.00);
+leg21->SetTextSize(0.04);
+leg21->SetTextAlign(12);
+leg21->SetFillColor(kWhite);
+leg21->SetLineColor(kWhite);
+leg21->SetShadowColor(kWhite);
+leg21->SetHeader("Which Particle Candidate");
+leg21->AddEntry(hRecoMuonCandidatePhiData,"#mu Candidate Data");
+leg21->AddEntry(hRecoPionCandidatePhiData,"#pi Candidate Data");
+leg21->AddEntry(hRecoMuonCandidatePhiMC,"#mu Candidate MC");
+leg21->AddEntry(hRecoPionCandidatePhiMC,"#pi Candidate MC");
+leg21->AddEntry(hRecoMuonCandidatePhiMCCCCoh,"#mu Candidate MC CC-Coh");
+leg21->AddEntry(hRecoPionCandidatePhiMCCCCoh,"#pi Candidate MC CC-Coh");
+leg21->Draw();
+
+
+
+
+
+TCanvas *c22 = new TCanvas("c22", "The Muon Candidate and Pion Candidate #phi After Pion Candidacy");
+c22->SetTicks();
+c22->SetFillColor(kWhite);
+
+// Area normalizing the plot 
+hRecoMuonCandidatePhiAfterPCData->Scale(Run1ScaleFactorData);
+hRecoPionCandidatePhiAfterPCData->Scale(Run1ScaleFactorData);
+
+// Setting Drawing Parameters
+hRecoMuonCandidatePhiAfterPCData->SetLineColor(kBlack);
+hRecoMuonCandidatePhiAfterPCData->SetLineWidth(2);
+hRecoMuonCandidatePhiAfterPCData->Rebin(40);
+
+hRecoMuonCandidatePhiAfterPCMC->SetLineColor(kGreen);
+hRecoMuonCandidatePhiAfterPCMC->SetLineWidth(2);
+hRecoMuonCandidatePhiAfterPCMC->Rebin(40);
+
+hRecoMuonCandidatePhiAfterPCMCCCCoh->SetLineColor(kViolet);
+hRecoMuonCandidatePhiAfterPCMCCCCoh->SetLineWidth(2);
+hRecoMuonCandidatePhiAfterPCMCCCCoh->Rebin(40);
+
+hRecoPionCandidatePhiAfterPCData->SetLineColor(kGray);
+hRecoPionCandidatePhiAfterPCData->SetLineWidth(2);
+hRecoPionCandidatePhiAfterPCData->Rebin(40);
+
+hRecoPionCandidatePhiAfterPCMC->SetLineColor(kBlue);
+hRecoPionCandidatePhiAfterPCMC->SetLineWidth(2);
+hRecoPionCandidatePhiAfterPCMC->Rebin(40);
+
+hRecoPionCandidatePhiAfterPCMCCCCoh->SetLineColor(kRed);
+hRecoPionCandidatePhiAfterPCMCCCCoh->SetLineWidth(2);
+hRecoPionCandidatePhiAfterPCMCCCCoh->Rebin(40);
+
+hRecoMuonCandidatePhiAfterPCData->GetXaxis()->SetTitle("#phi [Degrees]");
+hRecoMuonCandidatePhiAfterPCData->GetXaxis()->CenterTitle();
+
+hRecoMuonCandidatePhiAfterPCData->GetYaxis()->SetTitle("Normalized Events");
+hRecoMuonCandidatePhiAfterPCData->GetYaxis()->CenterTitle();
+hRecoMuonCandidatePhiAfterPCData->GetYaxis()->SetRangeUser(0, 950);
+
+hRecoMuonCandidatePhiAfterPCData->Draw("E1");
+hRecoPionCandidatePhiAfterPCData->Draw("E1same");
+hRecoMuonCandidatePhiAfterPCMC->Draw("histosame");
+hRecoPionCandidatePhiAfterPCMC->Draw("histosame");
+hRecoMuonCandidatePhiAfterPCMCCCCoh->Draw("histosame");
+hRecoPionCandidatePhiAfterPCMCCCCoh->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg22 = new TLegend();
+leg22 = new TLegend(0.58,0.65,1.00,1.00);
+leg22->SetTextSize(0.04);
+leg22->SetTextAlign(12);
+leg22->SetFillColor(kWhite);
+leg22->SetLineColor(kWhite);
+leg22->SetShadowColor(kWhite);
+leg22->SetHeader("Which Particle Candidate");
+leg22->AddEntry(hRecoMuonCandidatePhiAfterPCData,"#mu Candidate Data");
+leg22->AddEntry(hRecoPionCandidatePhiAfterPCData,"#pi Candidate Data");
+leg22->AddEntry(hRecoMuonCandidatePhiAfterPCMC,"#mu Candidate MC");
+leg22->AddEntry(hRecoPionCandidatePhiAfterPCMC,"#pi Candidate MC");
+leg22->AddEntry(hRecoMuonCandidatePhiAfterPCMCCCCoh,"#mu Candidate MC CC-Coh");
+leg22->AddEntry(hRecoPionCandidatePhiAfterPCMCCCCoh,"#pi Candidate MC CC-Coh");
+leg22->Draw();
+
+
+
+
+TCanvas *c23 = new TCanvas("c23", "The Opening Angle for Events Passing Pion Candidacy");
+c23->SetTicks();
+c23->SetFillColor(kWhite);
+
+// Area normalizing the plot 
+hOpeningAngleForPC->Scale(Run1ScaleFactorData);
+
+// Setting Drawing Parameters
+hOpeningAngleForPC->SetLineColor(kBlack);
+hOpeningAngleForPC->SetLineWidth(2);
+hOpeningAngleForPC->Rebin(9);
+
+hOpeningAngleForPCMCReco->SetLineColor(kGreen);
+hOpeningAngleForPCMCReco->SetLineWidth(2);
+hOpeningAngleForPCMCReco->Rebin(9);
+
+hOpeningAngleForPCMCCCCoh->SetLineColor(kViolet);
+hOpeningAngleForPCMCCCCoh->SetLineWidth(2);
+hOpeningAngleForPCMCCCCoh->Rebin(9);
+
+hOpeningAngleForPC->GetXaxis()->SetTitle("#theta_{#mu#pi} [Degrees]");
+hOpeningAngleForPC->GetXaxis()->CenterTitle();
+
+hOpeningAngleForPC->GetYaxis()->SetTitle("Normalized Events");
+hOpeningAngleForPC->GetYaxis()->CenterTitle();
+
+hOpeningAngleForPC->Draw("E1");
+hOpeningAngleForPCMCReco->Draw("histosame");
+hOpeningAngleForPCMCCCCoh->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg23 = new TLegend();
+leg23 = new TLegend(0.58,0.65,1.00,1.00);
+leg23->SetTextSize(0.04);
+leg23->SetTextAlign(12);
+leg23->SetFillColor(kWhite);
+leg23->SetLineColor(kWhite);
+leg23->SetShadowColor(kWhite);
+leg23->SetHeader("Samples");
+leg23->AddEntry(hOpeningAngleForPCMCReco,"MC Reco New");
+leg23->AddEntry(hOpeningAngleForPCMCCCCoh,"MC Reco New CC-Coh");
+leg23->AddEntry(hOpeningAngleForPC,"Data");
+leg23->Draw();
 }
