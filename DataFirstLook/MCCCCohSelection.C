@@ -32,10 +32,12 @@ TH2D *hPionCandidateTracksMuonChi2VsProtonChi2 = new TH2D("hPionCandidateTracksM
 TH2D *hMuonCandidateTracksMuonChi2VsProtonChi2AfterDoCA = new TH2D("hMuonCandidateTracksMuonChi2VsProtonChi2AfterDoCA", "For Muon Candidate Tracks After DoCA Cut the Muon #chi^{2} Vs Proton #chi^{2}", 1000, 0, 350, 1000, 0, 350);
 TH2D *hPionCandidateTracksMuonChi2VsProtonChi2AfterDoCA = new TH2D("hPionCandidateTracksMuonChi2VsProtonChi2AfterDoCA", "For Pion Candidate Tracks After DoCA Cut the Muon #chi^{2} Vs Proton #chi^{2}", 1000, 0, 350, 1000, 0, 350);
 
+TH1D *hRecoNuEnergyFiducialVolume = new TH1D("hRecoNuEnergyFiducialVolume", "The Reconstructed Neutrino Energy of Events That Pass the Fiducial Volume Selection", 1000, 0, 10);
 TH1D *hRecoNuEnergy = new TH1D("hRecoNuEnergy", "The Reconstructed Neutrino Energy of Events That Pass the 2-Tracks Selection", 1000, 0, 10);
 TH1D *hRecoNuEnergyConeAngle = new TH1D("hRecoNuEnergyConeAngle", "The Reconstructed Neutrino Energy of Events That Pass the Cone Angle Selection", 1000, 0, 10);
 TH1D *hRecoNuEnergyDoCA = new TH1D("hRecoNuEnergyDoCA", "The Reconstructed Neutrino Energy of Events That Pass the DoCA Selection", 1000, 0, 10);
 TH1D *hRecoNuEnergyPionCandidate = new TH1D("hRecoNuEnergyPionCandidate", "The Reconstructed Neutrino Energy of Events That Pass the Pion Candidacy Selection", 1000, 0, 10);
+TH1D *hRecoNuEnergyOA = new TH1D("hRecoNuEnergyOA", "The Reconstructed Neutrino Energy of Events That Pass the Opening Angle Selection", 1000, 0, 10);
 TH1D *hRecoNuEnergyT = new TH1D("hRecoNuEnergyT", "The Reconstructed Neutrino Energy of Events That Pass the |t| Selection", 1000, 0, 10);
 
 TH1D *hDeltaPTT = new TH1D("hDeltaPTT", "The TKI Variable Known as DeltaP_TT for Events with 2-Tracks", 1000, 0, 1);
@@ -535,6 +537,8 @@ void MCCCCohSelection::Loop()
       if (nu_flashmatch_score/best_cosmic_flashmatch_score < FlashRatioCut && nu_flashmatch_score/best_cosmic_flashmatch_score != 1) FlashRatio = 1;
       // |---------------------------------------|
 
+      if (NuVtxFiducialVolume == 1) hRecoNuEnergyFiducialVolume->Fill(nu_e);
+
       if (NumberMuonCandidates && PandoraPDG && StartVtxDaughters && NuVtxFiducialVolume && FlashTopological && TopologicalScore && FlashRatio) {
          CCInclusivePreSelection = 1;
          hNumTrksWithin10->Fill(NumTrksWithin10);
@@ -617,6 +621,7 @@ void MCCCCohSelection::Loop()
 	    hDeltaAlphaT->Fill(P_N_Alpha_T(1, mu.X(), mu.Y(), mu.Z(), Trk1MuEnergy, pi.X(), pi.Y(), pi.Z(), Trk2MuEnergy)*180/PI);
 
 	    hRecoNuEnergy->Fill(Trk1MuEnergy + Trk2MuEnergy);
+	    //hRecoNuEnergy->Fill(nu_e);
 	    hRecoMuonCandidateMomentum->Fill(mu.Mag());
 	    hRecoPionCandidateMomentum->Fill(pi.Mag());
 	    hRecoMuonCandidateTheta->Fill(mu.Theta()*180/PI);
@@ -650,6 +655,7 @@ void MCCCCohSelection::Loop()
 	             NumEventsWithPionCandidate++;
 		     hTPionCandidate->Fill(t);
 		     hRecoNuEnergyPionCandidate->Fill(Trk1MuEnergy + Trk2MuEnergy);
+		     //hRecoNuEnergyPionCandidate->Fill(nu_e);
 	             hDeltaPTTPC->Fill(DeltaP_TT(0, 0, 1, mu.X(), mu.Y(), mu.Z(), pi.X(), pi.Y(), pi.Z()));
 	             hPNPC->Fill(P_N_Alpha_T(0, mu.X(), mu.Y(), mu.Z(), Trk1MuEnergy, pi.X(), pi.Y(), pi.Z(), Trk2MuEnergy));
 	             hDeltaAlphaTPC->Fill(P_N_Alpha_T(1, mu.X(), mu.Y(), mu.Z(), Trk1MuEnergy, pi.X(), pi.Y(), pi.Z(), Trk2MuEnergy)*180/PI);
@@ -665,6 +671,8 @@ void MCCCCohSelection::Loop()
                      hOpeningAngleVsConeAnglePC->Fill(SavedConeAngle, SavedOpeningAngle);
 		     if (SavedOpeningAngle < OpeningAngleCut) {
 			NumEventsWithOA++;
+	                hRecoNuEnergyOA->Fill(Trk1MuEnergy + Trk2MuEnergy);
+			//hRecoNuEnergyOA->Fill(nu_e);
 		        if (t < TCut) {
 		           NumEventsWithT++;
 			   hRecoNuEnergyT->Fill(Trk1MuEnergy + Trk2MuEnergy);
@@ -751,10 +759,12 @@ void MCCCCohSelection::Loop()
    hMuonCandidateTracksMuonChi2VsProtonChi2AfterDoCA->Write();
    hPionCandidateTracksMuonChi2VsProtonChi2AfterDoCA->Write();
 
+   hRecoNuEnergyFiducialVolume->Write();
    hRecoNuEnergy->Write();
    hRecoNuEnergyConeAngle->Write();
    hRecoNuEnergyDoCA->Write();
    hRecoNuEnergyPionCandidate->Write();
+   hRecoNuEnergyOA->Write();
    hRecoNuEnergyT->Write();
 
    hDeltaPTT->Write();
