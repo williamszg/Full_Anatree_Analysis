@@ -413,6 +413,7 @@ void DataSelection::Loop()
       double Trk2MuEnergy = 0;
       double DoCA_VtxDistance = 999;
       double DoCA_TrkStarts = 999;
+      double TotalDaughterTracksEnergy = 0;
       // :::::::::::::::::::::::::::::::::::::::::::::
 
       // |=========================================|
@@ -441,6 +442,7 @@ void DataSelection::Loop()
 
 	 if (pfp_generation_v->at(i) == GenerationCut) {
             Generation = 1;
+	    TotalDaughterTracksEnergy = TotalDaughterTracksEnergy + trk_calo_energy_u_v->at(i);
 	    NumGeneration++;
 	 }
 	 if (trk_len_v->at(i) > TrackLengthCut) TrackLength = 1;
@@ -531,7 +533,7 @@ void DataSelection::Loop()
       if (nu_flashmatch_score/best_cosmic_flashmatch_score < FlashRatioCut && nu_flashmatch_score/best_cosmic_flashmatch_score != 1) FlashRatio = 1;
       // |---------------------------------------|
 
-      if (NuVtxFiducialVolume == 1) hRecoNuEnergyFiducialVolume->Fill(nu_e);
+      if (NuVtxFiducialVolume == 1) hRecoNuEnergyFiducialVolume->Fill(TotalDaughterTracksEnergy/1000);
 
       if (NumberMuonCandidates && PandoraPDG && StartVtxDaughters && NuVtxFiducialVolume && FlashTopological && TopologicalScore && FlashRatio) {
          CCInclusivePreSelection = 1;
@@ -614,8 +616,8 @@ void DataSelection::Loop()
 	    hPN->Fill(P_N_Alpha_T(0, mu.X(), mu.Y(), mu.Z(), Trk1MuEnergy, pi.X(), pi.Y(), pi.Z(), Trk2MuEnergy));
 	    hDeltaAlphaT->Fill(P_N_Alpha_T(1, mu.X(), mu.Y(), mu.Z(), Trk1MuEnergy, pi.X(), pi.Y(), pi.Z(), Trk2MuEnergy)*180/PI);
 
-	    hRecoNuEnergy->Fill(Trk1MuEnergy + Trk2MuEnergy);
-	    //hRecoNuEnergy->Fill(nu_e);
+	    //hRecoNuEnergy->Fill(Trk1MuEnergy + Trk2MuEnergy);
+	    hRecoNuEnergy->Fill(TotalDaughterTracksEnergy/1000);
 	    hRecoMuonCandidateMomentum->Fill(mu.Mag());
 	    hRecoPionCandidateMomentum->Fill(pi.Mag());
 	    hRecoMuonCandidateTheta->Fill(mu.Theta()*180/PI);
@@ -636,20 +638,22 @@ void DataSelection::Loop()
 	    if (SavedConeAngle <= ConeAngleCut) {
 	       NumEventsWithConeAngle++;
 	       hTConeAngle->Fill(t);
-	       hRecoNuEnergyConeAngle->Fill(Trk1MuEnergy + Trk2MuEnergy);
+	       //hRecoNuEnergyConeAngle->Fill(Trk1MuEnergy + Trk2MuEnergy);
+	       hRecoNuEnergyConeAngle->Fill(TotalDaughterTracksEnergy/1000);
 	       //if (SavedConeAngle >= 5 && t >= 0 && t <= 0.15) std::cout<<evt<<", "<<run<<", "<<sub<<std::endl;
 	       if (DoCA_TrkStarts < DoCACut) {
 	          NumEventsWithDoCA++;
 		  hTDoCA->Fill(t);
-		  hRecoNuEnergyDoCA->Fill(Trk1MuEnergy + Trk2MuEnergy);
+		  //hRecoNuEnergyDoCA->Fill(Trk1MuEnergy + Trk2MuEnergy);
+		  hRecoNuEnergyDoCA->Fill(TotalDaughterTracksEnergy/1000);
 		  hMuonCandidateTracksMuonChi2VsProtonChi2AfterDoCA->Fill(MuonCandidateProtonChi2, MuonCandidateMuonChi2);
 		  hPionCandidateTracksMuonChi2VsProtonChi2AfterDoCA->Fill(PionCandidateProtonChi2, PionCandidateMuonChi2);
 		  if (PionCandidateMuonChi2 < PionCandidateMuonCut && PionCandidateProtonChi2 > PionCandidateProtonCut) {
 		     hOpeningAngleForPionCandidate->Fill(SavedOpeningAngle);
 	             NumEventsWithPionCandidate++;
 		     hTPionCandidate->Fill(t);
-		     hRecoNuEnergyPionCandidate->Fill(Trk1MuEnergy + Trk2MuEnergy);
-		     //hRecoNuEnergyPionCandidate->Fill(nu_e);
+		     //hRecoNuEnergyPionCandidate->Fill(Trk1MuEnergy + Trk2MuEnergy);
+		     hRecoNuEnergyPionCandidate->Fill(TotalDaughterTracksEnergy/1000);
 	             hDeltaPTTPC->Fill(DeltaP_TT(0, 0, 1, mu.X(), mu.Y(), mu.Z(), pi.X(), pi.Y(), pi.Z()));
 	             hPNPC->Fill(P_N_Alpha_T(0, mu.X(), mu.Y(), mu.Z(), Trk1MuEnergy, pi.X(), pi.Y(), pi.Z(), Trk2MuEnergy));
 	             hDeltaAlphaTPC->Fill(P_N_Alpha_T(1, mu.X(), mu.Y(), mu.Z(), Trk1MuEnergy, pi.X(), pi.Y(), pi.Z(), Trk2MuEnergy)*180/PI);
@@ -665,11 +669,12 @@ void DataSelection::Loop()
 	             hOpeningAngleVsConeAnglePC->Fill(SavedConeAngle, SavedOpeningAngle);
 		     if (SavedOpeningAngle < OpeningAngleCut) {
 			NumEventsWithOA++;
-	                hRecoNuEnergyOA->Fill(Trk1MuEnergy + Trk2MuEnergy);
-	                //hRecoNuEnergyOA->Fill(nu_e);
+	                //hRecoNuEnergyOA->Fill(Trk1MuEnergy + Trk2MuEnergy);
+	                hRecoNuEnergyOA->Fill(TotalDaughterTracksEnergy/1000);
 		        if (t < TCut) {
 		           NumEventsWithT++;
-			   hRecoNuEnergyT->Fill(Trk1MuEnergy + Trk2MuEnergy);
+			   //hRecoNuEnergyT->Fill(Trk1MuEnergy + Trk2MuEnergy);
+			   hRecoNuEnergyT->Fill(TotalDaughterTracksEnergy/1000);
 	                   //std::cout<<evt<<", "<<run<<", "<<sub<<std::endl;
 		        }
 		     }

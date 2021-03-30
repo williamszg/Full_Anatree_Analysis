@@ -122,13 +122,45 @@ TH1D *hRecoNuEnergy = (TH1D*)f4->Get("hRecoNuEnergy");
 TH1D *hRecoNuEnergyConeAngle = (TH1D*)f4->Get("hRecoNuEnergyConeAngle");
 TH1D *hRecoNuEnergyDoCA = (TH1D*)f4->Get("hRecoNuEnergyDoCA");
 TH1D *hRecoNuEnergyPionCandidate = (TH1D*)f4->Get("hRecoNuEnergyPionCandidate");
+TH1D *hRecoNuEnergyOA = (TH1D*)f4->Get("hRecoNuEnergyOA");
 TH1D *hRecoNuEnergyT = (TH1D*)f4->Get("hRecoNuEnergyT");
 
 hRecoNuEnergy->Sumw2();
 hRecoNuEnergyConeAngle->Sumw2();
 hRecoNuEnergyDoCA->Sumw2();
 hRecoNuEnergyPionCandidate->Sumw2();
+hRecoNuEnergyOA->Sumw2();
 hRecoNuEnergyT->Sumw2();
+
+
+TH1D *hRecoNuEnergyMC = (TH1D*)f5->Get("hRecoNuEnergy");
+TH1D *hRecoNuEnergyConeAngleMC = (TH1D*)f5->Get("hRecoNuEnergyConeAngle");
+TH1D *hRecoNuEnergyDoCAMC = (TH1D*)f5->Get("hRecoNuEnergyDoCA");
+TH1D *hRecoNuEnergyPionCandidateMC = (TH1D*)f5->Get("hRecoNuEnergyPionCandidate");
+TH1D *hRecoNuEnergyOAMC = (TH1D*)f5->Get("hRecoNuEnergyOA");
+TH1D *hRecoNuEnergyTMC = (TH1D*)f5->Get("hRecoNuEnergyT");
+
+hRecoNuEnergyMC->Sumw2();
+hRecoNuEnergyConeAngleMC->Sumw2();
+hRecoNuEnergyDoCAMC->Sumw2();
+hRecoNuEnergyPionCandidateMC->Sumw2();
+hRecoNuEnergyOAMC->Sumw2();
+hRecoNuEnergyTMC->Sumw2();
+
+
+TH1D *hRecoNuEnergyMCCCCoh = (TH1D*)f6->Get("hRecoNuEnergy");
+TH1D *hRecoNuEnergyConeAngleMCCCCoh = (TH1D*)f6->Get("hRecoNuEnergyConeAngle");
+TH1D *hRecoNuEnergyDoCAMCCCCoh = (TH1D*)f6->Get("hRecoNuEnergyDoCA");
+TH1D *hRecoNuEnergyPionCandidateMCCCCoh = (TH1D*)f6->Get("hRecoNuEnergyPionCandidate");
+TH1D *hRecoNuEnergyOAMCCCCoh = (TH1D*)f6->Get("hRecoNuEnergyOA");
+TH1D *hRecoNuEnergyTMCCCCoh = (TH1D*)f6->Get("hRecoNuEnergyT");
+
+hRecoNuEnergyMCCCCoh->Sumw2();
+hRecoNuEnergyConeAngleMCCCCoh->Sumw2();
+hRecoNuEnergyDoCAMCCCCoh->Sumw2();
+hRecoNuEnergyPionCandidateMCCCCoh->Sumw2();
+hRecoNuEnergyOAMCCCCoh->Sumw2();
+hRecoNuEnergyTMCCCCoh->Sumw2();
 
 
 TH2D *hMuonCandidateTracksMuonChi2VsProtonChi2 = (TH2D*)f4->Get("hMuonCandidateTracksMuonChi2VsProtonChi2");
@@ -326,6 +358,7 @@ hRecoPionCandidatePhiAfterPCMCCCCoh->Sumw2();
 double After2TracksCutMCtoDataScaleFactor = 4132./17065.;
 double Run1ScaleFactorData = 1.2847059/0.05;
 double MCCCCohToDataScaleFactor = 378./121.;
+double Run1ScaleFactorMC = 0.05/1.2847059;
 // ========================================
 
 
@@ -346,9 +379,11 @@ hTAfter2TrueCCCoh->Add(hTAfter2TrueOther);
 //hT->Scale(1/hT->Integral());
 //hTReco->Scale(1/hTReco->Integral());
 //hTRecoCCCoh->Scale(1/hTRecoCCCoh->Integral());
-hTAfter2RecoCCCoh->Scale(After2TracksCutMCtoDataScaleFactor*Run1ScaleFactorData);
-hTAfter2TrueCCCoh->Scale(After2TracksCutMCtoDataScaleFactor*Run1ScaleFactorData);
-hT->Scale(Run1ScaleFactorData);
+hTAfter2RecoCCCoh->Scale(After2TracksCutMCtoDataScaleFactor*Run1ScaleFactorMC);
+hTAfter2TrueCCCoh->Scale(After2TracksCutMCtoDataScaleFactor*Run1ScaleFactorMC);
+//hT->Scale(Run1ScaleFactorData);
+hTReco->Scale(Run1ScaleFactorMC);
+hTRecoCCCoh->Scale(Run1ScaleFactorMC);
 
 // Setting Drawing Parameters
 hTAfter2TrueCCCoh->SetLineColor(kBlue);
@@ -415,8 +450,10 @@ hNTracksInBubbleCCCoh->Add(hNTracksInBubbleOther);
 //hNumTrksWithin10->Scale(1/hNumTrksWithin10->Integral());
 //hNumTrksWithin10MCReco->Scale(1/hNumTrksWithin10MCReco->Integral());
 //hNumTrksWithin10MCCCCoh->Scale(1/hNumTrksWithin10MCCCCoh->Integral());
-hNTracksInBubbleCCCoh->Scale(After2TracksCutMCtoDataScaleFactor*Run1ScaleFactorData);
-hNumTrksWithin10->Scale(Run1ScaleFactorData);
+hNTracksInBubbleCCCoh->Scale(After2TracksCutMCtoDataScaleFactor*Run1ScaleFactorMC);
+//hNumTrksWithin10->Scale(Run1ScaleFactorData);
+hNumTrksWithin10MCReco->Scale(Run1ScaleFactorMC);
+hNumTrksWithin10MCCCCoh->Scale(Run1ScaleFactorMC);
 
 // Setting Drawing Parameters
 hNTracksInBubbleCCCoh->SetLineColor(kRed);
@@ -477,8 +514,10 @@ hNumMuonCandidatesCCCoh->Add(hNumMuonCandidatesOther);
 //hNumMuonCandidates->Scale(1/hNumMuonCandidates->Integral());
 //hNumMuonCandidatesMCReco->Scale(1/hNumMuonCandidatesMCReco->Integral());
 //hNumMuonCandidatesMCCCCoh->Scale(1/hNumMuonCandidatesMCCCCoh->Integral());
-hNumMuonCandidatesCCCoh->Scale(After2TracksCutMCtoDataScaleFactor*Run1ScaleFactorData);
-hNumMuonCandidates->Scale(Run1ScaleFactorData);
+hNumMuonCandidatesCCCoh->Scale(After2TracksCutMCtoDataScaleFactor*Run1ScaleFactorMC);
+//hNumMuonCandidates->Scale(Run1ScaleFactorData);
+hNumMuonCandidatesMCReco->Scale(Run1ScaleFactorMC);
+hNumMuonCandidatesMCCCCoh->Scale(Run1ScaleFactorMC);
 
 // Setting Drawing Parameters
 hNumMuonCandidatesCCCoh->SetLineColor(kRed);
@@ -541,9 +580,11 @@ hTrueConeAngleCCCoh->Add(hTrueConeAngleOther);
 //hConeAngleFor2Tracks->Scale(1/hConeAngleFor2Tracks->Integral());
 //hConeAngleFor2TracksReco->Scale(1/hConeAngleFor2TracksReco->Integral());
 //hConeAngleFor2TracksRecoCCCoh->Scale(1/hConeAngleFor2TracksRecoCCCoh->Integral());
-hRecoConeAngleCCCoh->Scale(After2TracksCutMCtoDataScaleFactor*Run1ScaleFactorData);
-hTrueConeAngleCCCoh->Scale(After2TracksCutMCtoDataScaleFactor*Run1ScaleFactorData);
-hConeAngleFor2Tracks->Scale(Run1ScaleFactorData);
+hRecoConeAngleCCCoh->Scale(After2TracksCutMCtoDataScaleFactor*Run1ScaleFactorMC);
+hTrueConeAngleCCCoh->Scale(After2TracksCutMCtoDataScaleFactor*Run1ScaleFactorMC);
+//hConeAngleFor2Tracks->Scale(Run1ScaleFactorData);
+hConeAngleFor2TracksReco->Scale(Run1ScaleFactorMC);
+hConeAngleFor2TracksRecoCCCoh->Scale(Run1ScaleFactorMC);
 
 // Setting Drawing Parameters
 hTrueConeAngleCCCoh->SetLineColor(kBlue);
@@ -612,9 +653,11 @@ hTrueOpeningAngleCCCoh->Add(hTrueOpeningAngleOther);
 //hOpeningAngleFor2Tracks->Scale(1/hOpeningAngleFor2Tracks->Integral());
 //hOpeningAngleFor2TracksMCReco->Scale(1/hOpeningAngleFor2TracksMCReco->Integral());
 //hOpeningAngleFor2TracksMCCCCoh->Scale(1/hOpeningAngleFor2TracksMCCCCoh->Integral());
-hRecoOpeningAngleCCCoh->Scale(After2TracksCutMCtoDataScaleFactor*Run1ScaleFactorData);
-hTrueOpeningAngleCCCoh->Scale(After2TracksCutMCtoDataScaleFactor*Run1ScaleFactorData);
-hOpeningAngleFor2Tracks->Scale(Run1ScaleFactorData);
+hRecoOpeningAngleCCCoh->Scale(After2TracksCutMCtoDataScaleFactor*Run1ScaleFactorMC);
+hTrueOpeningAngleCCCoh->Scale(After2TracksCutMCtoDataScaleFactor*Run1ScaleFactorMC);
+//hOpeningAngleFor2Tracks->Scale(Run1ScaleFactorData);
+hOpeningAngleFor2TracksMCReco->Scale(Run1ScaleFactorMC);
+hOpeningAngleFor2TracksMCCCCoh->Scale(Run1ScaleFactorMC);
 
 // Setting Drawing Parameters
 hTrueOpeningAngleCCCoh->SetLineColor(kBlue);
@@ -676,23 +719,23 @@ c6->SetFillColor(kWhite);
 // Setting Drawing Parameters
 hRecoNuEnergy->SetLineColor(kBlack);
 hRecoNuEnergy->SetLineWidth(2);
-hRecoNuEnergy->Rebin(20);
+hRecoNuEnergy->Rebin(50);
 
 hRecoNuEnergyConeAngle->SetLineColor(kBlue);
 hRecoNuEnergyConeAngle->SetLineWidth(2);
-hRecoNuEnergyConeAngle->Rebin(20);
+hRecoNuEnergyConeAngle->Rebin(50);
 
 hRecoNuEnergyDoCA->SetLineColor(kRed);
 hRecoNuEnergyDoCA->SetLineWidth(2);
-hRecoNuEnergyDoCA->Rebin(20);
+hRecoNuEnergyDoCA->Rebin(50);
 
 hRecoNuEnergyPionCandidate->SetLineColor(kGreen);
 hRecoNuEnergyPionCandidate->SetLineWidth(2);
-hRecoNuEnergyPionCandidate->Rebin(20);
+hRecoNuEnergyPionCandidate->Rebin(50);
 
 hRecoNuEnergyT->SetLineColor(kGray);
 hRecoNuEnergyT->SetLineWidth(2);
-hRecoNuEnergyT->Rebin(20);
+hRecoNuEnergyT->Rebin(50);
 
 hRecoNuEnergy->GetXaxis()->SetTitle("E_{#nu} [GeV]");
 hRecoNuEnergy->GetXaxis()->CenterTitle();
@@ -833,9 +876,11 @@ hTAfterTrueCCCoh->Add(hTAfterTrueOther);
 //hT2->Scale(1/hT2->Integral());
 //hT2Reco->Scale(1/hT2Reco->Integral());
 //hT2RecoCCCoh->Scale(1/hT2RecoCCCoh->Integral());
-hTAfterRecoCCCoh->Scale(After2TracksCutMCtoDataScaleFactor*Run1ScaleFactorData);
-hTAfterTrueCCCoh->Scale(After2TracksCutMCtoDataScaleFactor*Run1ScaleFactorData);
-hT2->Scale(Run1ScaleFactorData);
+hTAfterRecoCCCoh->Scale(After2TracksCutMCtoDataScaleFactor*Run1ScaleFactorMC);
+hTAfterTrueCCCoh->Scale(After2TracksCutMCtoDataScaleFactor*Run1ScaleFactorMC);
+//hT2->Scale(Run1ScaleFactorData);
+hT2Reco->Scale(Run1ScaleFactorMC);
+hT2RecoCCCoh->Scale(Run1ScaleFactorMC);
 
 // Setting Drawing Parameters
 hTAfterTrueCCCoh->SetLineColor(kBlue);
@@ -1064,8 +1109,10 @@ c15->SetTicks();
 c15->SetFillColor(kWhite);
 
 // Area normalizing the plot 
-hRecoMuonCandidateMomentumData->Scale(Run1ScaleFactorData);
-hRecoPionCandidateMomentumData->Scale(Run1ScaleFactorData);
+hRecoMuonCandidateMomentumMC->Scale(Run1ScaleFactorMC);
+hRecoPionCandidateMomentumMC->Scale(Run1ScaleFactorMC);
+hRecoMuonCandidateMomentumMCCCCoh->Scale(Run1ScaleFactorMC);
+hRecoPionCandidateMomentumMCCCCoh->Scale(Run1ScaleFactorMC);
 
 // Setting Drawing Parameters
 hRecoMuonCandidateMomentumData->SetLineColor(kBlack);
@@ -1133,8 +1180,10 @@ c16->SetTicks();
 c16->SetFillColor(kWhite);
 
 // Area normalizing the plot 
-hRecoMuonCandidateMomentumAfterPCData->Scale(Run1ScaleFactorData);
-hRecoPionCandidateMomentumAfterPCData->Scale(Run1ScaleFactorData);
+hRecoMuonCandidateMomentumAfterPCMC->Scale(Run1ScaleFactorMC);
+hRecoPionCandidateMomentumAfterPCMC->Scale(Run1ScaleFactorMC);
+hRecoMuonCandidateMomentumAfterPCMCCCCoh->Scale(Run1ScaleFactorMC);
+hRecoPionCandidateMomentumAfterPCMCCCCoh->Scale(Run1ScaleFactorMC);
 
 // Setting Drawing Parameters
 hRecoMuonCandidateMomentumAfterPCData->SetLineColor(kBlack);
@@ -1202,8 +1251,10 @@ c17->SetTicks();
 c17->SetFillColor(kWhite);
 
 // Area normalizing the plot 
-hRecoMuonCandidateCosThetaData->Scale(Run1ScaleFactorData);
-hRecoPionCandidateCosThetaData->Scale(Run1ScaleFactorData);
+hRecoMuonCandidateCosThetaMC->Scale(Run1ScaleFactorMC);
+hRecoPionCandidateCosThetaMC->Scale(Run1ScaleFactorMC);
+hRecoMuonCandidateCosThetaMCCCCoh->Scale(Run1ScaleFactorMC);
+hRecoPionCandidateCosThetaMCCCCoh->Scale(Run1ScaleFactorMC);
 
 // Setting Drawing Parameters
 hRecoMuonCandidateCosThetaData->SetLineColor(kBlack);
@@ -1270,8 +1321,10 @@ c18->SetTicks();
 c18->SetFillColor(kWhite);
 
 // Area normalizing the plot 
-hRecoMuonCandidateCosThetaAfterPCData->Scale(Run1ScaleFactorData);
-hRecoPionCandidateCosThetaAfterPCData->Scale(Run1ScaleFactorData);
+hRecoMuonCandidateCosThetaAfterPCMC->Scale(Run1ScaleFactorMC);
+hRecoPionCandidateCosThetaAfterPCMC->Scale(Run1ScaleFactorMC);
+hRecoMuonCandidateCosThetaAfterPCMCCCCoh->Scale(Run1ScaleFactorMC);
+hRecoPionCandidateCosThetaAfterPCMCCCCoh->Scale(Run1ScaleFactorMC);
 
 // Setting Drawing Parameters
 hRecoMuonCandidateCosThetaAfterPCData->SetLineColor(kBlack);
@@ -1338,8 +1391,10 @@ c19->SetTicks();
 c19->SetFillColor(kWhite);
 
 // Area normalizing the plot 
-hRecoMuonCandidateThetaData->Scale(Run1ScaleFactorData);
-hRecoPionCandidateThetaData->Scale(Run1ScaleFactorData);
+hRecoMuonCandidateThetaMC->Scale(Run1ScaleFactorMC);
+hRecoPionCandidateThetaMC->Scale(Run1ScaleFactorMC);
+hRecoMuonCandidateThetaMCCCCoh->Scale(Run1ScaleFactorMC);
+hRecoPionCandidateThetaMCCCCoh->Scale(Run1ScaleFactorMC);
 
 // Setting Drawing Parameters
 hRecoMuonCandidateThetaData->SetLineColor(kBlack);
@@ -1407,8 +1462,10 @@ c20->SetTicks();
 c20->SetFillColor(kWhite);
 
 // Area normalizing the plot 
-hRecoMuonCandidateThetaAfterPCData->Scale(Run1ScaleFactorData);
-hRecoPionCandidateThetaAfterPCData->Scale(Run1ScaleFactorData);
+hRecoMuonCandidateThetaAfterPCMC->Scale(Run1ScaleFactorMC);
+hRecoPionCandidateThetaAfterPCMC->Scale(Run1ScaleFactorMC);
+hRecoMuonCandidateThetaAfterPCMCCCCoh->Scale(Run1ScaleFactorMC);
+hRecoPionCandidateThetaAfterPCMCCCCoh->Scale(Run1ScaleFactorMC);
 
 // Setting Drawing Parameters
 hRecoMuonCandidateThetaAfterPCData->SetLineColor(kBlack);
@@ -1476,8 +1533,10 @@ c21->SetTicks();
 c21->SetFillColor(kWhite);
 
 // Area normalizing the plot 
-hRecoMuonCandidatePhiData->Scale(Run1ScaleFactorData);
-hRecoPionCandidatePhiData->Scale(Run1ScaleFactorData);
+hRecoMuonCandidatePhiMC->Scale(Run1ScaleFactorMC);
+hRecoPionCandidatePhiMC->Scale(Run1ScaleFactorMC);
+hRecoMuonCandidatePhiMCCCCoh->Scale(Run1ScaleFactorMC);
+hRecoPionCandidatePhiMCCCCoh->Scale(Run1ScaleFactorMC);
 
 // Setting Drawing Parameters
 hRecoMuonCandidatePhiData->SetLineColor(kBlack);
@@ -1509,7 +1568,7 @@ hRecoMuonCandidatePhiData->GetXaxis()->CenterTitle();
 
 hRecoMuonCandidatePhiData->GetYaxis()->SetTitle("Normalized Events");
 hRecoMuonCandidatePhiData->GetYaxis()->CenterTitle();
-hRecoMuonCandidatePhiData->GetYaxis()->SetRangeUser(0, 6500);
+//hRecoMuonCandidatePhiData->GetYaxis()->SetRangeUser(0, 6500);
 
 hRecoMuonCandidatePhiData->Draw("E1");
 hRecoPionCandidatePhiData->Draw("E1same");
@@ -1545,8 +1604,10 @@ c22->SetTicks();
 c22->SetFillColor(kWhite);
 
 // Area normalizing the plot 
-hRecoMuonCandidatePhiAfterPCData->Scale(Run1ScaleFactorData);
-hRecoPionCandidatePhiAfterPCData->Scale(Run1ScaleFactorData);
+hRecoMuonCandidatePhiAfterPCMC->Scale(Run1ScaleFactorMC);
+hRecoPionCandidatePhiAfterPCMC->Scale(Run1ScaleFactorMC);
+hRecoMuonCandidatePhiAfterPCMCCCCoh->Scale(Run1ScaleFactorMC);
+hRecoPionCandidatePhiAfterPCMCCCCoh->Scale(Run1ScaleFactorMC);
 
 // Setting Drawing Parameters
 hRecoMuonCandidatePhiAfterPCData->SetLineColor(kBlack);
@@ -1578,7 +1639,7 @@ hRecoMuonCandidatePhiAfterPCData->GetXaxis()->CenterTitle();
 
 hRecoMuonCandidatePhiAfterPCData->GetYaxis()->SetTitle("Normalized Events");
 hRecoMuonCandidatePhiAfterPCData->GetYaxis()->CenterTitle();
-hRecoMuonCandidatePhiAfterPCData->GetYaxis()->SetRangeUser(0, 950);
+//hRecoMuonCandidatePhiAfterPCData->GetYaxis()->SetRangeUser(0, 950);
 
 hRecoMuonCandidatePhiAfterPCData->Draw("E1");
 hRecoPionCandidatePhiAfterPCData->Draw("E1same");
@@ -1613,7 +1674,8 @@ c23->SetTicks();
 c23->SetFillColor(kWhite);
 
 // Area normalizing the plot 
-hOpeningAngleForPC->Scale(Run1ScaleFactorData);
+hOpeningAngleForPCMCReco->Scale(Run1ScaleFactorMC);
+hOpeningAngleForPCMCCCCoh->Scale(Run1ScaleFactorMC);
 
 // Setting Drawing Parameters
 hOpeningAngleForPC->SetLineColor(kBlack);
@@ -1652,4 +1714,61 @@ leg23->AddEntry(hOpeningAngleForPCMCReco,"MC Reco New");
 leg23->AddEntry(hOpeningAngleForPCMCCCCoh,"MC Reco New CC-Coh");
 leg23->AddEntry(hOpeningAngleForPC,"Data");
 leg23->Draw();
+
+
+
+
+TCanvas *c24 = new TCanvas("c24", "The Efficiency for Reconstructed Neutrino Energy Over My Selection Through Opening Angle");
+c24->SetTicks();
+c24->SetFillColor(kWhite);
+
+// Rebinning Histograms Before Ratio
+//hRecoNuEnergy->Rebin(20);
+hRecoNuEnergyOA->Rebin(50);
+hRecoNuEnergyMC->Rebin(50);
+hRecoNuEnergyOAMC->Rebin(50);
+hRecoNuEnergyMCCCCoh->Rebin(50);
+hRecoNuEnergyOAMCCCCoh->Rebin(50);
+
+// Dividing the two plots 
+hRecoNuEnergyOA->Divide(hRecoNuEnergy);
+hRecoNuEnergyOAMC->Divide(hRecoNuEnergyMC);
+hRecoNuEnergyOAMCCCCoh->Divide(hRecoNuEnergyMCCCCoh);
+
+// Setting Drawing Parameters
+hRecoNuEnergyOA->SetLineColor(kBlack);
+hRecoNuEnergyOA->SetLineWidth(2);
+
+hRecoNuEnergyOAMC->SetLineColor(kGreen);
+hRecoNuEnergyOAMC->SetLineWidth(2);
+
+hRecoNuEnergyOAMCCCCoh->SetLineColor(kViolet);
+hRecoNuEnergyOAMCCCCoh->SetLineWidth(2);
+
+hRecoNuEnergyOA->GetXaxis()->SetTitle("E_{#nu_{#mu}} [GeV]");
+hRecoNuEnergyOA->GetXaxis()->CenterTitle();
+hRecoNuEnergyOA->GetXaxis()->SetRangeUser(0, 4);
+
+hRecoNuEnergyOA->GetYaxis()->SetTitle("Efficiency");
+hRecoNuEnergyOA->GetYaxis()->CenterTitle();
+hRecoNuEnergyOA->GetYaxis()->SetRangeUser(0, 1);
+
+hRecoNuEnergyOA->Draw("E1");
+hRecoNuEnergyOAMC->Draw("histosame");
+hRecoNuEnergyOAMCCCCoh->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg24 = new TLegend();
+leg24 = new TLegend(0.58,0.65,1.00,1.00);
+leg24->SetTextSize(0.04);
+leg24->SetTextAlign(12);
+leg24->SetFillColor(kWhite);
+leg24->SetLineColor(kWhite);
+leg24->SetShadowColor(kWhite);
+leg24->SetHeader("Samples");
+leg24->AddEntry(hRecoNuEnergyOAMC,"MC Reco New");
+leg24->AddEntry(hRecoNuEnergyOAMCCCCoh,"MC Reco New CC-Coh");
+leg24->AddEntry(hRecoNuEnergyOA,"Data");
+leg24->Draw();
 }
