@@ -338,11 +338,12 @@ void MCSelection::Loop()
    int NumTrksWithin10Cut = 2;
    double ConeAngleCut = 20;
    double DoCACut = 7;
-   double VACut = 0;
+   double VACut = 2000;
    double PionCandidateMuonCut = 20;
    double PionCandidateProtonCut = 50;
    double OpeningAngleCut = 90;
-   double TCut = 0.25;
+   //double TCut = 0.25;
+   double TCut = 0.2;
    // |========================================|
 
 
@@ -648,6 +649,8 @@ void MCSelection::Loop()
 		  hRecoNuEnergyDoCA->Fill(TotalDaughterTracksEnergy/1000);
 		  hMuonCandidateTracksMuonChi2VsProtonChi2AfterDoCA->Fill(MuonCandidateProtonChi2, MuonCandidateMuonChi2);
 		  hPionCandidateTracksMuonChi2VsProtonChi2AfterDoCA->Fill(PionCandidateProtonChi2, PionCandidateMuonChi2);
+		  if (muE.X() + piE.X() < VACut) {
+		     NumEventsWithVA++;
 		  if (PionCandidateMuonChi2 < PionCandidateMuonCut && PionCandidateProtonChi2 > PionCandidateProtonCut) {
 		     hOpeningAngleForPionCandidate->Fill(SavedOpeningAngle);
 	             NumEventsWithPionCandidate++;
@@ -679,6 +682,7 @@ void MCSelection::Loop()
 		        }
 		     }
 	          }
+		  }
 	       }
 	    }
 	 }
@@ -719,7 +723,7 @@ void MCSelection::Loop()
    std::cout<<"|-------------------------------------------------------------------------------|"<<std::endl;
    std::cout<<"|- Total Number of Events Passing Cone Angle Cut = "<<NumEventsWithConeAngle<<std::endl;
    std::cout<<"|- Total Number of Events Passing DoCA Cut = "<<NumEventsWithDoCA<<std::endl;
-   //std::cout<<"|- Total Number of Events Passing Vertex Activity Cut = "<<NumEventsWithVA<<std::endl;
+   std::cout<<"|- Total Number of Events Passing Vertex Activity Cut = "<<NumEventsWithVA<<std::endl;
    std::cout<<"|-------------------------------------------------------------------------------|"<<std::endl;
    std::cout<<"|- Total Number of Events Passing Pion Candidacy Cut = "<<NumEventsWithPionCandidate<<std::endl;
    std::cout<<"|-------------------------------------------------------------------------------|"<<std::endl;

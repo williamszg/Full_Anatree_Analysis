@@ -118,6 +118,7 @@ hOpeningAngleForPCMCReco->Sumw2();
 hOpeningAngleForPCMCCCCoh->Sumw2();
 
 
+TH1D *hRecoNuEnergyFiducialVolume = (TH1D*)f4->Get("hRecoNuEnergyFiducialVolume");
 TH1D *hRecoNuEnergy = (TH1D*)f4->Get("hRecoNuEnergy");
 TH1D *hRecoNuEnergyConeAngle = (TH1D*)f4->Get("hRecoNuEnergyConeAngle");
 TH1D *hRecoNuEnergyDoCA = (TH1D*)f4->Get("hRecoNuEnergyDoCA");
@@ -125,6 +126,7 @@ TH1D *hRecoNuEnergyPionCandidate = (TH1D*)f4->Get("hRecoNuEnergyPionCandidate");
 TH1D *hRecoNuEnergyOA = (TH1D*)f4->Get("hRecoNuEnergyOA");
 TH1D *hRecoNuEnergyT = (TH1D*)f4->Get("hRecoNuEnergyT");
 
+hRecoNuEnergyFiducialVolume->Sumw2();
 hRecoNuEnergy->Sumw2();
 hRecoNuEnergyConeAngle->Sumw2();
 hRecoNuEnergyDoCA->Sumw2();
@@ -133,6 +135,7 @@ hRecoNuEnergyOA->Sumw2();
 hRecoNuEnergyT->Sumw2();
 
 
+TH1D *hRecoNuEnergyFiducialVolumeMC = (TH1D*)f5->Get("hRecoNuEnergyFiducialVolume");
 TH1D *hRecoNuEnergyMC = (TH1D*)f5->Get("hRecoNuEnergy");
 TH1D *hRecoNuEnergyConeAngleMC = (TH1D*)f5->Get("hRecoNuEnergyConeAngle");
 TH1D *hRecoNuEnergyDoCAMC = (TH1D*)f5->Get("hRecoNuEnergyDoCA");
@@ -140,6 +143,7 @@ TH1D *hRecoNuEnergyPionCandidateMC = (TH1D*)f5->Get("hRecoNuEnergyPionCandidate"
 TH1D *hRecoNuEnergyOAMC = (TH1D*)f5->Get("hRecoNuEnergyOA");
 TH1D *hRecoNuEnergyTMC = (TH1D*)f5->Get("hRecoNuEnergyT");
 
+hRecoNuEnergyFiducialVolumeMC->Sumw2();
 hRecoNuEnergyMC->Sumw2();
 hRecoNuEnergyConeAngleMC->Sumw2();
 hRecoNuEnergyDoCAMC->Sumw2();
@@ -148,6 +152,7 @@ hRecoNuEnergyOAMC->Sumw2();
 hRecoNuEnergyTMC->Sumw2();
 
 
+TH1D *hRecoNuEnergyFiducialVolumeMCCCCoh = (TH1D*)f6->Get("hRecoNuEnergyFiducialVolume");
 TH1D *hRecoNuEnergyMCCCCoh = (TH1D*)f6->Get("hRecoNuEnergy");
 TH1D *hRecoNuEnergyConeAngleMCCCCoh = (TH1D*)f6->Get("hRecoNuEnergyConeAngle");
 TH1D *hRecoNuEnergyDoCAMCCCCoh = (TH1D*)f6->Get("hRecoNuEnergyDoCA");
@@ -155,6 +160,7 @@ TH1D *hRecoNuEnergyPionCandidateMCCCCoh = (TH1D*)f6->Get("hRecoNuEnergyPionCandi
 TH1D *hRecoNuEnergyOAMCCCCoh = (TH1D*)f6->Get("hRecoNuEnergyOA");
 TH1D *hRecoNuEnergyTMCCCCoh = (TH1D*)f6->Get("hRecoNuEnergyT");
 
+hRecoNuEnergyFiducialVolumeMCCCCoh->Sumw2();
 hRecoNuEnergyMCCCCoh->Sumw2();
 hRecoNuEnergyConeAngleMCCCCoh->Sumw2();
 hRecoNuEnergyDoCAMCCCCoh->Sumw2();
@@ -348,6 +354,33 @@ hRecoPionCandidatePhiAfterPCData->Sumw2();
 hRecoPionCandidatePhiAfterPCMC->Sumw2();
 hRecoPionCandidatePhiAfterPCMCCCCoh->Sumw2();
 // ==========================================
+
+
+TH1D *hRecoCaloU = (TH1D*)f4->Get("hRecoCaloU");
+TH1D *hRecoCaloUMC = (TH1D*)f5->Get("hRecoCaloU");
+TH1D *hRecoCaloUMCCCCoh = (TH1D*)f6->Get("hRecoCaloU");
+
+hRecoCaloU->Sumw2();
+hRecoCaloUMC->Sumw2();
+hRecoCaloUMCCCCoh->Sumw2();
+
+
+TH1D *hRecoCaloV = (TH1D*)f4->Get("hRecoCaloV");
+TH1D *hRecoCaloVMC = (TH1D*)f5->Get("hRecoCaloV");
+TH1D *hRecoCaloVMCCCCoh = (TH1D*)f6->Get("hRecoCaloV");
+
+hRecoCaloV->Sumw2();
+hRecoCaloVMC->Sumw2();
+hRecoCaloVMCCCCoh->Sumw2();
+
+
+TH1D *hRecoCaloY = (TH1D*)f4->Get("hRecoCaloY");
+TH1D *hRecoCaloYMC = (TH1D*)f5->Get("hRecoCaloY");
+TH1D *hRecoCaloYMCCCCoh = (TH1D*)f6->Get("hRecoCaloY");
+
+hRecoCaloY->Sumw2();
+hRecoCaloYMC->Sumw2();
+hRecoCaloYMCCCCoh->Sumw2();
 
 
 
@@ -1723,17 +1756,23 @@ c24->SetTicks();
 c24->SetFillColor(kWhite);
 
 // Rebinning Histograms Before Ratio
-//hRecoNuEnergy->Rebin(20);
+hRecoNuEnergyFiducialVolume->Rebin(50);
+//hRecoNuEnergy->Rebin(50);
 hRecoNuEnergyOA->Rebin(50);
+hRecoNuEnergyFiducialVolumeMC->Rebin(50);
 hRecoNuEnergyMC->Rebin(50);
 hRecoNuEnergyOAMC->Rebin(50);
+hRecoNuEnergyFiducialVolumeMCCCCoh->Rebin(50);
 hRecoNuEnergyMCCCCoh->Rebin(50);
 hRecoNuEnergyOAMCCCCoh->Rebin(50);
 
 // Dividing the two plots 
-hRecoNuEnergyOA->Divide(hRecoNuEnergy);
-hRecoNuEnergyOAMC->Divide(hRecoNuEnergyMC);
-hRecoNuEnergyOAMCCCCoh->Divide(hRecoNuEnergyMCCCCoh);
+hRecoNuEnergyOA->Divide(hRecoNuEnergyFiducialVolume);
+hRecoNuEnergyOAMC->Divide(hRecoNuEnergyFiducialVolumeMC);
+hRecoNuEnergyOAMCCCCoh->Divide(hRecoNuEnergyFiducialVolumeMCCCCoh);
+//hRecoNuEnergyOA->Divide(hRecoNuEnergy);
+//hRecoNuEnergyOAMC->Divide(hRecoNuEnergyMC);
+//hRecoNuEnergyOAMCCCCoh->Divide(hRecoNuEnergyMCCCCoh);
 
 // Setting Drawing Parameters
 hRecoNuEnergyOA->SetLineColor(kBlack);
@@ -1771,4 +1810,104 @@ leg24->AddEntry(hRecoNuEnergyOAMC,"MC Reco New");
 leg24->AddEntry(hRecoNuEnergyOAMCCCCoh,"MC Reco New CC-Coh");
 leg24->AddEntry(hRecoNuEnergyOA,"Data");
 leg24->Draw();
+
+
+
+
+TCanvas *c25 = new TCanvas("c25", "The Efficiency for Reconstructed Neutrino Energy After 2-Tracks Selection");
+c25->SetTicks();
+c25->SetFillColor(kWhite);
+
+// Dividing the two plots 
+hRecoNuEnergy->Divide(hRecoNuEnergyFiducialVolume);
+hRecoNuEnergyMC->Divide(hRecoNuEnergyFiducialVolumeMC);
+hRecoNuEnergyMCCCCoh->Divide(hRecoNuEnergyFiducialVolumeMCCCCoh);
+
+// Setting Drawing Parameters
+hRecoNuEnergy->SetLineColor(kBlack);
+hRecoNuEnergy->SetLineWidth(2);
+
+hRecoNuEnergyMC->SetLineColor(kGreen);
+hRecoNuEnergyMC->SetLineWidth(2);
+
+hRecoNuEnergyMCCCCoh->SetLineColor(kViolet);
+hRecoNuEnergyMCCCCoh->SetLineWidth(2);
+
+hRecoNuEnergy->GetXaxis()->SetTitle("E_{#nu_{#mu}} [GeV]");
+hRecoNuEnergy->GetXaxis()->CenterTitle();
+hRecoNuEnergy->GetXaxis()->SetRangeUser(0, 4);
+
+hRecoNuEnergy->GetYaxis()->SetTitle("Efficiency");
+hRecoNuEnergy->GetYaxis()->CenterTitle();
+hRecoNuEnergy->GetYaxis()->SetRangeUser(0, 1);
+
+hRecoNuEnergy->Draw("E1");
+hRecoNuEnergyMC->Draw("histosame");
+hRecoNuEnergyMCCCCoh->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg25 = new TLegend();
+leg25 = new TLegend(0.58,0.65,1.00,1.00);
+leg25->SetTextSize(0.04);
+leg25->SetTextAlign(12);
+leg25->SetFillColor(kWhite);
+leg25->SetLineColor(kWhite);
+leg25->SetShadowColor(kWhite);
+leg25->SetHeader("Samples");
+leg25->AddEntry(hRecoNuEnergyMC,"MC Reco New");
+leg25->AddEntry(hRecoNuEnergyMCCCCoh,"MC Reco New CC-Coh");
+leg25->AddEntry(hRecoNuEnergy,"Data");
+leg25->Draw();
+
+
+
+
+TCanvas *c26 = new TCanvas("c26", "The Added Calorimetric Energy of Muon and Pion Candidates in Plane U");
+c26->SetTicks();
+c26->SetFillColor(kWhite);
+
+// Scaling the MC Plots
+hRecoCaloUMC->Scale(Run1ScaleFactorMC);
+hRecoCaloUMCCCCoh->Scale(Run1ScaleFactorMC);
+
+// Setting Drawing Parameters
+hRecoCaloU->SetLineColor(kBlack);
+hRecoCaloU->SetLineWidth(2);
+hRecoCaloU->Rebin(50);
+
+hRecoCaloUMC->SetLineColor(kGreen);
+hRecoCaloUMC->SetLineWidth(2);
+hRecoCaloUMC->Rebin(50);
+
+hRecoCaloUMCCCCoh->SetLineColor(kViolet);
+hRecoCaloUMCCCCoh->SetLineWidth(2);
+hRecoCaloUMCCCCoh->Rebin(50);
+
+hRecoCaloU->GetXaxis()->SetTitle("E_{calo#mu} + E_{calo#pi} [MeV]");
+hRecoCaloU->GetXaxis()->CenterTitle();
+//hRecoCaloU->GetXaxis()->SetRangeUser(0, 4);
+
+hRecoCaloU->GetYaxis()->SetTitle("Number of Events");
+hRecoCaloU->GetYaxis()->CenterTitle();
+//hRecoCaloU->GetYaxis()->SetRangeUser(0, 1);
+
+hRecoCaloU->Draw("E1");
+hRecoCaloUMC->Draw("histosame");
+hRecoCaloUMCCCCoh->Draw("histosame");
+
+
+// ### Defining the legend for the plot ###
+TLegend *leg26 = new TLegend();
+leg26 = new TLegend(0.58,0.65,1.00,1.00);
+leg26->SetTextSize(0.04);
+leg26->SetTextAlign(12);
+leg26->SetFillColor(kWhite);
+leg26->SetLineColor(kWhite);
+leg26->SetShadowColor(kWhite);
+leg26->SetHeader("Samples");
+leg26->AddEntry(hRecoCaloUMC,"MC Reco New");
+leg26->AddEntry(hRecoCaloUMCCCCoh,"MC Reco New CC-Coh");
+leg26->AddEntry(hRecoCaloU,"Data");
+leg26->Draw();
 }
