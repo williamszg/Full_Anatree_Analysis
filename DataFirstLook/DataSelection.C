@@ -18,12 +18,19 @@ TH1D *hNumTrksWithin10 = new TH1D("hNumTrksWithin10", "The Number of Tracks With
 TH1D *hPassedCCInclusivePreSelection = new TH1D("hPassedCCInclusivePreSelection", "The Number of Events That Passed the CCInclusive PreSelection", 2, -0.5, 1.5);
 
 TH1D *hConeAngleFor2Tracks = new TH1D("hConeAngleFor2Tracks", "The Cone Angle for Events with Exactly Equal to 2 Tracks Within 10cm of Reco Neutrino Vertex", 180, 0, 180);
+TH1D *hConeAngleForPionCandidate = new TH1D("hConeAngleForPionCandidate", "The Cone Angle for Events with a Pion Candidate", 180, 0, 180);
+TH1D *hConeAngleForOA = new TH1D("hConeAngleForOA", "The Cone Angle for Events with a Opening Angle", 180, 0, 180);
+TH1D *hConeAngleForT = new TH1D("hConeAngleForT", "The Cone Angle for Events with a |t|", 180, 0, 180);
 TH1D *hOpeningAngleFor2Tracks = new TH1D("hOpeningAngleFor2Tracks", "The Opening Angle for Events with Exactly Equal to 2 Tracks Within 10cm of Reco Neutrino Vertex", 180, 0, 180);
 TH1D *hOpeningAngleForPionCandidate = new TH1D("hOpeningAngleForPionCandidate", "The Opening Angle for Events with a Pion Candidate", 180, 0, 180);
+TH1D *hOpeningAngleForOA = new TH1D("hOpeningAngleForOA", "The Opening Angle for Events with a Opening Angle", 180, 0, 180);
+TH1D *hOpeningAngleForT = new TH1D("hOpeningAngleForT", "The Opening Angle for Events with a |t|", 180, 0, 180);
 TH1D *hT = new TH1D("hT", "Reco |t| After 2 Tracks", 1000, 0, 1.0);
 TH1D *hTConeAngle = new TH1D("hTConeAngle", "Reco |t| After Cone Angle", 1000, 0, 1.0);
 TH1D *hTDoCA = new TH1D("hTDoCA", "Reco |t| After DoCA", 1000, 0, 1.0);
 TH1D *hTPionCandidate = new TH1D("hTPionCandidate", "Reco |t| After Pion Candidacy", 1000, 0, 1.0);
+TH1D *hTOA = new TH1D("hTOA", "Reco |t| After Opening Angle", 1000, 0, 1.0);
+TH1D *hTT = new TH1D("hTT", "Reco |t| After |t|", 1000, 0, 1.0);
 TH1D *hDoCAFor2Tracks = new TH1D("hDoCAFor2Tracks", "The Distance of Closest Approach from Reconstructed Information for Data", 100, 0, 100);
 TH1D *hDoCAVtxDistanceFor2Tracks = new TH1D("hDoCAVtxDistanceFor2Tracks", "The Distance of Closest Approach from Reconstructed Information for Data Using Vtx Distance", 100, 0, 100);
 
@@ -54,21 +61,37 @@ TH1D *hRecoMuonCandidateMomentum = new TH1D("hRecoMuonCandidateMomentum", "The M
 TH1D *hRecoPionCandidateMomentum = new TH1D("hRecoPionCandidateMomentum", "The Pion Candidates Reconstructed Momentum After 2-Tracks Selection", 1000, 0, 10);
 TH1D *hRecoMuonCandidateMomentumAfterPC = new TH1D("hRecoMuonCandidateMomentumAfterPC", "The Muon Candidates Reconstructed Momentum After Pion Candidacy", 1000, 0, 10);
 TH1D *hRecoPionCandidateMomentumAfterPC = new TH1D("hRecoPionCandidateMomentumAfterPC", "The Pion Candidates Reconstructed Momentum After Pion Candidacy", 1000, 0, 10);
+TH1D *hRecoMuonCandidateMomentumAfterOA = new TH1D("hRecoMuonCandidateMomentumAfterOA", "The Muon Candidates Reconstructed Momentum After Opening Angle", 1000, 0, 10);
+TH1D *hRecoPionCandidateMomentumAfterOA = new TH1D("hRecoPionCandidateMomentumAfterOA", "The Pion Candidates Reconstructed Momentum After Opening Angle", 1000, 0, 10);
+TH1D *hRecoMuonCandidateMomentumAfterT = new TH1D("hRecoMuonCandidateMomentumAfterT", "The Muon Candidates Reconstructed Momentum After |t|", 1000, 0, 10);
+TH1D *hRecoPionCandidateMomentumAfterT = new TH1D("hRecoPionCandidateMomentumAfterT", "The Pion Candidates Reconstructed Momentum After |t|", 1000, 0, 10);
 
 TH1D *hRecoMuonCandidateTheta = new TH1D("hRecoMuonCandidateTheta", "The Muon Candidates Reconstructed #theta_{#mu} After 2-Tracks Selection", 1000, 0, 180);
 TH1D *hRecoPionCandidateTheta = new TH1D("hRecoPionCandidateTheta", "The Pion Candidates Reconstructed #theta_{#pi} After 2-Tracks Selection", 1000, 0, 180);
 TH1D *hRecoMuonCandidateThetaAfterPC = new TH1D("hRecoMuonCandidateThetaAfterPC", "The Muon Candidates Reconstructed #theta_{#mu} After Pion Candidacy", 1000, 0, 180);
 TH1D *hRecoPionCandidateThetaAfterPC = new TH1D("hRecoPionCandidateThetaAfterPC", "The Pion Candidates Reconstructed #theta_{#pi} After Pion Candidacy", 1000, 0, 180);
+TH1D *hRecoMuonCandidateThetaAfterOA = new TH1D("hRecoMuonCandidateThetaAfterOA", "The Muon Candidates Reconstructed #theta_{#mu} After Opening Angle", 1000, 0, 180);
+TH1D *hRecoPionCandidateThetaAfterOA = new TH1D("hRecoPionCandidateThetaAfterOA", "The Pion Candidates Reconstructed #theta_{#pi} After Opening Angle", 1000, 0, 180);
+TH1D *hRecoMuonCandidateThetaAfterT = new TH1D("hRecoMuonCandidateThetaAfterT", "The Muon Candidates Reconstructed #theta_{#mu} After |t|", 1000, 0, 180);
+TH1D *hRecoPionCandidateThetaAfterT = new TH1D("hRecoPionCandidateThetaAfterT", "The Pion Candidates Reconstructed #theta_{#pi} After |t|", 1000, 0, 180);
 
 TH1D *hRecoMuonCandidateCosTheta = new TH1D("hRecoMuonCandidateCosTheta", "The Muon Candidates Reconstructed Cos(#theta_{#mu}) After 2-Tracks Selection", 1000, 0, 1);
 TH1D *hRecoPionCandidateCosTheta = new TH1D("hRecoPionCandidateCosTheta", "The Pion Candidates Reconstructed Cos(#theta_{#pi}) After 2-Tracks Selection", 1000, 0, 1);
 TH1D *hRecoMuonCandidateCosThetaAfterPC = new TH1D("hRecoMuonCandidateCosThetaAfterPC", "The Muon Candidates Reconstructed Cos(#theta_{#mu}) After Pion Candidacy", 1000, 0, 1);
 TH1D *hRecoPionCandidateCosThetaAfterPC = new TH1D("hRecoPionCandidateCosThetaAfterPC", "The Pion Candidates Reconstructed Cos(#theta_{#pi}) After Pion Candidacy", 1000, 0, 1);
+TH1D *hRecoMuonCandidateCosThetaAfterOA = new TH1D("hRecoMuonCandidateCosThetaAfterOA", "The Muon Candidates Reconstructed Cos(#theta_{#mu}) After Opening Angle", 1000, 0, 1);
+TH1D *hRecoPionCandidateCosThetaAfterOA = new TH1D("hRecoPionCandidateCosThetaAfterOA", "The Pion Candidates Reconstructed Cos(#theta_{#pi}) After Opening Angle", 1000, 0, 1);
+TH1D *hRecoMuonCandidateCosThetaAfterT = new TH1D("hRecoMuonCandidateCosThetaAfterT", "The Muon Candidates Reconstructed Cos(#theta_{#mu}) After |t|", 1000, 0, 1);
+TH1D *hRecoPionCandidateCosThetaAfterT = new TH1D("hRecoPionCandidateCosThetaAfterT", "The Pion Candidates Reconstructed Cos(#theta_{#pi}) After |t|", 1000, 0, 1);
 
 TH1D *hRecoMuonCandidatePhi = new TH1D("hRecoMuonCandidatePhi", "The Muon Candidates Reconstructed #phi_{#mu} After 2-Tracks Selection", 1000, -180, 180);
 TH1D *hRecoPionCandidatePhi = new TH1D("hRecoPionCandidatePhi", "The Pion Candidates Reconstructed #phi_{#pi} After 2-Tracks Selection", 1000, -180, 180);
 TH1D *hRecoMuonCandidatePhiAfterPC = new TH1D("hRecoMuonCandidatePhiAfterPC", "The Muon Candidates Reconstructed #phi_{#mu} After Pion Candidacy", 1000, -180, 180);
 TH1D *hRecoPionCandidatePhiAfterPC = new TH1D("hRecoPionCandidatePhiAfterPC", "The Pion Candidates Reconstructed #phi_{#pi} After Pion Candidacy", 1000, -180, 180);
+TH1D *hRecoMuonCandidatePhiAfterOA = new TH1D("hRecoMuonCandidatePhiAfterOA", "The Muon Candidates Reconstructed #phi_{#mu} After Opening Angle", 1000, -180, 180);
+TH1D *hRecoPionCandidatePhiAfterOA = new TH1D("hRecoPionCandidatePhiAfterOA", "The Pion Candidates Reconstructed #phi_{#pi} After Opening Angle", 1000, -180, 180);
+TH1D *hRecoMuonCandidatePhiAfterT = new TH1D("hRecoMuonCandidatePhiAfterT", "The Muon Candidates Reconstructed #phi_{#mu} After |t|", 1000, -180, 180);
+TH1D *hRecoPionCandidatePhiAfterT = new TH1D("hRecoPionCandidatePhiAfterT", "The Pion Candidates Reconstructed #phi_{#pi} After |t|", 1000, -180, 180);
 
 TH2D *hOpeningAngleVsConeAngle2Tracks = new TH2D("hOpeningAngleVsConeAngle2Tracks", "#theta_{#mu#pi} Vs Cone Angle After 2-Tracks Selection", 180, 0, 180, 180, 0, 180);
 TH2D *hOpeningAngleVsConeAnglePC = new TH2D("hOpeningAngleVsConeAnglePC", "#theta_{#mu#pi} Vs Cone Angle After Pion Candidacy", 180, 0, 180, 180, 0, 180);
@@ -652,6 +675,7 @@ void DataSelection::Loop()
 		  if (muE.X() + piE.X() < VACut) {
 		     NumEventsWithVA++;
 		  if (PionCandidateMuonChi2 < PionCandidateMuonCut && PionCandidateProtonChi2 > PionCandidateProtonCut) {
+	             hConeAngleForPionCandidate->Fill(SavedConeAngle);
 		     hOpeningAngleForPionCandidate->Fill(SavedOpeningAngle);
 	             NumEventsWithPionCandidate++;
 		     hTPionCandidate->Fill(t);
@@ -672,12 +696,34 @@ void DataSelection::Loop()
 	             hOpeningAngleVsConeAnglePC->Fill(SavedConeAngle, SavedOpeningAngle);
 		     if (SavedOpeningAngle < OpeningAngleCut) {
 			NumEventsWithOA++;
+	                hConeAngleForOA->Fill(SavedConeAngle);
+		        hOpeningAngleForOA->Fill(SavedOpeningAngle);
+		        hTOA->Fill(t);
 	                //hRecoNuEnergyOA->Fill(Trk1MuEnergy + Trk2MuEnergy);
 	                hRecoNuEnergyOA->Fill(TotalDaughterTracksEnergy/1000);
+		        hRecoMuonCandidateMomentumAfterOA->Fill(mu.Mag());
+		        hRecoPionCandidateMomentumAfterOA->Fill(pi.Mag());
+		        hRecoMuonCandidateThetaAfterOA->Fill(mu.Theta()*180/PI);
+		        hRecoPionCandidateThetaAfterOA->Fill(pi.Theta()*180/PI);
+		        hRecoMuonCandidateCosThetaAfterOA->Fill(mu.CosTheta());
+		        hRecoPionCandidateCosThetaAfterOA->Fill(pi.CosTheta());
+		        hRecoMuonCandidatePhiAfterOA->Fill(mu.Phi()*180/PI);
+		        hRecoPionCandidatePhiAfterOA->Fill(pi.Phi()*180/PI);
 		        if (t < TCut) {
 		           NumEventsWithT++;
+	                   hConeAngleForT->Fill(SavedConeAngle);
+		           hOpeningAngleForT->Fill(SavedOpeningAngle);
+		           hTT->Fill(t);
 			   //hRecoNuEnergyT->Fill(Trk1MuEnergy + Trk2MuEnergy);
 			   hRecoNuEnergyT->Fill(TotalDaughterTracksEnergy/1000);
+		           hRecoMuonCandidateMomentumAfterT->Fill(mu.Mag());
+		           hRecoPionCandidateMomentumAfterT->Fill(pi.Mag());
+		           hRecoMuonCandidateThetaAfterT->Fill(mu.Theta()*180/PI);
+		           hRecoPionCandidateThetaAfterT->Fill(pi.Theta()*180/PI);
+		           hRecoMuonCandidateCosThetaAfterT->Fill(mu.CosTheta());
+		           hRecoPionCandidateCosThetaAfterT->Fill(pi.CosTheta());
+		           hRecoMuonCandidatePhiAfterT->Fill(mu.Phi()*180/PI);
+		           hRecoPionCandidatePhiAfterT->Fill(pi.Phi()*180/PI);
 	                   //std::cout<<evt<<", "<<run<<", "<<sub<<std::endl;
 		        }
 		     }
@@ -747,12 +793,19 @@ void DataSelection::Loop()
    hPassedCCInclusivePreSelection->Write();
 
    hConeAngleFor2Tracks->Write();
+   hConeAngleForPionCandidate->Write();
+   hConeAngleForOA->Write();
+   hConeAngleForT->Write();
    hOpeningAngleFor2Tracks->Write();
    hOpeningAngleForPionCandidate->Write();
+   hOpeningAngleForOA->Write();
+   hOpeningAngleForT->Write();
    hT->Write();
    hTConeAngle->Write();
    hTDoCA->Write();
    hTPionCandidate->Write();
+   hTOA->Write();
+   hTT->Write();
    hDoCAFor2Tracks->Write();
    hDoCAVtxDistanceFor2Tracks->Write();
 
@@ -783,21 +836,37 @@ void DataSelection::Loop()
    hRecoPionCandidateMomentum->Write();
    hRecoMuonCandidateMomentumAfterPC->Write();
    hRecoPionCandidateMomentumAfterPC->Write();
+   hRecoMuonCandidateMomentumAfterOA->Write();
+   hRecoPionCandidateMomentumAfterOA->Write();
+   hRecoMuonCandidateMomentumAfterT->Write();
+   hRecoPionCandidateMomentumAfterT->Write();
 
    hRecoMuonCandidateTheta->Write();
    hRecoPionCandidateTheta->Write();
    hRecoMuonCandidateThetaAfterPC->Write();
    hRecoPionCandidateThetaAfterPC->Write();
+   hRecoMuonCandidateThetaAfterOA->Write();
+   hRecoPionCandidateThetaAfterOA->Write();
+   hRecoMuonCandidateThetaAfterT->Write();
+   hRecoPionCandidateThetaAfterT->Write();
 
    hRecoMuonCandidateCosTheta->Write();
    hRecoPionCandidateCosTheta->Write();
    hRecoMuonCandidateCosThetaAfterPC->Write();
    hRecoPionCandidateCosThetaAfterPC->Write();
+   hRecoMuonCandidateCosThetaAfterOA->Write();
+   hRecoPionCandidateCosThetaAfterOA->Write();
+   hRecoMuonCandidateCosThetaAfterT->Write();
+   hRecoPionCandidateCosThetaAfterT->Write();
 
    hRecoMuonCandidatePhi->Write();
    hRecoPionCandidatePhi->Write();
    hRecoMuonCandidatePhiAfterPC->Write();
    hRecoPionCandidatePhiAfterPC->Write();
+   hRecoMuonCandidatePhiAfterOA->Write();
+   hRecoPionCandidatePhiAfterOA->Write();
+   hRecoMuonCandidatePhiAfterT->Write();
+   hRecoPionCandidatePhiAfterT->Write();
 
    hOpeningAngleVsConeAngle2Tracks->Write();
    hOpeningAngleVsConeAnglePC->Write();
