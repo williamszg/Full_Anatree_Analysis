@@ -391,7 +391,8 @@ hRecoCaloYMCCCCoh->Sumw2();
 double After2TracksCutMCtoDataScaleFactor = 4132./17065.;
 double Run1ScaleFactorData = 1.2847059/0.05;
 double MCCCCohToDataScaleFactor = 378./121.;
-double Run1ScaleFactorMC = 0.05/1.2847059;
+//double Run1ScaleFactorMC = 0.05/1.2847059;
+double Run1ScaleFactorMC = 0.0347;
 // ========================================
 
 
@@ -1160,7 +1161,7 @@ hRecoMuonCandidateMomentumMCCCCoh->SetLineColor(kViolet);
 hRecoMuonCandidateMomentumMCCCCoh->SetLineWidth(2);
 hRecoMuonCandidateMomentumMCCCCoh->Rebin(10);
 
-hRecoPionCandidateMomentumData->SetLineColor(kGray);
+hRecoPionCandidateMomentumData->SetLineColor(kGray + 1);
 hRecoPionCandidateMomentumData->SetLineWidth(2);
 hRecoPionCandidateMomentumData->Rebin(10);
 
@@ -1208,7 +1209,7 @@ leg15->Draw();
 
 
 
-TCanvas *c16 = new TCanvas("c16", "The Muon Candidate and Pion Candidate Momenta After Pion Candidacy");
+TCanvas *c16 = new TCanvas("c16", "The Muon Candidate and Pion Candidate Momenta After Opening Angle");
 c16->SetTicks();
 c16->SetFillColor(kWhite);
 
@@ -1231,7 +1232,7 @@ hRecoMuonCandidateMomentumAfterPCMCCCCoh->SetLineColor(kViolet);
 hRecoMuonCandidateMomentumAfterPCMCCCCoh->SetLineWidth(2);
 hRecoMuonCandidateMomentumAfterPCMCCCCoh->Rebin(10);
 
-hRecoPionCandidateMomentumAfterPCData->SetLineColor(kGray);
+hRecoPionCandidateMomentumAfterPCData->SetLineColor(kGray+2);
 hRecoPionCandidateMomentumAfterPCData->SetLineWidth(2);
 hRecoPionCandidateMomentumAfterPCData->Rebin(10);
 
@@ -1743,8 +1744,8 @@ leg23->SetFillColor(kWhite);
 leg23->SetLineColor(kWhite);
 leg23->SetShadowColor(kWhite);
 leg23->SetHeader("Samples");
-leg23->AddEntry(hOpeningAngleForPCMCReco,"MC Reco New");
-leg23->AddEntry(hOpeningAngleForPCMCCCCoh,"MC Reco New CC-Coh");
+leg23->AddEntry(hOpeningAngleForPCMCReco,"MC Reco");
+leg23->AddEntry(hOpeningAngleForPCMCCCCoh,"MC Reco CC-Coh");
 leg23->AddEntry(hOpeningAngleForPC,"Data");
 leg23->Draw();
 

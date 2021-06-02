@@ -31,8 +31,8 @@ TH1D *hTDoCA = new TH1D("hTDoCA", "Reco |t| After DoCA", 1000, 0, 1.0);
 TH1D *hTPionCandidate = new TH1D("hTPionCandidate", "Reco |t| After Pion Candidacy", 1000, 0, 1.0);
 TH1D *hTOA = new TH1D("hTOA", "Reco |t| After Opening Angle", 1000, 0, 1.0);
 TH1D *hTT = new TH1D("hTT", "Reco |t| After |t|", 1000, 0, 1.0);
-TH1D *hDoCAFor2Tracks = new TH1D("hDoCAFor2Tracks", "The Distance of Closest Approach from Reconstructed Information for MC", 100, 0, 100);
-TH1D *hDoCAVtxDistanceFor2Tracks = new TH1D("hDoCAVtxDistanceFor2Tracks", "The Distance of Closest Approach from Reconstructed Information for MC Using Vtx Distance", 100, 0, 100);
+TH1D *hDoCAFor2Tracks = new TH1D("hDoCAFor2Tracks", "The Distance of Closest Approach from Reconstructed Information for Data", 100, 0, 100);
+TH1D *hDoCAVtxDistanceFor2Tracks = new TH1D("hDoCAVtxDistanceFor2Tracks", "The Distance of Closest Approach from Reconstructed Information for Data Using Vtx Distance", 100, 0, 100);
 
 TH2D *hMuonCandidateTracksMuonChi2VsProtonChi2 = new TH2D("hMuonCandidateTracksMuonChi2VsProtonChi2", "For Muon Candidate Tracks the Muon #chi^{2} Vs Proton #chi^{2}", 1000, 0, 350, 1000, 0, 350);
 TH2D *hPionCandidateTracksMuonChi2VsProtonChi2 = new TH2D("hPionCandidateTracksMuonChi2VsProtonChi2", "For Pion Candidate Tracks the Muon #chi^{2} Vs Proton #chi^{2}", 1000, 0, 350, 1000, 0, 350);
@@ -107,6 +107,13 @@ TH1D *hRecoCaloV = new TH1D("hRecoCaloV", "The Reconstructed Calo Energy in V-Pl
 TH1D *hRecoMuonCandidateCaloY = new TH1D("hRecoMuonCandidateCaloY", "The Muon Candidates Reconstructed Calo Energy in Y-Plane After 2-Tracks Selection", 1000, 0, 5000);
 TH1D *hRecoPionCandidateCaloY = new TH1D("hRecoPionCandidateCaloY", "The Pion Candidates Reconstructed Calo Energy in Y-Plane After 2-Tracks Selection", 1000, 0, 5000);
 TH1D *hRecoCaloY = new TH1D("hRecoCaloY", "The Reconstructed Calo Energy in Y-Plane After 2-Tracks Selection", 1000, 0, 5000);
+
+TH1D *hMuonCandidateTrkLLRPIDScore = new TH1D("hMuonCandidateTrkLLRPIDScore", "The LLR PID Score for Muon Candidate Tracks After 2-Tracks Selection", 1000, -1, 1);
+TH1D *hPionCandidateTrkLLRPIDScore = new TH1D("hPionCandidateTrkLLRPIDScore", "The LLR PID Score for Pion Candidate Tracks After 2-Tracks Selection", 1000, -1, 1);
+TH1D *hMuonCandidateTrkLLRPIDScoreAfterVA = new TH1D("hMuonCandidateTrkLLRPIDScoreAfterVA", "The LLR PID Score for Muon Candidate Tracks After Vertex Activity Selection", 1000, -1, 1);
+TH1D *hPionCandidateTrkLLRPIDScoreAfterVA = new TH1D("hPionCandidateTrkLLRPIDScoreAfterVA", "The LLR PID Score for Pion Candidate Tracks After Vertex Activity Selection", 1000, -1, 1);
+TH1D *hMuonCandidateTrkLLRPIDScoreAfterPC = new TH1D("hMuonCandidateTrkLLRPIDScoreAfterPC", "The LLR PID Score for Muon Candidate Tracks After Pion Candidacy Selection", 1000, -1, 1);
+TH1D *hPionCandidateTrkLLRPIDScoreAfterPC = new TH1D("hPionCandidateTrkLLRPIDScoreAfterPC", "The LLR PID Score for Pion Candidate Tracks After Pion Candidacy Selection", 1000, -1, 1);
 // ---------------------------------------
 
 
@@ -366,7 +373,7 @@ void MCCCCohSelection::Loop()
    double PionCandidateProtonCut = 50;
    double OpeningAngleCut = 90;
    //double TCut = 0.25;
-   double TCut = 0.2;
+   double TCut = 0.05;
    // |========================================|
 
 
@@ -435,6 +442,8 @@ void MCCCCohSelection::Loop()
       double Trk2Chi2Proton = 0;
       double Trk1MuEnergy = 0;
       double Trk2MuEnergy = 0;
+      double Trk1LLRPIDScore = 0;
+      double Trk2LLRPIDScore = 0;
       double DoCA_VtxDistance = 999;
       double DoCA_TrkStarts = 999;
       double TotalDaughterTracksEnergy = 0;
@@ -443,7 +452,7 @@ void MCCCCohSelection::Loop()
       // |======================================================|
       // |=== Ensuring I'm Selecting CC-Coh Pion Events Here ===|
       // |======================================================|
-      //if (nu_pdg == 14 && ccnc == 0 && interaction == 3) { // 0 for QE 1 for Res 2 for DIS and 3 for Coh and 0 for CC and 1 for NC for ccnc
+      if (nu_pdg == 14 && ccnc == 0 && interaction == 3) { // 0 for QE 1 for Res 2 for DIS and 3 for Coh and 0 for CC and 1 for NC for ccnc
       // |======================================================|
 
       // |================================================|
@@ -479,7 +488,7 @@ void MCCCCohSelection::Loop()
       // |================================================|
       // |=== Ensuring I'm Selecting Other Events Here ===|
       // |================================================|
-      if ((nu_pdg == 14 && interaction == 0 && ccnc == 1) || (nu_pdg == 14 && interaction == 3 && ccnc == 1) || nu_pdg == 12 || (interaction != 1 && interaction != 2 && interaction != 0 && interaction != 3)) { // 0 for QE 1 for Res 2 for DIS and 3 for Coh and 0 for CC and 1 for NC for ccnc
+      //if ((nu_pdg == 14 && interaction == 0 && ccnc == 1) || (nu_pdg == 14 && interaction == 3 && ccnc == 1) || nu_pdg == 12 || (interaction != 1 && interaction != 2 && interaction != 0 && interaction != 3)) { // 0 for QE 1 for Res 2 for DIS and 3 for Coh and 0 for CC and 1 for NC for ccnc
       // |================================================|
 
       // |=========================================|
@@ -552,6 +561,7 @@ void MCCCCohSelection::Loop()
 	       Trk1Chi2Muon = trk_pid_chimu_v->at(i);
 	       Trk1Chi2Proton = trk_pid_chipr_v->at(i);
 	       Trk1MuEnergy = trk_energy_muon_v->at(i);
+               Trk1LLRPIDScore = trk_llr_pid_score_v->at(i);
 	       //if (jentry%1000==0) std::cout<<"Track1 PFP pdg = "<<pfpdg->at(i)<<std::endl;
 	    }
             if (NumTrksWithin10 == 2) {
@@ -567,6 +577,7 @@ void MCCCCohSelection::Loop()
 	       Trk2Chi2Muon = trk_pid_chimu_v->at(i);
 	       Trk2Chi2Proton = trk_pid_chipr_v->at(i);
 	       Trk2MuEnergy = trk_energy_muon_v->at(i);
+               Trk2LLRPIDScore = trk_llr_pid_score_v->at(i);
 	       //if (jentry%1000==0) std::cout<<"Track2 PFP pdg = "<<pfpdg->at(i)<<std::endl;
 	    }
 	 }
@@ -606,7 +617,7 @@ void MCCCCohSelection::Loop()
          hNumTrksWithin10->Fill(NumTrksWithin10);
 	 NumCCInclusivePreSelection++;
 	 hPassedCCInclusivePreSelection->Fill(1);
-         hNSliceNumberAfterMuon->Fill(nslice);
+	 hNSliceNumberAfterMuon->Fill(nslice);
          hNumMuonCandidatesAfterCCInclusive->Fill(NumMuonCandidates);
 	 if (NumTrksWithin10 == NumTrksWithin10Cut) {
 	    NumEventsWithTrksWithin10++;
@@ -617,8 +628,10 @@ void MCCCCohSelection::Loop()
 	    hT->Fill(t);
 	    double MuonCandidateMuonChi2 = 999;
 	    double MuonCandidateProtonChi2 = 999;
+	    double MuonCandidateLLRPIDScore = 999;
 	    double PionCandidateMuonChi2 = 999;
 	    double PionCandidateProtonChi2 = 999;
+	    double PionCandidateLLRPIDScore = 999;
 	    TVector3 mu;
 	    TVector3 pi;
 	    TVector3 muE;
@@ -629,24 +642,28 @@ void MCCCCohSelection::Loop()
                   hPionCandidateTracksMuonChi2VsProtonChi2->Fill(Trk2Chi2Proton, Trk2Chi2Muon);
 	          MuonCandidateMuonChi2 = Trk1Chi2Muon;
 	          MuonCandidateProtonChi2 = Trk1Chi2Proton;
+		  MuonCandidateLLRPIDScore = Trk1LLRPIDScore;
 		  mu.SetXYZ(p1.X(), p1.Y(), p1.Z());
-	          muE.SetXYZ(e1.X(), e1.Y(), e1.Z());
+		  muE.SetXYZ(e1.X(), e1.Y(), e1.Z());
 	          PionCandidateMuonChi2 = Trk2Chi2Muon;
 	          PionCandidateProtonChi2 = Trk2Chi2Proton;
+	          PionCandidateLLRPIDScore = Trk2LLRPIDScore;
 		  pi.SetXYZ(p2.X(), p2.Y(), p2.Z());
-	          piE.SetXYZ(e2.X(), e2.Y(), e2.Z());
+		  piE.SetXYZ(e2.X(), e2.Y(), e2.Z());
 	       }
 	       if (Trk2TrackLength > Trk1TrackLength) {
                   hMuonCandidateTracksMuonChi2VsProtonChi2->Fill(Trk2Chi2Proton, Trk2Chi2Muon);
                   hPionCandidateTracksMuonChi2VsProtonChi2->Fill(Trk1Chi2Proton, Trk1Chi2Muon);
 	          MuonCandidateMuonChi2 = Trk2Chi2Muon;
 	          MuonCandidateProtonChi2 = Trk2Chi2Proton;
+		  MuonCandidateLLRPIDScore = Trk2LLRPIDScore;
 		  mu.SetXYZ(p2.X(), p2.Y(), p2.Z());
-	          muE.SetXYZ(e2.X(), e2.Y(), e2.Z());
+		  muE.SetXYZ(e2.X(), e2.Y(), e2.Z());
 	          PionCandidateMuonChi2 = Trk1Chi2Muon;
 	          PionCandidateProtonChi2 = Trk1Chi2Proton;
+	          PionCandidateLLRPIDScore = Trk1LLRPIDScore;
 		  pi.SetXYZ(p1.X(), p1.Y(), p1.Z());
-	          piE.SetXYZ(e1.X(), e1.Y(), e1.Z());
+		  piE.SetXYZ(e1.X(), e1.Y(), e1.Z());
 	       }
 	    }
 	    if (Trk1MuonCandidate == 1 && Trk2MuonCandidate != 1) {
@@ -654,10 +671,12 @@ void MCCCCohSelection::Loop()
                hPionCandidateTracksMuonChi2VsProtonChi2->Fill(Trk2Chi2Proton, Trk2Chi2Muon);
 	       MuonCandidateMuonChi2 = Trk1Chi2Muon;
 	       MuonCandidateProtonChi2 = Trk1Chi2Proton;
+	       MuonCandidateLLRPIDScore = Trk1LLRPIDScore;
 	       mu.SetXYZ(p1.X(), p1.Y(), p1.Z());
 	       muE.SetXYZ(e1.X(), e1.Y(), e1.Z());
 	       PionCandidateMuonChi2 = Trk2Chi2Muon;
 	       PionCandidateProtonChi2 = Trk2Chi2Proton; 
+	       PionCandidateLLRPIDScore = Trk2LLRPIDScore;
 	       pi.SetXYZ(p2.X(), p2.Y(), p2.Z());
 	       piE.SetXYZ(e2.X(), e2.Y(), e2.Z());
 	    }
@@ -666,17 +685,19 @@ void MCCCCohSelection::Loop()
                hPionCandidateTracksMuonChi2VsProtonChi2->Fill(Trk1Chi2Proton, Trk1Chi2Muon);
 	       MuonCandidateMuonChi2 = Trk2Chi2Muon;
 	       MuonCandidateProtonChi2 = Trk2Chi2Proton;
+	       MuonCandidateLLRPIDScore = Trk2LLRPIDScore;
 	       mu.SetXYZ(p2.X(), p2.Y(), p2.Z());
 	       muE.SetXYZ(e2.X(), e2.Y(), e2.Z());
 	       PionCandidateMuonChi2 = Trk1Chi2Muon;
 	       PionCandidateProtonChi2 = Trk1Chi2Proton;
+	       PionCandidateLLRPIDScore = Trk1LLRPIDScore;
 	       pi.SetXYZ(p1.X(), p1.Y(), p1.Z());
 	       piE.SetXYZ(e1.X(), e1.Y(), e1.Z());
             }
 
 	    double SavedOpeningAngle = OpeningAngle(mu.X(), mu.Y(), mu.Z(), pi.X(), pi.Y(), pi.Z())*180/PI;
 	    hOpeningAngleFor2Tracks->Fill(SavedOpeningAngle);
-            hOpeningAngleVsConeAngle2Tracks->Fill(SavedConeAngle, SavedOpeningAngle);
+	    hOpeningAngleVsConeAngle2Tracks->Fill(SavedConeAngle, SavedOpeningAngle);
 
 	    hDeltaPTT->Fill(DeltaP_TT(0, 0, 1, mu.X(), mu.Y(), mu.Z(), pi.X(), pi.Y(), pi.Z()));
 	    hPN->Fill(P_N_Alpha_T(0, mu.X(), mu.Y(), mu.Z(), Trk1MuEnergy, pi.X(), pi.Y(), pi.Z(), Trk2MuEnergy));
@@ -701,6 +722,8 @@ void MCCCCohSelection::Loop()
 	    hRecoMuonCandidateCaloY->Fill(muE.Z());
 	    hRecoPionCandidateCaloY->Fill(piE.Z());
 	    hRecoCaloY->Fill(muE.Z() + piE.Z());
+	    hMuonCandidateTrkLLRPIDScore->Fill(MuonCandidateLLRPIDScore);
+	    hPionCandidateTrkLLRPIDScore->Fill(PionCandidateLLRPIDScore);
 	    if (SavedConeAngle <= ConeAngleCut) {
 	       NumEventsWithConeAngle++;
 	       hTConeAngle->Fill(t);
@@ -716,6 +739,8 @@ void MCCCCohSelection::Loop()
 		  hPionCandidateTracksMuonChi2VsProtonChi2AfterDoCA->Fill(PionCandidateProtonChi2, PionCandidateMuonChi2);
 		  if (muE.X() + piE.X() < VACut) {
 		     NumEventsWithVA++;
+	             hMuonCandidateTrkLLRPIDScoreAfterVA->Fill(MuonCandidateLLRPIDScore);
+	             hPionCandidateTrkLLRPIDScoreAfterVA->Fill(PionCandidateLLRPIDScore);
 		  if (PionCandidateMuonChi2 < PionCandidateMuonCut && PionCandidateProtonChi2 > PionCandidateProtonCut) {
 	             hConeAngleForPionCandidate->Fill(SavedConeAngle);
 		     hOpeningAngleForPionCandidate->Fill(SavedOpeningAngle);
@@ -735,14 +760,16 @@ void MCCCCohSelection::Loop()
 		     hRecoPionCandidateCosThetaAfterPC->Fill(pi.CosTheta());
 		     hRecoMuonCandidatePhiAfterPC->Fill(mu.Phi()*180/PI);
 		     hRecoPionCandidatePhiAfterPC->Fill(pi.Phi()*180/PI);
-                     hOpeningAngleVsConeAnglePC->Fill(SavedConeAngle, SavedOpeningAngle);
+	             hOpeningAngleVsConeAnglePC->Fill(SavedConeAngle, SavedOpeningAngle);
+	             hMuonCandidateTrkLLRPIDScoreAfterPC->Fill(MuonCandidateLLRPIDScore);
+	             hPionCandidateTrkLLRPIDScoreAfterPC->Fill(PionCandidateLLRPIDScore);
 		     if (SavedOpeningAngle < OpeningAngleCut) {
 			NumEventsWithOA++;
 	                hConeAngleForOA->Fill(SavedConeAngle);
 		        hOpeningAngleForOA->Fill(SavedOpeningAngle);
 		        hTOA->Fill(t);
 	                //hRecoNuEnergyOA->Fill(Trk1MuEnergy + Trk2MuEnergy);
-			hRecoNuEnergyOA->Fill(TotalDaughterTracksEnergy/1000);
+	                hRecoNuEnergyOA->Fill(TotalDaughterTracksEnergy/1000);
 		        hRecoMuonCandidateMomentumAfterOA->Fill(mu.Mag());
 		        hRecoPionCandidateMomentumAfterOA->Fill(pi.Mag());
 		        hRecoMuonCandidateThetaAfterOA->Fill(mu.Theta()*180/PI);
@@ -828,13 +855,15 @@ void MCCCCohSelection::Loop()
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
    // %%% Saving Histograms to a File Here %%%
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-   //TFile *TMCInfo = new TFile("MC_CCCoh_Histograms.root", "RECREATE");
+   //TFile *TDataInfo = new TFile("Data_Histograms.root", "RECREATE");
+   //TFile *TMCInfo = new TFile("MC_Histograms.root", "RECREATE");
+   TFile *TMCInfo = new TFile("MC_CCCoh_Histograms.root", "RECREATE");
    //TFile *TMCInfo = new TFile("MC_CCQE_Histograms.root", "RECREATE");
    //TFile *TMCInfo = new TFile("MC_CCRes_Histograms.root", "RECREATE");
    //TFile *TMCInfo = new TFile("MC_NCRes_Histograms.root", "RECREATE");
    //TFile *TMCInfo = new TFile("MC_CCDIS_Histograms.root", "RECREATE");
    //TFile *TMCInfo = new TFile("MC_NCDIS_Histograms.root", "RECREATE");
-   TFile *TMCInfo = new TFile("MC_Other_Histograms.root", "RECREATE");
+   //TFile *TMCInfo = new TFile("MC_Other_Histograms.root", "RECREATE");
 
    hNumMuonCandidates->Write();
    hNumMuonCandidatesAfterCCInclusive->Write();
@@ -931,5 +960,12 @@ void MCCCCohSelection::Loop()
    hRecoMuonCandidateCaloY->Write();
    hRecoPionCandidateCaloY->Write();
    hRecoCaloY->Write();
+
+   hMuonCandidateTrkLLRPIDScore->Write();
+   hPionCandidateTrkLLRPIDScore->Write();
+   hMuonCandidateTrkLLRPIDScoreAfterVA->Write();
+   hPionCandidateTrkLLRPIDScoreAfterVA->Write();
+   hMuonCandidateTrkLLRPIDScoreAfterPC->Write();
+   hPionCandidateTrkLLRPIDScoreAfterPC->Write();
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 }
