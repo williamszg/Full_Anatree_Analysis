@@ -452,7 +452,7 @@ void MCCCCohSelection::Loop()
       // |======================================================|
       // |=== Ensuring I'm Selecting CC-Coh Pion Events Here ===|
       // |======================================================|
-      if (nu_pdg == 14 && ccnc == 0 && interaction == 3) { // 0 for QE 1 for Res 2 for DIS and 3 for Coh and 0 for CC and 1 for NC for ccnc
+      //if (nu_pdg == 14 && ccnc == 0 && interaction == 3) { // 0 for QE 1 for Res 2 for DIS and 3 for Coh and 0 for CC and 1 for NC for ccnc
       // |======================================================|
 
       // |================================================|
@@ -488,7 +488,7 @@ void MCCCCohSelection::Loop()
       // |================================================|
       // |=== Ensuring I'm Selecting Other Events Here ===|
       // |================================================|
-      //if ((nu_pdg == 14 && interaction == 0 && ccnc == 1) || (nu_pdg == 14 && interaction == 3 && ccnc == 1) || nu_pdg == 12 || (interaction != 1 && interaction != 2 && interaction != 0 && interaction != 3)) { // 0 for QE 1 for Res 2 for DIS and 3 for Coh and 0 for CC and 1 for NC for ccnc
+      if ((nu_pdg == 14 && interaction == 0 && ccnc == 1) || (nu_pdg == 14 && interaction == 3 && ccnc == 1) || nu_pdg == 12 || (interaction != 1 && interaction != 2 && interaction != 0 && interaction != 3)) { // 0 for QE 1 for Res 2 for DIS and 3 for Coh and 0 for CC and 1 for NC for ccnc
       // |================================================|
 
       // |=========================================|
@@ -857,13 +857,13 @@ void MCCCCohSelection::Loop()
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
    //TFile *TDataInfo = new TFile("Data_Histograms.root", "RECREATE");
    //TFile *TMCInfo = new TFile("MC_Histograms.root", "RECREATE");
-   TFile *TMCInfo = new TFile("MC_CCCoh_Histograms.root", "RECREATE");
+   //TFile *TMCInfo = new TFile("MC_CCCoh_Histograms.root", "RECREATE");
    //TFile *TMCInfo = new TFile("MC_CCQE_Histograms.root", "RECREATE");
    //TFile *TMCInfo = new TFile("MC_CCRes_Histograms.root", "RECREATE");
    //TFile *TMCInfo = new TFile("MC_NCRes_Histograms.root", "RECREATE");
    //TFile *TMCInfo = new TFile("MC_CCDIS_Histograms.root", "RECREATE");
    //TFile *TMCInfo = new TFile("MC_NCDIS_Histograms.root", "RECREATE");
-   //TFile *TMCInfo = new TFile("MC_Other_Histograms.root", "RECREATE");
+   TFile *TMCInfo = new TFile("MC_Other_Histograms.root", "RECREATE");
 
    hNumMuonCandidates->Write();
    hNumMuonCandidatesAfterCCInclusive->Write();
