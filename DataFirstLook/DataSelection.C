@@ -21,6 +21,7 @@ TH1D *hConeAngleFor2Tracks = new TH1D("hConeAngleFor2Tracks", "The Cone Angle fo
 TH1D *hConeAngleForPionCandidate = new TH1D("hConeAngleForPionCandidate", "The Cone Angle for Events with a Pion Candidate", 180, 0, 180);
 TH1D *hConeAngleForOA = new TH1D("hConeAngleForOA", "The Cone Angle for Events with a Opening Angle", 180, 0, 180);
 TH1D *hConeAngleForT = new TH1D("hConeAngleForT", "The Cone Angle for Events with a |t|", 180, 0, 180);
+TH1D *hVertexActivityFor2Tracks = new TH1D("hVertexActivityFor2Tracks", "The Vertex Activity Within a Bubble of Radius 10cm for Events with Exactly Equal to 2 Tracks Within 10cm of Reco Neutrino Vertex", 5000, 0, 1000);
 TH1D *hOpeningAngleFor2Tracks = new TH1D("hOpeningAngleFor2Tracks", "The Opening Angle for Events with Exactly Equal to 2 Tracks Within 10cm of Reco Neutrino Vertex", 180, 0, 180);
 TH1D *hOpeningAngleForPionCandidate = new TH1D("hOpeningAngleForPionCandidate", "The Opening Angle for Events with a Pion Candidate", 180, 0, 180);
 TH1D *hOpeningAngleForOA = new TH1D("hOpeningAngleForOA", "The Opening Angle for Events with a Opening Angle", 180, 0, 180);
@@ -368,10 +369,13 @@ void DataSelection::Loop()
    int NumTrksWithin10Cut = 2;
    double ConeAngleCut = 20;
    double DoCACut = 7;
-   double VACut = 2000;
+   double VAWithin = 10; // For calculating the vertex activity within this amount of cm
+   //double VACut = 2000;
+   double VACut = 50;
    double PionCandidateMuonCut = 20;
    double PionCandidateProtonCut = 50;
-   double OpeningAngleCut = 90;
+   //double OpeningAngleCut = 90;
+   double OpeningAngleCut = 60;
    //double TCut = 0.25;
    double TCut = 0.05;
    // |========================================|
@@ -490,6 +494,27 @@ void DataSelection::Loop()
       // |================================================|
       //if ((nu_pdg == 14 && interaction == 0 && ccnc == 1) || (nu_pdg == 14 && interaction == 3 && ccnc == 1) || nu_pdg == 12 || (interaction != 1 && interaction != 2 && interaction != 0 && interaction != 3)) { // 0 for QE 1 for Res 2 for DIS and 3 for Coh and 0 for CC and 1 for NC for ccnc
       // |================================================|
+
+      /*// |::::::::::::::::::::::::::::::::::::::::::::::::::::|
+      // |::: Vertex Activity Calculation and DoCA is Here :::|
+      // |::::::::::::::::::::::::::::::::::::::::::::::::::::|
+      double TotalVertexActivity = 0;
+      double TotalDoCA = 1000;
+      for (int j = 0; j < trk_plane_v->size(); j++) {
+         if (Distance(trk_calo_x_v->at(j), trk_calo_y_v->at(j), trk_calo_z_v->at(j), reco_nu_vtx_sce_x, reco_nu_vtx_sce_y, reco_nu_vtx_sce_z) <= VAWithin && trk_plane_v->at(j) == 0) {
+            TotalVertexActivity = TotalVertexActivity + trk_de_v->at(j);
+	 } // Close IF statement to include this energy in the VA Calculation
+	 for (int k = j+1; k < trk_plane_v->size(); k++) {
+	    double NewDoCA = 1001;
+	    if (trk_calo_pfp_id_v->at(j) != trk_calo_pfp_id_v->at(k)) {
+	       NewDoCA = Distance(trk_calo_x_v->at(j), trk_calo_y_v->at(j), trk_calo_z_v->at(j), trk_calo_x_v->at(k), trk_calo_y_v->at(k), trk_calo_z_v->at(k));
+	    }
+	    if (NewDoCA <= TotalDoCA) {
+	       TotalDoCA = NewDoCA;
+	    }
+	 } // Close DoCA Calculation For Loop
+      } // Close VA Calculation and DoCA For Loop
+      // |:::::::::::::::::::::::::::::::::::::::::::| */
 
       // |=========================================|
       // |=== CC-Inclusive PreSelection Is Here ===|
@@ -613,6 +638,37 @@ void DataSelection::Loop()
       if (NuVtxFiducialVolume == 1) hRecoNuEnergyFiducialVolume->Fill(TotalDaughterTracksEnergy/1000);
 
       if (NumberMuonCandidates && PandoraPDG && StartVtxDaughters && NuVtxFiducialVolume && FlashTopological && TopologicalScore && FlashRatio) {
+         double TotalVertexActivity = -999;
+         //double TotalDoCA = 1000;
+	 int NumberOfTimesWithinDistanceForVA = 0;
+	 if (NumTrksWithin10 == NumTrksWithin10Cut) {
+
+            // |::::::::::::::::::::::::::::::::::::::::::::::::::::|
+            // |::: Vertex Activity Calculation and DoCA is Here :::|
+            // |::::::::::::::::::::::::::::::::::::::::::::::::::::|
+            //double TotalVertexActivity = 0;
+            //double TotalDoCA = 1000;
+            for (int j = 0; j < trk_plane_v->size(); j++) {
+               if (Distance(trk_calo_x_v->at(j), trk_calo_y_v->at(j), trk_calo_z_v->at(j), reco_nu_vtx_sce_x, reco_nu_vtx_sce_y, reco_nu_vtx_sce_z) <= VAWithin && trk_plane_v->at(j) == 0) {
+                  if (NumberOfTimesWithinDistanceForVA == 0) {
+		     TotalVertexActivity = 0;
+		  }
+		  TotalVertexActivity = TotalVertexActivity + trk_de_v->at(j);
+		  NumberOfTimesWithinDistanceForVA++;
+	       } // Close IF statement to include this energy in the VA Calculation
+	       /*for (int k = j+1; k < trk_plane_v->size(); k++) {
+	          double NewDoCA = 1001;
+	          if (trk_calo_pfp_id_v->at(j) != trk_calo_pfp_id_v->at(k)) {
+	             NewDoCA = Distance(trk_calo_x_v->at(j), trk_calo_y_v->at(j), trk_calo_z_v->at(j), trk_calo_x_v->at(k), trk_calo_y_v->at(k), trk_calo_z_v->at(k));
+	          }
+	          if (NewDoCA <= TotalDoCA) {
+	             TotalDoCA = NewDoCA;
+	          }
+	       } // Close DoCA Calculation For Loop*/
+            } // Close VA Calculation and DoCA For Loop
+            // |:::::::::::::::::::::::::::::::::::::::::::|
+	 
+         }
          CCInclusivePreSelection = 1;
          hNumTrksWithin10->Fill(NumTrksWithin10);
 	 NumCCInclusivePreSelection++;
@@ -622,8 +678,10 @@ void DataSelection::Loop()
 	 if (NumTrksWithin10 == NumTrksWithin10Cut) {
 	    NumEventsWithTrksWithin10++;
 	    hConeAngleFor2Tracks->Fill(SavedConeAngle);
-	    hDoCAFor2Tracks->Fill(DoCA_TrkStarts);
+	    hDoCAFor2Tracks->Fill(DoCA_TrkStarts); // This was my old way of calculating the DoCA
+	    //hDoCAFor2Tracks->Fill(TotalDoCA);
 	    hDoCAVtxDistanceFor2Tracks->Fill(DoCA_VtxDistance);
+	    hVertexActivityFor2Tracks->Fill(TotalVertexActivity); // Filling in the new VA Plot after updating the ana module
             double t = pow(Trk1MuEnergy+Trk2MuEnergy-p1.Z()-p2.Z(),2) + pow((p1.X()+p2.X()),2) + pow((p1.Y()+p2.Y()),2);
 	    hT->Fill(t);
 	    double MuonCandidateMuonChi2 = 999;
@@ -737,7 +795,8 @@ void DataSelection::Loop()
 		  hRecoNuEnergyDoCA->Fill(TotalDaughterTracksEnergy/1000);
 		  hMuonCandidateTracksMuonChi2VsProtonChi2AfterDoCA->Fill(MuonCandidateProtonChi2, MuonCandidateMuonChi2);
 		  hPionCandidateTracksMuonChi2VsProtonChi2AfterDoCA->Fill(PionCandidateProtonChi2, PionCandidateMuonChi2);
-		  if (muE.X() + piE.X() < VACut) {
+		  //if (muE.X() + piE.X() < VACut) {
+		  if (TotalVertexActivity < VACut) {
 		     NumEventsWithVA++;
 	             hMuonCandidateTrkLLRPIDScoreAfterVA->Fill(MuonCandidateLLRPIDScore);
 	             hPionCandidateTrkLLRPIDScoreAfterVA->Fill(PionCandidateLLRPIDScore);
@@ -864,6 +923,7 @@ void DataSelection::Loop()
    //TFile *TMCInfo = new TFile("MC_CCDIS_Histograms.root", "RECREATE");
    //TFile *TMCInfo = new TFile("MC_NCDIS_Histograms.root", "RECREATE");
    //TFile *TMCInfo = new TFile("MC_Other_Histograms.root", "RECREATE");
+   //TFile *TMCInfo = new TFile("CCCoh_Enhanced_Histograms.root", "RECREATE");
 
    hNumMuonCandidates->Write();
    hNumMuonCandidatesAfterCCInclusive->Write();
@@ -874,6 +934,7 @@ void DataSelection::Loop()
    hConeAngleForPionCandidate->Write();
    hConeAngleForOA->Write();
    hConeAngleForT->Write();
+   hVertexActivityFor2Tracks->Write();
    hOpeningAngleFor2Tracks->Write();
    hOpeningAngleForPionCandidate->Write();
    hOpeningAngleForOA->Write();

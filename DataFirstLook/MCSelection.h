@@ -1,8 +1,8 @@
 //////////////////////////////////////////////////////////
 // This class has been automatically generated on
-// Wed Feb 10 15:46:33 2021 by ROOT version 6.10/02
+// Fri Jun 11 09:16:33 2021 by ROOT version 6.10/02
 // from TTree NeutrinoSelectionFilter/Neutrino Selection TTree
-// found on file: /media/zwilliams/Monsivais's External Hard Drive/CCCohFiles/prodgenie_bnb_nu_uboone_overlay_mcc9.1_v08_00_00_26_filter_run1_reco2_reco2.root
+// found on file: /media/zwilliams/Monsivais's External Hard Drive/CCCohFiles/NeutrinoSelectionFilter_BKGD.root
 //////////////////////////////////////////////////////////
 
 #ifndef MCSelection_h
@@ -20,7 +20,6 @@
 #include "vector"
 #include "string"
 #include "vector"
-#include "vector"
 
 class MCSelection {
 public :
@@ -34,183 +33,6 @@ public :
    Int_t           run;
    Int_t           sub;
    Int_t           evt;
-   UInt_t          trk_id;
-   UInt_t          shr_id;
-   UInt_t          trk2_id;
-   UInt_t          shr2_id;
-   Float_t         shr_energy_tot;
-   Float_t         shr_energy;
-   Float_t         shr_energy_tot_cali;
-   Float_t         shr_energy_cali;
-   Float_t         shr_theta;
-   Float_t         shr_phi;
-   Float_t         shr_pca_0;
-   Float_t         shr_pca_1;
-   Float_t         shr_pca_2;
-   Float_t         shr_px;
-   Float_t         shr_py;
-   Float_t         shr_pz;
-   Float_t         shr_openangle;
-   Float_t         shr_tkfit_start_x;
-   Float_t         shr_tkfit_start_y;
-   Float_t         shr_tkfit_start_z;
-   Float_t         shr_tkfit_theta;
-   Float_t         shr_tkfit_phi;
-   Float_t         shr_start_x;
-   Float_t         shr_start_y;
-   Float_t         shr_start_z;
-   Float_t         shr_dedx_Y;
-   Float_t         shr_dedx_V;
-   Float_t         shr_dedx_U;
-   Float_t         shr_dedx_Y_cali;
-   Float_t         shr_dedx_V_cali;
-   Float_t         shr_dedx_U_cali;
-   Float_t         shr_tkfit_dedx_Y;
-   Float_t         shr_tkfit_dedx_V;
-   Float_t         shr_tkfit_dedx_U;
-   Float_t         shr_tkfit_dedx_max;
-   UInt_t          shr_tkfit_nhits_Y;
-   UInt_t          shr_tkfit_nhits_V;
-   UInt_t          shr_tkfit_nhits_U;
-   Float_t         shr_llrpid_dedx_Y;
-   Float_t         shr_llrpid_dedx_V;
-   Float_t         shr_llrpid_dedx_U;
-   Float_t         shr_llrpid_dedx;
-   Float_t         shr_tkfit_dedx_Y_alt;
-   Float_t         shr_tkfit_dedx_V_alt;
-   Float_t         shr_tkfit_dedx_U_alt;
-   UInt_t          shr_tkfit_nhits_Y_alt;
-   UInt_t          shr_tkfit_nhits_V_alt;
-   UInt_t          shr_tkfit_nhits_U_alt;
-   Float_t         trkfit;
-   UInt_t          shr_tkfit_npoints;
-   UInt_t          shr_tkfit_npointsvalid;
-   Float_t         shr_trkfitmedangle;
-   Float_t         shrmoliereavg;
-   Float_t         shrmoliererms;
-   Float_t         shr1shr2moliereavg;
-   Float_t         shr1shr2moliererms;
-   Float_t         shr1trk1moliereavg;
-   Float_t         shr1trk1moliererms;
-   Float_t         shr1trk2moliereavg;
-   Float_t         shr1trk2moliererms;
-   UChar_t         ismerged;
-   Float_t         merge_bestdot;
-   Float_t         merge_bestdist;
-   Float_t         merge_vtx_x;
-   Float_t         merge_vtx_y;
-   Float_t         merge_vtx_z;
-   UInt_t          merge_tk_ipfp;
-   Float_t         shr_tkfit_2cm_dedx_Y;
-   Float_t         shr_tkfit_2cm_dedx_V;
-   Float_t         shr_tkfit_2cm_dedx_U;
-   UInt_t          shr_tkfit_2cm_nhits_Y;
-   UInt_t          shr_tkfit_2cm_nhits_V;
-   UInt_t          shr_tkfit_2cm_nhits_U;
-   Float_t         shr_tkfit_gap05_dedx_Y;
-   Float_t         shr_tkfit_gap05_dedx_V;
-   Float_t         shr_tkfit_gap05_dedx_U;
-   UInt_t          shr_tkfit_gap05_nhits_Y;
-   UInt_t          shr_tkfit_gap05_nhits_V;
-   UInt_t          shr_tkfit_gap05_nhits_U;
-   Float_t         shr_tkfit_gap10_dedx_Y;
-   Float_t         shr_tkfit_gap10_dedx_V;
-   Float_t         shr_tkfit_gap10_dedx_U;
-   UInt_t          shr_tkfit_gap10_nhits_Y;
-   UInt_t          shr_tkfit_gap10_nhits_V;
-   UInt_t          shr_tkfit_gap10_nhits_U;
-   Float_t         shr_chipr;
-   Float_t         shr_chimu;
-   Float_t         shr_bragg_p;
-   Float_t         shr_bragg_mu;
-   Float_t         shr_bragg_mip;
-   Float_t         shr_bragg_kaon;
-   Float_t         shr_bragg_pion;
-   Float_t         tksh_distance;
-   Float_t         tksh_angle;
-   Float_t         shr_distance;
-   Float_t         shr_score;
-   Int_t           shr_bkt_pdg;
-   Float_t         shr_bkt_purity;
-   Float_t         shr_bkt_completeness;
-   Float_t         shr_bkt_E;
-   Float_t         trk_len;
-   Float_t         trk_theta;
-   Float_t         trk_phi;
-   Float_t         trk_energy;
-   Float_t         trk_energy_muon;
-   Float_t         trk_energy_muon_mcs;
-   Float_t         trk_energy_tot;
-   Float_t         trk_energy_muon_tot;
-   Float_t         trk_distance;
-   Float_t         trk_score;
-   Int_t           trk_bkt_pdg;
-   Float_t         trk_bkt_purity;
-   Float_t         trk_bkt_completeness;
-   Float_t         trk_bkt_E;
-   Float_t         trk_chipr_best;
-   Float_t         trk_chipr_worst;
-   Float_t         trk_chimu_best;
-   Float_t         trk_chimu_worst;
-   Float_t         trk_chipr;
-   Float_t         trk_chimu;
-   Float_t         trk_pida;
-   Float_t         trk_bragg_p;
-   Float_t         trk_bragg_mu;
-   Float_t         trk_bragg_mip;
-   Float_t         trk_bragg_kaon;
-   Float_t         trk_bragg_pion;
-   UInt_t          trk_hits_max;
-   UInt_t          shr_hits_max;
-   UInt_t          trk_hits_2nd;
-   UInt_t          shr_hits_2nd;
-   Float_t         trkshrhitdist0;
-   Float_t         trkshrhitdist1;
-   Float_t         trkshrhitdist2;
-   Float_t         trk2shrhitdist0;
-   Float_t         trk2shrhitdist1;
-   Float_t         trk2shrhitdist2;
-   Float_t         trk1trk2hitdist0;
-   Float_t         trk1trk2hitdist1;
-   Float_t         trk1trk2hitdist2;
-   UInt_t          total_hits_y;
-   Float_t         extra_energy_y;
-   Float_t         trk_energy_hits_tot;
-   UInt_t          subcluster;
-   UInt_t          shrsubclusters0;
-   UInt_t          shrsubclusters1;
-   UInt_t          shrsubclusters2;
-   Float_t         shrclusfrac0;
-   Float_t         shrclusfrac1;
-   Float_t         shrclusfrac2;
-   Float_t         shrclusdir0;
-   Float_t         shrclusdir1;
-   Float_t         shrclusdir2;
-   UInt_t          shr_hits_tot;
-   UInt_t          shr_hits_y_tot;
-   UInt_t          shr_hits_u_tot;
-   UInt_t          shr_hits_v_tot;
-   UInt_t          trk_hits_tot;
-   UInt_t          trk_hits_y_tot;
-   UInt_t          trk_hits_u_tot;
-   UInt_t          trk_hits_v_tot;
-   Float_t         _elecclusters_U_charge;
-   Float_t         _elecclusters_V_charge;
-   Float_t         _elecclusters_Y_charge;
-   Int_t           _elecclusters_U_N;
-   Int_t           _elecclusters_V_N;
-   Int_t           _elecclusters_Y_N;
-   UInt_t          n_tracks_contained;
-   UInt_t          n_showers_contained;
-   Float_t         matched_E;
-   Float_t         hits_ratio;
-   Float_t         contained_fraction;
-   Float_t         sps_contained_fraction;
-   Float_t         pt;
-   Float_t         p;
-   Float_t         pt_assume_muon;
-   Float_t         p_assume_muon;
-   Float_t         reco_e;
    Float_t         dvtx;
    Float_t         dtrk;
    Float_t         contained_sps_ratio;
@@ -249,7 +71,6 @@ public :
    Int_t           nu_decay_mode;
    Int_t           interaction;
    Float_t         nu_e;
-   Float_t         nu_l;
    Float_t         nu_pt;
    Float_t         theta;
    Bool_t          isVtxInFiducial;
@@ -371,25 +192,6 @@ public :
    Int_t           filter_ncpi0;
    Int_t           filter_pi0;
    Int_t           filter_ccinclusive;
-   map<string,vector<double> > *weights;
-   vector<unsigned short> *weightsFlux;
-   vector<unsigned short> *weightsGenie;
-   vector<unsigned short> *weightsReint;
-   Float_t         weightSpline;
-   Float_t         weightTune;
-   Float_t         weightSplineTimesTune;
-   Double_t        knobRPAup;
-   Double_t        knobRPAdn;
-   Double_t        knobCCMECup;
-   Double_t        knobCCMECdn;
-   Double_t        knobAxFFCCQEup;
-   Double_t        knobAxFFCCQEdn;
-   Double_t        knobVecFFCCQEup;
-   Double_t        knobVecFFCCQEdn;
-   Double_t        knobDecayAngMECup;
-   Double_t        knobDecayAngMECdn;
-   Double_t        knobThetaDelta2Npiup;
-   Double_t        knobThetaDelta2Npidn;
    Float_t         flash_pe;
    Float_t         flash_time;
    Float_t         nu_flashmatch_score;
@@ -491,58 +293,6 @@ public :
    Float_t         SliceCaloEnergy0;
    Float_t         SliceCaloEnergy1;
    Float_t         SliceCaloEnergy2;
-   Float_t         pi0_mcgamma0_e;
-   Float_t         pi0_mcgamma0_px;
-   Float_t         pi0_mcgamma0_py;
-   Float_t         pi0_mcgamma0_pz;
-   Float_t         pi0_mcrcdot0;
-   Float_t         pi0_mcrce0;
-   Float_t         pi0_mcgamma1_e;
-   Float_t         pi0_mcgamma1_px;
-   Float_t         pi0_mcgamma1_py;
-   Float_t         pi0_mcgamma1_pz;
-   Float_t         pi0_mcrcdot1;
-   Float_t         pi0_mcrce1;
-   Int_t           pi0_nshower;
-   Int_t           pi0_ntrack;
-   Int_t           pi0_ngamma;
-   Float_t         pi0_radlen1;
-   Float_t         pi0_radlen2;
-   Float_t         pi0_dot1;
-   Float_t         pi0_dot2;
-   Float_t         pi0_energy1_Y;
-   Float_t         pi0_energy2_Y;
-   Float_t         pi0_dir1_x;
-   Float_t         pi0_dir1_y;
-   Float_t         pi0_dir1_z;
-   Float_t         pi0_dir2_x;
-   Float_t         pi0_dir2_y;
-   Float_t         pi0_dir2_z;
-   Float_t         pi0_dedx1_Y;
-   Float_t         pi0_dedx2_Y;
-   Float_t         pi0_dedx1_fit_Y;
-   Float_t         pi0_dedx2_fit_Y;
-   Float_t         pi0_energy1_V;
-   Float_t         pi0_energy2_V;
-   Float_t         pi0_dedx1_V;
-   Float_t         pi0_dedx2_V;
-   Float_t         pi0_dedx1_fit_V;
-   Float_t         pi0_dedx2_fit_V;
-   Float_t         pi0_energy1_U;
-   Float_t         pi0_energy2_U;
-   Float_t         pi0_dedx1_U;
-   Float_t         pi0_dedx2_U;
-   Float_t         pi0_dedx1_fit_U;
-   Float_t         pi0_dedx2_fit_U;
-   Float_t         pi0_shrscore1;
-   Float_t         pi0_shrscore2;
-   Float_t         pi0_gammadot;
-   Float_t         pi0_mass_Y;
-   Float_t         pi0_mass_V;
-   Float_t         pi0_mass_U;
-   Float_t         pi0_rc_vtx_x;
-   Float_t         pi0_rc_vtx_y;
-   Float_t         pi0_rc_vtx_z;
    Int_t           pi0truth_gamma_parent;
    Float_t         pi0truth_elec_edep;
    Float_t         pi0truth_elec_etot;
@@ -594,55 +344,6 @@ public :
    Float_t         secondshower_Y_eigenratio;
    Float_t         secondshower_Y_dot;
    Float_t         secondshower_Y_dir;
-   vector<float>   *shr_dedx_u_v;
-   vector<float>   *shr_dedx_v_v;
-   vector<float>   *shr_dedx_y_v;
-   vector<float>   *shr_energy_u_v;
-   vector<float>   *shr_energy_v_v;
-   vector<float>   *shr_energy_y_v;
-   vector<unsigned long> *shr_pfp_id_v;
-   vector<float>   *shr_start_x_v;
-   vector<float>   *shr_start_y_v;
-   vector<float>   *shr_start_z_v;
-   vector<float>   *shr_dist_v;
-   vector<float>   *shr_start_U_v;
-   vector<float>   *shr_start_V_v;
-   vector<float>   *shr_px_v;
-   vector<float>   *shr_py_v;
-   vector<float>   *shr_pz_v;
-   vector<float>   *shr_openangle_v;
-   vector<float>   *shr_theta_v;
-   vector<float>   *shr_phi_v;
-   vector<float>   *shr_pitch_u_v;
-   vector<float>   *shr_pitch_v_v;
-   vector<float>   *shr_pitch_y_v;
-   vector<int>     *shr_tkfit_nhits_v;
-   vector<float>   *shr_tkfit_start_x_v;
-   vector<float>   *shr_tkfit_start_y_v;
-   vector<float>   *shr_tkfit_start_z_v;
-   vector<float>   *shr_tkfit_start_U_v;
-   vector<float>   *shr_tkfit_start_V_v;
-   vector<float>   *shr_tkfit_theta_v;
-   vector<float>   *shr_tkfit_phi_v;
-   vector<float>   *shr_tkfit_pitch_u_v;
-   vector<float>   *shr_tkfit_pitch_v_v;
-   vector<float>   *shr_tkfit_pitch_y_v;
-   vector<float>   *shr_tkfit_dedx_u_v;
-   vector<float>   *shr_tkfit_dedx_v_v;
-   vector<float>   *shr_tkfit_dedx_y_v;
-   vector<float>   *shr_tkfit_gap10_dedx_u_v;
-   vector<float>   *shr_tkfit_gap10_dedx_v_v;
-   vector<float>   *shr_tkfit_gap10_dedx_y_v;
-   vector<int>     *shr_tkfit_dedx_nhits_u_v;
-   vector<int>     *shr_tkfit_dedx_nhits_v_v;
-   vector<int>     *shr_tkfit_dedx_nhits_y_v;
-   vector<float>   *shr_llr_pid_u_v;
-   vector<float>   *shr_llr_pid_v_v;
-   vector<float>   *shr_llr_pid_y_v;
-   vector<float>   *shr_llr_pid_v;
-   vector<float>   *shr_llr_pid_score_v;
-   vector<float>   *shr_moliere_avg_v;
-   vector<float>   *shr_moliere_rms_v;
    Int_t           evnunhits;
    Int_t           evlepnhits;
    Int_t           evpronhits;
@@ -725,203 +426,20 @@ public :
    vector<float>   *trk_llr_pid_y_v;
    vector<float>   *trk_llr_pid_v;
    vector<float>   *trk_llr_pid_score_v;
-   Float_t         bdt_nuNCpi0;
-   Float_t         bdt_numuCCpi0;
-   Float_t         bdt_numuCC;
-   Float_t         bdt_ext;
-   Float_t         bdt_cosmic;
-   Float_t         bdt_global;
-   Int_t           pass_antibdt_filter;
-   Float_t         bdt_pi0_np;
-   Float_t         bdt_nonpi0_np;
-   Float_t         bdt_bkg_0p;
-   Float_t         anglediff_Y;
-   Float_t         anglediff_V;
-   Float_t         anglediff_U;
-   Float_t         trkpid;
+   vector<int>     *trk_plane_v;
+   vector<int>     *trk_calo_pfp_id_v;
+   vector<float>   *trk_pitch_v;
+   vector<float>   *trk_dedx_v;
+   vector<float>   *trk_de_v;
+   vector<float>   *trk_calo_x_v;
+   vector<float>   *trk_calo_y_v;
+   vector<float>   *trk_calo_z_v;
 
    // List of branches
    TBranch        *b_selected;   //!
    TBranch        *b_run;   //!
    TBranch        *b_sub;   //!
    TBranch        *b_evt;   //!
-   TBranch        *b_trk_pfp_id;   //!
-   TBranch        *b_shr_pfp_id;   //!
-   TBranch        *b_trk2_pfp_id;   //!
-   TBranch        *b_shr2_pfp_id;   //!
-   TBranch        *b_shr_energy_tot;   //!
-   TBranch        *b_shr_energy;   //!
-   TBranch        *b_shr_energy_tot_cali;   //!
-   TBranch        *b_shr_energy_cali;   //!
-   TBranch        *b_shr_theta;   //!
-   TBranch        *b_shr_phi;   //!
-   TBranch        *b_shr_pca_0;   //!
-   TBranch        *b_shr_pca_1;   //!
-   TBranch        *b_shr_pca_2;   //!
-   TBranch        *b_shr_px;   //!
-   TBranch        *b_shr_py;   //!
-   TBranch        *b_shr_pz;   //!
-   TBranch        *b_shr_openangle;   //!
-   TBranch        *b_shr_tkfit_start_x;   //!
-   TBranch        *b_shr_tkfit_start_y;   //!
-   TBranch        *b_shr_tkfit_start_z;   //!
-   TBranch        *b_shr_tkfit_theta;   //!
-   TBranch        *b_shr_tkfit_phi;   //!
-   TBranch        *b_shr_start_x;   //!
-   TBranch        *b_shr_start_y;   //!
-   TBranch        *b_shr_start_z;   //!
-   TBranch        *b_shr_dedx_Y;   //!
-   TBranch        *b_shr_dedx_V;   //!
-   TBranch        *b_shr_dedx_U;   //!
-   TBranch        *b_shr_dedx_Y_cali;   //!
-   TBranch        *b_shr_dedx_V_cali;   //!
-   TBranch        *b_shr_dedx_U_cali;   //!
-   TBranch        *b_shr_tkfit_dedx_Y;   //!
-   TBranch        *b_shr_tkfit_dedx_V;   //!
-   TBranch        *b_shr_tkfit_dedx_U;   //!
-   TBranch        *b_shr_tkfit_dedx_max;   //!
-   TBranch        *b_shr_tkfit_nhits_Y;   //!
-   TBranch        *b_shr_tkfit_nhits_V;   //!
-   TBranch        *b_shr_tkfit_nhits_U;   //!
-   TBranch        *b_shr_llrpid_dedx_Y;   //!
-   TBranch        *b_shr_llrpid_dedx_V;   //!
-   TBranch        *b_shr_llrpid_dedx_U;   //!
-   TBranch        *b_shr_llrpid_dedx;   //!
-   TBranch        *b_shr_tkfit_dedx_Y_alt;   //!
-   TBranch        *b_shr_tkfit_dedx_V_alt;   //!
-   TBranch        *b_shr_tkfit_dedx_U_alt;   //!
-   TBranch        *b_shr_tkfit_nhits_Y_alt;   //!
-   TBranch        *b_shr_tkfit_nhits_V_alt;   //!
-   TBranch        *b_shr_tkfit_nhits_U_alt;   //!
-   TBranch        *b__trkfit;   //!
-   TBranch        *b_shr_tkfit_npoints;   //!
-   TBranch        *b_shr_tkfit_npointsvalid;   //!
-   TBranch        *b_shr_trkfitmedangle;   //!
-   TBranch        *b_shrmoliereavg;   //!
-   TBranch        *b_shrmoliererms;   //!
-   TBranch        *b_shr1shr2moliereavg;   //!
-   TBranch        *b_shr1shr2moliererms;   //!
-   TBranch        *b_shr1trk1moliereavg;   //!
-   TBranch        *b_shr1trk1moliererms;   //!
-   TBranch        *b_shr1trk2moliereavg;   //!
-   TBranch        *b_shr1trk2moliererms;   //!
-   TBranch        *b_ismerged;   //!
-   TBranch        *b_merge_bestdot;   //!
-   TBranch        *b_merge_bestdist;   //!
-   TBranch        *b_merge_vtx_x;   //!
-   TBranch        *b_merge_vtx_y;   //!
-   TBranch        *b_merge_vtx_z;   //!
-   TBranch        *b_merge_tk_ipfp;   //!
-   TBranch        *b_shr_tkfit_2cm_dedx_Y;   //!
-   TBranch        *b_shr_tkfit_2cm_dedx_V;   //!
-   TBranch        *b_shr_tkfit_2cm_dedx_U;   //!
-   TBranch        *b_shr_tkfit_2cm_nhits_Y;   //!
-   TBranch        *b_shr_tkfit_2cm_nhits_V;   //!
-   TBranch        *b_shr_tkfit_2cm_nhits_U;   //!
-   TBranch        *b_shr_tkfit_gap05_dedx_Y;   //!
-   TBranch        *b_shr_tkfit_gap05_dedx_V;   //!
-   TBranch        *b_shr_tkfit_gap05_dedx_U;   //!
-   TBranch        *b_shr_tkfit_gap05_nhits_Y;   //!
-   TBranch        *b_shr_tkfit_gap05_nhits_V;   //!
-   TBranch        *b_shr_tkfit_gap05_nhits_U;   //!
-   TBranch        *b_shr_tkfit_gap10_dedx_Y;   //!
-   TBranch        *b_shr_tkfit_gap10_dedx_V;   //!
-   TBranch        *b_shr_tkfit_gap10_dedx_U;   //!
-   TBranch        *b_shr_tkfit_gap10_nhits_Y;   //!
-   TBranch        *b_shr_tkfit_gap10_nhits_V;   //!
-   TBranch        *b_shr_tkfit_gap10_nhits_U;   //!
-   TBranch        *b_shr_chipr;   //!
-   TBranch        *b_shr_chimu;   //!
-   TBranch        *b_shr_bragg_p;   //!
-   TBranch        *b_shr_bragg_mu;   //!
-   TBranch        *b_shr_bragg_mip;   //!
-   TBranch        *b_shr_bragg_kaon;   //!
-   TBranch        *b_shr_bragg_pion;   //!
-   TBranch        *b_tksh_distance;   //!
-   TBranch        *b_tksh_angle;   //!
-   TBranch        *b_shr_distance;   //!
-   TBranch        *b_shr_score;   //!
-   TBranch        *b_shr_bkt_pdg;   //!
-   TBranch        *b_shr_bkt_purity;   //!
-   TBranch        *b_shr_bkt_completeness;   //!
-   TBranch        *b_shr_bkt_E;   //!
-   TBranch        *b_trk_len;   //!
-   TBranch        *b_trk_theta;   //!
-   TBranch        *b_trk_phi;   //!
-   TBranch        *b_trk_energy;   //!
-   TBranch        *b_trk_energy_muon;   //!
-   TBranch        *b_trk_energy_muon_mcs;   //!
-   TBranch        *b_trk_energy_tot;   //!
-   TBranch        *b_trk_energy_muon_tot;   //!
-   TBranch        *b_trk_distance;   //!
-   TBranch        *b_trk_score;   //!
-   TBranch        *b_trk_bkt_pdg;   //!
-   TBranch        *b_trk_bkt_purity;   //!
-   TBranch        *b_trk_bkt_completeness;   //!
-   TBranch        *b_trk_bkt_E;   //!
-   TBranch        *b_trk_chipr_best;   //!
-   TBranch        *b_trk_chipr_worst;   //!
-   TBranch        *b_trk_chimu_best;   //!
-   TBranch        *b_trk_chimu_worst;   //!
-   TBranch        *b_trk_chipr;   //!
-   TBranch        *b_trk_chimu;   //!
-   TBranch        *b_trk_pida;   //!
-   TBranch        *b_trk_bragg_p;   //!
-   TBranch        *b_trk_bragg_mu;   //!
-   TBranch        *b_trk_bragg_mip;   //!
-   TBranch        *b_trk_bragg_kaon;   //!
-   TBranch        *b_trk_bragg_pion;   //!
-   TBranch        *b_trk_hits_max;   //!
-   TBranch        *b_shr_hits_max;   //!
-   TBranch        *b_trk_hits_2nd;   //!
-   TBranch        *b_shr_hits_2nd;   //!
-   TBranch        *b_trkshrhitdist0;   //!
-   TBranch        *b_trkshrhitdist1;   //!
-   TBranch        *b_trkshrhitdist2;   //!
-   TBranch        *b_trk2shrhitdist0;   //!
-   TBranch        *b_trk2shrhitdist1;   //!
-   TBranch        *b_trk2shrhitdist2;   //!
-   TBranch        *b_trk1trk2hitdist0;   //!
-   TBranch        *b_trk1trk2hitdist1;   //!
-   TBranch        *b_trk1trk2hitdist2;   //!
-   TBranch        *b_total_hits_y;   //!
-   TBranch        *b_extra_energy_y;   //!
-   TBranch        *b_trk_energy_hits_tot;   //!
-   TBranch        *b_subcluster;   //!
-   TBranch        *b_shrsubclusters0;   //!
-   TBranch        *b_shrsubclusters1;   //!
-   TBranch        *b_shrsubclusters2;   //!
-   TBranch        *b_shrclusfrac0;   //!
-   TBranch        *b_shrclusfrac1;   //!
-   TBranch        *b_shrclusfrac2;   //!
-   TBranch        *b_shrclusdir0;   //!
-   TBranch        *b_shrclusdir1;   //!
-   TBranch        *b_shrclusdir2;   //!
-   TBranch        *b_shr_hits_tot;   //!
-   TBranch        *b_shr_hits_y_tot;   //!
-   TBranch        *b_shr_hits_u_tot;   //!
-   TBranch        *b_shr_hits_v_tot;   //!
-   TBranch        *b_trk_hits_tot;   //!
-   TBranch        *b_trk_hits_y_tot;   //!
-   TBranch        *b_trk_hits_u_tot;   //!
-   TBranch        *b_trk_hits_v_tot;   //!
-   TBranch        *b_elecclusters_U_charge;   //!
-   TBranch        *b_elecclusters_V_charge;   //!
-   TBranch        *b_elecclusters_Y_charge;   //!
-   TBranch        *b_elecclusters_U_N;   //!
-   TBranch        *b_elecclusters_V_N;   //!
-   TBranch        *b_elecclusters_Y_N;   //!
-   TBranch        *b_n_tracks_contained;   //!
-   TBranch        *b_n_showers_contained;   //!
-   TBranch        *b_matched_E;   //!
-   TBranch        *b_hits_ratio;   //!
-   TBranch        *b_contained_fraction;   //!
-   TBranch        *b_sps_contained_fraction;   //!
-   TBranch        *b_pt;   //!
-   TBranch        *b_p;   //!
-   TBranch        *b_pt_assume_muon;   //!
-   TBranch        *b_p_assume_muon;   //!
-   TBranch        *b_reco_e;   //!
    TBranch        *b_dvtx;   //!
    TBranch        *b_dtrk;   //!
    TBranch        *b_contained_sps_ratio;   //!
@@ -960,7 +478,6 @@ public :
    TBranch        *b_nu_decay_mode;   //!
    TBranch        *b_interaction;   //!
    TBranch        *b_nu_e;   //!
-   TBranch        *b_nu_l;   //!
    TBranch        *b_nu_pt;   //!
    TBranch        *b_theta;   //!
    TBranch        *b_isVtxInFiducial;   //!
@@ -1082,25 +599,6 @@ public :
    TBranch        *b_filter_ncpi0;   //!
    TBranch        *b_filter_pi0;   //!
    TBranch        *b_filter_ccinclusive;   //!
-   TBranch        *b_weights;   //!
-   TBranch        *b_weightsFlux;   //!
-   TBranch        *b_weightsGenie;   //!
-   TBranch        *b_weightsReint;   //!
-   TBranch        *b_weightSpline;   //!
-   TBranch        *b_weightTune;   //!
-   TBranch        *b_weightSplineTimesTune;   //!
-   TBranch        *b_knobRPAup;   //!
-   TBranch        *b_knobRPAdn;   //!
-   TBranch        *b_knobCCMECup;   //!
-   TBranch        *b_knobCCMECdn;   //!
-   TBranch        *b_knobAxFFCCQEup;   //!
-   TBranch        *b_knobAxFFCCQEdn;   //!
-   TBranch        *b_knobVecFFCCQEup;   //!
-   TBranch        *b_knobVecFFCCQEdn;   //!
-   TBranch        *b_knobDecayAngMECup;   //!
-   TBranch        *b_knobDecayAngMECdn;   //!
-   TBranch        *b_knobThetaDelta2Npiup;   //!
-   TBranch        *b_knobThetaDelta2Npidn;   //!
    TBranch        *b_flash_pe;   //!
    TBranch        *b_flash_time;   //!
    TBranch        *b_nu_flashmatch_score;   //!
@@ -1127,7 +625,7 @@ public :
    TBranch        *b_X_SpcPts_v;   //!
    TBranch        *b_Y_SpcPts_v;   //!
    TBranch        *b_Z_SpcPts_v;   //!
-   //TBranch        *b_shr_pfp_id;   //!
+   TBranch        *b_shr_pfp_id;   //!
    TBranch        *b_shr_hits_max_MCStool;   //!
    TBranch        *b_n_showers_contained_MCStool;   //!
    TBranch        *b_trkshrscore_v;   //!
@@ -1202,58 +700,6 @@ public :
    TBranch        *b_SliceCaloEnergy0;   //!
    TBranch        *b_SliceCaloEnergy1;   //!
    TBranch        *b_SliceCaloEnergy2;   //!
-   TBranch        *b_pi0_mcgamma0_e;   //!
-   TBranch        *b_pi0_mcgamma0_px;   //!
-   TBranch        *b_pi0_mcgamma0_py;   //!
-   TBranch        *b_pi0_mcgamma0_pz;   //!
-   TBranch        *b_pi0_mcrcdot0;   //!
-   TBranch        *b_pi0_mcrce0;   //!
-   TBranch        *b_pi0_mcgamma1_e;   //!
-   TBranch        *b_pi0_mcgamma1_px;   //!
-   TBranch        *b_pi0_mcgamma1_py;   //!
-   TBranch        *b_pi0_mcgamma1_pz;   //!
-   TBranch        *b_pi0_mcrcdot1;   //!
-   TBranch        *b_pi0_mcrce1;   //!
-   TBranch        *b_pi0_nshower;   //!
-   TBranch        *b_pi0_ntrack;   //!
-   TBranch        *b_pi0_ngamma;   //!
-   TBranch        *b_pi0_radlen1;   //!
-   TBranch        *b_pi0_radlen2;   //!
-   TBranch        *b_pi0_dot1;   //!
-   TBranch        *b_pi0_dot2;   //!
-   TBranch        *b_pi0_energy1_Y;   //!
-   TBranch        *b_pi0_energy2_Y;   //!
-   TBranch        *b_pi0_dir1_x;   //!
-   TBranch        *b_pi0_dir1_y;   //!
-   TBranch        *b_pi0_dir1_z;   //!
-   TBranch        *b_pi0_dir2_x;   //!
-   TBranch        *b_pi0_dir2_y;   //!
-   TBranch        *b_pi0_dir2_z;   //!
-   TBranch        *b_pi0_dedx1_Y;   //!
-   TBranch        *b_pi0_dedx2_Y;   //!
-   TBranch        *b_pi0_dedx1_fit_Y;   //!
-   TBranch        *b_pi0_dedx2_fit_Y;   //!
-   TBranch        *b_pi0_energy1_V;   //!
-   TBranch        *b_pi0_energy2_V;   //!
-   TBranch        *b_pi0_dedx1_V;   //!
-   TBranch        *b_pi0_dedx2_V;   //!
-   TBranch        *b_pi0_dedx1_fit_V;   //!
-   TBranch        *b_pi0_dedx2_fit_V;   //!
-   TBranch        *b_pi0_energy1_U;   //!
-   TBranch        *b_pi0_energy2_U;   //!
-   TBranch        *b_pi0_dedx1_U;   //!
-   TBranch        *b_pi0_dedx2_U;   //!
-   TBranch        *b_pi0_dedx1_fit_U;   //!
-   TBranch        *b_pi0_dedx2_fit_U;   //!
-   TBranch        *b_pi0_shrscore1;   //!
-   TBranch        *b_pi0_shrscore2;   //!
-   TBranch        *b_pi0_gammadot;   //!
-   TBranch        *b_pi0_mass_Y;   //!
-   TBranch        *b_pi0_mass_V;   //!
-   TBranch        *b_pi0_mass_U;   //!
-   TBranch        *b_pi0_rc_vtx_x;   //!
-   TBranch        *b_pi0_rc_vtx_y;   //!
-   TBranch        *b_pi0_rc_vtx_z;   //!
    TBranch        *b_pi0truth_gamma_parent;   //!
    TBranch        *b_pi0truth_elec_edep;   //!
    TBranch        *b_pi0truth_elec_etot;   //!
@@ -1305,55 +751,6 @@ public :
    TBranch        *b_secondshower_Y_eigenratio;   //!
    TBranch        *b_secondshower_Y_dot;   //!
    TBranch        *b_secondshower_Y_dir;   //!
-   TBranch        *b_shr_dedx_u_v;   //!
-   TBranch        *b_shr_dedx_v_v;   //!
-   TBranch        *b_shr_dedx_y_v;   //!
-   TBranch        *b_shr_energy_u_v;   //!
-   TBranch        *b_shr_energy_v_v;   //!
-   TBranch        *b_shr_energy_y_v;   //!
-   TBranch        *b_shr_pfp_id_v;   //!
-   TBranch        *b_shr_start_x_v;   //!
-   TBranch        *b_shr_start_y_v;   //!
-   TBranch        *b_shr_start_z_v;   //!
-   TBranch        *b_shr_dist_v;   //!
-   TBranch        *b_shr_start_U_v;   //!
-   TBranch        *b_shr_start_V_v;   //!
-   TBranch        *b_shr_px_v;   //!
-   TBranch        *b_shr_py_v;   //!
-   TBranch        *b_shr_pz_v;   //!
-   TBranch        *b_shr_openangle_v;   //!
-   TBranch        *b_shr_theta_v;   //!
-   TBranch        *b_shr_phi_v;   //!
-   TBranch        *b_shr_pitch_u_v;   //!
-   TBranch        *b_shr_pitch_v_v;   //!
-   TBranch        *b_shr_pitch_y_v;   //!
-   TBranch        *b_shr_tkfit_nhits_v;   //!
-   TBranch        *b_shr_tkfit_start_x_v;   //!
-   TBranch        *b_shr_tkfit_start_y_v;   //!
-   TBranch        *b_shr_tkfit_start_z_v;   //!
-   TBranch        *b_shr_tkfit_start_U_v;   //!
-   TBranch        *b_shr_tkfit_start_V_v;   //!
-   TBranch        *b_shr_tkfit_theta_v;   //!
-   TBranch        *b_shr_tkfit_phi_v;   //!
-   TBranch        *b_shr_tkfit_pitch_u_v;   //!
-   TBranch        *b_shr_tkfit_pitch_v_v;   //!
-   TBranch        *b_shr_tkfit_pitch_y_v;   //!
-   TBranch        *b_shr_tkfit_dedx_u_v;   //!
-   TBranch        *b_shr_tkfit_dedx_v_v;   //!
-   TBranch        *b_shr_tkfit_dedx_y_v;   //!
-   TBranch        *b_shr_tkfit_gap10_dedx_u_v;   //!
-   TBranch        *b_shr_tkfit_gap10_dedx_v_v;   //!
-   TBranch        *b_shr_tkfit_gap10_dedx_y_v;   //!
-   TBranch        *b_shr_tkfit_dedx_nhits_u_v;   //!
-   TBranch        *b_shr_tkfit_dedx_nhits_v_v;   //!
-   TBranch        *b_shr_tkfit_dedx_nhits_y_v;   //!
-   TBranch        *b_shr_llr_pid_u_v;   //!
-   TBranch        *b_shr_llr_pid_v_v;   //!
-   TBranch        *b_shr_llr_pid_y_v;   //!
-   TBranch        *b_shr_llr_pid_v;   //!
-   TBranch        *b_shr_llr_pid_score_v;   //!
-   TBranch        *b_shr_moliere_avg_v;   //!
-   TBranch        *b_shr_moliere_rms_v;   //!
    TBranch        *b_evnunhits;   //!
    TBranch        *b_evlepnhits;   //!
    TBranch        *b_evpronhits;   //!
@@ -1436,20 +833,14 @@ public :
    TBranch        *b_trk_llr_pid_y_v;   //!
    TBranch        *b_trk_llr_pid_v;   //!
    TBranch        *b_trk_llr_pid_score_v;   //!
-   TBranch        *b_bdt_nuNCpi0;   //!
-   TBranch        *b_bdt_numuCCpi0;   //!
-   TBranch        *b_bdt_numuCC;   //!
-   TBranch        *b_bdt_ext;   //!
-   TBranch        *b_bdt_cosmic;   //!
-   TBranch        *b_bdt_global;   //!
-   //TBranch        *b_bdt_global;   //!
-   TBranch        *b_bdt_pi0_np;   //!
-   TBranch        *b_bdt_nonpi0_np;   //!
-   TBranch        *b_bdt_bkg_0p;   //!
-   TBranch        *b_anglediff_Y;   //!
-   TBranch        *b_anglediff_V;   //!
-   TBranch        *b_anglediff_U;   //!
-   TBranch        *b_trkpid;   //!
+   TBranch        *b_trk_plane_v;   //!
+   TBranch        *b_trk_calo_pfp_id_v;   //!
+   TBranch        *b_trk_pitch_v;   //!
+   TBranch        *b_trk_dedx_v;   //!
+   TBranch        *b_trk_de_v;   //!
+   TBranch        *b_trk_calo_x_v;   //!
+   TBranch        *b_trk_calo_y_v;   //!
+   TBranch        *b_trk_calo_z_v;   //!
 
    MCSelection(TTree *tree=0);
    virtual ~MCSelection();
@@ -1470,11 +861,11 @@ MCSelection::MCSelection(TTree *tree) : fChain(0)
 // if parameter tree is not specified (or zero), connect the file
 // used to generate this class and read the Tree.
    if (tree == 0) {
-      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("/pnfs/uboone/persistent/users/davidc/searchingfornues/v08_00_00_43/0928/prodgenie_bnb_nu_uboone_overlay_mcc9.1_v08_00_00_26_filter_run1_reco2_reco2.root");
+      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("/media/zwilliams/Monsivais's External Hard Drive/CCCohFiles/NeutrinoSelectionFilter_BKGD.root");
       if (!f || !f->IsOpen()) {
-         f = new TFile("/pnfs/uboone/persistent/users/davidc/searchingfornues/v08_00_00_43/0928/prodgenie_bnb_nu_uboone_overlay_mcc9.1_v08_00_00_26_filter_run1_reco2_reco2.root");
+         f = new TFile("/media/zwilliams/Monsivais's External Hard Drive/CCCohFiles/NeutrinoSelectionFilter_BKGD.root");
       }
-      TDirectory * dir = (TDirectory*)f->Get("/pnfs/uboone/persistent/users/davidc/searchingfornues/v08_00_00_43/0928/prodgenie_bnb_nu_uboone_overlay_mcc9.1_v08_00_00_26_filter_run1_reco2_reco2.root:/nuselection");
+      TDirectory * dir = (TDirectory*)f->Get("/media/zwilliams/Monsivais's External Hard Drive/CCCohFiles/NeutrinoSelectionFilter_BKGD.root:/nuselection");
       dir->GetObject("NeutrinoSelectionFilter",tree);
 
    }
@@ -1582,10 +973,6 @@ void MCSelection::Init(TTree *tree)
    mc_completeness = 0;
    mc_purity = 0;
    endmuonprocess = 0;
-   weights = 0;
-   weightsFlux = 0;
-   weightsGenie = 0;
-   weightsReint = 0;
    cosmic_flashmatch_score_v = 0;
    X_SpcPts_v = 0;
    Y_SpcPts_v = 0;
@@ -1601,55 +988,6 @@ void MCSelection::Init(TTree *tree)
    PCAWin_3Cr_2_5cm = 0;
    PCAWin_dist_2_5cm = 0;
    PCAWin_npts_2_5cm = 0;
-   shr_dedx_u_v = 0;
-   shr_dedx_v_v = 0;
-   shr_dedx_y_v = 0;
-   shr_energy_u_v = 0;
-   shr_energy_v_v = 0;
-   shr_energy_y_v = 0;
-   shr_pfp_id_v = 0;
-   shr_start_x_v = 0;
-   shr_start_y_v = 0;
-   shr_start_z_v = 0;
-   shr_dist_v = 0;
-   shr_start_U_v = 0;
-   shr_start_V_v = 0;
-   shr_px_v = 0;
-   shr_py_v = 0;
-   shr_pz_v = 0;
-   shr_openangle_v = 0;
-   shr_theta_v = 0;
-   shr_phi_v = 0;
-   shr_pitch_u_v = 0;
-   shr_pitch_v_v = 0;
-   shr_pitch_y_v = 0;
-   shr_tkfit_nhits_v = 0;
-   shr_tkfit_start_x_v = 0;
-   shr_tkfit_start_y_v = 0;
-   shr_tkfit_start_z_v = 0;
-   shr_tkfit_start_U_v = 0;
-   shr_tkfit_start_V_v = 0;
-   shr_tkfit_theta_v = 0;
-   shr_tkfit_phi_v = 0;
-   shr_tkfit_pitch_u_v = 0;
-   shr_tkfit_pitch_v_v = 0;
-   shr_tkfit_pitch_y_v = 0;
-   shr_tkfit_dedx_u_v = 0;
-   shr_tkfit_dedx_v_v = 0;
-   shr_tkfit_dedx_y_v = 0;
-   shr_tkfit_gap10_dedx_u_v = 0;
-   shr_tkfit_gap10_dedx_v_v = 0;
-   shr_tkfit_gap10_dedx_y_v = 0;
-   shr_tkfit_dedx_nhits_u_v = 0;
-   shr_tkfit_dedx_nhits_v_v = 0;
-   shr_tkfit_dedx_nhits_y_v = 0;
-   shr_llr_pid_u_v = 0;
-   shr_llr_pid_v_v = 0;
-   shr_llr_pid_y_v = 0;
-   shr_llr_pid_v = 0;
-   shr_llr_pid_score_v = 0;
-   shr_moliere_avg_v = 0;
-   shr_moliere_rms_v = 0;
    pfnunhits = 0;
    pflepnhits = 0;
    pfpronhits = 0;
@@ -1714,6 +1052,14 @@ void MCSelection::Init(TTree *tree)
    trk_llr_pid_y_v = 0;
    trk_llr_pid_v = 0;
    trk_llr_pid_score_v = 0;
+   trk_plane_v = 0;
+   trk_calo_pfp_id_v = 0;
+   trk_pitch_v = 0;
+   trk_dedx_v = 0;
+   trk_de_v = 0;
+   trk_calo_x_v = 0;
+   trk_calo_y_v = 0;
+   trk_calo_z_v = 0;
    // Set branch addresses and branch pointers
    if (!tree) return;
    fChain = tree;
@@ -1724,183 +1070,6 @@ void MCSelection::Init(TTree *tree)
    fChain->SetBranchAddress("run", &run, &b_run);
    fChain->SetBranchAddress("sub", &sub, &b_sub);
    fChain->SetBranchAddress("evt", &evt, &b_evt);
-   fChain->SetBranchAddress("trk_id", &trk_id, &b_trk_pfp_id);
-   fChain->SetBranchAddress("shr_id", &shr_id, &b_shr_pfp_id);
-   fChain->SetBranchAddress("trk2_id", &trk2_id, &b_trk2_pfp_id);
-   fChain->SetBranchAddress("shr2_id", &shr2_id, &b_shr2_pfp_id);
-   fChain->SetBranchAddress("shr_energy_tot", &shr_energy_tot, &b_shr_energy_tot);
-   fChain->SetBranchAddress("shr_energy", &shr_energy, &b_shr_energy);
-   fChain->SetBranchAddress("shr_energy_tot_cali", &shr_energy_tot_cali, &b_shr_energy_tot_cali);
-   fChain->SetBranchAddress("shr_energy_cali", &shr_energy_cali, &b_shr_energy_cali);
-   fChain->SetBranchAddress("shr_theta", &shr_theta, &b_shr_theta);
-   fChain->SetBranchAddress("shr_phi", &shr_phi, &b_shr_phi);
-   fChain->SetBranchAddress("shr_pca_0", &shr_pca_0, &b_shr_pca_0);
-   fChain->SetBranchAddress("shr_pca_1", &shr_pca_1, &b_shr_pca_1);
-   fChain->SetBranchAddress("shr_pca_2", &shr_pca_2, &b_shr_pca_2);
-   fChain->SetBranchAddress("shr_px", &shr_px, &b_shr_px);
-   fChain->SetBranchAddress("shr_py", &shr_py, &b_shr_py);
-   fChain->SetBranchAddress("shr_pz", &shr_pz, &b_shr_pz);
-   fChain->SetBranchAddress("shr_openangle", &shr_openangle, &b_shr_openangle);
-   fChain->SetBranchAddress("shr_tkfit_start_x", &shr_tkfit_start_x, &b_shr_tkfit_start_x);
-   fChain->SetBranchAddress("shr_tkfit_start_y", &shr_tkfit_start_y, &b_shr_tkfit_start_y);
-   fChain->SetBranchAddress("shr_tkfit_start_z", &shr_tkfit_start_z, &b_shr_tkfit_start_z);
-   fChain->SetBranchAddress("shr_tkfit_theta", &shr_tkfit_theta, &b_shr_tkfit_theta);
-   fChain->SetBranchAddress("shr_tkfit_phi", &shr_tkfit_phi, &b_shr_tkfit_phi);
-   fChain->SetBranchAddress("shr_start_x", &shr_start_x, &b_shr_start_x);
-   fChain->SetBranchAddress("shr_start_y", &shr_start_y, &b_shr_start_y);
-   fChain->SetBranchAddress("shr_start_z", &shr_start_z, &b_shr_start_z);
-   fChain->SetBranchAddress("shr_dedx_Y", &shr_dedx_Y, &b_shr_dedx_Y);
-   fChain->SetBranchAddress("shr_dedx_V", &shr_dedx_V, &b_shr_dedx_V);
-   fChain->SetBranchAddress("shr_dedx_U", &shr_dedx_U, &b_shr_dedx_U);
-   fChain->SetBranchAddress("shr_dedx_Y_cali", &shr_dedx_Y_cali, &b_shr_dedx_Y_cali);
-   fChain->SetBranchAddress("shr_dedx_V_cali", &shr_dedx_V_cali, &b_shr_dedx_V_cali);
-   fChain->SetBranchAddress("shr_dedx_U_cali", &shr_dedx_U_cali, &b_shr_dedx_U_cali);
-   fChain->SetBranchAddress("shr_tkfit_dedx_Y", &shr_tkfit_dedx_Y, &b_shr_tkfit_dedx_Y);
-   fChain->SetBranchAddress("shr_tkfit_dedx_V", &shr_tkfit_dedx_V, &b_shr_tkfit_dedx_V);
-   fChain->SetBranchAddress("shr_tkfit_dedx_U", &shr_tkfit_dedx_U, &b_shr_tkfit_dedx_U);
-   fChain->SetBranchAddress("shr_tkfit_dedx_max", &shr_tkfit_dedx_max, &b_shr_tkfit_dedx_max);
-   fChain->SetBranchAddress("shr_tkfit_nhits_Y", &shr_tkfit_nhits_Y, &b_shr_tkfit_nhits_Y);
-   fChain->SetBranchAddress("shr_tkfit_nhits_V", &shr_tkfit_nhits_V, &b_shr_tkfit_nhits_V);
-   fChain->SetBranchAddress("shr_tkfit_nhits_U", &shr_tkfit_nhits_U, &b_shr_tkfit_nhits_U);
-   fChain->SetBranchAddress("shr_llrpid_dedx_Y", &shr_llrpid_dedx_Y, &b_shr_llrpid_dedx_Y);
-   fChain->SetBranchAddress("shr_llrpid_dedx_V", &shr_llrpid_dedx_V, &b_shr_llrpid_dedx_V);
-   fChain->SetBranchAddress("shr_llrpid_dedx_U", &shr_llrpid_dedx_U, &b_shr_llrpid_dedx_U);
-   fChain->SetBranchAddress("shr_llrpid_dedx", &shr_llrpid_dedx, &b_shr_llrpid_dedx);
-   fChain->SetBranchAddress("shr_tkfit_dedx_Y_alt", &shr_tkfit_dedx_Y_alt, &b_shr_tkfit_dedx_Y_alt);
-   fChain->SetBranchAddress("shr_tkfit_dedx_V_alt", &shr_tkfit_dedx_V_alt, &b_shr_tkfit_dedx_V_alt);
-   fChain->SetBranchAddress("shr_tkfit_dedx_U_alt", &shr_tkfit_dedx_U_alt, &b_shr_tkfit_dedx_U_alt);
-   fChain->SetBranchAddress("shr_tkfit_nhits_Y_alt", &shr_tkfit_nhits_Y_alt, &b_shr_tkfit_nhits_Y_alt);
-   fChain->SetBranchAddress("shr_tkfit_nhits_V_alt", &shr_tkfit_nhits_V_alt, &b_shr_tkfit_nhits_V_alt);
-   fChain->SetBranchAddress("shr_tkfit_nhits_U_alt", &shr_tkfit_nhits_U_alt, &b_shr_tkfit_nhits_U_alt);
-   fChain->SetBranchAddress("trkfit", &trkfit, &b__trkfit);
-   fChain->SetBranchAddress("shr_tkfit_npoints", &shr_tkfit_npoints, &b_shr_tkfit_npoints);
-   fChain->SetBranchAddress("shr_tkfit_npointsvalid", &shr_tkfit_npointsvalid, &b_shr_tkfit_npointsvalid);
-   fChain->SetBranchAddress("shr_trkfitmedangle", &shr_trkfitmedangle, &b_shr_trkfitmedangle);
-   fChain->SetBranchAddress("shrmoliereavg", &shrmoliereavg, &b_shrmoliereavg);
-   fChain->SetBranchAddress("shrmoliererms", &shrmoliererms, &b_shrmoliererms);
-   fChain->SetBranchAddress("shr1shr2moliereavg", &shr1shr2moliereavg, &b_shr1shr2moliereavg);
-   fChain->SetBranchAddress("shr1shr2moliererms", &shr1shr2moliererms, &b_shr1shr2moliererms);
-   fChain->SetBranchAddress("shr1trk1moliereavg", &shr1trk1moliereavg, &b_shr1trk1moliereavg);
-   fChain->SetBranchAddress("shr1trk1moliererms", &shr1trk1moliererms, &b_shr1trk1moliererms);
-   fChain->SetBranchAddress("shr1trk2moliereavg", &shr1trk2moliereavg, &b_shr1trk2moliereavg);
-   fChain->SetBranchAddress("shr1trk2moliererms", &shr1trk2moliererms, &b_shr1trk2moliererms);
-   fChain->SetBranchAddress("ismerged", &ismerged, &b_ismerged);
-   fChain->SetBranchAddress("merge_bestdot", &merge_bestdot, &b_merge_bestdot);
-   fChain->SetBranchAddress("merge_bestdist", &merge_bestdist, &b_merge_bestdist);
-   fChain->SetBranchAddress("merge_vtx_x", &merge_vtx_x, &b_merge_vtx_x);
-   fChain->SetBranchAddress("merge_vtx_y", &merge_vtx_y, &b_merge_vtx_y);
-   fChain->SetBranchAddress("merge_vtx_z", &merge_vtx_z, &b_merge_vtx_z);
-   fChain->SetBranchAddress("merge_tk_ipfp", &merge_tk_ipfp, &b_merge_tk_ipfp);
-   fChain->SetBranchAddress("shr_tkfit_2cm_dedx_Y", &shr_tkfit_2cm_dedx_Y, &b_shr_tkfit_2cm_dedx_Y);
-   fChain->SetBranchAddress("shr_tkfit_2cm_dedx_V", &shr_tkfit_2cm_dedx_V, &b_shr_tkfit_2cm_dedx_V);
-   fChain->SetBranchAddress("shr_tkfit_2cm_dedx_U", &shr_tkfit_2cm_dedx_U, &b_shr_tkfit_2cm_dedx_U);
-   fChain->SetBranchAddress("shr_tkfit_2cm_nhits_Y", &shr_tkfit_2cm_nhits_Y, &b_shr_tkfit_2cm_nhits_Y);
-   fChain->SetBranchAddress("shr_tkfit_2cm_nhits_V", &shr_tkfit_2cm_nhits_V, &b_shr_tkfit_2cm_nhits_V);
-   fChain->SetBranchAddress("shr_tkfit_2cm_nhits_U", &shr_tkfit_2cm_nhits_U, &b_shr_tkfit_2cm_nhits_U);
-   fChain->SetBranchAddress("shr_tkfit_gap05_dedx_Y", &shr_tkfit_gap05_dedx_Y, &b_shr_tkfit_gap05_dedx_Y);
-   fChain->SetBranchAddress("shr_tkfit_gap05_dedx_V", &shr_tkfit_gap05_dedx_V, &b_shr_tkfit_gap05_dedx_V);
-   fChain->SetBranchAddress("shr_tkfit_gap05_dedx_U", &shr_tkfit_gap05_dedx_U, &b_shr_tkfit_gap05_dedx_U);
-   fChain->SetBranchAddress("shr_tkfit_gap05_nhits_Y", &shr_tkfit_gap05_nhits_Y, &b_shr_tkfit_gap05_nhits_Y);
-   fChain->SetBranchAddress("shr_tkfit_gap05_nhits_V", &shr_tkfit_gap05_nhits_V, &b_shr_tkfit_gap05_nhits_V);
-   fChain->SetBranchAddress("shr_tkfit_gap05_nhits_U", &shr_tkfit_gap05_nhits_U, &b_shr_tkfit_gap05_nhits_U);
-   fChain->SetBranchAddress("shr_tkfit_gap10_dedx_Y", &shr_tkfit_gap10_dedx_Y, &b_shr_tkfit_gap10_dedx_Y);
-   fChain->SetBranchAddress("shr_tkfit_gap10_dedx_V", &shr_tkfit_gap10_dedx_V, &b_shr_tkfit_gap10_dedx_V);
-   fChain->SetBranchAddress("shr_tkfit_gap10_dedx_U", &shr_tkfit_gap10_dedx_U, &b_shr_tkfit_gap10_dedx_U);
-   fChain->SetBranchAddress("shr_tkfit_gap10_nhits_Y", &shr_tkfit_gap10_nhits_Y, &b_shr_tkfit_gap10_nhits_Y);
-   fChain->SetBranchAddress("shr_tkfit_gap10_nhits_V", &shr_tkfit_gap10_nhits_V, &b_shr_tkfit_gap10_nhits_V);
-   fChain->SetBranchAddress("shr_tkfit_gap10_nhits_U", &shr_tkfit_gap10_nhits_U, &b_shr_tkfit_gap10_nhits_U);
-   fChain->SetBranchAddress("shr_chipr", &shr_chipr, &b_shr_chipr);
-   fChain->SetBranchAddress("shr_chimu", &shr_chimu, &b_shr_chimu);
-   fChain->SetBranchAddress("shr_bragg_p", &shr_bragg_p, &b_shr_bragg_p);
-   fChain->SetBranchAddress("shr_bragg_mu", &shr_bragg_mu, &b_shr_bragg_mu);
-   fChain->SetBranchAddress("shr_bragg_mip", &shr_bragg_mip, &b_shr_bragg_mip);
-   fChain->SetBranchAddress("shr_bragg_kaon", &shr_bragg_kaon, &b_shr_bragg_kaon);
-   fChain->SetBranchAddress("shr_bragg_pion", &shr_bragg_pion, &b_shr_bragg_pion);
-   fChain->SetBranchAddress("tksh_distance", &tksh_distance, &b_tksh_distance);
-   fChain->SetBranchAddress("tksh_angle", &tksh_angle, &b_tksh_angle);
-   fChain->SetBranchAddress("shr_distance", &shr_distance, &b_shr_distance);
-   fChain->SetBranchAddress("shr_score", &shr_score, &b_shr_score);
-   fChain->SetBranchAddress("shr_bkt_pdg", &shr_bkt_pdg, &b_shr_bkt_pdg);
-   fChain->SetBranchAddress("shr_bkt_purity", &shr_bkt_purity, &b_shr_bkt_purity);
-   fChain->SetBranchAddress("shr_bkt_completeness", &shr_bkt_completeness, &b_shr_bkt_completeness);
-   fChain->SetBranchAddress("shr_bkt_E", &shr_bkt_E, &b_shr_bkt_E);
-   fChain->SetBranchAddress("trk_len", &trk_len, &b_trk_len);
-   fChain->SetBranchAddress("trk_theta", &trk_theta, &b_trk_theta);
-   fChain->SetBranchAddress("trk_phi", &trk_phi, &b_trk_phi);
-   fChain->SetBranchAddress("trk_energy", &trk_energy, &b_trk_energy);
-   fChain->SetBranchAddress("trk_energy_muon", &trk_energy_muon, &b_trk_energy_muon);
-   fChain->SetBranchAddress("trk_energy_muon_mcs", &trk_energy_muon_mcs, &b_trk_energy_muon_mcs);
-   fChain->SetBranchAddress("trk_energy_tot", &trk_energy_tot, &b_trk_energy_tot);
-   fChain->SetBranchAddress("trk_energy_muon_tot", &trk_energy_muon_tot, &b_trk_energy_muon_tot);
-   fChain->SetBranchAddress("trk_distance", &trk_distance, &b_trk_distance);
-   fChain->SetBranchAddress("trk_score", &trk_score, &b_trk_score);
-   fChain->SetBranchAddress("trk_bkt_pdg", &trk_bkt_pdg, &b_trk_bkt_pdg);
-   fChain->SetBranchAddress("trk_bkt_purity", &trk_bkt_purity, &b_trk_bkt_purity);
-   fChain->SetBranchAddress("trk_bkt_completeness", &trk_bkt_completeness, &b_trk_bkt_completeness);
-   fChain->SetBranchAddress("trk_bkt_E", &trk_bkt_E, &b_trk_bkt_E);
-   fChain->SetBranchAddress("trk_chipr_best", &trk_chipr_best, &b_trk_chipr_best);
-   fChain->SetBranchAddress("trk_chipr_worst", &trk_chipr_worst, &b_trk_chipr_worst);
-   fChain->SetBranchAddress("trk_chimu_best", &trk_chimu_best, &b_trk_chimu_best);
-   fChain->SetBranchAddress("trk_chimu_worst", &trk_chimu_worst, &b_trk_chimu_worst);
-   fChain->SetBranchAddress("trk_chipr", &trk_chipr, &b_trk_chipr);
-   fChain->SetBranchAddress("trk_chimu", &trk_chimu, &b_trk_chimu);
-   fChain->SetBranchAddress("trk_pida", &trk_pida, &b_trk_pida);
-   fChain->SetBranchAddress("trk_bragg_p", &trk_bragg_p, &b_trk_bragg_p);
-   fChain->SetBranchAddress("trk_bragg_mu", &trk_bragg_mu, &b_trk_bragg_mu);
-   fChain->SetBranchAddress("trk_bragg_mip", &trk_bragg_mip, &b_trk_bragg_mip);
-   fChain->SetBranchAddress("trk_bragg_kaon", &trk_bragg_kaon, &b_trk_bragg_kaon);
-   fChain->SetBranchAddress("trk_bragg_pion", &trk_bragg_pion, &b_trk_bragg_pion);
-   fChain->SetBranchAddress("trk_hits_max", &trk_hits_max, &b_trk_hits_max);
-   fChain->SetBranchAddress("shr_hits_max", &shr_hits_max, &b_shr_hits_max);
-   fChain->SetBranchAddress("trk_hits_2nd", &trk_hits_2nd, &b_trk_hits_2nd);
-   fChain->SetBranchAddress("shr_hits_2nd", &shr_hits_2nd, &b_shr_hits_2nd);
-   fChain->SetBranchAddress("trkshrhitdist0", &trkshrhitdist0, &b_trkshrhitdist0);
-   fChain->SetBranchAddress("trkshrhitdist1", &trkshrhitdist1, &b_trkshrhitdist1);
-   fChain->SetBranchAddress("trkshrhitdist2", &trkshrhitdist2, &b_trkshrhitdist2);
-   fChain->SetBranchAddress("trk2shrhitdist0", &trk2shrhitdist0, &b_trk2shrhitdist0);
-   fChain->SetBranchAddress("trk2shrhitdist1", &trk2shrhitdist1, &b_trk2shrhitdist1);
-   fChain->SetBranchAddress("trk2shrhitdist2", &trk2shrhitdist2, &b_trk2shrhitdist2);
-   fChain->SetBranchAddress("trk1trk2hitdist0", &trk1trk2hitdist0, &b_trk1trk2hitdist0);
-   fChain->SetBranchAddress("trk1trk2hitdist1", &trk1trk2hitdist1, &b_trk1trk2hitdist1);
-   fChain->SetBranchAddress("trk1trk2hitdist2", &trk1trk2hitdist2, &b_trk1trk2hitdist2);
-   fChain->SetBranchAddress("total_hits_y", &total_hits_y, &b_total_hits_y);
-   fChain->SetBranchAddress("extra_energy_y", &extra_energy_y, &b_extra_energy_y);
-   fChain->SetBranchAddress("trk_energy_hits_tot", &trk_energy_hits_tot, &b_trk_energy_hits_tot);
-   fChain->SetBranchAddress("subcluster", &subcluster, &b_subcluster);
-   fChain->SetBranchAddress("shrsubclusters0", &shrsubclusters0, &b_shrsubclusters0);
-   fChain->SetBranchAddress("shrsubclusters1", &shrsubclusters1, &b_shrsubclusters1);
-   fChain->SetBranchAddress("shrsubclusters2", &shrsubclusters2, &b_shrsubclusters2);
-   fChain->SetBranchAddress("shrclusfrac0", &shrclusfrac0, &b_shrclusfrac0);
-   fChain->SetBranchAddress("shrclusfrac1", &shrclusfrac1, &b_shrclusfrac1);
-   fChain->SetBranchAddress("shrclusfrac2", &shrclusfrac2, &b_shrclusfrac2);
-   fChain->SetBranchAddress("shrclusdir0", &shrclusdir0, &b_shrclusdir0);
-   fChain->SetBranchAddress("shrclusdir1", &shrclusdir1, &b_shrclusdir1);
-   fChain->SetBranchAddress("shrclusdir2", &shrclusdir2, &b_shrclusdir2);
-   fChain->SetBranchAddress("shr_hits_tot", &shr_hits_tot, &b_shr_hits_tot);
-   fChain->SetBranchAddress("shr_hits_y_tot", &shr_hits_y_tot, &b_shr_hits_y_tot);
-   fChain->SetBranchAddress("shr_hits_u_tot", &shr_hits_u_tot, &b_shr_hits_u_tot);
-   fChain->SetBranchAddress("shr_hits_v_tot", &shr_hits_v_tot, &b_shr_hits_v_tot);
-   fChain->SetBranchAddress("trk_hits_tot", &trk_hits_tot, &b_trk_hits_tot);
-   fChain->SetBranchAddress("trk_hits_y_tot", &trk_hits_y_tot, &b_trk_hits_y_tot);
-   fChain->SetBranchAddress("trk_hits_u_tot", &trk_hits_u_tot, &b_trk_hits_u_tot);
-   fChain->SetBranchAddress("trk_hits_v_tot", &trk_hits_v_tot, &b_trk_hits_v_tot);
-   fChain->SetBranchAddress("_elecclusters_U_charge", &_elecclusters_U_charge, &b_elecclusters_U_charge);
-   fChain->SetBranchAddress("_elecclusters_V_charge", &_elecclusters_V_charge, &b_elecclusters_V_charge);
-   fChain->SetBranchAddress("_elecclusters_Y_charge", &_elecclusters_Y_charge, &b_elecclusters_Y_charge);
-   fChain->SetBranchAddress("_elecclusters_U_N", &_elecclusters_U_N, &b_elecclusters_U_N);
-   fChain->SetBranchAddress("_elecclusters_V_N", &_elecclusters_V_N, &b_elecclusters_V_N);
-   fChain->SetBranchAddress("_elecclusters_Y_N", &_elecclusters_Y_N, &b_elecclusters_Y_N);
-   fChain->SetBranchAddress("n_tracks_contained", &n_tracks_contained, &b_n_tracks_contained);
-   fChain->SetBranchAddress("n_showers_contained", &n_showers_contained, &b_n_showers_contained);
-   fChain->SetBranchAddress("matched_E", &matched_E, &b_matched_E);
-   fChain->SetBranchAddress("hits_ratio", &hits_ratio, &b_hits_ratio);
-   fChain->SetBranchAddress("contained_fraction", &contained_fraction, &b_contained_fraction);
-   fChain->SetBranchAddress("sps_contained_fraction", &sps_contained_fraction, &b_sps_contained_fraction);
-   fChain->SetBranchAddress("pt", &pt, &b_pt);
-   fChain->SetBranchAddress("p", &p, &b_p);
-   fChain->SetBranchAddress("pt_assume_muon", &pt_assume_muon, &b_pt_assume_muon);
-   fChain->SetBranchAddress("p_assume_muon", &p_assume_muon, &b_p_assume_muon);
-   fChain->SetBranchAddress("reco_e", &reco_e, &b_reco_e);
    fChain->SetBranchAddress("dvtx", &dvtx, &b_dvtx);
    fChain->SetBranchAddress("dtrk", &dtrk, &b_dtrk);
    fChain->SetBranchAddress("contained_sps_ratio", &contained_sps_ratio, &b_contained_sps_ratio);
@@ -1939,7 +1108,6 @@ void MCSelection::Init(TTree *tree)
    fChain->SetBranchAddress("nu_decay_mode", &nu_decay_mode, &b_nu_decay_mode);
    fChain->SetBranchAddress("interaction", &interaction, &b_interaction);
    fChain->SetBranchAddress("nu_e", &nu_e, &b_nu_e);
-   fChain->SetBranchAddress("nu_l", &nu_l, &b_nu_l);
    fChain->SetBranchAddress("nu_pt", &nu_pt, &b_nu_pt);
    fChain->SetBranchAddress("theta", &theta, &b_theta);
    fChain->SetBranchAddress("isVtxInFiducial", &isVtxInFiducial, &b_isVtxInFiducial);
@@ -2061,25 +1229,6 @@ void MCSelection::Init(TTree *tree)
    fChain->SetBranchAddress("filter_ncpi0", &filter_ncpi0, &b_filter_ncpi0);
    fChain->SetBranchAddress("filter_pi0", &filter_pi0, &b_filter_pi0);
    fChain->SetBranchAddress("filter_ccinclusive", &filter_ccinclusive, &b_filter_ccinclusive);
-   fChain->SetBranchAddress("weights", &weights, &b_weights);
-   fChain->SetBranchAddress("weightsFlux", &weightsFlux, &b_weightsFlux);
-   fChain->SetBranchAddress("weightsGenie", &weightsGenie, &b_weightsGenie);
-   fChain->SetBranchAddress("weightsReint", &weightsReint, &b_weightsReint);
-   fChain->SetBranchAddress("weightSpline", &weightSpline, &b_weightSpline);
-   fChain->SetBranchAddress("weightTune", &weightTune, &b_weightTune);
-   fChain->SetBranchAddress("weightSplineTimesTune", &weightSplineTimesTune, &b_weightSplineTimesTune);
-   fChain->SetBranchAddress("knobRPAup", &knobRPAup, &b_knobRPAup);
-   fChain->SetBranchAddress("knobRPAdn", &knobRPAdn, &b_knobRPAdn);
-   fChain->SetBranchAddress("knobCCMECup", &knobCCMECup, &b_knobCCMECup);
-   fChain->SetBranchAddress("knobCCMECdn", &knobCCMECdn, &b_knobCCMECdn);
-   fChain->SetBranchAddress("knobAxFFCCQEup", &knobAxFFCCQEup, &b_knobAxFFCCQEup);
-   fChain->SetBranchAddress("knobAxFFCCQEdn", &knobAxFFCCQEdn, &b_knobAxFFCCQEdn);
-   fChain->SetBranchAddress("knobVecFFCCQEup", &knobVecFFCCQEup, &b_knobVecFFCCQEup);
-   fChain->SetBranchAddress("knobVecFFCCQEdn", &knobVecFFCCQEdn, &b_knobVecFFCCQEdn);
-   fChain->SetBranchAddress("knobDecayAngMECup", &knobDecayAngMECup, &b_knobDecayAngMECup);
-   fChain->SetBranchAddress("knobDecayAngMECdn", &knobDecayAngMECdn, &b_knobDecayAngMECdn);
-   fChain->SetBranchAddress("knobThetaDelta2Npiup", &knobThetaDelta2Npiup, &b_knobThetaDelta2Npiup);
-   fChain->SetBranchAddress("knobThetaDelta2Npidn", &knobThetaDelta2Npidn, &b_knobThetaDelta2Npidn);
    fChain->SetBranchAddress("flash_pe", &flash_pe, &b_flash_pe);
    fChain->SetBranchAddress("flash_time", &flash_time, &b_flash_time);
    fChain->SetBranchAddress("nu_flashmatch_score", &nu_flashmatch_score, &b_nu_flashmatch_score);
@@ -2181,58 +1330,6 @@ void MCSelection::Init(TTree *tree)
    fChain->SetBranchAddress("SliceCaloEnergy0", &SliceCaloEnergy0, &b_SliceCaloEnergy0);
    fChain->SetBranchAddress("SliceCaloEnergy1", &SliceCaloEnergy1, &b_SliceCaloEnergy1);
    fChain->SetBranchAddress("SliceCaloEnergy2", &SliceCaloEnergy2, &b_SliceCaloEnergy2);
-   fChain->SetBranchAddress("pi0_mcgamma0_e", &pi0_mcgamma0_e, &b_pi0_mcgamma0_e);
-   fChain->SetBranchAddress("pi0_mcgamma0_px", &pi0_mcgamma0_px, &b_pi0_mcgamma0_px);
-   fChain->SetBranchAddress("pi0_mcgamma0_py", &pi0_mcgamma0_py, &b_pi0_mcgamma0_py);
-   fChain->SetBranchAddress("pi0_mcgamma0_pz", &pi0_mcgamma0_pz, &b_pi0_mcgamma0_pz);
-   fChain->SetBranchAddress("pi0_mcrcdot0", &pi0_mcrcdot0, &b_pi0_mcrcdot0);
-   fChain->SetBranchAddress("pi0_mcrce0", &pi0_mcrce0, &b_pi0_mcrce0);
-   fChain->SetBranchAddress("pi0_mcgamma1_e", &pi0_mcgamma1_e, &b_pi0_mcgamma1_e);
-   fChain->SetBranchAddress("pi0_mcgamma1_px", &pi0_mcgamma1_px, &b_pi0_mcgamma1_px);
-   fChain->SetBranchAddress("pi0_mcgamma1_py", &pi0_mcgamma1_py, &b_pi0_mcgamma1_py);
-   fChain->SetBranchAddress("pi0_mcgamma1_pz", &pi0_mcgamma1_pz, &b_pi0_mcgamma1_pz);
-   fChain->SetBranchAddress("pi0_mcrcdot1", &pi0_mcrcdot1, &b_pi0_mcrcdot1);
-   fChain->SetBranchAddress("pi0_mcrce1", &pi0_mcrce1, &b_pi0_mcrce1);
-   fChain->SetBranchAddress("pi0_nshower", &pi0_nshower, &b_pi0_nshower);
-   fChain->SetBranchAddress("pi0_ntrack", &pi0_ntrack, &b_pi0_ntrack);
-   fChain->SetBranchAddress("pi0_ngamma", &pi0_ngamma, &b_pi0_ngamma);
-   fChain->SetBranchAddress("pi0_radlen1", &pi0_radlen1, &b_pi0_radlen1);
-   fChain->SetBranchAddress("pi0_radlen2", &pi0_radlen2, &b_pi0_radlen2);
-   fChain->SetBranchAddress("pi0_dot1", &pi0_dot1, &b_pi0_dot1);
-   fChain->SetBranchAddress("pi0_dot2", &pi0_dot2, &b_pi0_dot2);
-   fChain->SetBranchAddress("pi0_energy1_Y", &pi0_energy1_Y, &b_pi0_energy1_Y);
-   fChain->SetBranchAddress("pi0_energy2_Y", &pi0_energy2_Y, &b_pi0_energy2_Y);
-   fChain->SetBranchAddress("pi0_dir1_x", &pi0_dir1_x, &b_pi0_dir1_x);
-   fChain->SetBranchAddress("pi0_dir1_y", &pi0_dir1_y, &b_pi0_dir1_y);
-   fChain->SetBranchAddress("pi0_dir1_z", &pi0_dir1_z, &b_pi0_dir1_z);
-   fChain->SetBranchAddress("pi0_dir2_x", &pi0_dir2_x, &b_pi0_dir2_x);
-   fChain->SetBranchAddress("pi0_dir2_y", &pi0_dir2_y, &b_pi0_dir2_y);
-   fChain->SetBranchAddress("pi0_dir2_z", &pi0_dir2_z, &b_pi0_dir2_z);
-   fChain->SetBranchAddress("pi0_dedx1_Y", &pi0_dedx1_Y, &b_pi0_dedx1_Y);
-   fChain->SetBranchAddress("pi0_dedx2_Y", &pi0_dedx2_Y, &b_pi0_dedx2_Y);
-   fChain->SetBranchAddress("pi0_dedx1_fit_Y", &pi0_dedx1_fit_Y, &b_pi0_dedx1_fit_Y);
-   fChain->SetBranchAddress("pi0_dedx2_fit_Y", &pi0_dedx2_fit_Y, &b_pi0_dedx2_fit_Y);
-   fChain->SetBranchAddress("pi0_energy1_V", &pi0_energy1_V, &b_pi0_energy1_V);
-   fChain->SetBranchAddress("pi0_energy2_V", &pi0_energy2_V, &b_pi0_energy2_V);
-   fChain->SetBranchAddress("pi0_dedx1_V", &pi0_dedx1_V, &b_pi0_dedx1_V);
-   fChain->SetBranchAddress("pi0_dedx2_V", &pi0_dedx2_V, &b_pi0_dedx2_V);
-   fChain->SetBranchAddress("pi0_dedx1_fit_V", &pi0_dedx1_fit_V, &b_pi0_dedx1_fit_V);
-   fChain->SetBranchAddress("pi0_dedx2_fit_V", &pi0_dedx2_fit_V, &b_pi0_dedx2_fit_V);
-   fChain->SetBranchAddress("pi0_energy1_U", &pi0_energy1_U, &b_pi0_energy1_U);
-   fChain->SetBranchAddress("pi0_energy2_U", &pi0_energy2_U, &b_pi0_energy2_U);
-   fChain->SetBranchAddress("pi0_dedx1_U", &pi0_dedx1_U, &b_pi0_dedx1_U);
-   fChain->SetBranchAddress("pi0_dedx2_U", &pi0_dedx2_U, &b_pi0_dedx2_U);
-   fChain->SetBranchAddress("pi0_dedx1_fit_U", &pi0_dedx1_fit_U, &b_pi0_dedx1_fit_U);
-   fChain->SetBranchAddress("pi0_dedx2_fit_U", &pi0_dedx2_fit_U, &b_pi0_dedx2_fit_U);
-   fChain->SetBranchAddress("pi0_shrscore1", &pi0_shrscore1, &b_pi0_shrscore1);
-   fChain->SetBranchAddress("pi0_shrscore2", &pi0_shrscore2, &b_pi0_shrscore2);
-   fChain->SetBranchAddress("pi0_gammadot", &pi0_gammadot, &b_pi0_gammadot);
-   fChain->SetBranchAddress("pi0_mass_Y", &pi0_mass_Y, &b_pi0_mass_Y);
-   fChain->SetBranchAddress("pi0_mass_V", &pi0_mass_V, &b_pi0_mass_V);
-   fChain->SetBranchAddress("pi0_mass_U", &pi0_mass_U, &b_pi0_mass_U);
-   fChain->SetBranchAddress("pi0_rc_vtx_x", &pi0_rc_vtx_x, &b_pi0_rc_vtx_x);
-   fChain->SetBranchAddress("pi0_rc_vtx_y", &pi0_rc_vtx_y, &b_pi0_rc_vtx_y);
-   fChain->SetBranchAddress("pi0_rc_vtx_z", &pi0_rc_vtx_z, &b_pi0_rc_vtx_z);
    fChain->SetBranchAddress("pi0truth_gamma_parent", &pi0truth_gamma_parent, &b_pi0truth_gamma_parent);
    fChain->SetBranchAddress("pi0truth_elec_edep", &pi0truth_elec_edep, &b_pi0truth_elec_edep);
    fChain->SetBranchAddress("pi0truth_elec_etot", &pi0truth_elec_etot, &b_pi0truth_elec_etot);
@@ -2284,55 +1381,6 @@ void MCSelection::Init(TTree *tree)
    fChain->SetBranchAddress("secondshower_Y_eigenratio", &secondshower_Y_eigenratio, &b_secondshower_Y_eigenratio);
    fChain->SetBranchAddress("secondshower_Y_dot", &secondshower_Y_dot, &b_secondshower_Y_dot);
    fChain->SetBranchAddress("secondshower_Y_dir", &secondshower_Y_dir, &b_secondshower_Y_dir);
-   fChain->SetBranchAddress("shr_dedx_u_v", &shr_dedx_u_v, &b_shr_dedx_u_v);
-   fChain->SetBranchAddress("shr_dedx_v_v", &shr_dedx_v_v, &b_shr_dedx_v_v);
-   fChain->SetBranchAddress("shr_dedx_y_v", &shr_dedx_y_v, &b_shr_dedx_y_v);
-   fChain->SetBranchAddress("shr_energy_u_v", &shr_energy_u_v, &b_shr_energy_u_v);
-   fChain->SetBranchAddress("shr_energy_v_v", &shr_energy_v_v, &b_shr_energy_v_v);
-   fChain->SetBranchAddress("shr_energy_y_v", &shr_energy_y_v, &b_shr_energy_y_v);
-   fChain->SetBranchAddress("shr_pfp_id_v", &shr_pfp_id_v, &b_shr_pfp_id_v);
-   fChain->SetBranchAddress("shr_start_x_v", &shr_start_x_v, &b_shr_start_x_v);
-   fChain->SetBranchAddress("shr_start_y_v", &shr_start_y_v, &b_shr_start_y_v);
-   fChain->SetBranchAddress("shr_start_z_v", &shr_start_z_v, &b_shr_start_z_v);
-   fChain->SetBranchAddress("shr_dist_v", &shr_dist_v, &b_shr_dist_v);
-   fChain->SetBranchAddress("shr_start_U_v", &shr_start_U_v, &b_shr_start_U_v);
-   fChain->SetBranchAddress("shr_start_V_v", &shr_start_V_v, &b_shr_start_V_v);
-   fChain->SetBranchAddress("shr_px_v", &shr_px_v, &b_shr_px_v);
-   fChain->SetBranchAddress("shr_py_v", &shr_py_v, &b_shr_py_v);
-   fChain->SetBranchAddress("shr_pz_v", &shr_pz_v, &b_shr_pz_v);
-   fChain->SetBranchAddress("shr_openangle_v", &shr_openangle_v, &b_shr_openangle_v);
-   fChain->SetBranchAddress("shr_theta_v", &shr_theta_v, &b_shr_theta_v);
-   fChain->SetBranchAddress("shr_phi_v", &shr_phi_v, &b_shr_phi_v);
-   fChain->SetBranchAddress("shr_pitch_u_v", &shr_pitch_u_v, &b_shr_pitch_u_v);
-   fChain->SetBranchAddress("shr_pitch_v_v", &shr_pitch_v_v, &b_shr_pitch_v_v);
-   fChain->SetBranchAddress("shr_pitch_y_v", &shr_pitch_y_v, &b_shr_pitch_y_v);
-   fChain->SetBranchAddress("shr_tkfit_nhits_v", &shr_tkfit_nhits_v, &b_shr_tkfit_nhits_v);
-   fChain->SetBranchAddress("shr_tkfit_start_x_v", &shr_tkfit_start_x_v, &b_shr_tkfit_start_x_v);
-   fChain->SetBranchAddress("shr_tkfit_start_y_v", &shr_tkfit_start_y_v, &b_shr_tkfit_start_y_v);
-   fChain->SetBranchAddress("shr_tkfit_start_z_v", &shr_tkfit_start_z_v, &b_shr_tkfit_start_z_v);
-   fChain->SetBranchAddress("shr_tkfit_start_U_v", &shr_tkfit_start_U_v, &b_shr_tkfit_start_U_v);
-   fChain->SetBranchAddress("shr_tkfit_start_V_v", &shr_tkfit_start_V_v, &b_shr_tkfit_start_V_v);
-   fChain->SetBranchAddress("shr_tkfit_theta_v", &shr_tkfit_theta_v, &b_shr_tkfit_theta_v);
-   fChain->SetBranchAddress("shr_tkfit_phi_v", &shr_tkfit_phi_v, &b_shr_tkfit_phi_v);
-   fChain->SetBranchAddress("shr_tkfit_pitch_u_v", &shr_tkfit_pitch_u_v, &b_shr_tkfit_pitch_u_v);
-   fChain->SetBranchAddress("shr_tkfit_pitch_v_v", &shr_tkfit_pitch_v_v, &b_shr_tkfit_pitch_v_v);
-   fChain->SetBranchAddress("shr_tkfit_pitch_y_v", &shr_tkfit_pitch_y_v, &b_shr_tkfit_pitch_y_v);
-   fChain->SetBranchAddress("shr_tkfit_dedx_u_v", &shr_tkfit_dedx_u_v, &b_shr_tkfit_dedx_u_v);
-   fChain->SetBranchAddress("shr_tkfit_dedx_v_v", &shr_tkfit_dedx_v_v, &b_shr_tkfit_dedx_v_v);
-   fChain->SetBranchAddress("shr_tkfit_dedx_y_v", &shr_tkfit_dedx_y_v, &b_shr_tkfit_dedx_y_v);
-   fChain->SetBranchAddress("shr_tkfit_gap10_dedx_u_v", &shr_tkfit_gap10_dedx_u_v, &b_shr_tkfit_gap10_dedx_u_v);
-   fChain->SetBranchAddress("shr_tkfit_gap10_dedx_v_v", &shr_tkfit_gap10_dedx_v_v, &b_shr_tkfit_gap10_dedx_v_v);
-   fChain->SetBranchAddress("shr_tkfit_gap10_dedx_y_v", &shr_tkfit_gap10_dedx_y_v, &b_shr_tkfit_gap10_dedx_y_v);
-   fChain->SetBranchAddress("shr_tkfit_dedx_nhits_u_v", &shr_tkfit_dedx_nhits_u_v, &b_shr_tkfit_dedx_nhits_u_v);
-   fChain->SetBranchAddress("shr_tkfit_dedx_nhits_v_v", &shr_tkfit_dedx_nhits_v_v, &b_shr_tkfit_dedx_nhits_v_v);
-   fChain->SetBranchAddress("shr_tkfit_dedx_nhits_y_v", &shr_tkfit_dedx_nhits_y_v, &b_shr_tkfit_dedx_nhits_y_v);
-   fChain->SetBranchAddress("shr_llr_pid_u_v", &shr_llr_pid_u_v, &b_shr_llr_pid_u_v);
-   fChain->SetBranchAddress("shr_llr_pid_v_v", &shr_llr_pid_v_v, &b_shr_llr_pid_v_v);
-   fChain->SetBranchAddress("shr_llr_pid_y_v", &shr_llr_pid_y_v, &b_shr_llr_pid_y_v);
-   fChain->SetBranchAddress("shr_llr_pid_v", &shr_llr_pid_v, &b_shr_llr_pid_v);
-   fChain->SetBranchAddress("shr_llr_pid_score_v", &shr_llr_pid_score_v, &b_shr_llr_pid_score_v);
-   fChain->SetBranchAddress("shr_moliere_avg_v", &shr_moliere_avg_v, &b_shr_moliere_avg_v);
-   fChain->SetBranchAddress("shr_moliere_rms_v", &shr_moliere_rms_v, &b_shr_moliere_rms_v);
    fChain->SetBranchAddress("evnunhits", &evnunhits, &b_evnunhits);
    fChain->SetBranchAddress("evlepnhits", &evlepnhits, &b_evlepnhits);
    fChain->SetBranchAddress("evpronhits", &evpronhits, &b_evpronhits);
@@ -2415,20 +1463,14 @@ void MCSelection::Init(TTree *tree)
    fChain->SetBranchAddress("trk_llr_pid_y_v", &trk_llr_pid_y_v, &b_trk_llr_pid_y_v);
    fChain->SetBranchAddress("trk_llr_pid_v", &trk_llr_pid_v, &b_trk_llr_pid_v);
    fChain->SetBranchAddress("trk_llr_pid_score_v", &trk_llr_pid_score_v, &b_trk_llr_pid_score_v);
-   fChain->SetBranchAddress("bdt_nuNCpi0", &bdt_nuNCpi0, &b_bdt_nuNCpi0);
-   fChain->SetBranchAddress("bdt_numuCCpi0", &bdt_numuCCpi0, &b_bdt_numuCCpi0);
-   fChain->SetBranchAddress("bdt_numuCC", &bdt_numuCC, &b_bdt_numuCC);
-   fChain->SetBranchAddress("bdt_ext", &bdt_ext, &b_bdt_ext);
-   fChain->SetBranchAddress("bdt_cosmic", &bdt_cosmic, &b_bdt_cosmic);
-   fChain->SetBranchAddress("bdt_global", &bdt_global, &b_bdt_global);
-   fChain->SetBranchAddress("pass_antibdt_filter", &pass_antibdt_filter, &b_bdt_global);
-   fChain->SetBranchAddress("bdt_pi0_np", &bdt_pi0_np, &b_bdt_pi0_np);
-   fChain->SetBranchAddress("bdt_nonpi0_np", &bdt_nonpi0_np, &b_bdt_nonpi0_np);
-   fChain->SetBranchAddress("bdt_bkg_0p", &bdt_bkg_0p, &b_bdt_bkg_0p);
-   fChain->SetBranchAddress("anglediff_Y", &anglediff_Y, &b_anglediff_Y);
-   fChain->SetBranchAddress("anglediff_V", &anglediff_V, &b_anglediff_V);
-   fChain->SetBranchAddress("anglediff_U", &anglediff_U, &b_anglediff_U);
-   fChain->SetBranchAddress("trkpid", &trkpid, &b_trkpid);
+   fChain->SetBranchAddress("trk_plane_v", &trk_plane_v, &b_trk_plane_v);
+   fChain->SetBranchAddress("trk_calo_pfp_id_v", &trk_calo_pfp_id_v, &b_trk_calo_pfp_id_v);
+   fChain->SetBranchAddress("trk_pitch_v", &trk_pitch_v, &b_trk_pitch_v);
+   fChain->SetBranchAddress("trk_dedx_v", &trk_dedx_v, &b_trk_dedx_v);
+   fChain->SetBranchAddress("trk_de_v", &trk_de_v, &b_trk_de_v);
+   fChain->SetBranchAddress("trk_calo_x_v", &trk_calo_x_v, &b_trk_calo_x_v);
+   fChain->SetBranchAddress("trk_calo_y_v", &trk_calo_y_v, &b_trk_calo_y_v);
+   fChain->SetBranchAddress("trk_calo_z_v", &trk_calo_z_v, &b_trk_calo_z_v);
    Notify();
 }
 

@@ -10,6 +10,13 @@ TFile *f3 = new TFile("../Other_Daughter_Information.root"); // <-- File for Oth
 TFile *f4 = new TFile("Data_Histograms.root"); // <-- File for Data Information
 TFile *f5 = new TFile("MC_Histograms.root"); // <-- File for New MC Information
 TFile *f6 = new TFile("MC_CCCoh_Histograms.root"); // <-- File for New MC CCCoh Information
+TFile *f7 = new TFile("MC_CCQE_Histograms.root"); // <-- File for New MC CCQE Information
+TFile *f8 = new TFile("MC_CCRes_Histograms.root"); // <-- File for New MC CCRes Information
+TFile *f9 = new TFile("MC_NCRes_Histograms.root"); // <-- File for New MC NCRes Information
+TFile *f10 = new TFile("MC_CCDIS_Histograms.root"); // <-- File for New MC CCDIS Information
+TFile *f11 = new TFile("MC_NCDIS_Histograms.root"); // <-- File for New MC NCDIS Information
+TFile *f12 = new TFile("MC_Other_Histograms.root"); // <-- File for New MC Other Information
+TFile *f13 = new TFile("CCCoh_Enhanced_Histograms.root"); // <-- File for New MC CCCoh Enhanced Information
 
 
 
@@ -381,6 +388,67 @@ TH1D *hRecoCaloYMCCCCoh = (TH1D*)f6->Get("hRecoCaloY");
 hRecoCaloY->Sumw2();
 hRecoCaloYMC->Sumw2();
 hRecoCaloYMCCCCoh->Sumw2();
+
+
+// | ---------------------------------------------- |
+// | --- Efficiency Plot TGraph Histograms Here --- |
+// | ---------------------------------------------- |
+TH1D *hOpeningAngle = (TH1D*)f6->Get("hOpeningAngleFor2Tracks");
+TH1D *hOpeningAngleCCQE = (TH1D*)f7->Get("hOpeningAngleFor2Tracks");
+TH1D *hOpeningAngleCCRes = (TH1D*)f8->Get("hOpeningAngleFor2Tracks");
+TH1D *hOpeningAngleNCRes = (TH1D*)f9->Get("hOpeningAngleFor2Tracks");
+TH1D *hOpeningAngleCCDIS = (TH1D*)f10->Get("hOpeningAngleFor2Tracks");
+TH1D *hOpeningAngleNCDIS = (TH1D*)f11->Get("hOpeningAngleFor2Tracks");
+TH1D *hOpeningAngleOther = (TH1D*)f12->Get("hOpeningAngleFor2Tracks");
+TH1D *hOpeningAngleCCCoh = (TH1D*)f13->Get("hOpeningAngleFor2Tracks");
+
+hOpeningAngle->Sumw2();
+hOpeningAngleCCQE->Sumw2();
+hOpeningAngleCCRes->Sumw2();
+hOpeningAngleNCRes->Sumw2();
+hOpeningAngleCCDIS->Sumw2();
+hOpeningAngleNCDIS->Sumw2();
+hOpeningAngleOther->Sumw2();
+hOpeningAngleCCCoh->Sumw2();
+
+
+TH1D *hVertexActivity = (TH1D*)f6->Get("hVertexActivityFor2Tracks");
+TH1D *hVertexActivityCCQE = (TH1D*)f7->Get("hVertexActivityFor2Tracks");
+TH1D *hVertexActivityCCRes = (TH1D*)f8->Get("hVertexActivityFor2Tracks");
+TH1D *hVertexActivityNCRes = (TH1D*)f9->Get("hVertexActivityFor2Tracks");
+TH1D *hVertexActivityCCDIS = (TH1D*)f10->Get("hVertexActivityFor2Tracks");
+TH1D *hVertexActivityNCDIS = (TH1D*)f11->Get("hVertexActivityFor2Tracks");
+TH1D *hVertexActivityOther = (TH1D*)f12->Get("hVertexActivityFor2Tracks");
+TH1D *hVertexActivityCCCoh = (TH1D*)f13->Get("hVertexActivityFor2Tracks");
+
+hVertexActivity->Sumw2();
+hVertexActivityCCQE->Sumw2();
+hVertexActivityCCRes->Sumw2();
+hVertexActivityNCRes->Sumw2();
+hVertexActivityCCDIS->Sumw2();
+hVertexActivityNCDIS->Sumw2();
+hVertexActivityOther->Sumw2();
+hVertexActivityCCCoh->Sumw2();
+
+
+TH1D *hPionCandidateTrkLLRPIDScore = (TH1D*)f6->Get("hPionCandidateTrkLLRPIDScore");
+TH1D *hPionCandidateTrkLLRPIDScoreCCQE = (TH1D*)f7->Get("hPionCandidateTrkLLRPIDScore");
+TH1D *hPionCandidateTrkLLRPIDScoreCCRes = (TH1D*)f8->Get("hPionCandidateTrkLLRPIDScore");
+TH1D *hPionCandidateTrkLLRPIDScoreNCRes = (TH1D*)f9->Get("hPionCandidateTrkLLRPIDScore");
+TH1D *hPionCandidateTrkLLRPIDScoreCCDIS = (TH1D*)f10->Get("hPionCandidateTrkLLRPIDScore");
+TH1D *hPionCandidateTrkLLRPIDScoreNCDIS = (TH1D*)f11->Get("hPionCandidateTrkLLRPIDScore");
+TH1D *hPionCandidateTrkLLRPIDScoreOther = (TH1D*)f12->Get("hPionCandidateTrkLLRPIDScore");
+TH1D *hPionCandidateTrkLLRPIDScoreCCCoh = (TH1D*)f13->Get("hPionCandidateTrkLLRPIDScore");
+
+hPionCandidateTrkLLRPIDScore->Sumw2();
+hPionCandidateTrkLLRPIDScoreCCQE->Sumw2();
+hPionCandidateTrkLLRPIDScoreCCRes->Sumw2();
+hPionCandidateTrkLLRPIDScoreNCRes->Sumw2();
+hPionCandidateTrkLLRPIDScoreCCDIS->Sumw2();
+hPionCandidateTrkLLRPIDScoreNCDIS->Sumw2();
+hPionCandidateTrkLLRPIDScoreOther->Sumw2();
+hPionCandidateTrkLLRPIDScoreCCCoh->Sumw2();
+// | ---------------------------------------------- |
 
 
 
@@ -1911,4 +1979,508 @@ leg26->AddEntry(hRecoCaloUMC,"MC Reco New");
 leg26->AddEntry(hRecoCaloUMCCCCoh,"MC Reco New CC-Coh");
 leg26->AddEntry(hRecoCaloU,"Data");
 leg26->Draw();
+
+
+
+
+// --------------------------------
+// --- TGraph for Opening Angle ---
+// --------------------------------
+int n = 181;
+double x[181] = {0};
+double OpeningAngleEff[181] = {0};
+double OpeningAnglePurity[181] = {0};
+double CCCohOpeningAngle[181] = {0};
+double CCCohOpeningAngle2[181] = {0};
+double CCResOpeningAngle[181] = {0};
+double CCDISOpeningAngle[181] = {0};
+double OtherOpeningAngle[181] = {0};
+double CCQEOpeningAngle[181] = {0};
+double NCResOpeningAngle[181] = {0};
+double NCDISOpeningAngle[181] = {0};
+double MaximizeOA[181] = {0};
+
+for (int i = 0; i < n; i++)
+   {
+   x[i] = i*180/n;
+   for (int g = 1; g < i+1; g++)
+      {
+      CCCohOpeningAngle[i] += hOpeningAngle->GetBinContent(g);
+      CCCohOpeningAngle2[i] += hOpeningAngleCCCoh->GetBinContent(g);
+      CCResOpeningAngle[i] += hOpeningAngleCCRes->GetBinContent(g);
+      CCDISOpeningAngle[i] += hOpeningAngleCCDIS->GetBinContent(g);
+      OtherOpeningAngle[i] += hOpeningAngleOther->GetBinContent(g);
+      CCQEOpeningAngle[i] += hOpeningAngleCCQE->GetBinContent(g);
+      NCResOpeningAngle[i] += hOpeningAngleNCRes->GetBinContent(g);
+      NCDISOpeningAngle[i] += hOpeningAngleNCDIS->GetBinContent(g);
+      } // End g-Loop
+
+   MaximizeOA[i] = CCCohOpeningAngle2[i]/pow(CCCohOpeningAngle2[i] + OtherOpeningAngle[i], 0.5);
+   OpeningAnglePurity[i] = 100*(CCCohOpeningAngle2[i])/(CCCohOpeningAngle2[i] + OtherOpeningAngle[i]);
+   if (i == 0) MaximizeOA[i] = 0;
+   if (i == 0) OpeningAnglePurity[i] = 0;
+   OpeningAngleEff[i] = 100*(CCCohOpeningAngle2[i])/(hOpeningAngleCCCoh->GetEntries());
+   CCCohOpeningAngle[i] = CCCohOpeningAngle[i]*100/hOpeningAngle->GetEntries();
+   CCCohOpeningAngle2[i] = CCCohOpeningAngle2[i]*100/hOpeningAngleCCCoh->GetEntries();
+   CCResOpeningAngle[i] = 100-(CCResOpeningAngle[i]*100/hOpeningAngleCCRes->GetEntries());
+   CCDISOpeningAngle[i] = 100-(CCDISOpeningAngle[i]*100/hOpeningAngleCCDIS->GetEntries());
+   OtherOpeningAngle[i] = 100-(OtherOpeningAngle[i]*100/hOpeningAngleOther->GetEntries());
+   CCQEOpeningAngle[i] = 100-(CCQEOpeningAngle[i]*100/hOpeningAngleCCQE->GetEntries());
+   NCResOpeningAngle[i] = 100-(NCResOpeningAngle[i]*100/hOpeningAngleNCRes->GetEntries());
+   NCDISOpeningAngle[i] = 100-(NCDISOpeningAngle[i]*100/hOpeningAngleNCDIS->GetEntries());
+   } // End i-Loop
+
+TGraph* gMaximizeOpeningAngle = new TGraph(n, x, MaximizeOA);
+gMaximizeOpeningAngle->SetTitle("MaximizeOpeningAngle");
+gMaximizeOpeningAngle->SetName("MaximizeOpeningAngle");
+gMaximizeOpeningAngle->SetFillColor(kWhite);
+gMaximizeOpeningAngle->SetLineColor(kBlue);
+gMaximizeOpeningAngle->SetLineWidth(2);
+TGraph* gOpeningAngleEff = new TGraph(n, x, OpeningAngleEff);
+gOpeningAngleEff->SetTitle("OpeningAngleEff");
+gOpeningAngleEff->SetName("OpeningAngleEff");
+gOpeningAngleEff->SetFillColor(kWhite);
+gOpeningAngleEff->SetLineColor(kBlue);
+gOpeningAngleEff->SetLineWidth(2);
+TGraph* gOpeningAnglePurity = new TGraph(n, x, OpeningAnglePurity);
+gOpeningAnglePurity->SetTitle("OpeningAnglePurity");
+gOpeningAnglePurity->SetName("OpeningAnglePurity");
+gOpeningAnglePurity->SetFillColor(kWhite);
+gOpeningAnglePurity->SetLineColor(kCyan);
+//gOpeningAnglePurity->SetLineStyle(kDashed);
+gOpeningAnglePurity->SetLineWidth(2);
+TGraph* gCCCohOpeningAngle = new TGraph(n, x, CCCohOpeningAngle);
+gCCCohOpeningAngle->SetTitle("gCCCohOpeningAngle");
+gCCCohOpeningAngle->SetName("gCCCohOpeningAngle");
+gCCCohOpeningAngle->SetFillColor(kWhite);
+gCCCohOpeningAngle->SetLineColor(kBlue);
+//gCCCohOpeningAngle->SetLineStyle(kDashed);
+gCCCohOpeningAngle->SetLineWidth(2);
+TGraph* gCCCohOpeningAngle2 = new TGraph(n, x, CCCohOpeningAngle2);
+gCCCohOpeningAngle2->SetTitle("gCCCohOpeningAngle2");
+gCCCohOpeningAngle2->SetName("gCCCohOpeningAngle2");
+gCCCohOpeningAngle2->SetFillColor(kWhite);
+gCCCohOpeningAngle2->SetLineColor(kBlue);
+//gCCCohOpeningAngle2->SetLineStyle(kDashed);
+gCCCohOpeningAngle2->SetLineWidth(2);
+TGraph* gCCResOpeningAngle = new TGraph(n, x, CCResOpeningAngle);
+gCCResOpeningAngle->SetTitle("gCCResOpeningAngle");
+gCCResOpeningAngle->SetName("gCCResOpeningAngle");
+gCCResOpeningAngle->SetFillColor(kWhite);
+gCCResOpeningAngle->SetLineColor(kRed);
+//gCCResOpeningAngle->SetLineStyle(kDashed);
+gCCResOpeningAngle->SetLineWidth(2);
+TGraph* gCCDISOpeningAngle = new TGraph(n, x, CCDISOpeningAngle);
+gCCDISOpeningAngle->SetTitle("gCCDISOpeningAngle");
+gCCDISOpeningAngle->SetName("gCCDISOpeningAngle");
+gCCDISOpeningAngle->SetFillColor(kWhite);
+gCCDISOpeningAngle->SetLineColor(kCyan-8);
+//gCCDISOpeningAngle->SetLineStyle(kDashed);
+gCCDISOpeningAngle->SetLineWidth(2);
+TGraph* gOtherOpeningAngle = new TGraph(n, x, OtherOpeningAngle);
+gOtherOpeningAngle->SetTitle("gOtherOpeningAngle");
+gOtherOpeningAngle->SetName("gOtherOpeningAngle");
+gOtherOpeningAngle->SetFillColor(kWhite);
+gOtherOpeningAngle->SetLineColor(kBlack);
+//gOtherOpeningAngle->SetLineStyle(kDashed);
+gOtherOpeningAngle->SetLineWidth(2);
+TGraph* gCCQEOpeningAngle = new TGraph(n, x, CCQEOpeningAngle);
+gCCQEOpeningAngle->SetTitle("gCCQEOpeningAngle");
+gCCQEOpeningAngle->SetName("gCCQEOpeningAngle");
+gCCQEOpeningAngle->SetFillColor(kWhite);
+gCCQEOpeningAngle->SetLineColor(kViolet);
+//gCCQEOpeningAngle->SetLineStyle(kDashed);
+gCCQEOpeningAngle->SetLineWidth(2);
+TGraph* gNCResOpeningAngle = new TGraph(n, x, NCResOpeningAngle);
+gNCResOpeningAngle->SetTitle("gNCResOpeningAngle");
+gNCResOpeningAngle->SetName("gNCResOpeningAngle");
+gNCResOpeningAngle->SetFillColor(kWhite);
+gNCResOpeningAngle->SetLineColor(kGreen);
+//gNCResOpeningAngle->SetLineStyle(kDashed);
+gNCResOpeningAngle->SetLineWidth(2);
+TGraph* gNCDISOpeningAngle = new TGraph(n, x, NCDISOpeningAngle);
+gNCDISOpeningAngle->SetTitle("gNCDISOpeningAngle");
+gNCDISOpeningAngle->SetName("gNCDISOpeningAngle");
+gNCDISOpeningAngle->SetFillColor(kWhite);
+gNCDISOpeningAngle->SetLineColor(kGray);
+//gNCDISOpeningAngle->SetLineStyle(kDashed);
+gNCDISOpeningAngle->SetLineWidth(2);
+
+TCanvas *c27 = new TCanvas("c27", "Opening Angle TGraphs");
+c27->SetTicks();
+c27->SetFillColor(kWhite);
+
+gCCCohOpeningAngle2->GetXaxis()->SetTitle("Opening Angle [Degrees]");
+gCCCohOpeningAngle2->GetXaxis()->CenterTitle();
+gCCCohOpeningAngle2->GetXaxis()->SetRangeUser(0,180);
+
+gCCCohOpeningAngle2->GetYaxis()->SetTitle("Rejection (Background) Passed (Signal) [%]");
+gCCCohOpeningAngle2->GetYaxis()->CenterTitle();
+
+gCCCohOpeningAngle2->Draw();
+//gCCCohOpeningAngle->Draw("same");
+gCCResOpeningAngle->Draw("same");
+gCCDISOpeningAngle->Draw("same");
+gOtherOpeningAngle->Draw("same");
+gCCQEOpeningAngle->Draw("same");
+gNCResOpeningAngle->Draw("same");
+gNCDISOpeningAngle->Draw("same");
+//gOpeningAnglePurity->Draw("same");
+
+// ### Defining the legend for the plot ###
+TLegend *leg27 = new TLegend();
+leg27 = new TLegend(0.58,0.65,1.00,1.00);
+leg27->SetTextSize(0.04);
+leg27->SetTextAlign(12);
+leg27->SetFillColor(kWhite);
+leg27->SetLineColor(kWhite);
+leg27->SetShadowColor(kWhite);
+leg27->SetHeader("Channel");
+//leg27->AddEntry(gCCCohOpeningAngle,"CCCoh Reco");
+leg27->AddEntry(gCCCohOpeningAngle2,"CCCoh Enhanced Reco");
+//leg27->AddEntry(gOpeningAnglePurity,"CCCoh Purity Reco");
+leg27->AddEntry(gCCQEOpeningAngle,"CCQE Reco");
+leg27->AddEntry(gCCResOpeningAngle,"CCRes Reco");
+leg27->AddEntry(gNCResOpeningAngle,"NCRes Reco");
+leg27->AddEntry(gCCDISOpeningAngle,"CCDIS Reco");
+leg27->AddEntry(gNCDISOpeningAngle,"NCDIS Reco");
+leg27->AddEntry(gOtherOpeningAngle,"Other Reco");
+leg27->Draw();
+// --------------------------------
+
+
+
+
+// ---------------------------------
+// --- TGraph for Vertex Activiy ---
+// ---------------------------------
+int n1 = 5001;
+double x1[5001] = {0};
+double VertexActivityEff[5001] = {0};
+double VertexActivityPurity[5001] = {0};
+double CCCohVertexActivity[5001] = {0};
+double CCCohVertexActivity2[5001] = {0};
+double CCResVertexActivity[5001] = {0};
+double CCDISVertexActivity[5001] = {0};
+double OtherVertexActivity[5001] = {0};
+double CCQEVertexActivity[5001] = {0};
+double NCResVertexActivity[5001] = {0};
+double NCDISVertexActivity[5001] = {0};
+double MaximizeVA[5001] = {0};
+
+for (int i = 0; i < n1; i++)
+   {
+   x1[i] = i*1000/n1;
+   for (int g = 1; g < i+1; g++)
+      {
+      CCCohVertexActivity[i] += hVertexActivity->GetBinContent(g);
+      CCCohVertexActivity2[i] += hVertexActivityCCCoh->GetBinContent(g);
+      CCResVertexActivity[i] += hVertexActivityCCRes->GetBinContent(g);
+      CCDISVertexActivity[i] += hVertexActivityCCDIS->GetBinContent(g);
+      OtherVertexActivity[i] += hVertexActivityOther->GetBinContent(g);
+      CCQEVertexActivity[i] += hVertexActivityCCQE->GetBinContent(g);
+      NCResVertexActivity[i] += hVertexActivityNCRes->GetBinContent(g);
+      NCDISVertexActivity[i] += hVertexActivityNCDIS->GetBinContent(g);
+      } // End g-Loop
+
+   MaximizeVA[i] = CCCohVertexActivity2[i]/pow(CCCohVertexActivity2[i] + OtherVertexActivity[i], 0.5);
+   VertexActivityPurity[i] = 100*(CCCohVertexActivity2[i])/(CCCohVertexActivity2[i] + OtherVertexActivity[i]);
+   if (i == 0) MaximizeVA[i] = 0;
+   if (i == 0) VertexActivityPurity[i] = 0;
+   VertexActivityEff[i] = 100*(CCCohVertexActivity2[i])/(hVertexActivityCCCoh->GetEntries());
+   CCCohVertexActivity[i] = CCCohVertexActivity[i]*100/hVertexActivity->GetEntries();
+   CCCohVertexActivity2[i] = CCCohVertexActivity2[i]*100/hVertexActivityCCCoh->GetEntries();
+   CCResVertexActivity[i] = 100-(CCResVertexActivity[i]*100/hVertexActivityCCRes->GetEntries());
+   CCDISVertexActivity[i] = 100-(CCDISVertexActivity[i]*100/hVertexActivityCCDIS->GetEntries());
+   OtherVertexActivity[i] = 100-(OtherVertexActivity[i]*100/hVertexActivityOther->GetEntries());
+   CCQEVertexActivity[i] = 100-(CCQEVertexActivity[i]*100/hVertexActivityCCQE->GetEntries());
+   NCResVertexActivity[i] = 100-(NCResVertexActivity[i]*100/hVertexActivityNCRes->GetEntries());
+   NCDISVertexActivity[i] = 100-(NCDISVertexActivity[i]*100/hVertexActivityNCDIS->GetEntries());
+   } // End i-Loop
+
+TGraph* gMaximizeVertexActivity = new TGraph(n1, x1, MaximizeVA);
+gMaximizeVertexActivity->SetTitle("MaximizeVertexActivity");
+gMaximizeVertexActivity->SetName("MaximizeVertexActivity");
+gMaximizeVertexActivity->SetFillColor(kWhite);
+gMaximizeVertexActivity->SetLineColor(kBlue);
+gMaximizeVertexActivity->SetLineWidth(2);
+TGraph* gVertexActivityEff = new TGraph(n1, x1, VertexActivityEff);
+gVertexActivityEff->SetTitle("VertexActivityEff");
+gVertexActivityEff->SetName("VertexActivityEff");
+gVertexActivityEff->SetFillColor(kWhite);
+gVertexActivityEff->SetLineColor(kBlue);
+gVertexActivityEff->SetLineWidth(2);
+TGraph* gVertexActivityPurity = new TGraph(n1, x1, VertexActivityPurity);
+gVertexActivityPurity->SetTitle("VertexActivityPurity");
+gVertexActivityPurity->SetName("VertexActivityPurity");
+gVertexActivityPurity->SetFillColor(kWhite);
+gVertexActivityPurity->SetLineColor(kCyan);
+//gVertexActivityPurity->SetLineStyle(kDashed);
+gVertexActivityPurity->SetLineWidth(2);
+TGraph* gCCCohVertexActivity = new TGraph(n1, x1, CCCohVertexActivity);
+gCCCohVertexActivity->SetTitle("gCCCohVertexActivity");
+gCCCohVertexActivity->SetName("gCCCohVertexActivity");
+gCCCohVertexActivity->SetFillColor(kWhite);
+gCCCohVertexActivity->SetLineColor(kBlue);
+//gCCCohVertexActivity->SetLineStyle(kDashed);
+gCCCohVertexActivity->SetLineWidth(2);
+TGraph* gCCCohVertexActivity2 = new TGraph(n1, x1, CCCohVertexActivity2);
+gCCCohVertexActivity2->SetTitle("gCCCohVertexActivity2");
+gCCCohVertexActivity2->SetName("gCCCohVertexActivity2");
+gCCCohVertexActivity2->SetFillColor(kWhite);
+gCCCohVertexActivity2->SetLineColor(kBlue);
+//gCCCohVertexActivity2->SetLineStyle(kDashed);
+gCCCohVertexActivity2->SetLineWidth(2);
+TGraph* gCCResVertexActivity = new TGraph(n1, x1, CCResVertexActivity);
+gCCResVertexActivity->SetTitle("gCCResVertexActivity");
+gCCResVertexActivity->SetName("gCCResVertexActivity");
+gCCResVertexActivity->SetFillColor(kWhite);
+gCCResVertexActivity->SetLineColor(kRed);
+//gCCResVertexActivity->SetLineStyle(kDashed);
+gCCResVertexActivity->SetLineWidth(2);
+TGraph* gCCDISVertexActivity = new TGraph(n1, x1, CCDISVertexActivity);
+gCCDISVertexActivity->SetTitle("gCCDISVertexActivity");
+gCCDISVertexActivity->SetName("gCCDISVertexActivity");
+gCCDISVertexActivity->SetFillColor(kWhite);
+gCCDISVertexActivity->SetLineColor(kCyan-8);
+//gCCDISVertexActivity->SetLineStyle(kDashed);
+gCCDISVertexActivity->SetLineWidth(2);
+TGraph* gOtherVertexActivity = new TGraph(n1, x1, OtherVertexActivity);
+gOtherVertexActivity->SetTitle("gOtherVertexActivity");
+gOtherVertexActivity->SetName("gOtherVertexActivity");
+gOtherVertexActivity->SetFillColor(kWhite);
+gOtherVertexActivity->SetLineColor(kBlack);
+//gOtherVertexActivity->SetLineStyle(kDashed);
+gOtherVertexActivity->SetLineWidth(2);
+TGraph* gCCQEVertexActivity = new TGraph(n1, x1, CCQEVertexActivity);
+gCCQEVertexActivity->SetTitle("gCCQEVertexActivity");
+gCCQEVertexActivity->SetName("gCCQEVertexActivity");
+gCCQEVertexActivity->SetFillColor(kWhite);
+gCCQEVertexActivity->SetLineColor(kViolet);
+//gCCQEVertexActivity->SetLineStyle(kDashed);
+gCCQEVertexActivity->SetLineWidth(2);
+TGraph* gNCResVertexActivity = new TGraph(n1, x1, NCResVertexActivity);
+gNCResVertexActivity->SetTitle("gNCResVertexActivity");
+gNCResVertexActivity->SetName("gNCResVertexActivity");
+gNCResVertexActivity->SetFillColor(kWhite);
+gNCResVertexActivity->SetLineColor(kGreen);
+//gNCResVertexActivity->SetLineStyle(kDashed);
+gNCResVertexActivity->SetLineWidth(2);
+TGraph* gNCDISVertexActivity = new TGraph(n1, x1, NCDISVertexActivity);
+gNCDISVertexActivity->SetTitle("gNCDISVertexActivity");
+gNCDISVertexActivity->SetName("gNCDISVertexActivity");
+gNCDISVertexActivity->SetFillColor(kWhite);
+gNCDISVertexActivity->SetLineColor(kGray);
+//gNCDISVertexActivity->SetLineStyle(kDashed);
+gNCDISVertexActivity->SetLineWidth(2);
+
+TCanvas *c28 = new TCanvas("c28", "Vertex Activity TGraphs");
+c28->SetTicks();
+c28->SetFillColor(kWhite);
+
+gCCCohVertexActivity2->GetXaxis()->SetTitle("Vertex Activity [MeV]");
+gCCCohVertexActivity2->GetXaxis()->CenterTitle();
+gCCCohVertexActivity2->GetXaxis()->SetRangeUser(0,1000);
+
+gCCCohVertexActivity2->GetYaxis()->SetTitle("Rejection (Background) Passed (Signal) [%]");
+gCCCohVertexActivity2->GetYaxis()->CenterTitle();
+
+gCCCohVertexActivity2->Draw();
+//gCCCohVertexActivity->Draw("same");
+gCCResVertexActivity->Draw("same");
+gCCDISVertexActivity->Draw("same");
+gOtherVertexActivity->Draw("same");
+gCCQEVertexActivity->Draw("same");
+gNCResVertexActivity->Draw("same");
+gNCDISVertexActivity->Draw("same");
+//gVertexActivityPurity->Draw("same");
+
+// ### Defining the legend for the plot ###
+TLegend *leg28 = new TLegend();
+leg28 = new TLegend(0.58,0.65,1.00,1.00);
+leg28->SetTextSize(0.04);
+leg28->SetTextAlign(12);
+leg28->SetFillColor(kWhite);
+leg28->SetLineColor(kWhite);
+leg28->SetShadowColor(kWhite);
+leg28->SetHeader("Channel");
+//leg28->AddEntry(gCCCohVertexActivity,"CCCoh Reco");
+leg28->AddEntry(gCCCohVertexActivity2,"CCCoh Enhanced Reco");
+//leg28->AddEntry(gVertexActivityPurity,"CCCoh Purity Reco");
+leg28->AddEntry(gCCQEVertexActivity,"CCQE Reco");
+leg28->AddEntry(gCCResVertexActivity,"CCRes Reco");
+leg28->AddEntry(gNCResVertexActivity,"NCRes Reco");
+leg28->AddEntry(gCCDISVertexActivity,"CCDIS Reco");
+leg28->AddEntry(gNCDISVertexActivity,"NCDIS Reco");
+leg28->AddEntry(gOtherVertexActivity,"Other Reco");
+leg28->Draw();
+// --------------------------------
+
+
+
+
+// ---------------------------------
+// --- TGraph for Vertex Activiy ---
+// ---------------------------------
+int n2 = 1001;
+double x2[1001] = {0};
+double PionCandidateTrkLLRPIDScoreEff[1001] = {0};
+double PionCandidateTrkLLRPIDScorePurity[1001] = {0};
+double CCCohPionCandidateTrkLLRPIDScore[1001] = {0};
+double CCCohPionCandidateTrkLLRPIDScore2[1001] = {0};
+double CCResPionCandidateTrkLLRPIDScore[1001] = {0};
+double CCDISPionCandidateTrkLLRPIDScore[1001] = {0};
+double OtherPionCandidateTrkLLRPIDScore[1001] = {0};
+double CCQEPionCandidateTrkLLRPIDScore[1001] = {0};
+double NCResPionCandidateTrkLLRPIDScore[1001] = {0};
+double NCDISPionCandidateTrkLLRPIDScore[1001] = {0};
+double MaximizeLLR[1001] = {0};
+
+for (int i = 0; i < n2; i++)
+   {
+   x2[i] = (i*2./n2) - 1.;
+   for (int g = n2; g > i; g--)
+      {
+      CCCohPionCandidateTrkLLRPIDScore[i] += hPionCandidateTrkLLRPIDScore->GetBinContent(g);
+      CCCohPionCandidateTrkLLRPIDScore2[i] += hPionCandidateTrkLLRPIDScoreCCCoh->GetBinContent(g);
+      CCResPionCandidateTrkLLRPIDScore[i] += hPionCandidateTrkLLRPIDScoreCCRes->GetBinContent(g);
+      CCDISPionCandidateTrkLLRPIDScore[i] += hPionCandidateTrkLLRPIDScoreCCDIS->GetBinContent(g);
+      OtherPionCandidateTrkLLRPIDScore[i] += hPionCandidateTrkLLRPIDScoreOther->GetBinContent(g);
+      CCQEPionCandidateTrkLLRPIDScore[i] += hPionCandidateTrkLLRPIDScoreCCQE->GetBinContent(g);
+      NCResPionCandidateTrkLLRPIDScore[i] += hPionCandidateTrkLLRPIDScoreNCRes->GetBinContent(g);
+      NCDISPionCandidateTrkLLRPIDScore[i] += hPionCandidateTrkLLRPIDScoreNCDIS->GetBinContent(g);
+      } // End g-Loop
+
+   MaximizeLLR[i] = CCCohPionCandidateTrkLLRPIDScore2[i]/pow(CCCohPionCandidateTrkLLRPIDScore2[i] + OtherPionCandidateTrkLLRPIDScore[i], 0.5);
+   PionCandidateTrkLLRPIDScorePurity[i] = 100*(CCCohPionCandidateTrkLLRPIDScore2[i])/(CCCohPionCandidateTrkLLRPIDScore2[i] + OtherPionCandidateTrkLLRPIDScore[i]);
+   if (i == 0) MaximizeLLR[i] = 0;
+   if (i == 0) PionCandidateTrkLLRPIDScorePurity[i] = 0;
+   PionCandidateTrkLLRPIDScoreEff[i] = 100*(CCCohPionCandidateTrkLLRPIDScore2[i])/(hPionCandidateTrkLLRPIDScoreCCCoh->GetEntries());
+   CCCohPionCandidateTrkLLRPIDScore[i] = CCCohPionCandidateTrkLLRPIDScore[i]*100/hPionCandidateTrkLLRPIDScore->GetEntries();
+   CCCohPionCandidateTrkLLRPIDScore2[i] = CCCohPionCandidateTrkLLRPIDScore2[i]*100/hPionCandidateTrkLLRPIDScoreCCCoh->GetEntries();
+   CCResPionCandidateTrkLLRPIDScore[i] = 100-(CCResPionCandidateTrkLLRPIDScore[i]*100/hPionCandidateTrkLLRPIDScoreCCRes->GetEntries());
+   CCDISPionCandidateTrkLLRPIDScore[i] = 100-(CCDISPionCandidateTrkLLRPIDScore[i]*100/hPionCandidateTrkLLRPIDScoreCCDIS->GetEntries());
+   OtherPionCandidateTrkLLRPIDScore[i] = 100-(OtherPionCandidateTrkLLRPIDScore[i]*100/hPionCandidateTrkLLRPIDScoreOther->GetEntries());
+   CCQEPionCandidateTrkLLRPIDScore[i] = 100-(CCQEPionCandidateTrkLLRPIDScore[i]*100/hPionCandidateTrkLLRPIDScoreCCQE->GetEntries());
+   NCResPionCandidateTrkLLRPIDScore[i] = 100-(NCResPionCandidateTrkLLRPIDScore[i]*100/hPionCandidateTrkLLRPIDScoreNCRes->GetEntries());
+   NCDISPionCandidateTrkLLRPIDScore[i] = 100-(NCDISPionCandidateTrkLLRPIDScore[i]*100/hPionCandidateTrkLLRPIDScoreNCDIS->GetEntries());
+   } // End i-Loop
+
+TGraph* gMaximizePionCandidateTrkLLRPIDScore = new TGraph(n2, x2, MaximizeLLR);
+gMaximizePionCandidateTrkLLRPIDScore->SetTitle("MaximizePionCandidateTrkLLRPIDScore");
+gMaximizePionCandidateTrkLLRPIDScore->SetName("MaximizePionCandidateTrkLLRPIDScore");
+gMaximizePionCandidateTrkLLRPIDScore->SetFillColor(kWhite);
+gMaximizePionCandidateTrkLLRPIDScore->SetLineColor(kBlue);
+gMaximizePionCandidateTrkLLRPIDScore->SetLineWidth(2);
+TGraph* gPionCandidateTrkLLRPIDScoreEff = new TGraph(n2, x2, PionCandidateTrkLLRPIDScoreEff);
+gPionCandidateTrkLLRPIDScoreEff->SetTitle("PionCandidateTrkLLRPIDScoreEff");
+gPionCandidateTrkLLRPIDScoreEff->SetName("PionCandidateTrkLLRPIDScoreEff");
+gPionCandidateTrkLLRPIDScoreEff->SetFillColor(kWhite);
+gPionCandidateTrkLLRPIDScoreEff->SetLineColor(kBlue);
+gPionCandidateTrkLLRPIDScoreEff->SetLineWidth(2);
+TGraph* gPionCandidateTrkLLRPIDScorePurity = new TGraph(n2, x2, PionCandidateTrkLLRPIDScorePurity);
+gPionCandidateTrkLLRPIDScorePurity->SetTitle("PionCandidateTrkLLRPIDScorePurity");
+gPionCandidateTrkLLRPIDScorePurity->SetName("PionCandidateTrkLLRPIDScorePurity");
+gPionCandidateTrkLLRPIDScorePurity->SetFillColor(kWhite);
+gPionCandidateTrkLLRPIDScorePurity->SetLineColor(kCyan);
+//gPionCandidateTrkLLRPIDScorePurity->SetLineStyle(kDashed);
+gPionCandidateTrkLLRPIDScorePurity->SetLineWidth(2);
+TGraph* gCCCohPionCandidateTrkLLRPIDScore = new TGraph(n2, x2, CCCohPionCandidateTrkLLRPIDScore);
+gCCCohPionCandidateTrkLLRPIDScore->SetTitle("gCCCohPionCandidateTrkLLRPIDScore");
+gCCCohPionCandidateTrkLLRPIDScore->SetName("gCCCohPionCandidateTrkLLRPIDScore");
+gCCCohPionCandidateTrkLLRPIDScore->SetFillColor(kWhite);
+gCCCohPionCandidateTrkLLRPIDScore->SetLineColor(kBlue);
+//gCCCohPionCandidateTrkLLRPIDScore->SetLineStyle(kDashed);
+gCCCohPionCandidateTrkLLRPIDScore->SetLineWidth(2);
+TGraph* gCCCohPionCandidateTrkLLRPIDScore2 = new TGraph(n2, x2, CCCohPionCandidateTrkLLRPIDScore2);
+gCCCohPionCandidateTrkLLRPIDScore2->SetTitle("gCCCohPionCandidateTrkLLRPIDScore2");
+gCCCohPionCandidateTrkLLRPIDScore2->SetName("gCCCohPionCandidateTrkLLRPIDScore2");
+gCCCohPionCandidateTrkLLRPIDScore2->SetFillColor(kWhite);
+gCCCohPionCandidateTrkLLRPIDScore2->SetLineColor(kBlue);
+//gCCCohPionCandidateTrkLLRPIDScore2->SetLineStyle(kDashed);
+gCCCohPionCandidateTrkLLRPIDScore2->SetLineWidth(2);
+TGraph* gCCResPionCandidateTrkLLRPIDScore = new TGraph(n2, x2, CCResPionCandidateTrkLLRPIDScore);
+gCCResPionCandidateTrkLLRPIDScore->SetTitle("gCCResPionCandidateTrkLLRPIDScore");
+gCCResPionCandidateTrkLLRPIDScore->SetName("gCCResPionCandidateTrkLLRPIDScore");
+gCCResPionCandidateTrkLLRPIDScore->SetFillColor(kWhite);
+gCCResPionCandidateTrkLLRPIDScore->SetLineColor(kRed);
+//gCCResPionCandidateTrkLLRPIDScore->SetLineStyle(kDashed);
+gCCResPionCandidateTrkLLRPIDScore->SetLineWidth(2);
+TGraph* gCCDISPionCandidateTrkLLRPIDScore = new TGraph(n2, x2, CCDISPionCandidateTrkLLRPIDScore);
+gCCDISPionCandidateTrkLLRPIDScore->SetTitle("gCCDISPionCandidateTrkLLRPIDScore");
+gCCDISPionCandidateTrkLLRPIDScore->SetName("gCCDISPionCandidateTrkLLRPIDScore");
+gCCDISPionCandidateTrkLLRPIDScore->SetFillColor(kWhite);
+gCCDISPionCandidateTrkLLRPIDScore->SetLineColor(kCyan-8);
+//gCCDISPionCandidateTrkLLRPIDScore->SetLineStyle(kDashed);
+gCCDISPionCandidateTrkLLRPIDScore->SetLineWidth(2);
+TGraph* gOtherPionCandidateTrkLLRPIDScore = new TGraph(n2, x2, OtherPionCandidateTrkLLRPIDScore);
+gOtherPionCandidateTrkLLRPIDScore->SetTitle("gOtherPionCandidateTrkLLRPIDScore");
+gOtherPionCandidateTrkLLRPIDScore->SetName("gOtherPionCandidateTrkLLRPIDScore");
+gOtherPionCandidateTrkLLRPIDScore->SetFillColor(kWhite);
+gOtherPionCandidateTrkLLRPIDScore->SetLineColor(kBlack);
+//gOtherPionCandidateTrkLLRPIDScore->SetLineStyle(kDashed);
+gOtherPionCandidateTrkLLRPIDScore->SetLineWidth(2);
+TGraph* gCCQEPionCandidateTrkLLRPIDScore = new TGraph(n2, x2, CCQEPionCandidateTrkLLRPIDScore);
+gCCQEPionCandidateTrkLLRPIDScore->SetTitle("gCCQEPionCandidateTrkLLRPIDScore");
+gCCQEPionCandidateTrkLLRPIDScore->SetName("gCCQEPionCandidateTrkLLRPIDScore");
+gCCQEPionCandidateTrkLLRPIDScore->SetFillColor(kWhite);
+gCCQEPionCandidateTrkLLRPIDScore->SetLineColor(kViolet);
+//gCCQEPionCandidateTrkLLRPIDScore->SetLineStyle(kDashed);
+gCCQEPionCandidateTrkLLRPIDScore->SetLineWidth(2);
+TGraph* gNCResPionCandidateTrkLLRPIDScore = new TGraph(n2, x2, NCResPionCandidateTrkLLRPIDScore);
+gNCResPionCandidateTrkLLRPIDScore->SetTitle("gNCResPionCandidateTrkLLRPIDScore");
+gNCResPionCandidateTrkLLRPIDScore->SetName("gNCResPionCandidateTrkLLRPIDScore");
+gNCResPionCandidateTrkLLRPIDScore->SetFillColor(kWhite);
+gNCResPionCandidateTrkLLRPIDScore->SetLineColor(kGreen);
+//gNCResPionCandidateTrkLLRPIDScore->SetLineStyle(kDashed);
+gNCResPionCandidateTrkLLRPIDScore->SetLineWidth(2);
+TGraph* gNCDISPionCandidateTrkLLRPIDScore = new TGraph(n2, x2, NCDISPionCandidateTrkLLRPIDScore);
+gNCDISPionCandidateTrkLLRPIDScore->SetTitle("gNCDISPionCandidateTrkLLRPIDScore");
+gNCDISPionCandidateTrkLLRPIDScore->SetName("gNCDISPionCandidateTrkLLRPIDScore");
+gNCDISPionCandidateTrkLLRPIDScore->SetFillColor(kWhite);
+gNCDISPionCandidateTrkLLRPIDScore->SetLineColor(kGray);
+//gNCDISPionCandidateTrkLLRPIDScore->SetLineStyle(kDashed);
+gNCDISPionCandidateTrkLLRPIDScore->SetLineWidth(2);
+
+TCanvas *c29 = new TCanvas("c29", "Pion Candidate Track LLR PID Score TGraphs");
+c29->SetTicks();
+c29->SetFillColor(kWhite);
+
+gCCCohPionCandidateTrkLLRPIDScore2->GetXaxis()->SetTitle("LLR");
+gCCCohPionCandidateTrkLLRPIDScore2->GetXaxis()->CenterTitle();
+gCCCohPionCandidateTrkLLRPIDScore2->GetXaxis()->SetRangeUser(-1,1);
+
+gCCCohPionCandidateTrkLLRPIDScore2->GetYaxis()->SetTitle("Rejection (Background) Passed (Signal) [%]");
+gCCCohPionCandidateTrkLLRPIDScore2->GetYaxis()->CenterTitle();
+
+gCCCohPionCandidateTrkLLRPIDScore2->Draw();
+//gCCCohPionCandidateTrkLLRPIDScore->Draw("same");
+gCCResPionCandidateTrkLLRPIDScore->Draw("same");
+gCCDISPionCandidateTrkLLRPIDScore->Draw("same");
+gOtherPionCandidateTrkLLRPIDScore->Draw("same");
+gCCQEPionCandidateTrkLLRPIDScore->Draw("same");
+gNCResPionCandidateTrkLLRPIDScore->Draw("same");
+gNCDISPionCandidateTrkLLRPIDScore->Draw("same");
+//gPionCandidateTrkLLRPIDScorePurity->Draw("same");
+
+// ### Defining the legend for the plot ###
+TLegend *leg29 = new TLegend();
+leg29 = new TLegend(0.58,0.65,1.00,1.00);
+leg29->SetTextSize(0.04);
+leg29->SetTextAlign(12);
+leg29->SetFillColor(kWhite);
+leg29->SetLineColor(kWhite);
+leg29->SetShadowColor(kWhite);
+leg29->SetHeader("Channel");
+//leg29->AddEntry(gCCCohPionCandidateTrkLLRPIDScore,"CCCoh Reco");
+leg29->AddEntry(gCCCohPionCandidateTrkLLRPIDScore2,"CCCoh Enhanced Reco");
+//leg29->AddEntry(gPionCandidateTrkLLRPIDScorePurity,"CCCoh Purity Reco");
+leg29->AddEntry(gCCQEPionCandidateTrkLLRPIDScore,"CCQE Reco");
+leg29->AddEntry(gCCResPionCandidateTrkLLRPIDScore,"CCRes Reco");
+leg29->AddEntry(gNCResPionCandidateTrkLLRPIDScore,"NCRes Reco");
+leg29->AddEntry(gCCDISPionCandidateTrkLLRPIDScore,"CCDIS Reco");
+leg29->AddEntry(gNCDISPionCandidateTrkLLRPIDScore,"NCDIS Reco");
+leg29->AddEntry(gOtherPionCandidateTrkLLRPIDScore,"Other Reco");
+leg29->Draw();
+// --------------------------------
 }
