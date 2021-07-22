@@ -7,16 +7,16 @@
 TFile *f1 = new TFile("../Wouter_Daughter_Information.root"); // <-- File for Daughters Tree
 TFile *f2 = new TFile("../CCCoh_Daughter_Information.root"); // <-- File for CCCoh Daughters Tree
 TFile *f3 = new TFile("../Other_Daughter_Information.root"); // <-- File for Other Daughters Tree
-TFile *f4 = new TFile("Data_Histograms.root"); // <-- File for Data Information
-TFile *f5 = new TFile("MC_Histograms.root"); // <-- File for New MC Information
-TFile *f6 = new TFile("MC_CCCoh_Histograms.root"); // <-- File for New MC CCCoh Information
-TFile *f7 = new TFile("MC_CCQE_Histograms.root"); // <-- File for New MC CCQE Information
-TFile *f8 = new TFile("MC_CCRes_Histograms.root"); // <-- File for New MC CCRes Information
-TFile *f9 = new TFile("MC_NCRes_Histograms.root"); // <-- File for New MC NCRes Information
-TFile *f10 = new TFile("MC_CCDIS_Histograms.root"); // <-- File for New MC CCDIS Information
-TFile *f11 = new TFile("MC_NCDIS_Histograms.root"); // <-- File for New MC NCDIS Information
-TFile *f12 = new TFile("MC_Other_Histograms.root"); // <-- File for New MC Other Information
-TFile *f13 = new TFile("CCCoh_Enhanced_Histograms.root"); // <-- File for New MC CCCoh Enhanced Information
+TFile *f4 = new TFile("Data_Histograms_BothPC.root"); // <-- File for Data Information
+TFile *f5 = new TFile("MC_Histograms_BothPC.root"); // <-- File for New MC Information
+TFile *f6 = new TFile("MC_CCCoh_Histograms_BothPC.root"); // <-- File for New MC CCCoh Information
+TFile *f7 = new TFile("MC_CCQE_Histograms_BothPC.root"); // <-- File for New MC CCQE Information
+TFile *f8 = new TFile("MC_CCRes_Histograms_BothPC.root"); // <-- File for New MC CCRes Information
+TFile *f9 = new TFile("MC_NCRes_Histograms_BothPC.root"); // <-- File for New MC NCRes Information
+TFile *f10 = new TFile("MC_CCDIS_Histograms_BothPC.root"); // <-- File for New MC CCDIS Information
+TFile *f11 = new TFile("MC_NCDIS_Histograms_BothPC.root"); // <-- File for New MC NCDIS Information
+TFile *f12 = new TFile("MC_Other_Histograms_BothPC.root"); // <-- File for New MC Other Information
+TFile *f13 = new TFile("CCCoh_Enhanced_Histograms_BothPC.root"); // <-- File for New MC CCCoh Enhanced Information
 
 
 
@@ -300,15 +300,6 @@ hDeltaAlphaTOther->Sumw2();
 hDeltaAlphaTPCOther->Sumw2();
 
 
-TH1D *hConeAngleFor2Tracks = (TH1D*)f4->Get("hConeAngleFor2Tracks");
-TH1D *hConeAngleFor2TracksReco = (TH1D*)f5->Get("hConeAngleFor2Tracks");
-TH1D *hConeAngleFor2TracksRecoCCCoh = (TH1D*)f6->Get("hConeAngleFor2Tracks");
-
-hConeAngleFor2Tracks->Sumw2();
-hConeAngleFor2TracksReco->Sumw2();
-hConeAngleFor2TracksRecoCCCoh->Sumw2();
-
-
 TH1D *hPionCandidateTrkLLRPIDScoreAfterVAData = (TH1D*)f4->Get("hPionCandidateTrkLLRPIDScoreAfterVA");
 TH1D *hPionCandidateTrkLLRPIDScoreAfterVAMC = (TH1D*)f5->Get("hPionCandidateTrkLLRPIDScoreAfterVA");
 TH1D *hPionCandidateTrkLLRPIDScoreAfterVACCCoh = (TH1D*)f6->Get("hPionCandidateTrkLLRPIDScoreAfterVA");
@@ -355,7 +346,7 @@ hPionCandidateTrkLLRPIDScoreAfterPCOther->Sumw2();
 hPionCandidateTrkLLRPIDScoreAfterPCCCCohEn->Sumw2();
 
 
-//TH1D *hVertexActivityData = (TH1D*)f4->Get("hVertexActivityFor2Tracks");
+TH1D *hVertexActivityData = (TH1D*)f4->Get("hVertexActivityFor2Tracks");
 TH1D *hVertexActivityMC = (TH1D*)f5->Get("hVertexActivityFor2Tracks");
 TH1D *hVertexActivityCCCoh = (TH1D*)f6->Get("hVertexActivityFor2Tracks");
 TH1D *hVertexActivityCCQE = (TH1D*)f7->Get("hVertexActivityFor2Tracks");
@@ -366,7 +357,7 @@ TH1D *hVertexActivityNCDIS = (TH1D*)f11->Get("hVertexActivityFor2Tracks");
 TH1D *hVertexActivityOther = (TH1D*)f12->Get("hVertexActivityFor2Tracks");
 TH1D *hVertexActivityCCCohEn = (TH1D*)f13->Get("hVertexActivityFor2Tracks");
 
-//hVertexActivityData->Sumw2();
+hVertexActivityData->Sumw2();
 hVertexActivityMC->Sumw2();
 hVertexActivityCCCoh->Sumw2();
 hVertexActivityCCQE->Sumw2();
@@ -378,7 +369,7 @@ hVertexActivityOther->Sumw2();
 hVertexActivityCCCohEn->Sumw2();
 
 
-//TH1D *hPionCandidateTrkLLRPIDScoreData = (TH1D*)f4->Get("hPionCandidateTrkLLRPIDScore");
+TH1D *hPionCandidateTrkLLRPIDScoreData = (TH1D*)f4->Get("hPionCandidateTrkLLRPIDScore");
 TH1D *hPionCandidateTrkLLRPIDScoreMC = (TH1D*)f5->Get("hPionCandidateTrkLLRPIDScore");
 TH1D *hPionCandidateTrkLLRPIDScoreCCCoh = (TH1D*)f6->Get("hPionCandidateTrkLLRPIDScore");
 TH1D *hPionCandidateTrkLLRPIDScoreCCQE = (TH1D*)f7->Get("hPionCandidateTrkLLRPIDScore");
@@ -389,7 +380,7 @@ TH1D *hPionCandidateTrkLLRPIDScoreNCDIS = (TH1D*)f11->Get("hPionCandidateTrkLLRP
 TH1D *hPionCandidateTrkLLRPIDScoreOther = (TH1D*)f12->Get("hPionCandidateTrkLLRPIDScore");
 TH1D *hPionCandidateTrkLLRPIDScoreCCCohEn = (TH1D*)f13->Get("hPionCandidateTrkLLRPIDScore");
 
-//hPionCandidateTrkLLRPIDScoreData->Sumw2();
+hPionCandidateTrkLLRPIDScoreData->Sumw2();
 hPionCandidateTrkLLRPIDScoreMC->Sumw2();
 hPionCandidateTrkLLRPIDScoreCCCoh->Sumw2();
 hPionCandidateTrkLLRPIDScoreCCQE->Sumw2();
@@ -399,6 +390,98 @@ hPionCandidateTrkLLRPIDScoreCCDIS->Sumw2();
 hPionCandidateTrkLLRPIDScoreNCDIS->Sumw2();
 hPionCandidateTrkLLRPIDScoreOther->Sumw2();
 hPionCandidateTrkLLRPIDScoreCCCohEn->Sumw2();
+
+
+TH1D *hMuonCandidateTrkLLRPIDScoreData = (TH1D*)f4->Get("hMuonCandidateTrkLLRPIDScore");
+TH1D *hMuonCandidateTrkLLRPIDScoreMC = (TH1D*)f5->Get("hMuonCandidateTrkLLRPIDScore");
+TH1D *hMuonCandidateTrkLLRPIDScoreCCCoh = (TH1D*)f6->Get("hMuonCandidateTrkLLRPIDScore");
+TH1D *hMuonCandidateTrkLLRPIDScoreCCQE = (TH1D*)f7->Get("hMuonCandidateTrkLLRPIDScore");
+TH1D *hMuonCandidateTrkLLRPIDScoreCCRes = (TH1D*)f8->Get("hMuonCandidateTrkLLRPIDScore");
+TH1D *hMuonCandidateTrkLLRPIDScoreNCRes = (TH1D*)f9->Get("hMuonCandidateTrkLLRPIDScore");
+TH1D *hMuonCandidateTrkLLRPIDScoreCCDIS = (TH1D*)f10->Get("hMuonCandidateTrkLLRPIDScore");
+TH1D *hMuonCandidateTrkLLRPIDScoreNCDIS = (TH1D*)f11->Get("hMuonCandidateTrkLLRPIDScore");
+TH1D *hMuonCandidateTrkLLRPIDScoreOther = (TH1D*)f12->Get("hMuonCandidateTrkLLRPIDScore");
+TH1D *hMuonCandidateTrkLLRPIDScoreCCCohEn = (TH1D*)f13->Get("hMuonCandidateTrkLLRPIDScore");
+
+hMuonCandidateTrkLLRPIDScoreData->Sumw2();
+hMuonCandidateTrkLLRPIDScoreMC->Sumw2();
+hMuonCandidateTrkLLRPIDScoreCCCoh->Sumw2();
+hMuonCandidateTrkLLRPIDScoreCCQE->Sumw2();
+hMuonCandidateTrkLLRPIDScoreCCRes->Sumw2();
+hMuonCandidateTrkLLRPIDScoreNCRes->Sumw2();
+hMuonCandidateTrkLLRPIDScoreCCDIS->Sumw2();
+hMuonCandidateTrkLLRPIDScoreNCDIS->Sumw2();
+hMuonCandidateTrkLLRPIDScoreOther->Sumw2();
+hMuonCandidateTrkLLRPIDScoreCCCohEn->Sumw2();
+
+
+TH1D *hConeAngleData = (TH1D*)f4->Get("hConeAngleFor2Tracks");
+TH1D *hConeAngleMC = (TH1D*)f5->Get("hConeAngleFor2Tracks");
+TH1D *hConeAngleCCCoh = (TH1D*)f6->Get("hConeAngleFor2Tracks");
+TH1D *hConeAngleCCQE = (TH1D*)f7->Get("hConeAngleFor2Tracks");
+TH1D *hConeAngleCCRes = (TH1D*)f8->Get("hConeAngleFor2Tracks");
+TH1D *hConeAngleNCRes = (TH1D*)f9->Get("hConeAngleFor2Tracks");
+TH1D *hConeAngleCCDIS = (TH1D*)f10->Get("hConeAngleFor2Tracks");
+TH1D *hConeAngleNCDIS = (TH1D*)f11->Get("hConeAngleFor2Tracks");
+TH1D *hConeAngleOther = (TH1D*)f12->Get("hConeAngleFor2Tracks");
+TH1D *hConeAngleCCCohEn = (TH1D*)f13->Get("hConeAngleFor2Tracks");
+
+hConeAngleData->Sumw2();
+hConeAngleMC->Sumw2();
+hConeAngleCCCoh->Sumw2();
+hConeAngleCCQE->Sumw2();
+hConeAngleCCRes->Sumw2();
+hConeAngleNCRes->Sumw2();
+hConeAngleCCDIS->Sumw2();
+hConeAngleNCDIS->Sumw2();
+hConeAngleOther->Sumw2();
+hConeAngleCCCohEn->Sumw2();
+
+
+TH1D *hOpeningAngleData = (TH1D*)f4->Get("hOpeningAngleFor2Tracks");
+TH1D *hOpeningAngleMC = (TH1D*)f5->Get("hOpeningAngleFor2Tracks");
+TH1D *hOpeningAngleCCCoh = (TH1D*)f6->Get("hOpeningAngleFor2Tracks");
+TH1D *hOpeningAngleCCQE = (TH1D*)f7->Get("hOpeningAngleFor2Tracks");
+TH1D *hOpeningAngleCCRes = (TH1D*)f8->Get("hOpeningAngleFor2Tracks");
+TH1D *hOpeningAngleNCRes = (TH1D*)f9->Get("hOpeningAngleFor2Tracks");
+TH1D *hOpeningAngleCCDIS = (TH1D*)f10->Get("hOpeningAngleFor2Tracks");
+TH1D *hOpeningAngleNCDIS = (TH1D*)f11->Get("hOpeningAngleFor2Tracks");
+TH1D *hOpeningAngleOther = (TH1D*)f12->Get("hOpeningAngleFor2Tracks");
+TH1D *hOpeningAngleCCCohEn = (TH1D*)f13->Get("hOpeningAngleFor2Tracks");
+
+hOpeningAngleData->Sumw2();
+hOpeningAngleMC->Sumw2();
+hOpeningAngleCCCoh->Sumw2();
+hOpeningAngleCCQE->Sumw2();
+hOpeningAngleCCRes->Sumw2();
+hOpeningAngleNCRes->Sumw2();
+hOpeningAngleCCDIS->Sumw2();
+hOpeningAngleNCDIS->Sumw2();
+hOpeningAngleOther->Sumw2();
+hOpeningAngleCCCohEn->Sumw2();
+
+
+TH1D *hOpeningAngleDataForPC = (TH1D*)f4->Get("hOpeningAngleForPionCandidate");
+TH1D *hOpeningAngleMCForPC = (TH1D*)f5->Get("hOpeningAngleForPionCandidate");
+TH1D *hOpeningAngleCCCohForPC = (TH1D*)f6->Get("hOpeningAngleForPionCandidate");
+TH1D *hOpeningAngleCCQEForPC = (TH1D*)f7->Get("hOpeningAngleForPionCandidate");
+TH1D *hOpeningAngleCCResForPC = (TH1D*)f8->Get("hOpeningAngleForPionCandidate");
+TH1D *hOpeningAngleNCResForPC = (TH1D*)f9->Get("hOpeningAngleForPionCandidate");
+TH1D *hOpeningAngleCCDISForPC = (TH1D*)f10->Get("hOpeningAngleForPionCandidate");
+TH1D *hOpeningAngleNCDISForPC = (TH1D*)f11->Get("hOpeningAngleForPionCandidate");
+TH1D *hOpeningAngleOtherForPC = (TH1D*)f12->Get("hOpeningAngleForPionCandidate");
+TH1D *hOpeningAngleCCCohEnForPC = (TH1D*)f13->Get("hOpeningAngleForPionCandidate");
+
+hOpeningAngleDataForPC->Sumw2();
+hOpeningAngleMCForPC->Sumw2();
+hOpeningAngleCCCohForPC->Sumw2();
+hOpeningAngleCCQEForPC->Sumw2();
+hOpeningAngleCCResForPC->Sumw2();
+hOpeningAngleNCResForPC->Sumw2();
+hOpeningAngleCCDISForPC->Sumw2();
+hOpeningAngleNCDISForPC->Sumw2();
+hOpeningAngleOtherForPC->Sumw2();
+hOpeningAngleCCCohEnForPC->Sumw2();
 
 
 // Creating the Stacked Histogram
@@ -418,14 +501,21 @@ THStack *hPNPCStacked = new THStack("hPNPCStacked", "PN Stacked for Events Passi
 THStack *hDeltaAlphaTStacked = new THStack("hDeltaAlphaTStacked", "Delta_AlphaT Stacked for Events Passing 2-Tracks Selection");
 THStack *hDeltaAlphaTPCStacked = new THStack("hDeltaAlphaTPCStacked", "Delta_AlphaT Stacked for Events Passing Pion Candidacy Selection");
 THStack *hConeAngleStacked = new THStack("hConeAngleStacked", "Cone Angle Stacked for Events Passing 2-Tracks Selection");
+THStack *hOpeningAngleStacked = new THStack("hOpeningAngleStacked", "Opening Angle Stacked for Events Passing 2-Tracks Selection");
+THStack *hOpeningAngleStackedForPC = new THStack("hOpeningAngleStackedForPC", "Opening Angle Stacked for Events Passing Pion Candidacy Selection");
 THStack *hPionCandidateTrkLLRPIDScoreAfterVAStacked = new THStack("hPionCandidateTrkLLRPIDScoreAfterVAStacked", "Pion Candidate LLR Stacked for Events Passing Vertex Activity Selection");
 THStack *hPionCandidateTrkLLRPIDScoreAfterPCStacked = new THStack("hPionCandidateTrkLLRPIDScoreAfterPCStacked", "Pion Candidate LLR Stacked for Events Passing Pion Candidacy Selection");
 THStack *hVertexActivityStacked = new THStack("hVertexActivityStacked", "Vertex Activity Stacked After 2-Tracks Selection");
 THStack *hPionCandidateTrkLLRPIDScoreStacked = new THStack("hPionCandidateTrkLLRPIDScoreStacked", "Pion Candidate LLR Stacked for Events Passing 2-Tracks Selection");
+THStack *hMuonCandidateTrkLLRPIDScoreStacked = new THStack("hMuonCandidateTrkLLRPIDScoreStacked", "Muon Candidate LLR Stacked for Events Passing 2-Tracks Selection");
 
 
-double Run1ScaleFactorMC = 0.05/1.2847059;
-double EnhancedCCCohScaleFactor = 172./7390.;
+//double Run1ScaleFactorMC = 0.05/1.2847059;
+//double Run1ScaleFactorMC = 0.0465663;
+//double Run1ScaleFactorMC = 0.0454/1.2847059;
+double Run1ScaleFactorMC = 0.0534/1.2847059;
+//double EnhancedCCCohScaleFactor = 172./7390.;
+double EnhancedCCCohScaleFactor = 150./7390.;
 
 
 
@@ -557,14 +647,14 @@ hTPCStacked->Add(hTPCRecoCCDIS);
 hTPCStacked->Add(hTPCRecoNCDIS);
 hTPCStacked->Add(hTPCRecoCCCohEn);
 
-//hTPC->Draw("E1");
-hTPCStacked->Draw("HIST");
-hTPCStacked->GetXaxis()->SetTitle("|t| [GeV^{2}]");
-hTPCStacked->GetXaxis()->CenterTitle();
-hTPCStacked->GetYaxis()->SetTitle("Number of Events");
-hTPCStacked->GetYaxis()->CenterTitle();
+hTPC->Draw("E1");
+hTPCStacked->Draw("HISTsame");
+hTPC->GetXaxis()->SetTitle("|t| [GeV^{2}]");
+hTPC->GetXaxis()->CenterTitle();
+hTPC->GetYaxis()->SetTitle("Number of Events");
+hTPC->GetYaxis()->CenterTitle();
 
-//hTPC->Draw("E1same");
+hTPC->Draw("E1same");
 c2->Modified();
 
 // ### Defining the legend for the plot ###
@@ -576,7 +666,7 @@ leg2->SetFillColor(kWhite);
 leg2->SetLineColor(kWhite);
 leg2->SetShadowColor(kWhite);
 leg2->SetHeader("Channel");
-//leg2->AddEntry(hTPC,"Data");
+leg2->AddEntry(hTPC,"Data");
 leg2->AddEntry(hTPCRecoCCCoh,"Reco CC-Coh");
 leg2->AddEntry(hTPCRecoCCQE,"Reco CC-QE");
 leg2->AddEntry(hTPCRecoCCRes,"Reco CC-Res");
@@ -637,14 +727,14 @@ hTOAStacked->Add(hTOARecoNCDIS);
 hTOAStacked->Add(hTOARecoCCCohEn);
 
 
-//hTOA->Draw("E1");
-hTOAStacked->Draw("HIST");
-hTOAStacked->GetXaxis()->SetTitle("|t| [GeV^{2}]");
-hTOAStacked->GetXaxis()->CenterTitle();
-hTOAStacked->GetYaxis()->SetTitle("Number of Events");
-hTOAStacked->GetYaxis()->CenterTitle();
+hTOA->Draw("E1");
+hTOAStacked->Draw("HISTsame");
+hTOA->GetXaxis()->SetTitle("|t| [GeV^{2}]");
+hTOA->GetXaxis()->CenterTitle();
+hTOA->GetYaxis()->SetTitle("Number of Events");
+hTOA->GetYaxis()->CenterTitle();
 
-//hTOA->Draw("E1same");
+hTOA->Draw("E1same");
 c3->Modified();
 
 // ### Defining the legend for the plot ###
@@ -656,7 +746,7 @@ leg3->SetFillColor(kWhite);
 leg3->SetLineColor(kWhite);
 leg3->SetShadowColor(kWhite);
 leg3->SetHeader("Channel");
-//leg3->AddEntry(hTOA,"Data");
+leg3->AddEntry(hTOA,"Data");
 leg3->AddEntry(hTOARecoCCCoh,"Reco CC-Coh");
 leg3->AddEntry(hTOARecoCCQE,"Reco CC-QE");
 leg3->AddEntry(hTOARecoCCRes,"Reco CC-Res");
@@ -1506,15 +1596,15 @@ hPionCandidateTrkLLRPIDScoreAfterVAStacked->Add(hPionCandidateTrkLLRPIDScoreAfte
 hPionCandidateTrkLLRPIDScoreAfterVAStacked->Add(hPionCandidateTrkLLRPIDScoreAfterVANCDIS);
 hPionCandidateTrkLLRPIDScoreAfterVAStacked->Add(hPionCandidateTrkLLRPIDScoreAfterVACCCohEn);
 
-//hPionCandidateTrkLLRPIDScoreAfterVAData->Draw("E1");
-hPionCandidateTrkLLRPIDScoreAfterVAStacked->Draw("HIST");
-hPionCandidateTrkLLRPIDScoreAfterVAStacked->GetXaxis()->SetTitle("LLR");
-hPionCandidateTrkLLRPIDScoreAfterVAStacked->GetXaxis()->CenterTitle();
-//hPionCandidateTrkLLRPIDScoreAfterVAStacked->GetXaxis()->SetRangeUser(0, 3);
-hPionCandidateTrkLLRPIDScoreAfterVAStacked->GetYaxis()->SetTitle("Number of Events");
-hPionCandidateTrkLLRPIDScoreAfterVAStacked->GetYaxis()->CenterTitle();
+hPionCandidateTrkLLRPIDScoreAfterVAData->Draw("E1");
+hPionCandidateTrkLLRPIDScoreAfterVAStacked->Draw("HISTsame");
+hPionCandidateTrkLLRPIDScoreAfterVAData->GetXaxis()->SetTitle("LLR");
+hPionCandidateTrkLLRPIDScoreAfterVAData->GetXaxis()->CenterTitle();
+//hPionCandidateTrkLLRPIDScoreAfterVAData->GetXaxis()->SetRangeUser(0, 3);
+hPionCandidateTrkLLRPIDScoreAfterVAData->GetYaxis()->SetTitle("Number of Events");
+hPionCandidateTrkLLRPIDScoreAfterVAData->GetYaxis()->CenterTitle();
 
-//hPionCandidateTrkLLRPIDScoreAfterVAData->Draw("E1same");
+hPionCandidateTrkLLRPIDScoreAfterVAData->Draw("E1same");
 c14->Modified();
 
 // ### Defining the legend for the plot ###
@@ -1594,15 +1684,15 @@ hPionCandidateTrkLLRPIDScoreAfterPCStacked->Add(hPionCandidateTrkLLRPIDScoreAfte
 hPionCandidateTrkLLRPIDScoreAfterPCStacked->Add(hPionCandidateTrkLLRPIDScoreAfterPCNCDIS);
 hPionCandidateTrkLLRPIDScoreAfterPCStacked->Add(hPionCandidateTrkLLRPIDScoreAfterPCCCCohEn);
 
-//hPionCandidateTrkLLRPIDScoreAfterPCData->Draw("E1");
-hPionCandidateTrkLLRPIDScoreAfterPCStacked->Draw("HIST");
-hPionCandidateTrkLLRPIDScoreAfterPCStacked->GetXaxis()->SetTitle("LLR");
-hPionCandidateTrkLLRPIDScoreAfterPCStacked->GetXaxis()->CenterTitle();
-//hPionCandidateTrkLLRPIDScoreAfterPCStacked->GetXaxis()->SetRangeUser(0, 3);
-hPionCandidateTrkLLRPIDScoreAfterPCStacked->GetYaxis()->SetTitle("Number of Events");
-hPionCandidateTrkLLRPIDScoreAfterPCStacked->GetYaxis()->CenterTitle();
+hPionCandidateTrkLLRPIDScoreAfterPCData->Draw("E1");
+hPionCandidateTrkLLRPIDScoreAfterPCStacked->Draw("HISTsame");
+hPionCandidateTrkLLRPIDScoreAfterPCData->GetXaxis()->SetTitle("LLR");
+hPionCandidateTrkLLRPIDScoreAfterPCData->GetXaxis()->CenterTitle();
+//hPionCandidateTrkLLRPIDScoreAfterPCData->GetXaxis()->SetRangeUser(0, 3);
+hPionCandidateTrkLLRPIDScoreAfterPCData->GetYaxis()->SetTitle("Number of Events");
+hPionCandidateTrkLLRPIDScoreAfterPCData->GetYaxis()->CenterTitle();
 
-//hPionCandidateTrkLLRPIDScoreAfterPCData->Draw("E1same");
+hPionCandidateTrkLLRPIDScoreAfterPCData->Draw("E1same");
 c15->Modified();
 
 // ### Defining the legend for the plot ###
@@ -1614,7 +1704,7 @@ leg15->SetFillColor(kWhite);
 leg15->SetLineColor(kWhite);
 leg15->SetShadowColor(kWhite);
 leg15->SetHeader("Channel");
-//leg15->AddEntry(hPionCandidateTrkLLRPIDScoreAfterPCData,"Data");
+leg15->AddEntry(hPionCandidateTrkLLRPIDScoreAfterPCData,"Data");
 leg15->AddEntry(hPionCandidateTrkLLRPIDScoreAfterPCCCCoh,"Reco CC-Coh");
 leg15->AddEntry(hPionCandidateTrkLLRPIDScoreAfterPCCCQE,"Reco CC-QE");
 leg15->AddEntry(hPionCandidateTrkLLRPIDScoreAfterPCCCRes,"Reco CC-Res");
@@ -1632,10 +1722,10 @@ TCanvas *c16 = new TCanvas("c16", "Stacked Vertex Activity");
 c16->SetTicks();
 c16->SetFillColor(kWhite);
 
-//hVertexActivityData->SetLineColor(kBlack);
-//hVertexActivityData->SetLineWidth(2);
-//hVertexActivityData->Rebin(200);
-//hVertexActivityData->SetMarkerStyle(20);
+hVertexActivityData->SetLineColor(kBlack);
+hVertexActivityData->SetLineWidth(2);
+hVertexActivityData->Rebin(200);
+hVertexActivityData->SetMarkerStyle(20);
 hVertexActivityCCCoh->SetFillColor(kBlue);
 hVertexActivityCCCoh->SetLineColor(kBlack);
 hVertexActivityCCCoh->Scale(Run1ScaleFactorMC);
@@ -1682,15 +1772,15 @@ hVertexActivityStacked->Add(hVertexActivityCCDIS);
 hVertexActivityStacked->Add(hVertexActivityNCDIS);
 hVertexActivityStacked->Add(hVertexActivityCCCohEn);
 
-//hVertexActivityData->Draw("E1");
-hVertexActivityStacked->Draw("HIST");
-hVertexActivityStacked->GetXaxis()->SetTitle("Vertex Activity [MeV]");
-hVertexActivityStacked->GetXaxis()->CenterTitle();
-//hVertexActivityStacked->GetXaxis()->SetRangeUser(0, 3);
-hVertexActivityStacked->GetYaxis()->SetTitle("Number of Events");
-hVertexActivityStacked->GetYaxis()->CenterTitle();
+hVertexActivityData->Draw("E1");
+hVertexActivityStacked->Draw("HISTsame");
+hVertexActivityData->GetXaxis()->SetTitle("Vertex Activity [MeV]");
+hVertexActivityData->GetXaxis()->CenterTitle();
+hVertexActivityData->GetXaxis()->SetRangeUser(0, 500);
+hVertexActivityData->GetYaxis()->SetTitle("Number of Events");
+hVertexActivityData->GetYaxis()->CenterTitle();
 
-//hVertexActivityData->Draw("E1same");
+hVertexActivityData->Draw("E1same");
 c16->Modified();
 
 // ### Defining the legend for the plot ###
@@ -1702,7 +1792,7 @@ leg16->SetFillColor(kWhite);
 leg16->SetLineColor(kWhite);
 leg16->SetShadowColor(kWhite);
 leg16->SetHeader("Channel");
-//leg16->AddEntry(hVertexActivityData,"Data");
+leg16->AddEntry(hVertexActivityData,"Data");
 leg16->AddEntry(hVertexActivityCCCoh,"Reco CC-Coh");
 leg16->AddEntry(hVertexActivityCCQE,"Reco CC-QE");
 leg16->AddEntry(hVertexActivityCCRes,"Reco CC-Res");
@@ -1720,10 +1810,10 @@ TCanvas *c17 = new TCanvas("c17", "Stacked Pion Candidates LLR After 2-Tracks Se
 c17->SetTicks();
 c17->SetFillColor(kWhite);
 
-//hPionCandidateTrkLLRPIDScoreData->SetLineColor(kBlack);
-//hPionCandidateTrkLLRPIDScoreData->SetLineWidth(2);
-//hPionCandidateTrkLLRPIDScoreData->Rebin(25);
-//hPionCandidateTrkLLRPIDScoreData->SetMarkerStyle(20);
+hPionCandidateTrkLLRPIDScoreData->SetLineColor(kBlack);
+hPionCandidateTrkLLRPIDScoreData->SetLineWidth(2);
+hPionCandidateTrkLLRPIDScoreData->Rebin(25);
+hPionCandidateTrkLLRPIDScoreData->SetMarkerStyle(20);
 hPionCandidateTrkLLRPIDScoreCCCoh->SetFillColor(kBlue);
 hPionCandidateTrkLLRPIDScoreCCCoh->SetLineColor(kBlack);
 hPionCandidateTrkLLRPIDScoreCCCoh->Scale(Run1ScaleFactorMC);
@@ -1770,15 +1860,15 @@ hPionCandidateTrkLLRPIDScoreStacked->Add(hPionCandidateTrkLLRPIDScoreCCDIS);
 hPionCandidateTrkLLRPIDScoreStacked->Add(hPionCandidateTrkLLRPIDScoreNCDIS);
 hPionCandidateTrkLLRPIDScoreStacked->Add(hPionCandidateTrkLLRPIDScoreCCCohEn);
 
-//hPionCandidateTrkLLRPIDScoreData->Draw("E1");
-hPionCandidateTrkLLRPIDScoreStacked->Draw("HIST");
-hPionCandidateTrkLLRPIDScoreStacked->GetXaxis()->SetTitle("LLR");
-hPionCandidateTrkLLRPIDScoreStacked->GetXaxis()->CenterTitle();
-//hPionCandidateTrkLLRPIDScoreStacked->GetXaxis()->SetRangeUser(0, 3);
-hPionCandidateTrkLLRPIDScoreStacked->GetYaxis()->SetTitle("Number of Events");
-hPionCandidateTrkLLRPIDScoreStacked->GetYaxis()->CenterTitle();
+hPionCandidateTrkLLRPIDScoreData->Draw("E1");
+hPionCandidateTrkLLRPIDScoreStacked->Draw("HISTsame");
+hPionCandidateTrkLLRPIDScoreData->GetXaxis()->SetTitle("LLR");
+hPionCandidateTrkLLRPIDScoreData->GetXaxis()->CenterTitle();
+//hPionCandidateTrkLLRPIDScoreData->GetXaxis()->SetRangeUser(0, 3);
+hPionCandidateTrkLLRPIDScoreData->GetYaxis()->SetTitle("Number of Events");
+hPionCandidateTrkLLRPIDScoreData->GetYaxis()->CenterTitle();
 
-//hPionCandidateTrkLLRPIDScoreData->Draw("E1same");
+hPionCandidateTrkLLRPIDScoreData->Draw("E1same");
 c17->Modified();
 
 // ### Defining the legend for the plot ###
@@ -1790,7 +1880,7 @@ leg17->SetFillColor(kWhite);
 leg17->SetLineColor(kWhite);
 leg17->SetShadowColor(kWhite);
 leg17->SetHeader("Channel");
-//leg17->AddEntry(hPionCandidateTrkLLRPIDScoreData,"Data");
+leg17->AddEntry(hPionCandidateTrkLLRPIDScoreData,"Data");
 leg17->AddEntry(hPionCandidateTrkLLRPIDScoreCCCoh,"Reco CC-Coh");
 leg17->AddEntry(hPionCandidateTrkLLRPIDScoreCCQE,"Reco CC-QE");
 leg17->AddEntry(hPionCandidateTrkLLRPIDScoreCCRes,"Reco CC-Res");
@@ -1799,4 +1889,356 @@ leg17->AddEntry(hPionCandidateTrkLLRPIDScoreCCDIS,"Reco CC-DIS");
 leg17->AddEntry(hPionCandidateTrkLLRPIDScoreNCDIS,"Reco NC-DIS");
 leg17->AddEntry(hPionCandidateTrkLLRPIDScoreMC,"Reco Other");
 leg17->Draw();
+
+
+
+
+
+TCanvas *c18 = new TCanvas("c18", "Stacked Muon Candidates LLR After 2-Tracks Selection");
+c18->SetTicks();
+c18->SetFillColor(kWhite);
+
+hMuonCandidateTrkLLRPIDScoreData->SetLineColor(kBlack);
+hMuonCandidateTrkLLRPIDScoreData->SetLineWidth(2);
+hMuonCandidateTrkLLRPIDScoreData->Rebin(25);
+hMuonCandidateTrkLLRPIDScoreData->SetMarkerStyle(20);
+hMuonCandidateTrkLLRPIDScoreCCCoh->SetFillColor(kBlue);
+hMuonCandidateTrkLLRPIDScoreCCCoh->SetLineColor(kBlack);
+hMuonCandidateTrkLLRPIDScoreCCCoh->Scale(Run1ScaleFactorMC);
+hMuonCandidateTrkLLRPIDScoreCCCoh->Rebin(25);
+hMuonCandidateTrkLLRPIDScoreCCQE->SetFillColor(kViolet);
+hMuonCandidateTrkLLRPIDScoreCCQE->SetLineColor(kBlack);
+hMuonCandidateTrkLLRPIDScoreCCQE->Scale(Run1ScaleFactorMC);
+hMuonCandidateTrkLLRPIDScoreCCQE->Rebin(25);
+hMuonCandidateTrkLLRPIDScoreCCRes->SetFillColor(kRed);
+hMuonCandidateTrkLLRPIDScoreCCRes->SetLineColor(kBlack);
+hMuonCandidateTrkLLRPIDScoreCCRes->Scale(Run1ScaleFactorMC);
+hMuonCandidateTrkLLRPIDScoreCCRes->Rebin(25);
+hMuonCandidateTrkLLRPIDScoreNCRes->SetFillColor(kGreen);
+hMuonCandidateTrkLLRPIDScoreNCRes->SetLineColor(kBlack);
+hMuonCandidateTrkLLRPIDScoreNCRes->Scale(Run1ScaleFactorMC);
+hMuonCandidateTrkLLRPIDScoreNCRes->Rebin(25);
+hMuonCandidateTrkLLRPIDScoreCCDIS->SetFillColor(kCyan-8);
+hMuonCandidateTrkLLRPIDScoreCCDIS->SetLineColor(kBlack);
+hMuonCandidateTrkLLRPIDScoreCCDIS->Scale(Run1ScaleFactorMC);
+hMuonCandidateTrkLLRPIDScoreCCDIS->Rebin(25);
+hMuonCandidateTrkLLRPIDScoreNCDIS->SetFillColor(kGray);
+hMuonCandidateTrkLLRPIDScoreNCDIS->SetLineColor(kBlack);
+hMuonCandidateTrkLLRPIDScoreNCDIS->Scale(Run1ScaleFactorMC);
+hMuonCandidateTrkLLRPIDScoreNCDIS->Rebin(25);
+hMuonCandidateTrkLLRPIDScoreCCCohEn->SetFillColor(kBlue);
+hMuonCandidateTrkLLRPIDScoreCCCohEn->SetLineColor(kBlack);
+hMuonCandidateTrkLLRPIDScoreCCCohEn->Scale(EnhancedCCCohScaleFactor*Run1ScaleFactorMC);
+hMuonCandidateTrkLLRPIDScoreCCCohEn->Rebin(25);
+hMuonCandidateTrkLLRPIDScoreMC->SetFillColor(kOrange);
+hMuonCandidateTrkLLRPIDScoreMC->SetLineColor(kBlack);
+hMuonCandidateTrkLLRPIDScoreMC->Scale(Run1ScaleFactorMC);
+hMuonCandidateTrkLLRPIDScoreMC->Rebin(25);
+hMuonCandidateTrkLLRPIDScoreMC->Add(hMuonCandidateTrkLLRPIDScoreCCCoh, -1);
+hMuonCandidateTrkLLRPIDScoreMC->Add(hMuonCandidateTrkLLRPIDScoreCCQE, -1);
+hMuonCandidateTrkLLRPIDScoreMC->Add(hMuonCandidateTrkLLRPIDScoreCCRes, -1);
+hMuonCandidateTrkLLRPIDScoreMC->Add(hMuonCandidateTrkLLRPIDScoreNCRes, -1);
+hMuonCandidateTrkLLRPIDScoreMC->Add(hMuonCandidateTrkLLRPIDScoreCCDIS, -1);
+hMuonCandidateTrkLLRPIDScoreMC->Add(hMuonCandidateTrkLLRPIDScoreNCDIS, -1);
+hMuonCandidateTrkLLRPIDScoreStacked->Add(hMuonCandidateTrkLLRPIDScoreMC);
+hMuonCandidateTrkLLRPIDScoreStacked->Add(hMuonCandidateTrkLLRPIDScoreCCQE);
+hMuonCandidateTrkLLRPIDScoreStacked->Add(hMuonCandidateTrkLLRPIDScoreCCRes);
+hMuonCandidateTrkLLRPIDScoreStacked->Add(hMuonCandidateTrkLLRPIDScoreNCRes);
+hMuonCandidateTrkLLRPIDScoreStacked->Add(hMuonCandidateTrkLLRPIDScoreCCDIS);
+hMuonCandidateTrkLLRPIDScoreStacked->Add(hMuonCandidateTrkLLRPIDScoreNCDIS);
+hMuonCandidateTrkLLRPIDScoreStacked->Add(hMuonCandidateTrkLLRPIDScoreCCCohEn);
+
+hMuonCandidateTrkLLRPIDScoreData->Draw("E1");
+hMuonCandidateTrkLLRPIDScoreStacked->Draw("HISTsame");
+hMuonCandidateTrkLLRPIDScoreData->GetXaxis()->SetTitle("LLR");
+hMuonCandidateTrkLLRPIDScoreData->GetXaxis()->CenterTitle();
+//hMuonCandidateTrkLLRPIDScoreData->GetXaxis()->SetRangeUser(0, 3);
+hMuonCandidateTrkLLRPIDScoreData->GetYaxis()->SetTitle("Number of Events");
+hMuonCandidateTrkLLRPIDScoreData->GetYaxis()->CenterTitle();
+
+hMuonCandidateTrkLLRPIDScoreData->Draw("E1same");
+c18->Modified();
+
+// ### Defining the legend for the plot ###
+TLegend *leg18 = new TLegend();
+leg18 = new TLegend(0.58,0.65,1.00,1.00);
+leg18->SetTextSize(0.04);
+leg18->SetTextAlign(12);
+leg18->SetFillColor(kWhite);
+leg18->SetLineColor(kWhite);
+leg18->SetShadowColor(kWhite);
+leg18->SetHeader("Channel");
+leg18->AddEntry(hMuonCandidateTrkLLRPIDScoreData,"Data");
+leg18->AddEntry(hMuonCandidateTrkLLRPIDScoreCCCoh,"Reco CC-Coh");
+leg18->AddEntry(hMuonCandidateTrkLLRPIDScoreCCQE,"Reco CC-QE");
+leg18->AddEntry(hMuonCandidateTrkLLRPIDScoreCCRes,"Reco CC-Res");
+leg18->AddEntry(hMuonCandidateTrkLLRPIDScoreNCRes,"Reco NC-Res");
+leg18->AddEntry(hMuonCandidateTrkLLRPIDScoreCCDIS,"Reco CC-DIS");
+leg18->AddEntry(hMuonCandidateTrkLLRPIDScoreNCDIS,"Reco NC-DIS");
+leg18->AddEntry(hMuonCandidateTrkLLRPIDScoreMC,"Reco Other");
+leg18->Draw();
+
+
+
+
+
+TCanvas *c19 = new TCanvas("c19", "Stacked Cone Angle");
+c19->SetTicks();
+c19->SetFillColor(kWhite);
+
+hConeAngleData->SetLineColor(kBlack);
+hConeAngleData->SetLineWidth(2);
+hConeAngleData->Rebin(10);
+hConeAngleData->SetMarkerStyle(20);
+hConeAngleCCCoh->SetFillColor(kBlue);
+hConeAngleCCCoh->SetLineColor(kBlack);
+hConeAngleCCCoh->Scale(Run1ScaleFactorMC);
+hConeAngleCCCoh->Rebin(10);
+hConeAngleCCQE->SetFillColor(kViolet);
+hConeAngleCCQE->SetLineColor(kBlack);
+hConeAngleCCQE->Scale(Run1ScaleFactorMC);
+hConeAngleCCQE->Rebin(10);
+hConeAngleCCRes->SetFillColor(kRed);
+hConeAngleCCRes->SetLineColor(kBlack);
+hConeAngleCCRes->Scale(Run1ScaleFactorMC);
+hConeAngleCCRes->Rebin(10);
+hConeAngleNCRes->SetFillColor(kGreen);
+hConeAngleNCRes->SetLineColor(kBlack);
+hConeAngleNCRes->Scale(Run1ScaleFactorMC);
+hConeAngleNCRes->Rebin(10);
+hConeAngleCCDIS->SetFillColor(kCyan-8);
+hConeAngleCCDIS->SetLineColor(kBlack);
+hConeAngleCCDIS->Scale(Run1ScaleFactorMC);
+hConeAngleCCDIS->Rebin(10);
+hConeAngleNCDIS->SetFillColor(kGray);
+hConeAngleNCDIS->SetLineColor(kBlack);
+hConeAngleNCDIS->Scale(Run1ScaleFactorMC);
+hConeAngleNCDIS->Rebin(10);
+hConeAngleCCCohEn->SetFillColor(kBlue);
+hConeAngleCCCohEn->SetLineColor(kBlack);
+hConeAngleCCCohEn->Scale(EnhancedCCCohScaleFactor*Run1ScaleFactorMC);
+hConeAngleCCCohEn->Rebin(10);
+hConeAngleMC->SetFillColor(kOrange);
+hConeAngleMC->SetLineColor(kBlack);
+hConeAngleMC->Scale(Run1ScaleFactorMC);
+hConeAngleMC->Rebin(10);
+hConeAngleMC->Add(hConeAngleCCCoh, -1);
+hConeAngleMC->Add(hConeAngleCCQE, -1);
+hConeAngleMC->Add(hConeAngleCCRes, -1);
+hConeAngleMC->Add(hConeAngleNCRes, -1);
+hConeAngleMC->Add(hConeAngleCCDIS, -1);
+hConeAngleMC->Add(hConeAngleNCDIS, -1);
+hConeAngleStacked->Add(hConeAngleMC);
+hConeAngleStacked->Add(hConeAngleCCQE);
+hConeAngleStacked->Add(hConeAngleCCRes);
+hConeAngleStacked->Add(hConeAngleNCRes);
+hConeAngleStacked->Add(hConeAngleCCDIS);
+hConeAngleStacked->Add(hConeAngleNCDIS);
+hConeAngleStacked->Add(hConeAngleCCCohEn);
+
+hConeAngleData->Draw("E1");
+hConeAngleStacked->Draw("HISTsame");
+hConeAngleData->GetXaxis()->SetTitle("Cone Angle [Degrees]");
+hConeAngleData->GetXaxis()->CenterTitle();
+hConeAngleData->GetXaxis()->SetRangeUser(0, 180);
+hConeAngleData->GetYaxis()->SetTitle("Number of Events");
+hConeAngleData->GetYaxis()->CenterTitle();
+
+hConeAngleData->Draw("E1same");
+c19->Modified();
+
+// ### Defining the legend for the plot ###
+TLegend *leg19 = new TLegend();
+leg19 = new TLegend(0.58,0.65,1.00,1.00);
+leg19->SetTextSize(0.04);
+leg19->SetTextAlign(12);
+leg19->SetFillColor(kWhite);
+leg19->SetLineColor(kWhite);
+leg19->SetShadowColor(kWhite);
+leg19->SetHeader("Channel");
+leg19->AddEntry(hConeAngleData,"Data");
+leg19->AddEntry(hConeAngleCCCoh,"Reco CC-Coh");
+leg19->AddEntry(hConeAngleCCQE,"Reco CC-QE");
+leg19->AddEntry(hConeAngleCCRes,"Reco CC-Res");
+leg19->AddEntry(hConeAngleNCRes,"Reco NC-Res");
+leg19->AddEntry(hConeAngleCCDIS,"Reco CC-DIS");
+leg19->AddEntry(hConeAngleNCDIS,"Reco NC-DIS");
+leg19->AddEntry(hConeAngleMC,"Reco Other");
+leg19->Draw();
+
+
+
+
+
+TCanvas *c20 = new TCanvas("c20", "Stacked Opening Angle");
+c20->SetTicks();
+c20->SetFillColor(kWhite);
+
+hOpeningAngleData->SetLineColor(kBlack);
+hOpeningAngleData->SetLineWidth(2);
+hOpeningAngleData->Rebin(10);
+hOpeningAngleData->SetMarkerStyle(20);
+hOpeningAngleCCCoh->SetFillColor(kBlue);
+hOpeningAngleCCCoh->SetLineColor(kBlack);
+hOpeningAngleCCCoh->Scale(Run1ScaleFactorMC);
+hOpeningAngleCCCoh->Rebin(10);
+hOpeningAngleCCQE->SetFillColor(kViolet);
+hOpeningAngleCCQE->SetLineColor(kBlack);
+hOpeningAngleCCQE->Scale(Run1ScaleFactorMC);
+hOpeningAngleCCQE->Rebin(10);
+hOpeningAngleCCRes->SetFillColor(kRed);
+hOpeningAngleCCRes->SetLineColor(kBlack);
+hOpeningAngleCCRes->Scale(Run1ScaleFactorMC);
+hOpeningAngleCCRes->Rebin(10);
+hOpeningAngleNCRes->SetFillColor(kGreen);
+hOpeningAngleNCRes->SetLineColor(kBlack);
+hOpeningAngleNCRes->Scale(Run1ScaleFactorMC);
+hOpeningAngleNCRes->Rebin(10);
+hOpeningAngleCCDIS->SetFillColor(kCyan-8);
+hOpeningAngleCCDIS->SetLineColor(kBlack);
+hOpeningAngleCCDIS->Scale(Run1ScaleFactorMC);
+hOpeningAngleCCDIS->Rebin(10);
+hOpeningAngleNCDIS->SetFillColor(kGray);
+hOpeningAngleNCDIS->SetLineColor(kBlack);
+hOpeningAngleNCDIS->Scale(Run1ScaleFactorMC);
+hOpeningAngleNCDIS->Rebin(10);
+hOpeningAngleCCCohEn->SetFillColor(kBlue);
+hOpeningAngleCCCohEn->SetLineColor(kBlack);
+hOpeningAngleCCCohEn->Scale(EnhancedCCCohScaleFactor*Run1ScaleFactorMC);
+hOpeningAngleCCCohEn->Rebin(10);
+hOpeningAngleMC->SetFillColor(kOrange);
+hOpeningAngleMC->SetLineColor(kBlack);
+hOpeningAngleMC->Scale(Run1ScaleFactorMC);
+hOpeningAngleMC->Rebin(10);
+hOpeningAngleMC->Add(hOpeningAngleCCCoh, -1);
+hOpeningAngleMC->Add(hOpeningAngleCCQE, -1);
+hOpeningAngleMC->Add(hOpeningAngleCCRes, -1);
+hOpeningAngleMC->Add(hOpeningAngleNCRes, -1);
+hOpeningAngleMC->Add(hOpeningAngleCCDIS, -1);
+hOpeningAngleMC->Add(hOpeningAngleNCDIS, -1);
+hOpeningAngleStacked->Add(hOpeningAngleMC);
+hOpeningAngleStacked->Add(hOpeningAngleCCQE);
+hOpeningAngleStacked->Add(hOpeningAngleCCRes);
+hOpeningAngleStacked->Add(hOpeningAngleNCRes);
+hOpeningAngleStacked->Add(hOpeningAngleCCDIS);
+hOpeningAngleStacked->Add(hOpeningAngleNCDIS);
+hOpeningAngleStacked->Add(hOpeningAngleCCCohEn);
+
+hOpeningAngleData->Draw("E1");
+hOpeningAngleStacked->Draw("HISTsame");
+hOpeningAngleData->GetXaxis()->SetTitle("#theta_{#mu#pi} [Degrees]");
+hOpeningAngleData->GetXaxis()->CenterTitle();
+hOpeningAngleData->GetXaxis()->SetRangeUser(0, 180);
+hOpeningAngleData->GetYaxis()->SetTitle("Number of Events");
+hOpeningAngleData->GetYaxis()->CenterTitle();
+
+hOpeningAngleData->Draw("E1same");
+c20->Modified();
+
+// ### Defining the legend for the plot ###
+TLegend *leg20 = new TLegend();
+leg20 = new TLegend(0.58,0.65,1.00,1.00);
+leg20->SetTextSize(0.04);
+leg20->SetTextAlign(12);
+leg20->SetFillColor(kWhite);
+leg20->SetLineColor(kWhite);
+leg20->SetShadowColor(kWhite);
+leg20->SetHeader("Channel");
+leg20->AddEntry(hOpeningAngleData,"Data");
+leg20->AddEntry(hOpeningAngleCCCoh,"Reco CC-Coh");
+leg20->AddEntry(hOpeningAngleCCQE,"Reco CC-QE");
+leg20->AddEntry(hOpeningAngleCCRes,"Reco CC-Res");
+leg20->AddEntry(hOpeningAngleNCRes,"Reco NC-Res");
+leg20->AddEntry(hOpeningAngleCCDIS,"Reco CC-DIS");
+leg20->AddEntry(hOpeningAngleNCDIS,"Reco NC-DIS");
+leg20->AddEntry(hOpeningAngleMC,"Reco Other");
+leg20->Draw();
+
+
+
+
+
+TCanvas *c21 = new TCanvas("c21", "Stacked Opening Angle After Pion Candidacy");
+c21->SetTicks();
+c21->SetFillColor(kWhite);
+
+hOpeningAngleDataForPC->SetLineColor(kBlack);
+hOpeningAngleDataForPC->SetLineWidth(2);
+hOpeningAngleDataForPC->Rebin(10);
+hOpeningAngleDataForPC->SetMarkerStyle(20);
+hOpeningAngleCCCohForPC->SetFillColor(kBlue);
+hOpeningAngleCCCohForPC->SetLineColor(kBlack);
+hOpeningAngleCCCohForPC->Scale(Run1ScaleFactorMC);
+hOpeningAngleCCCohForPC->Rebin(10);
+hOpeningAngleCCQEForPC->SetFillColor(kViolet);
+hOpeningAngleCCQEForPC->SetLineColor(kBlack);
+hOpeningAngleCCQEForPC->Scale(Run1ScaleFactorMC);
+hOpeningAngleCCQEForPC->Rebin(10);
+hOpeningAngleCCResForPC->SetFillColor(kRed);
+hOpeningAngleCCResForPC->SetLineColor(kBlack);
+hOpeningAngleCCResForPC->Scale(Run1ScaleFactorMC);
+hOpeningAngleCCResForPC->Rebin(10);
+hOpeningAngleNCResForPC->SetFillColor(kGreen);
+hOpeningAngleNCResForPC->SetLineColor(kBlack);
+hOpeningAngleNCResForPC->Scale(Run1ScaleFactorMC);
+hOpeningAngleNCResForPC->Rebin(10);
+hOpeningAngleCCDISForPC->SetFillColor(kCyan-8);
+hOpeningAngleCCDISForPC->SetLineColor(kBlack);
+hOpeningAngleCCDISForPC->Scale(Run1ScaleFactorMC);
+hOpeningAngleCCDISForPC->Rebin(10);
+hOpeningAngleNCDISForPC->SetFillColor(kGray);
+hOpeningAngleNCDISForPC->SetLineColor(kBlack);
+hOpeningAngleNCDISForPC->Scale(Run1ScaleFactorMC);
+hOpeningAngleNCDISForPC->Rebin(10);
+hOpeningAngleCCCohEnForPC->SetFillColor(kBlue);
+hOpeningAngleCCCohEnForPC->SetLineColor(kBlack);
+hOpeningAngleCCCohEnForPC->Scale(EnhancedCCCohScaleFactor*Run1ScaleFactorMC);
+hOpeningAngleCCCohEnForPC->Rebin(10);
+hOpeningAngleMCForPC->SetFillColor(kOrange);
+hOpeningAngleMCForPC->SetLineColor(kBlack);
+hOpeningAngleMCForPC->Scale(Run1ScaleFactorMC);
+hOpeningAngleMCForPC->Rebin(10);
+hOpeningAngleMCForPC->Add(hOpeningAngleCCCohForPC, -1);
+hOpeningAngleMCForPC->Add(hOpeningAngleCCQEForPC, -1);
+hOpeningAngleMCForPC->Add(hOpeningAngleCCResForPC, -1);
+hOpeningAngleMCForPC->Add(hOpeningAngleNCResForPC, -1);
+hOpeningAngleMCForPC->Add(hOpeningAngleCCDISForPC, -1);
+hOpeningAngleMCForPC->Add(hOpeningAngleNCDISForPC, -1);
+hOpeningAngleStackedForPC->Add(hOpeningAngleMCForPC);
+hOpeningAngleStackedForPC->Add(hOpeningAngleCCQEForPC);
+hOpeningAngleStackedForPC->Add(hOpeningAngleCCResForPC);
+hOpeningAngleStackedForPC->Add(hOpeningAngleNCResForPC);
+hOpeningAngleStackedForPC->Add(hOpeningAngleCCDISForPC);
+hOpeningAngleStackedForPC->Add(hOpeningAngleNCDISForPC);
+hOpeningAngleStackedForPC->Add(hOpeningAngleCCCohEnForPC);
+
+hOpeningAngleDataForPC->Draw("E1");
+hOpeningAngleStackedForPC->Draw("HISTsame");
+hOpeningAngleDataForPC->GetXaxis()->SetTitle("#theta_{#mu#pi} [Degrees]");
+hOpeningAngleDataForPC->GetXaxis()->CenterTitle();
+hOpeningAngleDataForPC->GetXaxis()->SetRangeUser(0, 180);
+hOpeningAngleDataForPC->GetYaxis()->SetTitle("Number of Events");
+hOpeningAngleDataForPC->GetYaxis()->CenterTitle();
+
+hOpeningAngleDataForPC->Draw("E1same");
+c21->Modified();
+
+// ### Defining the legend for the plot ###
+TLegend *leg21 = new TLegend();
+leg21 = new TLegend(0.58,0.65,1.00,1.00);
+leg21->SetTextSize(0.04);
+leg21->SetTextAlign(12);
+leg21->SetFillColor(kWhite);
+leg21->SetLineColor(kWhite);
+leg21->SetShadowColor(kWhite);
+leg21->SetHeader("Channel");
+leg21->AddEntry(hOpeningAngleDataForPC,"Data");
+leg21->AddEntry(hOpeningAngleCCCohForPC,"Reco CC-Coh");
+leg21->AddEntry(hOpeningAngleCCQEForPC,"Reco CC-QE");
+leg21->AddEntry(hOpeningAngleCCResForPC,"Reco CC-Res");
+leg21->AddEntry(hOpeningAngleNCResForPC,"Reco NC-Res");
+leg21->AddEntry(hOpeningAngleCCDISForPC,"Reco CC-DIS");
+leg21->AddEntry(hOpeningAngleNCDISForPC,"Reco NC-DIS");
+leg21->AddEntry(hOpeningAngleMCForPC,"Reco Other");
+leg21->Draw();
 }

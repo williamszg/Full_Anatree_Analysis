@@ -374,6 +374,7 @@ void EnhancedCCCohSelection::Loop()
    double VACut = 50;
    double PionCandidateMuonCut = 20;
    double PionCandidateProtonCut = 50;
+   double LLRCut = 0.7;
    //double OpeningAngleCut = 90;
    double OpeningAngleCut = 60;
    //double TCut = 0.25;
@@ -390,6 +391,7 @@ void EnhancedCCCohSelection::Loop()
    int NumEventsWithDoCA = 0;
    int NumEventsWithVA = 0;
    int NumEventsWithPionCandidate = 0;
+   int NumEventsWithLLR = 0;
    int NumEventsWithOA = 0;
    int NumEventsWithT = 0;
    // |======================================|
@@ -822,6 +824,8 @@ void EnhancedCCCohSelection::Loop()
 	             hOpeningAngleVsConeAnglePC->Fill(SavedConeAngle, SavedOpeningAngle);
 	             hMuonCandidateTrkLLRPIDScoreAfterPC->Fill(MuonCandidateLLRPIDScore);
 	             hPionCandidateTrkLLRPIDScoreAfterPC->Fill(PionCandidateLLRPIDScore);
+		     if (PionCandidateLLRPIDScore > LLRCut) {
+		        NumEventsWithLLR++;
 		     if (SavedOpeningAngle < OpeningAngleCut) {
 			NumEventsWithOA++;
 	                hConeAngleForOA->Fill(SavedConeAngle);
@@ -854,6 +858,7 @@ void EnhancedCCCohSelection::Loop()
 		           hRecoPionCandidatePhiAfterT->Fill(pi.Phi()*180/PI);
 	                   //std::cout<<evt<<", "<<run<<", "<<sub<<std::endl;
 		        }
+		     }
 		     }
 	          }
 		  }
@@ -901,6 +906,7 @@ void EnhancedCCCohSelection::Loop()
    std::cout<<"|- Total Number of Events Passing Vertex Activity Cut = "<<NumEventsWithVA<<std::endl;
    std::cout<<"|-------------------------------------------------------------------------------|"<<std::endl;
    std::cout<<"|- Total Number of Events Passing Pion Candidacy Cut = "<<NumEventsWithPionCandidate<<std::endl;
+   std::cout<<"|- Total Number of Events Passing LLR Cut = "<<NumEventsWithLLR<<std::endl;
    std::cout<<"|-------------------------------------------------------------------------------|"<<std::endl;
    std::cout<<"|- Total Number of Events Passing Opening Angle Cut = "<<NumEventsWithOA<<std::endl;
    std::cout<<"|-------------------------------------------------------------------------------|"<<std::endl;
@@ -923,7 +929,7 @@ void EnhancedCCCohSelection::Loop()
    //TFile *TMCInfo = new TFile("MC_CCDIS_Histograms.root", "RECREATE");
    //TFile *TMCInfo = new TFile("MC_NCDIS_Histograms.root", "RECREATE");
    //TFile *TMCInfo = new TFile("MC_Other_Histograms.root", "RECREATE");
-   TFile *TMCInfo = new TFile("CCCoh_Enhanced_Histograms.root", "RECREATE");
+   TFile *TMCInfo = new TFile("CCCoh_Enhanced_Histograms_BothPC.root", "CREATE");
 
    hNumMuonCandidates->Write();
    hNumMuonCandidatesAfterCCInclusive->Write();

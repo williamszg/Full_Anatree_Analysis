@@ -374,6 +374,7 @@ void MCSelection::Loop()
    double VACut = 50;
    double PionCandidateMuonCut = 20;
    double PionCandidateProtonCut = 50;
+   double LLRCut = 0.7;
    //double OpeningAngleCut = 90;
    double OpeningAngleCut = 60;
    //double TCut = 0.25;
@@ -390,6 +391,7 @@ void MCSelection::Loop()
    int NumEventsWithDoCA = 0;
    int NumEventsWithVA = 0;
    int NumEventsWithPionCandidate = 0;
+   int NumEventsWithLLR = 0;
    int NumEventsWithOA = 0;
    int NumEventsWithT = 0;
    // |======================================|
@@ -822,6 +824,8 @@ void MCSelection::Loop()
 	             hOpeningAngleVsConeAnglePC->Fill(SavedConeAngle, SavedOpeningAngle);
 	             hMuonCandidateTrkLLRPIDScoreAfterPC->Fill(MuonCandidateLLRPIDScore);
 	             hPionCandidateTrkLLRPIDScoreAfterPC->Fill(PionCandidateLLRPIDScore);
+		     if (PionCandidateLLRPIDScore > LLRCut) {
+		        NumEventsWithLLR++;
 		     if (SavedOpeningAngle < OpeningAngleCut) {
 			NumEventsWithOA++;
 	                hConeAngleForOA->Fill(SavedConeAngle);
@@ -854,6 +858,7 @@ void MCSelection::Loop()
 		           hRecoPionCandidatePhiAfterT->Fill(pi.Phi()*180/PI);
 	                   //std::cout<<evt<<", "<<run<<", "<<sub<<std::endl;
 		        }
+		     }
 		     }
 	          }
 		  }
@@ -901,6 +906,7 @@ void MCSelection::Loop()
    std::cout<<"|- Total Number of Events Passing Vertex Activity Cut = "<<NumEventsWithVA<<std::endl;
    std::cout<<"|-------------------------------------------------------------------------------|"<<std::endl;
    std::cout<<"|- Total Number of Events Passing Pion Candidacy Cut = "<<NumEventsWithPionCandidate<<std::endl;
+   std::cout<<"|- Total Number of Events Passing LLR Cut = "<<NumEventsWithLLR<<std::endl;
    std::cout<<"|-------------------------------------------------------------------------------|"<<std::endl;
    std::cout<<"|- Total Number of Events Passing Opening Angle Cut = "<<NumEventsWithOA<<std::endl;
    std::cout<<"|-------------------------------------------------------------------------------|"<<std::endl;
@@ -915,7 +921,7 @@ void MCSelection::Loop()
    // %%% Saving Histograms to a File Here %%%
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
    //TFile *TDataInfo = new TFile("Data_Histograms.root", "RECREATE");
-   TFile *TMCInfo = new TFile("MC_Histograms.root", "RECREATE");
+   TFile *TMCInfo = new TFile("MC_Histograms_BothPC.root", "CREATE");
    //TFile *TMCInfo = new TFile("MC_CCCoh_Histograms.root", "RECREATE");
    //TFile *TMCInfo = new TFile("MC_CCQE_Histograms.root", "RECREATE");
    //TFile *TMCInfo = new TFile("MC_CCRes_Histograms.root", "RECREATE");

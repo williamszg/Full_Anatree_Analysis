@@ -448,6 +448,25 @@ hPionCandidateTrkLLRPIDScoreCCDIS->Sumw2();
 hPionCandidateTrkLLRPIDScoreNCDIS->Sumw2();
 hPionCandidateTrkLLRPIDScoreOther->Sumw2();
 hPionCandidateTrkLLRPIDScoreCCCoh->Sumw2();
+
+
+TH1D *hConeAngle = (TH1D*)f6->Get("hConeAngleFor2Tracks");
+TH1D *hConeAngleCCQE = (TH1D*)f7->Get("hConeAngleFor2Tracks");
+TH1D *hConeAngleCCRes = (TH1D*)f8->Get("hConeAngleFor2Tracks");
+TH1D *hConeAngleNCRes = (TH1D*)f9->Get("hConeAngleFor2Tracks");
+TH1D *hConeAngleCCDIS = (TH1D*)f10->Get("hConeAngleFor2Tracks");
+TH1D *hConeAngleNCDIS = (TH1D*)f11->Get("hConeAngleFor2Tracks");
+TH1D *hConeAngleOther = (TH1D*)f12->Get("hConeAngleFor2Tracks");
+TH1D *hConeAngleCCCoh = (TH1D*)f13->Get("hConeAngleFor2Tracks");
+
+hConeAngle->Sumw2();
+hConeAngleCCQE->Sumw2();
+hConeAngleCCRes->Sumw2();
+hConeAngleNCRes->Sumw2();
+hConeAngleCCDIS->Sumw2();
+hConeAngleNCDIS->Sumw2();
+hConeAngleOther->Sumw2();
+hConeAngleCCCoh->Sumw2();
 // | ---------------------------------------------- |
 
 
@@ -460,7 +479,13 @@ double After2TracksCutMCtoDataScaleFactor = 4132./17065.;
 double Run1ScaleFactorData = 1.2847059/0.05;
 double MCCCCohToDataScaleFactor = 378./121.;
 //double Run1ScaleFactorMC = 0.05/1.2847059;
-double Run1ScaleFactorMC = 0.0347;
+//double Run1ScaleFactorMC = 0.0347;
+//double Run1ScaleFactorMC = 0.0841149;
+//double Run1ScaleFactorMC = 0.0654665;
+//double Run1ScaleFactorMC = 0.0628872;
+//double Run1ScaleFactorMC = 0.0465663;
+//double Run1ScaleFactorMC = 0.0454/1.2847059;
+double Run1ScaleFactorMC = 0.0534/1.2847059;
 // ========================================
 
 
@@ -2015,9 +2040,11 @@ for (int i = 0; i < n; i++)
       NCDISOpeningAngle[i] += hOpeningAngleNCDIS->GetBinContent(g);
       } // End g-Loop
 
-   MaximizeOA[i] = CCCohOpeningAngle2[i]/pow(CCCohOpeningAngle2[i] + OtherOpeningAngle[i], 0.5);
+   MaximizeOA[i] = CCCohOpeningAngle[i]/pow(CCCohOpeningAngle[i] + CCQEOpeningAngle[i] + CCResOpeningAngle[i] + NCResOpeningAngle[i] + CCDISOpeningAngle[i] + NCDISOpeningAngle[i] + OtherOpeningAngle[i], 0.5);
    OpeningAnglePurity[i] = 100*(CCCohOpeningAngle2[i])/(CCCohOpeningAngle2[i] + OtherOpeningAngle[i]);
    if (i == 0) MaximizeOA[i] = 0;
+   //MaximizeOA[i] = 100*(CCCohOpeningAngle[i])/hOpeningAngle->GetEntries();
+   MaximizeOA[i] = 100*MaximizeOA[i];
    if (i == 0) OpeningAnglePurity[i] = 0;
    OpeningAngleEff[i] = 100*(CCCohOpeningAngle2[i])/(hOpeningAngleCCCoh->GetEntries());
    CCCohOpeningAngle[i] = CCCohOpeningAngle[i]*100/hOpeningAngle->GetEntries();
@@ -2035,6 +2062,7 @@ gMaximizeOpeningAngle->SetTitle("MaximizeOpeningAngle");
 gMaximizeOpeningAngle->SetName("MaximizeOpeningAngle");
 gMaximizeOpeningAngle->SetFillColor(kWhite);
 gMaximizeOpeningAngle->SetLineColor(kBlue);
+gMaximizeOpeningAngle->SetLineStyle(kDashed);
 gMaximizeOpeningAngle->SetLineWidth(2);
 TGraph* gOpeningAngleEff = new TGraph(n, x, OpeningAngleEff);
 gOpeningAngleEff->SetTitle("OpeningAngleEff");
@@ -2081,7 +2109,7 @@ TGraph* gOtherOpeningAngle = new TGraph(n, x, OtherOpeningAngle);
 gOtherOpeningAngle->SetTitle("gOtherOpeningAngle");
 gOtherOpeningAngle->SetName("gOtherOpeningAngle");
 gOtherOpeningAngle->SetFillColor(kWhite);
-gOtherOpeningAngle->SetLineColor(kBlack);
+gOtherOpeningAngle->SetLineColor(kOrange);
 //gOtherOpeningAngle->SetLineStyle(kDashed);
 gOtherOpeningAngle->SetLineWidth(2);
 TGraph* gCCQEOpeningAngle = new TGraph(n, x, CCQEOpeningAngle);
@@ -2126,6 +2154,7 @@ gCCQEOpeningAngle->Draw("same");
 gNCResOpeningAngle->Draw("same");
 gNCDISOpeningAngle->Draw("same");
 //gOpeningAnglePurity->Draw("same");
+gMaximizeOpeningAngle->Draw("same");
 
 // ### Defining the legend for the plot ###
 TLegend *leg27 = new TLegend();
@@ -2145,6 +2174,7 @@ leg27->AddEntry(gNCResOpeningAngle,"NCRes Reco");
 leg27->AddEntry(gCCDISOpeningAngle,"CCDIS Reco");
 leg27->AddEntry(gNCDISOpeningAngle,"NCDIS Reco");
 leg27->AddEntry(gOtherOpeningAngle,"Other Reco");
+leg27->AddEntry(gMaximizeOpeningAngle,"Signal Maximization");
 leg27->Draw();
 // --------------------------------
 
@@ -2183,9 +2213,11 @@ for (int i = 0; i < n1; i++)
       NCDISVertexActivity[i] += hVertexActivityNCDIS->GetBinContent(g);
       } // End g-Loop
 
-   MaximizeVA[i] = CCCohVertexActivity2[i]/pow(CCCohVertexActivity2[i] + OtherVertexActivity[i], 0.5);
+   MaximizeVA[i] = CCCohVertexActivity[i]/pow(CCCohVertexActivity[i] + CCQEVertexActivity[i] + CCResVertexActivity[i] + NCResVertexActivity[i] + CCDISVertexActivity[i] + NCDISVertexActivity[i] + OtherVertexActivity[i], 0.5);
    VertexActivityPurity[i] = 100*(CCCohVertexActivity2[i])/(CCCohVertexActivity2[i] + OtherVertexActivity[i]);
    if (i == 0) MaximizeVA[i] = 0;
+   //MaximizeVA[i] = 100*(CCCohVertexActivity[i])/hVertexActivity->GetEntries();
+   MaximizeVA[i] = 100*MaximizeVA[i];
    if (i == 0) VertexActivityPurity[i] = 0;
    VertexActivityEff[i] = 100*(CCCohVertexActivity2[i])/(hVertexActivityCCCoh->GetEntries());
    CCCohVertexActivity[i] = CCCohVertexActivity[i]*100/hVertexActivity->GetEntries();
@@ -2203,6 +2235,7 @@ gMaximizeVertexActivity->SetTitle("MaximizeVertexActivity");
 gMaximizeVertexActivity->SetName("MaximizeVertexActivity");
 gMaximizeVertexActivity->SetFillColor(kWhite);
 gMaximizeVertexActivity->SetLineColor(kBlue);
+gMaximizeVertexActivity->SetLineStyle(kDashed);
 gMaximizeVertexActivity->SetLineWidth(2);
 TGraph* gVertexActivityEff = new TGraph(n1, x1, VertexActivityEff);
 gVertexActivityEff->SetTitle("VertexActivityEff");
@@ -2249,7 +2282,7 @@ TGraph* gOtherVertexActivity = new TGraph(n1, x1, OtherVertexActivity);
 gOtherVertexActivity->SetTitle("gOtherVertexActivity");
 gOtherVertexActivity->SetName("gOtherVertexActivity");
 gOtherVertexActivity->SetFillColor(kWhite);
-gOtherVertexActivity->SetLineColor(kBlack);
+gOtherVertexActivity->SetLineColor(kOrange);
 //gOtherVertexActivity->SetLineStyle(kDashed);
 gOtherVertexActivity->SetLineWidth(2);
 TGraph* gCCQEVertexActivity = new TGraph(n1, x1, CCQEVertexActivity);
@@ -2294,6 +2327,7 @@ gCCQEVertexActivity->Draw("same");
 gNCResVertexActivity->Draw("same");
 gNCDISVertexActivity->Draw("same");
 //gVertexActivityPurity->Draw("same");
+gMaximizeVertexActivity->Draw("same");
 
 // ### Defining the legend for the plot ###
 TLegend *leg28 = new TLegend();
@@ -2313,6 +2347,7 @@ leg28->AddEntry(gNCResVertexActivity,"NCRes Reco");
 leg28->AddEntry(gCCDISVertexActivity,"CCDIS Reco");
 leg28->AddEntry(gNCDISVertexActivity,"NCDIS Reco");
 leg28->AddEntry(gOtherVertexActivity,"Other Reco");
+leg28->AddEntry(gMaximizeVertexActivity,"Signal Maximization");
 leg28->Draw();
 // --------------------------------
 
@@ -2351,9 +2386,10 @@ for (int i = 0; i < n2; i++)
       NCDISPionCandidateTrkLLRPIDScore[i] += hPionCandidateTrkLLRPIDScoreNCDIS->GetBinContent(g);
       } // End g-Loop
 
-   MaximizeLLR[i] = CCCohPionCandidateTrkLLRPIDScore2[i]/pow(CCCohPionCandidateTrkLLRPIDScore2[i] + OtherPionCandidateTrkLLRPIDScore[i], 0.5);
+   MaximizeLLR[i] = CCCohPionCandidateTrkLLRPIDScore[i]/pow(CCCohPionCandidateTrkLLRPIDScore[i] + CCQEPionCandidateTrkLLRPIDScore[i] + CCResPionCandidateTrkLLRPIDScore[i] + NCResPionCandidateTrkLLRPIDScore[i] + CCDISPionCandidateTrkLLRPIDScore[i] + NCDISPionCandidateTrkLLRPIDScore[i] + OtherPionCandidateTrkLLRPIDScore[i], 0.5);
    PionCandidateTrkLLRPIDScorePurity[i] = 100*(CCCohPionCandidateTrkLLRPIDScore2[i])/(CCCohPionCandidateTrkLLRPIDScore2[i] + OtherPionCandidateTrkLLRPIDScore[i]);
    if (i == 0) MaximizeLLR[i] = 0;
+   MaximizeLLR[i] = 100*MaximizeLLR[i];
    if (i == 0) PionCandidateTrkLLRPIDScorePurity[i] = 0;
    PionCandidateTrkLLRPIDScoreEff[i] = 100*(CCCohPionCandidateTrkLLRPIDScore2[i])/(hPionCandidateTrkLLRPIDScoreCCCoh->GetEntries());
    CCCohPionCandidateTrkLLRPIDScore[i] = CCCohPionCandidateTrkLLRPIDScore[i]*100/hPionCandidateTrkLLRPIDScore->GetEntries();
@@ -2371,6 +2407,7 @@ gMaximizePionCandidateTrkLLRPIDScore->SetTitle("MaximizePionCandidateTrkLLRPIDSc
 gMaximizePionCandidateTrkLLRPIDScore->SetName("MaximizePionCandidateTrkLLRPIDScore");
 gMaximizePionCandidateTrkLLRPIDScore->SetFillColor(kWhite);
 gMaximizePionCandidateTrkLLRPIDScore->SetLineColor(kBlue);
+gMaximizePionCandidateTrkLLRPIDScore->SetLineStyle(kDashed);
 gMaximizePionCandidateTrkLLRPIDScore->SetLineWidth(2);
 TGraph* gPionCandidateTrkLLRPIDScoreEff = new TGraph(n2, x2, PionCandidateTrkLLRPIDScoreEff);
 gPionCandidateTrkLLRPIDScoreEff->SetTitle("PionCandidateTrkLLRPIDScoreEff");
@@ -2417,7 +2454,7 @@ TGraph* gOtherPionCandidateTrkLLRPIDScore = new TGraph(n2, x2, OtherPionCandidat
 gOtherPionCandidateTrkLLRPIDScore->SetTitle("gOtherPionCandidateTrkLLRPIDScore");
 gOtherPionCandidateTrkLLRPIDScore->SetName("gOtherPionCandidateTrkLLRPIDScore");
 gOtherPionCandidateTrkLLRPIDScore->SetFillColor(kWhite);
-gOtherPionCandidateTrkLLRPIDScore->SetLineColor(kBlack);
+gOtherPionCandidateTrkLLRPIDScore->SetLineColor(kOrange);
 //gOtherPionCandidateTrkLLRPIDScore->SetLineStyle(kDashed);
 gOtherPionCandidateTrkLLRPIDScore->SetLineWidth(2);
 TGraph* gCCQEPionCandidateTrkLLRPIDScore = new TGraph(n2, x2, CCQEPionCandidateTrkLLRPIDScore);
@@ -2462,6 +2499,7 @@ gCCQEPionCandidateTrkLLRPIDScore->Draw("same");
 gNCResPionCandidateTrkLLRPIDScore->Draw("same");
 gNCDISPionCandidateTrkLLRPIDScore->Draw("same");
 //gPionCandidateTrkLLRPIDScorePurity->Draw("same");
+gMaximizePionCandidateTrkLLRPIDScore->Draw("same");
 
 // ### Defining the legend for the plot ###
 TLegend *leg29 = new TLegend();
@@ -2481,6 +2519,180 @@ leg29->AddEntry(gNCResPionCandidateTrkLLRPIDScore,"NCRes Reco");
 leg29->AddEntry(gCCDISPionCandidateTrkLLRPIDScore,"CCDIS Reco");
 leg29->AddEntry(gNCDISPionCandidateTrkLLRPIDScore,"NCDIS Reco");
 leg29->AddEntry(gOtherPionCandidateTrkLLRPIDScore,"Other Reco");
+leg29->AddEntry(gMaximizePionCandidateTrkLLRPIDScore, "Signal Maximization");
 leg29->Draw();
 // --------------------------------
+
+
+
+
+// -----------------------------
+// --- TGraph for Cone Angle ---
+// -----------------------------
+int n3 = 181;
+double x3[181] = {0};
+double ConeAngleEff[181] = {0};
+double ConeAnglePurity[181] = {0};
+double CCCohConeAngle[181] = {0};
+double CCCohConeAngle2[181] = {0};
+double CCResConeAngle[181] = {0};
+double CCDISConeAngle[181] = {0};
+double OtherConeAngle[181] = {0};
+double CCQEConeAngle[181] = {0};
+double NCResConeAngle[181] = {0};
+double NCDISConeAngle[181] = {0};
+double MaximizeCA[181] = {0};
+
+for (int i = 0; i < n3; i++)
+   {
+   x3[i] = i*180/n3;
+   for (int g = 1; g < i+1; g++)
+      {
+      CCCohConeAngle[i] += hConeAngle->GetBinContent(g);
+      CCCohConeAngle2[i] += hConeAngleCCCoh->GetBinContent(g);
+      CCResConeAngle[i] += hConeAngleCCRes->GetBinContent(g);
+      CCDISConeAngle[i] += hConeAngleCCDIS->GetBinContent(g);
+      OtherConeAngle[i] += hConeAngleOther->GetBinContent(g);
+      CCQEConeAngle[i] += hConeAngleCCQE->GetBinContent(g);
+      NCResConeAngle[i] += hConeAngleNCRes->GetBinContent(g);
+      NCDISConeAngle[i] += hConeAngleNCDIS->GetBinContent(g);
+      } // End g-Loop
+
+   MaximizeCA[i] = CCCohConeAngle[i]/pow(CCCohConeAngle[i] + CCQEConeAngle[i] + CCResConeAngle[i] + NCResConeAngle[i] + CCDISConeAngle[i] + NCDISConeAngle[i] + OtherConeAngle[i], 0.5);
+   ConeAnglePurity[i] = 100*(CCCohConeAngle2[i])/(CCCohConeAngle2[i] + OtherConeAngle[i]);
+   if (i == 0) MaximizeCA[i] = 0;
+   //MaximizeCA[i] = 100*(CCCohConeAngle[i])/hConeAngle->GetEntries();
+   MaximizeCA[i] = 150*MaximizeCA[i];
+   if (i == 0) ConeAnglePurity[i] = 0;
+   ConeAngleEff[i] = 100*(CCCohConeAngle2[i])/(hConeAngleCCCoh->GetEntries());
+   CCCohConeAngle[i] = CCCohConeAngle[i]*100/hConeAngle->GetEntries();
+   CCCohConeAngle2[i] = CCCohConeAngle2[i]*100/hConeAngleCCCoh->GetEntries();
+   CCResConeAngle[i] = 100-(CCResConeAngle[i]*100/hConeAngleCCRes->GetEntries());
+   CCDISConeAngle[i] = 100-(CCDISConeAngle[i]*100/hConeAngleCCDIS->GetEntries());
+   OtherConeAngle[i] = 100-(OtherConeAngle[i]*100/hConeAngleOther->GetEntries());
+   CCQEConeAngle[i] = 100-(CCQEConeAngle[i]*100/hConeAngleCCQE->GetEntries());
+   NCResConeAngle[i] = 100-(NCResConeAngle[i]*100/hConeAngleNCRes->GetEntries());
+   NCDISConeAngle[i] = 100-(NCDISConeAngle[i]*100/hConeAngleNCDIS->GetEntries());
+   } // End i-Loop
+
+TGraph* gMaximizeConeAngle = new TGraph(n3, x3, MaximizeCA);
+gMaximizeConeAngle->SetTitle("MaximizeConeAngle");
+gMaximizeConeAngle->SetName("MaximizeConeAngle");
+gMaximizeConeAngle->SetFillColor(kWhite);
+gMaximizeConeAngle->SetLineColor(kBlue);
+gMaximizeConeAngle->SetLineStyle(kDashed);
+gMaximizeConeAngle->SetLineWidth(2);
+TGraph* gConeAngleEff = new TGraph(n3, x3, ConeAngleEff);
+gConeAngleEff->SetTitle("ConeAngleEff");
+gConeAngleEff->SetName("ConeAngleEff");
+gConeAngleEff->SetFillColor(kWhite);
+gConeAngleEff->SetLineColor(kBlue);
+gConeAngleEff->SetLineWidth(2);
+TGraph* gConeAnglePurity = new TGraph(n3, x3, ConeAnglePurity);
+gConeAnglePurity->SetTitle("ConeAnglePurity");
+gConeAnglePurity->SetName("ConeAnglePurity");
+gConeAnglePurity->SetFillColor(kWhite);
+gConeAnglePurity->SetLineColor(kCyan);
+//gConeAnglePurity->SetLineStyle(kDashed);
+gConeAnglePurity->SetLineWidth(2);
+TGraph* gCCCohConeAngle = new TGraph(n3, x3, CCCohConeAngle);
+gCCCohConeAngle->SetTitle("gCCCohConeAngle");
+gCCCohConeAngle->SetName("gCCCohConeAngle");
+gCCCohConeAngle->SetFillColor(kWhite);
+gCCCohConeAngle->SetLineColor(kBlue);
+//gCCCohConeAngle->SetLineStyle(kDashed);
+gCCCohConeAngle->SetLineWidth(2);
+TGraph* gCCCohConeAngle2 = new TGraph(n3, x3, CCCohConeAngle2);
+gCCCohConeAngle2->SetTitle("gCCCohConeAngle2");
+gCCCohConeAngle2->SetName("gCCCohConeAngle2");
+gCCCohConeAngle2->SetFillColor(kWhite);
+gCCCohConeAngle2->SetLineColor(kBlue);
+//gCCCohConeAngle2->SetLineStyle(kDashed);
+gCCCohConeAngle2->SetLineWidth(2);
+TGraph* gCCResConeAngle = new TGraph(n3, x3, CCResConeAngle);
+gCCResConeAngle->SetTitle("gCCResConeAngle");
+gCCResConeAngle->SetName("gCCResConeAngle");
+gCCResConeAngle->SetFillColor(kWhite);
+gCCResConeAngle->SetLineColor(kRed);
+//gCCResConeAngle->SetLineStyle(kDashed);
+gCCResConeAngle->SetLineWidth(2);
+TGraph* gCCDISConeAngle = new TGraph(n3, x3, CCDISConeAngle);
+gCCDISConeAngle->SetTitle("gCCDISConeAngle");
+gCCDISConeAngle->SetName("gCCDISConeAngle");
+gCCDISConeAngle->SetFillColor(kWhite);
+gCCDISConeAngle->SetLineColor(kCyan-8);
+//gCCDISConeAngle->SetLineStyle(kDashed);
+gCCDISConeAngle->SetLineWidth(2);
+TGraph* gOtherConeAngle = new TGraph(n3, x3, OtherConeAngle);
+gOtherConeAngle->SetTitle("gOtherConeAngle");
+gOtherConeAngle->SetName("gOtherConeAngle");
+gOtherConeAngle->SetFillColor(kWhite);
+gOtherConeAngle->SetLineColor(kOrange);
+//gOtherConeAngle->SetLineStyle(kDashed);
+gOtherConeAngle->SetLineWidth(2);
+TGraph* gCCQEConeAngle = new TGraph(n3, x3, CCQEConeAngle);
+gCCQEConeAngle->SetTitle("gCCQEConeAngle");
+gCCQEConeAngle->SetName("gCCQEConeAngle");
+gCCQEConeAngle->SetFillColor(kWhite);
+gCCQEConeAngle->SetLineColor(kViolet);
+//gCCQEConeAngle->SetLineStyle(kDashed);
+gCCQEConeAngle->SetLineWidth(2);
+TGraph* gNCResConeAngle = new TGraph(n3, x3, NCResConeAngle);
+gNCResConeAngle->SetTitle("gNCResConeAngle");
+gNCResConeAngle->SetName("gNCResConeAngle");
+gNCResConeAngle->SetFillColor(kWhite);
+gNCResConeAngle->SetLineColor(kGreen);
+//gNCResConeAngle->SetLineStyle(kDashed);
+gNCResConeAngle->SetLineWidth(2);
+TGraph* gNCDISConeAngle = new TGraph(n3, x3, NCDISConeAngle);
+gNCDISConeAngle->SetTitle("gNCDISConeAngle");
+gNCDISConeAngle->SetName("gNCDISConeAngle");
+gNCDISConeAngle->SetFillColor(kWhite);
+gNCDISConeAngle->SetLineColor(kGray);
+//gNCDISConeAngle->SetLineStyle(kDashed);
+gNCDISConeAngle->SetLineWidth(2);
+
+TCanvas *c30 = new TCanvas("c30", "Cone Angle TGraphs");
+c30->SetTicks();
+c30->SetFillColor(kWhite);
+
+gCCCohConeAngle2->GetXaxis()->SetTitle("Cone Angle [Degrees]");
+gCCCohConeAngle2->GetXaxis()->CenterTitle();
+gCCCohConeAngle2->GetXaxis()->SetRangeUser(0,180);
+
+gCCCohConeAngle2->GetYaxis()->SetTitle("Rejection (Background) Passed (Signal) [%]");
+gCCCohConeAngle2->GetYaxis()->CenterTitle();
+
+gCCCohConeAngle2->Draw();
+//gCCCohConeAngle->Draw("same");
+gCCResConeAngle->Draw("same");
+gCCDISConeAngle->Draw("same");
+gOtherConeAngle->Draw("same");
+gCCQEConeAngle->Draw("same");
+gNCResConeAngle->Draw("same");
+gNCDISConeAngle->Draw("same");
+//gOpeningConePurity->Draw("same");
+gMaximizeConeAngle->Draw("same");
+
+// ### Defining the legend for the plot ###
+TLegend *leg30 = new TLegend();
+leg30 = new TLegend(0.58,0.65,1.00,1.00);
+leg30->SetTextSize(0.04);
+leg30->SetTextAlign(12);
+leg30->SetFillColor(kWhite);
+leg30->SetLineColor(kWhite);
+leg30->SetShadowColor(kWhite);
+leg30->SetHeader("Channel");
+//leg30->AddEntry(gCCCohConeAngle,"CCCoh Reco");
+leg30->AddEntry(gCCCohConeAngle2,"CCCoh Enhanced Reco");
+//leg30->AddEntry(gConeAnglePurity,"CCCoh Purity Reco");
+leg30->AddEntry(gCCQEConeAngle,"CCQE Reco");
+leg30->AddEntry(gCCResConeAngle,"CCRes Reco");
+leg30->AddEntry(gNCResConeAngle,"NCRes Reco");
+leg30->AddEntry(gCCDISConeAngle,"CCDIS Reco");
+leg30->AddEntry(gNCDISConeAngle,"NCDIS Reco");
+leg30->AddEntry(gOtherConeAngle,"Other Reco");
+leg30->AddEntry(gMaximizeConeAngle,"Signal Maximization");
+leg30->Draw();
+// -----------------------------
 }
