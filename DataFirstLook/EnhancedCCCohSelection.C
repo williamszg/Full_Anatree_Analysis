@@ -929,7 +929,9 @@ void EnhancedCCCohSelection::Loop()
    //TFile *TMCInfo = new TFile("MC_CCDIS_Histograms.root", "RECREATE");
    //TFile *TMCInfo = new TFile("MC_NCDIS_Histograms.root", "RECREATE");
    //TFile *TMCInfo = new TFile("MC_Other_Histograms.root", "RECREATE");
-   TFile *TMCInfo = new TFile("CCCoh_Enhanced_Histograms_BothPC.root", "CREATE");
+   TFile *TMCInfo = new TFile("CCCoh_Enhanced_Histograms_BothPC.root", "RECREATE");
+   //TFile *TEXTInfo = new TFile("EXT_Histograms_BothPC.root", "RECREATE");
+   //TFile *TDirtInfo = new TFile("Dirt_Histograms_BothPC.root", "RECREATE");
 
    hNumMuonCandidates->Write();
    hNumMuonCandidatesAfterCCInclusive->Write();

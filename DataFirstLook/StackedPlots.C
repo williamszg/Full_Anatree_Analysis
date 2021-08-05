@@ -17,6 +17,8 @@ TFile *f10 = new TFile("MC_CCDIS_Histograms_BothPC.root"); // <-- File for New M
 TFile *f11 = new TFile("MC_NCDIS_Histograms_BothPC.root"); // <-- File for New MC NCDIS Information
 TFile *f12 = new TFile("MC_Other_Histograms_BothPC.root"); // <-- File for New MC Other Information
 TFile *f13 = new TFile("CCCoh_Enhanced_Histograms_BothPC.root"); // <-- File for New MC CCCoh Enhanced Information
+TFile *f14 = new TFile("EXT_Histograms_BothPC.root"); // <-- File for EXT Information
+TFile *f15 = new TFile("Dirt_Histograms_BothPC.root"); // <-- File for Dirt Information
 
 
 
@@ -32,6 +34,8 @@ TH1D *hTRecoCCDIS = (TH1D*)f10->Get("hT");
 TH1D *hTRecoNCDIS = (TH1D*)f11->Get("hT");
 TH1D *hTRecoOther = (TH1D*)f12->Get("hT");
 TH1D *hTRecoCCCohEn = (TH1D*)f13->Get("hT");
+TH1D *hTRecoEXT = (TH1D*)f14->Get("hT");
+TH1D *hTRecoDirt = (TH1D*)f15->Get("hT");
 
 hT->Sumw2();
 hTReco->Sumw2();
@@ -43,6 +47,8 @@ hTRecoCCDIS->Sumw2();
 hTRecoNCDIS->Sumw2();
 hTRecoOther->Sumw2();
 hTRecoCCCohEn->Sumw2();
+hTRecoEXT->Sumw2();
+hTRecoDirt->Sumw2();
 
 
 TH1D *hTPC = (TH1D*)f4->Get("hTPionCandidate");
@@ -55,6 +61,8 @@ TH1D *hTPCRecoCCDIS = (TH1D*)f10->Get("hTPionCandidate");
 TH1D *hTPCRecoNCDIS = (TH1D*)f11->Get("hTPionCandidate");
 TH1D *hTPCRecoOther = (TH1D*)f12->Get("hTPionCandidate");
 TH1D *hTPCRecoCCCohEn = (TH1D*)f13->Get("hTPionCandidate");
+TH1D *hTPCRecoEXT = (TH1D*)f14->Get("hTPionCandidate");
+TH1D *hTPCRecoDirt = (TH1D*)f15->Get("hTPionCandidate");
 
 hTPC->Sumw2();
 hTPCReco->Sumw2();
@@ -66,6 +74,8 @@ hTPCRecoCCDIS->Sumw2();
 hTPCRecoNCDIS->Sumw2();
 hTPCRecoOther->Sumw2();
 hTPCRecoCCCohEn->Sumw2();
+hTPCRecoEXT->Sumw2();
+hTPCRecoDirt->Sumw2();
 
 
 TH1D *hTOA = (TH1D*)f4->Get("hTOA");
@@ -78,6 +88,8 @@ TH1D *hTOARecoCCDIS = (TH1D*)f10->Get("hTOA");
 TH1D *hTOARecoNCDIS = (TH1D*)f11->Get("hTOA");
 TH1D *hTOARecoOther = (TH1D*)f12->Get("hTOA");
 TH1D *hTOARecoCCCohEn = (TH1D*)f13->Get("hTOA");
+TH1D *hTOARecoEXT = (TH1D*)f14->Get("hTOA");
+TH1D *hTOARecoDirt = (TH1D*)f15->Get("hTOA");
 
 hTOA->Sumw2();
 hTOAReco->Sumw2();
@@ -89,6 +101,8 @@ hTOARecoCCDIS->Sumw2();
 hTOARecoNCDIS->Sumw2();
 hTOARecoOther->Sumw2();
 hTOARecoCCCohEn->Sumw2();
+hTOARecoEXT->Sumw2();
+hTOARecoDirt->Sumw2();
 
 
 TH1D *hRecoMuonCandidateMomentumAfterPCData = (TH1D*)f4->Get("hRecoMuonCandidateMomentumAfterPC");
@@ -101,6 +115,8 @@ TH1D *hRecoMuonCandidateMomentumAfterPCMCCCDIS = (TH1D*)f10->Get("hRecoMuonCandi
 TH1D *hRecoMuonCandidateMomentumAfterPCMCNCDIS = (TH1D*)f11->Get("hRecoMuonCandidateMomentumAfterPC");
 TH1D *hRecoMuonCandidateMomentumAfterPCMCOther = (TH1D*)f12->Get("hRecoMuonCandidateMomentumAfterPC");
 TH1D *hRecoMuonCandidateMomentumAfterPCMCCCCohEn = (TH1D*)f13->Get("hRecoMuonCandidateMomentumAfterPC");
+TH1D *hRecoMuonCandidateMomentumAfterPCEXT = (TH1D*)f14->Get("hRecoMuonCandidateMomentumAfterPC");
+TH1D *hRecoMuonCandidateMomentumAfterPCDirt = (TH1D*)f15->Get("hRecoMuonCandidateMomentumAfterPC");
 
 hRecoMuonCandidateMomentumAfterPCData->Sumw2();
 hRecoMuonCandidateMomentumAfterPCMC->Sumw2();
@@ -112,6 +128,8 @@ hRecoMuonCandidateMomentumAfterPCMCCCDIS->Sumw2();
 hRecoMuonCandidateMomentumAfterPCMCNCDIS->Sumw2();
 hRecoMuonCandidateMomentumAfterPCMCOther->Sumw2();
 hRecoMuonCandidateMomentumAfterPCMCCCCohEn->Sumw2();
+hRecoMuonCandidateMomentumAfterPCEXT->Sumw2();
+hRecoMuonCandidateMomentumAfterPCDirt->Sumw2();
 
 
 TH1D *hRecoMuonCandidateMomentumAfterOAData = (TH1D*)f4->Get("hRecoMuonCandidateMomentumAfterOA");
@@ -124,6 +142,8 @@ TH1D *hRecoMuonCandidateMomentumAfterOAMCCCDIS = (TH1D*)f10->Get("hRecoMuonCandi
 TH1D *hRecoMuonCandidateMomentumAfterOAMCNCDIS = (TH1D*)f11->Get("hRecoMuonCandidateMomentumAfterOA");
 TH1D *hRecoMuonCandidateMomentumAfterOAMCOther = (TH1D*)f12->Get("hRecoMuonCandidateMomentumAfterOA");
 TH1D *hRecoMuonCandidateMomentumAfterOAMCCCCohEn = (TH1D*)f13->Get("hRecoMuonCandidateMomentumAfterOA");
+TH1D *hRecoMuonCandidateMomentumAfterOAEXT = (TH1D*)f14->Get("hRecoMuonCandidateMomentumAfterOA");
+TH1D *hRecoMuonCandidateMomentumAfterOADirt = (TH1D*)f15->Get("hRecoMuonCandidateMomentumAfterOA");
 
 hRecoMuonCandidateMomentumAfterOAData->Sumw2();
 hRecoMuonCandidateMomentumAfterOAMC->Sumw2();
@@ -135,6 +155,8 @@ hRecoMuonCandidateMomentumAfterOAMCCCDIS->Sumw2();
 hRecoMuonCandidateMomentumAfterOAMCNCDIS->Sumw2();
 hRecoMuonCandidateMomentumAfterOAMCOther->Sumw2();
 hRecoMuonCandidateMomentumAfterOAMCCCCohEn->Sumw2();
+hRecoMuonCandidateMomentumAfterOAEXT->Sumw2();
+hRecoMuonCandidateMomentumAfterOADirt->Sumw2();
 
 
 TH1D *hRecoPionCandidateMomentumAfterPCData = (TH1D*)f4->Get("hRecoPionCandidateMomentumAfterPC");
@@ -147,6 +169,8 @@ TH1D *hRecoPionCandidateMomentumAfterPCMCCCDIS = (TH1D*)f10->Get("hRecoPionCandi
 TH1D *hRecoPionCandidateMomentumAfterPCMCNCDIS = (TH1D*)f11->Get("hRecoPionCandidateMomentumAfterPC");
 TH1D *hRecoPionCandidateMomentumAfterPCMCOther = (TH1D*)f12->Get("hRecoPionCandidateMomentumAfterPC");
 TH1D *hRecoPionCandidateMomentumAfterPCMCCCCohEn = (TH1D*)f13->Get("hRecoPionCandidateMomentumAfterPC");
+TH1D *hRecoPionCandidateMomentumAfterPCEXT = (TH1D*)f14->Get("hRecoPionCandidateMomentumAfterPC");
+TH1D *hRecoPionCandidateMomentumAfterPCDirt = (TH1D*)f15->Get("hRecoPionCandidateMomentumAfterPC");
 
 hRecoPionCandidateMomentumAfterPCData->Sumw2();
 hRecoPionCandidateMomentumAfterPCMC->Sumw2();
@@ -158,6 +182,8 @@ hRecoPionCandidateMomentumAfterPCMCCCDIS->Sumw2();
 hRecoPionCandidateMomentumAfterPCMCNCDIS->Sumw2();
 hRecoPionCandidateMomentumAfterPCMCOther->Sumw2();
 hRecoPionCandidateMomentumAfterPCMCCCCohEn->Sumw2();
+hRecoPionCandidateMomentumAfterPCEXT->Sumw2();
+hRecoPionCandidateMomentumAfterPCDirt->Sumw2();
 
 
 TH1D *hRecoPionCandidateMomentumAfterOAData = (TH1D*)f4->Get("hRecoPionCandidateMomentumAfterOA");
@@ -170,6 +196,8 @@ TH1D *hRecoPionCandidateMomentumAfterOAMCCCDIS = (TH1D*)f10->Get("hRecoPionCandi
 TH1D *hRecoPionCandidateMomentumAfterOAMCNCDIS = (TH1D*)f11->Get("hRecoPionCandidateMomentumAfterOA");
 TH1D *hRecoPionCandidateMomentumAfterOAMCOther = (TH1D*)f12->Get("hRecoPionCandidateMomentumAfterOA");
 TH1D *hRecoPionCandidateMomentumAfterOAMCCCCohEn = (TH1D*)f13->Get("hRecoPionCandidateMomentumAfterOA");
+TH1D *hRecoPionCandidateMomentumAfterOAEXT = (TH1D*)f14->Get("hRecoPionCandidateMomentumAfterOA");
+TH1D *hRecoPionCandidateMomentumAfterOADirt = (TH1D*)f15->Get("hRecoPionCandidateMomentumAfterOA");
 
 hRecoPionCandidateMomentumAfterOAData->Sumw2();
 hRecoPionCandidateMomentumAfterOAMC->Sumw2();
@@ -181,6 +209,8 @@ hRecoPionCandidateMomentumAfterOAMCCCDIS->Sumw2();
 hRecoPionCandidateMomentumAfterOAMCNCDIS->Sumw2();
 hRecoPionCandidateMomentumAfterOAMCOther->Sumw2();
 hRecoPionCandidateMomentumAfterOAMCCCCohEn->Sumw2();
+hRecoPionCandidateMomentumAfterOAEXT->Sumw2();
+hRecoPionCandidateMomentumAfterOADirt->Sumw2();
 
 
 TH1D *hDeltaPTT = (TH1D*)f4->Get("hDeltaPTT");
@@ -310,6 +340,8 @@ TH1D *hPionCandidateTrkLLRPIDScoreAfterVACCDIS = (TH1D*)f10->Get("hPionCandidate
 TH1D *hPionCandidateTrkLLRPIDScoreAfterVANCDIS = (TH1D*)f11->Get("hPionCandidateTrkLLRPIDScoreAfterVA");
 TH1D *hPionCandidateTrkLLRPIDScoreAfterVAOther = (TH1D*)f12->Get("hPionCandidateTrkLLRPIDScoreAfterVA");
 TH1D *hPionCandidateTrkLLRPIDScoreAfterVACCCohEn = (TH1D*)f13->Get("hPionCandidateTrkLLRPIDScoreAfterVA");
+TH1D *hPionCandidateTrkLLRPIDScoreAfterVAEXT = (TH1D*)f14->Get("hPionCandidateTrkLLRPIDScoreAfterVA");
+TH1D *hPionCandidateTrkLLRPIDScoreAfterVADirt = (TH1D*)f15->Get("hPionCandidateTrkLLRPIDScoreAfterVA");
 
 hPionCandidateTrkLLRPIDScoreAfterVAData->Sumw2();
 hPionCandidateTrkLLRPIDScoreAfterVAMC->Sumw2();
@@ -321,6 +353,8 @@ hPionCandidateTrkLLRPIDScoreAfterVACCDIS->Sumw2();
 hPionCandidateTrkLLRPIDScoreAfterVANCDIS->Sumw2();
 hPionCandidateTrkLLRPIDScoreAfterVAOther->Sumw2();
 hPionCandidateTrkLLRPIDScoreAfterVACCCohEn->Sumw2();
+hPionCandidateTrkLLRPIDScoreAfterVAEXT->Sumw2();
+hPionCandidateTrkLLRPIDScoreAfterVADirt->Sumw2();
 
 
 TH1D *hPionCandidateTrkLLRPIDScoreAfterPCData = (TH1D*)f4->Get("hPionCandidateTrkLLRPIDScoreAfterPC");
@@ -333,6 +367,8 @@ TH1D *hPionCandidateTrkLLRPIDScoreAfterPCCCDIS = (TH1D*)f10->Get("hPionCandidate
 TH1D *hPionCandidateTrkLLRPIDScoreAfterPCNCDIS = (TH1D*)f11->Get("hPionCandidateTrkLLRPIDScoreAfterPC");
 TH1D *hPionCandidateTrkLLRPIDScoreAfterPCOther = (TH1D*)f12->Get("hPionCandidateTrkLLRPIDScoreAfterPC");
 TH1D *hPionCandidateTrkLLRPIDScoreAfterPCCCCohEn = (TH1D*)f13->Get("hPionCandidateTrkLLRPIDScoreAfterPC");
+TH1D *hPionCandidateTrkLLRPIDScoreAfterPCEXT = (TH1D*)f14->Get("hPionCandidateTrkLLRPIDScoreAfterPC");
+TH1D *hPionCandidateTrkLLRPIDScoreAfterPCDirt = (TH1D*)f15->Get("hPionCandidateTrkLLRPIDScoreAfterPC");
 
 hPionCandidateTrkLLRPIDScoreAfterPCData->Sumw2();
 hPionCandidateTrkLLRPIDScoreAfterPCMC->Sumw2();
@@ -344,6 +380,8 @@ hPionCandidateTrkLLRPIDScoreAfterPCCCDIS->Sumw2();
 hPionCandidateTrkLLRPIDScoreAfterPCNCDIS->Sumw2();
 hPionCandidateTrkLLRPIDScoreAfterPCOther->Sumw2();
 hPionCandidateTrkLLRPIDScoreAfterPCCCCohEn->Sumw2();
+hPionCandidateTrkLLRPIDScoreAfterPCEXT->Sumw2();
+hPionCandidateTrkLLRPIDScoreAfterPCDirt->Sumw2();
 
 
 TH1D *hVertexActivityData = (TH1D*)f4->Get("hVertexActivityFor2Tracks");
@@ -356,6 +394,8 @@ TH1D *hVertexActivityCCDIS = (TH1D*)f10->Get("hVertexActivityFor2Tracks");
 TH1D *hVertexActivityNCDIS = (TH1D*)f11->Get("hVertexActivityFor2Tracks");
 TH1D *hVertexActivityOther = (TH1D*)f12->Get("hVertexActivityFor2Tracks");
 TH1D *hVertexActivityCCCohEn = (TH1D*)f13->Get("hVertexActivityFor2Tracks");
+TH1D *hVertexActivityEXT = (TH1D*)f14->Get("hVertexActivityFor2Tracks");
+TH1D *hVertexActivityDirt = (TH1D*)f15->Get("hVertexActivityFor2Tracks");
 
 hVertexActivityData->Sumw2();
 hVertexActivityMC->Sumw2();
@@ -367,6 +407,8 @@ hVertexActivityCCDIS->Sumw2();
 hVertexActivityNCDIS->Sumw2();
 hVertexActivityOther->Sumw2();
 hVertexActivityCCCohEn->Sumw2();
+hVertexActivityEXT->Sumw2();
+hVertexActivityDirt->Sumw2();
 
 
 TH1D *hPionCandidateTrkLLRPIDScoreData = (TH1D*)f4->Get("hPionCandidateTrkLLRPIDScore");
@@ -379,6 +421,8 @@ TH1D *hPionCandidateTrkLLRPIDScoreCCDIS = (TH1D*)f10->Get("hPionCandidateTrkLLRP
 TH1D *hPionCandidateTrkLLRPIDScoreNCDIS = (TH1D*)f11->Get("hPionCandidateTrkLLRPIDScore");
 TH1D *hPionCandidateTrkLLRPIDScoreOther = (TH1D*)f12->Get("hPionCandidateTrkLLRPIDScore");
 TH1D *hPionCandidateTrkLLRPIDScoreCCCohEn = (TH1D*)f13->Get("hPionCandidateTrkLLRPIDScore");
+TH1D *hPionCandidateTrkLLRPIDScoreEXT = (TH1D*)f14->Get("hPionCandidateTrkLLRPIDScore");
+TH1D *hPionCandidateTrkLLRPIDScoreDirt = (TH1D*)f15->Get("hPionCandidateTrkLLRPIDScore");
 
 hPionCandidateTrkLLRPIDScoreData->Sumw2();
 hPionCandidateTrkLLRPIDScoreMC->Sumw2();
@@ -390,6 +434,8 @@ hPionCandidateTrkLLRPIDScoreCCDIS->Sumw2();
 hPionCandidateTrkLLRPIDScoreNCDIS->Sumw2();
 hPionCandidateTrkLLRPIDScoreOther->Sumw2();
 hPionCandidateTrkLLRPIDScoreCCCohEn->Sumw2();
+hPionCandidateTrkLLRPIDScoreEXT->Sumw2();
+hPionCandidateTrkLLRPIDScoreDirt->Sumw2();
 
 
 TH1D *hMuonCandidateTrkLLRPIDScoreData = (TH1D*)f4->Get("hMuonCandidateTrkLLRPIDScore");
@@ -402,6 +448,8 @@ TH1D *hMuonCandidateTrkLLRPIDScoreCCDIS = (TH1D*)f10->Get("hMuonCandidateTrkLLRP
 TH1D *hMuonCandidateTrkLLRPIDScoreNCDIS = (TH1D*)f11->Get("hMuonCandidateTrkLLRPIDScore");
 TH1D *hMuonCandidateTrkLLRPIDScoreOther = (TH1D*)f12->Get("hMuonCandidateTrkLLRPIDScore");
 TH1D *hMuonCandidateTrkLLRPIDScoreCCCohEn = (TH1D*)f13->Get("hMuonCandidateTrkLLRPIDScore");
+TH1D *hMuonCandidateTrkLLRPIDScoreEXT = (TH1D*)f14->Get("hMuonCandidateTrkLLRPIDScore");
+TH1D *hMuonCandidateTrkLLRPIDScoreDirt = (TH1D*)f15->Get("hMuonCandidateTrkLLRPIDScore");
 
 hMuonCandidateTrkLLRPIDScoreData->Sumw2();
 hMuonCandidateTrkLLRPIDScoreMC->Sumw2();
@@ -413,6 +461,8 @@ hMuonCandidateTrkLLRPIDScoreCCDIS->Sumw2();
 hMuonCandidateTrkLLRPIDScoreNCDIS->Sumw2();
 hMuonCandidateTrkLLRPIDScoreOther->Sumw2();
 hMuonCandidateTrkLLRPIDScoreCCCohEn->Sumw2();
+hMuonCandidateTrkLLRPIDScoreEXT->Sumw2();
+hMuonCandidateTrkLLRPIDScoreDirt->Sumw2();
 
 
 TH1D *hConeAngleData = (TH1D*)f4->Get("hConeAngleFor2Tracks");
@@ -425,6 +475,8 @@ TH1D *hConeAngleCCDIS = (TH1D*)f10->Get("hConeAngleFor2Tracks");
 TH1D *hConeAngleNCDIS = (TH1D*)f11->Get("hConeAngleFor2Tracks");
 TH1D *hConeAngleOther = (TH1D*)f12->Get("hConeAngleFor2Tracks");
 TH1D *hConeAngleCCCohEn = (TH1D*)f13->Get("hConeAngleFor2Tracks");
+TH1D *hConeAngleEXT = (TH1D*)f14->Get("hConeAngleFor2Tracks");
+TH1D *hConeAngleDirt = (TH1D*)f15->Get("hConeAngleFor2Tracks");
 
 hConeAngleData->Sumw2();
 hConeAngleMC->Sumw2();
@@ -436,6 +488,8 @@ hConeAngleCCDIS->Sumw2();
 hConeAngleNCDIS->Sumw2();
 hConeAngleOther->Sumw2();
 hConeAngleCCCohEn->Sumw2();
+hConeAngleEXT->Sumw2();
+hConeAngleDirt->Sumw2();
 
 
 TH1D *hOpeningAngleData = (TH1D*)f4->Get("hOpeningAngleFor2Tracks");
@@ -448,6 +502,8 @@ TH1D *hOpeningAngleCCDIS = (TH1D*)f10->Get("hOpeningAngleFor2Tracks");
 TH1D *hOpeningAngleNCDIS = (TH1D*)f11->Get("hOpeningAngleFor2Tracks");
 TH1D *hOpeningAngleOther = (TH1D*)f12->Get("hOpeningAngleFor2Tracks");
 TH1D *hOpeningAngleCCCohEn = (TH1D*)f13->Get("hOpeningAngleFor2Tracks");
+TH1D *hOpeningAngleEXT = (TH1D*)f14->Get("hOpeningAngleFor2Tracks");
+TH1D *hOpeningAngleDirt = (TH1D*)f15->Get("hOpeningAngleFor2Tracks");
 
 hOpeningAngleData->Sumw2();
 hOpeningAngleMC->Sumw2();
@@ -459,6 +515,8 @@ hOpeningAngleCCDIS->Sumw2();
 hOpeningAngleNCDIS->Sumw2();
 hOpeningAngleOther->Sumw2();
 hOpeningAngleCCCohEn->Sumw2();
+hOpeningAngleEXT->Sumw2();
+hOpeningAngleDirt->Sumw2();
 
 
 TH1D *hOpeningAngleDataForPC = (TH1D*)f4->Get("hOpeningAngleForPionCandidate");
@@ -471,6 +529,8 @@ TH1D *hOpeningAngleCCDISForPC = (TH1D*)f10->Get("hOpeningAngleForPionCandidate")
 TH1D *hOpeningAngleNCDISForPC = (TH1D*)f11->Get("hOpeningAngleForPionCandidate");
 TH1D *hOpeningAngleOtherForPC = (TH1D*)f12->Get("hOpeningAngleForPionCandidate");
 TH1D *hOpeningAngleCCCohEnForPC = (TH1D*)f13->Get("hOpeningAngleForPionCandidate");
+TH1D *hOpeningAngleEXTForPC = (TH1D*)f14->Get("hOpeningAngleForPionCandidate");
+TH1D *hOpeningAngleDirtForPC = (TH1D*)f15->Get("hOpeningAngleForPionCandidate");
 
 hOpeningAngleDataForPC->Sumw2();
 hOpeningAngleMCForPC->Sumw2();
@@ -482,9 +542,11 @@ hOpeningAngleCCDISForPC->Sumw2();
 hOpeningAngleNCDISForPC->Sumw2();
 hOpeningAngleOtherForPC->Sumw2();
 hOpeningAngleCCCohEnForPC->Sumw2();
+hOpeningAngleEXTForPC->Sumw2();
+hOpeningAngleDirtForPC->Sumw2();
 
 
-// Creating the Stacked Histogram
+// Creating the Stacked Histograms
 THStack *hTStacked = new THStack("hTStacked", "|t| Stacked for Events Passing 2-Tracks Selection");
 THStack *hTPCStacked = new THStack("hTPCStacked", "|t| Stacked for Events Passing Pion Candidacy Selection");
 THStack *hTOAStacked = new THStack("hTOAStacked", "|t| Stacked for Events Passing Opening Angle Selection");
@@ -513,9 +575,12 @@ THStack *hMuonCandidateTrkLLRPIDScoreStacked = new THStack("hMuonCandidateTrkLLR
 //double Run1ScaleFactorMC = 0.05/1.2847059;
 //double Run1ScaleFactorMC = 0.0465663;
 //double Run1ScaleFactorMC = 0.0454/1.2847059;
-double Run1ScaleFactorMC = 0.0534/1.2847059;
+double Run1ScaleFactorMC = 0.0534/1.2847059; //<-- The one I've been using
+//double Run1ScaleFactorMC = 1.02028*(0.0534/1.2847059);
+//double Run1ScaleFactorMC = 0.00704;
 //double EnhancedCCCohScaleFactor = 172./7390.;
 double EnhancedCCCohScaleFactor = 150./7390.;
+double Run1ScaleFactorDirt = 0.0288;
 
 
 
@@ -527,39 +592,42 @@ c1->SetFillColor(kWhite);
 
 hT->SetLineColor(kBlack);
 hT->SetLineWidth(2);
-hT->Rebin(50);
+hT->Rebin(100);
 hT->SetMarkerStyle(20);
 hTRecoCCCoh->SetFillColor(kBlue);
 hTRecoCCCoh->Scale(Run1ScaleFactorMC);
-hTRecoCCCoh->Rebin(50);
+hTRecoCCCoh->Rebin(100);
 hTRecoCCQE->SetFillColor(kViolet);
 hTRecoCCQE->Scale(Run1ScaleFactorMC);
-hTRecoCCQE->Rebin(50);
+hTRecoCCQE->Rebin(100);
 hTRecoCCRes->SetFillColor(kRed);
 hTRecoCCRes->Scale(Run1ScaleFactorMC);
-hTRecoCCRes->Rebin(50);
+hTRecoCCRes->Rebin(100);
 hTRecoNCRes->SetFillColor(kGreen);
 hTRecoNCRes->Scale(Run1ScaleFactorMC);
-hTRecoNCRes->Rebin(50);
+hTRecoNCRes->Rebin(100);
 hTRecoCCDIS->SetFillColor(kCyan-8);
 hTRecoCCDIS->Scale(Run1ScaleFactorMC);
-hTRecoCCDIS->Rebin(50);
+hTRecoCCDIS->Rebin(100);
 hTRecoNCDIS->SetFillColor(kGray);
 hTRecoNCDIS->Scale(Run1ScaleFactorMC);
-hTRecoNCDIS->Rebin(50);
+hTRecoNCDIS->Rebin(100);
 hTRecoCCCohEn->SetFillColor(kBlue);
 hTRecoCCCohEn->Scale(EnhancedCCCohScaleFactor*Run1ScaleFactorMC);
-hTRecoCCCohEn->Rebin(50);
+hTRecoCCCohEn->Rebin(100);
 hTReco->SetFillColor(kOrange);
 hTReco->Scale(Run1ScaleFactorMC);
-hTReco->Rebin(50);
+hTReco->Rebin(100);
 hTReco->Add(hTRecoCCCoh, -1);
 hTReco->Add(hTRecoCCQE, -1);
 hTReco->Add(hTRecoCCRes, -1);
 hTReco->Add(hTRecoNCRes, -1);
 hTReco->Add(hTRecoCCDIS, -1);
 hTReco->Add(hTRecoNCDIS, -1);
+hTRecoEXT->SetFillColor(kGray+4);
+hTRecoEXT->Rebin(100);
 hTStacked->Add(hTReco);
+hTStacked->Add(hTRecoEXT);
 hTStacked->Add(hTRecoCCQE);
 hTStacked->Add(hTRecoCCRes);
 hTStacked->Add(hTRecoNCRes);
@@ -595,6 +663,7 @@ leg1->AddEntry(hTRecoNCRes,"Reco NC-Res");
 leg1->AddEntry(hTRecoCCDIS,"Reco CC-DIS");
 leg1->AddEntry(hTRecoNCDIS,"Reco NC-DIS");
 leg1->AddEntry(hTReco,"Reco Other");
+leg1->AddEntry(hTRecoEXT,"EXT");
 leg1->Draw();
 
 
@@ -607,39 +676,42 @@ c2->SetFillColor(kWhite);
 
 hTPC->SetLineColor(kBlack);
 hTPC->SetLineWidth(2);
-hTPC->Rebin(50);
+hTPC->Rebin(100);
 hTPC->SetMarkerStyle(20);
 hTPCRecoCCCoh->SetFillColor(kBlue);
 hTPCRecoCCCoh->Scale(Run1ScaleFactorMC);
-hTPCRecoCCCoh->Rebin(50);
+hTPCRecoCCCoh->Rebin(100);
 hTPCRecoCCQE->SetFillColor(kViolet);
 hTPCRecoCCQE->Scale(Run1ScaleFactorMC);
-hTPCRecoCCQE->Rebin(50);
+hTPCRecoCCQE->Rebin(100);
 hTPCRecoCCRes->SetFillColor(kRed);
 hTPCRecoCCRes->Scale(Run1ScaleFactorMC);
-hTPCRecoCCRes->Rebin(50);
+hTPCRecoCCRes->Rebin(100);
 hTPCRecoNCRes->SetFillColor(kGreen);
 hTPCRecoNCRes->Scale(Run1ScaleFactorMC);
-hTPCRecoNCRes->Rebin(50);
+hTPCRecoNCRes->Rebin(100);
 hTPCRecoCCDIS->SetFillColor(kCyan-8);
 hTPCRecoCCDIS->Scale(Run1ScaleFactorMC);
-hTPCRecoCCDIS->Rebin(50);
+hTPCRecoCCDIS->Rebin(100);
 hTPCRecoNCDIS->SetFillColor(kGray);
 hTPCRecoNCDIS->Scale(Run1ScaleFactorMC);
-hTPCRecoNCDIS->Rebin(50);
+hTPCRecoNCDIS->Rebin(100);
 hTPCRecoCCCohEn->SetFillColor(kBlue);
 hTPCRecoCCCohEn->Scale(EnhancedCCCohScaleFactor*Run1ScaleFactorMC);
-hTPCRecoCCCohEn->Rebin(50);
+hTPCRecoCCCohEn->Rebin(100);
 hTPCReco->SetFillColor(kOrange);
 hTPCReco->Scale(Run1ScaleFactorMC);
-hTPCReco->Rebin(50);
+hTPCReco->Rebin(100);
 hTPCReco->Add(hTPCRecoCCCoh, -1);
 hTPCReco->Add(hTPCRecoCCQE, -1);
 hTPCReco->Add(hTPCRecoCCRes, -1);
 hTPCReco->Add(hTPCRecoNCRes, -1);
 hTPCReco->Add(hTPCRecoCCDIS, -1);
 hTPCReco->Add(hTPCRecoNCDIS, -1);
+hTPCRecoEXT->SetFillColor(kGray+4);
+hTPCRecoEXT->Rebin(100);
 hTPCStacked->Add(hTPCReco);
+hTPCStacked->Add(hTPCRecoEXT);
 hTPCStacked->Add(hTPCRecoCCQE);
 hTPCStacked->Add(hTPCRecoCCRes);
 hTPCStacked->Add(hTPCRecoNCRes);
@@ -674,6 +746,7 @@ leg2->AddEntry(hTPCRecoNCRes,"Reco NC-Res");
 leg2->AddEntry(hTPCRecoCCDIS,"Reco CC-DIS");
 leg2->AddEntry(hTPCRecoNCDIS,"Reco NC-DIS");
 leg2->AddEntry(hTPCReco,"Reco Other");
+leg2->AddEntry(hTPCRecoEXT,"EXT");
 leg2->Draw();
 
 
@@ -686,39 +759,42 @@ c3->SetFillColor(kWhite);
 
 hTOA->SetLineColor(kBlack);
 hTOA->SetLineWidth(2);
-hTOA->Rebin(50);
+hTOA->Rebin(100);
 hTOA->SetMarkerStyle(20);
 hTOARecoCCCoh->SetFillColor(kBlue);
 hTOARecoCCCoh->Scale(Run1ScaleFactorMC);
-hTOARecoCCCoh->Rebin(50);
+hTOARecoCCCoh->Rebin(100);
 hTOARecoCCQE->SetFillColor(kViolet);
 hTOARecoCCQE->Scale(Run1ScaleFactorMC);
-hTOARecoCCQE->Rebin(50);
+hTOARecoCCQE->Rebin(100);
 hTOARecoCCRes->SetFillColor(kRed);
 hTOARecoCCRes->Scale(Run1ScaleFactorMC);
-hTOARecoCCRes->Rebin(50);
+hTOARecoCCRes->Rebin(100);
 hTOARecoNCRes->SetFillColor(kGreen);
 hTOARecoNCRes->Scale(Run1ScaleFactorMC);
-hTOARecoNCRes->Rebin(50);
+hTOARecoNCRes->Rebin(100);
 hTOARecoCCDIS->SetFillColor(kCyan-8);
 hTOARecoCCDIS->Scale(Run1ScaleFactorMC);
-hTOARecoCCDIS->Rebin(50);
+hTOARecoCCDIS->Rebin(100);
 hTOARecoNCDIS->SetFillColor(kGray);
 hTOARecoNCDIS->Scale(Run1ScaleFactorMC);
-hTOARecoNCDIS->Rebin(50);
+hTOARecoNCDIS->Rebin(100);
 hTOARecoCCCohEn->SetFillColor(kBlue);
 hTOARecoCCCohEn->Scale(EnhancedCCCohScaleFactor*Run1ScaleFactorMC);
-hTOARecoCCCohEn->Rebin(50);
+hTOARecoCCCohEn->Rebin(100);
 hTOAReco->SetFillColor(kOrange);
 hTOAReco->Scale(Run1ScaleFactorMC);
-hTOAReco->Rebin(50);
+hTOAReco->Rebin(100);
 hTOAReco->Add(hTOARecoCCCoh, -1);
 hTOAReco->Add(hTOARecoCCQE, -1);
 hTOAReco->Add(hTOARecoCCRes, -1);
 hTOAReco->Add(hTOARecoNCRes, -1);
 hTOAReco->Add(hTOARecoCCDIS, -1);
 hTOAReco->Add(hTOARecoNCDIS, -1);
+hTOARecoEXT->SetFillColor(kGray+4);
+hTOARecoEXT->Rebin(100);
 hTOAStacked->Add(hTOAReco);
+hTOAStacked->Add(hTOARecoEXT);
 hTOAStacked->Add(hTOARecoCCQE);
 hTOAStacked->Add(hTOARecoCCRes);
 hTOAStacked->Add(hTOARecoNCRes);
@@ -754,6 +830,7 @@ leg3->AddEntry(hTOARecoNCRes,"Reco NC-Res");
 leg3->AddEntry(hTOARecoCCDIS,"Reco CC-DIS");
 leg3->AddEntry(hTOARecoNCDIS,"Reco NC-DIS");
 leg3->AddEntry(hTOAReco,"Reco Other");
+leg3->AddEntry(hTOARecoEXT,"EXT");
 leg3->Draw();
 
 
@@ -798,7 +875,10 @@ hRecoMuonCandidateMomentumAfterPCMC->Add(hRecoMuonCandidateMomentumAfterPCMCCCRe
 hRecoMuonCandidateMomentumAfterPCMC->Add(hRecoMuonCandidateMomentumAfterPCMCNCRes, -1);
 hRecoMuonCandidateMomentumAfterPCMC->Add(hRecoMuonCandidateMomentumAfterPCMCCCDIS, -1);
 hRecoMuonCandidateMomentumAfterPCMC->Add(hRecoMuonCandidateMomentumAfterPCMCNCDIS, -1);
+hRecoMuonCandidateMomentumAfterPCEXT->SetFillColor(kGray+4);
+hRecoMuonCandidateMomentumAfterPCEXT->Rebin(25);
 hMPPCStacked->Add(hRecoMuonCandidateMomentumAfterPCMC);
+hMPPCStacked->Add(hRecoMuonCandidateMomentumAfterPCEXT);
 hMPPCStacked->Add(hRecoMuonCandidateMomentumAfterPCMCCCQE);
 hMPPCStacked->Add(hRecoMuonCandidateMomentumAfterPCMCCCRes);
 hMPPCStacked->Add(hRecoMuonCandidateMomentumAfterPCMCNCRes);
@@ -834,6 +914,7 @@ leg4->AddEntry(hRecoMuonCandidateMomentumAfterPCMCNCRes,"Reco NC-Res");
 leg4->AddEntry(hRecoMuonCandidateMomentumAfterPCMCCCDIS,"Reco CC-DIS");
 leg4->AddEntry(hRecoMuonCandidateMomentumAfterPCMCNCDIS,"Reco NC-DIS");
 leg4->AddEntry(hRecoMuonCandidateMomentumAfterPCMC,"Reco Other");
+leg4->AddEntry(hRecoMuonCandidateMomentumAfterPCEXT,"EXT");
 leg4->Draw();
 
 
@@ -878,7 +959,10 @@ hRecoMuonCandidateMomentumAfterOAMC->Add(hRecoMuonCandidateMomentumAfterOAMCCCRe
 hRecoMuonCandidateMomentumAfterOAMC->Add(hRecoMuonCandidateMomentumAfterOAMCNCRes, -1);
 hRecoMuonCandidateMomentumAfterOAMC->Add(hRecoMuonCandidateMomentumAfterOAMCCCDIS, -1);
 hRecoMuonCandidateMomentumAfterOAMC->Add(hRecoMuonCandidateMomentumAfterOAMCNCDIS, -1);
+hRecoMuonCandidateMomentumAfterOAEXT->SetFillColor(kGray+4);
+hRecoMuonCandidateMomentumAfterOAEXT->Rebin(25);
 hMPOAStacked->Add(hRecoMuonCandidateMomentumAfterOAMC);
+hMPOAStacked->Add(hRecoMuonCandidateMomentumAfterOAEXT);
 hMPOAStacked->Add(hRecoMuonCandidateMomentumAfterOAMCCCQE);
 hMPOAStacked->Add(hRecoMuonCandidateMomentumAfterOAMCCCRes);
 hMPOAStacked->Add(hRecoMuonCandidateMomentumAfterOAMCNCRes);
@@ -914,6 +998,7 @@ leg5->AddEntry(hRecoMuonCandidateMomentumAfterOAMCNCRes,"Reco NC-Res");
 leg5->AddEntry(hRecoMuonCandidateMomentumAfterOAMCCCDIS,"Reco CC-DIS");
 leg5->AddEntry(hRecoMuonCandidateMomentumAfterOAMCNCDIS,"Reco NC-DIS");
 leg5->AddEntry(hRecoMuonCandidateMomentumAfterOAMC,"Reco Other");
+leg5->AddEntry(hRecoMuonCandidateMomentumAfterOAEXT,"EXT");
 leg5->Draw();
 
 
@@ -958,7 +1043,10 @@ hRecoPionCandidateMomentumAfterPCMC->Add(hRecoPionCandidateMomentumAfterPCMCCCRe
 hRecoPionCandidateMomentumAfterPCMC->Add(hRecoPionCandidateMomentumAfterPCMCNCRes, -1);
 hRecoPionCandidateMomentumAfterPCMC->Add(hRecoPionCandidateMomentumAfterPCMCCCDIS, -1);
 hRecoPionCandidateMomentumAfterPCMC->Add(hRecoPionCandidateMomentumAfterPCMCNCDIS, -1);
+hRecoPionCandidateMomentumAfterPCEXT->SetFillColor(kGray+4);
+hRecoPionCandidateMomentumAfterPCEXT->Rebin(25);
 hPPPCStacked->Add(hRecoPionCandidateMomentumAfterPCMC);
+hPPPCStacked->Add(hRecoPionCandidateMomentumAfterPCEXT);
 hPPPCStacked->Add(hRecoPionCandidateMomentumAfterPCMCCCQE);
 hPPPCStacked->Add(hRecoPionCandidateMomentumAfterPCMCCCRes);
 hPPPCStacked->Add(hRecoPionCandidateMomentumAfterPCMCNCRes);
@@ -994,6 +1082,7 @@ leg6->AddEntry(hRecoPionCandidateMomentumAfterPCMCNCRes,"Reco NC-Res");
 leg6->AddEntry(hRecoPionCandidateMomentumAfterPCMCCCDIS,"Reco CC-DIS");
 leg6->AddEntry(hRecoPionCandidateMomentumAfterPCMCNCDIS,"Reco NC-DIS");
 leg6->AddEntry(hRecoPionCandidateMomentumAfterPCMC,"Reco Other");
+leg6->AddEntry(hRecoPionCandidateMomentumAfterPCEXT,"EXT");
 leg6->Draw();
 
 
@@ -1038,7 +1127,10 @@ hRecoPionCandidateMomentumAfterOAMC->Add(hRecoPionCandidateMomentumAfterOAMCCCRe
 hRecoPionCandidateMomentumAfterOAMC->Add(hRecoPionCandidateMomentumAfterOAMCNCRes, -1);
 hRecoPionCandidateMomentumAfterOAMC->Add(hRecoPionCandidateMomentumAfterOAMCCCDIS, -1);
 hRecoPionCandidateMomentumAfterOAMC->Add(hRecoPionCandidateMomentumAfterOAMCNCDIS, -1);
+hRecoPionCandidateMomentumAfterOAEXT->SetFillColor(kGray+4);
+hRecoPionCandidateMomentumAfterOAEXT->Rebin(25);
 hPPOAStacked->Add(hRecoPionCandidateMomentumAfterOAMC);
+hPPOAStacked->Add(hRecoPionCandidateMomentumAfterOAEXT);
 hPPOAStacked->Add(hRecoPionCandidateMomentumAfterOAMCCCQE);
 hPPOAStacked->Add(hRecoPionCandidateMomentumAfterOAMCCCRes);
 hPPOAStacked->Add(hRecoPionCandidateMomentumAfterOAMCNCRes);
@@ -1074,6 +1166,7 @@ leg7->AddEntry(hRecoPionCandidateMomentumAfterOAMCNCRes,"Reco NC-Res");
 leg7->AddEntry(hRecoPionCandidateMomentumAfterOAMCCCDIS,"Reco CC-DIS");
 leg7->AddEntry(hRecoPionCandidateMomentumAfterOAMCNCDIS,"Reco NC-DIS");
 leg7->AddEntry(hRecoPionCandidateMomentumAfterOAMC,"Reco Other");
+leg7->AddEntry(hRecoPionCandidateMomentumAfterOAEXT,"EXT");
 leg7->Draw();
 
 
@@ -1588,7 +1681,11 @@ hPionCandidateTrkLLRPIDScoreAfterVAMC->Add(hPionCandidateTrkLLRPIDScoreAfterVACC
 hPionCandidateTrkLLRPIDScoreAfterVAMC->Add(hPionCandidateTrkLLRPIDScoreAfterVANCRes, -1);
 hPionCandidateTrkLLRPIDScoreAfterVAMC->Add(hPionCandidateTrkLLRPIDScoreAfterVACCDIS, -1);
 hPionCandidateTrkLLRPIDScoreAfterVAMC->Add(hPionCandidateTrkLLRPIDScoreAfterVANCDIS, -1);
+hPionCandidateTrkLLRPIDScoreAfterVAEXT->SetFillColor(kGray+4);
+hPionCandidateTrkLLRPIDScoreAfterVAEXT->SetLineColor(kBlack);
+hPionCandidateTrkLLRPIDScoreAfterVAEXT->Rebin(25);
 hPionCandidateTrkLLRPIDScoreAfterVAStacked->Add(hPionCandidateTrkLLRPIDScoreAfterVAMC);
+hPionCandidateTrkLLRPIDScoreAfterVAStacked->Add(hPionCandidateTrkLLRPIDScoreAfterVAEXT);
 hPionCandidateTrkLLRPIDScoreAfterVAStacked->Add(hPionCandidateTrkLLRPIDScoreAfterVACCQE);
 hPionCandidateTrkLLRPIDScoreAfterVAStacked->Add(hPionCandidateTrkLLRPIDScoreAfterVACCRes);
 hPionCandidateTrkLLRPIDScoreAfterVAStacked->Add(hPionCandidateTrkLLRPIDScoreAfterVANCRes);
@@ -1624,6 +1721,7 @@ leg14->AddEntry(hPionCandidateTrkLLRPIDScoreAfterVANCRes,"Reco NC-Res");
 leg14->AddEntry(hPionCandidateTrkLLRPIDScoreAfterVACCDIS,"Reco CC-DIS");
 leg14->AddEntry(hPionCandidateTrkLLRPIDScoreAfterVANCDIS,"Reco NC-DIS");
 leg14->AddEntry(hPionCandidateTrkLLRPIDScoreAfterVAMC,"Reco Other");
+leg14->AddEntry(hPionCandidateTrkLLRPIDScoreAfterVAEXT,"EXT");
 leg14->Draw();
 
 
@@ -1676,7 +1774,11 @@ hPionCandidateTrkLLRPIDScoreAfterPCMC->Add(hPionCandidateTrkLLRPIDScoreAfterPCCC
 hPionCandidateTrkLLRPIDScoreAfterPCMC->Add(hPionCandidateTrkLLRPIDScoreAfterPCNCRes, -1);
 hPionCandidateTrkLLRPIDScoreAfterPCMC->Add(hPionCandidateTrkLLRPIDScoreAfterPCCCDIS, -1);
 hPionCandidateTrkLLRPIDScoreAfterPCMC->Add(hPionCandidateTrkLLRPIDScoreAfterPCNCDIS, -1);
+hPionCandidateTrkLLRPIDScoreAfterPCEXT->SetFillColor(kGray+4);
+hPionCandidateTrkLLRPIDScoreAfterPCEXT->SetLineColor(kBlack);
+hPionCandidateTrkLLRPIDScoreAfterPCEXT->Rebin(25);
 hPionCandidateTrkLLRPIDScoreAfterPCStacked->Add(hPionCandidateTrkLLRPIDScoreAfterPCMC);
+hPionCandidateTrkLLRPIDScoreAfterPCStacked->Add(hPionCandidateTrkLLRPIDScoreAfterPCEXT);
 hPionCandidateTrkLLRPIDScoreAfterPCStacked->Add(hPionCandidateTrkLLRPIDScoreAfterPCCCQE);
 hPionCandidateTrkLLRPIDScoreAfterPCStacked->Add(hPionCandidateTrkLLRPIDScoreAfterPCCCRes);
 hPionCandidateTrkLLRPIDScoreAfterPCStacked->Add(hPionCandidateTrkLLRPIDScoreAfterPCNCRes);
@@ -1712,6 +1814,7 @@ leg15->AddEntry(hPionCandidateTrkLLRPIDScoreAfterPCNCRes,"Reco NC-Res");
 leg15->AddEntry(hPionCandidateTrkLLRPIDScoreAfterPCCCDIS,"Reco CC-DIS");
 leg15->AddEntry(hPionCandidateTrkLLRPIDScoreAfterPCNCDIS,"Reco NC-DIS");
 leg15->AddEntry(hPionCandidateTrkLLRPIDScoreAfterPCMC,"Reco Other");
+leg15->AddEntry(hPionCandidateTrkLLRPIDScoreAfterPCEXT,"EXT");
 leg15->Draw();
 
 
@@ -1764,7 +1867,11 @@ hVertexActivityMC->Add(hVertexActivityCCRes, -1);
 hVertexActivityMC->Add(hVertexActivityNCRes, -1);
 hVertexActivityMC->Add(hVertexActivityCCDIS, -1);
 hVertexActivityMC->Add(hVertexActivityNCDIS, -1);
+hVertexActivityEXT->SetFillColor(kGray+4);
+hVertexActivityEXT->SetLineColor(kBlack);
+hVertexActivityEXT->Rebin(200);
 hVertexActivityStacked->Add(hVertexActivityMC);
+hVertexActivityStacked->Add(hVertexActivityEXT);
 hVertexActivityStacked->Add(hVertexActivityCCQE);
 hVertexActivityStacked->Add(hVertexActivityCCRes);
 hVertexActivityStacked->Add(hVertexActivityNCRes);
@@ -1800,6 +1907,7 @@ leg16->AddEntry(hVertexActivityNCRes,"Reco NC-Res");
 leg16->AddEntry(hVertexActivityCCDIS,"Reco CC-DIS");
 leg16->AddEntry(hVertexActivityNCDIS,"Reco NC-DIS");
 leg16->AddEntry(hVertexActivityMC,"Reco Other");
+leg16->AddEntry(hVertexActivityEXT,"EXT");
 leg16->Draw();
 
 
@@ -1852,7 +1960,11 @@ hPionCandidateTrkLLRPIDScoreMC->Add(hPionCandidateTrkLLRPIDScoreCCRes, -1);
 hPionCandidateTrkLLRPIDScoreMC->Add(hPionCandidateTrkLLRPIDScoreNCRes, -1);
 hPionCandidateTrkLLRPIDScoreMC->Add(hPionCandidateTrkLLRPIDScoreCCDIS, -1);
 hPionCandidateTrkLLRPIDScoreMC->Add(hPionCandidateTrkLLRPIDScoreNCDIS, -1);
+hPionCandidateTrkLLRPIDScoreEXT->SetFillColor(kGray+4);
+hPionCandidateTrkLLRPIDScoreEXT->SetLineColor(kBlack);
+hPionCandidateTrkLLRPIDScoreEXT->Rebin(25);
 hPionCandidateTrkLLRPIDScoreStacked->Add(hPionCandidateTrkLLRPIDScoreMC);
+hPionCandidateTrkLLRPIDScoreStacked->Add(hPionCandidateTrkLLRPIDScoreEXT);
 hPionCandidateTrkLLRPIDScoreStacked->Add(hPionCandidateTrkLLRPIDScoreCCQE);
 hPionCandidateTrkLLRPIDScoreStacked->Add(hPionCandidateTrkLLRPIDScoreCCRes);
 hPionCandidateTrkLLRPIDScoreStacked->Add(hPionCandidateTrkLLRPIDScoreNCRes);
@@ -1888,6 +2000,7 @@ leg17->AddEntry(hPionCandidateTrkLLRPIDScoreNCRes,"Reco NC-Res");
 leg17->AddEntry(hPionCandidateTrkLLRPIDScoreCCDIS,"Reco CC-DIS");
 leg17->AddEntry(hPionCandidateTrkLLRPIDScoreNCDIS,"Reco NC-DIS");
 leg17->AddEntry(hPionCandidateTrkLLRPIDScoreMC,"Reco Other");
+leg17->AddEntry(hPionCandidateTrkLLRPIDScoreEXT,"EXT");
 leg17->Draw();
 
 
@@ -1940,7 +2053,11 @@ hMuonCandidateTrkLLRPIDScoreMC->Add(hMuonCandidateTrkLLRPIDScoreCCRes, -1);
 hMuonCandidateTrkLLRPIDScoreMC->Add(hMuonCandidateTrkLLRPIDScoreNCRes, -1);
 hMuonCandidateTrkLLRPIDScoreMC->Add(hMuonCandidateTrkLLRPIDScoreCCDIS, -1);
 hMuonCandidateTrkLLRPIDScoreMC->Add(hMuonCandidateTrkLLRPIDScoreNCDIS, -1);
+hMuonCandidateTrkLLRPIDScoreEXT->SetFillColor(kGray+4);
+hMuonCandidateTrkLLRPIDScoreEXT->SetLineColor(kBlack);
+hMuonCandidateTrkLLRPIDScoreEXT->Rebin(25);
 hMuonCandidateTrkLLRPIDScoreStacked->Add(hMuonCandidateTrkLLRPIDScoreMC);
+hMuonCandidateTrkLLRPIDScoreStacked->Add(hMuonCandidateTrkLLRPIDScoreEXT);
 hMuonCandidateTrkLLRPIDScoreStacked->Add(hMuonCandidateTrkLLRPIDScoreCCQE);
 hMuonCandidateTrkLLRPIDScoreStacked->Add(hMuonCandidateTrkLLRPIDScoreCCRes);
 hMuonCandidateTrkLLRPIDScoreStacked->Add(hMuonCandidateTrkLLRPIDScoreNCRes);
@@ -1976,6 +2093,7 @@ leg18->AddEntry(hMuonCandidateTrkLLRPIDScoreNCRes,"Reco NC-Res");
 leg18->AddEntry(hMuonCandidateTrkLLRPIDScoreCCDIS,"Reco CC-DIS");
 leg18->AddEntry(hMuonCandidateTrkLLRPIDScoreNCDIS,"Reco NC-DIS");
 leg18->AddEntry(hMuonCandidateTrkLLRPIDScoreMC,"Reco Other");
+leg18->AddEntry(hMuonCandidateTrkLLRPIDScoreEXT,"EXT");
 leg18->Draw();
 
 
@@ -2028,7 +2146,16 @@ hConeAngleMC->Add(hConeAngleCCRes, -1);
 hConeAngleMC->Add(hConeAngleNCRes, -1);
 hConeAngleMC->Add(hConeAngleCCDIS, -1);
 hConeAngleMC->Add(hConeAngleNCDIS, -1);
+hConeAngleEXT->SetFillColor(kGray+4);
+hConeAngleEXT->SetLineColor(kBlack);
+hConeAngleEXT->Rebin(10);
+hConeAngleDirt->SetFillColor(kOrange+5);
+hConeAngleDirt->SetLineColor(kBlack);
+hConeAngleDirt->Scale(Run1ScaleFactorDirt);
+hConeAngleDirt->Rebin(10);
 hConeAngleStacked->Add(hConeAngleMC);
+hConeAngleStacked->Add(hConeAngleEXT);
+hConeAngleStacked->Add(hConeAngleDirt);
 hConeAngleStacked->Add(hConeAngleCCQE);
 hConeAngleStacked->Add(hConeAngleCCRes);
 hConeAngleStacked->Add(hConeAngleNCRes);
@@ -2064,6 +2191,8 @@ leg19->AddEntry(hConeAngleNCRes,"Reco NC-Res");
 leg19->AddEntry(hConeAngleCCDIS,"Reco CC-DIS");
 leg19->AddEntry(hConeAngleNCDIS,"Reco NC-DIS");
 leg19->AddEntry(hConeAngleMC,"Reco Other");
+leg19->AddEntry(hConeAngleEXT,"EXT");
+leg19->AddEntry(hConeAngleEXT,"Dirt");
 leg19->Draw();
 
 
@@ -2116,7 +2245,16 @@ hOpeningAngleMC->Add(hOpeningAngleCCRes, -1);
 hOpeningAngleMC->Add(hOpeningAngleNCRes, -1);
 hOpeningAngleMC->Add(hOpeningAngleCCDIS, -1);
 hOpeningAngleMC->Add(hOpeningAngleNCDIS, -1);
+hOpeningAngleEXT->SetFillColor(kGray+4);
+hOpeningAngleEXT->SetLineColor(kBlack);
+hOpeningAngleEXT->Rebin(10);
+hOpeningAngleDirt->SetFillColor(kOrange+5);
+hOpeningAngleDirt->SetLineColor(kBlack);
+hOpeningAngleDirt->Scale(Run1ScaleFactorDirt);
+hOpeningAngleDirt->Rebin(10);
 hOpeningAngleStacked->Add(hOpeningAngleMC);
+hOpeningAngleStacked->Add(hOpeningAngleEXT);
+hOpeningAngleStacked->Add(hOpeningAngleDirt);
 hOpeningAngleStacked->Add(hOpeningAngleCCQE);
 hOpeningAngleStacked->Add(hOpeningAngleCCRes);
 hOpeningAngleStacked->Add(hOpeningAngleNCRes);
@@ -2152,6 +2290,8 @@ leg20->AddEntry(hOpeningAngleNCRes,"Reco NC-Res");
 leg20->AddEntry(hOpeningAngleCCDIS,"Reco CC-DIS");
 leg20->AddEntry(hOpeningAngleNCDIS,"Reco NC-DIS");
 leg20->AddEntry(hOpeningAngleMC,"Reco Other");
+leg20->AddEntry(hOpeningAngleEXT,"EXT");
+leg20->AddEntry(hOpeningAngleDirt,"Dirt");
 leg20->Draw();
 
 
@@ -2204,7 +2344,16 @@ hOpeningAngleMCForPC->Add(hOpeningAngleCCResForPC, -1);
 hOpeningAngleMCForPC->Add(hOpeningAngleNCResForPC, -1);
 hOpeningAngleMCForPC->Add(hOpeningAngleCCDISForPC, -1);
 hOpeningAngleMCForPC->Add(hOpeningAngleNCDISForPC, -1);
+hOpeningAngleEXTForPC->SetFillColor(kGray+4);
+hOpeningAngleEXTForPC->SetLineColor(kBlack);
+hOpeningAngleEXTForPC->Rebin(10);
+hOpeningAngleDirtForPC->SetFillColor(kOrange+5);
+hOpeningAngleDirtForPC->SetLineColor(kBlack);
+hOpeningAngleDirtForPC->Scale(Run1ScaleFactorDirt);
+hOpeningAngleDirtForPC->Rebin(10);
 hOpeningAngleStackedForPC->Add(hOpeningAngleMCForPC);
+hOpeningAngleStackedForPC->Add(hOpeningAngleEXTForPC);
+hOpeningAngleStackedForPC->Add(hOpeningAngleDirtForPC);
 hOpeningAngleStackedForPC->Add(hOpeningAngleCCQEForPC);
 hOpeningAngleStackedForPC->Add(hOpeningAngleCCResForPC);
 hOpeningAngleStackedForPC->Add(hOpeningAngleNCResForPC);
@@ -2240,5 +2389,79 @@ leg21->AddEntry(hOpeningAngleNCResForPC,"Reco NC-Res");
 leg21->AddEntry(hOpeningAngleCCDISForPC,"Reco CC-DIS");
 leg21->AddEntry(hOpeningAngleNCDISForPC,"Reco NC-DIS");
 leg21->AddEntry(hOpeningAngleMCForPC,"Reco Other");
+leg21->AddEntry(hOpeningAngleEXTForPC,"EXT");
+leg21->AddEntry(hOpeningAngleDirtForPC,"Dirt");
 leg21->Draw();
+
+
+
+
+
+TCanvas *c22 = new TCanvas("c22", "Ratio of Data/MC for |t| After Opening Angle");
+c22->SetTicks();
+c22->SetFillColor(kWhite);
+
+// Creating the Divided Histograms
+TH1D *hTOADivided = (TH1D*)hTOA->Clone();
+TH1D *hTOATool = new TH1D("hTOATool", "The Histogram Used for Dividing |t| After Opening Angle", 10, 0, 1);
+hTOATool->Sumw2();
+
+hTOATool->Add(hTOARecoCCCohEn);
+hTOATool->Add(hTOARecoCCQE);
+hTOATool->Add(hTOARecoCCRes);
+hTOATool->Add(hTOARecoNCRes);
+hTOATool->Add(hTOARecoCCDIS);
+hTOATool->Add(hTOARecoNCDIS);
+hTOATool->Add(hTOAReco);
+hTOATool->Add(hTOARecoEXT);
+
+hTOADivided->Divide(hTOATool);
+hTOADivided->SetLineColor(kBlack);
+hTOADivided->SetLineWidth(2);
+hTOADivided->SetMarkerStyle(20);
+
+hTOADivided->Draw("E1");
+hTOADivided->GetXaxis()->SetTitle("|t| [GeV^{2}]");
+hTOADivided->GetXaxis()->CenterTitle();
+hTOADivided->GetYaxis()->SetTitle("Data/(MC+EXT)");
+hTOADivided->GetYaxis()->CenterTitle();
+//hTOADivided->GetYaxis()->SetRangeUser(0.5, 1.5);
+
+c22->Modified();
+
+
+
+
+
+TCanvas *c23 = new TCanvas("c23", "Ratio of Data/MC for Opening Angle After Pion Candidacy");
+c23->SetTicks();
+c23->SetFillColor(kWhite);
+
+// Creating the Divided Histograms
+TH1D *hOAPCDivided = (TH1D*)hOpeningAngleDataForPC->Clone();
+TH1D *hOAPCTool = new TH1D("hOAPCTool", "The Histogram Used for Dividing OpeningAngle After Pion Candidacy", 18, 0, 180);
+hOAPCTool->Sumw2();
+
+hOAPCTool->Add(hOpeningAngleCCCohEnForPC);
+hOAPCTool->Add(hOpeningAngleCCQEForPC);
+hOAPCTool->Add(hOpeningAngleCCResForPC);
+hOAPCTool->Add(hOpeningAngleNCResForPC);
+hOAPCTool->Add(hOpeningAngleCCDISForPC);
+hOAPCTool->Add(hOpeningAngleNCDISForPC);
+hOAPCTool->Add(hOpeningAngleMCForPC);
+hOAPCTool->Add(hOpeningAngleEXTForPC);
+
+hOAPCDivided->Divide(hOAPCTool);
+hOAPCDivided->SetLineColor(kBlack);
+hOAPCDivided->SetLineWidth(2);
+hOAPCDivided->SetMarkerStyle(20);
+
+hOAPCDivided->Draw("E1");
+hOAPCDivided->GetXaxis()->SetTitle("#theta_{#mu#pi} [Degrees]");
+hOAPCDivided->GetXaxis()->CenterTitle();
+hOAPCDivided->GetYaxis()->SetTitle("Data/(MC+EXT)");
+hOAPCDivided->GetYaxis()->CenterTitle();
+//hOAPCDivided->GetYaxis()->SetRangeUser(0.5, 1.5);
+
+c23->Modified();
 }

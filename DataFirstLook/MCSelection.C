@@ -921,7 +921,7 @@ void MCSelection::Loop()
    // %%% Saving Histograms to a File Here %%%
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
    //TFile *TDataInfo = new TFile("Data_Histograms.root", "RECREATE");
-   TFile *TMCInfo = new TFile("MC_Histograms_BothPC.root", "CREATE");
+   TFile *TMCInfo = new TFile("MC_Histograms_BothPC.root", "RECREATE");
    //TFile *TMCInfo = new TFile("MC_CCCoh_Histograms.root", "RECREATE");
    //TFile *TMCInfo = new TFile("MC_CCQE_Histograms.root", "RECREATE");
    //TFile *TMCInfo = new TFile("MC_CCRes_Histograms.root", "RECREATE");
@@ -930,6 +930,8 @@ void MCSelection::Loop()
    //TFile *TMCInfo = new TFile("MC_NCDIS_Histograms.root", "RECREATE");
    //TFile *TMCInfo = new TFile("MC_Other_Histograms.root", "RECREATE");
    //TFile *TMCInfo = new TFile("CCCoh_Enhanced_Histograms.root", "RECREATE");
+   //TFile *TEXTInfo = new TFile("EXT_Histograms_BothPC.root", "RECREATE");
+   //TFile *TDirtInfo = new TFile("Dirt_Histograms_BothPC.root", "RECREATE");
 
    hNumMuonCandidates->Write();
    hNumMuonCandidatesAfterCCInclusive->Write();
