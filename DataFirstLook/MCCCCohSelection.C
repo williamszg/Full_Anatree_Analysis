@@ -298,6 +298,7 @@ void MCCCCohSelection::Loop()
    double PassingPercentageFV = 0;
    double PercentageDV = 0;
    double PercentageFV = 0;
+   int SWTriggers = 0;
    // |----------------|
 
 
@@ -417,6 +418,8 @@ void MCCCCohSelection::Loop()
       if (WithinTPCDV==1) NumberEventsWithRecoNuVtxWithinTPCDV++;
       if (WithinTPCFV==1) NumberEventsWithRecoNuVtxWithinTPCFV++;
       if (selected==1) NumberSelected++;
+
+      SWTriggers += swtrig;
 
       // :::::::::::::::::::::::::::::::::::::::::::::
       // ::: Setting Counters and Booleans to Zero :::
@@ -885,6 +888,8 @@ void MCCCCohSelection::Loop()
    PercentageFV = 100.*(NumberEventsWithRecoNuVtxWithinTPCFV*pow(NumberEvents, -1));
    std::cout<<"|-------------------------------------------------------------------------------|"<<std::endl;
    std::cout<<"|- Total Number of Events = "<<NumberEvents<<std::endl;
+   std::cout<<"|- Total Number of Fiducial Events = "<<hRecoNuEnergyFiducialVolume->GetEntries()<<std::endl;
+   std::cout<<"|- Total Number of Software Triggers = "<<SWTriggers<<std::endl;
    std::cout<<"|-------------------------------------------------------------------------------|"<<std::endl;
    std::cout<<"|- Total Number of Selected Events = "<<NumberSelected<<std::endl;
    std::cout<<"|- Total Number of Events Within the Detector Volume = "<<NumberEventsWithRecoNuVtxWithinTPCDV<<std::endl;

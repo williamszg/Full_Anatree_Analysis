@@ -201,6 +201,41 @@ double Distance(double x0, double y0, double z0, double x1, double y1, double z1
 // ============================================
 
 
+// =======================================
+// === Absolute Difference Calculation ===
+// =======================================
+double Difference(double x0, double x1)
+{
+   double d = -999;
+   TVector3 v01(x0-x1, 0, 0);
+   d = v01.Mag();
+   return d;
+} // End Difference Function
+// =======================================
+
+
+// ========================
+// === Wire Calculation ===
+// ========================
+double Wire(double x)
+{
+   double w = (3.33328*x) + 4799.19;
+   return w;
+} // End Wire Function
+// ========================
+
+
+// ========================
+// === Tick Calculation ===
+// ========================
+double Tick(double x)
+{
+   double t = (18.2148*x) + 818.351;
+   return t;
+} // End Tick Function
+// ========================
+
+
 // ===========================
 // === Cone Angle Function ===
 // ===========================
@@ -298,6 +333,7 @@ void DataSelection::Loop()
    double PassingPercentageFV = 0;
    double PercentageDV = 0;
    double PercentageFV = 0;
+   int SWTriggers = 0;
    // |----------------|
 
 
@@ -417,6 +453,8 @@ void DataSelection::Loop()
       if (WithinTPCDV==1) NumberEventsWithRecoNuVtxWithinTPCDV++;
       if (WithinTPCFV==1) NumberEventsWithRecoNuVtxWithinTPCFV++;
       if (selected==1) NumberSelected++;
+
+      SWTriggers += swtrig;
 
       // :::::::::::::::::::::::::::::::::::::::::::::
       // ::: Setting Counters and Booleans to Zero :::
@@ -669,6 +707,24 @@ void DataSelection::Loop()
 	       } // Close DoCA Calculation For Loop*/
             } // Close VA Calculation and DoCA For Loop
             // |:::::::::::::::::::::::::::::::::::::::::::|
+
+            // ================================================
+            // === Vertex Activity Calculation Happens Here ===
+            // ================================================
+            float vtxactivity = 0;
+            float withinwires = 33;
+            float withinticks = 182;
+            float WIRE = Wire(reco_nu_vtx_z);
+            float TICK = Tick(reco_nu_vtx_x);
+
+            //if (jentry%10 == 0) std::cout<<"Wire = "<<WIRE<<", Tick = "<<TICK<<std::endl;
+
+            for (int l = 0; l < nallhits; l++) {
+	       if ((Difference(hit_channel[l], WIRE) <= withinwires) && (Difference(hit_peakT[l], TICK) <= withinticks)) {
+  	          vtxactivity = vtxactivity + hit_charge[i];
+	       }// <-- Close Hit is Within Range Defined Condition
+            }// <-- Close Hits For Loop
+            // ================================================
 	 
          }
          CCInclusivePreSelection = 1;
@@ -803,29 +859,29 @@ void DataSelection::Loop()
 	             hMuonCandidateTrkLLRPIDScoreAfterVA->Fill(MuonCandidateLLRPIDScore);
 	             hPionCandidateTrkLLRPIDScoreAfterVA->Fill(PionCandidateLLRPIDScore);
 		  if (PionCandidateMuonChi2 < PionCandidateMuonCut && PionCandidateProtonChi2 > PionCandidateProtonCut) {
-	             hConeAngleForPionCandidate->Fill(SavedConeAngle);
-		     hOpeningAngleForPionCandidate->Fill(SavedOpeningAngle);
 	             NumEventsWithPionCandidate++;
-		     hTPionCandidate->Fill(t);
-		     //hRecoNuEnergyPionCandidate->Fill(Trk1MuEnergy + Trk2MuEnergy);
-		     hRecoNuEnergyPionCandidate->Fill(TotalDaughterTracksEnergy/1000);
-	             hDeltaPTTPC->Fill(DeltaP_TT(0, 0, 1, mu.X(), mu.Y(), mu.Z(), pi.X(), pi.Y(), pi.Z()));
-	             hPNPC->Fill(P_N_Alpha_T(0, mu.X(), mu.Y(), mu.Z(), Trk1MuEnergy, pi.X(), pi.Y(), pi.Z(), Trk2MuEnergy));
-	             hDeltaAlphaTPC->Fill(P_N_Alpha_T(1, mu.X(), mu.Y(), mu.Z(), Trk1MuEnergy, pi.X(), pi.Y(), pi.Z(), Trk2MuEnergy)*180/PI);
-		     hNSliceNumberAfterPion->Fill(nslice);
-		     hRecoMuonCandidateMomentumAfterPC->Fill(mu.Mag());
-		     hRecoPionCandidateMomentumAfterPC->Fill(pi.Mag());
-		     hRecoMuonCandidateThetaAfterPC->Fill(mu.Theta()*180/PI);
-		     hRecoPionCandidateThetaAfterPC->Fill(pi.Theta()*180/PI);
-		     hRecoMuonCandidateCosThetaAfterPC->Fill(mu.CosTheta());
-		     hRecoPionCandidateCosThetaAfterPC->Fill(pi.CosTheta());
-		     hRecoMuonCandidatePhiAfterPC->Fill(mu.Phi()*180/PI);
-		     hRecoPionCandidatePhiAfterPC->Fill(pi.Phi()*180/PI);
-	             hOpeningAngleVsConeAnglePC->Fill(SavedConeAngle, SavedOpeningAngle);
 	             hMuonCandidateTrkLLRPIDScoreAfterPC->Fill(MuonCandidateLLRPIDScore);
 	             hPionCandidateTrkLLRPIDScoreAfterPC->Fill(PionCandidateLLRPIDScore);
 		     if (PionCandidateLLRPIDScore > LLRCut) {
 		        NumEventsWithLLR++;
+	                hConeAngleForPionCandidate->Fill(SavedConeAngle);
+		        hOpeningAngleForPionCandidate->Fill(SavedOpeningAngle);
+		        hTPionCandidate->Fill(t);
+		        //hRecoNuEnergyPionCandidate->Fill(Trk1MuEnergy + Trk2MuEnergy);
+		        hRecoNuEnergyPionCandidate->Fill(TotalDaughterTracksEnergy/1000);
+	                hDeltaPTTPC->Fill(DeltaP_TT(0, 0, 1, mu.X(), mu.Y(), mu.Z(), pi.X(), pi.Y(), pi.Z()));
+	                hPNPC->Fill(P_N_Alpha_T(0, mu.X(), mu.Y(), mu.Z(), Trk1MuEnergy, pi.X(), pi.Y(), pi.Z(), Trk2MuEnergy));
+	                hDeltaAlphaTPC->Fill(P_N_Alpha_T(1, mu.X(), mu.Y(), mu.Z(), Trk1MuEnergy, pi.X(), pi.Y(), pi.Z(), Trk2MuEnergy)*180/PI);
+		        hNSliceNumberAfterPion->Fill(nslice);
+		        hRecoMuonCandidateMomentumAfterPC->Fill(mu.Mag());
+		        hRecoPionCandidateMomentumAfterPC->Fill(pi.Mag());
+		        hRecoMuonCandidateThetaAfterPC->Fill(mu.Theta()*180/PI);
+		        hRecoPionCandidateThetaAfterPC->Fill(pi.Theta()*180/PI);
+		        hRecoMuonCandidateCosThetaAfterPC->Fill(mu.CosTheta());
+		        hRecoPionCandidateCosThetaAfterPC->Fill(pi.CosTheta());
+		        hRecoMuonCandidatePhiAfterPC->Fill(mu.Phi()*180/PI);
+		        hRecoPionCandidatePhiAfterPC->Fill(pi.Phi()*180/PI);
+	                hOpeningAngleVsConeAnglePC->Fill(SavedConeAngle, SavedOpeningAngle);
 		     if (SavedOpeningAngle < OpeningAngleCut) {
 			NumEventsWithOA++;
 	                hConeAngleForOA->Fill(SavedConeAngle);
@@ -885,6 +941,8 @@ void DataSelection::Loop()
    PercentageFV = 100.*(NumberEventsWithRecoNuVtxWithinTPCFV*pow(NumberEvents, -1));
    std::cout<<"|-------------------------------------------------------------------------------|"<<std::endl;
    std::cout<<"|- Total Number of Events = "<<NumberEvents<<std::endl;
+   std::cout<<"|- Total Number of Fiducial Events = "<<hRecoNuEnergyFiducialVolume->GetEntries()<<std::endl;
+   std::cout<<"|- Total Number of Software Triggers = "<<SWTriggers<<std::endl;
    std::cout<<"|-------------------------------------------------------------------------------|"<<std::endl;
    std::cout<<"|- Total Number of Selected Events = "<<NumberSelected<<std::endl;
    std::cout<<"|- Total Number of Events Within the Detector Volume = "<<NumberEventsWithRecoNuVtxWithinTPCDV<<std::endl;
@@ -921,15 +979,15 @@ void DataSelection::Loop()
    // %%% Saving Histograms to a File Here %%%
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
    TFile *TDataInfo = new TFile("Data_Histograms_BothPC.root", "RECREATE");
-   //TFile *TMCInfo = new TFile("MC_Histograms.root", "RECREATE");
-   //TFile *TMCInfo = new TFile("MC_CCCoh_Histograms.root", "RECREATE");
-   //TFile *TMCInfo = new TFile("MC_CCQE_Histograms.root", "RECREATE");
-   //TFile *TMCInfo = new TFile("MC_CCRes_Histograms.root", "RECREATE");
-   //TFile *TMCInfo = new TFile("MC_NCRes_Histograms.root", "RECREATE");
-   //TFile *TMCInfo = new TFile("MC_CCDIS_Histograms.root", "RECREATE");
-   //TFile *TMCInfo = new TFile("MC_NCDIS_Histograms.root", "RECREATE");
-   //TFile *TMCInfo = new TFile("MC_Other_Histograms.root", "RECREATE");
-   //TFile *TMCInfo = new TFile("CCCoh_Enhanced_Histograms.root", "RECREATE");
+   //TFile *TMCInfo = new TFile("MC_Histograms_BothPC.root", "RECREATE");
+   //TFile *TMCInfo = new TFile("MC_CCCoh_Histograms_BothPC.root", "RECREATE");
+   //TFile *TMCInfo = new TFile("MC_CCQE_Histograms_BothPC.root", "RECREATE");
+   //TFile *TMCInfo = new TFile("MC_CCRes_Histograms_BothPC.root", "RECREATE");
+   //TFile *TMCInfo = new TFile("MC_NCRes_Histograms_BothPC.root", "RECREATE");
+   //TFile *TMCInfo = new TFile("MC_CCDIS_Histograms_BothPC.root", "RECREATE");
+   //TFile *TMCInfo = new TFile("MC_NCDIS_Histograms_BothPC.root", "RECREATE");
+   //TFile *TMCInfo = new TFile("MC_Other_Histograms_BothPC.root", "RECREATE");
+   //TFile *TMCInfo = new TFile("CCCoh_Enhanced_Histograms_BothPC.root", "RECREATE");
    //TFile *TEXTInfo = new TFile("EXT_Histograms_BothPC.root", "RECREATE");
    //TFile *TDirtInfo = new TFile("Dirt_Histograms_BothPC.root", "RECREATE");
 

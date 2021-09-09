@@ -546,6 +546,87 @@ hOpeningAngleEXTForPC->Sumw2();
 hOpeningAngleDirtForPC->Sumw2();
 
 
+TH1D *hRecoNuEnergyFVData = (TH1D*)f4->Get("hRecoNuEnergyFiducialVolume");
+TH1D *hRecoNuEnergyFVMC = (TH1D*)f5->Get("hRecoNuEnergyFiducialVolume");
+TH1D *hRecoNuEnergyFVCCCoh = (TH1D*)f6->Get("hRecoNuEnergyFiducialVolume");
+TH1D *hRecoNuEnergyFVCCQE = (TH1D*)f7->Get("hRecoNuEnergyFiducialVolume");
+TH1D *hRecoNuEnergyFVCCRes = (TH1D*)f8->Get("hRecoNuEnergyFiducialVolume");
+TH1D *hRecoNuEnergyFVNCRes = (TH1D*)f9->Get("hRecoNuEnergyFiducialVolume");
+TH1D *hRecoNuEnergyFVCCDIS = (TH1D*)f10->Get("hRecoNuEnergyFiducialVolume");
+TH1D *hRecoNuEnergyFVNCDIS = (TH1D*)f11->Get("hRecoNuEnergyFiducialVolume");
+TH1D *hRecoNuEnergyFVOther = (TH1D*)f12->Get("hRecoNuEnergyFiducialVolume");
+TH1D *hRecoNuEnergyFVCCCohEn = (TH1D*)f13->Get("hRecoNuEnergyFiducialVolume");
+TH1D *hRecoNuEnergyFVEXT = (TH1D*)f14->Get("hRecoNuEnergyFiducialVolume");
+TH1D *hRecoNuEnergyFVDirt = (TH1D*)f15->Get("hRecoNuEnergyFiducialVolume");
+
+hRecoNuEnergyFVData->Sumw2();
+hRecoNuEnergyFVMC->Sumw2();
+hRecoNuEnergyFVCCCoh->Sumw2();
+hRecoNuEnergyFVCCQE->Sumw2();
+hRecoNuEnergyFVCCRes->Sumw2();
+hRecoNuEnergyFVNCRes->Sumw2();
+hRecoNuEnergyFVCCDIS->Sumw2();
+hRecoNuEnergyFVNCDIS->Sumw2();
+hRecoNuEnergyFVOther->Sumw2();
+hRecoNuEnergyFVCCCohEn->Sumw2();
+hRecoNuEnergyFVEXT->Sumw2();
+hRecoNuEnergyFVDirt->Sumw2();
+
+
+TH1D *hRecoNuEnergyData = (TH1D*)f4->Get("hRecoNuEnergy");
+TH1D *hRecoNuEnergyMC = (TH1D*)f5->Get("hRecoNuEnergy");
+TH1D *hRecoNuEnergyCCCoh = (TH1D*)f6->Get("hRecoNuEnergy");
+TH1D *hRecoNuEnergyCCQE = (TH1D*)f7->Get("hRecoNuEnergy");
+TH1D *hRecoNuEnergyCCRes = (TH1D*)f8->Get("hRecoNuEnergy");
+TH1D *hRecoNuEnergyNCRes = (TH1D*)f9->Get("hRecoNuEnergy");
+TH1D *hRecoNuEnergyCCDIS = (TH1D*)f10->Get("hRecoNuEnergy");
+TH1D *hRecoNuEnergyNCDIS = (TH1D*)f11->Get("hRecoNuEnergy");
+TH1D *hRecoNuEnergyOther = (TH1D*)f12->Get("hRecoNuEnergy");
+TH1D *hRecoNuEnergyCCCohEn = (TH1D*)f13->Get("hRecoNuEnergy");
+TH1D *hRecoNuEnergyEXT = (TH1D*)f14->Get("hRecoNuEnergy");
+TH1D *hRecoNuEnergyDirt = (TH1D*)f15->Get("hRecoNuEnergy");
+
+hRecoNuEnergyData->Sumw2();
+hRecoNuEnergyMC->Sumw2();
+hRecoNuEnergyCCCoh->Sumw2();
+hRecoNuEnergyCCQE->Sumw2();
+hRecoNuEnergyCCRes->Sumw2();
+hRecoNuEnergyNCRes->Sumw2();
+hRecoNuEnergyCCDIS->Sumw2();
+hRecoNuEnergyNCDIS->Sumw2();
+hRecoNuEnergyOther->Sumw2();
+hRecoNuEnergyCCCohEn->Sumw2();
+hRecoNuEnergyEXT->Sumw2();
+hRecoNuEnergyDirt->Sumw2();
+
+
+TH1D *hRecoNuEnergyOAData = (TH1D*)f4->Get("hRecoNuEnergyOA");
+TH1D *hRecoNuEnergyOAMC = (TH1D*)f5->Get("hRecoNuEnergyOA");
+TH1D *hRecoNuEnergyOACCCoh = (TH1D*)f6->Get("hRecoNuEnergyOA");
+TH1D *hRecoNuEnergyOACCQE = (TH1D*)f7->Get("hRecoNuEnergyOA");
+TH1D *hRecoNuEnergyOACCRes = (TH1D*)f8->Get("hRecoNuEnergyOA");
+TH1D *hRecoNuEnergyOANCRes = (TH1D*)f9->Get("hRecoNuEnergyOA");
+TH1D *hRecoNuEnergyOACCDIS = (TH1D*)f10->Get("hRecoNuEnergyOA");
+TH1D *hRecoNuEnergyOANCDIS = (TH1D*)f11->Get("hRecoNuEnergyOA");
+TH1D *hRecoNuEnergyOAOther = (TH1D*)f12->Get("hRecoNuEnergyOA");
+TH1D *hRecoNuEnergyOACCCohEn = (TH1D*)f13->Get("hRecoNuEnergyOA");
+TH1D *hRecoNuEnergyOAEXT = (TH1D*)f14->Get("hRecoNuEnergyOA");
+TH1D *hRecoNuEnergyOADirt = (TH1D*)f15->Get("hRecoNuEnergyOA");
+
+hRecoNuEnergyOAData->Sumw2();
+hRecoNuEnergyOAMC->Sumw2();
+hRecoNuEnergyOACCCoh->Sumw2();
+hRecoNuEnergyOACCQE->Sumw2();
+hRecoNuEnergyOACCRes->Sumw2();
+hRecoNuEnergyOANCRes->Sumw2();
+hRecoNuEnergyOACCDIS->Sumw2();
+hRecoNuEnergyOANCDIS->Sumw2();
+hRecoNuEnergyOAOther->Sumw2();
+hRecoNuEnergyOACCCohEn->Sumw2();
+hRecoNuEnergyOAEXT->Sumw2();
+hRecoNuEnergyOADirt->Sumw2();
+
+
 // Creating the Stacked Histograms
 THStack *hTStacked = new THStack("hTStacked", "|t| Stacked for Events Passing 2-Tracks Selection");
 THStack *hTPCStacked = new THStack("hTPCStacked", "|t| Stacked for Events Passing Pion Candidacy Selection");
@@ -570,17 +651,25 @@ THStack *hPionCandidateTrkLLRPIDScoreAfterPCStacked = new THStack("hPionCandidat
 THStack *hVertexActivityStacked = new THStack("hVertexActivityStacked", "Vertex Activity Stacked After 2-Tracks Selection");
 THStack *hPionCandidateTrkLLRPIDScoreStacked = new THStack("hPionCandidateTrkLLRPIDScoreStacked", "Pion Candidate LLR Stacked for Events Passing 2-Tracks Selection");
 THStack *hMuonCandidateTrkLLRPIDScoreStacked = new THStack("hMuonCandidateTrkLLRPIDScoreStacked", "Muon Candidate LLR Stacked for Events Passing 2-Tracks Selection");
+THStack *hRecoNuEnergyFVStacked = new THStack("hRecoNuEnergyFVStacked", "The Reco Neutrino Energy for Events in the Fiducial Volume");
+THStack *hRecoNuEnergyStacked = new THStack("hRecoNuEnergyStacked", "The Reco Neutrino Energy for Events Passing 2-Tracks Selection");
+THStack *hRecoNuEnergyOAStacked = new THStack("hRecoNuEnergyOAStacked", "The Reco Neutrino Energy for Events Passing Opening Angle Selection");
 
 
 //double Run1ScaleFactorMC = 0.05/1.2847059;
 //double Run1ScaleFactorMC = 0.0465663;
 //double Run1ScaleFactorMC = 0.0454/1.2847059;
-double Run1ScaleFactorMC = 0.0534/1.2847059; //<-- The one I've been using
+//double Run1ScaleFactorMC = 0.0534/1.2847059; //<-- The one I've been using
 //double Run1ScaleFactorMC = 1.02028*(0.0534/1.2847059);
 //double Run1ScaleFactorMC = 0.00704;
+double Run1ScaleFactorMC = 0.0398;
 //double EnhancedCCCohScaleFactor = 172./7390.;
-double EnhancedCCCohScaleFactor = 150./7390.;
-double Run1ScaleFactorDirt = 0.0288;
+//double EnhancedCCCohScaleFactor = 150./7390.; //<-- The one I've been using
+double EnhancedCCCohScaleFactor = 0.0158;
+//double Run1ScaleFactorDirt = 0.0288; //<-- The one I've been using
+double Run1ScaleFactorDirt = 0.0701;
+double Run1ScaleFactorEXT = 1; //<-- The one I've been using
+//double Run1ScaleFactorEXT = 2.252;
 
 
 
@@ -595,24 +684,31 @@ hT->SetLineWidth(2);
 hT->Rebin(100);
 hT->SetMarkerStyle(20);
 hTRecoCCCoh->SetFillColor(kBlue);
+hTRecoCCCoh->SetLineColor(kBlack);
 hTRecoCCCoh->Scale(Run1ScaleFactorMC);
 hTRecoCCCoh->Rebin(100);
 hTRecoCCQE->SetFillColor(kViolet);
+hTRecoCCQE->SetLineColor(kBlack);
 hTRecoCCQE->Scale(Run1ScaleFactorMC);
 hTRecoCCQE->Rebin(100);
 hTRecoCCRes->SetFillColor(kRed);
+hTRecoCCRes->SetLineColor(kBlack);
 hTRecoCCRes->Scale(Run1ScaleFactorMC);
 hTRecoCCRes->Rebin(100);
 hTRecoNCRes->SetFillColor(kGreen);
+hTRecoNCRes->SetLineColor(kBlack);
 hTRecoNCRes->Scale(Run1ScaleFactorMC);
 hTRecoNCRes->Rebin(100);
 hTRecoCCDIS->SetFillColor(kCyan-8);
+hTRecoCCDIS->SetLineColor(kBlack);
 hTRecoCCDIS->Scale(Run1ScaleFactorMC);
 hTRecoCCDIS->Rebin(100);
 hTRecoNCDIS->SetFillColor(kGray);
+hTRecoNCDIS->SetLineColor(kBlack);
 hTRecoNCDIS->Scale(Run1ScaleFactorMC);
 hTRecoNCDIS->Rebin(100);
 hTRecoCCCohEn->SetFillColor(kBlue);
+hTRecoCCCohEn->SetLineColor(kBlack);
 hTRecoCCCohEn->Scale(EnhancedCCCohScaleFactor*Run1ScaleFactorMC);
 hTRecoCCCohEn->Rebin(100);
 hTReco->SetFillColor(kOrange);
@@ -625,9 +721,16 @@ hTReco->Add(hTRecoNCRes, -1);
 hTReco->Add(hTRecoCCDIS, -1);
 hTReco->Add(hTRecoNCDIS, -1);
 hTRecoEXT->SetFillColor(kGray+4);
+hTRecoEXT->SetLineColor(kBlack);
+hTRecoEXT->Scale(Run1ScaleFactorEXT);
 hTRecoEXT->Rebin(100);
+hTRecoDirt->SetFillColor(kOrange+5);
+hTRecoDirt->SetLineColor(kBlack);
+hTRecoDirt->Scale(Run1ScaleFactorDirt);
+hTRecoDirt->Rebin(100);
 hTStacked->Add(hTReco);
 hTStacked->Add(hTRecoEXT);
+hTStacked->Add(hTRecoDirt);
 hTStacked->Add(hTRecoCCQE);
 hTStacked->Add(hTRecoCCRes);
 hTStacked->Add(hTRecoNCRes);
@@ -664,6 +767,7 @@ leg1->AddEntry(hTRecoCCDIS,"Reco CC-DIS");
 leg1->AddEntry(hTRecoNCDIS,"Reco NC-DIS");
 leg1->AddEntry(hTReco,"Reco Other");
 leg1->AddEntry(hTRecoEXT,"EXT");
+leg1->AddEntry(hTRecoDirt,"Dirt");
 leg1->Draw();
 
 
@@ -709,9 +813,14 @@ hTPCReco->Add(hTPCRecoNCRes, -1);
 hTPCReco->Add(hTPCRecoCCDIS, -1);
 hTPCReco->Add(hTPCRecoNCDIS, -1);
 hTPCRecoEXT->SetFillColor(kGray+4);
+hTPCRecoEXT->Scale(Run1ScaleFactorEXT);
 hTPCRecoEXT->Rebin(100);
+hTPCRecoDirt->SetFillColor(kOrange+5);
+hTPCRecoDirt->Scale(Run1ScaleFactorDirt);
+hTPCRecoDirt->Rebin(100);
 hTPCStacked->Add(hTPCReco);
 hTPCStacked->Add(hTPCRecoEXT);
+hTPCStacked->Add(hTPCRecoDirt);
 hTPCStacked->Add(hTPCRecoCCQE);
 hTPCStacked->Add(hTPCRecoCCRes);
 hTPCStacked->Add(hTPCRecoNCRes);
@@ -747,6 +856,7 @@ leg2->AddEntry(hTPCRecoCCDIS,"Reco CC-DIS");
 leg2->AddEntry(hTPCRecoNCDIS,"Reco NC-DIS");
 leg2->AddEntry(hTPCReco,"Reco Other");
 leg2->AddEntry(hTPCRecoEXT,"EXT");
+leg2->AddEntry(hTPCRecoDirt,"Dirt");
 leg2->Draw();
 
 
@@ -792,9 +902,14 @@ hTOAReco->Add(hTOARecoNCRes, -1);
 hTOAReco->Add(hTOARecoCCDIS, -1);
 hTOAReco->Add(hTOARecoNCDIS, -1);
 hTOARecoEXT->SetFillColor(kGray+4);
+hTOARecoEXT->Scale(Run1ScaleFactorEXT);
 hTOARecoEXT->Rebin(100);
+hTOARecoDirt->SetFillColor(kOrange+5);
+hTOARecoDirt->Scale(Run1ScaleFactorDirt);
+hTOARecoDirt->Rebin(100);
 hTOAStacked->Add(hTOAReco);
 hTOAStacked->Add(hTOARecoEXT);
+hTOAStacked->Add(hTOARecoDirt);
 hTOAStacked->Add(hTOARecoCCQE);
 hTOAStacked->Add(hTOARecoCCRes);
 hTOAStacked->Add(hTOARecoNCRes);
@@ -831,6 +946,7 @@ leg3->AddEntry(hTOARecoCCDIS,"Reco CC-DIS");
 leg3->AddEntry(hTOARecoNCDIS,"Reco NC-DIS");
 leg3->AddEntry(hTOAReco,"Reco Other");
 leg3->AddEntry(hTOARecoEXT,"EXT");
+leg3->AddEntry(hTOARecoDirt,"Dirt");
 leg3->Draw();
 
 
@@ -876,9 +992,14 @@ hRecoMuonCandidateMomentumAfterPCMC->Add(hRecoMuonCandidateMomentumAfterPCMCNCRe
 hRecoMuonCandidateMomentumAfterPCMC->Add(hRecoMuonCandidateMomentumAfterPCMCCCDIS, -1);
 hRecoMuonCandidateMomentumAfterPCMC->Add(hRecoMuonCandidateMomentumAfterPCMCNCDIS, -1);
 hRecoMuonCandidateMomentumAfterPCEXT->SetFillColor(kGray+4);
+hRecoMuonCandidateMomentumAfterPCEXT->Scale(Run1ScaleFactorEXT);
 hRecoMuonCandidateMomentumAfterPCEXT->Rebin(25);
+hRecoMuonCandidateMomentumAfterPCDirt->SetFillColor(kOrange+5);
+hRecoMuonCandidateMomentumAfterPCDirt->Scale(Run1ScaleFactorDirt);
+hRecoMuonCandidateMomentumAfterPCDirt->Rebin(25);
 hMPPCStacked->Add(hRecoMuonCandidateMomentumAfterPCMC);
 hMPPCStacked->Add(hRecoMuonCandidateMomentumAfterPCEXT);
+hMPPCStacked->Add(hRecoMuonCandidateMomentumAfterPCDirt);
 hMPPCStacked->Add(hRecoMuonCandidateMomentumAfterPCMCCCQE);
 hMPPCStacked->Add(hRecoMuonCandidateMomentumAfterPCMCCCRes);
 hMPPCStacked->Add(hRecoMuonCandidateMomentumAfterPCMCNCRes);
@@ -915,6 +1036,7 @@ leg4->AddEntry(hRecoMuonCandidateMomentumAfterPCMCCCDIS,"Reco CC-DIS");
 leg4->AddEntry(hRecoMuonCandidateMomentumAfterPCMCNCDIS,"Reco NC-DIS");
 leg4->AddEntry(hRecoMuonCandidateMomentumAfterPCMC,"Reco Other");
 leg4->AddEntry(hRecoMuonCandidateMomentumAfterPCEXT,"EXT");
+leg4->AddEntry(hRecoMuonCandidateMomentumAfterPCDirt,"Dirt");
 leg4->Draw();
 
 
@@ -960,9 +1082,14 @@ hRecoMuonCandidateMomentumAfterOAMC->Add(hRecoMuonCandidateMomentumAfterOAMCNCRe
 hRecoMuonCandidateMomentumAfterOAMC->Add(hRecoMuonCandidateMomentumAfterOAMCCCDIS, -1);
 hRecoMuonCandidateMomentumAfterOAMC->Add(hRecoMuonCandidateMomentumAfterOAMCNCDIS, -1);
 hRecoMuonCandidateMomentumAfterOAEXT->SetFillColor(kGray+4);
+hRecoMuonCandidateMomentumAfterOAEXT->Scale(Run1ScaleFactorEXT);
 hRecoMuonCandidateMomentumAfterOAEXT->Rebin(25);
+hRecoMuonCandidateMomentumAfterOADirt->SetFillColor(kOrange+5);
+hRecoMuonCandidateMomentumAfterOADirt->Scale(Run1ScaleFactorDirt);
+hRecoMuonCandidateMomentumAfterOADirt->Rebin(25);
 hMPOAStacked->Add(hRecoMuonCandidateMomentumAfterOAMC);
 hMPOAStacked->Add(hRecoMuonCandidateMomentumAfterOAEXT);
+hMPOAStacked->Add(hRecoMuonCandidateMomentumAfterOADirt);
 hMPOAStacked->Add(hRecoMuonCandidateMomentumAfterOAMCCCQE);
 hMPOAStacked->Add(hRecoMuonCandidateMomentumAfterOAMCCCRes);
 hMPOAStacked->Add(hRecoMuonCandidateMomentumAfterOAMCNCRes);
@@ -999,6 +1126,7 @@ leg5->AddEntry(hRecoMuonCandidateMomentumAfterOAMCCCDIS,"Reco CC-DIS");
 leg5->AddEntry(hRecoMuonCandidateMomentumAfterOAMCNCDIS,"Reco NC-DIS");
 leg5->AddEntry(hRecoMuonCandidateMomentumAfterOAMC,"Reco Other");
 leg5->AddEntry(hRecoMuonCandidateMomentumAfterOAEXT,"EXT");
+leg5->AddEntry(hRecoMuonCandidateMomentumAfterOADirt,"Dirt");
 leg5->Draw();
 
 
@@ -1044,9 +1172,14 @@ hRecoPionCandidateMomentumAfterPCMC->Add(hRecoPionCandidateMomentumAfterPCMCNCRe
 hRecoPionCandidateMomentumAfterPCMC->Add(hRecoPionCandidateMomentumAfterPCMCCCDIS, -1);
 hRecoPionCandidateMomentumAfterPCMC->Add(hRecoPionCandidateMomentumAfterPCMCNCDIS, -1);
 hRecoPionCandidateMomentumAfterPCEXT->SetFillColor(kGray+4);
+hRecoPionCandidateMomentumAfterPCEXT->Scale(Run1ScaleFactorEXT);
 hRecoPionCandidateMomentumAfterPCEXT->Rebin(25);
+hRecoPionCandidateMomentumAfterPCDirt->SetFillColor(kOrange+5);
+hRecoPionCandidateMomentumAfterPCDirt->Scale(Run1ScaleFactorDirt);
+hRecoPionCandidateMomentumAfterPCDirt->Rebin(25);
 hPPPCStacked->Add(hRecoPionCandidateMomentumAfterPCMC);
 hPPPCStacked->Add(hRecoPionCandidateMomentumAfterPCEXT);
+hPPPCStacked->Add(hRecoPionCandidateMomentumAfterPCDirt);
 hPPPCStacked->Add(hRecoPionCandidateMomentumAfterPCMCCCQE);
 hPPPCStacked->Add(hRecoPionCandidateMomentumAfterPCMCCCRes);
 hPPPCStacked->Add(hRecoPionCandidateMomentumAfterPCMCNCRes);
@@ -1083,6 +1216,7 @@ leg6->AddEntry(hRecoPionCandidateMomentumAfterPCMCCCDIS,"Reco CC-DIS");
 leg6->AddEntry(hRecoPionCandidateMomentumAfterPCMCNCDIS,"Reco NC-DIS");
 leg6->AddEntry(hRecoPionCandidateMomentumAfterPCMC,"Reco Other");
 leg6->AddEntry(hRecoPionCandidateMomentumAfterPCEXT,"EXT");
+leg6->AddEntry(hRecoPionCandidateMomentumAfterPCDirt,"Dirt");
 leg6->Draw();
 
 
@@ -1128,9 +1262,14 @@ hRecoPionCandidateMomentumAfterOAMC->Add(hRecoPionCandidateMomentumAfterOAMCNCRe
 hRecoPionCandidateMomentumAfterOAMC->Add(hRecoPionCandidateMomentumAfterOAMCCCDIS, -1);
 hRecoPionCandidateMomentumAfterOAMC->Add(hRecoPionCandidateMomentumAfterOAMCNCDIS, -1);
 hRecoPionCandidateMomentumAfterOAEXT->SetFillColor(kGray+4);
+hRecoPionCandidateMomentumAfterOAEXT->Scale(Run1ScaleFactorEXT);
 hRecoPionCandidateMomentumAfterOAEXT->Rebin(25);
+hRecoPionCandidateMomentumAfterOADirt->SetFillColor(kOrange+5);
+hRecoPionCandidateMomentumAfterOADirt->Scale(Run1ScaleFactorDirt);
+hRecoPionCandidateMomentumAfterOADirt->Rebin(25);
 hPPOAStacked->Add(hRecoPionCandidateMomentumAfterOAMC);
 hPPOAStacked->Add(hRecoPionCandidateMomentumAfterOAEXT);
+hPPOAStacked->Add(hRecoPionCandidateMomentumAfterOADirt);
 hPPOAStacked->Add(hRecoPionCandidateMomentumAfterOAMCCCQE);
 hPPOAStacked->Add(hRecoPionCandidateMomentumAfterOAMCCCRes);
 hPPOAStacked->Add(hRecoPionCandidateMomentumAfterOAMCNCRes);
@@ -1167,6 +1306,7 @@ leg7->AddEntry(hRecoPionCandidateMomentumAfterOAMCCCDIS,"Reco CC-DIS");
 leg7->AddEntry(hRecoPionCandidateMomentumAfterOAMCNCDIS,"Reco NC-DIS");
 leg7->AddEntry(hRecoPionCandidateMomentumAfterOAMC,"Reco Other");
 leg7->AddEntry(hRecoPionCandidateMomentumAfterOAEXT,"EXT");
+leg7->AddEntry(hRecoPionCandidateMomentumAfterOADirt,"Dirt");
 leg7->Draw();
 
 
@@ -1683,6 +1823,7 @@ hPionCandidateTrkLLRPIDScoreAfterVAMC->Add(hPionCandidateTrkLLRPIDScoreAfterVACC
 hPionCandidateTrkLLRPIDScoreAfterVAMC->Add(hPionCandidateTrkLLRPIDScoreAfterVANCDIS, -1);
 hPionCandidateTrkLLRPIDScoreAfterVAEXT->SetFillColor(kGray+4);
 hPionCandidateTrkLLRPIDScoreAfterVAEXT->SetLineColor(kBlack);
+hPionCandidateTrkLLRPIDScoreAfterVAEXT->Scale(Run1ScaleFactorEXT);
 hPionCandidateTrkLLRPIDScoreAfterVAEXT->Rebin(25);
 hPionCandidateTrkLLRPIDScoreAfterVAStacked->Add(hPionCandidateTrkLLRPIDScoreAfterVAMC);
 hPionCandidateTrkLLRPIDScoreAfterVAStacked->Add(hPionCandidateTrkLLRPIDScoreAfterVAEXT);
@@ -1776,6 +1917,7 @@ hPionCandidateTrkLLRPIDScoreAfterPCMC->Add(hPionCandidateTrkLLRPIDScoreAfterPCCC
 hPionCandidateTrkLLRPIDScoreAfterPCMC->Add(hPionCandidateTrkLLRPIDScoreAfterPCNCDIS, -1);
 hPionCandidateTrkLLRPIDScoreAfterPCEXT->SetFillColor(kGray+4);
 hPionCandidateTrkLLRPIDScoreAfterPCEXT->SetLineColor(kBlack);
+hPionCandidateTrkLLRPIDScoreAfterPCEXT->Scale(Run1ScaleFactorEXT);
 hPionCandidateTrkLLRPIDScoreAfterPCEXT->Rebin(25);
 hPionCandidateTrkLLRPIDScoreAfterPCStacked->Add(hPionCandidateTrkLLRPIDScoreAfterPCMC);
 hPionCandidateTrkLLRPIDScoreAfterPCStacked->Add(hPionCandidateTrkLLRPIDScoreAfterPCEXT);
@@ -1869,9 +2011,15 @@ hVertexActivityMC->Add(hVertexActivityCCDIS, -1);
 hVertexActivityMC->Add(hVertexActivityNCDIS, -1);
 hVertexActivityEXT->SetFillColor(kGray+4);
 hVertexActivityEXT->SetLineColor(kBlack);
+hVertexActivityEXT->Scale(Run1ScaleFactorEXT);
 hVertexActivityEXT->Rebin(200);
+hVertexActivityDirt->SetFillColor(kOrange+5);
+hVertexActivityDirt->SetLineColor(kBlack);
+hVertexActivityDirt->Scale(Run1ScaleFactorDirt);
+hVertexActivityDirt->Rebin(200);
 hVertexActivityStacked->Add(hVertexActivityMC);
 hVertexActivityStacked->Add(hVertexActivityEXT);
+hVertexActivityStacked->Add(hVertexActivityDirt);
 hVertexActivityStacked->Add(hVertexActivityCCQE);
 hVertexActivityStacked->Add(hVertexActivityCCRes);
 hVertexActivityStacked->Add(hVertexActivityNCRes);
@@ -1908,6 +2056,7 @@ leg16->AddEntry(hVertexActivityCCDIS,"Reco CC-DIS");
 leg16->AddEntry(hVertexActivityNCDIS,"Reco NC-DIS");
 leg16->AddEntry(hVertexActivityMC,"Reco Other");
 leg16->AddEntry(hVertexActivityEXT,"EXT");
+leg16->AddEntry(hVertexActivityDirt,"Dirt");
 leg16->Draw();
 
 
@@ -1962,6 +2111,7 @@ hPionCandidateTrkLLRPIDScoreMC->Add(hPionCandidateTrkLLRPIDScoreCCDIS, -1);
 hPionCandidateTrkLLRPIDScoreMC->Add(hPionCandidateTrkLLRPIDScoreNCDIS, -1);
 hPionCandidateTrkLLRPIDScoreEXT->SetFillColor(kGray+4);
 hPionCandidateTrkLLRPIDScoreEXT->SetLineColor(kBlack);
+hPionCandidateTrkLLRPIDScoreEXT->Scale(Run1ScaleFactorEXT);
 hPionCandidateTrkLLRPIDScoreEXT->Rebin(25);
 hPionCandidateTrkLLRPIDScoreStacked->Add(hPionCandidateTrkLLRPIDScoreMC);
 hPionCandidateTrkLLRPIDScoreStacked->Add(hPionCandidateTrkLLRPIDScoreEXT);
@@ -2055,6 +2205,7 @@ hMuonCandidateTrkLLRPIDScoreMC->Add(hMuonCandidateTrkLLRPIDScoreCCDIS, -1);
 hMuonCandidateTrkLLRPIDScoreMC->Add(hMuonCandidateTrkLLRPIDScoreNCDIS, -1);
 hMuonCandidateTrkLLRPIDScoreEXT->SetFillColor(kGray+4);
 hMuonCandidateTrkLLRPIDScoreEXT->SetLineColor(kBlack);
+hMuonCandidateTrkLLRPIDScoreEXT->Scale(Run1ScaleFactorEXT);
 hMuonCandidateTrkLLRPIDScoreEXT->Rebin(25);
 hMuonCandidateTrkLLRPIDScoreStacked->Add(hMuonCandidateTrkLLRPIDScoreMC);
 hMuonCandidateTrkLLRPIDScoreStacked->Add(hMuonCandidateTrkLLRPIDScoreEXT);
@@ -2148,6 +2299,7 @@ hConeAngleMC->Add(hConeAngleCCDIS, -1);
 hConeAngleMC->Add(hConeAngleNCDIS, -1);
 hConeAngleEXT->SetFillColor(kGray+4);
 hConeAngleEXT->SetLineColor(kBlack);
+hConeAngleEXT->Scale(Run1ScaleFactorEXT);
 hConeAngleEXT->Rebin(10);
 hConeAngleDirt->SetFillColor(kOrange+5);
 hConeAngleDirt->SetLineColor(kBlack);
@@ -2192,7 +2344,7 @@ leg19->AddEntry(hConeAngleCCDIS,"Reco CC-DIS");
 leg19->AddEntry(hConeAngleNCDIS,"Reco NC-DIS");
 leg19->AddEntry(hConeAngleMC,"Reco Other");
 leg19->AddEntry(hConeAngleEXT,"EXT");
-leg19->AddEntry(hConeAngleEXT,"Dirt");
+leg19->AddEntry(hConeAngleDirt,"Dirt");
 leg19->Draw();
 
 
@@ -2247,6 +2399,7 @@ hOpeningAngleMC->Add(hOpeningAngleCCDIS, -1);
 hOpeningAngleMC->Add(hOpeningAngleNCDIS, -1);
 hOpeningAngleEXT->SetFillColor(kGray+4);
 hOpeningAngleEXT->SetLineColor(kBlack);
+hOpeningAngleEXT->Scale(Run1ScaleFactorEXT);
 hOpeningAngleEXT->Rebin(10);
 hOpeningAngleDirt->SetFillColor(kOrange+5);
 hOpeningAngleDirt->SetLineColor(kBlack);
@@ -2346,6 +2499,7 @@ hOpeningAngleMCForPC->Add(hOpeningAngleCCDISForPC, -1);
 hOpeningAngleMCForPC->Add(hOpeningAngleNCDISForPC, -1);
 hOpeningAngleEXTForPC->SetFillColor(kGray+4);
 hOpeningAngleEXTForPC->SetLineColor(kBlack);
+hOpeningAngleEXTForPC->Scale(Run1ScaleFactorEXT);
 hOpeningAngleEXTForPC->Rebin(10);
 hOpeningAngleDirtForPC->SetFillColor(kOrange+5);
 hOpeningAngleDirtForPC->SetLineColor(kBlack);
@@ -2414,6 +2568,7 @@ hTOATool->Add(hTOARecoCCDIS);
 hTOATool->Add(hTOARecoNCDIS);
 hTOATool->Add(hTOAReco);
 hTOATool->Add(hTOARecoEXT);
+hTOATool->Add(hTOARecoDirt);
 
 hTOADivided->Divide(hTOATool);
 hTOADivided->SetLineColor(kBlack);
@@ -2450,6 +2605,7 @@ hOAPCTool->Add(hOpeningAngleCCDISForPC);
 hOAPCTool->Add(hOpeningAngleNCDISForPC);
 hOAPCTool->Add(hOpeningAngleMCForPC);
 hOAPCTool->Add(hOpeningAngleEXTForPC);
+hOAPCTool->Add(hOpeningAngleDirtForPC);
 
 hOAPCDivided->Divide(hOAPCTool);
 hOAPCDivided->SetLineColor(kBlack);
@@ -2464,4 +2620,304 @@ hOAPCDivided->GetYaxis()->CenterTitle();
 //hOAPCDivided->GetYaxis()->SetRangeUser(0.5, 1.5);
 
 c23->Modified();
+
+
+
+
+
+TCanvas *c24 = new TCanvas("c24", "Stacked Reco Neutrino Energy within Fiducial Volume");
+c24->SetTicks();
+c24->SetFillColor(kWhite);
+
+hRecoNuEnergyFVData->SetLineColor(kBlack);
+hRecoNuEnergyFVData->SetLineWidth(2);
+hRecoNuEnergyFVData->Rebin(20);
+hRecoNuEnergyFVData->SetMarkerStyle(20);
+hRecoNuEnergyFVCCCoh->SetFillColor(kBlue);
+hRecoNuEnergyFVCCCoh->SetLineColor(kBlack);
+hRecoNuEnergyFVCCCoh->Scale(Run1ScaleFactorMC);
+hRecoNuEnergyFVCCCoh->Rebin(20);
+hRecoNuEnergyFVCCQE->SetFillColor(kViolet);
+hRecoNuEnergyFVCCQE->SetLineColor(kBlack);
+hRecoNuEnergyFVCCQE->Scale(Run1ScaleFactorMC);
+hRecoNuEnergyFVCCQE->Rebin(20);
+hRecoNuEnergyFVCCRes->SetFillColor(kRed);
+hRecoNuEnergyFVCCRes->SetLineColor(kBlack);
+hRecoNuEnergyFVCCRes->Scale(Run1ScaleFactorMC);
+hRecoNuEnergyFVCCRes->Rebin(20);
+hRecoNuEnergyFVNCRes->SetFillColor(kGreen);
+hRecoNuEnergyFVNCRes->SetLineColor(kBlack);
+hRecoNuEnergyFVNCRes->Scale(Run1ScaleFactorMC);
+hRecoNuEnergyFVNCRes->Rebin(20);
+hRecoNuEnergyFVCCDIS->SetFillColor(kCyan-8);
+hRecoNuEnergyFVCCDIS->SetLineColor(kBlack);
+hRecoNuEnergyFVCCDIS->Scale(Run1ScaleFactorMC);
+hRecoNuEnergyFVCCDIS->Rebin(20);
+hRecoNuEnergyFVNCDIS->SetFillColor(kGray);
+hRecoNuEnergyFVNCDIS->SetLineColor(kBlack);
+hRecoNuEnergyFVNCDIS->Scale(Run1ScaleFactorMC);
+hRecoNuEnergyFVNCDIS->Rebin(20);
+hRecoNuEnergyFVCCCohEn->SetFillColor(kBlue);
+hRecoNuEnergyFVCCCohEn->SetLineColor(kBlack);
+hRecoNuEnergyFVCCCohEn->Scale(EnhancedCCCohScaleFactor*Run1ScaleFactorMC);
+hRecoNuEnergyFVCCCohEn->Rebin(20);
+hRecoNuEnergyFVMC->SetFillColor(kOrange);
+hRecoNuEnergyFVMC->SetLineColor(kBlack);
+hRecoNuEnergyFVMC->Scale(Run1ScaleFactorMC);
+hRecoNuEnergyFVMC->Rebin(20);
+hRecoNuEnergyFVMC->Add(hRecoNuEnergyFVCCCoh, -1);
+hRecoNuEnergyFVMC->Add(hRecoNuEnergyFVCCQE, -1);
+hRecoNuEnergyFVMC->Add(hRecoNuEnergyFVCCRes, -1);
+hRecoNuEnergyFVMC->Add(hRecoNuEnergyFVNCRes, -1);
+hRecoNuEnergyFVMC->Add(hRecoNuEnergyFVCCDIS, -1);
+hRecoNuEnergyFVMC->Add(hRecoNuEnergyFVNCDIS, -1);
+hRecoNuEnergyFVEXT->SetFillColor(kGray+4);
+hRecoNuEnergyFVEXT->SetLineColor(kBlack);
+hRecoNuEnergyFVEXT->Scale(Run1ScaleFactorEXT);
+hRecoNuEnergyFVEXT->Rebin(20);
+hRecoNuEnergyFVDirt->SetFillColor(kOrange+5);
+hRecoNuEnergyFVDirt->SetLineColor(kBlack);
+hRecoNuEnergyFVDirt->Scale(Run1ScaleFactorDirt);
+hRecoNuEnergyFVDirt->Rebin(20);
+hRecoNuEnergyFVStacked->Add(hRecoNuEnergyFVMC);
+hRecoNuEnergyFVStacked->Add(hRecoNuEnergyFVEXT);
+hRecoNuEnergyFVStacked->Add(hRecoNuEnergyFVDirt);
+hRecoNuEnergyFVStacked->Add(hRecoNuEnergyFVCCQE);
+hRecoNuEnergyFVStacked->Add(hRecoNuEnergyFVCCRes);
+hRecoNuEnergyFVStacked->Add(hRecoNuEnergyFVNCRes);
+hRecoNuEnergyFVStacked->Add(hRecoNuEnergyFVCCDIS);
+hRecoNuEnergyFVStacked->Add(hRecoNuEnergyFVNCDIS);
+hRecoNuEnergyFVStacked->Add(hRecoNuEnergyFVCCCohEn);
+
+hRecoNuEnergyFVData->Draw("E1");
+hRecoNuEnergyFVStacked->Draw("HISTsame");
+hRecoNuEnergyFVData->GetXaxis()->SetTitle("E_{#nu} [GeV]");
+hRecoNuEnergyFVData->GetXaxis()->CenterTitle();
+hRecoNuEnergyFVData->GetXaxis()->SetRangeUser(0, 3);
+hRecoNuEnergyFVData->GetYaxis()->SetTitle("Number of Events");
+hRecoNuEnergyFVData->GetYaxis()->CenterTitle();
+
+hRecoNuEnergyFVData->Draw("E1same");
+c24->Modified();
+
+// ### Defining the legend for the plot ###
+TLegend *leg24 = new TLegend();
+leg24 = new TLegend(0.58,0.65,1.00,1.00);
+leg24->SetTextSize(0.04);
+leg24->SetTextAlign(12);
+leg24->SetFillColor(kWhite);
+leg24->SetLineColor(kWhite);
+leg24->SetShadowColor(kWhite);
+leg24->SetHeader("Channel");
+leg24->AddEntry(hRecoNuEnergyFVData,"Data");
+leg24->AddEntry(hRecoNuEnergyFVCCCoh,"Reco CC-Coh");
+leg24->AddEntry(hRecoNuEnergyFVCCQE,"Reco CC-QE");
+leg24->AddEntry(hRecoNuEnergyFVCCRes,"Reco CC-Res");
+leg24->AddEntry(hRecoNuEnergyFVNCRes,"Reco NC-Res");
+leg24->AddEntry(hRecoNuEnergyFVCCDIS,"Reco CC-DIS");
+leg24->AddEntry(hRecoNuEnergyFVNCDIS,"Reco NC-DIS");
+leg24->AddEntry(hRecoNuEnergyFVMC,"Reco Other");
+leg24->AddEntry(hRecoNuEnergyFVEXT,"EXT");
+leg24->AddEntry(hRecoNuEnergyFVDirt,"Dirt");
+leg24->Draw();
+
+
+
+
+
+TCanvas *c25 = new TCanvas("c25", "Stacked Reco Neutrino Energy After 2-Tracks Selection");
+c25->SetTicks();
+c25->SetFillColor(kWhite);
+
+hRecoNuEnergyData->SetLineColor(kBlack);
+hRecoNuEnergyData->SetLineWidth(2);
+hRecoNuEnergyData->Rebin(20);
+hRecoNuEnergyData->SetMarkerStyle(20);
+hRecoNuEnergyCCCoh->SetFillColor(kBlue);
+hRecoNuEnergyCCCoh->SetLineColor(kBlack);
+hRecoNuEnergyCCCoh->Scale(Run1ScaleFactorMC);
+hRecoNuEnergyCCCoh->Rebin(20);
+hRecoNuEnergyCCQE->SetFillColor(kViolet);
+hRecoNuEnergyCCQE->SetLineColor(kBlack);
+hRecoNuEnergyCCQE->Scale(Run1ScaleFactorMC);
+hRecoNuEnergyCCQE->Rebin(20);
+hRecoNuEnergyCCRes->SetFillColor(kRed);
+hRecoNuEnergyCCRes->SetLineColor(kBlack);
+hRecoNuEnergyCCRes->Scale(Run1ScaleFactorMC);
+hRecoNuEnergyCCRes->Rebin(20);
+hRecoNuEnergyNCRes->SetFillColor(kGreen);
+hRecoNuEnergyNCRes->SetLineColor(kBlack);
+hRecoNuEnergyNCRes->Scale(Run1ScaleFactorMC);
+hRecoNuEnergyNCRes->Rebin(20);
+hRecoNuEnergyCCDIS->SetFillColor(kCyan-8);
+hRecoNuEnergyCCDIS->SetLineColor(kBlack);
+hRecoNuEnergyCCDIS->Scale(Run1ScaleFactorMC);
+hRecoNuEnergyCCDIS->Rebin(20);
+hRecoNuEnergyNCDIS->SetFillColor(kGray);
+hRecoNuEnergyNCDIS->SetLineColor(kBlack);
+hRecoNuEnergyNCDIS->Scale(Run1ScaleFactorMC);
+hRecoNuEnergyNCDIS->Rebin(20);
+hRecoNuEnergyCCCohEn->SetFillColor(kBlue);
+hRecoNuEnergyCCCohEn->SetLineColor(kBlack);
+hRecoNuEnergyCCCohEn->Scale(EnhancedCCCohScaleFactor*Run1ScaleFactorMC);
+hRecoNuEnergyCCCohEn->Rebin(20);
+hRecoNuEnergyMC->SetFillColor(kOrange);
+hRecoNuEnergyMC->SetLineColor(kBlack);
+hRecoNuEnergyMC->Scale(Run1ScaleFactorMC);
+hRecoNuEnergyMC->Rebin(20);
+hRecoNuEnergyMC->Add(hRecoNuEnergyCCCoh, -1);
+hRecoNuEnergyMC->Add(hRecoNuEnergyCCQE, -1);
+hRecoNuEnergyMC->Add(hRecoNuEnergyCCRes, -1);
+hRecoNuEnergyMC->Add(hRecoNuEnergyNCRes, -1);
+hRecoNuEnergyMC->Add(hRecoNuEnergyCCDIS, -1);
+hRecoNuEnergyMC->Add(hRecoNuEnergyNCDIS, -1);
+hRecoNuEnergyEXT->SetFillColor(kGray+4);
+hRecoNuEnergyEXT->SetLineColor(kBlack);
+hRecoNuEnergyEXT->Scale(Run1ScaleFactorEXT);
+hRecoNuEnergyEXT->Rebin(20);
+hRecoNuEnergyDirt->SetFillColor(kOrange+5);
+hRecoNuEnergyDirt->SetLineColor(kBlack);
+hRecoNuEnergyDirt->Scale(Run1ScaleFactorDirt);
+hRecoNuEnergyDirt->Rebin(20);
+hRecoNuEnergyStacked->Add(hRecoNuEnergyMC);
+hRecoNuEnergyStacked->Add(hRecoNuEnergyEXT);
+hRecoNuEnergyStacked->Add(hRecoNuEnergyDirt);
+hRecoNuEnergyStacked->Add(hRecoNuEnergyCCQE);
+hRecoNuEnergyStacked->Add(hRecoNuEnergyCCRes);
+hRecoNuEnergyStacked->Add(hRecoNuEnergyNCRes);
+hRecoNuEnergyStacked->Add(hRecoNuEnergyCCDIS);
+hRecoNuEnergyStacked->Add(hRecoNuEnergyNCDIS);
+hRecoNuEnergyStacked->Add(hRecoNuEnergyCCCohEn);
+
+hRecoNuEnergyData->Draw("E1");
+hRecoNuEnergyStacked->Draw("HISTsame");
+hRecoNuEnergyData->GetXaxis()->SetTitle("E_{#nu} [GeV]");
+hRecoNuEnergyData->GetXaxis()->CenterTitle();
+hRecoNuEnergyData->GetXaxis()->SetRangeUser(0, 3);
+hRecoNuEnergyData->GetYaxis()->SetTitle("Number of Events");
+hRecoNuEnergyData->GetYaxis()->CenterTitle();
+
+hRecoNuEnergyData->Draw("E1same");
+c25->Modified();
+
+// ### Defining the legend for the plot ###
+TLegend *leg25 = new TLegend();
+leg25 = new TLegend(0.58,0.65,1.00,1.00);
+leg25->SetTextSize(0.04);
+leg25->SetTextAlign(12);
+leg25->SetFillColor(kWhite);
+leg25->SetLineColor(kWhite);
+leg25->SetShadowColor(kWhite);
+leg25->SetHeader("Channel");
+leg25->AddEntry(hRecoNuEnergyData,"Data");
+leg25->AddEntry(hRecoNuEnergyCCCoh,"Reco CC-Coh");
+leg25->AddEntry(hRecoNuEnergyCCQE,"Reco CC-QE");
+leg25->AddEntry(hRecoNuEnergyCCRes,"Reco CC-Res");
+leg25->AddEntry(hRecoNuEnergyNCRes,"Reco NC-Res");
+leg25->AddEntry(hRecoNuEnergyCCDIS,"Reco CC-DIS");
+leg25->AddEntry(hRecoNuEnergyNCDIS,"Reco NC-DIS");
+leg25->AddEntry(hRecoNuEnergyMC,"Reco Other");
+leg25->AddEntry(hRecoNuEnergyEXT,"EXT");
+leg25->AddEntry(hRecoNuEnergyDirt,"Dirt");
+leg25->Draw();
+
+
+
+
+
+TCanvas *c26 = new TCanvas("c26", "Stacked Reco Neutrino Energy After Opening Angle Selection");
+c26->SetTicks();
+c26->SetFillColor(kWhite);
+
+hRecoNuEnergyOAData->SetLineColor(kBlack);
+hRecoNuEnergyOAData->SetLineWidth(2);
+hRecoNuEnergyOAData->Rebin(20);
+hRecoNuEnergyOAData->SetMarkerStyle(20);
+hRecoNuEnergyOACCCoh->SetFillColor(kBlue);
+hRecoNuEnergyOACCCoh->SetLineColor(kBlack);
+hRecoNuEnergyOACCCoh->Scale(Run1ScaleFactorMC);
+hRecoNuEnergyOACCCoh->Rebin(20);
+hRecoNuEnergyOACCQE->SetFillColor(kViolet);
+hRecoNuEnergyOACCQE->SetLineColor(kBlack);
+hRecoNuEnergyOACCQE->Scale(Run1ScaleFactorMC);
+hRecoNuEnergyOACCQE->Rebin(20);
+hRecoNuEnergyOACCRes->SetFillColor(kRed);
+hRecoNuEnergyOACCRes->SetLineColor(kBlack);
+hRecoNuEnergyOACCRes->Scale(Run1ScaleFactorMC);
+hRecoNuEnergyOACCRes->Rebin(20);
+hRecoNuEnergyOANCRes->SetFillColor(kGreen);
+hRecoNuEnergyOANCRes->SetLineColor(kBlack);
+hRecoNuEnergyOANCRes->Scale(Run1ScaleFactorMC);
+hRecoNuEnergyOANCRes->Rebin(20);
+hRecoNuEnergyOACCDIS->SetFillColor(kCyan-8);
+hRecoNuEnergyOACCDIS->SetLineColor(kBlack);
+hRecoNuEnergyOACCDIS->Scale(Run1ScaleFactorMC);
+hRecoNuEnergyOACCDIS->Rebin(20);
+hRecoNuEnergyOANCDIS->SetFillColor(kGray);
+hRecoNuEnergyOANCDIS->SetLineColor(kBlack);
+hRecoNuEnergyOANCDIS->Scale(Run1ScaleFactorMC);
+hRecoNuEnergyOANCDIS->Rebin(20);
+hRecoNuEnergyOACCCohEn->SetFillColor(kBlue);
+hRecoNuEnergyOACCCohEn->SetLineColor(kBlack);
+hRecoNuEnergyOACCCohEn->Scale(EnhancedCCCohScaleFactor*Run1ScaleFactorMC);
+hRecoNuEnergyOACCCohEn->Rebin(20);
+hRecoNuEnergyOAMC->SetFillColor(kOrange);
+hRecoNuEnergyOAMC->SetLineColor(kBlack);
+hRecoNuEnergyOAMC->Scale(Run1ScaleFactorMC);
+hRecoNuEnergyOAMC->Rebin(20);
+hRecoNuEnergyOAMC->Add(hRecoNuEnergyOACCCoh, -1);
+hRecoNuEnergyOAMC->Add(hRecoNuEnergyOACCQE, -1);
+hRecoNuEnergyOAMC->Add(hRecoNuEnergyOACCRes, -1);
+hRecoNuEnergyOAMC->Add(hRecoNuEnergyOANCRes, -1);
+hRecoNuEnergyOAMC->Add(hRecoNuEnergyOACCDIS, -1);
+hRecoNuEnergyOAMC->Add(hRecoNuEnergyOANCDIS, -1);
+hRecoNuEnergyOAEXT->SetFillColor(kGray+4);
+hRecoNuEnergyOAEXT->SetLineColor(kBlack);
+hRecoNuEnergyOAEXT->Scale(Run1ScaleFactorEXT);
+hRecoNuEnergyOAEXT->Rebin(20);
+hRecoNuEnergyOADirt->SetFillColor(kOrange+5);
+hRecoNuEnergyOADirt->SetLineColor(kBlack);
+hRecoNuEnergyOADirt->Scale(Run1ScaleFactorDirt);
+hRecoNuEnergyOADirt->Rebin(20);
+hRecoNuEnergyOAStacked->Add(hRecoNuEnergyOAMC);
+hRecoNuEnergyOAStacked->Add(hRecoNuEnergyOAEXT);
+hRecoNuEnergyOAStacked->Add(hRecoNuEnergyOADirt);
+hRecoNuEnergyOAStacked->Add(hRecoNuEnergyOACCQE);
+hRecoNuEnergyOAStacked->Add(hRecoNuEnergyOACCRes);
+hRecoNuEnergyOAStacked->Add(hRecoNuEnergyOANCRes);
+hRecoNuEnergyOAStacked->Add(hRecoNuEnergyOACCDIS);
+hRecoNuEnergyOAStacked->Add(hRecoNuEnergyOANCDIS);
+hRecoNuEnergyOAStacked->Add(hRecoNuEnergyOACCCohEn);
+
+hRecoNuEnergyOAData->Draw("E1");
+hRecoNuEnergyOAStacked->Draw("HISTsame");
+hRecoNuEnergyOAData->GetXaxis()->SetTitle("E_{#nu} [GeV]");
+hRecoNuEnergyOAData->GetXaxis()->CenterTitle();
+hRecoNuEnergyOAData->GetXaxis()->SetRangeUser(0, 3);
+hRecoNuEnergyOAData->GetYaxis()->SetTitle("Number of Events");
+hRecoNuEnergyOAData->GetYaxis()->CenterTitle();
+
+hRecoNuEnergyOAData->Draw("E1same");
+c26->Modified();
+
+// ### Defining the legend for the plot ###
+TLegend *leg26 = new TLegend();
+leg26 = new TLegend(0.58,0.65,1.00,1.00);
+leg26->SetTextSize(0.04);
+leg26->SetTextAlign(12);
+leg26->SetFillColor(kWhite);
+leg26->SetLineColor(kWhite);
+leg26->SetShadowColor(kWhite);
+leg26->SetHeader("Channel");
+leg26->AddEntry(hRecoNuEnergyOAData,"Data");
+leg26->AddEntry(hRecoNuEnergyOACCCoh,"Reco CC-Coh");
+leg26->AddEntry(hRecoNuEnergyOACCQE,"Reco CC-QE");
+leg26->AddEntry(hRecoNuEnergyOACCRes,"Reco CC-Res");
+leg26->AddEntry(hRecoNuEnergyOANCRes,"Reco NC-Res");
+leg26->AddEntry(hRecoNuEnergyOACCDIS,"Reco CC-DIS");
+leg26->AddEntry(hRecoNuEnergyOANCDIS,"Reco NC-DIS");
+leg26->AddEntry(hRecoNuEnergyOAMC,"Reco Other");
+leg26->AddEntry(hRecoNuEnergyOAEXT,"EXT");
+leg26->AddEntry(hRecoNuEnergyOADirt,"Dirt");
+leg26->Draw();
 }
