@@ -7,18 +7,21 @@
 TFile *f1 = new TFile("../Wouter_Daughter_Information.root"); // <-- File for Daughters Tree
 TFile *f2 = new TFile("../CCCoh_Daughter_Information.root"); // <-- File for CCCoh Daughters Tree
 TFile *f3 = new TFile("../Other_Daughter_Information.root"); // <-- File for Other Daughters Tree
-TFile *f4 = new TFile("Data_Histograms_BothPC.root"); // <-- File for Data Information
-TFile *f5 = new TFile("MC_Histograms_BothPC.root"); // <-- File for New MC Information
-TFile *f6 = new TFile("MC_CCCoh_Histograms_BothPC.root"); // <-- File for New MC CCCoh Information
-TFile *f7 = new TFile("MC_CCQE_Histograms_BothPC.root"); // <-- File for New MC CCQE Information
-TFile *f8 = new TFile("MC_CCRes_Histograms_BothPC.root"); // <-- File for New MC CCRes Information
-TFile *f9 = new TFile("MC_NCRes_Histograms_BothPC.root"); // <-- File for New MC NCRes Information
-TFile *f10 = new TFile("MC_CCDIS_Histograms_BothPC.root"); // <-- File for New MC CCDIS Information
-TFile *f11 = new TFile("MC_NCDIS_Histograms_BothPC.root"); // <-- File for New MC NCDIS Information
-TFile *f12 = new TFile("MC_Other_Histograms_BothPC.root"); // <-- File for New MC Other Information
-TFile *f13 = new TFile("CCCoh_Enhanced_Histograms_BothPC.root"); // <-- File for New MC CCCoh Enhanced Information
-TFile *f14 = new TFile("EXT_Histograms_BothPC.root"); // <-- File for EXT Information
-TFile *f15 = new TFile("Dirt_Histograms_BothPC.root"); // <-- File for Dirt Information
+TFile *f4 = new TFile("UpdatedVertexActivity/Data_Histograms_BothPC.root"); // <-- File for Data Information
+TFile *f5 = new TFile("UpdatedVertexActivity/MC_Histograms_BothPC.root"); // <-- File for New MC Information
+TFile *f6 = new TFile("UpdatedVertexActivity/MC_CCCoh_Histograms_BothPC.root"); // <-- File for New MC CCCoh Information
+TFile *f7 = new TFile("UpdatedVertexActivity/MC_CCQE_Histograms_BothPC.root"); // <-- File for New MC CCQE Information
+TFile *f8 = new TFile("UpdatedVertexActivity/MC_CCRes_Histograms_BothPC.root"); // <-- File for New MC CCRes Information
+TFile *f9 = new TFile("UpdatedVertexActivity/MC_NCRes_Histograms_BothPC.root"); // <-- File for New MC NCRes Information
+TFile *f10 = new TFile("UpdatedVertexActivity/MC_CCDIS_Histograms_BothPC.root"); // <-- File for New MC CCDIS Information
+TFile *f11 = new TFile("UpdatedVertexActivity/MC_NCDIS_Histograms_BothPC.root"); // <-- File for New MC NCDIS Information
+TFile *f12 = new TFile("UpdatedVertexActivity/MC_Other_Histograms_BothPC.root"); // <-- File for New MC Other Information
+TFile *f13 = new TFile("UpdatedVertexActivity/CCCoh_Enhanced_Histograms_BothPC.root"); // <-- File for New MC CCCoh Enhanced Information
+TFile *f14 = new TFile("UpdatedVertexActivity/EXT_Histograms_BothPC.root"); // <-- File for EXT Information
+TFile *f15 = new TFile("UpdatedVertexActivity/Dirt_Histograms_BothPC.root"); // <-- File for Dirt Information
+TFile *f16 = new TFile("POT_Counting/POT_BKGD.root"); // <-- File for POT of BKGD Sample
+TFile *f17 = new TFile("POT_Counting/POT_CCCoh.root"); // <-- File for POT of CCCoh Sample
+TFile *f18 = new TFile("POT_Counting/POT_Dirt.root"); // <-- File for POT of Dirt Sample
 
 
 
@@ -627,6 +630,150 @@ hRecoNuEnergyOAEXT->Sumw2();
 hRecoNuEnergyOADirt->Sumw2();
 
 
+TH1D *hMuonCandidateThetaAfterPCData = (TH1D*)f4->Get("hRecoMuonCandidateThetaAfterPC");
+TH1D *hMuonCandidateThetaAfterPCMC = (TH1D*)f5->Get("hRecoMuonCandidateThetaAfterPC");
+TH1D *hMuonCandidateThetaAfterPCMCCCCoh = (TH1D*)f6->Get("hRecoMuonCandidateThetaAfterPC");
+TH1D *hMuonCandidateThetaAfterPCMCCCQE = (TH1D*)f7->Get("hRecoMuonCandidateThetaAfterPC");
+TH1D *hMuonCandidateThetaAfterPCMCCCRes = (TH1D*)f8->Get("hRecoMuonCandidateThetaAfterPC");
+TH1D *hMuonCandidateThetaAfterPCMCNCRes = (TH1D*)f9->Get("hRecoMuonCandidateThetaAfterPC");
+TH1D *hMuonCandidateThetaAfterPCMCCCDIS = (TH1D*)f10->Get("hRecoMuonCandidateThetaAfterPC");
+TH1D *hMuonCandidateThetaAfterPCMCNCDIS = (TH1D*)f11->Get("hRecoMuonCandidateThetaAfterPC");
+TH1D *hMuonCandidateThetaAfterPCMCOther = (TH1D*)f12->Get("hRecoMuonCandidateThetaAfterPC");
+TH1D *hMuonCandidateThetaAfterPCMCCCCohEn = (TH1D*)f13->Get("hRecoMuonCandidateThetaAfterPC");
+TH1D *hMuonCandidateThetaAfterPCEXT = (TH1D*)f14->Get("hRecoMuonCandidateThetaAfterPC");
+TH1D *hMuonCandidateThetaAfterPCDirt = (TH1D*)f15->Get("hRecoMuonCandidateThetaAfterPC");
+
+hMuonCandidateThetaAfterPCData->Sumw2();
+hMuonCandidateThetaAfterPCMC->Sumw2();
+hMuonCandidateThetaAfterPCMCCCCoh->Sumw2();
+hMuonCandidateThetaAfterPCMCCCQE->Sumw2();
+hMuonCandidateThetaAfterPCMCCCRes->Sumw2();
+hMuonCandidateThetaAfterPCMCNCRes->Sumw2();
+hMuonCandidateThetaAfterPCMCCCDIS->Sumw2();
+hMuonCandidateThetaAfterPCMCNCDIS->Sumw2();
+hMuonCandidateThetaAfterPCMCOther->Sumw2();
+hMuonCandidateThetaAfterPCMCCCCohEn->Sumw2();
+hMuonCandidateThetaAfterPCEXT->Sumw2();
+hMuonCandidateThetaAfterPCDirt->Sumw2();
+
+
+TH1D *hPionCandidateThetaAfterPCData = (TH1D*)f4->Get("hRecoPionCandidateThetaAfterPC");
+TH1D *hPionCandidateThetaAfterPCMC = (TH1D*)f5->Get("hRecoPionCandidateThetaAfterPC");
+TH1D *hPionCandidateThetaAfterPCMCCCCoh = (TH1D*)f6->Get("hRecoPionCandidateThetaAfterPC");
+TH1D *hPionCandidateThetaAfterPCMCCCQE = (TH1D*)f7->Get("hRecoPionCandidateThetaAfterPC");
+TH1D *hPionCandidateThetaAfterPCMCCCRes = (TH1D*)f8->Get("hRecoPionCandidateThetaAfterPC");
+TH1D *hPionCandidateThetaAfterPCMCNCRes = (TH1D*)f9->Get("hRecoPionCandidateThetaAfterPC");
+TH1D *hPionCandidateThetaAfterPCMCCCDIS = (TH1D*)f10->Get("hRecoPionCandidateThetaAfterPC");
+TH1D *hPionCandidateThetaAfterPCMCNCDIS = (TH1D*)f11->Get("hRecoPionCandidateThetaAfterPC");
+TH1D *hPionCandidateThetaAfterPCMCOther = (TH1D*)f12->Get("hRecoPionCandidateThetaAfterPC");
+TH1D *hPionCandidateThetaAfterPCMCCCCohEn = (TH1D*)f13->Get("hRecoPionCandidateThetaAfterPC");
+TH1D *hPionCandidateThetaAfterPCEXT = (TH1D*)f14->Get("hRecoPionCandidateThetaAfterPC");
+TH1D *hPionCandidateThetaAfterPCDirt = (TH1D*)f15->Get("hRecoPionCandidateThetaAfterPC");
+
+hPionCandidateThetaAfterPCData->Sumw2();
+hPionCandidateThetaAfterPCMC->Sumw2();
+hPionCandidateThetaAfterPCMCCCCoh->Sumw2();
+hPionCandidateThetaAfterPCMCCCQE->Sumw2();
+hPionCandidateThetaAfterPCMCCCRes->Sumw2();
+hPionCandidateThetaAfterPCMCNCRes->Sumw2();
+hPionCandidateThetaAfterPCMCCCDIS->Sumw2();
+hPionCandidateThetaAfterPCMCNCDIS->Sumw2();
+hPionCandidateThetaAfterPCMCOther->Sumw2();
+hPionCandidateThetaAfterPCMCCCCohEn->Sumw2();
+hPionCandidateThetaAfterPCEXT->Sumw2();
+hPionCandidateThetaAfterPCDirt->Sumw2();
+
+
+TH1D *hMuonCandidatePhiAfterPCData = (TH1D*)f4->Get("hRecoMuonCandidatePhiAfterPC");
+TH1D *hMuonCandidatePhiAfterPCMC = (TH1D*)f5->Get("hRecoMuonCandidatePhiAfterPC");
+TH1D *hMuonCandidatePhiAfterPCMCCCCoh = (TH1D*)f6->Get("hRecoMuonCandidatePhiAfterPC");
+TH1D *hMuonCandidatePhiAfterPCMCCCQE = (TH1D*)f7->Get("hRecoMuonCandidatePhiAfterPC");
+TH1D *hMuonCandidatePhiAfterPCMCCCRes = (TH1D*)f8->Get("hRecoMuonCandidatePhiAfterPC");
+TH1D *hMuonCandidatePhiAfterPCMCNCRes = (TH1D*)f9->Get("hRecoMuonCandidatePhiAfterPC");
+TH1D *hMuonCandidatePhiAfterPCMCCCDIS = (TH1D*)f10->Get("hRecoMuonCandidatePhiAfterPC");
+TH1D *hMuonCandidatePhiAfterPCMCNCDIS = (TH1D*)f11->Get("hRecoMuonCandidatePhiAfterPC");
+TH1D *hMuonCandidatePhiAfterPCMCOther = (TH1D*)f12->Get("hRecoMuonCandidatePhiAfterPC");
+TH1D *hMuonCandidatePhiAfterPCMCCCCohEn = (TH1D*)f13->Get("hRecoMuonCandidatePhiAfterPC");
+TH1D *hMuonCandidatePhiAfterPCEXT = (TH1D*)f14->Get("hRecoMuonCandidatePhiAfterPC");
+TH1D *hMuonCandidatePhiAfterPCDirt = (TH1D*)f15->Get("hRecoMuonCandidatePhiAfterPC");
+
+hMuonCandidatePhiAfterPCData->Sumw2();
+hMuonCandidatePhiAfterPCMC->Sumw2();
+hMuonCandidatePhiAfterPCMCCCCoh->Sumw2();
+hMuonCandidatePhiAfterPCMCCCQE->Sumw2();
+hMuonCandidatePhiAfterPCMCCCRes->Sumw2();
+hMuonCandidatePhiAfterPCMCNCRes->Sumw2();
+hMuonCandidatePhiAfterPCMCCCDIS->Sumw2();
+hMuonCandidatePhiAfterPCMCNCDIS->Sumw2();
+hMuonCandidatePhiAfterPCMCOther->Sumw2();
+hMuonCandidatePhiAfterPCMCCCCohEn->Sumw2();
+hMuonCandidatePhiAfterPCEXT->Sumw2();
+hMuonCandidatePhiAfterPCDirt->Sumw2();
+
+
+TH1D *hPionCandidatePhiAfterPCData = (TH1D*)f4->Get("hRecoPionCandidatePhiAfterPC");
+TH1D *hPionCandidatePhiAfterPCMC = (TH1D*)f5->Get("hRecoPionCandidatePhiAfterPC");
+TH1D *hPionCandidatePhiAfterPCMCCCCoh = (TH1D*)f6->Get("hRecoPionCandidatePhiAfterPC");
+TH1D *hPionCandidatePhiAfterPCMCCCQE = (TH1D*)f7->Get("hRecoPionCandidatePhiAfterPC");
+TH1D *hPionCandidatePhiAfterPCMCCCRes = (TH1D*)f8->Get("hRecoPionCandidatePhiAfterPC");
+TH1D *hPionCandidatePhiAfterPCMCNCRes = (TH1D*)f9->Get("hRecoPionCandidatePhiAfterPC");
+TH1D *hPionCandidatePhiAfterPCMCCCDIS = (TH1D*)f10->Get("hRecoPionCandidatePhiAfterPC");
+TH1D *hPionCandidatePhiAfterPCMCNCDIS = (TH1D*)f11->Get("hRecoPionCandidatePhiAfterPC");
+TH1D *hPionCandidatePhiAfterPCMCOther = (TH1D*)f12->Get("hRecoPionCandidatePhiAfterPC");
+TH1D *hPionCandidatePhiAfterPCMCCCCohEn = (TH1D*)f13->Get("hRecoPionCandidatePhiAfterPC");
+TH1D *hPionCandidatePhiAfterPCEXT = (TH1D*)f14->Get("hRecoPionCandidatePhiAfterPC");
+TH1D *hPionCandidatePhiAfterPCDirt = (TH1D*)f15->Get("hRecoPionCandidatePhiAfterPC");
+
+hPionCandidatePhiAfterPCData->Sumw2();
+hPionCandidatePhiAfterPCMC->Sumw2();
+hPionCandidatePhiAfterPCMCCCCoh->Sumw2();
+hPionCandidatePhiAfterPCMCCCQE->Sumw2();
+hPionCandidatePhiAfterPCMCCCRes->Sumw2();
+hPionCandidatePhiAfterPCMCNCRes->Sumw2();
+hPionCandidatePhiAfterPCMCCCDIS->Sumw2();
+hPionCandidatePhiAfterPCMCNCDIS->Sumw2();
+hPionCandidatePhiAfterPCMCOther->Sumw2();
+hPionCandidatePhiAfterPCMCCCCohEn->Sumw2();
+hPionCandidatePhiAfterPCEXT->Sumw2();
+hPionCandidatePhiAfterPCDirt->Sumw2();
+
+
+TH1D *hNVertexActivityData = (TH1D*)f4->Get("hVertexActivityFor2TracksNew");
+TH1D *hNVertexActivityMC = (TH1D*)f5->Get("hVertexActivityFor2TracksNew");
+TH1D *hNVertexActivityCCCoh = (TH1D*)f6->Get("hVertexActivityFor2TracksNew");
+TH1D *hNVertexActivityCCQE = (TH1D*)f7->Get("hVertexActivityFor2TracksNew");
+TH1D *hNVertexActivityCCRes = (TH1D*)f8->Get("hVertexActivityFor2TracksNew");
+TH1D *hNVertexActivityNCRes = (TH1D*)f9->Get("hVertexActivityFor2TracksNew");
+TH1D *hNVertexActivityCCDIS = (TH1D*)f10->Get("hVertexActivityFor2TracksNew");
+TH1D *hNVertexActivityNCDIS = (TH1D*)f11->Get("hVertexActivityFor2TracksNew");
+TH1D *hNVertexActivityOther = (TH1D*)f12->Get("hVertexActivityFor2TracksNew");
+TH1D *hNVertexActivityCCCohEn = (TH1D*)f13->Get("hVertexActivityFor2TracksNew");
+TH1D *hNVertexActivityEXT = (TH1D*)f14->Get("hVertexActivityFor2TracksNew");
+TH1D *hNVertexActivityDirt = (TH1D*)f15->Get("hVertexActivityFor2TracksNew");
+
+hNVertexActivityData->Sumw2();
+hNVertexActivityMC->Sumw2();
+hNVertexActivityCCCoh->Sumw2();
+hNVertexActivityCCQE->Sumw2();
+hNVertexActivityCCRes->Sumw2();
+hNVertexActivityNCRes->Sumw2();
+hNVertexActivityCCDIS->Sumw2();
+hNVertexActivityNCDIS->Sumw2();
+hNVertexActivityOther->Sumw2();
+hNVertexActivityCCCohEn->Sumw2();
+hNVertexActivityEXT->Sumw2();
+hNVertexActivityDirt->Sumw2();
+
+
+TH1D *hPOTCountingBKGD = (TH1D*)f16->Get("hPOTCounting");
+TH1D *hPOTCountingCCCoh = (TH1D*)f17->Get("hPOTCounting");
+TH1D *hPOTCountingDirt = (TH1D*)f18->Get("hPOTCounting");
+
+hPOTCountingBKGD->Sumw2();
+hPOTCountingCCCoh->Sumw2();
+hPOTCountingDirt->Sumw2();
+
+
 // Creating the Stacked Histograms
 THStack *hTStacked = new THStack("hTStacked", "|t| Stacked for Events Passing 2-Tracks Selection");
 THStack *hTPCStacked = new THStack("hTPCStacked", "|t| Stacked for Events Passing Pion Candidacy Selection");
@@ -654,6 +801,11 @@ THStack *hMuonCandidateTrkLLRPIDScoreStacked = new THStack("hMuonCandidateTrkLLR
 THStack *hRecoNuEnergyFVStacked = new THStack("hRecoNuEnergyFVStacked", "The Reco Neutrino Energy for Events in the Fiducial Volume");
 THStack *hRecoNuEnergyStacked = new THStack("hRecoNuEnergyStacked", "The Reco Neutrino Energy for Events Passing 2-Tracks Selection");
 THStack *hRecoNuEnergyOAStacked = new THStack("hRecoNuEnergyOAStacked", "The Reco Neutrino Energy for Events Passing Opening Angle Selection");
+THStack *hMuonCandidateThetaAfterPCStacked = new THStack("hMuonCandidateThetaAfterPCStacked", "Muon Candidate #theta_{#mu} Stacked for Events Passing Pion Candidacy Selection");
+THStack *hPionCandidateThetaAfterPCStacked = new THStack("hPionCandidateThetaAfterPCStacked", "Pion Candidate #theta_{#pi} Stacked for Events Passing Pion Candidacy Selection");
+THStack *hMuonCandidatePhiAfterPCStacked = new THStack("hMuonCandidatePhiAfterPCStacked", "Muon Candidate #phi_{#mu} Stacked for Events Passing Pion Candidacy Selection");
+THStack *hPionCandidatePhiAfterPCStacked = new THStack("hPionCandidatePhiAfterPCStacked", "Pion Candidate #phi_{#pi} Stacked for Events Passing Pion Candidacy Selection");
+THStack *hNVertexActivityStacked = new THStack("hNVertexActivityStacked", "New Vertex Activity Stacked After 2-Tracks Selection");
 
 
 //double Run1ScaleFactorMC = 0.05/1.2847059;
@@ -672,6 +824,36 @@ double Run1ScaleFactorEXT = 1; //<-- The one I've been using
 //double Run1ScaleFactorEXT = 2.252;
 
 
+// |-------------------------------------------|
+// |--- Setting The Scale Factors Using POT ---|
+// |-------------------------------------------|
+//double POTValue = 5.21E19; // This is the set value that's standard to this sample (or the quoted value for this data sample)
+double POTValue = 5.21E19; // This is me messing around with the number
+Run1ScaleFactorMC = (POTValue)/((hPOTCountingBKGD->Integral())*(hPOTCountingBKGD->GetMean()));
+EnhancedCCCohScaleFactor = ((hPOTCountingBKGD->Integral())*(hPOTCountingBKGD->GetMean()))/((hPOTCountingCCCoh->Integral())*(hPOTCountingCCCoh->GetMean()));
+Run1ScaleFactorDirt = (POTValue)/((hPOTCountingDirt->Integral())*(hPOTCountingDirt->GetMean()));
+Run1ScaleFactorEXT = 176429./191286.;
+std::cout<<"Run1ScaleFactorMC = "<<Run1ScaleFactorMC<<std::endl;
+std::cout<<"EnhancedCCCohScaleFactor = "<<EnhancedCCCohScaleFactor<<std::endl;
+std::cout<<"Run1ScaleFactorDirt = "<<Run1ScaleFactorDirt<<std::endl;
+std::cout<<"Run1ScaleFactorEXT = "<<Run1ScaleFactorEXT<<std::endl;
+// |-------------------------------------------|
+
+
+// |====================================|
+// |=== Rebinning Variables Are Here ===|
+// |====================================|
+int RebinT = 100; // Variable used to rebin the |t| Plots
+int RebinP = 20; // Variable used to rebin the Momentum Plots
+int RebinTheta = 40; // Variable used to rebin the Theta Plots
+int RebinPhi = 20; // Variable used to rebin the Theta Plots
+int RebinOA = 10; // Variable used to rebin the Opening Angle Plots
+int VARebin = 200; // Variable used to rebin the NEW Vertex Activity Plots
+Double_t edges[5] = {0.0, 0.1, 0.2, 0.4, 1.0}; // This is to make plots pretty!
+RebinT = 4;
+// |====================================|
+
+
 
 
 
@@ -681,39 +863,39 @@ c1->SetFillColor(kWhite);
 
 hT->SetLineColor(kBlack);
 hT->SetLineWidth(2);
-hT->Rebin(100);
+hT->Rebin(RebinT);
 hT->SetMarkerStyle(20);
 hTRecoCCCoh->SetFillColor(kBlue);
 hTRecoCCCoh->SetLineColor(kBlack);
 hTRecoCCCoh->Scale(Run1ScaleFactorMC);
-hTRecoCCCoh->Rebin(100);
+hTRecoCCCoh->Rebin(RebinT);
 hTRecoCCQE->SetFillColor(kViolet);
 hTRecoCCQE->SetLineColor(kBlack);
 hTRecoCCQE->Scale(Run1ScaleFactorMC);
-hTRecoCCQE->Rebin(100);
+hTRecoCCQE->Rebin(RebinT);
 hTRecoCCRes->SetFillColor(kRed);
 hTRecoCCRes->SetLineColor(kBlack);
 hTRecoCCRes->Scale(Run1ScaleFactorMC);
-hTRecoCCRes->Rebin(100);
+hTRecoCCRes->Rebin(RebinT);
 hTRecoNCRes->SetFillColor(kGreen);
 hTRecoNCRes->SetLineColor(kBlack);
 hTRecoNCRes->Scale(Run1ScaleFactorMC);
-hTRecoNCRes->Rebin(100);
+hTRecoNCRes->Rebin(RebinT);
 hTRecoCCDIS->SetFillColor(kCyan-8);
 hTRecoCCDIS->SetLineColor(kBlack);
 hTRecoCCDIS->Scale(Run1ScaleFactorMC);
-hTRecoCCDIS->Rebin(100);
+hTRecoCCDIS->Rebin(RebinT);
 hTRecoNCDIS->SetFillColor(kGray);
 hTRecoNCDIS->SetLineColor(kBlack);
 hTRecoNCDIS->Scale(Run1ScaleFactorMC);
-hTRecoNCDIS->Rebin(100);
+hTRecoNCDIS->Rebin(RebinT);
 hTRecoCCCohEn->SetFillColor(kBlue);
 hTRecoCCCohEn->SetLineColor(kBlack);
 hTRecoCCCohEn->Scale(EnhancedCCCohScaleFactor*Run1ScaleFactorMC);
-hTRecoCCCohEn->Rebin(100);
+hTRecoCCCohEn->Rebin(RebinT);
 hTReco->SetFillColor(kOrange);
 hTReco->Scale(Run1ScaleFactorMC);
-hTReco->Rebin(100);
+hTReco->Rebin(RebinT);
 hTReco->Add(hTRecoCCCoh, -1);
 hTReco->Add(hTRecoCCQE, -1);
 hTReco->Add(hTRecoCCRes, -1);
@@ -723,11 +905,11 @@ hTReco->Add(hTRecoNCDIS, -1);
 hTRecoEXT->SetFillColor(kGray+4);
 hTRecoEXT->SetLineColor(kBlack);
 hTRecoEXT->Scale(Run1ScaleFactorEXT);
-hTRecoEXT->Rebin(100);
+hTRecoEXT->Rebin(RebinT);
 hTRecoDirt->SetFillColor(kOrange+5);
 hTRecoDirt->SetLineColor(kBlack);
 hTRecoDirt->Scale(Run1ScaleFactorDirt);
-hTRecoDirt->Rebin(100);
+hTRecoDirt->Rebin(RebinT);
 hTStacked->Add(hTReco);
 hTStacked->Add(hTRecoEXT);
 hTStacked->Add(hTRecoDirt);
@@ -780,32 +962,32 @@ c2->SetFillColor(kWhite);
 
 hTPC->SetLineColor(kBlack);
 hTPC->SetLineWidth(2);
-hTPC->Rebin(100);
+hTPC->Rebin(RebinT);
 hTPC->SetMarkerStyle(20);
 hTPCRecoCCCoh->SetFillColor(kBlue);
 hTPCRecoCCCoh->Scale(Run1ScaleFactorMC);
-hTPCRecoCCCoh->Rebin(100);
+hTPCRecoCCCoh->Rebin(RebinT);
 hTPCRecoCCQE->SetFillColor(kViolet);
 hTPCRecoCCQE->Scale(Run1ScaleFactorMC);
-hTPCRecoCCQE->Rebin(100);
+hTPCRecoCCQE->Rebin(RebinT);
 hTPCRecoCCRes->SetFillColor(kRed);
 hTPCRecoCCRes->Scale(Run1ScaleFactorMC);
-hTPCRecoCCRes->Rebin(100);
+hTPCRecoCCRes->Rebin(RebinT);
 hTPCRecoNCRes->SetFillColor(kGreen);
 hTPCRecoNCRes->Scale(Run1ScaleFactorMC);
-hTPCRecoNCRes->Rebin(100);
+hTPCRecoNCRes->Rebin(RebinT);
 hTPCRecoCCDIS->SetFillColor(kCyan-8);
 hTPCRecoCCDIS->Scale(Run1ScaleFactorMC);
-hTPCRecoCCDIS->Rebin(100);
+hTPCRecoCCDIS->Rebin(RebinT);
 hTPCRecoNCDIS->SetFillColor(kGray);
 hTPCRecoNCDIS->Scale(Run1ScaleFactorMC);
-hTPCRecoNCDIS->Rebin(100);
+hTPCRecoNCDIS->Rebin(RebinT);
 hTPCRecoCCCohEn->SetFillColor(kBlue);
 hTPCRecoCCCohEn->Scale(EnhancedCCCohScaleFactor*Run1ScaleFactorMC);
-hTPCRecoCCCohEn->Rebin(100);
+hTPCRecoCCCohEn->Rebin(RebinT);
 hTPCReco->SetFillColor(kOrange);
 hTPCReco->Scale(Run1ScaleFactorMC);
-hTPCReco->Rebin(100);
+hTPCReco->Rebin(RebinT);
 hTPCReco->Add(hTPCRecoCCCoh, -1);
 hTPCReco->Add(hTPCRecoCCQE, -1);
 hTPCReco->Add(hTPCRecoCCRes, -1);
@@ -814,10 +996,10 @@ hTPCReco->Add(hTPCRecoCCDIS, -1);
 hTPCReco->Add(hTPCRecoNCDIS, -1);
 hTPCRecoEXT->SetFillColor(kGray+4);
 hTPCRecoEXT->Scale(Run1ScaleFactorEXT);
-hTPCRecoEXT->Rebin(100);
+hTPCRecoEXT->Rebin(RebinT);
 hTPCRecoDirt->SetFillColor(kOrange+5);
 hTPCRecoDirt->Scale(Run1ScaleFactorDirt);
-hTPCRecoDirt->Rebin(100);
+hTPCRecoDirt->Rebin(RebinT);
 hTPCStacked->Add(hTPCReco);
 hTPCStacked->Add(hTPCRecoEXT);
 hTPCStacked->Add(hTPCRecoDirt);
@@ -869,45 +1051,62 @@ c3->SetFillColor(kWhite);
 
 hTOA->SetLineColor(kBlack);
 hTOA->SetLineWidth(2);
-hTOA->Rebin(100);
+//hTOA->Rebin(RebinT);
 hTOA->SetMarkerStyle(20);
+hTOANew = hTOA->Rebin(RebinT, "hTOANew", edges);
 hTOARecoCCCoh->SetFillColor(kBlue);
 hTOARecoCCCoh->Scale(Run1ScaleFactorMC);
-hTOARecoCCCoh->Rebin(100);
+//hTOARecoCCCoh->Rebin(RebinT);
+hTOARecoCCCohNew = hTOARecoCCCoh->Rebin(RebinT, "hTOARecoCCCohNew", edges);
 hTOARecoCCQE->SetFillColor(kViolet);
 hTOARecoCCQE->Scale(Run1ScaleFactorMC);
-hTOARecoCCQE->Rebin(100);
+//hTOARecoCCQE->Rebin(RebinT);
+hTOARecoCCQENew = hTOARecoCCQE->Rebin(RebinT, "hTOARecoCCQENew", edges);
 hTOARecoCCRes->SetFillColor(kRed);
 hTOARecoCCRes->Scale(Run1ScaleFactorMC);
-hTOARecoCCRes->Rebin(100);
+//hTOARecoCCRes->Rebin(RebinT);
+hTOARecoCCResNew = hTOARecoCCRes->Rebin(RebinT, "hTOARecoCCResNew", edges);
 hTOARecoNCRes->SetFillColor(kGreen);
 hTOARecoNCRes->Scale(Run1ScaleFactorMC);
-hTOARecoNCRes->Rebin(100);
+//hTOARecoNCRes->Rebin(RebinT);
+hTOARecoNCResNew = hTOARecoNCRes->Rebin(RebinT, "hTOARecoNCResNew", edges);
 hTOARecoCCDIS->SetFillColor(kCyan-8);
 hTOARecoCCDIS->Scale(Run1ScaleFactorMC);
-hTOARecoCCDIS->Rebin(100);
+//hTOARecoCCDIS->Rebin(RebinT);
+hTOARecoCCDISNew = hTOARecoCCDIS->Rebin(RebinT, "hTOARecoCCDISNew", edges);
 hTOARecoNCDIS->SetFillColor(kGray);
 hTOARecoNCDIS->Scale(Run1ScaleFactorMC);
-hTOARecoNCDIS->Rebin(100);
+//hTOARecoNCDIS->Rebin(RebinT);
+hTOARecoNCDISNew = hTOARecoNCDIS->Rebin(RebinT, "hTOARecoNCDISNew", edges);
 hTOARecoCCCohEn->SetFillColor(kBlue);
 hTOARecoCCCohEn->Scale(EnhancedCCCohScaleFactor*Run1ScaleFactorMC);
-hTOARecoCCCohEn->Rebin(100);
+//hTOARecoCCCohEn->Rebin(RebinT);
+hTOARecoCCCohEnNew = hTOARecoCCCohEn->Rebin(RebinT, "hTOARecoCCCohEnNew", edges);
 hTOAReco->SetFillColor(kOrange);
 hTOAReco->Scale(Run1ScaleFactorMC);
-hTOAReco->Rebin(100);
-hTOAReco->Add(hTOARecoCCCoh, -1);
+//hTOAReco->Rebin(RebinT);
+hTOARecoNew = hTOAReco->Rebin(RebinT, "hTOARecoNew", edges);
+/*hTOAReco->Add(hTOARecoCCCoh, -1);
 hTOAReco->Add(hTOARecoCCQE, -1);
 hTOAReco->Add(hTOARecoCCRes, -1);
 hTOAReco->Add(hTOARecoNCRes, -1);
 hTOAReco->Add(hTOARecoCCDIS, -1);
-hTOAReco->Add(hTOARecoNCDIS, -1);
+hTOAReco->Add(hTOARecoNCDIS, -1);*/
+hTOARecoNew->Add(hTOARecoCCCohNew, -1);
+hTOARecoNew->Add(hTOARecoCCQENew, -1);
+hTOARecoNew->Add(hTOARecoCCResNew, -1);
+hTOARecoNew->Add(hTOARecoNCResNew, -1);
+hTOARecoNew->Add(hTOARecoCCDISNew, -1);
+hTOARecoNew->Add(hTOARecoNCDISNew, -1);
 hTOARecoEXT->SetFillColor(kGray+4);
 hTOARecoEXT->Scale(Run1ScaleFactorEXT);
-hTOARecoEXT->Rebin(100);
+//hTOARecoEXT->Rebin(RebinT);
+hTOARecoEXTNew = hTOARecoEXT->Rebin(RebinT, "hTOARecoEXTNew", edges);
 hTOARecoDirt->SetFillColor(kOrange+5);
 hTOARecoDirt->Scale(Run1ScaleFactorDirt);
-hTOARecoDirt->Rebin(100);
-hTOAStacked->Add(hTOAReco);
+//hTOARecoDirt->Rebin(RebinT);
+hTOARecoDirtNew = hTOARecoDirt->Rebin(RebinT, "hTOARecoDirtNew", edges);
+/*hTOAStacked->Add(hTOAReco);
 hTOAStacked->Add(hTOARecoEXT);
 hTOAStacked->Add(hTOARecoDirt);
 hTOAStacked->Add(hTOARecoCCQE);
@@ -915,17 +1114,33 @@ hTOAStacked->Add(hTOARecoCCRes);
 hTOAStacked->Add(hTOARecoNCRes);
 hTOAStacked->Add(hTOARecoCCDIS);
 hTOAStacked->Add(hTOARecoNCDIS);
-hTOAStacked->Add(hTOARecoCCCohEn);
+hTOAStacked->Add(hTOARecoCCCohEn);*/
+hTOAStacked->Add(hTOARecoNew);
+hTOAStacked->Add(hTOARecoEXTNew);
+hTOAStacked->Add(hTOARecoDirtNew);
+hTOAStacked->Add(hTOARecoCCQENew);
+hTOAStacked->Add(hTOARecoCCResNew);
+hTOAStacked->Add(hTOARecoNCResNew);
+hTOAStacked->Add(hTOARecoCCDISNew);
+hTOAStacked->Add(hTOARecoNCDISNew);
+hTOAStacked->Add(hTOARecoCCCohEnNew);
 
 
-hTOA->Draw("E1");
+/*hTOA->Draw("E1");
 hTOAStacked->Draw("HISTsame");
 hTOA->GetXaxis()->SetTitle("|t| [GeV^{2}]");
 hTOA->GetXaxis()->CenterTitle();
 hTOA->GetYaxis()->SetTitle("Number of Events");
-hTOA->GetYaxis()->CenterTitle();
+hTOA->GetYaxis()->CenterTitle();*/
+hTOANew->Draw("E1");
+hTOAStacked->Draw("HISTsame");
+hTOANew->GetXaxis()->SetTitle("|t| [GeV^{2}]");
+hTOANew->GetXaxis()->CenterTitle();
+hTOANew->GetYaxis()->SetTitle("Number of Events");
+hTOANew->GetYaxis()->CenterTitle();
 
-hTOA->Draw("E1same");
+//hTOA->Draw("E1same");
+hTOANew->Draw("E1same");
 c3->Modified();
 
 // ### Defining the legend for the plot ###
@@ -959,32 +1174,32 @@ c4->SetFillColor(kWhite);
 
 hRecoMuonCandidateMomentumAfterPCData->SetLineColor(kBlack);
 hRecoMuonCandidateMomentumAfterPCData->SetLineWidth(2);
-hRecoMuonCandidateMomentumAfterPCData->Rebin(25);
+hRecoMuonCandidateMomentumAfterPCData->Rebin(RebinP);
 hRecoMuonCandidateMomentumAfterPCData->SetMarkerStyle(20);
 hRecoMuonCandidateMomentumAfterPCMCCCCoh->SetFillColor(kBlue);
 hRecoMuonCandidateMomentumAfterPCMCCCCoh->Scale(Run1ScaleFactorMC);
-hRecoMuonCandidateMomentumAfterPCMCCCCoh->Rebin(25);
+hRecoMuonCandidateMomentumAfterPCMCCCCoh->Rebin(RebinP);
 hRecoMuonCandidateMomentumAfterPCMCCCQE->SetFillColor(kViolet);
 hRecoMuonCandidateMomentumAfterPCMCCCQE->Scale(Run1ScaleFactorMC);
-hRecoMuonCandidateMomentumAfterPCMCCCQE->Rebin(25);
+hRecoMuonCandidateMomentumAfterPCMCCCQE->Rebin(RebinP);
 hRecoMuonCandidateMomentumAfterPCMCCCRes->SetFillColor(kRed);
 hRecoMuonCandidateMomentumAfterPCMCCCRes->Scale(Run1ScaleFactorMC);
-hRecoMuonCandidateMomentumAfterPCMCCCRes->Rebin(25);
+hRecoMuonCandidateMomentumAfterPCMCCCRes->Rebin(RebinP);
 hRecoMuonCandidateMomentumAfterPCMCNCRes->SetFillColor(kGreen);
 hRecoMuonCandidateMomentumAfterPCMCNCRes->Scale(Run1ScaleFactorMC);
-hRecoMuonCandidateMomentumAfterPCMCNCRes->Rebin(25);
+hRecoMuonCandidateMomentumAfterPCMCNCRes->Rebin(RebinP);
 hRecoMuonCandidateMomentumAfterPCMCCCDIS->SetFillColor(kCyan-8);
 hRecoMuonCandidateMomentumAfterPCMCCCDIS->Scale(Run1ScaleFactorMC);
-hRecoMuonCandidateMomentumAfterPCMCCCDIS->Rebin(25);
+hRecoMuonCandidateMomentumAfterPCMCCCDIS->Rebin(RebinP);
 hRecoMuonCandidateMomentumAfterPCMCNCDIS->SetFillColor(kGray);
 hRecoMuonCandidateMomentumAfterPCMCNCDIS->Scale(Run1ScaleFactorMC);
-hRecoMuonCandidateMomentumAfterPCMCNCDIS->Rebin(25);
+hRecoMuonCandidateMomentumAfterPCMCNCDIS->Rebin(RebinP);
 hRecoMuonCandidateMomentumAfterPCMCCCCohEn->SetFillColor(kBlue);
 hRecoMuonCandidateMomentumAfterPCMCCCCohEn->Scale(EnhancedCCCohScaleFactor*Run1ScaleFactorMC);
-hRecoMuonCandidateMomentumAfterPCMCCCCohEn->Rebin(25);
+hRecoMuonCandidateMomentumAfterPCMCCCCohEn->Rebin(RebinP);
 hRecoMuonCandidateMomentumAfterPCMC->SetFillColor(kOrange);
 hRecoMuonCandidateMomentumAfterPCMC->Scale(Run1ScaleFactorMC);
-hRecoMuonCandidateMomentumAfterPCMC->Rebin(25);
+hRecoMuonCandidateMomentumAfterPCMC->Rebin(RebinP);
 hRecoMuonCandidateMomentumAfterPCMC->Add(hRecoMuonCandidateMomentumAfterPCMCCCCoh, -1);
 hRecoMuonCandidateMomentumAfterPCMC->Add(hRecoMuonCandidateMomentumAfterPCMCCCQE, -1);
 hRecoMuonCandidateMomentumAfterPCMC->Add(hRecoMuonCandidateMomentumAfterPCMCCCRes, -1);
@@ -993,10 +1208,10 @@ hRecoMuonCandidateMomentumAfterPCMC->Add(hRecoMuonCandidateMomentumAfterPCMCCCDI
 hRecoMuonCandidateMomentumAfterPCMC->Add(hRecoMuonCandidateMomentumAfterPCMCNCDIS, -1);
 hRecoMuonCandidateMomentumAfterPCEXT->SetFillColor(kGray+4);
 hRecoMuonCandidateMomentumAfterPCEXT->Scale(Run1ScaleFactorEXT);
-hRecoMuonCandidateMomentumAfterPCEXT->Rebin(25);
+hRecoMuonCandidateMomentumAfterPCEXT->Rebin(RebinP);
 hRecoMuonCandidateMomentumAfterPCDirt->SetFillColor(kOrange+5);
 hRecoMuonCandidateMomentumAfterPCDirt->Scale(Run1ScaleFactorDirt);
-hRecoMuonCandidateMomentumAfterPCDirt->Rebin(25);
+hRecoMuonCandidateMomentumAfterPCDirt->Rebin(RebinP);
 hMPPCStacked->Add(hRecoMuonCandidateMomentumAfterPCMC);
 hMPPCStacked->Add(hRecoMuonCandidateMomentumAfterPCEXT);
 hMPPCStacked->Add(hRecoMuonCandidateMomentumAfterPCDirt);
@@ -1049,32 +1264,32 @@ c5->SetFillColor(kWhite);
 
 hRecoMuonCandidateMomentumAfterOAData->SetLineColor(kBlack);
 hRecoMuonCandidateMomentumAfterOAData->SetLineWidth(2);
-hRecoMuonCandidateMomentumAfterOAData->Rebin(25);
+hRecoMuonCandidateMomentumAfterOAData->Rebin(RebinP);
 hRecoMuonCandidateMomentumAfterOAData->SetMarkerStyle(20);
 hRecoMuonCandidateMomentumAfterOAMCCCCoh->SetFillColor(kBlue);
 hRecoMuonCandidateMomentumAfterOAMCCCCoh->Scale(Run1ScaleFactorMC);
-hRecoMuonCandidateMomentumAfterOAMCCCCoh->Rebin(25);
+hRecoMuonCandidateMomentumAfterOAMCCCCoh->Rebin(RebinP);
 hRecoMuonCandidateMomentumAfterOAMCCCQE->SetFillColor(kViolet);
 hRecoMuonCandidateMomentumAfterOAMCCCQE->Scale(Run1ScaleFactorMC);
-hRecoMuonCandidateMomentumAfterOAMCCCQE->Rebin(25);
+hRecoMuonCandidateMomentumAfterOAMCCCQE->Rebin(RebinP);
 hRecoMuonCandidateMomentumAfterOAMCCCRes->SetFillColor(kRed);
 hRecoMuonCandidateMomentumAfterOAMCCCRes->Scale(Run1ScaleFactorMC);
-hRecoMuonCandidateMomentumAfterOAMCCCRes->Rebin(25);
+hRecoMuonCandidateMomentumAfterOAMCCCRes->Rebin(RebinP);
 hRecoMuonCandidateMomentumAfterOAMCNCRes->SetFillColor(kGreen);
 hRecoMuonCandidateMomentumAfterOAMCNCRes->Scale(Run1ScaleFactorMC);
-hRecoMuonCandidateMomentumAfterOAMCNCRes->Rebin(25);
+hRecoMuonCandidateMomentumAfterOAMCNCRes->Rebin(RebinP);
 hRecoMuonCandidateMomentumAfterOAMCCCDIS->SetFillColor(kCyan-8);
 hRecoMuonCandidateMomentumAfterOAMCCCDIS->Scale(Run1ScaleFactorMC);
-hRecoMuonCandidateMomentumAfterOAMCCCDIS->Rebin(25);
+hRecoMuonCandidateMomentumAfterOAMCCCDIS->Rebin(RebinP);
 hRecoMuonCandidateMomentumAfterOAMCNCDIS->SetFillColor(kGray);
 hRecoMuonCandidateMomentumAfterOAMCNCDIS->Scale(Run1ScaleFactorMC);
-hRecoMuonCandidateMomentumAfterOAMCNCDIS->Rebin(25);
+hRecoMuonCandidateMomentumAfterOAMCNCDIS->Rebin(RebinP);
 hRecoMuonCandidateMomentumAfterOAMCCCCohEn->SetFillColor(kBlue);
 hRecoMuonCandidateMomentumAfterOAMCCCCohEn->Scale(EnhancedCCCohScaleFactor*Run1ScaleFactorMC);
-hRecoMuonCandidateMomentumAfterOAMCCCCohEn->Rebin(25);
+hRecoMuonCandidateMomentumAfterOAMCCCCohEn->Rebin(RebinP);
 hRecoMuonCandidateMomentumAfterOAMC->SetFillColor(kOrange);
 hRecoMuonCandidateMomentumAfterOAMC->Scale(Run1ScaleFactorMC);
-hRecoMuonCandidateMomentumAfterOAMC->Rebin(25);
+hRecoMuonCandidateMomentumAfterOAMC->Rebin(RebinP);
 hRecoMuonCandidateMomentumAfterOAMC->Add(hRecoMuonCandidateMomentumAfterOAMCCCCoh, -1);
 hRecoMuonCandidateMomentumAfterOAMC->Add(hRecoMuonCandidateMomentumAfterOAMCCCQE, -1);
 hRecoMuonCandidateMomentumAfterOAMC->Add(hRecoMuonCandidateMomentumAfterOAMCCCRes, -1);
@@ -1083,10 +1298,10 @@ hRecoMuonCandidateMomentumAfterOAMC->Add(hRecoMuonCandidateMomentumAfterOAMCCCDI
 hRecoMuonCandidateMomentumAfterOAMC->Add(hRecoMuonCandidateMomentumAfterOAMCNCDIS, -1);
 hRecoMuonCandidateMomentumAfterOAEXT->SetFillColor(kGray+4);
 hRecoMuonCandidateMomentumAfterOAEXT->Scale(Run1ScaleFactorEXT);
-hRecoMuonCandidateMomentumAfterOAEXT->Rebin(25);
+hRecoMuonCandidateMomentumAfterOAEXT->Rebin(RebinP);
 hRecoMuonCandidateMomentumAfterOADirt->SetFillColor(kOrange+5);
 hRecoMuonCandidateMomentumAfterOADirt->Scale(Run1ScaleFactorDirt);
-hRecoMuonCandidateMomentumAfterOADirt->Rebin(25);
+hRecoMuonCandidateMomentumAfterOADirt->Rebin(RebinP);
 hMPOAStacked->Add(hRecoMuonCandidateMomentumAfterOAMC);
 hMPOAStacked->Add(hRecoMuonCandidateMomentumAfterOAEXT);
 hMPOAStacked->Add(hRecoMuonCandidateMomentumAfterOADirt);
@@ -1139,32 +1354,32 @@ c6->SetFillColor(kWhite);
 
 hRecoPionCandidateMomentumAfterPCData->SetLineColor(kBlack);
 hRecoPionCandidateMomentumAfterPCData->SetLineWidth(2);
-hRecoPionCandidateMomentumAfterPCData->Rebin(25);
+hRecoPionCandidateMomentumAfterPCData->Rebin(RebinP);
 hRecoPionCandidateMomentumAfterPCData->SetMarkerStyle(20);
 hRecoPionCandidateMomentumAfterPCMCCCCoh->SetFillColor(kBlue);
 hRecoPionCandidateMomentumAfterPCMCCCCoh->Scale(Run1ScaleFactorMC);
-hRecoPionCandidateMomentumAfterPCMCCCCoh->Rebin(25);
+hRecoPionCandidateMomentumAfterPCMCCCCoh->Rebin(RebinP);
 hRecoPionCandidateMomentumAfterPCMCCCQE->SetFillColor(kViolet);
 hRecoPionCandidateMomentumAfterPCMCCCQE->Scale(Run1ScaleFactorMC);
-hRecoPionCandidateMomentumAfterPCMCCCQE->Rebin(25);
+hRecoPionCandidateMomentumAfterPCMCCCQE->Rebin(RebinP);
 hRecoPionCandidateMomentumAfterPCMCCCRes->SetFillColor(kRed);
 hRecoPionCandidateMomentumAfterPCMCCCRes->Scale(Run1ScaleFactorMC);
-hRecoPionCandidateMomentumAfterPCMCCCRes->Rebin(25);
+hRecoPionCandidateMomentumAfterPCMCCCRes->Rebin(RebinP);
 hRecoPionCandidateMomentumAfterPCMCNCRes->SetFillColor(kGreen);
 hRecoPionCandidateMomentumAfterPCMCNCRes->Scale(Run1ScaleFactorMC);
-hRecoPionCandidateMomentumAfterPCMCNCRes->Rebin(25);
+hRecoPionCandidateMomentumAfterPCMCNCRes->Rebin(RebinP);
 hRecoPionCandidateMomentumAfterPCMCCCDIS->SetFillColor(kCyan-8);
 hRecoPionCandidateMomentumAfterPCMCCCDIS->Scale(Run1ScaleFactorMC);
-hRecoPionCandidateMomentumAfterPCMCCCDIS->Rebin(25);
+hRecoPionCandidateMomentumAfterPCMCCCDIS->Rebin(RebinP);
 hRecoPionCandidateMomentumAfterPCMCNCDIS->SetFillColor(kGray);
 hRecoPionCandidateMomentumAfterPCMCNCDIS->Scale(Run1ScaleFactorMC);
-hRecoPionCandidateMomentumAfterPCMCNCDIS->Rebin(25);
+hRecoPionCandidateMomentumAfterPCMCNCDIS->Rebin(RebinP);
 hRecoPionCandidateMomentumAfterPCMCCCCohEn->SetFillColor(kBlue);
 hRecoPionCandidateMomentumAfterPCMCCCCohEn->Scale(EnhancedCCCohScaleFactor*Run1ScaleFactorMC);
-hRecoPionCandidateMomentumAfterPCMCCCCohEn->Rebin(25);
+hRecoPionCandidateMomentumAfterPCMCCCCohEn->Rebin(RebinP);
 hRecoPionCandidateMomentumAfterPCMC->SetFillColor(kOrange);
 hRecoPionCandidateMomentumAfterPCMC->Scale(Run1ScaleFactorMC);
-hRecoPionCandidateMomentumAfterPCMC->Rebin(25);
+hRecoPionCandidateMomentumAfterPCMC->Rebin(RebinP);
 hRecoPionCandidateMomentumAfterPCMC->Add(hRecoPionCandidateMomentumAfterPCMCCCCoh, -1);
 hRecoPionCandidateMomentumAfterPCMC->Add(hRecoPionCandidateMomentumAfterPCMCCCQE, -1);
 hRecoPionCandidateMomentumAfterPCMC->Add(hRecoPionCandidateMomentumAfterPCMCCCRes, -1);
@@ -1173,10 +1388,10 @@ hRecoPionCandidateMomentumAfterPCMC->Add(hRecoPionCandidateMomentumAfterPCMCCCDI
 hRecoPionCandidateMomentumAfterPCMC->Add(hRecoPionCandidateMomentumAfterPCMCNCDIS, -1);
 hRecoPionCandidateMomentumAfterPCEXT->SetFillColor(kGray+4);
 hRecoPionCandidateMomentumAfterPCEXT->Scale(Run1ScaleFactorEXT);
-hRecoPionCandidateMomentumAfterPCEXT->Rebin(25);
+hRecoPionCandidateMomentumAfterPCEXT->Rebin(RebinP);
 hRecoPionCandidateMomentumAfterPCDirt->SetFillColor(kOrange+5);
 hRecoPionCandidateMomentumAfterPCDirt->Scale(Run1ScaleFactorDirt);
-hRecoPionCandidateMomentumAfterPCDirt->Rebin(25);
+hRecoPionCandidateMomentumAfterPCDirt->Rebin(RebinP);
 hPPPCStacked->Add(hRecoPionCandidateMomentumAfterPCMC);
 hPPPCStacked->Add(hRecoPionCandidateMomentumAfterPCEXT);
 hPPPCStacked->Add(hRecoPionCandidateMomentumAfterPCDirt);
@@ -1229,32 +1444,32 @@ c7->SetFillColor(kWhite);
 
 hRecoPionCandidateMomentumAfterOAData->SetLineColor(kBlack);
 hRecoPionCandidateMomentumAfterOAData->SetLineWidth(2);
-hRecoPionCandidateMomentumAfterOAData->Rebin(25);
+hRecoPionCandidateMomentumAfterOAData->Rebin(RebinP);
 hRecoPionCandidateMomentumAfterOAData->SetMarkerStyle(20);
 hRecoPionCandidateMomentumAfterOAMCCCCoh->SetFillColor(kBlue);
 hRecoPionCandidateMomentumAfterOAMCCCCoh->Scale(Run1ScaleFactorMC);
-hRecoPionCandidateMomentumAfterOAMCCCCoh->Rebin(25);
+hRecoPionCandidateMomentumAfterOAMCCCCoh->Rebin(RebinP);
 hRecoPionCandidateMomentumAfterOAMCCCQE->SetFillColor(kViolet);
 hRecoPionCandidateMomentumAfterOAMCCCQE->Scale(Run1ScaleFactorMC);
-hRecoPionCandidateMomentumAfterOAMCCCQE->Rebin(25);
+hRecoPionCandidateMomentumAfterOAMCCCQE->Rebin(RebinP);
 hRecoPionCandidateMomentumAfterOAMCCCRes->SetFillColor(kRed);
 hRecoPionCandidateMomentumAfterOAMCCCRes->Scale(Run1ScaleFactorMC);
-hRecoPionCandidateMomentumAfterOAMCCCRes->Rebin(25);
+hRecoPionCandidateMomentumAfterOAMCCCRes->Rebin(RebinP);
 hRecoPionCandidateMomentumAfterOAMCNCRes->SetFillColor(kGreen);
 hRecoPionCandidateMomentumAfterOAMCNCRes->Scale(Run1ScaleFactorMC);
-hRecoPionCandidateMomentumAfterOAMCNCRes->Rebin(25);
+hRecoPionCandidateMomentumAfterOAMCNCRes->Rebin(RebinP);
 hRecoPionCandidateMomentumAfterOAMCCCDIS->SetFillColor(kCyan-8);
 hRecoPionCandidateMomentumAfterOAMCCCDIS->Scale(Run1ScaleFactorMC);
-hRecoPionCandidateMomentumAfterOAMCCCDIS->Rebin(25);
+hRecoPionCandidateMomentumAfterOAMCCCDIS->Rebin(RebinP);
 hRecoPionCandidateMomentumAfterOAMCNCDIS->SetFillColor(kGray);
 hRecoPionCandidateMomentumAfterOAMCNCDIS->Scale(Run1ScaleFactorMC);
-hRecoPionCandidateMomentumAfterOAMCNCDIS->Rebin(25);
+hRecoPionCandidateMomentumAfterOAMCNCDIS->Rebin(RebinP);
 hRecoPionCandidateMomentumAfterOAMCCCCohEn->SetFillColor(kBlue);
 hRecoPionCandidateMomentumAfterOAMCCCCohEn->Scale(EnhancedCCCohScaleFactor*Run1ScaleFactorMC);
-hRecoPionCandidateMomentumAfterOAMCCCCohEn->Rebin(25);
+hRecoPionCandidateMomentumAfterOAMCCCCohEn->Rebin(RebinP);
 hRecoPionCandidateMomentumAfterOAMC->SetFillColor(kOrange);
 hRecoPionCandidateMomentumAfterOAMC->Scale(Run1ScaleFactorMC);
-hRecoPionCandidateMomentumAfterOAMC->Rebin(25);
+hRecoPionCandidateMomentumAfterOAMC->Rebin(RebinP);
 hRecoPionCandidateMomentumAfterOAMC->Add(hRecoPionCandidateMomentumAfterOAMCCCCoh, -1);
 hRecoPionCandidateMomentumAfterOAMC->Add(hRecoPionCandidateMomentumAfterOAMCCCQE, -1);
 hRecoPionCandidateMomentumAfterOAMC->Add(hRecoPionCandidateMomentumAfterOAMCCCRes, -1);
@@ -1263,10 +1478,10 @@ hRecoPionCandidateMomentumAfterOAMC->Add(hRecoPionCandidateMomentumAfterOAMCCCDI
 hRecoPionCandidateMomentumAfterOAMC->Add(hRecoPionCandidateMomentumAfterOAMCNCDIS, -1);
 hRecoPionCandidateMomentumAfterOAEXT->SetFillColor(kGray+4);
 hRecoPionCandidateMomentumAfterOAEXT->Scale(Run1ScaleFactorEXT);
-hRecoPionCandidateMomentumAfterOAEXT->Rebin(25);
+hRecoPionCandidateMomentumAfterOAEXT->Rebin(RebinP);
 hRecoPionCandidateMomentumAfterOADirt->SetFillColor(kOrange+5);
 hRecoPionCandidateMomentumAfterOADirt->Scale(Run1ScaleFactorDirt);
-hRecoPionCandidateMomentumAfterOADirt->Rebin(25);
+hRecoPionCandidateMomentumAfterOADirt->Rebin(RebinP);
 hPPOAStacked->Add(hRecoPionCandidateMomentumAfterOAMC);
 hPPOAStacked->Add(hRecoPionCandidateMomentumAfterOAEXT);
 hPPOAStacked->Add(hRecoPionCandidateMomentumAfterOADirt);
@@ -1825,8 +2040,13 @@ hPionCandidateTrkLLRPIDScoreAfterVAEXT->SetFillColor(kGray+4);
 hPionCandidateTrkLLRPIDScoreAfterVAEXT->SetLineColor(kBlack);
 hPionCandidateTrkLLRPIDScoreAfterVAEXT->Scale(Run1ScaleFactorEXT);
 hPionCandidateTrkLLRPIDScoreAfterVAEXT->Rebin(25);
+hPionCandidateTrkLLRPIDScoreAfterVADirt->SetFillColor(kOrange+5);
+hPionCandidateTrkLLRPIDScoreAfterVADirt->SetLineColor(kBlack);
+hPionCandidateTrkLLRPIDScoreAfterVADirt->Scale(Run1ScaleFactorDirt);
+hPionCandidateTrkLLRPIDScoreAfterVADirt->Rebin(25);
 hPionCandidateTrkLLRPIDScoreAfterVAStacked->Add(hPionCandidateTrkLLRPIDScoreAfterVAMC);
 hPionCandidateTrkLLRPIDScoreAfterVAStacked->Add(hPionCandidateTrkLLRPIDScoreAfterVAEXT);
+hPionCandidateTrkLLRPIDScoreAfterVAStacked->Add(hPionCandidateTrkLLRPIDScoreAfterVADirt);
 hPionCandidateTrkLLRPIDScoreAfterVAStacked->Add(hPionCandidateTrkLLRPIDScoreAfterVACCQE);
 hPionCandidateTrkLLRPIDScoreAfterVAStacked->Add(hPionCandidateTrkLLRPIDScoreAfterVACCRes);
 hPionCandidateTrkLLRPIDScoreAfterVAStacked->Add(hPionCandidateTrkLLRPIDScoreAfterVANCRes);
@@ -1863,6 +2083,7 @@ leg14->AddEntry(hPionCandidateTrkLLRPIDScoreAfterVACCDIS,"Reco CC-DIS");
 leg14->AddEntry(hPionCandidateTrkLLRPIDScoreAfterVANCDIS,"Reco NC-DIS");
 leg14->AddEntry(hPionCandidateTrkLLRPIDScoreAfterVAMC,"Reco Other");
 leg14->AddEntry(hPionCandidateTrkLLRPIDScoreAfterVAEXT,"EXT");
+leg14->AddEntry(hPionCandidateTrkLLRPIDScoreAfterVADirt,"Dirt");
 leg14->Draw();
 
 
@@ -1919,8 +2140,13 @@ hPionCandidateTrkLLRPIDScoreAfterPCEXT->SetFillColor(kGray+4);
 hPionCandidateTrkLLRPIDScoreAfterPCEXT->SetLineColor(kBlack);
 hPionCandidateTrkLLRPIDScoreAfterPCEXT->Scale(Run1ScaleFactorEXT);
 hPionCandidateTrkLLRPIDScoreAfterPCEXT->Rebin(25);
+hPionCandidateTrkLLRPIDScoreAfterPCDirt->SetFillColor(kOrange+5);
+hPionCandidateTrkLLRPIDScoreAfterPCDirt->SetLineColor(kBlack);
+hPionCandidateTrkLLRPIDScoreAfterPCDirt->Scale(Run1ScaleFactorDirt);
+hPionCandidateTrkLLRPIDScoreAfterPCDirt->Rebin(25);
 hPionCandidateTrkLLRPIDScoreAfterPCStacked->Add(hPionCandidateTrkLLRPIDScoreAfterPCMC);
 hPionCandidateTrkLLRPIDScoreAfterPCStacked->Add(hPionCandidateTrkLLRPIDScoreAfterPCEXT);
+hPionCandidateTrkLLRPIDScoreAfterPCStacked->Add(hPionCandidateTrkLLRPIDScoreAfterPCDirt);
 hPionCandidateTrkLLRPIDScoreAfterPCStacked->Add(hPionCandidateTrkLLRPIDScoreAfterPCCCQE);
 hPionCandidateTrkLLRPIDScoreAfterPCStacked->Add(hPionCandidateTrkLLRPIDScoreAfterPCCCRes);
 hPionCandidateTrkLLRPIDScoreAfterPCStacked->Add(hPionCandidateTrkLLRPIDScoreAfterPCNCRes);
@@ -1957,6 +2183,7 @@ leg15->AddEntry(hPionCandidateTrkLLRPIDScoreAfterPCCCDIS,"Reco CC-DIS");
 leg15->AddEntry(hPionCandidateTrkLLRPIDScoreAfterPCNCDIS,"Reco NC-DIS");
 leg15->AddEntry(hPionCandidateTrkLLRPIDScoreAfterPCMC,"Reco Other");
 leg15->AddEntry(hPionCandidateTrkLLRPIDScoreAfterPCEXT,"EXT");
+leg15->AddEntry(hPionCandidateTrkLLRPIDScoreAfterPCDirt,"Dirt");
 leg15->Draw();
 
 
@@ -2113,8 +2340,13 @@ hPionCandidateTrkLLRPIDScoreEXT->SetFillColor(kGray+4);
 hPionCandidateTrkLLRPIDScoreEXT->SetLineColor(kBlack);
 hPionCandidateTrkLLRPIDScoreEXT->Scale(Run1ScaleFactorEXT);
 hPionCandidateTrkLLRPIDScoreEXT->Rebin(25);
+hPionCandidateTrkLLRPIDScoreDirt->SetFillColor(kOrange+5);
+hPionCandidateTrkLLRPIDScoreDirt->SetLineColor(kBlack);
+hPionCandidateTrkLLRPIDScoreDirt->Scale(Run1ScaleFactorDirt);
+hPionCandidateTrkLLRPIDScoreDirt->Rebin(25);
 hPionCandidateTrkLLRPIDScoreStacked->Add(hPionCandidateTrkLLRPIDScoreMC);
 hPionCandidateTrkLLRPIDScoreStacked->Add(hPionCandidateTrkLLRPIDScoreEXT);
+hPionCandidateTrkLLRPIDScoreStacked->Add(hPionCandidateTrkLLRPIDScoreDirt);
 hPionCandidateTrkLLRPIDScoreStacked->Add(hPionCandidateTrkLLRPIDScoreCCQE);
 hPionCandidateTrkLLRPIDScoreStacked->Add(hPionCandidateTrkLLRPIDScoreCCRes);
 hPionCandidateTrkLLRPIDScoreStacked->Add(hPionCandidateTrkLLRPIDScoreNCRes);
@@ -2151,6 +2383,7 @@ leg17->AddEntry(hPionCandidateTrkLLRPIDScoreCCDIS,"Reco CC-DIS");
 leg17->AddEntry(hPionCandidateTrkLLRPIDScoreNCDIS,"Reco NC-DIS");
 leg17->AddEntry(hPionCandidateTrkLLRPIDScoreMC,"Reco Other");
 leg17->AddEntry(hPionCandidateTrkLLRPIDScoreEXT,"EXT");
+leg17->AddEntry(hPionCandidateTrkLLRPIDScoreDirt,"Dirt");
 leg17->Draw();
 
 
@@ -2207,8 +2440,13 @@ hMuonCandidateTrkLLRPIDScoreEXT->SetFillColor(kGray+4);
 hMuonCandidateTrkLLRPIDScoreEXT->SetLineColor(kBlack);
 hMuonCandidateTrkLLRPIDScoreEXT->Scale(Run1ScaleFactorEXT);
 hMuonCandidateTrkLLRPIDScoreEXT->Rebin(25);
+hMuonCandidateTrkLLRPIDScoreDirt->SetFillColor(kOrange+5);
+hMuonCandidateTrkLLRPIDScoreDirt->SetLineColor(kBlack);
+hMuonCandidateTrkLLRPIDScoreDirt->Scale(Run1ScaleFactorDirt);
+hMuonCandidateTrkLLRPIDScoreDirt->Rebin(25);
 hMuonCandidateTrkLLRPIDScoreStacked->Add(hMuonCandidateTrkLLRPIDScoreMC);
 hMuonCandidateTrkLLRPIDScoreStacked->Add(hMuonCandidateTrkLLRPIDScoreEXT);
+hMuonCandidateTrkLLRPIDScoreStacked->Add(hMuonCandidateTrkLLRPIDScoreDirt);
 hMuonCandidateTrkLLRPIDScoreStacked->Add(hMuonCandidateTrkLLRPIDScoreCCQE);
 hMuonCandidateTrkLLRPIDScoreStacked->Add(hMuonCandidateTrkLLRPIDScoreCCRes);
 hMuonCandidateTrkLLRPIDScoreStacked->Add(hMuonCandidateTrkLLRPIDScoreNCRes);
@@ -2245,6 +2483,7 @@ leg18->AddEntry(hMuonCandidateTrkLLRPIDScoreCCDIS,"Reco CC-DIS");
 leg18->AddEntry(hMuonCandidateTrkLLRPIDScoreNCDIS,"Reco NC-DIS");
 leg18->AddEntry(hMuonCandidateTrkLLRPIDScoreMC,"Reco Other");
 leg18->AddEntry(hMuonCandidateTrkLLRPIDScoreEXT,"EXT");
+leg18->AddEntry(hMuonCandidateTrkLLRPIDScoreDirt,"Dirt");
 leg18->Draw();
 
 
@@ -2357,40 +2596,40 @@ c20->SetFillColor(kWhite);
 
 hOpeningAngleData->SetLineColor(kBlack);
 hOpeningAngleData->SetLineWidth(2);
-hOpeningAngleData->Rebin(10);
+hOpeningAngleData->Rebin(RebinOA);
 hOpeningAngleData->SetMarkerStyle(20);
 hOpeningAngleCCCoh->SetFillColor(kBlue);
 hOpeningAngleCCCoh->SetLineColor(kBlack);
 hOpeningAngleCCCoh->Scale(Run1ScaleFactorMC);
-hOpeningAngleCCCoh->Rebin(10);
+hOpeningAngleCCCoh->Rebin(RebinOA);
 hOpeningAngleCCQE->SetFillColor(kViolet);
 hOpeningAngleCCQE->SetLineColor(kBlack);
 hOpeningAngleCCQE->Scale(Run1ScaleFactorMC);
-hOpeningAngleCCQE->Rebin(10);
+hOpeningAngleCCQE->Rebin(RebinOA);
 hOpeningAngleCCRes->SetFillColor(kRed);
 hOpeningAngleCCRes->SetLineColor(kBlack);
 hOpeningAngleCCRes->Scale(Run1ScaleFactorMC);
-hOpeningAngleCCRes->Rebin(10);
+hOpeningAngleCCRes->Rebin(RebinOA);
 hOpeningAngleNCRes->SetFillColor(kGreen);
 hOpeningAngleNCRes->SetLineColor(kBlack);
 hOpeningAngleNCRes->Scale(Run1ScaleFactorMC);
-hOpeningAngleNCRes->Rebin(10);
+hOpeningAngleNCRes->Rebin(RebinOA);
 hOpeningAngleCCDIS->SetFillColor(kCyan-8);
 hOpeningAngleCCDIS->SetLineColor(kBlack);
 hOpeningAngleCCDIS->Scale(Run1ScaleFactorMC);
-hOpeningAngleCCDIS->Rebin(10);
+hOpeningAngleCCDIS->Rebin(RebinOA);
 hOpeningAngleNCDIS->SetFillColor(kGray);
 hOpeningAngleNCDIS->SetLineColor(kBlack);
 hOpeningAngleNCDIS->Scale(Run1ScaleFactorMC);
-hOpeningAngleNCDIS->Rebin(10);
+hOpeningAngleNCDIS->Rebin(RebinOA);
 hOpeningAngleCCCohEn->SetFillColor(kBlue);
 hOpeningAngleCCCohEn->SetLineColor(kBlack);
 hOpeningAngleCCCohEn->Scale(EnhancedCCCohScaleFactor*Run1ScaleFactorMC);
-hOpeningAngleCCCohEn->Rebin(10);
+hOpeningAngleCCCohEn->Rebin(RebinOA);
 hOpeningAngleMC->SetFillColor(kOrange);
 hOpeningAngleMC->SetLineColor(kBlack);
 hOpeningAngleMC->Scale(Run1ScaleFactorMC);
-hOpeningAngleMC->Rebin(10);
+hOpeningAngleMC->Rebin(RebinOA);
 hOpeningAngleMC->Add(hOpeningAngleCCCoh, -1);
 hOpeningAngleMC->Add(hOpeningAngleCCQE, -1);
 hOpeningAngleMC->Add(hOpeningAngleCCRes, -1);
@@ -2400,11 +2639,11 @@ hOpeningAngleMC->Add(hOpeningAngleNCDIS, -1);
 hOpeningAngleEXT->SetFillColor(kGray+4);
 hOpeningAngleEXT->SetLineColor(kBlack);
 hOpeningAngleEXT->Scale(Run1ScaleFactorEXT);
-hOpeningAngleEXT->Rebin(10);
+hOpeningAngleEXT->Rebin(RebinOA);
 hOpeningAngleDirt->SetFillColor(kOrange+5);
 hOpeningAngleDirt->SetLineColor(kBlack);
 hOpeningAngleDirt->Scale(Run1ScaleFactorDirt);
-hOpeningAngleDirt->Rebin(10);
+hOpeningAngleDirt->Rebin(RebinOA);
 hOpeningAngleStacked->Add(hOpeningAngleMC);
 hOpeningAngleStacked->Add(hOpeningAngleEXT);
 hOpeningAngleStacked->Add(hOpeningAngleDirt);
@@ -2457,40 +2696,40 @@ c21->SetFillColor(kWhite);
 
 hOpeningAngleDataForPC->SetLineColor(kBlack);
 hOpeningAngleDataForPC->SetLineWidth(2);
-hOpeningAngleDataForPC->Rebin(10);
+hOpeningAngleDataForPC->Rebin(RebinOA);
 hOpeningAngleDataForPC->SetMarkerStyle(20);
 hOpeningAngleCCCohForPC->SetFillColor(kBlue);
 hOpeningAngleCCCohForPC->SetLineColor(kBlack);
 hOpeningAngleCCCohForPC->Scale(Run1ScaleFactorMC);
-hOpeningAngleCCCohForPC->Rebin(10);
+hOpeningAngleCCCohForPC->Rebin(RebinOA);
 hOpeningAngleCCQEForPC->SetFillColor(kViolet);
 hOpeningAngleCCQEForPC->SetLineColor(kBlack);
 hOpeningAngleCCQEForPC->Scale(Run1ScaleFactorMC);
-hOpeningAngleCCQEForPC->Rebin(10);
+hOpeningAngleCCQEForPC->Rebin(RebinOA);
 hOpeningAngleCCResForPC->SetFillColor(kRed);
 hOpeningAngleCCResForPC->SetLineColor(kBlack);
 hOpeningAngleCCResForPC->Scale(Run1ScaleFactorMC);
-hOpeningAngleCCResForPC->Rebin(10);
+hOpeningAngleCCResForPC->Rebin(RebinOA);
 hOpeningAngleNCResForPC->SetFillColor(kGreen);
 hOpeningAngleNCResForPC->SetLineColor(kBlack);
 hOpeningAngleNCResForPC->Scale(Run1ScaleFactorMC);
-hOpeningAngleNCResForPC->Rebin(10);
+hOpeningAngleNCResForPC->Rebin(RebinOA);
 hOpeningAngleCCDISForPC->SetFillColor(kCyan-8);
 hOpeningAngleCCDISForPC->SetLineColor(kBlack);
 hOpeningAngleCCDISForPC->Scale(Run1ScaleFactorMC);
-hOpeningAngleCCDISForPC->Rebin(10);
+hOpeningAngleCCDISForPC->Rebin(RebinOA);
 hOpeningAngleNCDISForPC->SetFillColor(kGray);
 hOpeningAngleNCDISForPC->SetLineColor(kBlack);
 hOpeningAngleNCDISForPC->Scale(Run1ScaleFactorMC);
-hOpeningAngleNCDISForPC->Rebin(10);
+hOpeningAngleNCDISForPC->Rebin(RebinOA);
 hOpeningAngleCCCohEnForPC->SetFillColor(kBlue);
 hOpeningAngleCCCohEnForPC->SetLineColor(kBlack);
 hOpeningAngleCCCohEnForPC->Scale(EnhancedCCCohScaleFactor*Run1ScaleFactorMC);
-hOpeningAngleCCCohEnForPC->Rebin(10);
+hOpeningAngleCCCohEnForPC->Rebin(RebinOA);
 hOpeningAngleMCForPC->SetFillColor(kOrange);
 hOpeningAngleMCForPC->SetLineColor(kBlack);
 hOpeningAngleMCForPC->Scale(Run1ScaleFactorMC);
-hOpeningAngleMCForPC->Rebin(10);
+hOpeningAngleMCForPC->Rebin(RebinOA);
 hOpeningAngleMCForPC->Add(hOpeningAngleCCCohForPC, -1);
 hOpeningAngleMCForPC->Add(hOpeningAngleCCQEForPC, -1);
 hOpeningAngleMCForPC->Add(hOpeningAngleCCResForPC, -1);
@@ -2500,11 +2739,11 @@ hOpeningAngleMCForPC->Add(hOpeningAngleNCDISForPC, -1);
 hOpeningAngleEXTForPC->SetFillColor(kGray+4);
 hOpeningAngleEXTForPC->SetLineColor(kBlack);
 hOpeningAngleEXTForPC->Scale(Run1ScaleFactorEXT);
-hOpeningAngleEXTForPC->Rebin(10);
+hOpeningAngleEXTForPC->Rebin(RebinOA);
 hOpeningAngleDirtForPC->SetFillColor(kOrange+5);
 hOpeningAngleDirtForPC->SetLineColor(kBlack);
 hOpeningAngleDirtForPC->Scale(Run1ScaleFactorDirt);
-hOpeningAngleDirtForPC->Rebin(10);
+hOpeningAngleDirtForPC->Rebin(RebinOA);
 hOpeningAngleStackedForPC->Add(hOpeningAngleMCForPC);
 hOpeningAngleStackedForPC->Add(hOpeningAngleEXTForPC);
 hOpeningAngleStackedForPC->Add(hOpeningAngleDirtForPC);
@@ -2920,4 +3159,508 @@ leg26->AddEntry(hRecoNuEnergyOAMC,"Reco Other");
 leg26->AddEntry(hRecoNuEnergyOAEXT,"EXT");
 leg26->AddEntry(hRecoNuEnergyOADirt,"Dirt");
 leg26->Draw();
+
+
+
+
+
+TCanvas *c27 = new TCanvas("c27", "Stacked Reco Muon Candidate Theta After Pion Candidacy");
+c27->SetTicks();
+c27->SetFillColor(kWhite);
+
+hMuonCandidateThetaAfterPCData->SetLineColor(kBlack);
+hMuonCandidateThetaAfterPCData->SetLineWidth(2);
+hMuonCandidateThetaAfterPCData->Rebin(RebinTheta);
+hMuonCandidateThetaAfterPCData->SetMarkerStyle(20);
+hMuonCandidateThetaAfterPCMCCCCoh->SetFillColor(kBlue);
+hMuonCandidateThetaAfterPCMCCCCoh->SetLineColor(kBlack);
+hMuonCandidateThetaAfterPCMCCCCoh->Scale(Run1ScaleFactorMC);
+hMuonCandidateThetaAfterPCMCCCCoh->Rebin(RebinTheta);
+hMuonCandidateThetaAfterPCMCCCQE->SetFillColor(kViolet);
+hMuonCandidateThetaAfterPCMCCCQE->SetLineColor(kBlack);
+hMuonCandidateThetaAfterPCMCCCQE->Scale(Run1ScaleFactorMC);
+hMuonCandidateThetaAfterPCMCCCQE->Rebin(RebinTheta);
+hMuonCandidateThetaAfterPCMCCCRes->SetFillColor(kRed);
+hMuonCandidateThetaAfterPCMCCCRes->SetLineColor(kBlack);
+hMuonCandidateThetaAfterPCMCCCRes->Scale(Run1ScaleFactorMC);
+hMuonCandidateThetaAfterPCMCCCRes->Rebin(RebinTheta);
+hMuonCandidateThetaAfterPCMCNCRes->SetFillColor(kGreen);
+hMuonCandidateThetaAfterPCMCNCRes->SetLineColor(kBlack);
+hMuonCandidateThetaAfterPCMCNCRes->Scale(Run1ScaleFactorMC);
+hMuonCandidateThetaAfterPCMCNCRes->Rebin(RebinTheta);
+hMuonCandidateThetaAfterPCMCCCDIS->SetFillColor(kCyan-8);
+hMuonCandidateThetaAfterPCMCCCDIS->SetLineColor(kBlack);
+hMuonCandidateThetaAfterPCMCCCDIS->Scale(Run1ScaleFactorMC);
+hMuonCandidateThetaAfterPCMCCCDIS->Rebin(RebinTheta);
+hMuonCandidateThetaAfterPCMCNCDIS->SetFillColor(kGray);
+hMuonCandidateThetaAfterPCMCNCDIS->SetLineColor(kBlack);
+hMuonCandidateThetaAfterPCMCNCDIS->Scale(Run1ScaleFactorMC);
+hMuonCandidateThetaAfterPCMCNCDIS->Rebin(RebinTheta);
+hMuonCandidateThetaAfterPCMCCCCohEn->SetFillColor(kBlue);
+hMuonCandidateThetaAfterPCMCCCCohEn->SetLineColor(kBlack);
+hMuonCandidateThetaAfterPCMCCCCohEn->Scale(EnhancedCCCohScaleFactor*Run1ScaleFactorMC);
+hMuonCandidateThetaAfterPCMCCCCohEn->Rebin(RebinTheta);
+hMuonCandidateThetaAfterPCMC->SetFillColor(kOrange);
+hMuonCandidateThetaAfterPCMC->SetLineColor(kBlack);
+hMuonCandidateThetaAfterPCMC->Scale(Run1ScaleFactorMC);
+hMuonCandidateThetaAfterPCMC->Rebin(RebinTheta);
+hMuonCandidateThetaAfterPCMC->Add(hMuonCandidateThetaAfterPCMCCCCoh, -1);
+hMuonCandidateThetaAfterPCMC->Add(hMuonCandidateThetaAfterPCMCCCQE, -1);
+hMuonCandidateThetaAfterPCMC->Add(hMuonCandidateThetaAfterPCMCCCRes, -1);
+hMuonCandidateThetaAfterPCMC->Add(hMuonCandidateThetaAfterPCMCNCRes, -1);
+hMuonCandidateThetaAfterPCMC->Add(hMuonCandidateThetaAfterPCMCCCDIS, -1);
+hMuonCandidateThetaAfterPCMC->Add(hMuonCandidateThetaAfterPCMCNCDIS, -1);
+hMuonCandidateThetaAfterPCEXT->SetFillColor(kGray+4);
+hMuonCandidateThetaAfterPCEXT->SetLineColor(kBlack);
+hMuonCandidateThetaAfterPCEXT->Scale(Run1ScaleFactorEXT);
+hMuonCandidateThetaAfterPCEXT->Rebin(RebinTheta);
+hMuonCandidateThetaAfterPCDirt->SetFillColor(kOrange+5);
+hMuonCandidateThetaAfterPCDirt->SetLineColor(kBlack);
+hMuonCandidateThetaAfterPCDirt->Scale(Run1ScaleFactorDirt);
+hMuonCandidateThetaAfterPCDirt->Rebin(RebinTheta);
+hMuonCandidateThetaAfterPCStacked->Add(hMuonCandidateThetaAfterPCMC);
+hMuonCandidateThetaAfterPCStacked->Add(hMuonCandidateThetaAfterPCEXT);
+hMuonCandidateThetaAfterPCStacked->Add(hMuonCandidateThetaAfterPCDirt);
+hMuonCandidateThetaAfterPCStacked->Add(hMuonCandidateThetaAfterPCMCCCQE);
+hMuonCandidateThetaAfterPCStacked->Add(hMuonCandidateThetaAfterPCMCCCRes);
+hMuonCandidateThetaAfterPCStacked->Add(hMuonCandidateThetaAfterPCMCNCRes);
+hMuonCandidateThetaAfterPCStacked->Add(hMuonCandidateThetaAfterPCMCCCDIS);
+hMuonCandidateThetaAfterPCStacked->Add(hMuonCandidateThetaAfterPCMCNCDIS);
+hMuonCandidateThetaAfterPCStacked->Add(hMuonCandidateThetaAfterPCMCCCCohEn);
+
+hMuonCandidateThetaAfterPCData->Draw("E1");
+hMuonCandidateThetaAfterPCStacked->Draw("HISTsame");
+hMuonCandidateThetaAfterPCData->GetXaxis()->SetTitle("#theta_{#mu} [Degrees]");
+hMuonCandidateThetaAfterPCData->GetXaxis()->CenterTitle();
+hMuonCandidateThetaAfterPCData->GetXaxis()->SetRangeUser(0, 90);
+hMuonCandidateThetaAfterPCData->GetYaxis()->SetTitle("Number of Events");
+hMuonCandidateThetaAfterPCData->GetYaxis()->CenterTitle();
+hMuonCandidateThetaAfterPCData->GetYaxis()->SetRangeUser(0, 20);
+
+hMuonCandidateThetaAfterPCData->Draw("E1same");
+c27->Modified();
+
+// ### Defining the legend for the plot ###
+TLegend *leg27 = new TLegend();
+leg27 = new TLegend(0.58,0.65,1.00,1.00);
+leg27->SetTextSize(0.04);
+leg27->SetTextAlign(12);
+leg27->SetFillColor(kWhite);
+leg27->SetLineColor(kWhite);
+leg27->SetShadowColor(kWhite);
+leg27->SetHeader("Channel");
+leg27->AddEntry(hMuonCandidateThetaAfterPCData,"Data");
+leg27->AddEntry(hMuonCandidateThetaAfterPCMCCCCoh,"Reco CC-Coh");
+leg27->AddEntry(hMuonCandidateThetaAfterPCMCCCQE,"Reco CC-QE");
+leg27->AddEntry(hMuonCandidateThetaAfterPCMCCCRes,"Reco CC-Res");
+leg27->AddEntry(hMuonCandidateThetaAfterPCMCNCRes,"Reco NC-Res");
+leg27->AddEntry(hMuonCandidateThetaAfterPCMCCCDIS,"Reco CC-DIS");
+leg27->AddEntry(hMuonCandidateThetaAfterPCMCNCDIS,"Reco NC-DIS");
+leg27->AddEntry(hMuonCandidateThetaAfterPCMC,"Reco Other");
+leg27->AddEntry(hMuonCandidateThetaAfterPCEXT,"EXT");
+leg27->AddEntry(hMuonCandidateThetaAfterPCDirt,"Dirt");
+leg27->Draw();
+
+
+
+
+
+TCanvas *c28 = new TCanvas("c28", "Stacked Reco Pion Candidate Theta After Pion Candidacy");
+c28->SetTicks();
+c28->SetFillColor(kWhite);
+
+hPionCandidateThetaAfterPCData->SetLineColor(kBlack);
+hPionCandidateThetaAfterPCData->SetLineWidth(2);
+hPionCandidateThetaAfterPCData->Rebin(RebinTheta);
+hPionCandidateThetaAfterPCData->SetMarkerStyle(20);
+hPionCandidateThetaAfterPCMCCCCoh->SetFillColor(kBlue);
+hPionCandidateThetaAfterPCMCCCCoh->SetLineColor(kBlack);
+hPionCandidateThetaAfterPCMCCCCoh->Scale(Run1ScaleFactorMC);
+hPionCandidateThetaAfterPCMCCCCoh->Rebin(RebinTheta);
+hPionCandidateThetaAfterPCMCCCQE->SetFillColor(kViolet);
+hPionCandidateThetaAfterPCMCCCQE->SetLineColor(kBlack);
+hPionCandidateThetaAfterPCMCCCQE->Scale(Run1ScaleFactorMC);
+hPionCandidateThetaAfterPCMCCCQE->Rebin(RebinTheta);
+hPionCandidateThetaAfterPCMCCCRes->SetFillColor(kRed);
+hPionCandidateThetaAfterPCMCCCRes->SetLineColor(kBlack);
+hPionCandidateThetaAfterPCMCCCRes->Scale(Run1ScaleFactorMC);
+hPionCandidateThetaAfterPCMCCCRes->Rebin(RebinTheta);
+hPionCandidateThetaAfterPCMCNCRes->SetFillColor(kGreen);
+hPionCandidateThetaAfterPCMCNCRes->SetLineColor(kBlack);
+hPionCandidateThetaAfterPCMCNCRes->Scale(Run1ScaleFactorMC);
+hPionCandidateThetaAfterPCMCNCRes->Rebin(RebinTheta);
+hPionCandidateThetaAfterPCMCCCDIS->SetFillColor(kCyan-8);
+hPionCandidateThetaAfterPCMCCCDIS->SetLineColor(kBlack);
+hPionCandidateThetaAfterPCMCCCDIS->Scale(Run1ScaleFactorMC);
+hPionCandidateThetaAfterPCMCCCDIS->Rebin(RebinTheta);
+hPionCandidateThetaAfterPCMCNCDIS->SetFillColor(kGray);
+hPionCandidateThetaAfterPCMCNCDIS->SetLineColor(kBlack);
+hPionCandidateThetaAfterPCMCNCDIS->Scale(Run1ScaleFactorMC);
+hPionCandidateThetaAfterPCMCNCDIS->Rebin(RebinTheta);
+hPionCandidateThetaAfterPCMCCCCohEn->SetFillColor(kBlue);
+hPionCandidateThetaAfterPCMCCCCohEn->SetLineColor(kBlack);
+hPionCandidateThetaAfterPCMCCCCohEn->Scale(EnhancedCCCohScaleFactor*Run1ScaleFactorMC);
+hPionCandidateThetaAfterPCMCCCCohEn->Rebin(RebinTheta);
+hPionCandidateThetaAfterPCMC->SetFillColor(kOrange);
+hPionCandidateThetaAfterPCMC->SetLineColor(kBlack);
+hPionCandidateThetaAfterPCMC->Scale(Run1ScaleFactorMC);
+hPionCandidateThetaAfterPCMC->Rebin(RebinTheta);
+hPionCandidateThetaAfterPCMC->Add(hPionCandidateThetaAfterPCMCCCCoh, -1);
+hPionCandidateThetaAfterPCMC->Add(hPionCandidateThetaAfterPCMCCCQE, -1);
+hPionCandidateThetaAfterPCMC->Add(hPionCandidateThetaAfterPCMCCCRes, -1);
+hPionCandidateThetaAfterPCMC->Add(hPionCandidateThetaAfterPCMCNCRes, -1);
+hPionCandidateThetaAfterPCMC->Add(hPionCandidateThetaAfterPCMCCCDIS, -1);
+hPionCandidateThetaAfterPCMC->Add(hPionCandidateThetaAfterPCMCNCDIS, -1);
+hPionCandidateThetaAfterPCEXT->SetFillColor(kGray+4);
+hPionCandidateThetaAfterPCEXT->SetLineColor(kBlack);
+hPionCandidateThetaAfterPCEXT->Scale(Run1ScaleFactorEXT);
+hPionCandidateThetaAfterPCEXT->Rebin(RebinTheta);
+hPionCandidateThetaAfterPCDirt->SetFillColor(kOrange+5);
+hPionCandidateThetaAfterPCDirt->SetLineColor(kBlack);
+hPionCandidateThetaAfterPCDirt->Scale(Run1ScaleFactorDirt);
+hPionCandidateThetaAfterPCDirt->Rebin(RebinTheta);
+hPionCandidateThetaAfterPCStacked->Add(hPionCandidateThetaAfterPCMC);
+hPionCandidateThetaAfterPCStacked->Add(hPionCandidateThetaAfterPCEXT);
+hPionCandidateThetaAfterPCStacked->Add(hPionCandidateThetaAfterPCDirt);
+hPionCandidateThetaAfterPCStacked->Add(hPionCandidateThetaAfterPCMCCCQE);
+hPionCandidateThetaAfterPCStacked->Add(hPionCandidateThetaAfterPCMCCCRes);
+hPionCandidateThetaAfterPCStacked->Add(hPionCandidateThetaAfterPCMCNCRes);
+hPionCandidateThetaAfterPCStacked->Add(hPionCandidateThetaAfterPCMCCCDIS);
+hPionCandidateThetaAfterPCStacked->Add(hPionCandidateThetaAfterPCMCNCDIS);
+hPionCandidateThetaAfterPCStacked->Add(hPionCandidateThetaAfterPCMCCCCohEn);
+
+hPionCandidateThetaAfterPCData->Draw("E1");
+hPionCandidateThetaAfterPCStacked->Draw("HISTsame");
+hPionCandidateThetaAfterPCData->GetXaxis()->SetTitle("#theta_{#pi} [Degrees]");
+hPionCandidateThetaAfterPCData->GetXaxis()->CenterTitle();
+hPionCandidateThetaAfterPCData->GetXaxis()->SetRangeUser(0, 90);
+hPionCandidateThetaAfterPCData->GetYaxis()->SetTitle("Number of Events");
+hPionCandidateThetaAfterPCData->GetYaxis()->CenterTitle();
+hPionCandidateThetaAfterPCData->GetYaxis()->SetRangeUser(0, 20);
+
+hPionCandidateThetaAfterPCData->Draw("E1same");
+c28->Modified();
+
+// ### Defining the legend for the plot ###
+TLegend *leg28 = new TLegend();
+leg28 = new TLegend(0.58,0.65,1.00,1.00);
+leg28->SetTextSize(0.04);
+leg28->SetTextAlign(12);
+leg28->SetFillColor(kWhite);
+leg28->SetLineColor(kWhite);
+leg28->SetShadowColor(kWhite);
+leg28->SetHeader("Channel");
+leg28->AddEntry(hPionCandidateThetaAfterPCData,"Data");
+leg28->AddEntry(hPionCandidateThetaAfterPCMCCCCoh,"Reco CC-Coh");
+leg28->AddEntry(hPionCandidateThetaAfterPCMCCCQE,"Reco CC-QE");
+leg28->AddEntry(hPionCandidateThetaAfterPCMCCCRes,"Reco CC-Res");
+leg28->AddEntry(hPionCandidateThetaAfterPCMCNCRes,"Reco NC-Res");
+leg28->AddEntry(hPionCandidateThetaAfterPCMCCCDIS,"Reco CC-DIS");
+leg28->AddEntry(hPionCandidateThetaAfterPCMCNCDIS,"Reco NC-DIS");
+leg28->AddEntry(hPionCandidateThetaAfterPCMC,"Reco Other");
+leg28->AddEntry(hPionCandidateThetaAfterPCEXT,"EXT");
+leg28->AddEntry(hPionCandidateThetaAfterPCDirt,"Dirt");
+leg28->Draw();
+
+
+
+
+
+TCanvas *c29 = new TCanvas("c29", "Stacked Reco Muon Candidate Phi After Pion Candidacy");
+c29->SetTicks();
+c29->SetFillColor(kWhite);
+
+hMuonCandidatePhiAfterPCData->SetLineColor(kBlack);
+hMuonCandidatePhiAfterPCData->SetLineWidth(2);
+hMuonCandidatePhiAfterPCData->Rebin(RebinPhi);
+hMuonCandidatePhiAfterPCData->SetMarkerStyle(20);
+hMuonCandidatePhiAfterPCMCCCCoh->SetFillColor(kBlue);
+hMuonCandidatePhiAfterPCMCCCCoh->SetLineColor(kBlack);
+hMuonCandidatePhiAfterPCMCCCCoh->Scale(Run1ScaleFactorMC);
+hMuonCandidatePhiAfterPCMCCCCoh->Rebin(RebinPhi);
+hMuonCandidatePhiAfterPCMCCCQE->SetFillColor(kViolet);
+hMuonCandidatePhiAfterPCMCCCQE->SetLineColor(kBlack);
+hMuonCandidatePhiAfterPCMCCCQE->Scale(Run1ScaleFactorMC);
+hMuonCandidatePhiAfterPCMCCCQE->Rebin(RebinPhi);
+hMuonCandidatePhiAfterPCMCCCRes->SetFillColor(kRed);
+hMuonCandidatePhiAfterPCMCCCRes->SetLineColor(kBlack);
+hMuonCandidatePhiAfterPCMCCCRes->Scale(Run1ScaleFactorMC);
+hMuonCandidatePhiAfterPCMCCCRes->Rebin(RebinPhi);
+hMuonCandidatePhiAfterPCMCNCRes->SetFillColor(kGreen);
+hMuonCandidatePhiAfterPCMCNCRes->SetLineColor(kBlack);
+hMuonCandidatePhiAfterPCMCNCRes->Scale(Run1ScaleFactorMC);
+hMuonCandidatePhiAfterPCMCNCRes->Rebin(RebinPhi);
+hMuonCandidatePhiAfterPCMCCCDIS->SetFillColor(kCyan-8);
+hMuonCandidatePhiAfterPCMCCCDIS->SetLineColor(kBlack);
+hMuonCandidatePhiAfterPCMCCCDIS->Scale(Run1ScaleFactorMC);
+hMuonCandidatePhiAfterPCMCCCDIS->Rebin(RebinPhi);
+hMuonCandidatePhiAfterPCMCNCDIS->SetFillColor(kGray);
+hMuonCandidatePhiAfterPCMCNCDIS->SetLineColor(kBlack);
+hMuonCandidatePhiAfterPCMCNCDIS->Scale(Run1ScaleFactorMC);
+hMuonCandidatePhiAfterPCMCNCDIS->Rebin(RebinPhi);
+hMuonCandidatePhiAfterPCMCCCCohEn->SetFillColor(kBlue);
+hMuonCandidatePhiAfterPCMCCCCohEn->SetLineColor(kBlack);
+hMuonCandidatePhiAfterPCMCCCCohEn->Scale(EnhancedCCCohScaleFactor*Run1ScaleFactorMC);
+hMuonCandidatePhiAfterPCMCCCCohEn->Rebin(RebinPhi);
+hMuonCandidatePhiAfterPCMC->SetFillColor(kOrange);
+hMuonCandidatePhiAfterPCMC->SetLineColor(kBlack);
+hMuonCandidatePhiAfterPCMC->Scale(Run1ScaleFactorMC);
+hMuonCandidatePhiAfterPCMC->Rebin(RebinPhi);
+hMuonCandidatePhiAfterPCMC->Add(hMuonCandidatePhiAfterPCMCCCCoh, -1);
+hMuonCandidatePhiAfterPCMC->Add(hMuonCandidatePhiAfterPCMCCCQE, -1);
+hMuonCandidatePhiAfterPCMC->Add(hMuonCandidatePhiAfterPCMCCCRes, -1);
+hMuonCandidatePhiAfterPCMC->Add(hMuonCandidatePhiAfterPCMCNCRes, -1);
+hMuonCandidatePhiAfterPCMC->Add(hMuonCandidatePhiAfterPCMCCCDIS, -1);
+hMuonCandidatePhiAfterPCMC->Add(hMuonCandidatePhiAfterPCMCNCDIS, -1);
+hMuonCandidatePhiAfterPCEXT->SetFillColor(kGray+4);
+hMuonCandidatePhiAfterPCEXT->SetLineColor(kBlack);
+hMuonCandidatePhiAfterPCEXT->Scale(Run1ScaleFactorEXT);
+hMuonCandidatePhiAfterPCEXT->Rebin(RebinPhi);
+hMuonCandidatePhiAfterPCDirt->SetFillColor(kOrange+5);
+hMuonCandidatePhiAfterPCDirt->SetLineColor(kBlack);
+hMuonCandidatePhiAfterPCDirt->Scale(Run1ScaleFactorDirt);
+hMuonCandidatePhiAfterPCDirt->Rebin(RebinPhi);
+hMuonCandidatePhiAfterPCStacked->Add(hMuonCandidatePhiAfterPCMC);
+hMuonCandidatePhiAfterPCStacked->Add(hMuonCandidatePhiAfterPCEXT);
+hMuonCandidatePhiAfterPCStacked->Add(hMuonCandidatePhiAfterPCDirt);
+hMuonCandidatePhiAfterPCStacked->Add(hMuonCandidatePhiAfterPCMCCCQE);
+hMuonCandidatePhiAfterPCStacked->Add(hMuonCandidatePhiAfterPCMCCCRes);
+hMuonCandidatePhiAfterPCStacked->Add(hMuonCandidatePhiAfterPCMCNCRes);
+hMuonCandidatePhiAfterPCStacked->Add(hMuonCandidatePhiAfterPCMCCCDIS);
+hMuonCandidatePhiAfterPCStacked->Add(hMuonCandidatePhiAfterPCMCNCDIS);
+hMuonCandidatePhiAfterPCStacked->Add(hMuonCandidatePhiAfterPCMCCCCohEn);
+
+hMuonCandidatePhiAfterPCData->Draw("E1");
+hMuonCandidatePhiAfterPCStacked->Draw("HISTsame");
+hMuonCandidatePhiAfterPCData->GetXaxis()->SetTitle("#phi_{#mu} [Degrees]");
+hMuonCandidatePhiAfterPCData->GetXaxis()->CenterTitle();
+hMuonCandidatePhiAfterPCData->GetXaxis()->SetRangeUser(0, 180);
+hMuonCandidatePhiAfterPCData->GetYaxis()->SetTitle("Number of Events");
+hMuonCandidatePhiAfterPCData->GetYaxis()->CenterTitle();
+hMuonCandidatePhiAfterPCData->GetYaxis()->SetRangeUser(0, 10);
+
+hMuonCandidatePhiAfterPCData->Draw("E1same");
+c29->Modified();
+
+// ### Defining the legend for the plot ###
+TLegend *leg29 = new TLegend();
+leg29 = new TLegend(0.58,0.65,1.00,1.00);
+leg29->SetTextSize(0.04);
+leg29->SetTextAlign(12);
+leg29->SetFillColor(kWhite);
+leg29->SetLineColor(kWhite);
+leg29->SetShadowColor(kWhite);
+leg29->SetHeader("Channel");
+leg29->AddEntry(hMuonCandidatePhiAfterPCData,"Data");
+leg29->AddEntry(hMuonCandidatePhiAfterPCMCCCCoh,"Reco CC-Coh");
+leg29->AddEntry(hMuonCandidatePhiAfterPCMCCCQE,"Reco CC-QE");
+leg29->AddEntry(hMuonCandidatePhiAfterPCMCCCRes,"Reco CC-Res");
+leg29->AddEntry(hMuonCandidatePhiAfterPCMCNCRes,"Reco NC-Res");
+leg29->AddEntry(hMuonCandidatePhiAfterPCMCCCDIS,"Reco CC-DIS");
+leg29->AddEntry(hMuonCandidatePhiAfterPCMCNCDIS,"Reco NC-DIS");
+leg29->AddEntry(hMuonCandidatePhiAfterPCMC,"Reco Other");
+leg29->AddEntry(hMuonCandidatePhiAfterPCEXT,"EXT");
+leg29->AddEntry(hMuonCandidatePhiAfterPCDirt,"Dirt");
+leg29->Draw();
+
+
+
+
+
+TCanvas *c30 = new TCanvas("c30", "Stacked Reco Pion Candidate Phi After Pion Candidacy");
+c30->SetTicks();
+c30->SetFillColor(kWhite);
+
+hPionCandidatePhiAfterPCData->SetLineColor(kBlack);
+hPionCandidatePhiAfterPCData->SetLineWidth(2);
+hPionCandidatePhiAfterPCData->Rebin(RebinPhi);
+hPionCandidatePhiAfterPCData->SetMarkerStyle(20);
+hPionCandidatePhiAfterPCMCCCCoh->SetFillColor(kBlue);
+hPionCandidatePhiAfterPCMCCCCoh->SetLineColor(kBlack);
+hPionCandidatePhiAfterPCMCCCCoh->Scale(Run1ScaleFactorMC);
+hPionCandidatePhiAfterPCMCCCCoh->Rebin(RebinPhi);
+hPionCandidatePhiAfterPCMCCCQE->SetFillColor(kViolet);
+hPionCandidatePhiAfterPCMCCCQE->SetLineColor(kBlack);
+hPionCandidatePhiAfterPCMCCCQE->Scale(Run1ScaleFactorMC);
+hPionCandidatePhiAfterPCMCCCQE->Rebin(RebinPhi);
+hPionCandidatePhiAfterPCMCCCRes->SetFillColor(kRed);
+hPionCandidatePhiAfterPCMCCCRes->SetLineColor(kBlack);
+hPionCandidatePhiAfterPCMCCCRes->Scale(Run1ScaleFactorMC);
+hPionCandidatePhiAfterPCMCCCRes->Rebin(RebinPhi);
+hPionCandidatePhiAfterPCMCNCRes->SetFillColor(kGreen);
+hPionCandidatePhiAfterPCMCNCRes->SetLineColor(kBlack);
+hPionCandidatePhiAfterPCMCNCRes->Scale(Run1ScaleFactorMC);
+hPionCandidatePhiAfterPCMCNCRes->Rebin(RebinPhi);
+hPionCandidatePhiAfterPCMCCCDIS->SetFillColor(kCyan-8);
+hPionCandidatePhiAfterPCMCCCDIS->SetLineColor(kBlack);
+hPionCandidatePhiAfterPCMCCCDIS->Scale(Run1ScaleFactorMC);
+hPionCandidatePhiAfterPCMCCCDIS->Rebin(RebinPhi);
+hPionCandidatePhiAfterPCMCNCDIS->SetFillColor(kGray);
+hPionCandidatePhiAfterPCMCNCDIS->SetLineColor(kBlack);
+hPionCandidatePhiAfterPCMCNCDIS->Scale(Run1ScaleFactorMC);
+hPionCandidatePhiAfterPCMCNCDIS->Rebin(RebinPhi);
+hPionCandidatePhiAfterPCMCCCCohEn->SetFillColor(kBlue);
+hPionCandidatePhiAfterPCMCCCCohEn->SetLineColor(kBlack);
+hPionCandidatePhiAfterPCMCCCCohEn->Scale(EnhancedCCCohScaleFactor*Run1ScaleFactorMC);
+hPionCandidatePhiAfterPCMCCCCohEn->Rebin(RebinPhi);
+hPionCandidatePhiAfterPCMC->SetFillColor(kOrange);
+hPionCandidatePhiAfterPCMC->SetLineColor(kBlack);
+hPionCandidatePhiAfterPCMC->Scale(Run1ScaleFactorMC);
+hPionCandidatePhiAfterPCMC->Rebin(RebinPhi);
+hPionCandidatePhiAfterPCMC->Add(hPionCandidatePhiAfterPCMCCCCoh, -1);
+hPionCandidatePhiAfterPCMC->Add(hPionCandidatePhiAfterPCMCCCQE, -1);
+hPionCandidatePhiAfterPCMC->Add(hPionCandidatePhiAfterPCMCCCRes, -1);
+hPionCandidatePhiAfterPCMC->Add(hPionCandidatePhiAfterPCMCNCRes, -1);
+hPionCandidatePhiAfterPCMC->Add(hPionCandidatePhiAfterPCMCCCDIS, -1);
+hPionCandidatePhiAfterPCMC->Add(hPionCandidatePhiAfterPCMCNCDIS, -1);
+hPionCandidatePhiAfterPCEXT->SetFillColor(kGray+4);
+hPionCandidatePhiAfterPCEXT->SetLineColor(kBlack);
+hPionCandidatePhiAfterPCEXT->Scale(Run1ScaleFactorEXT);
+hPionCandidatePhiAfterPCEXT->Rebin(RebinPhi);
+hPionCandidatePhiAfterPCDirt->SetFillColor(kOrange+5);
+hPionCandidatePhiAfterPCDirt->SetLineColor(kBlack);
+hPionCandidatePhiAfterPCDirt->Scale(Run1ScaleFactorDirt);
+hPionCandidatePhiAfterPCDirt->Rebin(RebinPhi);
+hPionCandidatePhiAfterPCStacked->Add(hPionCandidatePhiAfterPCMC);
+hPionCandidatePhiAfterPCStacked->Add(hPionCandidatePhiAfterPCEXT);
+hPionCandidatePhiAfterPCStacked->Add(hPionCandidatePhiAfterPCDirt);
+hPionCandidatePhiAfterPCStacked->Add(hPionCandidatePhiAfterPCMCCCQE);
+hPionCandidatePhiAfterPCStacked->Add(hPionCandidatePhiAfterPCMCCCRes);
+hPionCandidatePhiAfterPCStacked->Add(hPionCandidatePhiAfterPCMCNCRes);
+hPionCandidatePhiAfterPCStacked->Add(hPionCandidatePhiAfterPCMCCCDIS);
+hPionCandidatePhiAfterPCStacked->Add(hPionCandidatePhiAfterPCMCNCDIS);
+hPionCandidatePhiAfterPCStacked->Add(hPionCandidatePhiAfterPCMCCCCohEn);
+
+hPionCandidatePhiAfterPCData->Draw("E1");
+hPionCandidatePhiAfterPCStacked->Draw("HISTsame");
+hPionCandidatePhiAfterPCData->GetXaxis()->SetTitle("#phi_{#pi} [Degrees]");
+hPionCandidatePhiAfterPCData->GetXaxis()->CenterTitle();
+hPionCandidatePhiAfterPCData->GetXaxis()->SetRangeUser(0, 180);
+hPionCandidatePhiAfterPCData->GetYaxis()->SetTitle("Number of Events");
+hPionCandidatePhiAfterPCData->GetYaxis()->CenterTitle();
+hPionCandidatePhiAfterPCData->GetYaxis()->SetRangeUser(0, 10);
+
+hPionCandidatePhiAfterPCData->Draw("E1same");
+c30->Modified();
+
+// ### Defining the legend for the plot ###
+TLegend *leg30 = new TLegend();
+leg30 = new TLegend(0.58,0.65,1.00,1.00);
+leg30->SetTextSize(0.04);
+leg30->SetTextAlign(12);
+leg30->SetFillColor(kWhite);
+leg30->SetLineColor(kWhite);
+leg30->SetShadowColor(kWhite);
+leg30->SetHeader("Channel");
+leg30->AddEntry(hPionCandidatePhiAfterPCData,"Data");
+leg30->AddEntry(hPionCandidatePhiAfterPCMCCCCoh,"Reco CC-Coh");
+leg30->AddEntry(hPionCandidatePhiAfterPCMCCCQE,"Reco CC-QE");
+leg30->AddEntry(hPionCandidatePhiAfterPCMCCCRes,"Reco CC-Res");
+leg30->AddEntry(hPionCandidatePhiAfterPCMCNCRes,"Reco NC-Res");
+leg30->AddEntry(hPionCandidatePhiAfterPCMCCCDIS,"Reco CC-DIS");
+leg30->AddEntry(hPionCandidatePhiAfterPCMCNCDIS,"Reco NC-DIS");
+leg30->AddEntry(hPionCandidatePhiAfterPCMC,"Reco Other");
+leg30->AddEntry(hPionCandidatePhiAfterPCEXT,"EXT");
+leg30->AddEntry(hPionCandidatePhiAfterPCDirt,"Dirt");
+leg30->Draw();
+
+
+
+
+
+TCanvas *c31 = new TCanvas("c31", "Stacked New Vertex Activity");
+c31->SetTicks();
+c31->SetFillColor(kWhite);
+
+hNVertexActivityData->SetLineColor(kBlack);
+hNVertexActivityData->SetLineWidth(2);
+hNVertexActivityData->Rebin(VARebin);
+hNVertexActivityData->SetMarkerStyle(20);
+hNVertexActivityCCCoh->SetFillColor(kBlue);
+hNVertexActivityCCCoh->SetLineColor(kBlack);
+hNVertexActivityCCCoh->Scale(Run1ScaleFactorMC);
+hNVertexActivityCCCoh->Rebin(VARebin);
+hNVertexActivityCCQE->SetFillColor(kViolet);
+hNVertexActivityCCQE->SetLineColor(kBlack);
+hNVertexActivityCCQE->Scale(Run1ScaleFactorMC);
+hNVertexActivityCCQE->Rebin(VARebin);
+hNVertexActivityCCRes->SetFillColor(kRed);
+hNVertexActivityCCRes->SetLineColor(kBlack);
+hNVertexActivityCCRes->Scale(Run1ScaleFactorMC);
+hNVertexActivityCCRes->Rebin(VARebin);
+hNVertexActivityNCRes->SetFillColor(kGreen);
+hNVertexActivityNCRes->SetLineColor(kBlack);
+hNVertexActivityNCRes->Scale(Run1ScaleFactorMC);
+hNVertexActivityNCRes->Rebin(VARebin);
+hNVertexActivityCCDIS->SetFillColor(kCyan-8);
+hNVertexActivityCCDIS->SetLineColor(kBlack);
+hNVertexActivityCCDIS->Scale(Run1ScaleFactorMC);
+hNVertexActivityCCDIS->Rebin(VARebin);
+hNVertexActivityNCDIS->SetFillColor(kGray);
+hNVertexActivityNCDIS->SetLineColor(kBlack);
+hNVertexActivityNCDIS->Scale(Run1ScaleFactorMC);
+hNVertexActivityNCDIS->Rebin(VARebin);
+hNVertexActivityCCCohEn->SetFillColor(kBlue);
+hNVertexActivityCCCohEn->SetLineColor(kBlack);
+hNVertexActivityCCCohEn->Scale(EnhancedCCCohScaleFactor*Run1ScaleFactorMC);
+hNVertexActivityCCCohEn->Rebin(VARebin);
+hNVertexActivityMC->SetFillColor(kOrange);
+hNVertexActivityMC->SetLineColor(kBlack);
+hNVertexActivityMC->Scale(Run1ScaleFactorMC);
+hNVertexActivityMC->Rebin(VARebin);
+hNVertexActivityMC->Add(hNVertexActivityCCCoh, -1);
+hNVertexActivityMC->Add(hNVertexActivityCCQE, -1);
+hNVertexActivityMC->Add(hNVertexActivityCCRes, -1);
+hNVertexActivityMC->Add(hNVertexActivityNCRes, -1);
+hNVertexActivityMC->Add(hNVertexActivityCCDIS, -1);
+hNVertexActivityMC->Add(hNVertexActivityNCDIS, -1);
+hNVertexActivityEXT->SetFillColor(kGray+4);
+hNVertexActivityEXT->SetLineColor(kBlack);
+hNVertexActivityEXT->Scale(Run1ScaleFactorEXT);
+hNVertexActivityEXT->Rebin(VARebin);
+hNVertexActivityDirt->SetFillColor(kOrange+5);
+hNVertexActivityDirt->SetLineColor(kBlack);
+hNVertexActivityDirt->Scale(Run1ScaleFactorDirt);
+hNVertexActivityDirt->Rebin(VARebin);
+hNVertexActivityStacked->Add(hNVertexActivityMC);
+hNVertexActivityStacked->Add(hNVertexActivityEXT);
+hNVertexActivityStacked->Add(hNVertexActivityDirt);
+hNVertexActivityStacked->Add(hNVertexActivityCCQE);
+hNVertexActivityStacked->Add(hNVertexActivityCCRes);
+hNVertexActivityStacked->Add(hNVertexActivityNCRes);
+hNVertexActivityStacked->Add(hNVertexActivityCCDIS);
+hNVertexActivityStacked->Add(hNVertexActivityNCDIS);
+hNVertexActivityStacked->Add(hNVertexActivityCCCohEn);
+
+hNVertexActivityData->Draw("E1");
+hNVertexActivityStacked->Draw("HISTsame");
+hNVertexActivityData->GetXaxis()->SetTitle("Vertex Activity [ADC]");
+hNVertexActivityData->GetXaxis()->CenterTitle();
+//hNVertexActivityData->GetXaxis()->SetRangeUser(0, 500);
+hNVertexActivityData->GetYaxis()->SetTitle("Number of Events");
+hNVertexActivityData->GetYaxis()->CenterTitle();
+
+hNVertexActivityData->Draw("E1same");
+c31->Modified();
+
+// ### Defining the legend for the plot ###
+TLegend *leg31 = new TLegend();
+leg31 = new TLegend(0.58,0.65,1.00,1.00);
+leg31->SetTextSize(0.04);
+leg31->SetTextAlign(12);
+leg31->SetFillColor(kWhite);
+leg31->SetLineColor(kWhite);
+leg31->SetShadowColor(kWhite);
+leg31->SetHeader("Channel");
+leg31->AddEntry(hNVertexActivityData,"Data");
+leg31->AddEntry(hNVertexActivityCCCoh,"Reco CC-Coh");
+leg31->AddEntry(hNVertexActivityCCQE,"Reco CC-QE");
+leg31->AddEntry(hNVertexActivityCCRes,"Reco CC-Res");
+leg31->AddEntry(hNVertexActivityNCRes,"Reco NC-Res");
+leg31->AddEntry(hNVertexActivityCCDIS,"Reco CC-DIS");
+leg31->AddEntry(hNVertexActivityNCDIS,"Reco NC-DIS");
+leg31->AddEntry(hNVertexActivityMC,"Reco Other");
+leg31->AddEntry(hNVertexActivityEXT,"EXT");
+leg31->AddEntry(hNVertexActivityDirt,"Dirt");
+leg31->Draw();
 }
