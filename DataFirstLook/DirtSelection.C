@@ -115,6 +115,9 @@ TH1D *hMuonCandidateTrkLLRPIDScoreAfterVA = new TH1D("hMuonCandidateTrkLLRPIDSco
 TH1D *hPionCandidateTrkLLRPIDScoreAfterVA = new TH1D("hPionCandidateTrkLLRPIDScoreAfterVA", "The LLR PID Score for Pion Candidate Tracks After Vertex Activity Selection", 1000, -1, 1);
 TH1D *hMuonCandidateTrkLLRPIDScoreAfterPC = new TH1D("hMuonCandidateTrkLLRPIDScoreAfterPC", "The LLR PID Score for Muon Candidate Tracks After Pion Candidacy Selection", 1000, -1, 1);
 TH1D *hPionCandidateTrkLLRPIDScoreAfterPC = new TH1D("hPionCandidateTrkLLRPIDScoreAfterPC", "The LLR PID Score for Pion Candidate Tracks After Pion Candidacy Selection", 1000, -1, 1);
+
+TH1D *hVertexActivityFor2TracksNew = new TH1D("hVertexActivityFor2TracksNew", "The Vertex Activity Within a Rectangular Prism of Square Bottom with Side Length 20cm for Events with Exactly Equal to 2 Tracks Within 10cm of Reco Neutrino Vertex", 5000, 0, 100000);
+TH1D *hVertexActivityForVANew = new TH1D("hVertexActivityForVANew", "The Vertex Activity Within a Rectangular Prism of Square Bottom with Side Length 10cm for Events that Pass Old VA", 5000, 0, 100000);
 // ---------------------------------------
 
 
@@ -199,6 +202,41 @@ double Distance(double x0, double y0, double z0, double x1, double y1, double z1
    return d;
 }
 // ============================================
+
+
+// =======================================
+// === Absolute Difference Calculation ===
+// =======================================
+double Difference(double x0, double x1)
+{
+   double d = -999;
+   TVector3 v01(x0-x1, 0, 0);
+   d = v01.Mag();
+   return d;
+} // End Difference Function
+// =======================================
+
+
+// ========================
+// === Wire Calculation ===
+// ========================
+double Wire(double x)
+{
+   double w = (3.33328*x) + 4799.19;
+   return w;
+} // End Wire Function
+// ========================
+
+
+// ========================
+// === Tick Calculation ===
+// ========================
+double Tick(double x)
+{
+   double t = (18.2148*x) + 818.351;
+   return t;
+} // End Tick Function
+// ========================
 
 
 // ===========================
@@ -373,6 +411,8 @@ void DirtSelection::Loop()
    double VAWithin = 10; // For calculating the vertex activity within this amount of cm
    //double VACut = 2000;
    double VACut = 50;
+   //double VACutNew = 10000;
+   double VACutNew = 6750;
    double PionCandidateMuonCut = 20;
    double PionCandidateProtonCut = 50;
    double LLRCut = 0.7;
@@ -391,6 +431,7 @@ void DirtSelection::Loop()
    int NumEventsWithConeAngle = 0;
    int NumEventsWithDoCA = 0;
    int NumEventsWithVA = 0;
+   int NumEventsWithVANew = 0;
    int NumEventsWithPionCandidate = 0;
    int NumEventsWithLLR = 0;
    int NumEventsWithOA = 0;
@@ -644,6 +685,7 @@ void DirtSelection::Loop()
 
       if (NumberMuonCandidates && PandoraPDG && StartVtxDaughters && NuVtxFiducialVolume && FlashTopological && TopologicalScore && FlashRatio) {
          double TotalVertexActivity = -999;
+         double TotalVertexActivityNew = -999;
          //double TotalDoCA = 1000;
 	 int NumberOfTimesWithinDistanceForVA = 0;
 	 if (NumTrksWithin10 == NumTrksWithin10Cut) {
@@ -672,6 +714,28 @@ void DirtSelection::Loop()
 	       } // Close DoCA Calculation For Loop*/
             } // Close VA Calculation and DoCA For Loop
             // |:::::::::::::::::::::::::::::::::::::::::::|
+
+            // ================================================
+            // === Vertex Activity Calculation Happens Here ===
+            // ================================================
+            float vtxactivity = 0;
+            float withinwires = 33; // put it back to 33 if there's trouble
+            float withinticks = 182; // put it back to 182 if there's trouble
+            float WIRE = Wire(reco_nu_vtx_z);
+            float TICK = Tick(reco_nu_vtx_x);
+
+            //if (jentry%10 == 0) std::cout<<"Total Number of Hits for This Event = "<<hit_channel_v->size()<<std::endl;
+            //if (jentry%10 == 0) std::cout<<"Wire = "<<WIRE<<", Tick = "<<TICK<<std::endl;
+
+            for (int l = 0; l < hit_channel_v->size(); l++) {
+	       if ((Difference(hit_channel_v->at(l), WIRE) <= withinwires) && (Difference(hit_peak_time_v->at(l), TICK) <= withinticks)) {
+  	          vtxactivity = vtxactivity + hit_summedADC_v->at(l);
+	       }// <-- Close Hit is Within Range Defined Condition
+            }// <-- Close Hits For Loop
+
+            TotalVertexActivityNew = vtxactivity;
+            //if (jentry%10 == 0) std::cout<<"The New Vertex Activity is = "<<TotalVertexActivityNew<<std::endl;
+            // ================================================
 	 
          }
          CCInclusivePreSelection = 1;
@@ -687,6 +751,7 @@ void DirtSelection::Loop()
 	    //hDoCAFor2Tracks->Fill(TotalDoCA);
 	    hDoCAVtxDistanceFor2Tracks->Fill(DoCA_VtxDistance);
 	    hVertexActivityFor2Tracks->Fill(TotalVertexActivity); // Filling in the new VA Plot after updating the ana module
+	    hVertexActivityFor2TracksNew->Fill(TotalVertexActivityNew); // Filling in the new VA Plot after updating the ana module for the rectangular prism
             double t = pow(Trk1MuEnergy+Trk2MuEnergy-p1.Z()-p2.Z(),2) + pow((p1.X()+p2.X()),2) + pow((p1.Y()+p2.Y()),2);
 	    hT->Fill(t);
 	    double MuonCandidateMuonChi2 = 999;
@@ -805,30 +870,33 @@ void DirtSelection::Loop()
 		     NumEventsWithVA++;
 	             hMuonCandidateTrkLLRPIDScoreAfterVA->Fill(MuonCandidateLLRPIDScore);
 	             hPionCandidateTrkLLRPIDScoreAfterVA->Fill(PionCandidateLLRPIDScore);
+                     hVertexActivityForVANew->Fill(TotalVertexActivityNew);
+                  if (TotalVertexActivityNew < VACutNew) { //This is the place that the new VA with the wire and tick goes!
+                     NumEventsWithVANew++;
 		  if (PionCandidateMuonChi2 < PionCandidateMuonCut && PionCandidateProtonChi2 > PionCandidateProtonCut) {
-	             hConeAngleForPionCandidate->Fill(SavedConeAngle);
-		     hOpeningAngleForPionCandidate->Fill(SavedOpeningAngle);
 	             NumEventsWithPionCandidate++;
-		     hTPionCandidate->Fill(t);
-		     //hRecoNuEnergyPionCandidate->Fill(Trk1MuEnergy + Trk2MuEnergy);
-		     hRecoNuEnergyPionCandidate->Fill(TotalDaughterTracksEnergy/1000);
-	             hDeltaPTTPC->Fill(DeltaP_TT(0, 0, 1, mu.X(), mu.Y(), mu.Z(), pi.X(), pi.Y(), pi.Z()));
-	             hPNPC->Fill(P_N_Alpha_T(0, mu.X(), mu.Y(), mu.Z(), Trk1MuEnergy, pi.X(), pi.Y(), pi.Z(), Trk2MuEnergy));
-	             hDeltaAlphaTPC->Fill(P_N_Alpha_T(1, mu.X(), mu.Y(), mu.Z(), Trk1MuEnergy, pi.X(), pi.Y(), pi.Z(), Trk2MuEnergy)*180/PI);
-		     hNSliceNumberAfterPion->Fill(nslice);
-		     hRecoMuonCandidateMomentumAfterPC->Fill(mu.Mag());
-		     hRecoPionCandidateMomentumAfterPC->Fill(pi.Mag());
-		     hRecoMuonCandidateThetaAfterPC->Fill(mu.Theta()*180/PI);
-		     hRecoPionCandidateThetaAfterPC->Fill(pi.Theta()*180/PI);
-		     hRecoMuonCandidateCosThetaAfterPC->Fill(mu.CosTheta());
-		     hRecoPionCandidateCosThetaAfterPC->Fill(pi.CosTheta());
-		     hRecoMuonCandidatePhiAfterPC->Fill(mu.Phi()*180/PI);
-		     hRecoPionCandidatePhiAfterPC->Fill(pi.Phi()*180/PI);
-	             hOpeningAngleVsConeAnglePC->Fill(SavedConeAngle, SavedOpeningAngle);
 	             hMuonCandidateTrkLLRPIDScoreAfterPC->Fill(MuonCandidateLLRPIDScore);
 	             hPionCandidateTrkLLRPIDScoreAfterPC->Fill(PionCandidateLLRPIDScore);
 		     if (PionCandidateLLRPIDScore > LLRCut) {
 		        NumEventsWithLLR++;
+	                hConeAngleForPionCandidate->Fill(SavedConeAngle);
+		        hOpeningAngleForPionCandidate->Fill(SavedOpeningAngle);
+		        hTPionCandidate->Fill(t);
+		        //hRecoNuEnergyPionCandidate->Fill(Trk1MuEnergy + Trk2MuEnergy);
+		        hRecoNuEnergyPionCandidate->Fill(TotalDaughterTracksEnergy/1000);
+	                hDeltaPTTPC->Fill(DeltaP_TT(0, 0, 1, mu.X(), mu.Y(), mu.Z(), pi.X(), pi.Y(), pi.Z()));
+	                hPNPC->Fill(P_N_Alpha_T(0, mu.X(), mu.Y(), mu.Z(), Trk1MuEnergy, pi.X(), pi.Y(), pi.Z(), Trk2MuEnergy));
+	                hDeltaAlphaTPC->Fill(P_N_Alpha_T(1, mu.X(), mu.Y(), mu.Z(), Trk1MuEnergy, pi.X(), pi.Y(), pi.Z(), Trk2MuEnergy)*180/PI);
+		        hNSliceNumberAfterPion->Fill(nslice);
+		        hRecoMuonCandidateMomentumAfterPC->Fill(mu.Mag());
+		        hRecoPionCandidateMomentumAfterPC->Fill(pi.Mag());
+		        hRecoMuonCandidateThetaAfterPC->Fill(mu.Theta()*180/PI);
+		        hRecoPionCandidateThetaAfterPC->Fill(pi.Theta()*180/PI);
+		        hRecoMuonCandidateCosThetaAfterPC->Fill(mu.CosTheta());
+		        hRecoPionCandidateCosThetaAfterPC->Fill(pi.CosTheta());
+		        hRecoMuonCandidatePhiAfterPC->Fill(mu.Phi()*180/PI);
+		        hRecoPionCandidatePhiAfterPC->Fill(pi.Phi()*180/PI);
+	                hOpeningAngleVsConeAnglePC->Fill(SavedConeAngle, SavedOpeningAngle);
 		     if (SavedOpeningAngle < OpeningAngleCut) {
 			NumEventsWithOA++;
 	                hConeAngleForOA->Fill(SavedConeAngle);
@@ -865,6 +933,7 @@ void DirtSelection::Loop()
 		     }
 	          }
 		  }
+                  }
 	       }
 	    }
 	 }
@@ -909,6 +978,7 @@ void DirtSelection::Loop()
    std::cout<<"|- Total Number of Events Passing Cone Angle Cut = "<<NumEventsWithConeAngle<<std::endl;
    std::cout<<"|- Total Number of Events Passing DoCA Cut = "<<NumEventsWithDoCA<<std::endl;
    std::cout<<"|- Total Number of Events Passing Vertex Activity Cut = "<<NumEventsWithVA<<std::endl;
+   std::cout<<"|- Total Number of Events Passing New Vertex Activity Cut = "<<NumEventsWithVANew<<std::endl;
    std::cout<<"|-------------------------------------------------------------------------------|"<<std::endl;
    std::cout<<"|- Total Number of Events Passing Pion Candidacy Cut = "<<NumEventsWithPionCandidate<<std::endl;
    std::cout<<"|- Total Number of Events Passing LLR Cut = "<<NumEventsWithLLR<<std::endl;
@@ -926,17 +996,17 @@ void DirtSelection::Loop()
    // %%% Saving Histograms to a File Here %%%
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
    //TFile *TDataInfo = new TFile("Data_Histograms_BothPC.root", "RECREATE");
-   //TFile *TMCInfo = new TFile("MC_Histograms.root", "RECREATE");
-   //TFile *TMCInfo = new TFile("MC_CCCoh_Histograms.root", "RECREATE");
-   //TFile *TMCInfo = new TFile("MC_CCQE_Histograms.root", "RECREATE");
-   //TFile *TMCInfo = new TFile("MC_CCRes_Histograms.root", "RECREATE");
-   //TFile *TMCInfo = new TFile("MC_NCRes_Histograms.root", "RECREATE");
-   //TFile *TMCInfo = new TFile("MC_CCDIS_Histograms.root", "RECREATE");
-   //TFile *TMCInfo = new TFile("MC_NCDIS_Histograms.root", "RECREATE");
-   //TFile *TMCInfo = new TFile("MC_Other_Histograms.root", "RECREATE");
-   //TFile *TMCInfo = new TFile("CCCoh_Enhanced_Histograms.root", "RECREATE");
+   //TFile *TMCInfo = new TFile("MC_Histograms_BothPC.root", "RECREATE");
+   //TFile *TMCInfo = new TFile("MC_CCCoh_Histograms_BothPC.root", "RECREATE");
+   //TFile *TMCInfo = new TFile("MC_CCQE_Histograms_BothPC.root", "RECREATE");
+   //TFile *TMCInfo = new TFile("MC_CCRes_Histograms_BothPC.root", "RECREATE");
+   //TFile *TMCInfo = new TFile("MC_NCRes_Histograms_BothPC.root", "RECREATE");
+   //TFile *TMCInfo = new TFile("MC_CCDIS_Histograms_BothPC.root", "RECREATE");
+   //TFile *TMCInfo = new TFile("MC_NCDIS_Histograms_BothPC.root", "RECREATE");
+   //TFile *TMCInfo = new TFile("MC_Other_Histograms_BothPC.root", "RECREATE");
+   //TFile *TMCInfo = new TFile("CCCoh_Enhanced_Histograms_BothPC.root", "RECREATE");
    //TFile *TEXTInfo = new TFile("EXT_Histograms_BothPC.root", "RECREATE");
-   TFile *TDirtInfo = new TFile("Dirt_Histograms_BothPC.root", "RECREATE");
+   TFile *TDirtInfo = new TFile("Dirt_Histograms_BothPC.root", "CREATE");
 
    hNumMuonCandidates->Write();
    hNumMuonCandidatesAfterCCInclusive->Write();
@@ -1041,5 +1111,8 @@ void DirtSelection::Loop()
    hPionCandidateTrkLLRPIDScoreAfterVA->Write();
    hMuonCandidateTrkLLRPIDScoreAfterPC->Write();
    hPionCandidateTrkLLRPIDScoreAfterPC->Write();
+
+   hVertexActivityFor2TracksNew->Write();
+   hVertexActivityForVANew->Write();
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 }

@@ -4,6 +4,8 @@
 #include <TStyle.h>
 #include <TCanvas.h>
 
+TH1D *hPOTCounting = new TH1D("hPOTCounting", "The POT for this file", 1000, 0, 100E15);
+
 void POT_Counting_BKGD::Loop()
 {
    if (fChain == 0) return;
@@ -23,11 +25,25 @@ void POT_Counting_BKGD::Loop()
       // ===========================
       // === Counting up the POT ===
       // ===========================
+      hPOTCounting->Fill(pot);
       TotalPOT += pot;
       // ===========================
 
    }
 
    std::cout<<"The POT for this sample is = "<<TotalPOT<<std::endl;
+   std::cout<<"The POT Integral = "<<hPOTCounting->Integral()<<std::endl;
+   std::cout<<"The POT Mean Value = "<<hPOTCounting->GetMean()<<std::endl;
+   std::cout<<"The POT for this sample using the mean and integral is = "<<(hPOTCounting->Integral())*(hPOTCounting->GetMean())<<std::endl;
+   hPOTCounting->Draw();
+
+   // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   // %%% Saving Histograms to a File Here %%%
+   // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   TFile *TMCInfo = new TFile("POT_BKGD.root", "RECREATE");
+   //TFile *TMCInfo = new TFile("POT_CCCoh.root", "RECREATE");
+   //TFile *TMCInfo = new TFile("POT_Dirt.root", "RECREATE");
+
+   hPOTCounting->Write();
 
 }

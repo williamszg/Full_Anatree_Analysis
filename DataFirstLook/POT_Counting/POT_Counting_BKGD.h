@@ -1,8 +1,8 @@
 //////////////////////////////////////////////////////////
 // This class has been automatically generated on
-// Tue Aug 24 12:40:01 2021 by ROOT version 6.10/02
+// Fri Sep 24 11:26:56 2021 by ROOT version 6.12/06
 // from TTree SubRun/SubRun TTree
-// found on file: /media/zwilliams/Monsivais's External Hard Drive/CCCohFiles/NeutrinoSelectionFilter_BKGD.root
+// found on file: /pnfs/uboone/persistent/users/zwilliam/cccoh_zgrw_new_sample/cccoh_zgrw_full/UpdatedVertexActivity/NeutrinoSelectionFilter_BKGD.root
 //////////////////////////////////////////////////////////
 
 #ifndef POT_Counting_BKGD_h
@@ -50,11 +50,11 @@ POT_Counting_BKGD::POT_Counting_BKGD(TTree *tree) : fChain(0)
 // if parameter tree is not specified (or zero), connect the file
 // used to generate this class and read the Tree.
    if (tree == 0) {
-      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("/media/zwilliams/Monsivais's External Hard Drive/CCCohFiles/NeutrinoSelectionFilter_BKGD.root");
+      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("/pnfs/uboone/persistent/users/zwilliam/cccoh_zgrw_new_sample/cccoh_zgrw_full/UpdatedVertexActivity/NeutrinoSelectionFilter_BKGD.root");
       if (!f || !f->IsOpen()) {
-         f = new TFile("/media/zwilliams/Monsivais's External Hard Drive/CCCohFiles/NeutrinoSelectionFilter_BKGD.root");
+         f = new TFile("/pnfs/uboone/persistent/users/zwilliam/cccoh_zgrw_new_sample/cccoh_zgrw_full/UpdatedVertexActivity/NeutrinoSelectionFilter_BKGD.root");
       }
-      TDirectory * dir = (TDirectory*)f->Get("/media/zwilliams/Monsivais's External Hard Drive/CCCohFiles/NeutrinoSelectionFilter_BKGD.root:/nuselection");
+      TDirectory * dir = (TDirectory*)f->Get("/pnfs/uboone/persistent/users/zwilliam/cccoh_zgrw_new_sample/cccoh_zgrw_full/UpdatedVertexActivity/NeutrinoSelectionFilter_BKGD.root:/nuselection");
       dir->GetObject("SubRun",tree);
 
    }

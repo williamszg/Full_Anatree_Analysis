@@ -115,6 +115,9 @@ TH1D *hMuonCandidateTrkLLRPIDScoreAfterVA = new TH1D("hMuonCandidateTrkLLRPIDSco
 TH1D *hPionCandidateTrkLLRPIDScoreAfterVA = new TH1D("hPionCandidateTrkLLRPIDScoreAfterVA", "The LLR PID Score for Pion Candidate Tracks After Vertex Activity Selection", 1000, -1, 1);
 TH1D *hMuonCandidateTrkLLRPIDScoreAfterPC = new TH1D("hMuonCandidateTrkLLRPIDScoreAfterPC", "The LLR PID Score for Muon Candidate Tracks After Pion Candidacy Selection", 1000, -1, 1);
 TH1D *hPionCandidateTrkLLRPIDScoreAfterPC = new TH1D("hPionCandidateTrkLLRPIDScoreAfterPC", "The LLR PID Score for Pion Candidate Tracks After Pion Candidacy Selection", 1000, -1, 1);
+
+TH1D *hVertexActivityFor2TracksNew = new TH1D("hVertexActivityFor2TracksNew", "The Vertex Activity Within a Rectangular Prism of Square Bottom with Side Length 20cm for Events with Exactly Equal to 2 Tracks Within 10cm of Reco Neutrino Vertex", 5000, 0, 100000);
+TH1D *hVertexActivityForVANew = new TH1D("hVertexActivityForVANew", "The Vertex Activity Within a Rectangular Prism of Square Bottom with Side Length 10cm for Events that Pass Old VA", 5000, 0, 100000);
 // ---------------------------------------
 
 
@@ -408,6 +411,8 @@ void MCSelection::Loop()
    double VAWithin = 10; // For calculating the vertex activity within this amount of cm
    //double VACut = 2000;
    double VACut = 50;
+   //double VACutNew = 10000;
+   double VACutNew = 6750;
    double PionCandidateMuonCut = 20;
    double PionCandidateProtonCut = 50;
    double LLRCut = 0.7;
@@ -426,6 +431,7 @@ void MCSelection::Loop()
    int NumEventsWithConeAngle = 0;
    int NumEventsWithDoCA = 0;
    int NumEventsWithVA = 0;
+   int NumEventsWithVANew = 0;
    int NumEventsWithPionCandidate = 0;
    int NumEventsWithLLR = 0;
    int NumEventsWithOA = 0;
@@ -492,6 +498,15 @@ void MCSelection::Loop()
       double DoCA_TrkStarts = 999;
       double TotalDaughterTracksEnergy = 0;
       // :::::::::::::::::::::::::::::::::::::::::::::
+
+      bool CCCOHPION = false;
+      if (nu_pdg == 14 && ccnc == 0 && interaction == 3) CCCOHPION = true;
+
+      // |=========================================================|
+      // |=== Ensuring I'm Selecting All OTHER/BKGD Events Here ===|
+      // |=========================================================|
+      if (!CCCOHPION) { // This ensure I'm selecting everything but true cccoh pion events!
+      // |=========================================================|
 
       // |======================================================|
       // |=== Ensuring I'm Selecting CC-Coh Pion Events Here ===|
@@ -679,6 +694,7 @@ void MCSelection::Loop()
 
       if (NumberMuonCandidates && PandoraPDG && StartVtxDaughters && NuVtxFiducialVolume && FlashTopological && TopologicalScore && FlashRatio) {
          double TotalVertexActivity = -999;
+         double TotalVertexActivityNew = -999;
          //double TotalDoCA = 1000;
 	 int NumberOfTimesWithinDistanceForVA = 0;
 	 if (NumTrksWithin10 == NumTrksWithin10Cut) {
@@ -712,18 +728,22 @@ void MCSelection::Loop()
             // === Vertex Activity Calculation Happens Here ===
             // ================================================
             float vtxactivity = 0;
-            float withinwires = 33;
-            float withinticks = 182;
+            float withinwires = 33; // put it back to 33 if there's trouble
+            float withinticks = 182; // put it back to 182 if there's trouble
             float WIRE = Wire(reco_nu_vtx_z);
             float TICK = Tick(reco_nu_vtx_x);
 
+            //if (jentry%10 == 0) std::cout<<"Total Number of Hits for This Event = "<<hit_channel_v->size()<<std::endl;
             //if (jentry%10 == 0) std::cout<<"Wire = "<<WIRE<<", Tick = "<<TICK<<std::endl;
 
-            for (int l = 0; l < nallhits; l++) {
-	       if ((Difference(hit_channel[l], WIRE) <= withinwires) && (Difference(hit_peakT[l], TICK) <= withinticks)) {
-  	          vtxactivity = vtxactivity + hit_charge[i];
+            for (int l = 0; l < hit_channel_v->size(); l++) {
+	       if ((Difference(hit_channel_v->at(l), WIRE) <= withinwires) && (Difference(hit_peak_time_v->at(l), TICK) <= withinticks)) {
+  	          vtxactivity = vtxactivity + hit_summedADC_v->at(l);
 	       }// <-- Close Hit is Within Range Defined Condition
             }// <-- Close Hits For Loop
+
+            TotalVertexActivityNew = vtxactivity;
+            //if (jentry%10 == 0) std::cout<<"The New Vertex Activity is = "<<TotalVertexActivityNew<<std::endl;
             // ================================================
 	 
          }
@@ -740,6 +760,7 @@ void MCSelection::Loop()
 	    //hDoCAFor2Tracks->Fill(TotalDoCA);
 	    hDoCAVtxDistanceFor2Tracks->Fill(DoCA_VtxDistance);
 	    hVertexActivityFor2Tracks->Fill(TotalVertexActivity); // Filling in the new VA Plot after updating the ana module
+	    hVertexActivityFor2TracksNew->Fill(TotalVertexActivityNew); // Filling in the new VA Plot after updating the ana module for the rectangular prism
             double t = pow(Trk1MuEnergy+Trk2MuEnergy-p1.Z()-p2.Z(),2) + pow((p1.X()+p2.X()),2) + pow((p1.Y()+p2.Y()),2);
 	    hT->Fill(t);
 	    double MuonCandidateMuonChi2 = 999;
@@ -858,6 +879,9 @@ void MCSelection::Loop()
 		     NumEventsWithVA++;
 	             hMuonCandidateTrkLLRPIDScoreAfterVA->Fill(MuonCandidateLLRPIDScore);
 	             hPionCandidateTrkLLRPIDScoreAfterVA->Fill(PionCandidateLLRPIDScore);
+                     hVertexActivityForVANew->Fill(TotalVertexActivityNew);
+                  if (TotalVertexActivityNew < VACutNew) { //This is the place that the new VA with the wire and tick goes!
+                     NumEventsWithVANew++;
 		  if (PionCandidateMuonChi2 < PionCandidateMuonCut && PionCandidateProtonChi2 > PionCandidateProtonCut) {
 	             NumEventsWithPionCandidate++;
 	             hMuonCandidateTrkLLRPIDScoreAfterPC->Fill(MuonCandidateLLRPIDScore);
@@ -918,11 +942,12 @@ void MCSelection::Loop()
 		     }
 	          }
 		  }
+                  }
 	       }
 	    }
 	 }
       }
-      //}// Closing If Statement Ensuring CC-Coh Pion Events
+      }// Closing If Statement Ensuring CC-Coh Pion Events
 
       if (!CCInclusivePreSelection) hPassedCCInclusivePreSelection->Fill(0);
       // |=========================================|
@@ -962,6 +987,7 @@ void MCSelection::Loop()
    std::cout<<"|- Total Number of Events Passing Cone Angle Cut = "<<NumEventsWithConeAngle<<std::endl;
    std::cout<<"|- Total Number of Events Passing DoCA Cut = "<<NumEventsWithDoCA<<std::endl;
    std::cout<<"|- Total Number of Events Passing Vertex Activity Cut = "<<NumEventsWithVA<<std::endl;
+   std::cout<<"|- Total Number of Events Passing New Vertex Activity Cut = "<<NumEventsWithVANew<<std::endl;
    std::cout<<"|-------------------------------------------------------------------------------|"<<std::endl;
    std::cout<<"|- Total Number of Events Passing Pion Candidacy Cut = "<<NumEventsWithPionCandidate<<std::endl;
    std::cout<<"|- Total Number of Events Passing LLR Cut = "<<NumEventsWithLLR<<std::endl;
@@ -979,7 +1005,7 @@ void MCSelection::Loop()
    // %%% Saving Histograms to a File Here %%%
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
    //TFile *TDataInfo = new TFile("Data_Histograms_BothPC.root", "RECREATE");
-   TFile *TMCInfo = new TFile("MC_Histograms_BothPC.root", "RECREATE");
+   //TFile *TMCInfo = new TFile("MC_Histograms_BothPC.root", "RECREATE");
    //TFile *TMCInfo = new TFile("MC_CCCoh_Histograms_BothPC.root", "RECREATE");
    //TFile *TMCInfo = new TFile("MC_CCQE_Histograms_BothPC.root", "RECREATE");
    //TFile *TMCInfo = new TFile("MC_CCRes_Histograms_BothPC.root", "RECREATE");
@@ -990,6 +1016,8 @@ void MCSelection::Loop()
    //TFile *TMCInfo = new TFile("CCCoh_Enhanced_Histograms_BothPC.root", "RECREATE");
    //TFile *TEXTInfo = new TFile("EXT_Histograms_BothPC.root", "RECREATE");
    //TFile *TDirtInfo = new TFile("Dirt_Histograms_BothPC.root", "RECREATE");
+
+   TFile *TMCInfo = new TFile("MC_Histograms_Run1_DV_CV2.root", "RECREATE");
 
    hNumMuonCandidates->Write();
    hNumMuonCandidatesAfterCCInclusive->Write();
@@ -1094,5 +1122,8 @@ void MCSelection::Loop()
    hPionCandidateTrkLLRPIDScoreAfterVA->Write();
    hMuonCandidateTrkLLRPIDScoreAfterPC->Write();
    hPionCandidateTrkLLRPIDScoreAfterPC->Write();
+
+   hVertexActivityFor2TracksNew->Write();
+   hVertexActivityForVANew->Write();
    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 }

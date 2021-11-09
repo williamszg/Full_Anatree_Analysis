@@ -7,16 +7,16 @@
 TFile *f1 = new TFile("../Wouter_Daughter_Information.root"); // <-- File for Daughters Tree
 TFile *f2 = new TFile("../CCCoh_Daughter_Information.root"); // <-- File for CCCoh Daughters Tree
 TFile *f3 = new TFile("../Other_Daughter_Information.root"); // <-- File for Other Daughters Tree
-TFile *f4 = new TFile("Data_Histograms.root"); // <-- File for Data Information
-TFile *f5 = new TFile("MC_Histograms.root"); // <-- File for New MC Information
-TFile *f6 = new TFile("MC_CCCoh_Histograms.root"); // <-- File for New MC CCCoh Information
-TFile *f7 = new TFile("MC_CCQE_Histograms.root"); // <-- File for New MC CCQE Information
-TFile *f8 = new TFile("MC_CCRes_Histograms.root"); // <-- File for New MC CCRes Information
-TFile *f9 = new TFile("MC_NCRes_Histograms.root"); // <-- File for New MC NCRes Information
-TFile *f10 = new TFile("MC_CCDIS_Histograms.root"); // <-- File for New MC CCDIS Information
-TFile *f11 = new TFile("MC_NCDIS_Histograms.root"); // <-- File for New MC NCDIS Information
-TFile *f12 = new TFile("MC_Other_Histograms.root"); // <-- File for New MC Other Information
-TFile *f13 = new TFile("CCCoh_Enhanced_Histograms.root"); // <-- File for New MC CCCoh Enhanced Information
+TFile *f4 = new TFile("UpdatedVertexActivity/Data_Histograms_BothPC.root"); // <-- File for Data Information
+TFile *f5 = new TFile("UpdatedVertexActivity/MC_Histograms_BothPC.root"); // <-- File for New MC Information
+TFile *f6 = new TFile("UpdatedVertexActivity/MC_CCCoh_Histograms_BothPC.root"); // <-- File for New MC CCCoh Information
+TFile *f7 = new TFile("UpdatedVertexActivity/MC_CCQE_Histograms_BothPC.root"); // <-- File for New MC CCQE Information
+TFile *f8 = new TFile("UpdatedVertexActivity/MC_CCRes_Histograms_BothPC.root"); // <-- File for New MC CCRes Information
+TFile *f9 = new TFile("UpdatedVertexActivity/MC_NCRes_Histograms_BothPC.root"); // <-- File for New MC NCRes Information
+TFile *f10 = new TFile("UpdatedVertexActivity/MC_CCDIS_Histograms_BothPC.root"); // <-- File for New MC CCDIS Information
+TFile *f11 = new TFile("UpdatedVertexActivity/MC_NCDIS_Histograms_BothPC.root"); // <-- File for New MC NCDIS Information
+TFile *f12 = new TFile("UpdatedVertexActivity/MC_Other_Histograms_BothPC.root"); // <-- File for New MC Other Information
+TFile *f13 = new TFile("UpdatedVertexActivity/CCCoh_Enhanced_Histograms_BothPC.root"); // <-- File for New MC CCCoh Enhanced Information
 
 
 
@@ -412,14 +412,16 @@ hOpeningAngleOther->Sumw2();
 hOpeningAngleCCCoh->Sumw2();
 
 
-TH1D *hVertexActivity = (TH1D*)f6->Get("hVertexActivityFor2Tracks");
+TH1D *hVertexActivity = (TH1D*)f5->Get("hVertexActivityFor2TracksNew");
+//TH1D *hVertexActivity = (TH1D*)f6->Get("hVertexActivityFor2Tracks"); //This is the original one that I changed
 TH1D *hVertexActivityCCQE = (TH1D*)f7->Get("hVertexActivityFor2Tracks");
 TH1D *hVertexActivityCCRes = (TH1D*)f8->Get("hVertexActivityFor2Tracks");
 TH1D *hVertexActivityNCRes = (TH1D*)f9->Get("hVertexActivityFor2Tracks");
 TH1D *hVertexActivityCCDIS = (TH1D*)f10->Get("hVertexActivityFor2Tracks");
 TH1D *hVertexActivityNCDIS = (TH1D*)f11->Get("hVertexActivityFor2Tracks");
 TH1D *hVertexActivityOther = (TH1D*)f12->Get("hVertexActivityFor2Tracks");
-TH1D *hVertexActivityCCCoh = (TH1D*)f13->Get("hVertexActivityFor2Tracks");
+TH1D *hVertexActivityCCCoh = (TH1D*)f13->Get("hVertexActivityFor2TracksNew");
+//TH1D *hVertexActivityCCCoh = (TH1D*)f13->Get("hVertexActivityFor2Tracks"); //This is the original one that I changed
 
 hVertexActivity->Sumw2();
 hVertexActivityCCQE->Sumw2();
@@ -2200,7 +2202,7 @@ double MaximizeVA[5001] = {0};
 
 for (int i = 0; i < n1; i++)
    {
-   x1[i] = i*1000/n1;
+   x1[i] = i*100000/n1;
    for (int g = 1; g < i+1; g++)
       {
       CCCohVertexActivity[i] += hVertexActivity->GetBinContent(g);
@@ -2213,14 +2215,15 @@ for (int i = 0; i < n1; i++)
       NCDISVertexActivity[i] += hVertexActivityNCDIS->GetBinContent(g);
       } // End g-Loop
 
-   MaximizeVA[i] = CCCohVertexActivity[i]/pow(CCCohVertexActivity[i] + CCQEVertexActivity[i] + CCResVertexActivity[i] + NCResVertexActivity[i] + CCDISVertexActivity[i] + NCDISVertexActivity[i] + OtherVertexActivity[i], 0.5);
+   MaximizeVA[i] = CCCohVertexActivity2[i]/pow(CCCohVertexActivity2[i] + CCCohVertexActivity[i] /*+ CCQEVertexActivity[i] + CCResVertexActivity[i] + NCResVertexActivity[i] + CCDISVertexActivity[i] + NCDISVertexActivity[i] + OtherVertexActivity[i]*/, 0.5);
    VertexActivityPurity[i] = 100*(CCCohVertexActivity2[i])/(CCCohVertexActivity2[i] + OtherVertexActivity[i]);
    if (i == 0) MaximizeVA[i] = 0;
    //MaximizeVA[i] = 100*(CCCohVertexActivity[i])/hVertexActivity->GetEntries();
-   MaximizeVA[i] = 100*MaximizeVA[i];
+   //MaximizeVA[i] = 100*MaximizeVA[i];
    if (i == 0) VertexActivityPurity[i] = 0;
    VertexActivityEff[i] = 100*(CCCohVertexActivity2[i])/(hVertexActivityCCCoh->GetEntries());
-   CCCohVertexActivity[i] = CCCohVertexActivity[i]*100/hVertexActivity->GetEntries();
+   CCCohVertexActivity[i] = 100 - (CCCohVertexActivity[i]*100/hVertexActivity->GetEntries());
+   //CCCohVertexActivity[i] = CCCohVertexActivity[i]*100/hVertexActivity->GetEntries(); //UNCOMMENT!
    CCCohVertexActivity2[i] = CCCohVertexActivity2[i]*100/hVertexActivityCCCoh->GetEntries();
    CCResVertexActivity[i] = 100-(CCResVertexActivity[i]*100/hVertexActivityCCRes->GetEntries());
    CCDISVertexActivity[i] = 100-(CCDISVertexActivity[i]*100/hVertexActivityCCDIS->GetEntries());
@@ -2254,7 +2257,7 @@ TGraph* gCCCohVertexActivity = new TGraph(n1, x1, CCCohVertexActivity);
 gCCCohVertexActivity->SetTitle("gCCCohVertexActivity");
 gCCCohVertexActivity->SetName("gCCCohVertexActivity");
 gCCCohVertexActivity->SetFillColor(kWhite);
-gCCCohVertexActivity->SetLineColor(kBlue);
+gCCCohVertexActivity->SetLineColor(kBlack);
 //gCCCohVertexActivity->SetLineStyle(kDashed);
 gCCCohVertexActivity->SetLineWidth(2);
 TGraph* gCCCohVertexActivity2 = new TGraph(n1, x1, CCCohVertexActivity2);
@@ -2313,19 +2316,19 @@ c28->SetFillColor(kWhite);
 
 gCCCohVertexActivity2->GetXaxis()->SetTitle("Vertex Activity [MeV]");
 gCCCohVertexActivity2->GetXaxis()->CenterTitle();
-gCCCohVertexActivity2->GetXaxis()->SetRangeUser(0,1000);
+//gCCCohVertexActivity2->GetXaxis()->SetRangeUser(0,1000); //UNCOMMENT!
 
 gCCCohVertexActivity2->GetYaxis()->SetTitle("Rejection (Background) Passed (Signal) [%]");
 gCCCohVertexActivity2->GetYaxis()->CenterTitle();
 
 gCCCohVertexActivity2->Draw();
-//gCCCohVertexActivity->Draw("same");
-gCCResVertexActivity->Draw("same");
-gCCDISVertexActivity->Draw("same");
-gOtherVertexActivity->Draw("same");
-gCCQEVertexActivity->Draw("same");
-gNCResVertexActivity->Draw("same");
-gNCDISVertexActivity->Draw("same");
+gCCCohVertexActivity->Draw("same"); //COMMENT OUT!
+//gCCResVertexActivity->Draw("same"); //UNCOMMENT!
+//gCCDISVertexActivity->Draw("same"); //UNCOMMENT!
+//gOtherVertexActivity->Draw("same"); //UNCOMMENT!
+//gCCQEVertexActivity->Draw("same"); //UNCOMMENT!
+//gNCResVertexActivity->Draw("same"); //UNCOMMENT!
+//gNCDISVertexActivity->Draw("same"); //UNCOMMENT!
 //gVertexActivityPurity->Draw("same");
 gMaximizeVertexActivity->Draw("same");
 
@@ -2338,15 +2341,15 @@ leg28->SetFillColor(kWhite);
 leg28->SetLineColor(kWhite);
 leg28->SetShadowColor(kWhite);
 leg28->SetHeader("Channel");
-//leg28->AddEntry(gCCCohVertexActivity,"CCCoh Reco");
+leg28->AddEntry(gCCCohVertexActivity,"CCCoh Reco"); //COMMENT OUT!
 leg28->AddEntry(gCCCohVertexActivity2,"CCCoh Enhanced Reco");
 //leg28->AddEntry(gVertexActivityPurity,"CCCoh Purity Reco");
-leg28->AddEntry(gCCQEVertexActivity,"CCQE Reco");
-leg28->AddEntry(gCCResVertexActivity,"CCRes Reco");
-leg28->AddEntry(gNCResVertexActivity,"NCRes Reco");
-leg28->AddEntry(gCCDISVertexActivity,"CCDIS Reco");
-leg28->AddEntry(gNCDISVertexActivity,"NCDIS Reco");
-leg28->AddEntry(gOtherVertexActivity,"Other Reco");
+//leg28->AddEntry(gCCQEVertexActivity,"CCQE Reco"); //UNCOMMENT!
+//leg28->AddEntry(gCCResVertexActivity,"CCRes Reco"); //UNCOMMENT!
+//leg28->AddEntry(gNCResVertexActivity,"NCRes Reco"); //UNCOMMENT!
+//leg28->AddEntry(gCCDISVertexActivity,"CCDIS Reco"); //UNCOMMENT!
+//leg28->AddEntry(gNCDISVertexActivity,"NCDIS Reco"); //UNCOMMENT!
+//leg28->AddEntry(gOtherVertexActivity,"Other Reco"); //UNCOMMENT!
 leg28->AddEntry(gMaximizeVertexActivity,"Signal Maximization");
 leg28->Draw();
 // --------------------------------

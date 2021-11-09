@@ -1,12 +1,12 @@
 //////////////////////////////////////////////////////////
 // This class has been automatically generated on
-// Tue Aug 24 12:42:46 2021 by ROOT version 6.10/02
+// Tue Oct  5 13:52:30 2021 by ROOT version 6.12/06
 // from TTree SubRun/SubRun TTree
-// found on file: /media/zwilliams/Monsivais's External Hard Drive/CCCohFiles/NeutrinoSelectionFilter_CCCoh_Enhanced.root
+// found on file: /pnfs/uboone/persistent/users/zwilliam/cccoh_zgrw_new_sample/cccoh_zgrw_full/Run1/DetectorVariation/NeutrinoSelectionFilter_Run1_LYAtten.root
 //////////////////////////////////////////////////////////
 
-#ifndef POT_Counting_Enhanced_h
-#define POT_Counting_Enhanced_h
+#ifndef POT_Counting_LYAtten_h
+#define POT_Counting_LYAtten_h
 
 #include <TROOT.h>
 #include <TChain.h>
@@ -14,7 +14,7 @@
 
 // Header file for the classes stored in the TTree if any.
 
-class POT_Counting_Enhanced {
+class POT_Counting_LYAtten {
 public :
    TTree          *fChain;   //!pointer to the analyzed TTree or TChain
    Int_t           fCurrent; //!current Tree number in a TChain
@@ -31,8 +31,8 @@ public :
    TBranch        *b_subRun;   //!
    TBranch        *b_pot;   //!
 
-   POT_Counting_Enhanced(TTree *tree=0);
-   virtual ~POT_Counting_Enhanced();
+   POT_Counting_LYAtten(TTree *tree=0);
+   virtual ~POT_Counting_LYAtten();
    virtual Int_t    Cut(Long64_t entry);
    virtual Int_t    GetEntry(Long64_t entry);
    virtual Long64_t LoadTree(Long64_t entry);
@@ -44,36 +44,36 @@ public :
 
 #endif
 
-#ifdef POT_Counting_Enhanced_cxx
-POT_Counting_Enhanced::POT_Counting_Enhanced(TTree *tree) : fChain(0) 
+#ifdef POT_Counting_LYAtten_cxx
+POT_Counting_LYAtten::POT_Counting_LYAtten(TTree *tree) : fChain(0) 
 {
 // if parameter tree is not specified (or zero), connect the file
 // used to generate this class and read the Tree.
    if (tree == 0) {
-      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("/media/zwilliams/Monsivais's External Hard Drive/CCCohFiles/NeutrinoSelectionFilter_CCCoh_Enhanced.root");
+      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("/pnfs/uboone/persistent/users/zwilliam/cccoh_zgrw_new_sample/cccoh_zgrw_full/Run1/DetectorVariation/NeutrinoSelectionFilter_Run1_LYAtten.root");
       if (!f || !f->IsOpen()) {
-         f = new TFile("/media/zwilliams/Monsivais's External Hard Drive/CCCohFiles/NeutrinoSelectionFilter_CCCoh_Enhanced.root");
+         f = new TFile("/pnfs/uboone/persistent/users/zwilliam/cccoh_zgrw_new_sample/cccoh_zgrw_full/Run1/DetectorVariation/NeutrinoSelectionFilter_Run1_LYAtten.root");
       }
-      TDirectory * dir = (TDirectory*)f->Get("/media/zwilliams/Monsivais's External Hard Drive/CCCohFiles/NeutrinoSelectionFilter_CCCoh_Enhanced.root:/nuselection");
+      TDirectory * dir = (TDirectory*)f->Get("/pnfs/uboone/persistent/users/zwilliam/cccoh_zgrw_new_sample/cccoh_zgrw_full/Run1/DetectorVariation/NeutrinoSelectionFilter_Run1_LYAtten.root:/nuselection");
       dir->GetObject("SubRun",tree);
 
    }
    Init(tree);
 }
 
-POT_Counting_Enhanced::~POT_Counting_Enhanced()
+POT_Counting_LYAtten::~POT_Counting_LYAtten()
 {
    if (!fChain) return;
    delete fChain->GetCurrentFile();
 }
 
-Int_t POT_Counting_Enhanced::GetEntry(Long64_t entry)
+Int_t POT_Counting_LYAtten::GetEntry(Long64_t entry)
 {
 // Read contents of entry.
    if (!fChain) return 0;
    return fChain->GetEntry(entry);
 }
-Long64_t POT_Counting_Enhanced::LoadTree(Long64_t entry)
+Long64_t POT_Counting_LYAtten::LoadTree(Long64_t entry)
 {
 // Set the environment to read one entry
    if (!fChain) return -5;
@@ -86,7 +86,7 @@ Long64_t POT_Counting_Enhanced::LoadTree(Long64_t entry)
    return centry;
 }
 
-void POT_Counting_Enhanced::Init(TTree *tree)
+void POT_Counting_LYAtten::Init(TTree *tree)
 {
    // The Init() function is called when the selector needs to initialize
    // a new tree or chain. Typically here the branch addresses and branch
@@ -108,7 +108,7 @@ void POT_Counting_Enhanced::Init(TTree *tree)
    Notify();
 }
 
-Bool_t POT_Counting_Enhanced::Notify()
+Bool_t POT_Counting_LYAtten::Notify()
 {
    // The Notify() function is called when a new file is opened. This
    // can be either for a new TTree in a TChain or when when a new TTree
@@ -119,18 +119,18 @@ Bool_t POT_Counting_Enhanced::Notify()
    return kTRUE;
 }
 
-void POT_Counting_Enhanced::Show(Long64_t entry)
+void POT_Counting_LYAtten::Show(Long64_t entry)
 {
 // Print contents of entry.
 // If entry is not specified, print current entry
    if (!fChain) return;
    fChain->Show(entry);
 }
-Int_t POT_Counting_Enhanced::Cut(Long64_t entry)
+Int_t POT_Counting_LYAtten::Cut(Long64_t entry)
 {
 // This function may be called from Loop.
 // returns  1 if entry is accepted.
 // returns -1 otherwise.
    return 1;
 }
-#endif // #ifdef POT_Counting_Enhanced_cxx
+#endif // #ifdef POT_Counting_LYAtten_cxx
