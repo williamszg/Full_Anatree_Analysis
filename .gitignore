@@ -2,4 +2,5 @@
 ### Ignore the Ntuple Root Files for Commit ###
 ###############################################
 NuCCanalyser_CCCoh*.root
+DataFirstLook/XSectionExtraction/xsec_graphs.root
 ###############################################
